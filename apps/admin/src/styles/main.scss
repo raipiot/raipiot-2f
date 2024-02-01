@@ -1,0 +1,53 @@
+@use 'tailwind.scss';
+@use 'fonts.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  font-family:
+    Nunito,
+    Noto Sans SC,
+    system-ui,
+    -apple-system,
+    Roboto,
+    Helvetica Neue,
+    Arial,
+    sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  user-select: none;
+}
+
+#app {
+  height: auto;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+[data-theme='dark'] {
+  color: #ffffff;
+}
+
+.global_hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  -webkit-overflow-scrolling: touch; /* iOS (Safari and Chrome) */
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent; /* Chrome, Safari, and Edge */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+}

@@ -7,7 +7,12 @@
       "persistent": true,
       "dotEnv": [".env.development.local", ".env.development", ".env.local", ".env"]
     },
-    "build": {
+    "build:staging": {
+      "dependsOn": ["^type:check", "^build"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
+      "dotEnv": [".env.staging.local", ".env.staging", ".env.local", ".env"]
+    },
+    "build:prod": {
       "dependsOn": ["^type:check", "^build"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
       "dotEnv": [".env.production.local", ".env.production", ".env.local", ".env"]
@@ -15,9 +20,24 @@
     "preview": {
       "cache": false,
       "persistent": true,
-      "dotEnv": [".env.preview.local", ".env.preview", ".env.local", ".env"]
+      "dotEnv": [".env.development.local", ".env.development", ".env.local", ".env"]
     },
     "clean": {},
+    "desktop:dev": {
+      "cache": false,
+      "persistent": true,
+      "dotEnv": [".env.development.local", ".env.development", ".env.local", ".env"]
+    },
+    "desktop:build:staging": {
+      "dependsOn": ["^type:check", "^desktop:dev"],
+      "outputs": ["dist/**", "target/**"],
+      "dotEnv": [".env.staging.local", ".env.staging", ".env.local", ".env"]
+    },
+    "desktop:build:prod": {
+      "dependsOn": ["^type:check", "^desktop:dev"],
+      "outputs": ["dist/**", "target/**"],
+      "dotEnv": [".env.production.local", ".env.production", ".env.local", ".env"]
+    },
     "cspell:sort:dict": {},
     "cspell:check": {},
     "type:check": {},

@@ -1,0 +1,25 @@
+{
+  "id": "temp",
+  "name": "temp",
+  "description": "临时字典",
+  "readonly": true,
+  "dictionaryDefinitions": [
+    {
+      "name": "temp",
+      "path": "./dict/temp.txt",
+      "description": "临时字典"
+    }
+  ],
+  "dictionaries": [],
+  "languageSettings": [
+    {
+      "languageId": "*",
+      "locale": "*",
+      "includeRegExpList": [],
+      "ignoreRegExpList": [],
+      "patterns": [],
+      "dictionaries": ["temp"],
+      "dictionaryDefinitions": []
+    }
+  ]
+}

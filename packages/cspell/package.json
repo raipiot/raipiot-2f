@@ -1,0 +1,18 @@
+{
+  "name": "@raipiot-srm/cspell",
+  "description": "Collection of internal cspell dicts.",
+  "author": "Bruce Song <recall4056@gmail.com> (https://github.com/recallwei/)",
+  "exports": {
+    ".": "./cspell-ext.json",
+    "./cspell": "./cspell-ext.json",
+    "./cspell-ext.json": "./cspell-ext.json"
+  },
+  "scripts": {
+    "cspell:check": "cspell --no-progress --show-suggestions --show-context --cache **",
+    "prettier:check": "prettier --check --ignore-unknown .",
+    "prettier:fix": "prettier --write --ignore-unknown .",
+    "cspell:sort:dict": "sort -u -o dict/raipiot.txt dict/raipiot.txt",
+    "prepublishOnly": "pnpm cspell:sort:dict"
+  },
+  "private": true
+}
