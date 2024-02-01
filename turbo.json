@@ -1,0 +1,29 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDotEnv": [".env"],
+  "pipeline": {
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "dotEnv": [".env.development.local", ".env.development", ".env.local", ".env"]
+    },
+    "build": {
+      "dependsOn": ["^type:check", "^build"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
+      "dotEnv": [".env.production.local", ".env.production", ".env.local", ".env"]
+    },
+    "preview": {
+      "cache": false,
+      "persistent": true,
+      "dotEnv": [".env.preview.local", ".env.preview", ".env.local", ".env"]
+    },
+    "clean": {},
+    "cspell:sort:dict": {},
+    "cspell:check": {},
+    "type:check": {},
+    "prettier:check": {},
+    "prettier:fix": {},
+    "eslint:check": {},
+    "eslint:fix": {}
+  }
+}
