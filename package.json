@@ -18,6 +18,7 @@
     "desktop:build:prod:admin": "FORCE_COLOR=1 turbo desktop:build:prod --filter=@raipiot-srm/admin",
     "desktop:build:prod:shopping": "FORCE_COLOR=1 turbo desktop:build:prod --filter=@raipiot-srm/shopping",
     "clean": "FORCE_COLOR=1 turbo clean && rimraf node_modules",
+    "cspell:sort:dict": "FORCE_COLOR=1 turbo cspell:sort:dict --filter=@raipiot-srm/cspell",
     "cspell:check": "FORCE_COLOR=1 turbo cspell:check",
     "type:check": "FORCE_COLOR=1 turbo type:check",
     "prettier:check": "FORCE_COLOR=1 turbo prettier:check",

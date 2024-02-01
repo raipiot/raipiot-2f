@@ -1,1 +1,4 @@
+pnpm cspell:sort:dict
+git add ./packages/cspell/dict/temp.txt
 pnpm cspell:check
+# npx lint-staged
