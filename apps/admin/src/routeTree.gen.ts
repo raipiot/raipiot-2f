@@ -3,7 +3,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 // Import Routes
-
 import { Route as rootRoute } from './routes/__root'
 import { Route as Import } from './routes/*'
 
@@ -17,22 +16,22 @@ const LoginIndexLazyImport = createFileRoute('/login/')()
 
 const Route = Import.update({
   path: '/*',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any)
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
 const SignupIndexLazyRoute = SignupIndexLazyImport.update({
   path: '/signup/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any).lazy(() => import('./routes/signup/index.lazy').then((d) => d.Route))
 
 const LoginIndexLazyRoute = LoginIndexLazyImport.update({
   path: '/login/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any).lazy(() => import('./routes/login/index.lazy').then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
@@ -64,5 +63,5 @@ export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
   Route,
   LoginIndexLazyRoute,
-  SignupIndexLazyRoute,
+  SignupIndexLazyRoute
 ])

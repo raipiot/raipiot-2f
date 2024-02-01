@@ -1,6 +1,6 @@
 {
   "name": "@raipiot-srm/cspell",
-  "description": "Collection of internal cspell dicts.",
+  "description": "CSpell 业务字典",
   "author": "Bruce Song <recall4056@gmail.com> (https://github.com/recallwei/)",
   "exports": {
     ".": "./cspell-ext.json",

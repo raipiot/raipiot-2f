@@ -36,6 +36,7 @@
     "@raipiot-infra/prettier": "^0.0.2",
     "@raipiot-infra/tsconfig": "^0.0.2",
     "@raipiot-srm/cspell": "workspace:^",
+    "@raipiot-srm/eslint-config": "workspace:^",
     "commitizen": "^4.3.0",
     "cspell": "^8.3.2",
     "cz-git": "^1.8.0",
