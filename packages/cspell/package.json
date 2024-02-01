@@ -11,7 +11,7 @@
     "cspell:check": "cspell --no-progress --show-suggestions --show-context --cache **",
     "prettier:check": "prettier --check --ignore-unknown .",
     "prettier:fix": "prettier --write --ignore-unknown .",
-    "cspell:sort:dict": "sort -u -o dict/tmp.txt dict/temp.txt",
+    "cspell:sort:dict": "sort -u -o dict/temp.txt dict/temp.txt",
     "prepublishOnly": "pnpm cspell:sort:dict"
   },
   "private": true
