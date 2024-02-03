@@ -15,6 +15,7 @@ import Info from 'unplugin-info/vite'
 import type { ProxyOptions } from 'vite'
 import { defineConfig, loadEnv } from 'vite'
 import ViteCompression from 'vite-plugin-compression'
+import WebfontDownload from 'vite-plugin-webfont-dl'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
@@ -26,7 +27,7 @@ export default defineConfig(({ mode }) => {
     VITE_MOCK_API_URL
   } = env as ImportMetaEnv
 
-  const port = parseInt(VITE_PORT, 10) || 5173
+  const port = Number.parseInt(VITE_PORT, 10) || 5173
   const proxy: Record<string, string | ProxyOptions> = {
     [VITE_BASE_API_PREFIX]: {
       target: VITE_BASE_API_URL,
@@ -48,7 +49,7 @@ export default defineConfig(({ mode }) => {
       AutoImport({
         dts: '@types/auto-imports.d.ts',
         include: [
-          /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+          /\.[jt]sx?$/, // .ts, .tsx, .js, .jsx
           /\.md$/ // .md
         ],
         imports: [
@@ -56,6 +57,10 @@ export default defineConfig(({ mode }) => {
           {
             from: '@/constants',
             imports: ['GlobalEnvConfig']
+          },
+          {
+            from: '@/i18n',
+            imports: [['default', 'i18n']]
           }
         ],
         resolvers: [
@@ -65,7 +70,7 @@ export default defineConfig(({ mode }) => {
           AhooksResolver(),
           RaipiotAntdResolver()
         ],
-        dirs: []
+        dirs: ['src/api/**', 'src/store/**']
       }),
       BootstrapAnimation({
         name: 'SRM Admin',
@@ -80,16 +85,17 @@ export default defineConfig(({ mode }) => {
       ViteCompression({
         verbose: true, // 是否在控制台中输出压缩结果
         disable: true,
-        threshold: 10240, // 体积过小时不压缩
+        threshold: 10_240, // 体积过小时不压缩
         algorithm: 'gzip', // 压缩算法
         ext: '.gz',
         deleteOriginFile: true // 源文件压缩后是否删除
       }),
-      Info()
+      Info(),
+      WebfontDownload()
     ],
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url))
+        '@': fileURLToPath(new URL('src', import.meta.url))
       },
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
     },
@@ -114,9 +120,9 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         output: {
           manualChunks: {
-            axios: ['axios'],
-            antd: ['antd'],
-            'lodash-es': ['lodash-es']
+            // axios: ['axios'],
+            // antd: ['antd'],
+            // 'lodash-es': ['lodash-es']
           }
         }
       }

@@ -1,0 +1,46 @@
+import type { R } from '@/axios'
+import { httpRequest } from '@/axios'
+
+import type {
+  ChangePasswordInputModel,
+  ForgotPasswordInputModel,
+  LoginInputModel,
+  SignupInputModel,
+  Token
+} from './auth.type'
+
+export class AuthAPI {
+  static #API_PREFIX = `${GlobalEnvConfig.BASE_INSTALLER_API_URL}/auth`
+
+  /**
+   * 登录
+   */
+  static async login(data: LoginInputModel) {
+    const res = await httpRequest.post<R<Token>>(`${this.#API_PREFIX}/login`, data)
+    return res.data
+  }
+
+  /**
+   * 注册
+   */
+  static async signup(data: SignupInputModel) {
+    const res = await httpRequest.post<R>(`${this.#API_PREFIX}/register`, data)
+    return res.data
+  }
+
+  /**
+   * 修改密码
+   */
+  static async changePassword(data: ChangePasswordInputModel) {
+    const res = await httpRequest.post<R>(`${this.#API_PREFIX}/change-password`, data)
+    return res.data
+  }
+
+  /**
+   * 忘记密码
+   */
+  static async forgotPassword(data: ForgotPasswordInputModel) {
+    const res = await httpRequest.post<R>(`${this.#API_PREFIX}/forget-password`, data)
+    return res.data
+  }
+}

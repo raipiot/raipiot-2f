@@ -1,32 +1,23 @@
 import '@/styles/main.scss'
 
-import { createRouter, RouterProvider } from '@tanstack/react-router'
+import { messageConfig } from '@raipiot-infra/theme'
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 
-import { routeTree } from './routeTree.gen'
+import App from './App'
 
 BrowserUtils.loadFavicon()
 BrowserUtils.disableGestureScale()
 
-const queryClient = new QueryClient()
+// 静态方法的全局配置
+AMessage.config(messageConfig)
 
-const router = createRouter({ routeTree })
-
-declare module '@tanstack/react-router' {
-  interface Register {
-    router: typeof router
-  }
-}
-
-const rootElement = document.getElementById('root')!
+const rootElement = document.querySelector('#root')!
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
     <StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
+      <App />
     </StrictMode>
   )
 }

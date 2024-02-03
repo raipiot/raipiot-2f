@@ -4,18 +4,46 @@ import { createFileRoute } from '@tanstack/react-router'
 
 // Import Routes
 import { Route as rootRoute } from './routes/__root'
-import { Route as Import } from './routes/*'
+import { Route as AuthImport } from './routes/_auth'
+import { Route as LayoutImport } from './routes/_layout'
+import { Route as WhitelistImport } from './routes/_whitelist'
 
 // Create Virtual Routes
 
+const SignupLazyImport = createFileRoute('/signup')()
+const LoginLazyImport = createFileRoute('/login')()
+const DashboardLazyImport = createFileRoute('/dashboard')()
 const IndexLazyImport = createFileRoute('/')()
-const SignupIndexLazyImport = createFileRoute('/signup/')()
-const LoginIndexLazyImport = createFileRoute('/login/')()
 
 // Create/Update Routes
 
-const Route = Import.update({
-  path: '/*',
+const SignupLazyRoute = SignupLazyImport.update({
+  path: '/signup',
+  getParentRoute: () => rootRoute
+} as any).lazy(() => import('./routes/signup.lazy').then((d) => d.Route))
+
+const LoginLazyRoute = LoginLazyImport.update({
+  path: '/login',
+  getParentRoute: () => rootRoute
+} as any).lazy(() => import('./routes/login.lazy').then((d) => d.Route))
+
+const DashboardLazyRoute = DashboardLazyImport.update({
+  path: '/dashboard',
+  getParentRoute: () => rootRoute
+} as any).lazy(() => import('./routes/dashboard.lazy').then((d) => d.Route))
+
+const WhitelistRoute = WhitelistImport.update({
+  id: '/_whitelist',
+  getParentRoute: () => rootRoute
+} as any)
+
+const LayoutRoute = LayoutImport.update({
+  id: '/_layout',
+  getParentRoute: () => rootRoute
+} as any)
+
+const AuthRoute = AuthImport.update({
+  id: '/_auth',
   getParentRoute: () => rootRoute
 } as any)
 
@@ -23,16 +51,6 @@ const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
-
-const SignupIndexLazyRoute = SignupIndexLazyImport.update({
-  path: '/signup/',
-  getParentRoute: () => rootRoute
-} as any).lazy(() => import('./routes/signup/index.lazy').then((d) => d.Route))
-
-const LoginIndexLazyRoute = LoginIndexLazyImport.update({
-  path: '/login/',
-  getParentRoute: () => rootRoute
-} as any).lazy(() => import('./routes/login/index.lazy').then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
 
@@ -42,16 +60,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/*': {
-      preLoaderRoute: typeof Import
+    '/_auth': {
+      preLoaderRoute: typeof AuthImport
       parentRoute: typeof rootRoute
     }
-    '/login/': {
-      preLoaderRoute: typeof LoginIndexLazyImport
+    '/_layout': {
+      preLoaderRoute: typeof LayoutImport
       parentRoute: typeof rootRoute
     }
-    '/signup/': {
-      preLoaderRoute: typeof SignupIndexLazyImport
+    '/_whitelist': {
+      preLoaderRoute: typeof WhitelistImport
+      parentRoute: typeof rootRoute
+    }
+    '/dashboard': {
+      preLoaderRoute: typeof DashboardLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/login': {
+      preLoaderRoute: typeof LoginLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/signup': {
+      preLoaderRoute: typeof SignupLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -61,7 +91,10 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
-  Route,
-  LoginIndexLazyRoute,
-  SignupIndexLazyRoute
+  AuthRoute,
+  LayoutRoute,
+  WhitelistRoute,
+  DashboardLazyRoute,
+  LoginLazyRoute,
+  SignupLazyRoute
 ])

@@ -7,6 +7,25 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@raipiot-infra/antd':
+        specifier: ^0.0.8
+        version: 0.0.8(@raipiot-infra/enums@0.0.4)(@raipiot-infra/utils@0.0.4)(antd@5.13.3)(react@18.2.0)
+      '@raipiot-infra/config':
+        specifier: ^0.0.2
+        version: 0.0.2
+      '@raipiot-infra/enums':
+        specifier: ^0.0.4
+        version: 0.0.4
+      '@raipiot-infra/tanstack-query':
+        specifier: ^0.0.2
+        version: 0.0.2
+      '@raipiot-infra/theme':
+        specifier: ^0.0.1
+        version: 0.0.1(antd@5.13.3)
+      '@raipiot-infra/utils':
+        specifier: ^0.0.4
+        version: 0.0.4(@raipiot-infra/enums@0.0.4)(dayjs@1.11.10)
     devDependencies:
       '@commitlint/cli':
         specifier: ^18.6.0
@@ -14,6 +33,12 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^18.6.0
         version: 18.6.0
+      '@raipiot-infra/auto-import':
+        specifier: ^0.0.9
+        version: 0.0.9(unplugin-auto-import@0.17.5)
+      '@raipiot-infra/bootstrap-animation':
+        specifier: ^0.0.4
+        version: 0.0.4(@raipiot-infra/config@0.0.2)(vite@5.0.12)
       '@raipiot-infra/commitlint-config':
         specifier: ^0.0.2
         version: 0.0.2(@commitlint/cli@18.6.0)(@commitlint/config-conventional@18.6.0)(commitizen@4.3.0)(cz-git@1.8.0)
@@ -23,6 +48,9 @@ importers:
       '@raipiot-infra/prettier':
         specifier: ^0.0.2
         version: 0.0.2(prettier@3.2.4)
+      '@raipiot-infra/tailwind':
+        specifier: ^0.0.2
+        version: 0.0.2(tailwindcss@3.4.1)
       '@raipiot-infra/tsconfig':
         specifier: ^0.0.2
         version: 0.0.2(typescript@5.3.3)
@@ -45,8 +73,8 @@ importers:
         specifier: ^8.56.0
         version: 8.56.0
       husky:
-        specifier: ^9.0.7
-        version: 9.0.7
+        specifier: ^9.0.10
+        version: 9.0.10
       lint-staged:
         specifier: ^15.2.1
         version: 15.2.1
@@ -71,42 +99,24 @@ importers:
       '@ant-design/happy-work-theme':
         specifier: ^1.0.0
         version: 1.0.0(antd@5.13.3)(react-dom@18.2.0)(react@18.2.0)
-      '@raipiot-infra/antd':
-        specifier: ^0.0.5
-        version: 0.0.5(@raipiot-infra/utils@0.0.3)(antd@5.13.3)(react@18.2.0)
-      '@raipiot-infra/config':
-        specifier: ^0.0.2
-        version: 0.0.2
-      '@raipiot-infra/enums':
-        specifier: ^0.0.3
-        version: 0.0.3
-      '@raipiot-infra/tanstack-query':
-        specifier: ^0.0.2
-        version: 0.0.2
-      '@raipiot-infra/theme':
-        specifier: ^0.0.1
-        version: 0.0.1(antd@5.13.3)
-      '@raipiot-infra/utils':
-        specifier: ^0.0.3
-        version: 0.0.3(@raipiot-infra/enums@0.0.3)(dayjs@1.11.10)
       '@tanstack/react-query':
-        specifier: ^5.18.0
-        version: 5.18.0(react@18.2.0)
+        specifier: ^5.18.1
+        version: 5.18.1(react@18.2.0)
       '@tanstack/react-query-devtools':
-        specifier: ^5.18.0
-        version: 5.18.0(@tanstack/react-query@5.18.0)(react@18.2.0)
+        specifier: ^5.18.1
+        version: 5.18.1(@tanstack/react-query@5.18.1)(react@18.2.0)
       '@tanstack/react-router':
-        specifier: ^1.15.7
-        version: 1.15.7(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.15.16
+        version: 1.15.16(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/router-devtools':
-        specifier: ^1.15.7
-        version: 1.15.7(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.15.16
+        version: 1.15.16(react-dom@18.2.0)(react@18.2.0)
       '@tauri-apps/api':
         specifier: ^1.5.3
         version: 1.5.3
       ahooks:
-        specifier: ^3.7.9
-        version: 3.7.9(react@18.2.0)
+        specifier: ^3.7.10
+        version: 3.7.10(react@18.2.0)
       antd:
         specifier: ^5.13.3
         version: 5.13.3(react-dom@18.2.0)(react@18.2.0)
@@ -145,23 +155,14 @@ importers:
         version: 0.9.0(immer@10.0.3)(react@18.2.0)
       zustand:
         specifier: ^4.5.0
-        version: 4.5.0(@types/react@18.2.50)(immer@10.0.3)(react@18.2.0)
+        version: 4.5.0(@types/react@18.2.52)(immer@10.0.3)(react@18.2.0)
     devDependencies:
       '@iconify/json':
-        specifier: ^2.2.177
-        version: 2.2.177
+        specifier: ^2.2.178
+        version: 2.2.178
       '@iconify/react':
         specifier: ^4.1.1
         version: 4.1.1(react@18.2.0)
-      '@raipiot-infra/auto-import':
-        specifier: ^0.0.8
-        version: 0.0.8(unplugin-auto-import@0.17.5)
-      '@raipiot-infra/bootstrap-animation':
-        specifier: ^0.0.3
-        version: 0.0.3(@raipiot-infra/config@0.0.2)(vite@5.0.12)
-      '@raipiot-infra/tailwind':
-        specifier: ^0.0.2
-        version: 0.0.2(tailwindcss@3.4.1)
       '@svgr/core':
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.3.3)
@@ -169,8 +170,8 @@ importers:
         specifier: ^8.1.0
         version: 8.1.0(@svgr/core@8.1.0)
       '@tanstack/router-vite-plugin':
-        specifier: ^1.15.4
-        version: 1.15.4
+        specifier: ^1.15.11
+        version: 1.15.11
       '@tauri-apps/cli':
         specifier: ^1.5.9
         version: 1.5.9
@@ -181,8 +182,8 @@ importers:
         specifier: ^0.2.3
         version: 0.2.3
       '@types/react':
-        specifier: ^18.2.50
-        version: 18.2.50
+        specifier: ^18.2.52
+        version: 18.2.52
       '@types/react-dom':
         specifier: ^18.2.18
         version: 18.2.18
@@ -219,6 +220,9 @@ importers:
       vite-plugin-compression:
         specifier: ^0.5.1
         version: 0.5.1(vite@5.0.12)
+      vite-plugin-webfont-dl:
+        specifier: ^3.9.1
+        version: 3.9.1(vite@5.0.12)
 
   packages/cspell: {}
 
@@ -1502,8 +1506,8 @@ packages:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
     dev: true
 
-  /@iconify/json@2.2.177:
-    resolution: {integrity: sha512-BKWZMvJklkkuDcmBqOYLXUSBCFDoYn5oaUU6j6eVQHE6KEfVYawSsTvfu4aCTx6Pzd47HR5zhTL4LJzhuKZOxg==}
+  /@iconify/json@2.2.178:
+    resolution: {integrity: sha512-AYw9z/Lu9Y0Q5V0DvyhysJA3ohwKMOgXxCJ1AzTnsZizbUqZ7zh5/wnBegv1ikBEISAY0tC/R46j0tJBjliHkw==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -1637,22 +1641,24 @@ packages:
     dev: true
     optional: true
 
-  /@raipiot-infra/antd@0.0.5(@raipiot-infra/utils@0.0.3)(antd@5.13.3)(react@18.2.0):
-    resolution: {integrity: sha512-8yW1sqX/6O5zQEfqzctP9ndiZEEAGR2Jrun0cTuFiRePEkJSEcLevatzGWzyJmQXE9dQ0JDrG6+WGItCxmLu4g==}
+  /@raipiot-infra/antd@0.0.8(@raipiot-infra/enums@0.0.4)(@raipiot-infra/utils@0.0.4)(antd@5.13.3)(react@18.2.0):
+    resolution: {integrity: sha512-72cm9H/2GMyB9IIvk1KmfllM6zZT35taT8ptp4u0UvjWfB/p2WqAJ+TUXqmh0skTzrHbckvocDdfvwOfNjnC2A==}
     peerDependencies:
-      '@raipiot-infra/utils': 0.0.3
+      '@raipiot-infra/enums': 0.0.4
+      '@raipiot-infra/utils': 0.0.4
       antd: '>=5.13.3'
       react: '>=18.2.0'
     dependencies:
-      '@raipiot-infra/utils': 0.0.3(@raipiot-infra/enums@0.0.3)(dayjs@1.11.10)
+      '@raipiot-infra/enums': 0.0.4
+      '@raipiot-infra/utils': 0.0.4(@raipiot-infra/enums@0.0.4)(dayjs@1.11.10)
       antd: 5.13.3(react-dom@18.2.0)(react@18.2.0)
       clsx: 2.1.0
       lodash-es: 4.17.21
       react: 18.2.0
     dev: false
 
-  /@raipiot-infra/auto-import@0.0.8(unplugin-auto-import@0.17.5):
-    resolution: {integrity: sha512-Hd2kcUjaqMouKZcuj/H3UueIRIxNhfDasjsAsG6Lbm3BM6y1CL150pJHUFiLay2MKvvphVJArS9oYWURD5v7EQ==}
+  /@raipiot-infra/auto-import@0.0.9(unplugin-auto-import@0.17.5):
+    resolution: {integrity: sha512-4vtARbZC/DZE6o0kiNxfwTKDdowrENs+PAmIkzzUyTd1aDsGLrcsNqE8J8hZjJoQW2HQKuD0fE9JaiIXCYOO7A==}
     peerDependencies:
       unplugin-auto-import: ^0.17.5
     dependencies:
@@ -1665,8 +1671,8 @@ packages:
       - rollup
     dev: true
 
-  /@raipiot-infra/bootstrap-animation@0.0.3(@raipiot-infra/config@0.0.2)(vite@5.0.12):
-    resolution: {integrity: sha512-n5MzwqaR/XZstwgmhkwCvHXqeFgwZUMLJsSf9RL/b9ypfjqeVUIxBxYipjvBavS8FaEWx6SoHKJ8NoUDkGNnKA==}
+  /@raipiot-infra/bootstrap-animation@0.0.4(@raipiot-infra/config@0.0.2)(vite@5.0.12):
+    resolution: {integrity: sha512-ECrrglVB7pxBTZ8VmjWGYbxVOiyBk1DO/Aa6yHBPkO4eLwGLx6d09m4i56dXjq26mZOUg4Yhk1X4wXXwIyuF8A==}
     peerDependencies:
       '@raipiot-infra/config': 0.0.2
       vite: ^5.0.12
@@ -1705,8 +1711,8 @@ packages:
       cspell: 8.3.2
     dev: true
 
-  /@raipiot-infra/enums@0.0.3:
-    resolution: {integrity: sha512-trxpFw0Ud8kzsta4NmbzwAx7sl6eoXieMirH13DXM1qIK2PolLk4K6Deg4AQlBIuODYwbsW2CuCJZkJa82HQuw==}
+  /@raipiot-infra/enums@0.0.4:
+    resolution: {integrity: sha512-vsqQMnmFrlT+5RpVaAU2SuVrbJNHzqAowzvIhRVP23k3v5eHl5jdvTl26Q8R21ExrvDmWxSLwmteJNToBNNhzA==}
     dev: false
 
   /@raipiot-infra/prettier@0.0.2(prettier@3.2.4):
@@ -1748,13 +1754,13 @@ packages:
       typescript: 5.3.3
     dev: true
 
-  /@raipiot-infra/utils@0.0.3(@raipiot-infra/enums@0.0.3)(dayjs@1.11.10):
-    resolution: {integrity: sha512-V4eWGO0A6Fy3mYpDbO1l/C2SzKa8nhB5llFJlmH7ZK8gnIS//AGewDsriYm9JPI1iGhij1YS8Nd1U80a6hGC9Q==}
+  /@raipiot-infra/utils@0.0.4(@raipiot-infra/enums@0.0.4)(dayjs@1.11.10):
+    resolution: {integrity: sha512-/cQLNiP2bZr1hWtkx9StJIZ128HC0gqOqVfXazxUnHsEEtVDvI7WBdO9VPpBEBtLjOzJzKh9XUzvbqNBER6t2g==}
     peerDependencies:
-      '@raipiot-infra/enums': 0.0.3
+      '@raipiot-infra/enums': 0.0.4
       dayjs: ^1.11.10
     dependencies:
-      '@raipiot-infra/enums': 0.0.3
+      '@raipiot-infra/enums': 0.0.4
       dayjs: 1.11.10
     dev: false
 
@@ -2231,47 +2237,47 @@ packages:
       - typescript
     dev: true
 
-  /@tanstack/history@1.12.16:
-    resolution: {integrity: sha512-lhm4aRy+B3yK3TgfFnjVYaSqrWobr0sOxF3z+6ZNJQoKaJ+ga+se5J+woozN/RHIZorfa+H71fevF82MXUsoIA==}
+  /@tanstack/history@1.15.13:
+    resolution: {integrity: sha512-ToaeMtK5S4YaxCywAlYexc7KPFN0esjyTZ4vXzJhXEWAkro9iHgh7m/4ozPJb7oTo65WkHWX0W9GjcZbInSD8w==}
     engines: {node: '>=12'}
     dev: false
 
-  /@tanstack/query-core@5.18.0:
-    resolution: {integrity: sha512-8c6nxeAnGHxIDZIyDmHdmgFt4D+LprAQaJmjsnM4szcIjsWOyFlzxdqQUuQ/XuQRvUgqYaqlJTtDADlSS7pTPQ==}
+  /@tanstack/query-core@5.18.1:
+    resolution: {integrity: sha512-fYhrG7bHgSNbnkIJF2R4VUXb4lF7EBiQjKkDc5wOlB7usdQOIN4LxxHpDxyE3qjqIst1WBGvDtL48T0sHJGKCw==}
     dev: false
 
-  /@tanstack/query-devtools@5.18.0:
-    resolution: {integrity: sha512-h0KuF8CboNB7z6+Y6psTwK56JwHD1pNB28gDbc1PaaQ9Q5uD837egYH3qOEEireO/1P3j2s3jVPsbB0+bqdthw==}
+  /@tanstack/query-devtools@5.18.1:
+    resolution: {integrity: sha512-U8bDnDGuwdVMT4ndegPTcjOHOmX/UOjjB7o7UalRIq3DMHLRf8Ufh4+xoAvk3LNK5GBmUBfFSw4osYe5l9n7Lw==}
     dev: false
 
-  /@tanstack/react-query-devtools@5.18.0(@tanstack/react-query@5.18.0)(react@18.2.0):
-    resolution: {integrity: sha512-zjDOYexc8dvDyaRvrbsjdUD8tjaUTIwOyQxM2Go+rOF+HgAIyn4dLFh/6s+sszRjqDn74oBkUNUeYNnh6zmIOw==}
+  /@tanstack/react-query-devtools@5.18.1(@tanstack/react-query@5.18.1)(react@18.2.0):
+    resolution: {integrity: sha512-IrzAsodabSkEVBP0DHkuzcmqKFZ0EgG9ocuD/fRIrjYmbqqdHxzNmp2WmAZlkVo7hamA0ZdzvL5sjo1koFzjHA==}
     peerDependencies:
-      '@tanstack/react-query': ^5.18.0
+      '@tanstack/react-query': ^5.18.1
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-devtools': 5.18.0
-      '@tanstack/react-query': 5.18.0(react@18.2.0)
+      '@tanstack/query-devtools': 5.18.1
+      '@tanstack/react-query': 5.18.1(react@18.2.0)
       react: 18.2.0
     dev: false
 
-  /@tanstack/react-query@5.18.0(react@18.2.0):
-    resolution: {integrity: sha512-7FKxNfxxKEL7n3ADpwp81Fy4FX85hNkYVzQQVQsF0JAPl93c3d1gmNZMIbEtOqgYfom1/ontGh3FiZGYj3xyWA==}
+  /@tanstack/react-query@5.18.1(react@18.2.0):
+    resolution: {integrity: sha512-PdI07BbsahZ+04PxSuDQsQvBWe008eWFk/YYWzt8fvzt2sALUM0TpAJa/DFpqa7+SSo7j1EQR6Jx6znXNHyaXw==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-core': 5.18.0
+      '@tanstack/query-core': 5.18.1
       react: 18.2.0
     dev: false
 
-  /@tanstack/react-router@1.15.7(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-4b5ia1HG1iQhdRQ67NDjzDkA0tLm2aeoE07DqIXSWTY8xrrNBgYUjfCKKNy2l/qIE5/gFmsoaqab3ZJxohOFmQ==}
+  /@tanstack/react-router@1.15.16(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-q5zywMF41xVq4GgxQxW9JvIDCXsiKedizUtM4Ys9vLlVlMuctCJSVhs6gzKJ7y+nQWiBGS9AsxhwvoiW2/mYzA==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@tanstack/history': 1.12.16
+      '@tanstack/history': 1.15.13
       '@tanstack/react-store': 0.2.1(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2291,32 +2297,32 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  /@tanstack/router-devtools@1.15.7(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-XuDmyxOzjnx7br6ln6Kwa4DZmufnjiF/Rly5RTGbYpevtCX1xUY82lgch0QAu8emX6WhfPzX0tM0vNAvPN309A==}
+  /@tanstack/router-devtools@1.15.16(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-nqpTdxEwu+SoU3KlMpgFVa+WHmJ+jix3CbJ4WKE/7fY+c3g4wz4m8q0J4OCZWNBDEast4q5KTHdRtFeeCoCcfg==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@tanstack/react-router': 1.15.7(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/react-router': 1.15.16(react-dom@18.2.0)(react@18.2.0)
       date-fns: 2.30.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@tanstack/router-generator@1.15.4:
-    resolution: {integrity: sha512-DG+ZAKQlRu2bK0jxbzq63B1k5srCtlbHuYqKVOyzjsIUWu75VVt0byNKhnkJxU3cnXzTb2y3io8Fsf7DMIHXLA==}
+  /@tanstack/router-generator@1.15.10:
+    resolution: {integrity: sha512-Q2fGptVetCiCRp2SFcLda+EQ9o7xPgJM4wUIp0b9lCnae7RRdSH9ukl66xu4PBqZDS4B+7e7+v1gH7OXEETGYA==}
     engines: {node: '>=12'}
     dependencies:
       prettier: 3.2.4
       zod: 3.22.4
     dev: true
 
-  /@tanstack/router-vite-plugin@1.15.4:
-    resolution: {integrity: sha512-SvVm0pIy15yU7bFRuq4ZWAIi/067xxhvutL2gcepfUkEv5q2v4VM9pGsYIjUCt15jBJlnCRT3wdjwJuBFUqh9g==}
+  /@tanstack/router-vite-plugin@1.15.11:
+    resolution: {integrity: sha512-F3wa4Qos4VSi47WtIw3P6YYeLjtyvKqkD273/hN+LaGaev7YGGYNhOPHNgFju/YWcMupBAjjN2wzqyxHJ3i3Eg==}
     engines: {node: '>=12'}
     dependencies:
-      '@tanstack/router-generator': 1.15.4
+      '@tanstack/router-generator': 1.15.10
     dev: true
 
   /@tanstack/store@0.1.3:
@@ -2485,11 +2491,11 @@ packages:
   /@types/react-dom@18.2.18:
     resolution: {integrity: sha512-TJxDm6OfAX2KJWJdMEVTwWke5Sc/E/RlnPGvGfS0W7+6ocy2xhDVQVh/KvC2Uf7kACs+gDytdusDSdWfWkaNzw==}
     dependencies:
-      '@types/react': 18.2.50
+      '@types/react': 18.2.52
     dev: true
 
-  /@types/react@18.2.50:
-    resolution: {integrity: sha512-y0XIDJkqp9HynS1VBktZG9mUziHTK5WZTAFDP/UfzSq+poV1drUKsr4VkjMyHTbqMz26BwgLZVYdx/EgPm7EkQ==}
+  /@types/react@18.2.52:
+    resolution: {integrity: sha512-E/YjWh3tH+qsLKaUzgpZb5AY0ChVa+ZJzF7ogehVILrFpdQk6nC/WXOv0bfFEABbXbgNxLBGU7IIZByPKb6eBw==}
     dependencies:
       '@types/prop-types': 15.7.11
       '@types/scheduler': 0.16.8
@@ -2737,8 +2743,8 @@ packages:
     hasBin: true
     dev: true
 
-  /ahooks@3.7.9(react@18.2.0):
-    resolution: {integrity: sha512-1nuCnaBe/DvZD2QAZVGLLmu0vDi6jxbiAP3Ghkj6Ocqk9YSXI6ydwo2x5I3lXowZyM8MNJDnHFvIo0vJS1CuFw==}
+  /ahooks@3.7.10(react@18.2.0):
+    resolution: {integrity: sha512-/HLYif7sFA/5qSuWKrwvjDbf3bq+sdaMrUWS7XGCDRWdC2FrG/i+u5LZdakMYc6UIgJTMQ7tGiJCV7sdU4kSIw==}
     engines: {node: '>=8.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -2747,7 +2753,7 @@ packages:
       dayjs: 1.11.10
       intersection-observer: 0.12.2
       js-cookie: 2.2.1
-      lodash-es: 4.17.21
+      lodash: 4.17.21
       react: 18.2.0
       resize-observer-polyfill: 1.5.1
       screenfull: 5.2.0
@@ -3023,7 +3029,6 @@ packages:
 
   /asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
-    dev: false
 
   /at-least-node@1.0.0:
     resolution: {integrity: sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==}
@@ -3064,7 +3069,6 @@ packages:
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
-    dev: false
 
   /axobject-query@3.2.1:
     resolution: {integrity: sha512-jsyHu61e6N4Vbz/v18DHwWYKK0bSWLqn47eeDSKPB7m8tqMHF9YJ+mhIk2lVteyZrY8tnSj/jHOv4YiTCuCJgg==}
@@ -3257,6 +3261,13 @@ packages:
     resolution: {integrity: sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==}
     dev: false
 
+  /clean-css@5.3.3:
+    resolution: {integrity: sha512-D5J+kHaVb/wKSFcyyV75uCn8fiY4sV38XJoe4CUyGQ+mOU/fMVYUdH1hJC+CJQ5uY3EnW27SbJYS4X8BiLrAFg==}
+    engines: {node: '>= 10.0'}
+    dependencies:
+      source-map: 0.6.1
+    dev: true
+
   /clean-regexp@1.0.0:
     resolution: {integrity: sha512-GfisEZEJvzKrmGWkvfhgzcz/BllN1USeqD2V6tg14OAOgaCD2Z/PUEuxnAZ/nPvmaHRG7a8y77p1T/IRQ4D1Hw==}
     engines: {node: '>=4'}
@@ -3361,7 +3372,6 @@ packages:
     engines: {node: '>= 0.8'}
     dependencies:
       delayed-stream: 1.0.0
-    dev: false
 
   /commander@11.1.0:
     resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
@@ -3798,7 +3808,6 @@ packages:
   /delayed-stream@1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
-    dev: false
 
   /dequal@2.0.3:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
@@ -4669,7 +4678,6 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
-    dev: false
 
   /for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -4692,7 +4700,6 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.35
-    dev: false
 
   /fraction.js@4.3.7:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
@@ -5068,8 +5075,8 @@ packages:
     engines: {node: '>=16.17.0'}
     dev: true
 
-  /husky@9.0.7:
-    resolution: {integrity: sha512-vWdusw+y12DUEeoZqW1kplOFqk3tedGV8qlga8/SF6a3lOiWLqGZZQvfWvY0fQYdfiRi/u1DFNpudTSV9l1aCg==}
+  /husky@9.0.10:
+    resolution: {integrity: sha512-TQGNknoiy6bURzIO77pPRu+XHi6zI7T93rX+QnJsoYFf3xdjKOur+IlfqzJGMHIK/wXrLg+GsvMs8Op7vI2jVA==}
     engines: {node: '>=18'}
     hasBin: true
     dev: true
@@ -5741,7 +5748,6 @@ packages:
 
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
 
   /log-symbols@4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}
@@ -5884,14 +5890,12 @@ packages:
   /mime-db@1.52.0:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
     engines: {node: '>= 0.6'}
-    dev: false
 
   /mime-types@2.1.35:
     resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==}
     engines: {node: '>= 0.6'}
     dependencies:
       mime-db: 1.52.0
-    dev: false
 
   /mimic-fn@2.1.0:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
@@ -6457,7 +6461,6 @@ packages:
 
   /proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
-    dev: false
 
   /pseudomap@1.0.2:
     resolution: {integrity: sha512-b/YwNhb8lk1Zz2+bXXpS/LK9OisiZZ1SNsSLxN1x2OXVEhW2Ckr/7mWE5vrC1ZTiJlD9g19jWszTmJsB+oEpFQ==}
@@ -7481,6 +7484,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /source-map@0.6.1:
+    resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
+    engines: {node: '>=0.10.0'}
+    dev: true
+
   /spawndamnit@2.0.0:
     resolution: {integrity: sha512-j4JKEcncSjFlqIwU5L/rp2N5SIPsdxaRsIv678+TZxZ0SRDJTm8JrxJMjE/XuiEZNEir3S8l0Fa3Ke339WI4qA==}
     dependencies:
@@ -8298,6 +8306,20 @@ packages:
       - supports-color
     dev: true
 
+  /vite-plugin-webfont-dl@3.9.1(vite@5.0.12):
+    resolution: {integrity: sha512-nr6UN0Y9ZDbtjwe0/3j+w5VdQCeYWjsgx3IaHg2EvhhbgDM44wmJLQ2ecHWduo0o+PJEmBJK6QhST6z7qxKwnA==}
+    peerDependencies:
+      vite: ^2 || ^3 || ^4 || ^5
+    dependencies:
+      axios: 1.6.7
+      clean-css: 5.3.3
+      flat-cache: 3.2.0
+      picocolors: 1.0.0
+      vite: 5.0.12(@types/node@20.11.14)(sass@1.70.0)
+    transitivePeerDependencies:
+      - debug
+    dev: true
+
   /vite@5.0.12(@types/node@20.11.14)(sass@1.70.0):
     resolution: {integrity: sha512-4hsnEkG3q0N4Tzf1+t6NdN9dg/L3BM+q8SWgbSPnJvrgH2kgdyzfVJwbR1ic69/4uMJJ/3dqDZZE5/WwqW8U1w==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -8580,7 +8602,7 @@ packages:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
     dev: true
 
-  /zustand@4.5.0(@types/react@18.2.50)(immer@10.0.3)(react@18.2.0):
+  /zustand@4.5.0(@types/react@18.2.52)(immer@10.0.3)(react@18.2.0):
     resolution: {integrity: sha512-zlVFqS5TQ21nwijjhJlx4f9iGrXSL0o/+Dpy4txAP22miJ8Ti6c1Ol1RLNN98BMib83lmDH/2KmLwaNXpjrO1A==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -8595,7 +8617,7 @@ packages:
       react:
         optional: true
     dependencies:
-      '@types/react': 18.2.50
+      '@types/react': 18.2.52
       immer: 10.0.3
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)

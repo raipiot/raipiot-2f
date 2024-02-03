@@ -24,6 +24,7 @@ module.exports = defineConfig({
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'plugin:@tanstack/eslint-plugin-query/recommended',
+    'plugin:unicorn/recommended',
     'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:import/errors',
@@ -56,7 +57,7 @@ module.exports = defineConfig({
     }
   },
   reportUnusedDisableDirectives: true,
-  ignorePatterns: ['node_modules', 'dist', 'src-tauri/target'],
+  ignorePatterns: ['node_modules', 'dist'],
   overrides: [
     {
       files: ['*.{js,cjs,mjs,jsx}'],
@@ -135,7 +136,8 @@ module.exports = defineConfig({
       {
         devDependencies: true,
         peerDependencies: true,
-        optionalDependencies: false
+        optionalDependencies: false,
+        packageDir: ['.', '../..'] // 解决 monorepo 项目中的依赖检查问题
       }
     ], // 允许 devDependencies，peerDependencies，不允许 optionalDependencies
     'import/no-mutable-exports': 'error', // 禁止导出 let, var 声明的变量
@@ -148,6 +150,7 @@ module.exports = defineConfig({
     '@typescript-eslint/consistent-type-imports': 'error', // 强制使用 import type
     '@typescript-eslint/triple-slash-reference': 'off', // 允许使用 /// <reference path="" />
     '@typescript-eslint/no-use-before-define': ['error', { functions: false, classes: false }],
+    '@typescript-eslint/no-throw-literal': 'off', // 允许 throw 字面量
 
     // react
     'react/destructuring-assignment': 'off', // 允许使用解构赋值
@@ -159,15 +162,18 @@ module.exports = defineConfig({
     'react/jsx-filename-extension': ['warn', { extensions: ['jsx', '.tsx'] }], // JSX 文件使用 .jsx 或 .tsx 扩展名
     'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }], // 允许使用 <></> 包裹表达式，如 <>{children}</>
     'react/no-array-index-key': 'off', // 允许使用数组索引作为 key
-    'react/no-unstable-nested-components': [
-      'error',
-      {
-        allowAsProps: true,
-        customValidators: []
-      }
-    ]
-
+    'react/no-unstable-nested-components': ['error', { allowAsProps: true, customValidators: [] }],
     // jsx-a11y
     // ...a11yOff // 禁用所有 jsx-a11y 规则
+
+    // unicorn
+    'unicorn/prefer-module': 'off', // 允许使用 CommonJS
+    'unicorn/no-abusive-eslint-disable': 'off', // 允许 eslint-disable 不指定具体规则
+    'unicorn/prevent-abbreviations': 'off', // 允许缩写
+    'unicorn/filename-case': 'off', // 不强制要求文件名风格
+    'unicorn/no-null': 'off', // 允许使用 null
+    'unicorn/no-array-for-each': 'off', // 允许使用 forEach
+    'unicorn/prefer-export-from': 'off', // 允许使用 export default from
+    'unicorn/consistent-destructuring': 'off' // 允许不一致的解构赋值
   }
 })

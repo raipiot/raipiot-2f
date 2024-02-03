@@ -1,5 +1,7 @@
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
-import React, { Suspense } from 'react'
+import type { QueryClient } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { ScrollRestoration } from '@tanstack/react-router'
+import React from 'react'
 
 import { GlobalEnvConfig } from '@/constants'
 
@@ -9,42 +11,37 @@ const TanStackRouterDevtools = GlobalEnvConfig.IS_PROD
       // 开发环境下，懒加载
       import('@tanstack/router-devtools').then((res) => ({
         default: res.TanStackRouterDevtools
-        // 嵌入模式
-        // default: res.TanStackRouterDevtoolsPanel
       }))
     )
 
-export const Route = createRootRoute({
-  component: () => (
-    <>
-      <div className="flex gap-2 p-2">
-        <Link
-          to="/"
-          className="[&.active]:font-bold"
-        >
-          Home
-        </Link>
-        <Link
-          to="/login"
-          className="[&.active]:font-bold"
-        >
-          Login
-        </Link>
-        <Link
-          to="/signup"
-          className="[&.active]:font-bold"
-        >
-          Signup
-        </Link>
-      </div>
-      <hr />
+export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  component: Root,
+  notFoundComponent: NotFound
+})
 
+function Root() {
+  return (
+    <>
+      <ScrollRestoration />
       <Outlet />
 
       {/* 不加 Suspense 会报错 */}
       <Suspense fallback={null}>
-        <TanStackRouterDevtools />
+        <ReactQueryDevtools buttonPosition="top-right" />
+        <TanStackRouterDevtools position="bottom-right" />
       </Suspense>
     </>
   )
-})
+}
+
+function NotFound() {
+  return (
+    <div className="container absolute inset-0 m-auto flex size-fit flex-col items-center space-y-6">
+      <span className="text-2xl font-bold sm:text-4xl">出错了</span>
+      <span className="text-base font-medium sm:text-xl">无法找到您要访问的页面</span>
+      <Link to="/login">
+        <AButton type="primary">返回首页</AButton>
+      </Link>
+    </div>
+  )
+}
