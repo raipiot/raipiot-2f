@@ -12,9 +12,11 @@ import React from '@vitejs/plugin-react-swc'
 import AutoImport from 'unplugin-auto-import/vite'
 import Icons from 'unplugin-icons/vite'
 import Info from 'unplugin-info/vite'
+import TurboConsole from 'unplugin-turbo-console/vite'
 import type { ProxyOptions } from 'vite'
 import { defineConfig, loadEnv } from 'vite'
 import ViteCompression from 'vite-plugin-compression'
+import Inspect from 'vite-plugin-inspect'
 import WebfontDownload from 'vite-plugin-webfont-dl'
 
 export default defineConfig(({ mode }) => {
@@ -82,6 +84,10 @@ export default defineConfig(({ mode }) => {
         compiler: 'jsx',
         jsx: 'react'
       }),
+      Inspect(),
+      TurboConsole(),
+      Info(),
+      WebfontDownload(),
       ViteCompression({
         verbose: true, // 是否在控制台中输出压缩结果
         disable: true,
@@ -89,9 +95,7 @@ export default defineConfig(({ mode }) => {
         algorithm: 'gzip', // 压缩算法
         ext: '.gz',
         deleteOriginFile: true // 源文件压缩后是否删除
-      }),
-      Info(),
-      WebfontDownload()
+      })
     ],
     resolve: {
       alias: {

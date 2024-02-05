@@ -3,10 +3,11 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 // Import Routes
+
 import { Route as rootRoute } from './routes/__root'
-import { Route as AuthImport } from './routes/_auth'
-import { Route as LayoutImport } from './routes/_layout'
 import { Route as WhitelistImport } from './routes/_whitelist'
+import { Route as LayoutImport } from './routes/_layout'
+import { Route as AuthImport } from './routes/_auth'
 
 // Create Virtual Routes
 
@@ -19,37 +20,37 @@ const IndexLazyImport = createFileRoute('/')()
 
 const SignupLazyRoute = SignupLazyImport.update({
   path: '/signup',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/signup.lazy').then((d) => d.Route))
 
 const LoginLazyRoute = LoginLazyImport.update({
   path: '/login',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/login.lazy').then((d) => d.Route))
 
 const DashboardLazyRoute = DashboardLazyImport.update({
   path: '/dashboard',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/dashboard.lazy').then((d) => d.Route))
 
 const WhitelistRoute = WhitelistImport.update({
   id: '/_whitelist',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any)
 
 const LayoutRoute = LayoutImport.update({
   id: '/_layout',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any)
 
 const AuthRoute = AuthImport.update({
   id: '/_auth',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any)
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
@@ -96,5 +97,5 @@ export const routeTree = rootRoute.addChildren([
   WhitelistRoute,
   DashboardLazyRoute,
   LoginLazyRoute,
-  SignupLazyRoute
+  SignupLazyRoute,
 ])

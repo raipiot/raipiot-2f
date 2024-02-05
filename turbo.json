@@ -38,6 +38,23 @@
       "outputs": ["dist/**", "target/**"],
       "dotEnv": [".env.production.local", ".env.production", ".env.local", ".env"]
     },
+    "test": {
+      "cache": false,
+      "persistent": true
+    },
+    "test:unit": {
+      "cache": false,
+      "persistent": true
+    },
+    "test:e2e": {
+      "cache": false,
+      "persistent": true
+    },
+    "test:coverage": {
+      "cache": false,
+      "persistent": true,
+      "outputs": ["coverage/**"]
+    },
     "cspell:sort:dict": {},
     "cspell:check": {},
     "type:check": {},

@@ -10,7 +10,7 @@ import type {
 } from './auth.type'
 
 export class AuthAPI {
-  static #API_PREFIX = `${GlobalEnvConfig.BASE_INSTALLER_API_URL}/auth`
+  static #API_PREFIX = `${GlobalEnvConfig.BASE_API_PREFIX}/auth`
 
   /**
    * 登录

@@ -7,6 +7,7 @@
 
 ## Packages
 
+- [`cspell`](packages/cspell/): CSpell 业务词典
 - [`eslint-config`](packages/eslint-config/): ESLint 配置
 
 ## VSCode 工作区设置
