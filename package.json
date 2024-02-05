@@ -43,7 +43,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.6.0",
     "@commitlint/config-conventional": "^18.6.0",
-    "@raipiot-infra/auto-import": "^0.0.11",
+    "@raipiot-infra/auto-import": "^0.0.12",
     "@raipiot-infra/bootstrap-animation": "^0.0.10",
     "@raipiot-infra/commitlint": "^0.0.4",
     "@raipiot-infra/cspell": "^0.0.6",

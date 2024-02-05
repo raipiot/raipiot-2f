@@ -7,7 +7,7 @@ import type {
 } from 'axios'
 import axios from 'axios'
 
-import type { Token } from '@/api/auth.type'
+import type { Tokens } from '@/api/auth.type'
 import { router } from '@/router'
 
 import { errorMessageMap } from './error-message.map'
@@ -182,7 +182,7 @@ export class HttpRequest {
    * 刷新令牌
    */
   async #refresh(refreshToken: string) {
-    const res = await this.post<R<Token>>(this.#REFRESH_API_URL, undefined, {
+    const res = await this.post<R<Tokens>>(this.#REFRESH_API_URL, undefined, {
       params: { refreshToken }
     })
     return res.data
@@ -206,9 +206,7 @@ export class HttpRequest {
     router.navigate({
       to: '/login',
       replace: true,
-      search: pathname !== '/login' && {
-        redirect: pathname
-      }
+      search: pathname === '/login' ? undefined : { redirect: pathname }
     })
   }
 

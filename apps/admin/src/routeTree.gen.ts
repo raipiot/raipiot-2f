@@ -15,6 +15,8 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Route as rootRoute } from './routes/__root'
 import { Route as WhitelistImport } from './routes/_whitelist'
 import { Route as AuthImport } from './routes/_auth'
+import { Route as LoginRouteImport } from './routes/login/route'
+import { Route as RouteImport } from './routes/*/route'
 import { Route as LayoutIndexImport } from './routes/_layout/index'
 
 // Create Virtual Routes
@@ -23,7 +25,7 @@ const R500LazyImport = createFileRoute('/500')()
 const R404LazyImport = createFileRoute('/404')()
 const R403LazyImport = createFileRoute('/403')()
 const SignupRouteLazyImport = createFileRoute('/signup')()
-const LoginRouteLazyImport = createFileRoute('/login')()
+const ForgotPasswordRouteLazyImport = createFileRoute('/forgot-password')()
 const DashboardRouteLazyImport = createFileRoute('/dashboard')()
 const IndexLazyImport = createFileRoute('/')()
 
@@ -49,10 +51,12 @@ const SignupRouteLazyRoute = SignupRouteLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/signup/route.lazy').then((d) => d.Route))
 
-const LoginRouteLazyRoute = LoginRouteLazyImport.update({
-  path: '/login',
+const ForgotPasswordRouteLazyRoute = ForgotPasswordRouteLazyImport.update({
+  path: '/forgot-password',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/login/route.lazy').then((d) => d.Route))
+} as any).lazy(() =>
+  import('./routes/forgot-password/route.lazy').then((d) => d.Route),
+)
 
 const DashboardRouteLazyRoute = DashboardRouteLazyImport.update({
   path: '/dashboard',
@@ -68,6 +72,16 @@ const WhitelistRoute = WhitelistImport.update({
 
 const AuthRoute = AuthImport.update({
   id: '/_auth',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LoginRouteRoute = LoginRouteImport.update({
+  path: '/login',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/login/route.lazy').then((d) => d.Route))
+
+const RouteRoute = RouteImport.update({
+  path: '/*',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -89,6 +103,14 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/*': {
+      preLoaderRoute: typeof RouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/login': {
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRoute
+    }
     '/_auth': {
       preLoaderRoute: typeof AuthImport
       parentRoute: typeof rootRoute
@@ -101,8 +123,8 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteLazyImport
       parentRoute: typeof rootRoute
     }
-    '/login': {
-      preLoaderRoute: typeof LoginRouteLazyImport
+    '/forgot-password': {
+      preLoaderRoute: typeof ForgotPasswordRouteLazyImport
       parentRoute: typeof rootRoute
     }
     '/signup': {
@@ -132,10 +154,12 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
+  RouteRoute,
+  LoginRouteRoute,
   AuthRoute,
   WhitelistRoute,
   DashboardRouteLazyRoute,
-  LoginRouteLazyRoute,
+  ForgotPasswordRouteLazyRoute,
   SignupRouteLazyRoute,
   R403LazyRoute,
   R404LazyRoute,

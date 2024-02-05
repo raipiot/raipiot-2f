@@ -6,7 +6,7 @@ import type {
   ForgotPasswordInputModel,
   LoginInputModel,
   SignupInputModel,
-  Token
+  Tokens
 } from './auth.type'
 
 export class AuthAPI {
@@ -16,7 +16,7 @@ export class AuthAPI {
    * 登录
    */
   static async login(data: LoginInputModel) {
-    const res = await httpRequest.post<R<Token>>(`${this.#API_PREFIX}/login`, data)
+    const res = await httpRequest.post<R<Tokens>>(`${this.#API_PREFIX}/login`, data)
     return res.data
   }
 
