@@ -14,40 +14,55 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as WhitelistImport } from './routes/_whitelist'
-import { Route as LayoutImport } from './routes/_layout'
 import { Route as AuthImport } from './routes/_auth'
+import { Route as LayoutIndexImport } from './routes/_layout/index'
 
 // Create Virtual Routes
 
-const SignupLazyImport = createFileRoute('/signup')()
-const LoginLazyImport = createFileRoute('/login')()
-const DashboardLazyImport = createFileRoute('/dashboard')()
+const R500LazyImport = createFileRoute('/500')()
+const R404LazyImport = createFileRoute('/404')()
+const R403LazyImport = createFileRoute('/403')()
+const SignupRouteLazyImport = createFileRoute('/signup')()
+const LoginRouteLazyImport = createFileRoute('/login')()
+const DashboardRouteLazyImport = createFileRoute('/dashboard')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
-const SignupLazyRoute = SignupLazyImport.update({
+const R500LazyRoute = R500LazyImport.update({
+  path: '/500',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/500.lazy').then((d) => d.Route))
+
+const R404LazyRoute = R404LazyImport.update({
+  path: '/404',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/404.lazy').then((d) => d.Route))
+
+const R403LazyRoute = R403LazyImport.update({
+  path: '/403',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/403.lazy').then((d) => d.Route))
+
+const SignupRouteLazyRoute = SignupRouteLazyImport.update({
   path: '/signup',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/signup.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/signup/route.lazy').then((d) => d.Route))
 
-const LoginLazyRoute = LoginLazyImport.update({
+const LoginRouteLazyRoute = LoginRouteLazyImport.update({
   path: '/login',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/login.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/login/route.lazy').then((d) => d.Route))
 
-const DashboardLazyRoute = DashboardLazyImport.update({
+const DashboardRouteLazyRoute = DashboardRouteLazyImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/dashboard.lazy').then((d) => d.Route))
+} as any).lazy(() =>
+  import('./routes/dashboard/route.lazy').then((d) => d.Route),
+)
 
 const WhitelistRoute = WhitelistImport.update({
   id: '/_whitelist',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const LayoutRoute = LayoutImport.update({
-  id: '/_layout',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -61,6 +76,11 @@ const IndexLazyRoute = IndexLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
+const LayoutIndexRoute = LayoutIndexImport.update({
+  id: '/_layout/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -73,24 +93,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthImport
       parentRoute: typeof rootRoute
     }
-    '/_layout': {
-      preLoaderRoute: typeof LayoutImport
-      parentRoute: typeof rootRoute
-    }
     '/_whitelist': {
       preLoaderRoute: typeof WhitelistImport
       parentRoute: typeof rootRoute
     }
     '/dashboard': {
-      preLoaderRoute: typeof DashboardLazyImport
+      preLoaderRoute: typeof DashboardRouteLazyImport
       parentRoute: typeof rootRoute
     }
     '/login': {
-      preLoaderRoute: typeof LoginLazyImport
+      preLoaderRoute: typeof LoginRouteLazyImport
       parentRoute: typeof rootRoute
     }
     '/signup': {
-      preLoaderRoute: typeof SignupLazyImport
+      preLoaderRoute: typeof SignupRouteLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/403': {
+      preLoaderRoute: typeof R403LazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/404': {
+      preLoaderRoute: typeof R404LazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/500': {
+      preLoaderRoute: typeof R500LazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/_layout/': {
+      preLoaderRoute: typeof LayoutIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -101,9 +133,12 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
   AuthRoute,
-  LayoutRoute,
   WhitelistRoute,
-  DashboardLazyRoute,
-  LoginLazyRoute,
-  SignupLazyRoute,
+  DashboardRouteLazyRoute,
+  LoginRouteLazyRoute,
+  SignupRouteLazyRoute,
+  R403LazyRoute,
+  R404LazyRoute,
+  R500LazyRoute,
+  LayoutIndexRoute,
 ])

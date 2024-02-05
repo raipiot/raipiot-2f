@@ -72,10 +72,5 @@
   "engines": {
     "node": ">=20"
   },
-  "private": true,
-  "pnpm": {
-    "patchedDependencies": {
-      "@tanstack/router-generator@1.15.10": "patches/@tanstack__router-generator@1.15.10.patch"
-    }
-  }
+  "private": true
 }

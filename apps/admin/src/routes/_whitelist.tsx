@@ -4,7 +4,7 @@ export const Route = createFileRoute('/_whitelist')({
   beforeLoad: async ({ location }) => {
     if (true) {
       throw redirect({
-        to: '/login',
+        to: '',
         search: {
           redirect: location.href
         }

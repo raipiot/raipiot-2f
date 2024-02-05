@@ -7,10 +7,9 @@ import type {
 } from 'axios'
 import axios from 'axios'
 
-// import { createSearchParams } from 'react-router-dom'
 import type { Token } from '@/api/auth.type'
+import { router } from '@/router'
 
-// import router from '@/router'
 import { errorMessageMap } from './error-message.map'
 import type { PendingTask, R } from './types'
 
@@ -154,14 +153,14 @@ export class HttpRequest {
           }
           case StatusCode.FORBIDDEN: {
             AMessage.error(errorMessage)
-            // router.navigate('/403', { replace: true })
+            router.navigate({ to: '/403', replace: true })
             break
           }
           case StatusCode.INTERNAL_SERVER_ERROR:
           case StatusCode.BAD_GATEWAY:
           case StatusCode.GATEWAY_TIMEOUT: {
             AMessage.error(errorMessage)
-            // router.navigate('/500', { replace: true })
+            router.navigate({ to: '/500', replace: true })
             break
           }
           default: {
@@ -171,7 +170,7 @@ export class HttpRequest {
         }
         // 网络错误，跳转到 404 页面
         if (!window.navigator.onLine) {
-          // router.navigate('/404', { replace: true })
+          router.navigate({ to: '/404', replace: true })
           AMessage.error(t('NETWORK.ERROR'))
         }
         throw data
@@ -203,10 +202,14 @@ export class HttpRequest {
     AuthUtils.clearAccessToken()
     AuthUtils.clearRefreshToken()
     // 如果非登录页面，需要重定向到登录页，且需要带上 redirect 参数
-    // const { pathname } = router.state.location
-    // const search =
-    //   pathname === '/login' ? '' : `?${createSearchParams({ redirect: pathname }).toString()}`
-    // router.navigate({ pathname: '/login', search }, { replace: true })
+    const { pathname } = router.state.location
+    router.navigate({
+      to: '/login',
+      replace: true,
+      search: pathname !== '/login' && {
+        redirect: pathname
+      }
+    })
   }
 
   /**

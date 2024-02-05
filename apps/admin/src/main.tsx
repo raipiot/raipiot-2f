@@ -1,4 +1,5 @@
 import '@/styles/main.scss'
+import 'nprogress/nprogress.css'
 
 import { messageConfig } from '@raipiot-infra/theme'
 import { StrictMode } from 'react'
