@@ -1,0 +1,24 @@
+{
+  "folders": [
+    {
+      "name": "raipiot-srm",
+      "path": "raipiot-srm"
+    },
+    {
+      "name": "@raipiot-srm/admin",
+      "path": "raipiot-srm/apps/admin"
+    },
+    {
+      "name": "@raipiot-srm/shopping",
+      "path": "raipiot-srm/apps/shopping"
+    },
+    {
+      "name": "@raipiot-srm/cspell",
+      "path": "raipiot-srm/packages/cspell"
+    },
+    {
+      "name": "@raipiot-srm/eslint-config",
+      "path": "raipiot-srm/packages/eslint-config"
+    }
+  ]
+}

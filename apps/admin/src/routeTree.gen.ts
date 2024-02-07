@@ -17,7 +17,7 @@ import { Route as WhitelistImport } from './routes/_whitelist'
 import { Route as AuthImport } from './routes/_auth'
 import { Route as LoginRouteImport } from './routes/login/route'
 import { Route as RouteImport } from './routes/*/route'
-import { Route as LayoutIndexImport } from './routes/_layout/index'
+import { Route as LayoutsIndexImport } from './routes/_layouts/index'
 
 // Create Virtual Routes
 
@@ -90,8 +90,8 @@ const IndexLazyRoute = IndexLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
-const LayoutIndexRoute = LayoutIndexImport.update({
-  id: '/_layout/',
+const LayoutsIndexRoute = LayoutsIndexImport.update({
+  id: '/_layouts/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -143,8 +143,8 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof R500LazyImport
       parentRoute: typeof rootRoute
     }
-    '/_layout/': {
-      preLoaderRoute: typeof LayoutIndexImport
+    '/_layouts/': {
+      preLoaderRoute: typeof LayoutsIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -164,5 +164,5 @@ export const routeTree = rootRoute.addChildren([
   R403LazyRoute,
   R404LazyRoute,
   R500LazyRoute,
-  LayoutIndexRoute,
+  LayoutsIndexRoute,
 ])
