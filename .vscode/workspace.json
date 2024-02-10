@@ -13,6 +13,10 @@
       "path": "raipiot-srm/apps/shopping"
     },
     {
+      "name": "@raipiot-srm/sso",
+      "path": "raipiot-srm/apps/sso"
+    },
+    {
       "name": "@raipiot-srm/cspell",
       "path": "raipiot-srm/packages/cspell"
     },

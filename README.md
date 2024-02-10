@@ -4,6 +4,7 @@
 
 - [`admin`](apps/admin/): SRM 管理后台
 - [`shopping`](apps/shopping/): SRM 商城
+- [`sso`](apps/sso/): SSO 统一身份认证站点
 
 ## Packages
 
