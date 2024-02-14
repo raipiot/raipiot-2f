@@ -70,6 +70,3 @@ lerna-debug.log*
 # Zip
 *.zip
 *.rar
-
-
-apps/admin/src/routeTree.gen.ts
