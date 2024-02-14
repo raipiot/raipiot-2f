@@ -5,7 +5,7 @@ interface State {
 }
 
 interface Actions {
-  hasData: () => boolean
+  isLogin: () => boolean
   setUser: (user: any) => void
   clearUser: () => void
 }
@@ -24,7 +24,7 @@ export const useUserStore = create<State & Actions>()((set, get) => ({
    * 判断当前用户是否存在
    * @description 判断依据：当前用户数据是否存在 ID
    */
-  hasData: () => !!get().user.id,
+  isLogin: () => !!get().user.id,
 
   /**
    * 设置当前用户数据，更新方式为“非覆盖式更新”

@@ -1,9 +1,11 @@
 export const Route = createFileRoute('/_auth')({
   beforeLoad: async ({ location }) => {
-    if (true) {
+    if (!useUserStore.getState().isLogin()) {
       throw redirect({
         to: '/login',
-        search: { redirect: location.href }
+        search: {
+          redirect: location.href
+        }
       })
     }
   }

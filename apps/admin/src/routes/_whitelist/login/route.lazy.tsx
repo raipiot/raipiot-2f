@@ -1,11 +1,12 @@
 import type { LoginInputModel, Tokens } from '@/api/auth.type'
 import { handleLoginResult, useLoginForm, useRedirect } from '@/features/login'
 
-export const Route = createLazyFileRoute('/login')({
+export const Route = createLazyFileRoute('/_whitelist/login')({
   component: Login
 })
 
 function Login() {
+  const userStore = useUserStore()
   const { handleRedirect, handleForgotPassword, handleSignup } = useRedirect()
   const { loginForm, clearPassword, setAdminAccount, handleRememberPassword } = useLoginForm()
 
@@ -18,8 +19,10 @@ function Login() {
 
   // 登录
   const handleLogin = () => {
+    userStore.setUser({ id: 1 })
     setAdminAccount()
-    loginForm.submit()
+    // loginForm.submit()
+    handleRedirect()
   }
 
   // 登录成功
@@ -76,7 +79,6 @@ function Login() {
             <ACheckbox>记住密码</ACheckbox>
           </AForm.Item>
 
-          <span className="i-material-symbols-14mp-rounded" />
           <AForm.Item rootClassName="!mb-0">
             <AConfigProvider theme={{ components: { Button: { paddingInlineSM: 0 } } }}>
               <AButton

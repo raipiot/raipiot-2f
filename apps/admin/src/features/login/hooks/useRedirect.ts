@@ -1,6 +1,6 @@
 export const useRedirect = () => {
-  const { redirect } = useSearch({ from: '/login' })
   const navigate = useNavigate()
+  const { redirect } = useSearch({ from: '/_whitelist/login' })
 
   // 处理重定向
   const handleRedirect = () => {

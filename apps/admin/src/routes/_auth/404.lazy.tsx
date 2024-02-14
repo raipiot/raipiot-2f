@@ -1,4 +1,4 @@
-export const Route = createLazyFileRoute('/404')({
+export const Route = createLazyFileRoute('/_auth/404')({
   component: NotFound
 })
 

@@ -1,4 +1,4 @@
-export const Route = createLazyFileRoute('/forgot-password')({
+export const Route = createLazyFileRoute('/_whitelist/forgot-password')({
   component: ForgotPassword
 })
 
