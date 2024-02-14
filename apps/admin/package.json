@@ -8,7 +8,7 @@
     "build:staging": "pnpm type:check && NODE_ENV=staging vite build --mode staging",
     "build:prod": "pnpm type:check && NODE_ENV=production vite build --mode production",
     "preview": "vite preview",
-    "clean": "rimraf node_modules dist",
+    "clean": "rimraf dist",
     "desktop:dev": "tauri dev",
     "desktop:build:staging": "tauri build",
     "desktop:build:prod": "tauri build",
