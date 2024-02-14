@@ -16,7 +16,7 @@
     "test:unit": "vitest",
     "test:coverage": "vitest --coverage",
     "test:e2e": "cypress open",
-    "cspell:check": "cspell --no-progress --show-suggestions --show-context --cache **",
+    "cspell:check": "cspell --no-progress --show-suggestions --show-context **",
     "type:check": "tsc --pretty --noEmit --composite false",
     "eslint:check": "eslint . --color",
     "eslint:fix": "eslint . --color --fix",
