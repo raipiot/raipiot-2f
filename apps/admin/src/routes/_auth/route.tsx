@@ -1,6 +1,6 @@
 export const Route = createFileRoute('/_auth')({
   beforeLoad: async ({ location }) => {
-    if (!useUserStore.getState().isLogin()) {
+    if (!AuthUtils.isAuthenticated()) {
       throw redirect({
         to: '/login',
         search: {

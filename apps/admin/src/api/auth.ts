@@ -1,3 +1,5 @@
+import { md5 } from 'hash-wasm'
+
 import type { R } from '@/axios'
 import { httpRequest } from '@/axios'
 
@@ -16,37 +18,33 @@ export class AuthAPI {
    * 登录
    */
   static async login(data: LoginDto) {
-    const res = await httpRequest.post<R<LoginVo>>(
+    return httpRequest.post<LoginVo>(
       `${this.#API_PREFIX}/token`,
       {},
       {
-        params: data
+        params: { ...data, password: await md5(data.password) }
       }
     )
-    return res.data
   }
 
   /**
    * 注册
    */
-  static async signup(data: SignupDto) {
-    const res = await httpRequest.post<R>(`${this.#API_PREFIX}/register`, data)
-    return res.data
+  static signup(data: SignupDto) {
+    return httpRequest.post<R>(`${this.#API_PREFIX}/register`, data)
   }
 
   /**
    * 修改密码
    */
-  static async changePassword(data: ChangePasswordDto) {
-    const res = await httpRequest.post<R>(`${this.#API_PREFIX}/change-password`, data)
-    return res.data
+  static changePassword(data: ChangePasswordDto) {
+    return httpRequest.post<R>(`${this.#API_PREFIX}/change-password`, data)
   }
 
   /**
    * 忘记密码
    */
-  static async forgotPassword(data: ForgotPasswordDto) {
-    const res = await httpRequest.post<R>(`${this.#API_PREFIX}/forget-password`, data)
-    return res.data
+  static forgotPassword(data: ForgotPasswordDto) {
+    return httpRequest.post<R>(`${this.#API_PREFIX}/forget-password`, data)
   }
 }

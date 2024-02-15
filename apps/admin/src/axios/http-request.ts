@@ -82,14 +82,14 @@ export class HttpRequest {
         // 业务错误码处理
         if (errorCode && errorDescription) {
           AMessage.error(errorDescription)
-          throw errorCode
+          return Promise.reject(errorCode)
         }
 
         // 成功消息提示
         if (msg) {
           AMessage.success(msg)
         }
-        return data
+        return data ?? res.data
       },
       async (err: AxiosError<R>) => {
         const { response, config } = err

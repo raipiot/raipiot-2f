@@ -7,12 +7,14 @@ function Index() {
   const navigate = useNavigate()
   return (
     <div className="p-2">
-      <Link to="/login">
-        <AButton>登录页</AButton>
+      <Link to="/dashboard">
+        <AButton>仪表盘</AButton>
       </Link>
       <AButton
         onClick={() => {
           userStore.clearUser()
+          AuthUtils.clearAccessToken()
+          AuthUtils.clearRefreshToken()
           navigate({ to: '/login' })
         }}
         className="ml-2"

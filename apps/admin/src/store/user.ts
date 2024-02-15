@@ -1,12 +1,14 @@
+import type { Nullable } from '@raipiot-infra/utils'
 import { create } from 'zustand'
 
+import type { UserInfo } from '@/features/users'
+
 interface State {
-  user: any
+  user: Nullable<UserInfo>
 }
 
 interface Actions {
-  isLogin: () => boolean
-  setUser: (user: any) => void
+  setUser: (user: UserInfo) => void
   clearUser: () => void
 }
 
@@ -14,26 +16,26 @@ const initialState: State = {
   /**
    * 当前登录系统的用户数据
    */
-  user: {}
+  user: null
 }
 
-export const useUserStore = create<State & Actions>()((set, get) => ({
+export const useUserStore = create<State & Actions>()((set) => ({
   ...initialState,
-
-  /**
-   * 判断当前用户是否存在
-   * @description 判断依据：当前用户数据是否存在 ID
-   */
-  isLogin: () => !!get().user.id,
 
   /**
    * 设置当前用户数据，更新方式为“非覆盖式更新”
    * @param data 用户数据
    */
-  setUser: (user: Partial<any>) => set((state) => ({ user: { ...state.user, ...user } })),
+  setUser: (user: Partial<UserInfo>) =>
+    set((state) => ({
+      user: {
+        ...state.user,
+        ...user
+      }
+    })),
 
   /**
    * 清空当前用户数据
    */
-  clearUser: () => set(() => ({ user: {} }))
+  clearUser: () => set(() => ({ user: null }))
 }))
