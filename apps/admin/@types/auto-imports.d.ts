@@ -70,6 +70,7 @@ declare global {
   const useLoaderData: typeof import('@tanstack/react-router')['useLoaderData']
   const useMatch: typeof import('@tanstack/react-router')['useMatch']
   const useMatchRoute: typeof import('@tanstack/react-router')['useMatchRoute']
+  const useMatches: typeof import('@tanstack/react-router')['useMatches']
   const useMemo: typeof import('react')['useMemo']
   const useMutation: typeof import('@tanstack/react-query')['useMutation']
   const useMutationState: typeof import('@tanstack/react-query')['useMutationState']

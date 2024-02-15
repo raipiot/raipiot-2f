@@ -16,6 +16,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as WhitelistRouteImport } from './routes/_whitelist/route'
 import { Route as AuthRouteImport } from './routes/_auth/route'
 import { Route as RouteImport } from './routes/*/route'
+import { Route as WhitelistSignupRouteImport } from './routes/_whitelist/signup/route'
 import { Route as WhitelistLoginRouteImport } from './routes/_whitelist/login/route'
 
 // Create Virtual Routes
@@ -24,7 +25,6 @@ const AuthIndexLazyImport = createFileRoute('/_auth/')()
 const Auth500LazyImport = createFileRoute('/_auth/500')()
 const Auth404LazyImport = createFileRoute('/_auth/404')()
 const Auth403LazyImport = createFileRoute('/_auth/403')()
-const WhitelistSignupRouteLazyImport = createFileRoute('/_whitelist/signup')()
 const WhitelistForgotPasswordRouteLazyImport = createFileRoute(
   '/_whitelist/forgot-password',
 )()
@@ -69,13 +69,6 @@ const Auth403LazyRoute = Auth403LazyImport.update({
   getParentRoute: () => AuthRouteRoute,
 } as any).lazy(() => import('./routes/_auth/403.lazy').then((d) => d.Route))
 
-const WhitelistSignupRouteLazyRoute = WhitelistSignupRouteLazyImport.update({
-  path: '/signup',
-  getParentRoute: () => WhitelistRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_whitelist/signup/route.lazy').then((d) => d.Route),
-)
-
 const WhitelistForgotPasswordRouteLazyRoute =
   WhitelistForgotPasswordRouteLazyImport.update({
     path: '/forgot-password',
@@ -91,6 +84,13 @@ const AuthDashboardRouteLazyRoute = AuthDashboardRouteLazyImport.update({
   getParentRoute: () => AuthRouteRoute,
 } as any).lazy(() =>
   import('./routes/_auth/dashboard/route.lazy').then((d) => d.Route),
+)
+
+const WhitelistSignupRouteRoute = WhitelistSignupRouteImport.update({
+  path: '/signup',
+  getParentRoute: () => WhitelistRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_whitelist/signup/route.lazy').then((d) => d.Route),
 )
 
 const WhitelistLoginRouteRoute = WhitelistLoginRouteImport.update({
@@ -120,16 +120,16 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WhitelistLoginRouteImport
       parentRoute: typeof WhitelistRouteImport
     }
+    '/_whitelist/signup': {
+      preLoaderRoute: typeof WhitelistSignupRouteImport
+      parentRoute: typeof WhitelistRouteImport
+    }
     '/_auth/dashboard': {
       preLoaderRoute: typeof AuthDashboardRouteLazyImport
       parentRoute: typeof AuthRouteImport
     }
     '/_whitelist/forgot-password': {
       preLoaderRoute: typeof WhitelistForgotPasswordRouteLazyImport
-      parentRoute: typeof WhitelistRouteImport
-    }
-    '/_whitelist/signup': {
-      preLoaderRoute: typeof WhitelistSignupRouteLazyImport
       parentRoute: typeof WhitelistRouteImport
     }
     '/_auth/403': {
@@ -164,8 +164,8 @@ export const routeTree = rootRoute.addChildren([
   ]),
   WhitelistRouteRoute.addChildren([
     WhitelistLoginRouteRoute,
+    WhitelistSignupRouteRoute,
     WhitelistForgotPasswordRouteLazyRoute,
-    WhitelistSignupRouteLazyRoute,
   ]),
 ])
 

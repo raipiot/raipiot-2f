@@ -64,10 +64,9 @@ export default defineConfig(({ mode }) => {
             from: '@/i18n',
             imports: [['default', 'i18n']]
           },
-
           {
             from: '@tanstack/react-router',
-            imports: []
+            imports: ['useMatches']
           }
         ],
         resolvers: [

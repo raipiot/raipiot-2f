@@ -7,6 +7,6 @@ const loginSearchSchema = z.object({
 export const Route = createFileRoute('/_whitelist/login')({
   validateSearch: loginSearchSchema,
   staticData: {
-    title: '登录页'
+    title: '登录'
   }
 })

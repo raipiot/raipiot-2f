@@ -1,4 +1,4 @@
-import loginBanner from '@/assets/img/login_banner.jpg'
+import loginBg from '@/assets/img/login_bg.jpg'
 
 export const Route = createLazyFileRoute('/_whitelist')({
   component: Layout
@@ -6,12 +6,10 @@ export const Route = createLazyFileRoute('/_whitelist')({
 
 function Layout() {
   return (
-    <div className="size-full">
-      <img
-        src={loginBanner}
-        alt=""
-        className="h-screen object-fill"
-      />
+    <div
+      className="h-screen w-screen bg-cover bg-no-repeat"
+      style={{ backgroundImage: `url(${loginBg})` }}
+    >
       <Outlet />
     </div>
   )
