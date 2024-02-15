@@ -33,12 +33,12 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@raipiot-infra/antd": "^0.0.12",
+    "@raipiot-infra/antd": "^0.0.13",
     "@raipiot-infra/config": "^0.0.9",
     "@raipiot-infra/enums": "^0.0.6",
     "@raipiot-infra/tanstack-query": "^0.0.4",
     "@raipiot-infra/theme": "^0.0.3",
-    "@raipiot-infra/utils": "^0.0.8"
+    "@raipiot-infra/utils": "^0.0.9"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.6.0",

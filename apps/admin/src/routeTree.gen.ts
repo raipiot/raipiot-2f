@@ -25,6 +25,7 @@ const AuthIndexLazyImport = createFileRoute('/_auth/')()
 const Auth500LazyImport = createFileRoute('/_auth/500')()
 const Auth404LazyImport = createFileRoute('/_auth/404')()
 const Auth403LazyImport = createFileRoute('/_auth/403')()
+const WhitelistSsoRouteLazyImport = createFileRoute('/_whitelist/sso')()
 const WhitelistForgotPasswordRouteLazyImport = createFileRoute(
   '/_whitelist/forgot-password',
 )()
@@ -68,6 +69,13 @@ const Auth403LazyRoute = Auth403LazyImport.update({
   path: '/403',
   getParentRoute: () => AuthRouteRoute,
 } as any).lazy(() => import('./routes/_auth/403.lazy').then((d) => d.Route))
+
+const WhitelistSsoRouteLazyRoute = WhitelistSsoRouteLazyImport.update({
+  path: '/sso',
+  getParentRoute: () => WhitelistRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_whitelist/sso/route.lazy').then((d) => d.Route),
+)
 
 const WhitelistForgotPasswordRouteLazyRoute =
   WhitelistForgotPasswordRouteLazyImport.update({
@@ -132,6 +140,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WhitelistForgotPasswordRouteLazyImport
       parentRoute: typeof WhitelistRouteImport
     }
+    '/_whitelist/sso': {
+      preLoaderRoute: typeof WhitelistSsoRouteLazyImport
+      parentRoute: typeof WhitelistRouteImport
+    }
     '/_auth/403': {
       preLoaderRoute: typeof Auth403LazyImport
       parentRoute: typeof AuthRouteImport
@@ -166,6 +178,7 @@ export const routeTree = rootRoute.addChildren([
     WhitelistLoginRouteRoute,
     WhitelistSignupRouteRoute,
     WhitelistForgotPasswordRouteLazyRoute,
+    WhitelistSsoRouteLazyRoute,
   ]),
 ])
 

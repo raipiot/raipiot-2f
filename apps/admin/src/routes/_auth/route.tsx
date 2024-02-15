@@ -4,7 +4,7 @@ export const Route = createFileRoute('/_auth')({
       throw redirect({
         to: '/login',
         search: {
-          redirect: location.href
+          redirect: location.href === '/' ? undefined : location.href
         }
       })
     }

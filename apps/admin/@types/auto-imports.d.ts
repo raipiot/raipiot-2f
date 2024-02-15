@@ -57,6 +57,7 @@ declare global {
   const useContext: typeof import('react')['useContext']
   const useDebugValue: typeof import('react')['useDebugValue']
   const useDeferredValue: typeof import('react')['useDeferredValue']
+  const useDocumentTitle: typeof import('../src/hooks/useDocumentTitle')['useDocumentTitle']
   const useEffect: typeof import('react')['useEffect']
   const useId: typeof import('react')['useId']
   const useImmer: typeof import('use-immer')['useImmer']

@@ -3,5 +3,5 @@ export const Route = createLazyFileRoute('/_whitelist/forgot-password')({
 })
 
 function ForgotPassword() {
-  return <div>Forgot Password</div>
+  return <div>忘记密码</div>
 }

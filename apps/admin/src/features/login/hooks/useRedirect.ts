@@ -1,16 +1,10 @@
+// 处理登录页面路由调整、重定向
 export const useRedirect = () => {
   const navigate = useNavigate()
   const { redirect } = useSearch({ from: '/_whitelist/login' })
 
   // 处理重定向
-  const handleRedirect = () => {
-    // 跳转到登录前的页面
-    if (redirect) {
-      navigate({ to: redirect, replace: true })
-    } else {
-      navigate({ to: '/', replace: true })
-    }
-  }
+  const handleLoginRedirect = () => navigate({ to: redirect ?? '/', replace: true })
 
   // 忘记密码
   const handleForgotPassword = () => navigate({ to: '/forgot-password' })
@@ -18,5 +12,13 @@ export const useRedirect = () => {
   // 注册
   const handleSignup = () => navigate({ to: '/signup' })
 
-  return { handleRedirect, handleForgotPassword, handleSignup }
+  // SSO
+  const handleSSO = () => navigate({ to: '/sso' })
+
+  return {
+    handleLoginRedirect,
+    handleForgotPassword,
+    handleSignup,
+    handleSSO
+  }
 }

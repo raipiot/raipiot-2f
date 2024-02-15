@@ -7,7 +7,7 @@ import type {
 } from 'axios'
 import axios from 'axios'
 
-import type { Tokens } from '@/api/auth.type'
+import type { TokensVo } from '@/api/auth.type'
 import { router } from '@/router'
 
 import { errorMessageMap } from './error-message.map'
@@ -39,7 +39,6 @@ export class HttpRequest {
 
   // Axios 配置
   readonly #config: AxiosRequestConfig = {
-    baseURL: GlobalEnvConfig.BASE_API_PREFIX,
     timeout: 30_000,
     withCredentials: true,
     headers: { 'Content-Type': 'application/json;charset=utf-8' }
@@ -60,7 +59,7 @@ export class HttpRequest {
         if (url?.startsWith(GlobalEnvConfig.BASE_API_PREFIX)) {
           req.headers.setAuthorization(HttpRequest.#getBasicAuthorization())
           if (AuthUtils.isAuthenticated()) {
-            req.headers.setAuthorization(AuthUtils.getAuthorization())
+            req.headers['Raipiot-Auth'] = AuthUtils.getAuthorization()
           }
         }
 
@@ -73,7 +72,20 @@ export class HttpRequest {
 
     this.instance.interceptors.response.use(
       (res) => {
-        const { data, msg } = res.data ?? {}
+        const {
+          data,
+          msg,
+          error_code: errorCode,
+          error_description: errorDescription
+        } = res.data ?? {}
+
+        // 业务错误码处理
+        if (errorCode && errorDescription) {
+          AMessage.error(errorDescription)
+          throw errorCode
+        }
+
+        // 成功消息提示
         if (msg) {
           AMessage.success(msg)
         }
@@ -182,14 +194,14 @@ export class HttpRequest {
    * 刷新令牌
    */
   async #refresh(refreshToken: string) {
-    const res = await this.post<R<Tokens>>(this.#REFRESH_API_URL, undefined, {
+    const res = await this.post<R<TokensVo>>(this.#REFRESH_API_URL, undefined, {
       params: { refreshToken }
     })
     return res.data
   }
 
   static #getBasicAuthorization() {
-    return `Basic ${GlobalEnvConfig}`
+    return `Basic ${GlobalEnvConfig.BASIC_AUTH_CODE}`
   }
 
   /**
@@ -224,7 +236,7 @@ export class HttpRequest {
    * @param params 请求参数
    * @param config 请求配置
    */
-  get<T>(url: string, params?: Record<string, unknown>, config?: AxiosRequestConfig): Promise<T> {
+  get<T>(url: string, params?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.get(url, { params, ...config })
   }
 
@@ -234,7 +246,7 @@ export class HttpRequest {
    * @param data 请求数据
    * @param config 请求配置
    */
-  post<T>(url: string, data?: Record<string, unknown>, config?: AxiosRequestConfig): Promise<T> {
+  post<T>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.post(url, data, config)
   }
 
@@ -244,7 +256,7 @@ export class HttpRequest {
    * @param data 请求数据
    * @param config 请求配置
    */
-  put<T>(url: string, data?: Record<string, unknown>, config?: AxiosRequestConfig): Promise<T> {
+  put<T>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.put(url, data, config)
   }
 
@@ -254,11 +266,7 @@ export class HttpRequest {
    * @param params 请求参数
    * @param config 请求配置
    */
-  delete<T>(
-    url: string,
-    params?: Record<string, unknown>,
-    config?: AxiosRequestConfig
-  ): Promise<T> {
+  delete<T>(url: string, params?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.delete(url, { params, ...config })
   }
 
@@ -268,7 +276,7 @@ export class HttpRequest {
    * @param data 请求数据
    * @param config 请求配置
    */
-  patch<T>(url: string, data?: Record<string, unknown>, config?: AxiosRequestConfig): Promise<T> {
+  patch<T>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.patch(url, data, config)
   }
 }

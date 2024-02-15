@@ -1,39 +1,56 @@
-import type { LoginInputModel, Tokens } from '@/api/auth.type'
-import { handleLoginResult, useLoginForm, useRedirect } from '@/features/login'
+import type { LoginInfo } from '@/features/login'
+import {
+  LoginType,
+  saveTokens,
+  useLoginForm,
+  useLoginMutation,
+  useRedirect
+} from '@/features/login'
 
 export const Route = createLazyFileRoute('/_whitelist/login')({
   component: Login
 })
 
 function Login() {
-  const userStore = useUserStore()
-  const { handleRedirect, handleForgotPassword, handleSignup } = useRedirect()
-  const { loginForm, clearPassword, setAdminAccount, handleRememberPassword } = useLoginForm()
+  const { form, clearPassword, setAdminAccount, handleRememberPassword } = useLoginForm()
+  const { handleLoginRedirect, handleForgotPassword, handleSignup, handleSSO } = useRedirect()
+  const loginMutation = useLoginMutation()
 
-  // 登录请求
-  const loginMutation = useMutation({
-    mutationFn: (data: LoginInputModel) => AuthAPI.login(data),
-    onSuccess: onLoginSuccess,
-    onError: clearPassword
-  })
-
-  // 登录
-  const handleLogin = () => {
-    userStore.setUser({ id: 1 })
-    setAdminAccount()
-    // loginForm.submit()
-    handleRedirect()
+  // 点击登录
+  const handleClickLoginBtn = (loginType: LoginType) => {
+    switch (loginType) {
+      case LoginType.USER: {
+        form.submit()
+        break
+      }
+      case LoginType.ADMIN: {
+        setAdminAccount()
+        form.submit()
+        break
+      }
+      case LoginType.SSO: {
+        handleSSO()
+        break
+      }
+      default: {
+        break
+      }
+    }
   }
 
-  // 登录成功
-  function onLoginSuccess(data: Tokens) {
-    // 处理登录结果
-    handleLoginResult(data)
-    // 记住密码写入 localStorage
-    handleRememberPassword()
-    // 处理重定向
-    handleRedirect()
-  }
+  // 处理登录
+  const handleLogin = (values: LoginInfo) =>
+    loginMutation.mutate(values, {
+      onSuccess: (data) => {
+        // 保存 token
+        saveTokens(data)
+        // 如果勾选记住密码，则写入 localStorage
+        handleRememberPassword()
+        // 处理登录重定向
+        handleLoginRedirect()
+      },
+      onError: clearPassword
+    })
 
   return (
     <div className="absolute inset-0 m-auto flex h-fit w-[360px] max-w-[90%] flex-col rounded-lg bg-[#ffffff] p-8 shadow-md dark:bg-[#222222]">
@@ -41,13 +58,26 @@ function Login() {
         <div className="text-xl">{BrandConfig.companyName} SRM</div>
       </div>
 
-      <AForm
+      <AForm<LoginInfo>
         name="login"
-        form={loginForm}
-        onFinish={(values) => loginMutation.mutate({ ...values })}
+        form={form}
+        initialValues={{
+          tenantId: '000000' // TODO: 移除 Hard Code
+        }}
+        onFinish={handleLogin}
         autoComplete="off"
         disabled={loginMutation.isPending}
       >
+        <AForm.Item
+          name="tenantId"
+          rules={[{ required: true, message: '请输入租户编号' }]}
+          rootClassName="!mb-4"
+        >
+          <AInput
+            placeholder="租户编号"
+            allowClear
+          />
+        </AForm.Item>
         <AForm.Item
           name="username"
           rules={[{ required: true, message: '请输入用户名' }]}
@@ -100,7 +130,7 @@ function Login() {
               type="primary"
               disabled={loginMutation.isPending}
               loading={loginMutation.isPending}
-              onClick={() => handleLogin()}
+              onClick={() => handleClickLoginBtn(LoginType.USER)}
             >
               登录
             </AButton>
@@ -112,7 +142,7 @@ function Login() {
                 className="w-[calc(50%-4px)]"
                 disabled={loginMutation.isPending}
                 loading={loginMutation.isPending}
-                onClick={() => handleLogin()}
+                onClick={() => handleClickLoginBtn(LoginType.ADMIN)}
               >
                 管理员登录
               </AButton>
@@ -120,9 +150,9 @@ function Login() {
                 className="w-[calc(50%-4px)]"
                 disabled={loginMutation.isPending}
                 loading={loginMutation.isPending}
-                onClick={() => handleLogin()}
+                onClick={() => handleClickLoginBtn(LoginType.SSO)}
               >
-                租户管理员登录
+                SSO 登录
               </AButton>
             </div>
           </div>

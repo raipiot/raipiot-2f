@@ -17,9 +17,8 @@ export const router = createRouter({
   defaultErrorComponent: () => <div>出错了!</div>
 })
 
-// 处理 NProgress
+// NProgress
 nprogress.configure({ showSpinner: false })
-
 router.subscribe('onBeforeLoad', () => nprogress.start())
 router.subscribe('onLoad', () => nprogress.done())
 

@@ -6,6 +6,7 @@ interface ImportMetaEnv {
   readonly VITE_BASE_API_URL: string
   readonly VITE_MOCK_API_PREFIX: string
   readonly VITE_MOCK_API_URL: string
+  readonly VITE_BASIC_AUTH_CODE: string
 }
 
 interface ImportMeta {

@@ -1,18 +1,14 @@
-interface AccountInfo {
-  username: string
-  password: string
-  rememberPassword: boolean
-}
+import type { LoginInfo } from '../types'
 
 export const useLoginForm = () => {
-  const [form] = AForm.useForm<AccountInfo>()
+  const [form] = AForm.useForm<LoginInfo>()
 
   useEffect(() => {
     // 从 localStorage 中获取记住的账号密码
     const localStorageData = AuthUtils.getRememberedAccount()
     if (localStorageData) {
       try {
-        const data = JSON.parse(localStorageData) as AccountInfo
+        const data = JSON.parse(localStorageData) as LoginInfo
         form.setFieldsValue(data)
       } catch {
         //
@@ -41,7 +37,7 @@ export const useLoginForm = () => {
   }
 
   return {
-    loginForm: form,
+    form,
     clearPassword,
     setAdminAccount,
     handleRememberPassword

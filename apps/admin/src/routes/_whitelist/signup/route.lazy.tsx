@@ -3,5 +3,5 @@ export const Route = createLazyFileRoute('/_whitelist/signup')({
 })
 
 function Signup() {
-  return <div>Signup</div>
+  return <div>注册</div>
 }

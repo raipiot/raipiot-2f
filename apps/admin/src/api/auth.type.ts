@@ -1,10 +1,30 @@
-export interface LoginInputModel {
+export interface LoginDto {
   username: string
   password: string
-  [property: string]: unknown
+  tenantId: string
 }
 
-export interface SignupInputModel {
+export interface TokensVo {
+  access_token: string
+  refresh_token: string
+}
+
+export interface LoginVo extends TokensVo {
+  tenant_id: string
+  user_id: string
+  dept_id: string
+  post_id: string
+  role_id: string
+  oauth_id: string
+  account: string
+  user_name: string
+  nick_name: string
+  real_name: string
+  role_name: string
+  avatar: string
+}
+
+export interface SignupDto {
   account: string
   avatar?: string
   birthday?: string
@@ -18,23 +38,15 @@ export interface SignupInputModel {
   type: string
   country?: string
   timezone?: string
-  [property: string]: unknown
 }
 
-export interface ChangePasswordInputModel {
+export interface ChangePasswordDto {
   oldPassword: string
   newPassword: string
-  [property: string]: unknown
 }
 
-export interface ForgotPasswordInputModel {
+export interface ForgotPasswordDto {
   email: string
   emailCode: string
   password: string
-  [property: string]: unknown
-}
-
-export interface Tokens {
-  access_token: string
-  refresh_token: string
 }
