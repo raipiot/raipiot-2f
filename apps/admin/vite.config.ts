@@ -66,7 +66,7 @@ export default defineConfig(({ mode }) => {
           },
           {
             from: '@tanstack/react-router',
-            imports: ['useMatches']
+            imports: ['useMatches', 'useRouterState']
           },
           {
             from: 'framer-motion',

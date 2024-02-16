@@ -23,10 +23,6 @@ function Login() {
   const handleClickLoginBtn = (loginType: LoginType) => {
     setCurrentLoginType(loginType)
     switch (loginType) {
-      case LoginType.USER: {
-        form.submit()
-        break
-      }
       case LoginType.ADMIN: {
         setAdminAccount()
         form.submit()

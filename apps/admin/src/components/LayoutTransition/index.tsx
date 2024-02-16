@@ -5,17 +5,18 @@ interface LayoutTransitionProps extends PropsWithChildren {
 }
 
 export function LayoutTransition(props: LayoutTransitionProps) {
-  const router = useRouter()
+  const { location } = useRouterState()
+
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        key={router.state.location.pathname}
+        key={location.state.key}
         initial="initialState"
         animate="animateState"
         exit="exitState"
         transition={{
           type: 'tween',
-          duration: 0.3
+          duration: 0.5
         }}
         variants={{
           initialState: {
@@ -25,7 +26,7 @@ export function LayoutTransition(props: LayoutTransitionProps) {
             opacity: 1
           },
           exitState: {
-            opacity: 0
+            opacity: 1
           }
         }}
         className={props.className}

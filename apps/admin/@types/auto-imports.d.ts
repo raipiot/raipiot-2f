@@ -88,6 +88,7 @@ declare global {
   const useRef: typeof import('react')['useRef']
   const useRouteContext: typeof import('@tanstack/react-router')['useRouteContext']
   const useRouter: typeof import('@tanstack/react-router')['useRouter']
+  const useRouterState: typeof import('@tanstack/react-router')['useRouterState']
   const useSearch: typeof import('@tanstack/react-router')['useSearch']
   const useSidebarStore: typeof import('../src/store/sidebar')['useSidebarStore']
   const useState: typeof import('react')['useState']
