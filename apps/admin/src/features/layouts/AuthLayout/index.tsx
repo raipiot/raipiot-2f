@@ -1,4 +1,4 @@
-import loginBg from '@/assets/img/login_bg.jpg'
+import loginBg from '@/assets/images/login_bg.jpg'
 
 import { AuthLayoutTransition } from './AuthLayoutTransition'
 

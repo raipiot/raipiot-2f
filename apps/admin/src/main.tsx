@@ -1,4 +1,4 @@
-import '@/styles/main.scss'
+import '@/assets/styles/main.scss'
 import 'nprogress/nprogress.css'
 
 import { messageConfig } from '@raipiot-infra/theme'

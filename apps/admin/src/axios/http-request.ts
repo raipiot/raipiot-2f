@@ -10,7 +10,7 @@ import axios from 'axios'
 import type { TokensVo } from '@/api/auth.type'
 import { router } from '@/router'
 
-import { errorMessageMap } from './error-message.map'
+import { errorMessageMap } from './error-message'
 import type { PendingTask, R } from './types'
 
 const t = i18n.getFixedT(null, 'COMMON')

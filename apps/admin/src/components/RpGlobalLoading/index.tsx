@@ -1,4 +1,4 @@
-export default function DpGlobalLoading() {
+export default function RpGlobalLoading() {
   return (
     <main className="flex h-screen flex-col items-center justify-center">
       <ASpin size="large" />
