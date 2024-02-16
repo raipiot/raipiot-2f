@@ -8,10 +8,10 @@ const project = fs.existsSync(join(process.cwd(), 'tsconfig.eslint.json'))
 
 const isTSExist = fs.existsSync(join(process.cwd(), 'tsconfig.json'))
 
-// const a11yOff = Object.keys(require('eslint-plugin-jsx-a11y').rules).reduce((acc, rule) => {
-//   acc[`jsx-a11y/${rule}`] = 'off'
-//   return acc
-// }, {})
+const a11yOff = Object.keys(require('eslint-plugin-jsx-a11y').rules).reduce((acc, rule) => {
+  acc[`jsx-a11y/${rule}`] = 'off'
+  return acc
+}, {})
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = defineConfig({
@@ -155,8 +155,9 @@ module.exports = defineConfig({
     'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }], // 允许使用 <></> 包裹表达式，如 <>{children}</>
     'react/no-array-index-key': 'off', // 允许使用数组索引作为 key
     'react/no-unstable-nested-components': ['error', { allowAsProps: true, customValidators: [] }],
+
     // jsx-a11y
-    // ...a11yOff // 禁用所有 jsx-a11y 规则
+    ...a11yOff, // 禁用所有 jsx-a11y 规则
 
     // unicorn
     'unicorn/prefer-module': 'off', // 允许使用 CommonJS
