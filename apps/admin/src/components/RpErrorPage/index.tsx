@@ -1,5 +1,6 @@
 interface RpErrorPageProps {
   title?: string
+  subTitle?: string
   icon?: any
 }
 
@@ -8,9 +9,10 @@ const RpErrorPage = memo<RpErrorPageProps>((props) => (
     <AResult
       icon={props.icon}
       title={props.title}
+      subTitle={props.subTitle}
       extra={
         <Link to="/">
-          <AButton>返回</AButton>
+          <AButton type="primary">返回</AButton>
         </Link>
       }
     />
