@@ -1,18 +1,16 @@
 import loginBg from '@/assets/img/login_bg.jpg'
 
-export const Route = createLazyFileRoute('/_whitelist')({
-  component: Layout
-})
+import { AuthLayoutTransition } from './AuthLayoutTransition'
 
-function Layout() {
+export function AuthLayout() {
   return (
     <div
       className="h-screen w-screen bg-cover bg-no-repeat"
       style={{ backgroundImage: `url(${loginBg})` }}
     >
-      <LayoutTransition>
+      <AuthLayoutTransition>
         <Outlet />
-      </LayoutTransition>
+      </AuthLayoutTransition>
     </div>
   )
 }

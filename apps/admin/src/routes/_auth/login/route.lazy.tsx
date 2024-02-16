@@ -7,7 +7,7 @@ import {
   useRedirect
 } from '@/features/login'
 
-export const Route = createLazyFileRoute('/_whitelist/login')({
+export const Route = createLazyFileRoute('/_auth/login')({
   component: Login
 })
 

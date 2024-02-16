@@ -1,11 +1,5 @@
-export const Route = createLazyFileRoute('/_auth')({
-  component: Layout
-})
+import { AuthLayout } from '@/features/layouts'
 
-function Layout() {
-  return (
-    <div>
-      <Outlet />
-    </div>
-  )
-}
+export const Route = createLazyFileRoute('/_auth')({
+  component: AuthLayout
+})

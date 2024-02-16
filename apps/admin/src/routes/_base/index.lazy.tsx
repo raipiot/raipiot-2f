@@ -1,4 +1,4 @@
-export const Route = createLazyFileRoute('/_auth/')({
+export const Route = createLazyFileRoute('/_base/')({
   component: Index
 })
 

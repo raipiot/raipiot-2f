@@ -33,6 +33,7 @@ declare global {
   const QueryClient: typeof import('@tanstack/react-query')['QueryClient']
   const QueryClientProvider: typeof import('@tanstack/react-query')['QueryClientProvider']
   const RouterProvider: typeof import('@tanstack/react-router')['RouterProvider']
+  const RpGlobalLoading: typeof import('../src/components/RpGlobalLoading/index')['default']
   const StorageConfig: typeof import('@raipiot-infra/config')['StorageConfig']
   const Suspense: typeof import('react')['Suspense']
   const TeamConfig: typeof import('@raipiot-infra/config')['TeamConfig']

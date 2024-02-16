@@ -13,32 +13,30 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as WhitelistRouteImport } from './routes/_whitelist/route'
+import { Route as BaseRouteImport } from './routes/_base/route'
 import { Route as AuthRouteImport } from './routes/_auth/route'
 import { Route as RouteImport } from './routes/*/route'
-import { Route as WhitelistSignupRouteImport } from './routes/_whitelist/signup/route'
-import { Route as WhitelistLoginRouteImport } from './routes/_whitelist/login/route'
+import { Route as AuthSignupRouteImport } from './routes/_auth/signup/route'
+import { Route as AuthLoginRouteImport } from './routes/_auth/login/route'
 
 // Create Virtual Routes
 
-const AuthIndexLazyImport = createFileRoute('/_auth/')()
-const Auth500LazyImport = createFileRoute('/_auth/500')()
-const Auth404LazyImport = createFileRoute('/_auth/404')()
-const Auth403LazyImport = createFileRoute('/_auth/403')()
-const WhitelistSsoRouteLazyImport = createFileRoute('/_whitelist/sso')()
-const WhitelistForgotPasswordRouteLazyImport = createFileRoute(
-  '/_whitelist/forgot-password',
+const BaseIndexLazyImport = createFileRoute('/_base/')()
+const Base500LazyImport = createFileRoute('/_base/500')()
+const Base404LazyImport = createFileRoute('/_base/404')()
+const Base403LazyImport = createFileRoute('/_base/403')()
+const BaseDashboardRouteLazyImport = createFileRoute('/_base/dashboard')()
+const AuthSsoRouteLazyImport = createFileRoute('/_auth/sso')()
+const AuthForgotPasswordRouteLazyImport = createFileRoute(
+  '/_auth/forgot-password',
 )()
-const AuthDashboardRouteLazyImport = createFileRoute('/_auth/dashboard')()
 
 // Create/Update Routes
 
-const WhitelistRouteRoute = WhitelistRouteImport.update({
-  id: '/_whitelist',
+const BaseRouteRoute = BaseRouteImport.update({
+  id: '/_base',
   getParentRoute: () => rootRoute,
-} as any).lazy(() =>
-  import('./routes/_whitelist/route.lazy').then((d) => d.Route),
-)
+} as any).lazy(() => import('./routes/_base/route.lazy').then((d) => d.Route))
 
 const AuthRouteRoute = AuthRouteImport.update({
   id: '/_auth',
@@ -50,62 +48,60 @@ const RouteRoute = RouteImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const AuthIndexLazyRoute = AuthIndexLazyImport.update({
+const BaseIndexLazyRoute = BaseIndexLazyImport.update({
   path: '/',
-  getParentRoute: () => AuthRouteRoute,
-} as any).lazy(() => import('./routes/_auth/index.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() => import('./routes/_base/index.lazy').then((d) => d.Route))
 
-const Auth500LazyRoute = Auth500LazyImport.update({
+const Base500LazyRoute = Base500LazyImport.update({
   path: '/500',
-  getParentRoute: () => AuthRouteRoute,
-} as any).lazy(() => import('./routes/_auth/500.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() => import('./routes/_base/500.lazy').then((d) => d.Route))
 
-const Auth404LazyRoute = Auth404LazyImport.update({
+const Base404LazyRoute = Base404LazyImport.update({
   path: '/404',
-  getParentRoute: () => AuthRouteRoute,
-} as any).lazy(() => import('./routes/_auth/404.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() => import('./routes/_base/404.lazy').then((d) => d.Route))
 
-const Auth403LazyRoute = Auth403LazyImport.update({
+const Base403LazyRoute = Base403LazyImport.update({
   path: '/403',
-  getParentRoute: () => AuthRouteRoute,
-} as any).lazy(() => import('./routes/_auth/403.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() => import('./routes/_base/403.lazy').then((d) => d.Route))
 
-const WhitelistSsoRouteLazyRoute = WhitelistSsoRouteLazyImport.update({
-  path: '/sso',
-  getParentRoute: () => WhitelistRouteRoute,
+const BaseDashboardRouteLazyRoute = BaseDashboardRouteLazyImport.update({
+  path: '/dashboard',
+  getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./routes/_whitelist/sso/route.lazy').then((d) => d.Route),
+  import('./routes/_base/dashboard/route.lazy').then((d) => d.Route),
 )
 
-const WhitelistForgotPasswordRouteLazyRoute =
-  WhitelistForgotPasswordRouteLazyImport.update({
+const AuthSsoRouteLazyRoute = AuthSsoRouteLazyImport.update({
+  path: '/sso',
+  getParentRoute: () => AuthRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_auth/sso/route.lazy').then((d) => d.Route),
+)
+
+const AuthForgotPasswordRouteLazyRoute =
+  AuthForgotPasswordRouteLazyImport.update({
     path: '/forgot-password',
-    getParentRoute: () => WhitelistRouteRoute,
+    getParentRoute: () => AuthRouteRoute,
   } as any).lazy(() =>
-    import('./routes/_whitelist/forgot-password/route.lazy').then(
-      (d) => d.Route,
-    ),
+    import('./routes/_auth/forgot-password/route.lazy').then((d) => d.Route),
   )
 
-const AuthDashboardRouteLazyRoute = AuthDashboardRouteLazyImport.update({
-  path: '/dashboard',
+const AuthSignupRouteRoute = AuthSignupRouteImport.update({
+  path: '/signup',
   getParentRoute: () => AuthRouteRoute,
 } as any).lazy(() =>
-  import('./routes/_auth/dashboard/route.lazy').then((d) => d.Route),
+  import('./routes/_auth/signup/route.lazy').then((d) => d.Route),
 )
 
-const WhitelistSignupRouteRoute = WhitelistSignupRouteImport.update({
-  path: '/signup',
-  getParentRoute: () => WhitelistRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_whitelist/signup/route.lazy').then((d) => d.Route),
-)
-
-const WhitelistLoginRouteRoute = WhitelistLoginRouteImport.update({
+const AuthLoginRouteRoute = AuthLoginRouteImport.update({
   path: '/login',
-  getParentRoute: () => WhitelistRouteRoute,
+  getParentRoute: () => AuthRouteRoute,
 } as any).lazy(() =>
-  import('./routes/_whitelist/login/route.lazy').then((d) => d.Route),
+  import('./routes/_auth/login/route.lazy').then((d) => d.Route),
 )
 
 // Populate the FileRoutesByPath interface
@@ -120,45 +116,45 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRoute
     }
-    '/_whitelist': {
-      preLoaderRoute: typeof WhitelistRouteImport
+    '/_base': {
+      preLoaderRoute: typeof BaseRouteImport
       parentRoute: typeof rootRoute
     }
-    '/_whitelist/login': {
-      preLoaderRoute: typeof WhitelistLoginRouteImport
-      parentRoute: typeof WhitelistRouteImport
-    }
-    '/_whitelist/signup': {
-      preLoaderRoute: typeof WhitelistSignupRouteImport
-      parentRoute: typeof WhitelistRouteImport
-    }
-    '/_auth/dashboard': {
-      preLoaderRoute: typeof AuthDashboardRouteLazyImport
+    '/_auth/login': {
+      preLoaderRoute: typeof AuthLoginRouteImport
       parentRoute: typeof AuthRouteImport
     }
-    '/_whitelist/forgot-password': {
-      preLoaderRoute: typeof WhitelistForgotPasswordRouteLazyImport
-      parentRoute: typeof WhitelistRouteImport
-    }
-    '/_whitelist/sso': {
-      preLoaderRoute: typeof WhitelistSsoRouteLazyImport
-      parentRoute: typeof WhitelistRouteImport
-    }
-    '/_auth/403': {
-      preLoaderRoute: typeof Auth403LazyImport
+    '/_auth/signup': {
+      preLoaderRoute: typeof AuthSignupRouteImport
       parentRoute: typeof AuthRouteImport
     }
-    '/_auth/404': {
-      preLoaderRoute: typeof Auth404LazyImport
+    '/_auth/forgot-password': {
+      preLoaderRoute: typeof AuthForgotPasswordRouteLazyImport
       parentRoute: typeof AuthRouteImport
     }
-    '/_auth/500': {
-      preLoaderRoute: typeof Auth500LazyImport
+    '/_auth/sso': {
+      preLoaderRoute: typeof AuthSsoRouteLazyImport
       parentRoute: typeof AuthRouteImport
     }
-    '/_auth/': {
-      preLoaderRoute: typeof AuthIndexLazyImport
-      parentRoute: typeof AuthRouteImport
+    '/_base/dashboard': {
+      preLoaderRoute: typeof BaseDashboardRouteLazyImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/403': {
+      preLoaderRoute: typeof Base403LazyImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/404': {
+      preLoaderRoute: typeof Base404LazyImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/500': {
+      preLoaderRoute: typeof Base500LazyImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/': {
+      preLoaderRoute: typeof BaseIndexLazyImport
+      parentRoute: typeof BaseRouteImport
     }
   }
 }
@@ -168,17 +164,17 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren([
   RouteRoute,
   AuthRouteRoute.addChildren([
-    AuthDashboardRouteLazyRoute,
-    Auth403LazyRoute,
-    Auth404LazyRoute,
-    Auth500LazyRoute,
-    AuthIndexLazyRoute,
+    AuthLoginRouteRoute,
+    AuthSignupRouteRoute,
+    AuthForgotPasswordRouteLazyRoute,
+    AuthSsoRouteLazyRoute,
   ]),
-  WhitelistRouteRoute.addChildren([
-    WhitelistLoginRouteRoute,
-    WhitelistSignupRouteRoute,
-    WhitelistForgotPasswordRouteLazyRoute,
-    WhitelistSsoRouteLazyRoute,
+  BaseRouteRoute.addChildren([
+    BaseDashboardRouteLazyRoute,
+    Base403LazyRoute,
+    Base404LazyRoute,
+    Base500LazyRoute,
+    BaseIndexLazyRoute,
   ]),
 ])
 
