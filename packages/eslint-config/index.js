@@ -167,6 +167,7 @@ module.exports = defineConfig({
     'unicorn/no-array-for-each': 'off', // 允许使用 forEach
     'unicorn/prefer-export-from': 'off', // 允许使用 export default from
     'unicorn/consistent-destructuring': 'off', // 允许不一致的解构赋值
-    'unicorn/prefer-top-level-await': 'off' // Zod catch 可能会报错
+    'unicorn/prefer-top-level-await': 'off', // Zod catch 可能会报错
+    'unicorn/no-static-only-class': 'off' // 允许仅有静态方法的类
   }
 })

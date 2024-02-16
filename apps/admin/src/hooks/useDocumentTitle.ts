@@ -3,6 +3,6 @@ export const useDocumentTitle = () => {
 
   useEffect(() => {
     const matchedLeafItem = matches.at(-1)!.staticData.title ?? ''
-    document.title = typeof matchedLeafItem === 'function' ? matchedLeafItem() : matchedLeafItem
+    document.title = I18nUtils.getText(matchedLeafItem)
   }, [matches])
 }

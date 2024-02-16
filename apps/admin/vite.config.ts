@@ -76,7 +76,7 @@ export default defineConfig(({ mode }) => {
           AhooksResolver(),
           RaipiotAntdResolver()
         ],
-        dirs: ['src/api/**', 'src/components/**', 'src/hooks/**', 'src/store/**']
+        dirs: ['src/api/**', 'src/components/**', 'src/hooks/**', 'src/store/**', 'src/utils/**']
       }),
       BootstrapAnimation({
         name: 'SRM Admin',

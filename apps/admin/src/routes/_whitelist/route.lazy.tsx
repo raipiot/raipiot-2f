@@ -10,7 +10,9 @@ function Layout() {
       className="h-screen w-screen bg-cover bg-no-repeat"
       style={{ backgroundImage: `url(${loginBg})` }}
     >
-      <Outlet />
+      <LayoutTransition>
+        <Outlet />
+      </LayoutTransition>
     </div>
   )
 }
