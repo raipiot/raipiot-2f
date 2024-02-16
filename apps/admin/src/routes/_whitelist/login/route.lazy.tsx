@@ -14,10 +14,14 @@ export const Route = createLazyFileRoute('/_whitelist/login')({
 function Login() {
   const { form, clearPassword, setAdminAccount, handleRememberPassword } = useLoginForm()
   const { handleLoginRedirect, handleForgotPassword, handleSignup, handleSSO } = useRedirect()
+
   const loginMutation = useLoginMutation()
+
+  const [currentLoginType, setCurrentLoginType] = useState(LoginType.USER)
 
   // 点击登录
   const handleClickLoginBtn = (loginType: LoginType) => {
+    setCurrentLoginType(loginType)
     switch (loginType) {
       case LoginType.USER: {
         form.submit()
@@ -78,6 +82,7 @@ function Login() {
             allowClear
           />
         </AForm.Item>
+
         <AForm.Item
           name="username"
           rules={[{ required: true, message: '请输入用户名' }]}
@@ -89,6 +94,7 @@ function Login() {
             allowClear
           />
         </AForm.Item>
+
         <AForm.Item
           name="password"
           rules={[{ required: true, message: '请输入密码' }]}
@@ -129,7 +135,8 @@ function Login() {
             <AButton
               type="primary"
               disabled={loginMutation.isPending}
-              loading={loginMutation.isPending}
+              loading={currentLoginType === LoginType.USER && loginMutation.isPending}
+              htmlType="submit"
               onClick={() => handleClickLoginBtn(LoginType.USER)}
             >
               登录
@@ -141,7 +148,7 @@ function Login() {
               <AButton
                 className="w-[calc(50%-4px)]"
                 disabled={loginMutation.isPending}
-                loading={loginMutation.isPending}
+                loading={currentLoginType === LoginType.ADMIN && loginMutation.isPending}
                 onClick={() => handleClickLoginBtn(LoginType.ADMIN)}
               >
                 管理员登录
@@ -149,7 +156,6 @@ function Login() {
               <AButton
                 className="w-[calc(50%-4px)]"
                 disabled={loginMutation.isPending}
-                loading={loginMutation.isPending}
                 onClick={() => handleClickLoginBtn(LoginType.SSO)}
               >
                 SSO 登录

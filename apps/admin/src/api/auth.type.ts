@@ -25,19 +25,9 @@ export interface LoginVo extends TokensVo {
 }
 
 export interface SignupDto {
-  account: string
-  avatar?: string
-  birthday?: string
-  email: string
-  emailCode: string
-  name?: string
+  username: string
   password: string
-  phone?: string
-  realName?: string
-  sex?: string
-  type: string
-  country?: string
-  timezone?: string
+  confirmPassword: string
 }
 
 export interface ChangePasswordDto {

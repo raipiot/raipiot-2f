@@ -31,7 +31,7 @@ export class AuthAPI {
    * 注册
    */
   static signup(data: SignupDto) {
-    return httpRequest.post<R>(`${this.#API_PREFIX}/register`, data)
+    return httpRequest.post<LoginVo>(`${this.#API_PREFIX}/register`, data)
   }
 
   /**

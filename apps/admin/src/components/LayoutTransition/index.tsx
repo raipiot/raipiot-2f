@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from 'framer-motion'
 import type { PropsWithChildren } from 'react'
 
 interface LayoutTransitionProps extends PropsWithChildren {

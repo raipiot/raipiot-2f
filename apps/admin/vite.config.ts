@@ -67,6 +67,10 @@ export default defineConfig(({ mode }) => {
           {
             from: '@tanstack/react-router',
             imports: ['useMatches']
+          },
+          {
+            from: 'framer-motion',
+            imports: ['motion', 'AnimatePresence']
           }
         ],
         resolvers: [
