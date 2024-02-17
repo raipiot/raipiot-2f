@@ -1,3 +1,18 @@
+import type { SVGProps } from 'react'
+
+interface IconProps extends SVGProps<SVGSVGElement> {
+  isFullscreen: boolean
+}
+
+const Icon = memo<IconProps>((iconProps) => {
+  const { isFullscreen, ...props } = iconProps
+  return isFullscreen ? (
+    <MaterialSymbolsFullscreenExitRounded {...props} />
+  ) : (
+    <MaterialSymbolsFullscreenRounded {...props} />
+  )
+})
+
 export default function FullScreenButton() {
   const { t } = useTranslation('LAYOUT')
   const [isFullscreen, { toggleFullscreen }] = useFullscreen(document.body)
@@ -7,13 +22,11 @@ export default function FullScreenButton() {
       title={t('HEADER.FULL.SCREEN')}
       placement="bottom"
     >
-      {/* <DpIcon
-        type={isFullscreen ? 'Fullscreen:Exit' : 'Fullscreen'}
-        className="cursor-pointer text-2xl"
-        size={20}
-        depth={1}
+      <Icon
+        isFullscreen={isFullscreen}
+        className="cursor-pointer text-xl"
         onClick={toggleFullscreen}
-      /> */}
+      />
     </ATooltip>
   )
 }

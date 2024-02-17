@@ -1,6 +1,19 @@
 import './index.module.scss'
 
-import type { MouseEvent } from 'react'
+import type { MouseEvent, SVGProps } from 'react'
+
+interface IconProps extends SVGProps<SVGSVGElement> {
+  isLightTheme: boolean
+}
+
+const Icon = memo<IconProps>((iconProps) => {
+  const { isLightTheme, ...props } = iconProps
+  return isLightTheme ? (
+    <LineMdMoonAltToSunnyOutlineLoopTransition {...props} />
+  ) : (
+    <LineMdSunnyFilledLoopToMoonAltFilledLoopTransition {...props} />
+  )
+})
 
 const isAppearanceTransition = () =>
   document.startViewTransition !== undefined &&
@@ -36,25 +49,17 @@ export default function ThemeToggle() {
     )
   }
 
-  const iconProps = {
-    color: themeStore.isLightTheme() ? '#FDC022' : '#FED736'
-  }
-
   return (
     <ATooltip
       title={t('HEADER.SWITCH.THEME')}
       placement="bottom"
     >
-      <div
+      <Icon
+        isLightTheme={themeStore.isLightTheme()}
         className="cursor-pointer text-xl"
+        color={themeStore.isLightTheme() ? '#FDC022' : '#FED736'}
         onClick={handleToggleTheme}
-      >
-        {themeStore.isLightTheme() ? (
-          <LineMdMoonAltToSunnyOutlineLoopTransition {...iconProps} />
-        ) : (
-          <LineMdSunnyFilledLoopToMoonAltFilledLoopTransition {...iconProps} />
-        )}
-      </div>
+      />
     </ATooltip>
   )
 }

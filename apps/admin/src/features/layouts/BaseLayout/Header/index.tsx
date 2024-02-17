@@ -16,7 +16,6 @@ export default function Header() {
     >
       <div className="flex items-center justify-start !space-x-4">
         <MenuVisibilityToggle />
-        {/* <Breadcrumb /> */}
       </div>
 
       <div className="flex items-center justify-start !space-x-4">
