@@ -1,10 +1,10 @@
 import type { PropsWithChildren } from 'react'
 
-interface AuthLayoutTransitionProps extends PropsWithChildren {
+interface PortalLayoutTransitionProps extends PropsWithChildren {
   className?: string
 }
 
-export function AuthLayoutTransition(props: AuthLayoutTransitionProps) {
+export function PortalLayoutTransition(props: PortalLayoutTransitionProps) {
   const { location } = useRouterState()
 
   return (

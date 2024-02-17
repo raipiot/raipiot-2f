@@ -13,11 +13,11 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as PortalRouteImport } from './routes/_portal/route'
 import { Route as BaseRouteImport } from './routes/_base/route'
-import { Route as AuthRouteImport } from './routes/_auth/route'
 import { Route as RouteImport } from './routes/*/route'
-import { Route as AuthSignupRouteImport } from './routes/_auth/signup/route'
-import { Route as AuthLoginRouteImport } from './routes/_auth/login/route'
+import { Route as PortalSignupRouteImport } from './routes/_portal/signup/route'
+import { Route as PortalLoginRouteImport } from './routes/_portal/login/route'
 
 // Create Virtual Routes
 
@@ -25,23 +25,23 @@ const BaseIndexLazyImport = createFileRoute('/_base/')()
 const Base500LazyImport = createFileRoute('/_base/500')()
 const Base404LazyImport = createFileRoute('/_base/404')()
 const Base403LazyImport = createFileRoute('/_base/403')()
-const BaseDashboardRouteLazyImport = createFileRoute('/_base/dashboard')()
-const AuthSsoRouteLazyImport = createFileRoute('/_auth/sso')()
-const AuthForgotPasswordRouteLazyImport = createFileRoute(
-  '/_auth/forgot-password',
+const PortalSsoRouteLazyImport = createFileRoute('/_portal/sso')()
+const PortalForgotPasswordRouteLazyImport = createFileRoute(
+  '/_portal/forgot-password',
 )()
+const BaseDashboardRouteLazyImport = createFileRoute('/_base/dashboard')()
 
 // Create/Update Routes
+
+const PortalRouteRoute = PortalRouteImport.update({
+  id: '/_portal',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/_portal/route.lazy').then((d) => d.Route))
 
 const BaseRouteRoute = BaseRouteImport.update({
   id: '/_base',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/_base/route.lazy').then((d) => d.Route))
-
-const AuthRouteRoute = AuthRouteImport.update({
-  id: '/_auth',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/_auth/route.lazy').then((d) => d.Route))
 
 const RouteRoute = RouteImport.update({
   path: '/*',
@@ -68,6 +68,21 @@ const Base403LazyRoute = Base403LazyImport.update({
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() => import('./routes/_base/403.lazy').then((d) => d.Route))
 
+const PortalSsoRouteLazyRoute = PortalSsoRouteLazyImport.update({
+  path: '/sso',
+  getParentRoute: () => PortalRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_portal/sso/route.lazy').then((d) => d.Route),
+)
+
+const PortalForgotPasswordRouteLazyRoute =
+  PortalForgotPasswordRouteLazyImport.update({
+    path: '/forgot-password',
+    getParentRoute: () => PortalRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_portal/forgot-password/route.lazy').then((d) => d.Route),
+  )
+
 const BaseDashboardRouteLazyRoute = BaseDashboardRouteLazyImport.update({
   path: '/dashboard',
   getParentRoute: () => BaseRouteRoute,
@@ -75,33 +90,18 @@ const BaseDashboardRouteLazyRoute = BaseDashboardRouteLazyImport.update({
   import('./routes/_base/dashboard/route.lazy').then((d) => d.Route),
 )
 
-const AuthSsoRouteLazyRoute = AuthSsoRouteLazyImport.update({
-  path: '/sso',
-  getParentRoute: () => AuthRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_auth/sso/route.lazy').then((d) => d.Route),
-)
-
-const AuthForgotPasswordRouteLazyRoute =
-  AuthForgotPasswordRouteLazyImport.update({
-    path: '/forgot-password',
-    getParentRoute: () => AuthRouteRoute,
-  } as any).lazy(() =>
-    import('./routes/_auth/forgot-password/route.lazy').then((d) => d.Route),
-  )
-
-const AuthSignupRouteRoute = AuthSignupRouteImport.update({
+const PortalSignupRouteRoute = PortalSignupRouteImport.update({
   path: '/signup',
-  getParentRoute: () => AuthRouteRoute,
+  getParentRoute: () => PortalRouteRoute,
 } as any).lazy(() =>
-  import('./routes/_auth/signup/route.lazy').then((d) => d.Route),
+  import('./routes/_portal/signup/route.lazy').then((d) => d.Route),
 )
 
-const AuthLoginRouteRoute = AuthLoginRouteImport.update({
+const PortalLoginRouteRoute = PortalLoginRouteImport.update({
   path: '/login',
-  getParentRoute: () => AuthRouteRoute,
+  getParentRoute: () => PortalRouteRoute,
 } as any).lazy(() =>
-  import('./routes/_auth/login/route.lazy').then((d) => d.Route),
+  import('./routes/_portal/login/route.lazy').then((d) => d.Route),
 )
 
 // Populate the FileRoutesByPath interface
@@ -112,33 +112,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RouteImport
       parentRoute: typeof rootRoute
     }
-    '/_auth': {
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRoute
-    }
     '/_base': {
       preLoaderRoute: typeof BaseRouteImport
       parentRoute: typeof rootRoute
     }
-    '/_auth/login': {
-      preLoaderRoute: typeof AuthLoginRouteImport
-      parentRoute: typeof AuthRouteImport
+    '/_portal': {
+      preLoaderRoute: typeof PortalRouteImport
+      parentRoute: typeof rootRoute
     }
-    '/_auth/signup': {
-      preLoaderRoute: typeof AuthSignupRouteImport
-      parentRoute: typeof AuthRouteImport
+    '/_portal/login': {
+      preLoaderRoute: typeof PortalLoginRouteImport
+      parentRoute: typeof PortalRouteImport
     }
-    '/_auth/forgot-password': {
-      preLoaderRoute: typeof AuthForgotPasswordRouteLazyImport
-      parentRoute: typeof AuthRouteImport
-    }
-    '/_auth/sso': {
-      preLoaderRoute: typeof AuthSsoRouteLazyImport
-      parentRoute: typeof AuthRouteImport
+    '/_portal/signup': {
+      preLoaderRoute: typeof PortalSignupRouteImport
+      parentRoute: typeof PortalRouteImport
     }
     '/_base/dashboard': {
       preLoaderRoute: typeof BaseDashboardRouteLazyImport
       parentRoute: typeof BaseRouteImport
+    }
+    '/_portal/forgot-password': {
+      preLoaderRoute: typeof PortalForgotPasswordRouteLazyImport
+      parentRoute: typeof PortalRouteImport
+    }
+    '/_portal/sso': {
+      preLoaderRoute: typeof PortalSsoRouteLazyImport
+      parentRoute: typeof PortalRouteImport
     }
     '/_base/403': {
       preLoaderRoute: typeof Base403LazyImport
@@ -163,18 +163,18 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   RouteRoute,
-  AuthRouteRoute.addChildren([
-    AuthLoginRouteRoute,
-    AuthSignupRouteRoute,
-    AuthForgotPasswordRouteLazyRoute,
-    AuthSsoRouteLazyRoute,
-  ]),
   BaseRouteRoute.addChildren([
     BaseDashboardRouteLazyRoute,
     Base403LazyRoute,
     Base404LazyRoute,
     Base500LazyRoute,
     BaseIndexLazyRoute,
+  ]),
+  PortalRouteRoute.addChildren([
+    PortalLoginRouteRoute,
+    PortalSignupRouteRoute,
+    PortalForgotPasswordRouteLazyRoute,
+    PortalSsoRouteLazyRoute,
   ]),
 ])
 

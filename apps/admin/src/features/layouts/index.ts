@@ -1,3 +1,3 @@
-export * from './AuthLayout'
-export * from './AuthLayout/AuthLayoutTransition'
 export * from './BaseLayout'
+export * from './PortalLayout'
+export * from './PortalLayout/PortalLayoutTransition'

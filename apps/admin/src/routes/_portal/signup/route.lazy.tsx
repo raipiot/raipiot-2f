@@ -2,12 +2,12 @@ import { saveTokens } from '@/features/login'
 import type { SignupInfo } from '@/features/signup'
 import { useRedirect, useSignupForm, useSignupMutation } from '@/features/signup'
 
-export const Route = createLazyFileRoute('/_auth/signup')({
+export const Route = createLazyFileRoute('/_portal/signup')({
   component: Signup
 })
 
 function Signup() {
-  const match = useMatch({ from: '/_auth/signup' })
+  const match = useMatch({ from: '/_portal/signup' })
   const { form } = useSignupForm()
   const { handleSignupRedirect, handleLogin } = useRedirect()
 

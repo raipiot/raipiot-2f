@@ -1,16 +1,16 @@
 import loginBg from '@/assets/images/login_bg.jpg'
 
-import { AuthLayoutTransition } from './AuthLayoutTransition'
+import { PortalLayoutTransition } from './PortalLayoutTransition'
 
-export function AuthLayout() {
+export function PortalLayout() {
   return (
     <div
       className="h-screen w-screen bg-cover bg-no-repeat"
       style={{ backgroundImage: `url(${loginBg})` }}
     >
-      <AuthLayoutTransition>
+      <PortalLayoutTransition>
         <Outlet />
-      </AuthLayoutTransition>
+      </PortalLayoutTransition>
     </div>
   )
 }

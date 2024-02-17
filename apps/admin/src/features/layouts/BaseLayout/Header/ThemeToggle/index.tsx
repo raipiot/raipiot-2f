@@ -36,18 +36,25 @@ export default function ThemeToggle() {
     )
   }
 
+  const iconProps = {
+    color: themeStore.isLightTheme() ? '#FDC022' : '#FED736'
+  }
+
   return (
     <ATooltip
       title={t('HEADER.SWITCH.THEME')}
       placement="bottom"
     >
-      {/* <DpIcon
-        type={themeStore.isLightTheme() ? 'Sun' : 'Moon'}
-        className="cursor-pointer"
-        size={20}
-        color={themeStore.isLightTheme() ? '#FDC022' : '#FED736'}
+      <div
+        className="cursor-pointer text-xl"
         onClick={handleToggleTheme}
-      /> */}
+      >
+        {themeStore.isLightTheme() ? (
+          <LineMdMoonAltToSunnyOutlineLoopTransition {...iconProps} />
+        ) : (
+          <LineMdSunnyFilledLoopToMoonAltFilledLoopTransition {...iconProps} />
+        )}
+      </div>
     </ATooltip>
   )
 }

@@ -10,6 +10,7 @@ import { BootstrapAnimation } from '@raipiot-infra/bootstrap-animation'
 import { TanStackRouterVite } from '@tanstack/router-vite-plugin'
 import React from '@vitejs/plugin-react-swc'
 import AutoImport from 'unplugin-auto-import/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
 import Info from 'unplugin-info/vite'
 import TurboConsole from 'unplugin-turbo-console/vite'
@@ -48,6 +49,11 @@ export default defineConfig(({ mode }) => {
     plugins: [
       React(),
       TanStackRouterVite(),
+      Icons({
+        autoInstall: true,
+        compiler: 'jsx',
+        jsx: 'react'
+      }),
       AutoImport({
         dts: '@types/auto-imports.d.ts',
         include: [
@@ -74,6 +80,11 @@ export default defineConfig(({ mode }) => {
           }
         ],
         resolvers: [
+          IconsResolver({
+            prefix: false,
+            extension: 'jsx',
+            enabledCollections: ['line-md']
+          }),
           AntdResolver({
             prefix: 'A'
           }),
@@ -86,11 +97,6 @@ export default defineConfig(({ mode }) => {
         name: 'SRM Admin',
         description: 'raipiot SRM SaaS 管理系统',
         lang: 'zh-CN'
-      }),
-      Icons({
-        autoInstall: true,
-        compiler: 'jsx',
-        jsx: 'react'
       }),
       Inspect(),
       TurboConsole(),

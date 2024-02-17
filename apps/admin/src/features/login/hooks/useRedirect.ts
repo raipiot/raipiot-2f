@@ -1,7 +1,7 @@
 // 处理登录页面路由调整、重定向
 export const useRedirect = () => {
   const navigate = useNavigate()
-  const { redirect } = useSearch({ from: '/_auth/login' })
+  const { redirect } = useSearch({ from: '/_portal/login' })
 
   // 处理重定向
   const handleLoginRedirect = () => navigate({ to: redirect ?? '/', replace: true })
