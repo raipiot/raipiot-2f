@@ -29,7 +29,11 @@ const PortalSsoRouteLazyImport = createFileRoute('/_portal/sso')()
 const PortalForgotPasswordRouteLazyImport = createFileRoute(
   '/_portal/forgot-password',
 )()
+const BaseUserInfoRouteLazyImport = createFileRoute('/_base/user-info')()
 const BaseDashboardRouteLazyImport = createFileRoute('/_base/dashboard')()
+const BaseChangePasswordRouteLazyImport = createFileRoute(
+  '/_base/change-password',
+)()
 
 // Create/Update Routes
 
@@ -83,12 +87,27 @@ const PortalForgotPasswordRouteLazyRoute =
     import('./routes/_portal/forgot-password/route.lazy').then((d) => d.Route),
   )
 
+const BaseUserInfoRouteLazyRoute = BaseUserInfoRouteLazyImport.update({
+  path: '/user-info',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_base/user-info/route.lazy').then((d) => d.Route),
+)
+
 const BaseDashboardRouteLazyRoute = BaseDashboardRouteLazyImport.update({
   path: '/dashboard',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
   import('./routes/_base/dashboard/route.lazy').then((d) => d.Route),
 )
+
+const BaseChangePasswordRouteLazyRoute =
+  BaseChangePasswordRouteLazyImport.update({
+    path: '/change-password',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_base/change-password/route.lazy').then((d) => d.Route),
+  )
 
 const PortalSignupRouteRoute = PortalSignupRouteImport.update({
   path: '/signup',
@@ -128,8 +147,16 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalSignupRouteImport
       parentRoute: typeof PortalRouteImport
     }
+    '/_base/change-password': {
+      preLoaderRoute: typeof BaseChangePasswordRouteLazyImport
+      parentRoute: typeof BaseRouteImport
+    }
     '/_base/dashboard': {
       preLoaderRoute: typeof BaseDashboardRouteLazyImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/user-info': {
+      preLoaderRoute: typeof BaseUserInfoRouteLazyImport
       parentRoute: typeof BaseRouteImport
     }
     '/_portal/forgot-password': {
@@ -164,7 +191,9 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren([
   RouteRoute,
   BaseRouteRoute.addChildren([
+    BaseChangePasswordRouteLazyRoute,
     BaseDashboardRouteLazyRoute,
+    BaseUserInfoRouteLazyRoute,
     Base403LazyRoute,
     Base404LazyRoute,
     Base500LazyRoute,
