@@ -34,5 +34,6 @@ declare module '@tanstack/react-router' {
 
   interface StaticDataRouteOption {
     title?: string | Fn<string>
+    name?: string | Fn<string>
   }
 }

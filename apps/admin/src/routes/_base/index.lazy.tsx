@@ -6,9 +6,12 @@ function Index() {
   const userStore = useUserStore()
   const navigate = useNavigate()
   return (
-    <div className="p-2">
+    <div className="flex space-x-2 p-1">
       <Link to="/dashboard">
         <AButton>仪表盘</AButton>
+      </Link>
+      <Link to="/test">
+        <AButton>测试</AButton>
       </Link>
       <AButton
         onClick={() => {
@@ -17,7 +20,6 @@ function Index() {
           AuthUtils.clearRefreshToken()
           navigate({ to: '/login' })
         }}
-        className="ml-2"
       >
         退出登录
       </AButton>

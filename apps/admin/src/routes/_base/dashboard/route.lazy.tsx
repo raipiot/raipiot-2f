@@ -3,5 +3,5 @@ export const Route = createLazyFileRoute('/_base/dashboard')({
 })
 
 function Dashboard() {
-  return <div>Dashboard</div>
+  return <div className="bg-green-50">Dashboard</div>
 }
