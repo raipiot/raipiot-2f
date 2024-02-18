@@ -1,7 +1,7 @@
 import CollapseButton from './CollapseButton'
 import Header from './Header'
 import Mask from './Mask'
-// import Menu from './Menu'
+import Menu from './Menu'
 
 export default function Sidebar() {
   const sidebarStore = useSidebarStore()
@@ -20,7 +20,7 @@ export default function Sidebar() {
         trigger={null}
       >
         <Header />
-        {/* <Menu /> */}
+        <Menu />
         <CollapseButton />
       </ALayout.Sider>
       <Mask />

@@ -11,7 +11,7 @@ export default function Header() {
     >
       <div className="flex h-14 w-full items-center justify-center space-x-4">
         <AImage
-          className="cursor-pointer"
+          className="cursor-pointer p-2"
           src={getImageFromAssets(themeStore.isDarkTheme() ? 'raipiot_dark.png' : 'raipiot.png')}
           alt=""
           width={64}

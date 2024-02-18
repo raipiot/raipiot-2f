@@ -31,12 +31,7 @@ export default function LanguageButton() {
       }}
       placement="bottom"
     >
-      {/* <DpIcon
-        type="Lang"
-        className="cursor-pointer"
-        size={20}
-        depth={1}
-      /> */}
+      <MaterialSymbolsLanguage className="cursor-pointer text-xl" />
     </ADropdown>
   )
 }
