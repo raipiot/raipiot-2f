@@ -52,7 +52,11 @@ export default defineConfig(({ mode }) => {
       Icons({
         autoInstall: true,
         compiler: 'jsx',
-        jsx: 'react'
+        jsx: 'react',
+        iconCustomizer(_collection, _icon, props) {
+          props.opacity = '0.8' // 图标添加灰度
+          props.fontSize = '1.125rem' // 默认图标尺寸为 TailwindCSS text-lg 大小
+        }
       }),
       AutoImport({
         dts: '@types/auto-imports.d.ts',

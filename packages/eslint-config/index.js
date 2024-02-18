@@ -101,7 +101,8 @@ module.exports = defineConfig({
           'request',
           'args',
           'draft',
-          'acc'
+          'acc',
+          'props'
         ],
         ignorePropertyModificationsForRegex: ['^item', 'Item$']
       } // useImmer 需要直接修改参数值，不受此限制，尽量通过 draft = xxx 的方式修改
