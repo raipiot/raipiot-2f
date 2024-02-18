@@ -3,6 +3,7 @@ export const useDocumentTitle = () => {
 
   useEffect(() => {
     const matchedLeafItem = matches.at(-1)!.staticData.title ?? ''
-    document.title = I18nUtils.getText(matchedLeafItem)
+    const title = I18nUtils.getText(matchedLeafItem)
+    document.title = title ? `${title} | ${AppMetadata.appName}` : AppMetadata.appName
   }, [matches])
 }

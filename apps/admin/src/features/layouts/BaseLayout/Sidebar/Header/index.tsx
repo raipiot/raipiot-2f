@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <Link
       to="/"
-      style={{ color: 'inherit' }}
+      className="!text-inherit"
     >
       <div className="flex h-14 w-full items-center justify-center space-x-4">
         <AImage
@@ -29,7 +29,7 @@ export default function Header() {
               : 'hidden'
           ])}
         >
-          {BrandConfig.companyName} SRM
+          {AppMetadata.appName}
         </span>
       </div>
     </Link>

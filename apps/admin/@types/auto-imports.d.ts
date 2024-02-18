@@ -24,6 +24,7 @@ declare global {
   const ATheme: typeof import('antd')['theme']
   const ATooltip: typeof import('antd')['Tooltip']
   const AnimatePresence: typeof import('framer-motion')['AnimatePresence']
+  const AppMetadata: typeof import('@/constants')['AppMetadata']
   const AuthAPI: typeof import('../src/api/auth')['AuthAPI']
   const AuthUtils: typeof import('@raipiot-infra/utils')['AuthUtils']
   const Await: typeof import('@tanstack/react-router')['Await']

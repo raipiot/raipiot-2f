@@ -64,7 +64,7 @@ export default defineConfig(({ mode }) => {
           ...reactPresets,
           {
             from: '@/constants',
-            imports: ['GlobalEnvConfig']
+            imports: ['GlobalEnvConfig', 'AppMetadata']
           },
           {
             from: '@/i18n',
@@ -94,7 +94,7 @@ export default defineConfig(({ mode }) => {
         dirs: ['src/api/**', 'src/components/**', 'src/hooks/**', 'src/store/**', 'src/utils/**']
       }),
       BootstrapAnimation({
-        name: 'SRM Admin',
+        name: 'raipiot SRM',
         description: 'raipiot SRM SaaS 管理系统',
         lang: 'zh-CN'
       }),
