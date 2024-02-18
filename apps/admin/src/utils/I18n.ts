@@ -1,7 +1,7 @@
-import type { Fn } from '@raipiot-infra/utils'
+import type { I18nString } from '@/features/i18n'
 
 export class I18nUtils {
-  static getText(text?: string | Fn<string>) {
+  static getText(text?: I18nString) {
     if (!text) {
       return ''
     }

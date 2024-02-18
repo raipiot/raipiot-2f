@@ -1,7 +1,7 @@
 import { defaultQueryConfig } from '@raipiot-infra/tanstack-query'
-import type { Fn } from '@raipiot-infra/utils'
 import nprogress from 'nprogress'
 
+import type { I18nString } from './features/i18n'
 import { routeTree } from './routeTree.gen'
 
 export const queryClient = new QueryClient({
@@ -33,6 +33,6 @@ declare module '@tanstack/react-router' {
   }
 
   interface StaticDataRouteOption {
-    title?: string | Fn<string>
+    title?: I18nString
   }
 }

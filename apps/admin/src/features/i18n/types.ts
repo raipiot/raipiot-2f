@@ -1,3 +1,5 @@
+import type { Fn } from '@raipiot-infra/utils'
+
 export interface LocaleResource {
   /**
    * 命名空间
@@ -8,3 +10,5 @@ export interface LocaleResource {
    */
   resources: Record<string, string>
 }
+
+export type I18nString = string | Fn<string>
