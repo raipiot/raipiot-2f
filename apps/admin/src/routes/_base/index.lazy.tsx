@@ -6,7 +6,7 @@ function Index() {
   const userStore = useUserStore()
   const navigate = useNavigate()
   return (
-    <div className="flex gap-2 p-1">
+    <div className="flex space-x-2 p-1">
       <Link to="/dashboard">
         <AButton>仪表盘</AButton>
       </Link>

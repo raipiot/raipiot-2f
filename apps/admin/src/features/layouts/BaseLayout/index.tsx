@@ -10,15 +10,11 @@ export function BaseLayout() {
 
   // 监听路由变化，添加标签记录
   useEffect(() => {
-    const currentRouteName = matches.find((match) => match.pathname === location.pathname)
-      ?.staticData?.name
-    if (currentRouteName || location.pathname === '/') {
-      useTabRecordStore.getState().addRecord({
-        key: location.pathname,
-        name: I18nUtils.getText(currentRouteName ?? '首页'),
-        active: true
-      })
+    const newRecord = {
+      path: location.pathname,
+      active: true
     }
+    useTabRecordStore.getState().addRecord(newRecord)
   }, [matches, location])
   return (
     // NOTE: 此处 rootClassName 不加 !flex-row 会导致加载布局闪屏

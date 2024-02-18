@@ -3,8 +3,7 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
 type Record = {
-  name: string
-  key: string
+  path: string
   active: boolean
 }
 
@@ -14,7 +13,7 @@ interface State {
 
 interface Actions {
   addRecord: (record: Record) => void
-  removeRecordByKey: (key: string) => void
+  removeRecordByPath: (key: string) => void
   clearRecords: () => void
 }
 
@@ -24,8 +23,7 @@ const initialState: State = {
    */
   records: [
     {
-      key: '/',
-      name: '首页',
+      path: '/',
       active: true
     }
   ]
@@ -42,16 +40,16 @@ export const useTabRecordStore = create<State & Actions>()(
        */
       addRecord: (record: Record) => {
         set((state) => ({
-          records: uniqBy([...state.records, record], 'key')
+          records: uniqBy([...state.records, record], 'path')
         }))
       },
       /**
        * 移除一个路由地址
        * @param record 路由地址
        */
-      removeRecordByKey: (_key: string) => {
+      removeRecordByPath: (_path: string) => {
         set((state) => ({
-          records: state.records.filter(({ key }) => key !== _key || key === '/')
+          records: state.records.filter(({ path }) => path !== _path || path === '/')
         }))
       },
 
