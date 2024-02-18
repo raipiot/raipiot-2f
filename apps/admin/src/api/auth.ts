@@ -47,4 +47,11 @@ export class AuthAPI {
   static forgotPassword(data: ForgotPasswordDto) {
     return httpRequest.post<R>(`${this.#API_PREFIX}/forget-password`, data)
   }
+
+  /**
+   * 退出登录
+   */
+  static logout() {
+    return httpRequest.get(`${this.#API_PREFIX}/logout`)
+  }
 }
