@@ -6,7 +6,7 @@
     "dev:admin": "turbo dev --filter=@raipiot-srm/admin",
     "dev:shopping": "turbo dev --filter=@raipiot-srm/shopping",
     "build:admin:staging": "turbo build:staging --filter=@raipiot-srm/admin",
-    "build:shopping:staing": "turbo build:staging --filter=@raipiot-srm/shopping",
+    "build:shopping:staging": "turbo build:staging --filter=@raipiot-srm/shopping",
     "build:admin:prod": "turbo build:prod --filter=@raipiot-srm/admin",
     "build:shopping:prod": "turbo build:prod --filter=@raipiot-srm/shopping",
     "preview:admin": "turbo preview --filter=@raipiot-srm/admin",
