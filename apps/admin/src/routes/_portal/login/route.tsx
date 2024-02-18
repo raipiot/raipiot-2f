@@ -1,5 +1,7 @@
 import { z } from 'zod'
 
+import i18n from '@/i18n'
+
 const loginSearchSchema = z.object({
   redirect: z.string().optional()
 })
@@ -7,11 +9,6 @@ const loginSearchSchema = z.object({
 export const Route = createFileRoute('/_portal/login')({
   validateSearch: loginSearchSchema,
   staticData: {
-    title: () => '登录',
-    name: () => '登录'
-  },
-  beforeLoad: () => {
-    // 首次登录，清空内部访问记录
-    useTabRecordStore.getState().clearRecords()
+    title: () => i18n.t('BACK')
   }
 })

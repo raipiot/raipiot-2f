@@ -1,5 +1,6 @@
 export default function Tabs() {
-  const { headerBg } = ATheme.useToken().token.Layout!
+  const { Layout } = ATheme.useToken().token!
+
   const { records } = useTabRecordStore()
   const routeState = useRouterState()
   const navigate = useNavigate()
@@ -9,18 +10,25 @@ export default function Tabs() {
     action: 'add' | 'remove'
   ) => {
     if (action === 'remove' && typeof targetKey === 'string') {
-      useTabRecordStore.getState().removeRecordByKey(targetKey)
+      useTabRecordStore.getState().removeRecordByPath(targetKey)
       // switch to previous tab
       const historyRecords = useTabRecordStore.getState().records
       if (historyRecords.length > 0) {
         const lastRecord = historyRecords.at(-1)
         if (lastRecord) {
           navigate({
-            to: lastRecord.key
+            to: lastRecord.path
           })
         }
       }
     }
+  }
+
+  const router = useRouter()
+  const generateTitle = (path: string) => {
+    const item = router.matchRoutes(path, {})
+    const { title } = item.at(-1)!.staticData
+    return I18nUtils.getText(title)
   }
 
   return (
@@ -32,34 +40,33 @@ export default function Tabs() {
       activeKey={routeState.location.pathname}
       onEdit={onEdit}
       style={{
-        backgroundColor: headerBg,
+        backgroundColor: Layout!.headerBg,
         padding: '12px 0 0 12px'
       }}
       size="small"
-      items={records.map(({ key, name }) => ({
+      items={records.map(({ path }) => ({
         label: (
           <ADropdown
-            key={key}
+            key={path}
             trigger={['contextMenu']}
             menu={{
               items:
-                key === '/'
+                path === '/'
                   ? []
                   : [
                       {
-                        label: I18nUtils.getText('关闭其他标签'),
+                        label: '关闭其他标签',
                         key: 'close-others',
                         onClick: () => {
                           useTabRecordStore.getState().clearRecords()
                           useTabRecordStore.getState().addRecord({
-                            key,
-                            name,
+                            path,
                             active: true
                           })
                         }
                       },
                       {
-                        label: I18nUtils.getText('关闭所有标签'),
+                        label: '关闭所有标签',
                         key: 'close-all',
                         onClick: () => {
                           useTabRecordStore.getState().clearRecords()
@@ -72,15 +79,15 @@ export default function Tabs() {
             }}
           >
             <Link
-              className="cursor-pointer p-2 !text-gray-500 [&.active]:!text-blue-600"
-              to={key}
+              className="cursor-pointer p-2 !text-inherit"
+              to={path}
             >
-              {I18nUtils.getText(name)}
+              {generateTitle(path)}
             </Link>
           </ADropdown>
         ),
-        key,
-        closable: key !== '/'
+        key: path,
+        closable: path !== '/'
       }))}
     />
   )

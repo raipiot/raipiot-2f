@@ -16,6 +16,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as PortalRouteImport } from './routes/_portal/route'
 import { Route as BaseRouteImport } from './routes/_base/route'
 import { Route as RouteImport } from './routes/*/route'
+import { Route as BaseIndexImport } from './routes/_base/index'
 import { Route as PortalSignupRouteImport } from './routes/_portal/signup/route'
 import { Route as PortalLoginRouteImport } from './routes/_portal/login/route'
 import { Route as BaseTestRouteImport } from './routes/_base/test/route'
@@ -23,7 +24,6 @@ import { Route as BaseDashboardRouteImport } from './routes/_base/dashboard/rout
 
 // Create Virtual Routes
 
-const BaseIndexLazyImport = createFileRoute('/_base/')()
 const Base500LazyImport = createFileRoute('/_base/500')()
 const Base404LazyImport = createFileRoute('/_base/404')()
 const Base403LazyImport = createFileRoute('/_base/403')()
@@ -49,7 +49,7 @@ const RouteRoute = RouteImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const BaseIndexLazyRoute = BaseIndexLazyImport.update({
+const BaseIndexRoute = BaseIndexImport.update({
   path: '/',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() => import('./routes/_base/index.lazy').then((d) => d.Route))
@@ -165,7 +165,7 @@ declare module '@tanstack/react-router' {
       parentRoute: typeof BaseRouteImport
     }
     '/_base/': {
-      preLoaderRoute: typeof BaseIndexLazyImport
+      preLoaderRoute: typeof BaseIndexImport
       parentRoute: typeof BaseRouteImport
     }
   }
@@ -181,7 +181,7 @@ export const routeTree = rootRoute.addChildren([
     Base403LazyRoute,
     Base404LazyRoute,
     Base500LazyRoute,
-    BaseIndexLazyRoute,
+    BaseIndexRoute,
   ]),
   PortalRouteRoute.addChildren([
     PortalLoginRouteRoute,
