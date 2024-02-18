@@ -1,11 +1,19 @@
-import COMMON from './common/en-US.json'
+import AUTH from './auth/zh-CN.json'
+import COMMON from './common/zh-CN.json'
+import LAYOUT from './layout/zh-CN.json'
+import ROUTER from './router/zh-CN.json'
+import VALIDATION from './validation/zh-CN.json'
 
 /**
  * 用于给 `@types/i18next.d.ts` 提供类型定义
  * @see https://www.i18next.com/overview/typescript
  */
 const resources = {
-  COMMON
+  AUTH,
+  COMMON,
+  LAYOUT,
+  ROUTER,
+  VALIDATION
 }
 
 export default resources

@@ -1,0 +1,13 @@
+{
+  "HEADER.CHANGE.PASSWORD": "修改密码",
+  "HEADER.EXIT.FULL.SCREEN": "退出全屏",
+  "HEADER.FULL.SCREEN": "全屏",
+  "HEADER.LANGUAGE": "语言",
+  "HEADER.LOCK.SCREEN": "锁屏",
+  "HEADER.LOG.OUT": "退出登录",
+  "HEADER.NOTIFICATION": "通知",
+  "HEADER.SWITCH.THEME": "切换主题",
+  "HEADER.USER.INFO": "个人信息",
+  "SIDEBAR.HIDE": "隐藏侧边栏",
+  "SIDEBAR.SHOW": "显示侧边栏"
+}

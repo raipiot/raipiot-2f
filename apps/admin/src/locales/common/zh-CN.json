@@ -44,7 +44,6 @@
   "PRINT": "打印",
   "REFRESH": "刷新",
   "REMARK": "备注",
-  "REQUEST.GEOLOCATION": "为了您的使用体验，可能需要您提供位置信息。",
   "RESET": "重置",
   "SAVE": "保存",
   "SEARCH": "搜索",
@@ -57,9 +56,6 @@
   "TYPE": "类型",
   "UNKNOWN.ERROR": "未知错误",
   "UPLOAD": "上传",
-  "VALUE": "值",
-  "VERIFY": "验证",
-  "VERIFY.OR.NOT": "是否验证",
   "VIEW": "查看",
   "Y": "是",
   "COPY.SUCCESS": "复制成功"
