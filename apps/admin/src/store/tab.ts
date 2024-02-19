@@ -29,14 +29,14 @@ const initialState: State = {
   ]
 }
 
-export const useTabRecordStore = create<State & Actions>()(
+export const useTabStore = create<State & Actions>()(
   persist(
     (set) => ({
       ...initialState,
 
       /**
        * 添加一个路由地址到记录中
-       * @param record 路由地址
+       * @param record 路由记录
        */
       addRecord: (record: Record) => {
         set((state) => ({
@@ -45,11 +45,11 @@ export const useTabRecordStore = create<State & Actions>()(
       },
       /**
        * 移除一个路由地址
-       * @param record 路由地址
+       * @param path 路由地址
        */
-      removeRecordByPath: (_path: string) => {
+      removeRecordByPath: (path: string) => {
         set((state) => ({
-          records: state.records.filter(({ path }) => path !== _path || path === '/')
+          records: state.records.filter((r) => r.path !== path || r.path === '/')
         }))
       },
 
@@ -61,7 +61,7 @@ export const useTabRecordStore = create<State & Actions>()(
       }
     }),
     {
-      name: 'route-records',
+      name: 'tab-store',
       storage: createJSONStorage(() => localStorage)
     }
   )
