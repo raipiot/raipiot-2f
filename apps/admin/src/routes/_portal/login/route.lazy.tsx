@@ -1,3 +1,4 @@
+import LanguageButton from '@/features/layouts/BaseLayout/Header/LanguageButton'
 import type { LoginInfo } from '@/features/login'
 import {
   LoginType,
@@ -55,6 +56,10 @@ function Login() {
 
   return (
     <div className="absolute inset-0 m-auto flex h-fit w-[360px] max-w-[90%] flex-col rounded-lg bg-[#ffffff] p-8 shadow-md dark:bg-[#222222]">
+      <div className="absolute right-8 top-[34px]">
+        <LanguageButton />
+      </div>
+
       <div className="mb-4 flex flex-col items-center space-y-2">
         <span className="text-xl">{BrandConfig.companyName} SRM</span>
         <span>🎉 {t('WELCOME.BACK')}</span>
