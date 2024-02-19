@@ -16,7 +16,7 @@ export default function UserAvatar() {
       userStore.clearUser()
       AuthUtils.clearAccessToken()
       AuthUtils.clearRefreshToken()
-      navigate('/login', { replace: true })
+      navigate({ to: '/login', replace: true })
       message.success(t('AUTH:LOG.OUT.SUCCESS'))
     }
   })
@@ -39,21 +39,25 @@ export default function UserAvatar() {
   // 点击菜单
   const handleClickMenu = ({ key }: { key: string }) => {
     switch (key) {
-      case UserAction['USER.INFO']:
-        navigate('/user-info')
+      case UserAction['USER.INFO']: {
+        navigate({ to: '/user-info' })
         break
-      case UserAction['CHANGE.PASSWORD']:
-        navigate('/change-password')
+      }
+      case UserAction['CHANGE.PASSWORD']: {
+        navigate({ to: '/change-password' })
         break
-      case UserAction.QUIT:
+      }
+      case UserAction.QUIT: {
         logoutMutation.mutate()
         break
-      default:
+      }
+      default: {
         break
+      }
     }
   }
 
-  if (!userStore.hasData()) {
+  if (!userStore.user?.id) {
     return null
   }
 
@@ -64,19 +68,14 @@ export default function UserAvatar() {
         onClick: handleClickMenu
       }}
     >
-      {userStore.user.avatarUrl ? (
+      {userStore.user.avatar ? (
         <AAvatar
-          src={userStore.user.avatarUrl}
+          src={userStore.user.avatar}
           size={22}
           className="cursor-pointer !bg-gray-300 hover:shadow"
         />
       ) : (
-        <DpIcon
-          className="cursor-pointer"
-          type="Account"
-          size={22}
-          depth={1}
-        />
+        <MaterialSymbolsAccountCircle className="cursor-pointer" />
       )}
     </ADropdown>
   )

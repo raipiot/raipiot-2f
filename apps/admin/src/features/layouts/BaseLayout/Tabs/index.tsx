@@ -1,8 +1,7 @@
 export default function Tabs() {
   const { Layout } = ATheme.useToken().token!
-
-  const { records } = useTabRecordStore()
-  const routeState = useRouterState()
+  const tabStore = useTabStore()
+  const router = useRouter()
   const navigate = useNavigate()
 
   const onEdit = (
@@ -10,21 +9,18 @@ export default function Tabs() {
     action: 'add' | 'remove'
   ) => {
     if (action === 'remove' && typeof targetKey === 'string') {
-      useTabRecordStore.getState().removeRecordByPath(targetKey)
-      // switch to previous tab
-      const historyRecords = useTabRecordStore.getState().records
+      tabStore.removeRecordByPath(targetKey)
+      // 切换至上一个 Tab
+      const historyRecords = tabStore.records
       if (historyRecords.length > 0) {
         const lastRecord = historyRecords.at(-1)
         if (lastRecord) {
-          navigate({
-            to: lastRecord.path
-          })
+          navigate({ to: lastRecord.path })
         }
       }
     }
   }
 
-  const router = useRouter()
   const generateTitle = (path: string) => {
     const item = router.matchRoutes(path, {})
     const { title } = item.at(-1)!.staticData
@@ -33,18 +29,21 @@ export default function Tabs() {
 
   return (
     <ATabs
-      className="w-full border-[1px] border-gray-50 bg-gray-200 dark:border-gray-950"
+      className="border-b border-gray-300 dark:border-gray-950"
+      style={{
+        backgroundColor: Layout!.headerBg,
+        padding: '8px 0 0 8px'
+      }}
+      tabBarStyle={{
+        marginBottom: 0
+      }}
       tabPosition="top"
       type="editable-card"
       hideAdd
-      activeKey={routeState.location.pathname}
+      activeKey={router.state.location.pathname}
       onEdit={onEdit}
-      style={{
-        backgroundColor: Layout!.headerBg,
-        padding: '12px 0 0 12px'
-      }}
       size="small"
-      items={records.map(({ path }) => ({
+      items={tabStore.records.map(({ path }) => ({
         label: (
           <ADropdown
             key={path}
@@ -58,8 +57,8 @@ export default function Tabs() {
                         label: '关闭其他标签',
                         key: 'close-others',
                         onClick: () => {
-                          useTabRecordStore.getState().clearRecords()
-                          useTabRecordStore.getState().addRecord({
+                          tabStore.clearRecords()
+                          tabStore.addRecord({
                             path,
                             active: true
                           })
@@ -69,10 +68,8 @@ export default function Tabs() {
                         label: '关闭所有标签',
                         key: 'close-all',
                         onClick: () => {
-                          useTabRecordStore.getState().clearRecords()
-                          navigate({
-                            to: '/'
-                          })
+                          tabStore.clearRecords()
+                          navigate({ to: '/' })
                         }
                       }
                     ]

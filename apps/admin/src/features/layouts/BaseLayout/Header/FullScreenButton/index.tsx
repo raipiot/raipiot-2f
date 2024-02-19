@@ -24,7 +24,7 @@ export default function FullScreenButton() {
     >
       <Icon
         isFullscreen={isFullscreen}
-        className="cursor-pointer text-xl"
+        className="cursor-pointer"
         onClick={toggleFullscreen}
       />
     </ATooltip>

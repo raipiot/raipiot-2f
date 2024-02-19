@@ -1,9 +1,8 @@
-// import Breadcrumb from './Breadcrumb'
 import FullScreenButton from './FullScreenButton'
-// import LanguageButton from './LanguageButton'
+import LanguageButton from './LanguageButton'
 import MenuVisibilityToggle from './MenuVisibilityToggle'
 import ThemeToggle from './ThemeToggle'
-// import UserAvatar from './UserAvatar'
+import UserAvatar from './UserAvatar'
 
 export default function Header() {
   return (
@@ -20,9 +19,9 @@ export default function Header() {
 
       <div className="flex items-center justify-start !space-x-4">
         <FullScreenButton />
-        {/* <LanguageButton /> */}
+        <LanguageButton />
         <ThemeToggle />
-        {/* <UserAvatar /> */}
+        <UserAvatar />
       </div>
     </ALayout.Header>
   )

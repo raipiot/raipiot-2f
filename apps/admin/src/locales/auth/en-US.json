@@ -1,0 +1,16 @@
+{
+  "ALREADY.HAVE.ACCOUNT": "Already have an account?",
+  "FORGOT.PASSWORD": "Forgot password",
+  "LOG.OUT.SUCCESS": "Logout success",
+  "LOGIN": "Login",
+  "LOGIN.AS.ADMIN": "Login as Admin",
+  "LOGIN.AS.SSO": "Login via SSO",
+  "NEED.ACCOUNT": "Need an account?",
+  "SIGN.UP": "Sign up",
+  "THIRD.PARTY.LOGIN": "Third party login",
+  "WELCOME.BACK": "Welcome back!",
+  "REMEMBER.PASSWORD": "Remember password",
+  "TENANT.CODE": "Tenant code",
+  "USERNAME": "Username",
+  "PASSWORD": "Password"
+}

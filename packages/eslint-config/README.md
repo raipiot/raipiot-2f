@@ -1,1 +1,0 @@
-# @raipiot-srm/eslint-config

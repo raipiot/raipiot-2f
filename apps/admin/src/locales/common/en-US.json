@@ -44,7 +44,6 @@
   "PRINT": "Print",
   "REFRESH": "Refresh",
   "REMARK": "Remark",
-  "REQUEST.GEOLOCATION": "For your experience, we need your location information.",
   "RESET": "Reset",
   "SAVE": "Save",
   "SEARCH": "Search",
@@ -57,9 +56,6 @@
   "TYPE": "Type",
   "UNKNOWN.ERROR": "Unknown Error",
   "UPLOAD": "Upload",
-  "VALUE": "Value",
-  "VERIFY": "Verify",
-  "VERIFY.OR.NOT": "Verify or not",
   "VIEW": "View",
   "Y": "Yes",
   "COPY.SUCCESS": "Copy success"

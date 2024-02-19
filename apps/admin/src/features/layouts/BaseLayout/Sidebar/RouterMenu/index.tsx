@@ -1,10 +1,9 @@
-import { getMenuTree } from '@/constants'
-import type { MenuItem } from '@/types'
+import { type MenuItem, routerMenus } from '@/features/menus'
 
-export default function Menu() {
+export default function RouterMenu() {
   const { siderBg } = ATheme.useToken().token.Layout!
   const navigate = useNavigate()
-  const location = useLocation()
+  const routerState = useRouterState()
 
   // 选中项
   const [selectedKeys, setSelectedKeys] = useState<string[]>([])
@@ -13,31 +12,31 @@ export default function Menu() {
 
   // 根据路由地址，设置菜单的选中项和展开项
   useEffect(() => {
-    setSelectedKeys([location.pathname])
-    setOpenKeys((value) =>
-      location.pathname
+    setSelectedKeys([routerState.location.pathname])
+    setOpenKeys((value) => [
+      ...routerState.location.pathname
         .split('/')
         .filter(Boolean)
         .reduce<string[]>((acc, cur) => {
           const key = `${acc}/${cur}`
           return [...acc, key]
-        }, [])
-        .concat(value)
-    )
-  }, [location.pathname])
+        }, []),
+      ...value
+    ])
+  }, [routerState.location.pathname])
 
   // 点击菜单项，跳转到对应的路由
   const handleClickMenuItem = (menuInfo: MenuItem) => {
     if (menuInfo?.key && typeof menuInfo.key === 'string') {
-      navigate(menuInfo.key)
+      navigate({ to: menuInfo.key })
     }
   }
 
   return (
     <AMenu
-      className="h-[calc(100%-96px)] !border-0"
+      className="!border-0 !border-l border-gray-300 dark:border-gray-950"
       style={{ backgroundColor: siderBg }}
-      items={getMenuTree()}
+      items={routerMenus()}
       selectedKeys={selectedKeys}
       openKeys={openKeys}
       onOpenChange={setOpenKeys}

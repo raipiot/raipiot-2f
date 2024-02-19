@@ -21,14 +21,14 @@ import Inspect from 'vite-plugin-inspect'
 import WebfontDownload from 'vite-plugin-webfont-dl'
 
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd())
+  const environment = loadEnv(mode, process.cwd())
   const {
     VITE_PORT,
     VITE_BASE_API_PREFIX,
     VITE_BASE_API_URL,
     VITE_MOCK_API_PREFIX,
     VITE_MOCK_API_URL
-  } = env as ImportMetaEnv
+  } = environment as ImportMetaEnv
 
   const port = Number.parseInt(VITE_PORT, 10) || 5173
   const proxy: Record<string, string | ProxyOptions> = {
@@ -52,7 +52,11 @@ export default defineConfig(({ mode }) => {
       Icons({
         autoInstall: true,
         compiler: 'jsx',
-        jsx: 'react'
+        jsx: 'react',
+        iconCustomizer(_collection, _icon, props) {
+          props.opacity = '0.8' // 图标添加灰度
+          props.fontSize = '1.125rem' // 默认图标尺寸为 TailwindCSS text-lg 大小
+        }
       }),
       AutoImport({
         dts: '@types/auto-imports.d.ts',
@@ -64,19 +68,11 @@ export default defineConfig(({ mode }) => {
           ...reactPresets,
           {
             from: '@/constants',
-            imports: ['GlobalEnvConfig']
+            imports: ['GlobalEnvConfig', 'AppMetadata']
           },
           {
             from: '@/i18n',
             imports: [['default', 'i18n']]
-          },
-          {
-            from: '@tanstack/react-router',
-            imports: ['useMatches', 'useRouterState']
-          },
-          {
-            from: 'framer-motion',
-            imports: ['motion', 'AnimatePresence']
           }
         ],
         resolvers: [
@@ -94,7 +90,7 @@ export default defineConfig(({ mode }) => {
         dirs: ['src/api/**', 'src/components/**', 'src/hooks/**', 'src/store/**', 'src/utils/**']
       }),
       BootstrapAnimation({
-        name: 'SRM Admin',
+        name: 'raipiot SRM',
         description: 'raipiot SRM SaaS 管理系统',
         lang: 'zh-CN'
       }),
