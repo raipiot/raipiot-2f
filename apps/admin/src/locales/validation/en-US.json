@@ -19,5 +19,6 @@
   "PHONE.NUMBER": "Please enter a phone number",
   "PHONE.NUMBER.FORMAT": "Please enter phone number in the correct format",
   "REMARK": "Please enter the remark",
-  "USERNAME": "Please enter username"
+  "USERNAME": "Please enter username",
+  "TENANT.CODE": "Please enter tenant code"
 }

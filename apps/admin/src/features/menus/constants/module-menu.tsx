@@ -1,49 +1,52 @@
+import { ModuleMenuCode } from '../enums'
 import type { ModuleMenuItem } from '../types'
+
+const t = i18n.getFixedT(null, 'ROUTER')
 
 export const moduleMenus: ModuleMenuItem[] = [
   {
-    name: '仪表盘',
-    code: 'dashboard',
+    title: () => t('MODULE.MENU.DASHBOARD'),
+    code: ModuleMenuCode.DASHBOARD,
     icon: <MaterialSymbolsGridViewOutlineRounded />
   },
   {
-    name: '供应商',
-    code: 'supplier',
+    title: () => t('MODULE.MENU.SUPPLIER'),
+    code: ModuleMenuCode.SUPPLIER,
     icon: <MaterialSymbolsGroupRounded />
   },
   {
-    name: '寻源',
-    code: 'origin',
+    title: () => t('MODULE.MENU.SOURCE'),
+    code: ModuleMenuCode.SOURCE,
     icon: <MaterialSymbolsManageSearchRounded />
   },
   {
-    name: '合同',
-    code: 'contract',
+    title: () => t('MODULE.MENU.CONTRACT'),
+    code: ModuleMenuCode.CONTRACT,
     icon: <MaterialSymbolsContractOutlineRounded />
   },
   {
-    name: '采购',
-    code: 'purchase',
+    title: () => t('MODULE.MENU.PURCHASE'),
+    code: ModuleMenuCode.PURCHASE,
     icon: <MaterialSymbolsLocalShippingOutlineRounded />
   },
   {
-    name: '结算',
-    code: 'checkout',
+    title: () => t('MODULE.MENU.BILLING'),
+    code: ModuleMenuCode.BILLING,
     icon: <MaterialSymbolsPaidOutlineRounded />
   },
   {
-    name: '商城',
-    code: 'shopping',
+    title: () => t('MODULE.MENU.SHOPPING'),
+    code: ModuleMenuCode.SHOPPING,
     icon: <MaterialSymbolsShoppingCartOutlineRounded />
   },
   {
-    name: '集团',
-    code: 'group',
+    title: () => t('MODULE.MENU.GROUP'),
+    code: ModuleMenuCode.GROUP,
     icon: <MaterialSymbolsAccountTreeOutlineRounded />
   },
   {
-    name: '系统',
-    code: 'system',
+    title: () => t('MODULE.MENU.SYSTEM'),
+    code: ModuleMenuCode.SYSTEM,
     icon: <MaterialSymbolsSettingsOutlineRounded />
   }
 ]

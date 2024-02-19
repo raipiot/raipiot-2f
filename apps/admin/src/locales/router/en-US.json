@@ -1,1 +1,22 @@
-{}
+{
+  "LOGIN": "Login",
+  "SIGN.UP": "Signup",
+  "FORGOT.PASSWORD": "Forgot Password",
+  "DASHBOARD": "Dashboard",
+  "USER.INFO": "User Info",
+  "CHANGE.PASSWORD": "Change Password",
+  "403": "Access Denied",
+  "404": "Not Found",
+  "500": "Internal Server Error",
+  "MODULE.MENU": {
+    "DASHBOARD": "Dashboard",
+    "SUPPLIER": "Supplier",
+    "SOURCE": "Source",
+    "CONTRACT": "Contract",
+    "PURCHASE": "Purchase",
+    "BILLING": "Billing",
+    "SHOPPING": "Mall",
+    "GROUP": "Group",
+    "SYSTEM": "System"
+  }
+}

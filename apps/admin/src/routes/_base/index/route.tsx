@@ -1,5 +1,7 @@
+const t = i18n.getFixedT(null, 'ROUTER')
+
 export const Route = createFileRoute('/_base/')({
   staticData: {
-    title: '首页'
+    title: () => t('DASHBOARD')
   }
 })

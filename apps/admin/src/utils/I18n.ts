@@ -1,7 +1,7 @@
-import type { I18nString } from '@/features/i18n'
+import type { MaybeI18nString } from '@/features/i18n'
 
 export class I18nUtils {
-  static getText(text?: I18nString) {
+  static getText(text?: MaybeI18nString) {
     if (!text) {
       return ''
     }

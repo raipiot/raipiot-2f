@@ -12,6 +12,7 @@ export const Route = createLazyFileRoute('/_portal/login')({
 })
 
 function Login() {
+  const { t } = useTranslation(['AUTH', 'VALIDATION'])
   const { form, clearPassword, setAdminAccount, handleRememberPassword } = useLoginForm()
   const { handleLoginRedirect, handleForgotPassword, handleSignup, handleSSO } = useRedirect()
 
@@ -54,8 +55,9 @@ function Login() {
 
   return (
     <div className="absolute inset-0 m-auto flex h-fit w-[360px] max-w-[90%] flex-col rounded-lg bg-[#ffffff] p-8 shadow-md dark:bg-[#222222]">
-      <div className="mb-4 flex flex-col items-center">
-        <div className="text-xl">{BrandConfig.companyName} SRM</div>
+      <div className="mb-4 flex flex-col items-center space-y-2">
+        <span className="text-xl">{BrandConfig.companyName} SRM</span>
+        <span>🎉 {t('WELCOME.BACK')}</span>
       </div>
 
       <AForm<LoginInfo>
@@ -70,22 +72,22 @@ function Login() {
       >
         <AForm.Item
           name="tenantId"
-          rules={[{ required: true, message: '请输入租户编号' }]}
+          rules={[{ required: true, message: t('VALIDATION:TENANT.CODE') }]}
           rootClassName="!mb-4"
         >
           <AInput
-            placeholder="租户编号"
+            placeholder={t('TENANT.CODE')}
             allowClear
           />
         </AForm.Item>
 
         <AForm.Item
           name="username"
-          rules={[{ required: true, message: '请输入用户名' }]}
+          rules={[{ required: true, message: t('VALIDATION:USERNAME') }]}
           rootClassName="!mb-4"
         >
           <AInput
-            placeholder="用户名"
+            placeholder={t('USERNAME')}
             autoComplete="username"
             allowClear
           />
@@ -93,11 +95,11 @@ function Login() {
 
         <AForm.Item
           name="password"
-          rules={[{ required: true, message: '请输入密码' }]}
+          rules={[{ required: true, message: t('VALIDATION:PASSWORD') }]}
           rootClassName="!mb-2"
         >
           <AInput.Password
-            placeholder="密码"
+            placeholder={t('PASSWORD')}
             autoComplete="current-password"
           />
         </AForm.Item>
@@ -108,7 +110,7 @@ function Login() {
             valuePropName="checked"
             rootClassName="!mb-0"
           >
-            <ACheckbox>记住密码</ACheckbox>
+            <ACheckbox>{t('REMEMBER.PASSWORD')}</ACheckbox>
           </AForm.Item>
 
           <AForm.Item rootClassName="!mb-0">
@@ -119,7 +121,7 @@ function Login() {
                 onClick={handleForgotPassword}
               >
                 <span className="text-xs font-semibold underline-offset-4 hover:underline">
-                  忘记密码
+                  {t('FORGOT.PASSWORD')}
                 </span>
               </AButton>
             </AConfigProvider>
@@ -135,7 +137,7 @@ function Login() {
               htmlType="submit"
               onClick={() => handleClickLoginBtn(LoginType.USER)}
             >
-              登录
+              {t('LOGIN')}
             </AButton>
 
             <ADivider />
@@ -147,28 +149,30 @@ function Login() {
                 loading={currentLoginType === LoginType.ADMIN && loginMutation.isPending}
                 onClick={() => handleClickLoginBtn(LoginType.ADMIN)}
               >
-                管理员登录
+                {t('LOGIN.AS.ADMIN')}
               </AButton>
               <AButton
                 className="w-[calc(50%-4px)]"
                 disabled={loginMutation.isPending}
                 onClick={() => handleClickLoginBtn(LoginType.SSO)}
               >
-                SSO 登录
+                {t('LOGIN.AS.SSO')}
               </AButton>
             </div>
           </div>
         </AForm.Item>
 
         <div className="flex items-center space-x-1 text-xs">
-          <span>需要账号？</span>
+          <span>{t('NEED.ACCOUNT')}</span>
           <AConfigProvider theme={{ components: { Button: { paddingInlineSM: 0 } } }}>
             <AButton
               size="small"
               type="link"
               onClick={handleSignup}
             >
-              <span className="text-xs font-semibold underline-offset-4 hover:underline">注册</span>
+              <span className="text-xs font-semibold underline-offset-4 hover:underline">
+                {t('SIGN.UP')}
+              </span>
             </AButton>
           </AConfigProvider>
         </div>

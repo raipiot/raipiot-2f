@@ -1,15 +1,12 @@
 export const Route = createLazyFileRoute('/_base/')({
-  component: Index
+  component: Dashboard
 })
 
-function Index() {
+function Dashboard() {
   const userStore = useUserStore()
   const navigate = useNavigate()
   return (
     <div className="flex space-x-2 p-1">
-      <Link to="/dashboard">
-        <AButton>仪表盘</AButton>
-      </Link>
       <Link to="/change-password">
         <AButton>修改密码</AButton>
       </Link>

@@ -7,6 +7,7 @@ export const Route = createLazyFileRoute('/_portal/signup')({
 })
 
 function Signup() {
+  const { t } = useTranslation(['AUTH', 'VALIDATION'])
   const match = useMatch({ from: '/_portal/signup' })
   const { form } = useSignupForm()
   const { handleSignupRedirect, handleLogin } = useRedirect()
@@ -29,7 +30,7 @@ function Signup() {
   return (
     <div className="absolute inset-0 m-auto flex h-fit w-[360px] max-w-[90%] flex-col rounded-lg bg-[#ffffff] p-8 shadow-md dark:bg-[#222222]">
       <div className="mb-4 flex flex-col items-center">
-        <div className="text-xl">{BrandConfig.companyName} SRM</div>
+        <span className="text-xl">{BrandConfig.companyName} SRM</span>
       </div>
 
       <AForm<SignupInfo>
@@ -46,22 +47,22 @@ function Signup() {
       >
         <AForm.Item
           name="username"
-          rules={[{ required: true, message: '请输入用户名' }]}
+          rules={[{ required: true, message: t('VALIDATION:USERNAME') }]}
           rootClassName="!mb-4"
         >
           <AInput
-            placeholder="用户名"
+            placeholder={t('USERNAME')}
             autoComplete="username"
           />
         </AForm.Item>
 
         <AForm.Item
           name="password"
-          rules={[{ required: true, message: '请输入密码' }]}
+          rules={[{ required: true, message: t('VALIDATION:PASSWORD') }]}
           rootClassName="!mb-4"
         >
           <AInput.Password
-            placeholder="密码"
+            placeholder={t('PASSWORD')}
             autoComplete="password"
           />
         </AForm.Item>
@@ -70,20 +71,20 @@ function Signup() {
           name="confirmPassword"
           dependencies={['password']}
           rules={[
-            { required: true, message: '请输入确认密码' },
+            { required: true, message: t('VALIDATION:CONFIRM.PASSWORD') },
             ({ getFieldValue }) => ({
               validator(_, value) {
                 if (!value || getFieldValue('password') === value) {
                   return Promise.resolve()
                 }
-                return Promise.reject(new Error('两次输入密码不一致'))
+                return Promise.reject(new Error(t('VALIDATION:CONFIRM.PASSWORD.NOT.MATCH')))
               }
             })
           ]}
           rootClassName="!mb-4"
         >
           <AInput.Password
-            placeholder="确认密码"
+            placeholder={t('VALIDATION:CONFIRM.PASSWORD')}
             autoComplete="new-password"
           />
         </AForm.Item>
@@ -102,14 +103,16 @@ function Signup() {
         </AForm.Item>
 
         <div className="flex items-center space-x-1 text-xs">
-          <span>已有账号？</span>
+          <span>{t('ALREADY.HAVE.ACCOUNT')}</span>
           <AConfigProvider theme={{ components: { Button: { paddingInlineSM: 0 } } }}>
             <AButton
               size="small"
               type="link"
               onClick={handleLogin}
             >
-              <span className="text-xs font-semibold underline-offset-4 hover:underline">登录</span>
+              <span className="text-xs font-semibold underline-offset-4 hover:underline">
+                {t('LOGIN')}
+              </span>
             </AButton>
           </AConfigProvider>
         </div>

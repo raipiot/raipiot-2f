@@ -19,7 +19,6 @@ import { Route as PortalSignupRouteImport } from './routes/_portal/signup/route'
 import { Route as PortalLoginRouteImport } from './routes/_portal/login/route'
 import { Route as PortalForgotPasswordRouteImport } from './routes/_portal/forgot-password/route'
 import { Route as BaseUserInfoRouteImport } from './routes/_base/user-info/route'
-import { Route as BaseDashboardRouteImport } from './routes/_base/dashboard/route'
 import { Route as BaseChangePasswordRouteImport } from './routes/_base/change-password/route'
 import { Route as Base500RouteImport } from './routes/_base/500/route'
 import { Route as Base404RouteImport } from './routes/_base/404/route'
@@ -76,13 +75,6 @@ const BaseUserInfoRouteRoute = BaseUserInfoRouteImport.update({
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
   import('./routes/_base/user-info/route.lazy').then((d) => d.Route),
-)
-
-const BaseDashboardRouteRoute = BaseDashboardRouteImport.update({
-  path: '/dashboard',
-  getParentRoute: () => BaseRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_base/dashboard/route.lazy').then((d) => d.Route),
 )
 
 const BaseChangePasswordRouteRoute = BaseChangePasswordRouteImport.update({
@@ -156,10 +148,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseChangePasswordRouteImport
       parentRoute: typeof BaseRouteImport
     }
-    '/_base/dashboard': {
-      preLoaderRoute: typeof BaseDashboardRouteImport
-      parentRoute: typeof BaseRouteImport
-    }
     '/_base/user-info': {
       preLoaderRoute: typeof BaseUserInfoRouteImport
       parentRoute: typeof BaseRouteImport
@@ -193,7 +181,6 @@ export const routeTree = rootRoute.addChildren([
     Base404RouteRoute,
     Base500RouteRoute,
     BaseChangePasswordRouteRoute,
-    BaseDashboardRouteRoute,
     BaseUserInfoRouteRoute,
   ]),
   PortalRouteRoute.addChildren([

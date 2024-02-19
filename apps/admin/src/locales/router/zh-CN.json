@@ -1,1 +1,22 @@
-{}
+{
+  "LOGIN": "登录",
+  "SIGN.UP": "注册",
+  "FORGOT.PASSWORD": "忘记密码",
+  "DASHBOARD": "仪表盘",
+  "USER.INFO": "用户信息",
+  "CHANGE.PASSWORD": "修改密码",
+  "403": "禁止访问",
+  "404": "页面或资源不存在",
+  "500": "服务器错误",
+  "MODULE.MENU": {
+    "DASHBOARD": "仪表盘",
+    "SUPPLIER": "供应商",
+    "SOURCE": "寻源",
+    "CONTRACT": "合同",
+    "PURCHASE": "采购",
+    "BILLING": "结算",
+    "SHOPPING": "商城",
+    "GROUP": "集团",
+    "SYSTEM": "系统"
+  }
+}

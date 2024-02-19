@@ -6,6 +6,8 @@ import zhCN from 'antd/locale/zh_CN'
 import { create } from 'zustand'
 import { subscribeWithSelector } from 'zustand/middleware'
 
+import { router } from '@/router'
+
 interface State {
   lang: string
   locale: Locale
@@ -44,6 +46,7 @@ export const useLangStore = create<State & Actions>()(
 useLangStore.subscribe(
   (state) => state.lang,
   async (lang) => {
+    router.cleanCache()
     i18n.changeLanguage(lang)
     LangUtils.setLang(lang)
     LangUtils.setHtmlLang(lang)

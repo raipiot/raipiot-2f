@@ -11,4 +11,4 @@ export interface LocaleResource {
   resources: Record<string, string>
 }
 
-export type I18nString = string | Fn<string>
+export type MaybeI18nString = string | Fn<string>

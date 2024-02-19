@@ -61,8 +61,8 @@ export const useTabRecordStore = create<State & Actions>()(
       }
     }),
     {
-      name: 'route-record-storage', // name of the item in the storage (must be unique)
-      storage: createJSONStorage(() => localStorage) // (optional) by default, 'localStorage' is used
+      name: 'route-records',
+      storage: createJSONStorage(() => localStorage)
     }
   )
 )

@@ -8,7 +8,10 @@ export default function ModuleMenu() {
       <Logo />
       <div className="flex  flex-col items-center space-y-4">
         {moduleMenus.map((i) => (
-          <div className="flex cursor-pointer flex-col items-center space-y-1 py-1 transition-all hover:scale-110 active:opacity-85">
+          <div
+            key={i.code}
+            className="flex cursor-pointer flex-col items-center space-y-1.5 py-1 transition-all hover:scale-110 active:opacity-85"
+          >
             <div>{i.icon}</div>
             <span className="text-xs">{I18nUtils.getText(i.title)}</span>
           </div>

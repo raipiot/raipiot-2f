@@ -1,5 +1,7 @@
+const t = i18n.getFixedT(null, 'ROUTER')
+
 export const Route = createFileRoute('/_base/change-password')({
   staticData: {
-    title: '修改密码'
+    title: () => t('CHANGE.PASSWORD')
   }
 })

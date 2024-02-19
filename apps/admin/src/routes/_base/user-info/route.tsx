@@ -1,5 +1,7 @@
+const t = i18n.getFixedT(null, 'ROUTER')
+
 export const Route = createFileRoute('/_base/user-info')({
   staticData: {
-    title: '用户信息'
+    title: () => t('USER.INFO')
   }
 })

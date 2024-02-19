@@ -1,13 +1,16 @@
 {
   "ALREADY.HAVE.ACCOUNT": "已有账号？",
-  "AUTHORIZING": "正在授权...",
   "FORGOT.PASSWORD": "忘记密码",
   "LOG.OUT.SUCCESS": "登出成功",
   "LOGIN": "登录",
   "LOGIN.AS.ADMIN": "以管理员登录",
-  "LOGIN.AS.VISITOR": "以访客登录",
+  "LOGIN.AS.SSO": "单点登录",
   "NEED.ACCOUNT": "需要账号？",
   "SIGN.UP": "注册",
   "THIRD.PARTY.LOGIN": "第三方登录",
-  "WELCOME.BACK": "欢迎回来！"
+  "WELCOME.BACK": "欢迎回来！",
+  "REMEMBER.PASSWORD": "记住密码",
+  "TENANT.CODE": "租户编号",
+  "USERNAME": "用户名",
+  "PASSWORD": "密码"
 }

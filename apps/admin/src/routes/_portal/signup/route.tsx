@@ -1,5 +1,7 @@
+const t = i18n.getFixedT(null, 'ROUTER')
+
 export const Route = createFileRoute('/_portal/signup')({
   staticData: {
-    title: '注册'
+    title: () => t('SIGN.UP')
   }
 })
