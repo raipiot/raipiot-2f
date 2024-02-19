@@ -74,7 +74,7 @@ export class HttpRequest {
       (res) => {
         const {
           data,
-          msg,
+          // msg,
           error_code: errorCode,
           error_description: errorDescription
         } = res.data ?? {}
@@ -86,9 +86,9 @@ export class HttpRequest {
         }
 
         // 成功消息提示
-        if (msg) {
-          AMessage.success(msg)
-        }
+        // if (msg) {
+        //   AMessage.success(msg)
+        // }
         return data ?? res.data
       },
       async (err: AxiosError<R>) => {

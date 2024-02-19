@@ -1,3 +1,5 @@
+import { userInfoQueryOptions } from '@/features/users'
+
 enum UserAction {
   'USER.INFO' = '1',
   'CHANGE.PASSWORD' = '2',
@@ -7,13 +9,13 @@ enum UserAction {
 export default function UserAvatar() {
   const { t } = useTranslation(['LAYOUT', 'AUTH'])
   const { message } = AApp.useApp()
-  const userStore = useUserStore()
   const navigate = useNavigate()
+
+  const { data: userInfo } = useSuspenseQuery(userInfoQueryOptions)
 
   const logoutMutation = useMutation({
     mutationFn: () => AuthAPI.logout(),
     onSuccess: () => {
-      userStore.clearUser()
       AuthUtils.clearAccessToken()
       AuthUtils.clearRefreshToken()
       navigate({ to: '/login', replace: true })
@@ -57,10 +59,6 @@ export default function UserAvatar() {
     }
   }
 
-  if (!userStore.user?.id) {
-    return null
-  }
-
   return (
     <ADropdown
       menu={{
@@ -68,9 +66,9 @@ export default function UserAvatar() {
         onClick: handleClickMenu
       }}
     >
-      {userStore.user.avatar ? (
+      {userInfo.avatar ? (
         <AAvatar
-          src={userStore.user.avatar}
+          src={userInfo.avatar}
           size={22}
           className="cursor-pointer !bg-gray-300 hover:shadow"
         />
