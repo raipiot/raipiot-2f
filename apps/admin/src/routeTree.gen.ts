@@ -30,95 +30,73 @@ import { Route as BaseSystemUsersRouteImport } from './routes/_base/system/users
 
 const PortalRouteRoute = PortalRouteImport.update({
   id: '/_portal',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any).lazy(() => import('./routes/_portal/route.lazy').then((d) => d.Route))
 
 const BaseRouteRoute = BaseRouteImport.update({
   id: '/_base',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any).lazy(() => import('./routes/_base/route.lazy').then((d) => d.Route))
 
 const RouteRoute = RouteImport.update({
   path: '/*',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRoute
 } as any)
 
 const PortalSsoRouteRoute = PortalSsoRouteImport.update({
   path: '/sso',
-  getParentRoute: () => PortalRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_portal/sso/route.lazy').then((d) => d.Route),
-)
+  getParentRoute: () => PortalRouteRoute
+} as any).lazy(() => import('./routes/_portal/sso/route.lazy').then((d) => d.Route))
 
 const PortalSignupRouteRoute = PortalSignupRouteImport.update({
   path: '/signup',
-  getParentRoute: () => PortalRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_portal/signup/route.lazy').then((d) => d.Route),
-)
+  getParentRoute: () => PortalRouteRoute
+} as any).lazy(() => import('./routes/_portal/signup/route.lazy').then((d) => d.Route))
 
 const PortalLoginRouteRoute = PortalLoginRouteImport.update({
   path: '/login',
-  getParentRoute: () => PortalRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_portal/login/route.lazy').then((d) => d.Route),
-)
+  getParentRoute: () => PortalRouteRoute
+} as any).lazy(() => import('./routes/_portal/login/route.lazy').then((d) => d.Route))
 
 const PortalForgotPasswordRouteRoute = PortalForgotPasswordRouteImport.update({
   path: '/forgot-password',
-  getParentRoute: () => PortalRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_portal/forgot-password/route.lazy').then((d) => d.Route),
-)
+  getParentRoute: () => PortalRouteRoute
+} as any).lazy(() => import('./routes/_portal/forgot-password/route.lazy').then((d) => d.Route))
 
 const BaseUserInfoRouteRoute = BaseUserInfoRouteImport.update({
   path: '/user-info',
-  getParentRoute: () => BaseRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_base/user-info/route.lazy').then((d) => d.Route),
-)
+  getParentRoute: () => BaseRouteRoute
+} as any).lazy(() => import('./routes/_base/user-info/route.lazy').then((d) => d.Route))
 
 const BaseChangePasswordRouteRoute = BaseChangePasswordRouteImport.update({
   path: '/change-password',
-  getParentRoute: () => BaseRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_base/change-password/route.lazy').then((d) => d.Route),
-)
+  getParentRoute: () => BaseRouteRoute
+} as any).lazy(() => import('./routes/_base/change-password/route.lazy').then((d) => d.Route))
 
 const Base500RouteRoute = Base500RouteImport.update({
   path: '/500',
-  getParentRoute: () => BaseRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_base/500/route.lazy').then((d) => d.Route),
-)
+  getParentRoute: () => BaseRouteRoute
+} as any).lazy(() => import('./routes/_base/500/route.lazy').then((d) => d.Route))
 
 const Base404RouteRoute = Base404RouteImport.update({
   path: '/404',
-  getParentRoute: () => BaseRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_base/404/route.lazy').then((d) => d.Route),
-)
+  getParentRoute: () => BaseRouteRoute
+} as any).lazy(() => import('./routes/_base/404/route.lazy').then((d) => d.Route))
 
 const Base403RouteRoute = Base403RouteImport.update({
   path: '/403',
-  getParentRoute: () => BaseRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_base/403/route.lazy').then((d) => d.Route),
-)
+  getParentRoute: () => BaseRouteRoute
+} as any).lazy(() => import('./routes/_base/403/route.lazy').then((d) => d.Route))
 
 const BaseIndexRouteRoute = BaseIndexRouteImport.update({
   path: '/',
-  getParentRoute: () => BaseRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_base/index/route.lazy').then((d) => d.Route),
-)
+  getParentRoute: () => BaseRouteRoute
+} as any).lazy(() => import('./routes/_base/index/route.lazy').then((d) => d.Route))
 
 const BaseSystemUsersRouteRoute = BaseSystemUsersRouteImport.update({
   path: '/system/users',
-  getParentRoute: () => BaseRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_base/system/users/route.lazy').then((d) => d.Route),
-)
+  getParentRoute: () => BaseRouteRoute
+} as any).lazy(() => import('./routes/_base/system/users/route.lazy').then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
 
@@ -194,14 +172,14 @@ export const routeTree = rootRoute.addChildren([
     Base500RouteRoute,
     BaseChangePasswordRouteRoute,
     BaseUserInfoRouteRoute,
-    BaseSystemUsersRouteRoute,
+    BaseSystemUsersRouteRoute
   ]),
   PortalRouteRoute.addChildren([
     PortalForgotPasswordRouteRoute,
     PortalLoginRouteRoute,
     PortalSignupRouteRoute,
-    PortalSsoRouteRoute,
-  ]),
+    PortalSsoRouteRoute
+  ])
 ])
 
 /* prettier-ignore-end */
