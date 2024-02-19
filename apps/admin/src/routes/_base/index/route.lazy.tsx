@@ -10,8 +10,11 @@ function Index() {
       <Link to="/dashboard">
         <AButton>仪表盘</AButton>
       </Link>
-      <Link to="/test">
-        <AButton>测试</AButton>
+      <Link to="/change-password">
+        <AButton>修改密码</AButton>
+      </Link>
+      <Link to="/user-info">
+        <AButton>用户信息</AButton>
       </Link>
       <AButton
         onClick={() => {

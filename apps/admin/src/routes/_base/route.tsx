@@ -1,6 +1,5 @@
 export const Route = createFileRoute('/_base')({
-  beforeLoad: async (params) => {
-    const { location } = params
+  beforeLoad: async ({ location }) => {
     if (!AuthUtils.isAuthenticated()) {
       throw redirect({
         to: '/login',
