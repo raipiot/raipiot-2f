@@ -1,13 +1,24 @@
 import { create } from 'zustand'
 
-interface State {}
+import { ModuleMenuCode } from '@/features/menus'
 
-interface Actions {}
-
-const initialState: State = {
-  activeMenuKey: ''
+interface State {
+  activeModuleMenuCode: ModuleMenuCode
 }
 
-export const useMenuStore = create<State & Actions>()(() => ({
-  ...initialState
+interface Actions {
+  setActiveModuleMenuCode: (activeModuleMenuCode: ModuleMenuCode) => void
+}
+
+const initialState: State = {
+  activeModuleMenuCode: ModuleMenuCode.DASHBOARD
+}
+
+export const useMenuStore = create<State & Actions>()((set) => ({
+  ...initialState,
+
+  /**
+   * 设置当前的模块菜单
+   */
+  setActiveModuleMenuCode: (activeModuleMenuCode: ModuleMenuCode) => set({ activeModuleMenuCode })
 }))

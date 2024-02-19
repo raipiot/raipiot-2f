@@ -38,27 +38,22 @@ export const useTabStore = create<State & Actions>()(
        * 添加一个路由地址到记录中
        * @param record 路由记录
        */
-      addRecord: (record: Record) => {
+      addRecord: (record: Record) =>
         set((state) => ({
           records: uniqBy([...state.records, record], 'path')
-        }))
-      },
+        })),
       /**
        * 移除一个路由地址
        * @param path 路由地址
        */
-      removeRecordByPath: (path: string) => {
+      removeRecordByPath: (path: string) =>
         set((state) => ({
           records: state.records.filter((r) => r.path !== path || r.path === '/')
-        }))
-      },
-
+        })),
       /**
        * 清空所有记录
        */
-      clearRecords: () => {
-        set(() => ({ records: [...initialState.records] }))
-      }
+      clearRecords: () => set(() => ({ records: [...initialState.records] }))
     }),
     {
       name: 'tab-store',

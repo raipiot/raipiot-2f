@@ -1,4 +1,4 @@
 {
-  "extends": "@raipiot-srm",
+  "extends": "@raipiot-infra",
   "ignorePatterns": ["src-tauri"]
 }

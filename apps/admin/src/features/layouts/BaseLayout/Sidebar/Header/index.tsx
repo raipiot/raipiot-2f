@@ -22,11 +22,8 @@ export default function Header() {
         <span
           className={clsx([
             'cursor-pointer whitespace-nowrap text-sm tracking-wide transition-[margin,width]',
-            sidebarStore.isDisplay
-              ? sidebarStore.isCollapse
-                ? 'ml-0 hidden'
-                : 'ml-1 w-auto'
-              : 'hidden'
+            sidebarStore.isDisplay && sidebarStore.isCollapse ? 'ml-0 hidden' : 'ml-1 w-auto',
+            !sidebarStore.isDisplay && 'hidden'
           ])}
         >
           {AppMetadata.appName}

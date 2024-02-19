@@ -11,4 +11,5 @@ export interface LocaleResource {
   resources: Record<string, string>
 }
 
+// TODO: 考虑移到 infra
 export type MaybeI18nString = string | Fn<string>

@@ -21,14 +21,14 @@ import Inspect from 'vite-plugin-inspect'
 import WebfontDownload from 'vite-plugin-webfont-dl'
 
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd())
+  const environment = loadEnv(mode, process.cwd())
   const {
     VITE_PORT,
     VITE_BASE_API_PREFIX,
     VITE_BASE_API_URL,
     VITE_MOCK_API_PREFIX,
     VITE_MOCK_API_URL
-  } = env as ImportMetaEnv
+  } = environment as ImportMetaEnv
 
   const port = Number.parseInt(VITE_PORT, 10) || 5173
   const proxy: Record<string, string | ProxyOptions> = {
@@ -73,14 +73,6 @@ export default defineConfig(({ mode }) => {
           {
             from: '@/i18n',
             imports: [['default', 'i18n']]
-          },
-          {
-            from: '@tanstack/react-router',
-            imports: ['useMatches', 'useRouterState']
-          },
-          {
-            from: 'framer-motion',
-            imports: ['motion', 'AnimatePresence']
           }
         ],
         resolvers: [
