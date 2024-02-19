@@ -56,7 +56,7 @@ export const useTabStore = create<State & Actions>()(
       clearRecords: () => set(() => ({ records: [...initialState.records] }))
     }),
     {
-      name: 'tab-store',
+      name: 'tab_store',
       storage: createJSONStorage(() => localStorage)
     }
   )
