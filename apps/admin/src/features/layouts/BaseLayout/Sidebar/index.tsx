@@ -1,7 +1,7 @@
 import CollapseButton from './CollapseButton'
-import Header from './Header'
 import Mask from './Mask'
-import Menu from './Menu'
+import ModuleMenu from './ModuleMenu'
+import RouterMenu from './RouterMenu'
 
 export default function Sidebar() {
   const sidebarStore = useSidebarStore()
@@ -16,11 +16,13 @@ export default function Sidebar() {
         collapsed={sidebarStore.isCollapse}
         onCollapse={(value) => sidebarStore.setIsCollapse(value)}
         width={sidebarStore.isDisplay ? 224 : 0}
-        collapsedWidth={sidebarStore.isDisplay ? 64 : 0}
+        collapsedWidth={sidebarStore.isDisplay ? 66 : 0}
         trigger={null}
       >
-        <Header />
-        <Menu />
+        <div className="flex h-[calc(100%-40px)]">
+          <ModuleMenu />
+          <RouterMenu />
+        </div>
         <CollapseButton />
       </ALayout.Sider>
       <Mask />

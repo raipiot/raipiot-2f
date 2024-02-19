@@ -1,6 +1,6 @@
 import type { MenuItem } from '@/features/menus'
 
-export default function Menu() {
+export default function RouterMenu() {
   const { siderBg } = ATheme.useToken().token.Layout!
   const navigate = useNavigate()
   const routerState = useRouterState()
@@ -34,7 +34,7 @@ export default function Menu() {
 
   return (
     <AMenu
-      className="h-[calc(100%-96px)] !border-0"
+      className="!border-0"
       style={{ backgroundColor: siderBg }}
       items={[]}
       selectedKeys={selectedKeys}

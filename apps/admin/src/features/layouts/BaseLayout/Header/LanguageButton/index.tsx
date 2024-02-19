@@ -31,7 +31,7 @@ export default function LanguageButton() {
       }}
       placement="bottom"
     >
-      <MaterialSymbolsLanguage className="cursor-pointer" />
+      <MaterialSymbolsTranslateRounded className="cursor-pointer" />
     </ADropdown>
   )
 }
