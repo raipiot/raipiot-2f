@@ -3,6 +3,7 @@
   "FORGOT.PASSWORD": "Forgot password",
   "LOG.OUT.SUCCESS": "Logout success",
   "LOGIN": "Login",
+  "CONFIRM": "Confirm",
   "LOGIN.AS.ADMIN": "Login as Admin",
   "LOGIN.AS.SSO": "Login via SSO",
   "NEED.ACCOUNT": "Need an account?",
@@ -12,5 +13,15 @@
   "REMEMBER.PASSWORD": "Remember password",
   "TENANT.CODE": "Tenant code",
   "USERNAME": "Username",
-  "PASSWORD": "Password"
+  "PASSWORD": "Password",
+  "EMAIL": "Email",
+  "COMPANY.NAME": "Company name",
+  "CONFIRM.PASSWORD": "Confirm password",
+  "LOGIN.PASSWORD": "Login password",
+  "REGISTER.COUNTRY": "Register country or region",
+  "PHOTO.NUMBER": "Photo number",
+  "VERIFICATION.CODE": "Verification code",
+  "GET.SMS.VERIFICATION.CODE": "Get SMS verification code",
+  "SEND.VERIFICATION.CODE.SUCCESS": "Send verification code success",
+  "PLEASE.AGREE.TERMS": "Please agree to the terms"
 }

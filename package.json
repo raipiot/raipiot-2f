@@ -5,6 +5,7 @@
   "scripts": {
     "dev:admin": "turbo dev --filter=@raipiot-srm/admin",
     "dev:shopping": "turbo dev --filter=@raipiot-srm/shopping",
+    "dev:mock": "turbo dev --filter=@raipiot-srm/mock",
     "build:admin:staging": "turbo build:staging --filter=@raipiot-srm/admin",
     "build:shopping:staging": "turbo build:staging --filter=@raipiot-srm/shopping",
     "build:admin:prod": "turbo build:prod --filter=@raipiot-srm/admin",

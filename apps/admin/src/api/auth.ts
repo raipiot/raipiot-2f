@@ -14,6 +14,8 @@ import type {
 export class AuthAPI {
   static #API_PREFIX = `${GlobalEnvConfig.BASE_API_PREFIX}/raipiot-auth/oauth`
 
+  static #MOCK_API_PREFIX = `${GlobalEnvConfig.MOCK_API_PREFIX}`
+
   /**
    * 登录
    */
@@ -31,7 +33,7 @@ export class AuthAPI {
    * 注册
    */
   static signup(data: SignupDto) {
-    return httpRequest.post<LoginVo>(`${this.#API_PREFIX}/register`, data)
+    return httpRequest.post<LoginVo>(`${this.#MOCK_API_PREFIX}/register`, data)
   }
 
   /**
@@ -53,5 +55,12 @@ export class AuthAPI {
    */
   static logout() {
     return httpRequest.get(`${this.#API_PREFIX}/logout`)
+  }
+
+  /**
+   * 发送短信验证码
+   */
+  static sendSMSVerification(data: { phone: string }) {
+    return httpRequest.post<R>(`${this.#MOCK_API_PREFIX}/verification-code`, data)
   }
 }
