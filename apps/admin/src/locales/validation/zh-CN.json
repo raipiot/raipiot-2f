@@ -1,6 +1,7 @@
 {
   "ADDRESS": "请输入地址",
   "BIOGRAPHY": "请输入简介",
+  "LOGIN.PASSWORD": "请输入登录密码",
   "CONFIRM.PASSWORD": "请输入确认密码",
   "CONFIRM.PASSWORD.NOT.MATCH": "两次输入的密码不一致",
   "DICTIONARY.CODE": "请输入字典编码",
@@ -20,5 +21,6 @@
   "PHONE.NUMBER.FORMAT": "请输入正确格式的手机号",
   "REMARK": "请输入备注",
   "USERNAME": "请输入用户名",
+  "COMPANY.NAME": "请输入公司名称",
   "TENANT.CODE": "请输入租户编号"
 }

@@ -1,6 +1,7 @@
 {
   "ADDRESS": "Please enter your address",
   "BIOGRAPHY": "Please enter your biography",
+  "LOGIN.PASSWORD": "Please enter login password",
   "CONFIRM.PASSWORD": "Please enter confirm password",
   "CONFIRM.PASSWORD.NOT.MATCH": "Password not match",
   "DICTIONARY.CODE": "Please enter the code",
@@ -20,5 +21,6 @@
   "PHONE.NUMBER.FORMAT": "Please enter phone number in the correct format",
   "REMARK": "Please enter the remark",
   "USERNAME": "Please enter username",
+  "COMPANY.NAME": "Please enter company name",
   "TENANT.CODE": "Please enter tenant code"
 }
