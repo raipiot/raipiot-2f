@@ -14,7 +14,6 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as PortalRouteImport } from './routes/_portal/route'
 import { Route as BaseRouteImport } from './routes/_base/route'
 import { Route as RouteImport } from './routes/*/route'
-import { Route as BaseIndexImport } from './routes/_base/index'
 import { Route as PortalSsoRouteImport } from './routes/_portal/sso/route'
 import { Route as PortalSignupRouteImport } from './routes/_portal/signup/route'
 import { Route as PortalLoginRouteImport } from './routes/_portal/login/route'
@@ -45,13 +44,6 @@ const RouteRoute = RouteImport.update({
   path: '/*',
   getParentRoute: () => rootRoute,
 } as any)
-
-const BaseIndexRoute = BaseIndexImport.update({
-  path: '/',
-  getParentRoute: () => BaseRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_base/index/route.lazy').then((d) => d.Route),
-)
 
 const PortalSsoRouteRoute = PortalSsoRouteImport.update({
   path: '/sso',
@@ -206,10 +198,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalSsoRouteImport
       parentRoute: typeof PortalRouteImport
     }
-    '/_base/': {
-      preLoaderRoute: typeof BaseIndexImport
-      parentRoute: typeof BaseRouteImport
-    }
     '/_base/system/users': {
       preLoaderRoute: typeof BaseSystemUsersRouteImport
       parentRoute: typeof BaseRouteImport
@@ -230,7 +218,6 @@ export const routeTree = rootRoute.addChildren([
     BaseDashboardRouteRoute,
     BaseTestRouteRoute,
     BaseUserInfoRouteRoute,
-    BaseIndexRoute,
     BaseSystemUsersRouteRoute,
   ]),
   PortalRouteRoute.addChildren([
