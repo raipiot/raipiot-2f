@@ -24,6 +24,7 @@ import { Route as Base500RouteImport } from './routes/_base/500/route'
 import { Route as Base404RouteImport } from './routes/_base/404/route'
 import { Route as Base403RouteImport } from './routes/_base/403/route'
 import { Route as BaseIndexRouteImport } from './routes/_base/index/route'
+import { Route as BaseSystemUsersRouteImport } from './routes/_base/system/users/route'
 
 // Create/Update Routes
 
@@ -112,6 +113,13 @@ const BaseIndexRouteRoute = BaseIndexRouteImport.update({
   import('./routes/_base/index/route.lazy').then((d) => d.Route),
 )
 
+const BaseSystemUsersRouteRoute = BaseSystemUsersRouteImport.update({
+  path: '/system/users',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_base/system/users/route.lazy').then((d) => d.Route),
+)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -168,6 +176,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalSsoRouteImport
       parentRoute: typeof PortalRouteImport
     }
+    '/_base/system/users': {
+      preLoaderRoute: typeof BaseSystemUsersRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
   }
 }
 
@@ -182,6 +194,7 @@ export const routeTree = rootRoute.addChildren([
     Base500RouteRoute,
     BaseChangePasswordRouteRoute,
     BaseUserInfoRouteRoute,
+    BaseSystemUsersRouteRoute,
   ]),
   PortalRouteRoute.addChildren([
     PortalForgotPasswordRouteRoute,

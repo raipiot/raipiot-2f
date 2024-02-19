@@ -8,6 +8,16 @@
   "403": "Access Denied",
   "404": "Not Found",
   "500": "Internal Server Error",
+  "SYSTEM": {
+    "USERS": "User Management",
+    "DEPT": "Dept Management",
+    "POSITION": "Position Management",
+    "SYSTEM.DICT": "System Dict",
+    "BUSINESS.DICT": "Business Dict",
+    "PERMISSIONS": "Permission Management",
+    "PARAMS": "Parameter Management",
+    "TENANT": "Tenant Management"
+  },
   "MODULE.MENU": {
     "DASHBOARD": "Dashboard",
     "SUPPLIER": "Supplier",

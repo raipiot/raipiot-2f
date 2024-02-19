@@ -1,4 +1,4 @@
-import type { MenuItem } from '@/features/menus'
+import { type MenuItem, routerMenus } from '@/features/menus'
 
 export default function RouterMenu() {
   const { siderBg } = ATheme.useToken().token.Layout!
@@ -34,9 +34,9 @@ export default function RouterMenu() {
 
   return (
     <AMenu
-      className="!border-0"
+      className="!border-0 !border-l border-gray-300 dark:border-gray-950"
       style={{ backgroundColor: siderBg }}
-      items={[]}
+      items={routerMenus()}
       selectedKeys={selectedKeys}
       openKeys={openKeys}
       onOpenChange={setOpenKeys}

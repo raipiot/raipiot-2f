@@ -15,8 +15,8 @@ export default function Sidebar() {
         collapsible
         collapsed={sidebarStore.isCollapse}
         onCollapse={(value) => sidebarStore.setIsCollapse(value)}
-        width={sidebarStore.isDisplay ? 224 : 0}
-        collapsedWidth={sidebarStore.isDisplay ? 66 : 0}
+        width={sidebarStore.isDisplay ? 280 : 0}
+        collapsedWidth={sidebarStore.isDisplay ? 146 : 0}
         trigger={null}
       >
         <div className="flex h-[calc(100%-40px)]">
