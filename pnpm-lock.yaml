@@ -102,6 +102,9 @@ importers:
       '@ant-design/happy-work-theme':
         specifier: ^1.0.0
         version: 1.0.0(antd@5.14.1)(react-dom@18.2.0)(react@18.2.0)
+      '@raipiot-srm/hooks':
+        specifier: workspace:*
+        version: link:../../packages/hooks
       '@tanstack/react-query':
         specifier: ^5.22.2
         version: 5.22.2(react@18.2.0)
@@ -334,6 +337,31 @@ importers:
         version: 5.3.3
 
   packages/cspell: {}
+
+  packages/hooks:
+    dependencies:
+      '@raipiot-infra/utils':
+        specifier: ^0.0.9
+        version: 0.0.9
+      ahooks:
+        specifier: ^3.7.10
+        version: 3.7.10(react@18.2.0)
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      typescript:
+        specifier: latest
+        version: 5.3.3
+    devDependencies:
+      '@raipiot-srm/cspell':
+        specifier: workspace:*
+        version: link:../cspell
+      lodash-es:
+        specifier: ^4.17.21
+        version: 4.17.21
+      type-fest:
+        specifier: ^4.10.2
+        version: 4.10.2
 
 packages:
 
@@ -8554,7 +8582,6 @@ packages:
 
   /lodash-es@4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
-    dev: false
 
   /lodash.camelcase@4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
@@ -11721,6 +11748,11 @@ packages:
     engines: {node: '>=14.16'}
     dev: true
 
+  /type-fest@4.10.2:
+    resolution: {integrity: sha512-anpAG63wSpdEbLwOqH8L84urkL6PiVIov3EMmgIhhThevh9aiMQov+6Btx0wldNcvm4wV+e2/Rt1QdDwKHFbHw==}
+    engines: {node: '>=16'}
+    dev: true
+
   /type-is@1.6.18:
     resolution: {integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==}
     engines: {node: '>= 0.6'}
@@ -11779,7 +11811,6 @@ packages:
     resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
     engines: {node: '>=14.17'}
     hasBin: true
-    dev: true
 
   /ufo@1.3.2:
     resolution: {integrity: sha512-o+ORpgGwaYQXgqGDwd+hkS4PuZ3QnmqMMxRuajK/a38L6fTpcE5GPIfrf+L/KemFzfUpeUQc1rRS1iDBozvnFA==}

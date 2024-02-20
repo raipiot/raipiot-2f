@@ -1,11 +1,6 @@
 import { fileURLToPath, URL } from 'node:url'
 
-import {
-  AhooksResolver,
-  AntdResolver,
-  RaipiotAntdResolver,
-  reactPresets
-} from '@raipiot-infra/auto-import'
+import { AntdResolver, RaipiotAntdResolver, reactPresets } from '@raipiot-infra/auto-import'
 import { BootstrapAnimation } from '@raipiot-infra/bootstrap-animation'
 import { TanStackRouterVite } from '@tanstack/router-vite-plugin'
 import React from '@vitejs/plugin-react-swc'
@@ -88,7 +83,6 @@ export default defineConfig(({ mode }) => {
           AntdResolver({
             prefix: 'A'
           }),
-          AhooksResolver(),
           RaipiotAntdResolver()
         ],
         dirs: ['src/api/**', 'src/components/**', 'src/hooks/**', 'src/store/**', 'src/utils/**']

@@ -1,6 +1,6 @@
-import { useToggle } from 'ahooks'
+import { useBoolean } from '@raipiot-srm/hooks'
 
-import type { SignupDto } from '@/api/auth.type'
+import type { SignupDto } from '@/api/auth/auth.dto'
 import { saveTokens } from '@/features/login'
 
 import { useSignupMutation, useSMSVerificationMutation } from '../mutations'
@@ -13,8 +13,8 @@ export const useSignupForm = () => {
   const verificationCodeMutation = useSMSVerificationMutation()
   const signupMutation = useSignupMutation()
   const [isAgreed, setIsAgreed] = useState(false)
-  const [showAgreement, { toggle: toggleShowAgreement }] = useToggle(false)
-  const [showPrivacy, { toggle: toggleShowPrivacy }] = useToggle(false)
+  const [showAgreement, toggleShowAgreement] = useBoolean(false)
+  const [showPrivacy, toggleShowPrivacy] = useBoolean(false)
   const { message } = AApp.useApp()
   // 验证码倒计时
   const [countdown, setCountdown] = useState(60)

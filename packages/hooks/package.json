@@ -1,0 +1,21 @@
+{
+  "name": "@raipiot-srm/hooks",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@raipiot-infra/utils": "^0.0.9",
+    "ahooks": "^3.7.10",
+    "typescript": "latest"
+  },
+  "devDependencies": {
+    "@raipiot-srm/cspell": "workspace:*",
+    "lodash-es": "^4.17.21",
+    "type-fest": "^4.10.2"
+  },
+  "types": "./src/index.d.ts",
+  "peerDependencies": {
+    "lodash-es": "^4.17.21",
+    "react": "^18.2.0"
+  }
+}
