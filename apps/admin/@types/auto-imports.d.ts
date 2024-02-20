@@ -22,6 +22,7 @@ declare global {
   const AMessage: typeof import('antd')['message']
   const AModal: typeof import('antd')['Modal']
   const AResult: typeof import('antd')['Result']
+  const ASelect: typeof import('antd')['Select']
   const ASpace: typeof import('antd')['Space']
   const ASelect: typeof import('antd')['Select']
   const ASpin: typeof import('antd')['Spin']
