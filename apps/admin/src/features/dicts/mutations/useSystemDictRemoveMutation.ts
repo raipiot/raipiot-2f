@@ -1,4 +1,4 @@
 export const useSystemDictRemoveMutation = () =>
   useMutation({
-    mutationFn: () => SystemDictAPI.remove()
+    mutationFn: (ids: string) => SystemDictAPI.remove(ids)
   })

@@ -1,4 +1,4 @@
-import type { LoginVo } from '@/api/auth.type'
+import type { LoginVo } from '@/api/auth/auth.vo'
 
 export const saveTokens = (loginVo: LoginVo) => {
   const { access_token: accessToken, refresh_token: refreshToken } = loginVo ?? {}

@@ -1,6 +1,6 @@
 import { useToggle } from 'ahooks'
 
-import type { SignupDto } from '@/api/auth.type'
+import type { SignupDto } from '@/api/auth/auth.dto'
 import { saveTokens } from '@/features/login'
 
 import { useSignupMutation, useSMSVerificationMutation } from '../mutations'
