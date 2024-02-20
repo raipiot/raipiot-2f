@@ -1,26 +1,25 @@
+import { useToggle } from 'ahooks'
+
+import type { SignupDto } from '@/api/auth.type'
 import { saveTokens } from '@/features/login'
 
 import { useSignupMutation, useSMSVerificationMutation } from '../mutations'
-import type { SignupInfo } from '../types'
 import { useRedirect } from './useRedirect'
 
 export const useSignupForm = () => {
   const { t } = useTranslation(['AUTH', 'VALIDATION'])
-  const [form] = AForm.useForm<SignupInfo>()
+  const [form] = AForm.useForm<SignupDto>()
   const { handleSignupRedirect, handleLogin } = useRedirect()
   const verificationCodeMutation = useSMSVerificationMutation()
   const signupMutation = useSignupMutation()
   const [isAgreed, setIsAgreed] = useState(false)
-  const [showAgreement, setShowAgreement] = useState(false)
-  const [showPrivacy, setShowPrivacy] = useState(false)
-
+  const [showAgreement, { toggle: toggleShowAgreement }] = useToggle(false)
+  const [showPrivacy, { toggle: toggleShowPrivacy }] = useToggle(false)
+  const { message } = AApp.useApp()
   // 验证码倒计时
   const [countdown, setCountdown] = useState(60)
 
-  const handleReverseAgreement = () => setShowAgreement((v) => !v)
-  const handleReversePrivacy = () => setShowPrivacy((v) => !v)
-
-  const handleSignup = (values: SignupInfo) => {
+  const handleSignup = (values: SignupDto) => {
     if (isAgreed) {
       signupMutation.mutate(values, {
         onSuccess: (data) => {
@@ -32,7 +31,7 @@ export const useSignupForm = () => {
         }
       })
     } else {
-      AMessage.error(t('PLEASE.AGREE.TERMS'))
+      message.error(t('PLEASE.AGREE.TERMS'))
     }
   }
 
@@ -80,8 +79,8 @@ export const useSignupForm = () => {
     setIsAgreed,
     showAgreement,
     showPrivacy,
-    handleReverseAgreement,
-    handleReversePrivacy,
+    toggleShowAgreement,
+    toggleShowPrivacy,
     countdown
   }
 }

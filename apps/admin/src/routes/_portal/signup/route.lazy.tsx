@@ -1,5 +1,4 @@
 import type { SignupDto } from '@/api/auth.type'
-import type { SignupInfo } from '@/features/signup'
 import { useSignupForm } from '@/features/signup'
 import PrivacyPolicy from '@/features/signup/components/PrivacyPolicy'
 import UserAgreement from '@/features/signup/components/UserAgreement'
@@ -35,8 +34,8 @@ function Signup() {
     setIsAgreed,
     showAgreement,
     showPrivacy,
-    handleReverseAgreement,
-    handleReversePrivacy,
+    toggleShowAgreement,
+    toggleShowPrivacy,
     countdown
   } = useSignupForm()
 
@@ -46,7 +45,7 @@ function Signup() {
         <span className="text-2xl">{t('DESCRIPTION:SUPPLIER.REGISTRATION')}</span>
       </div>
 
-      <AForm<SignupInfo>
+      <AForm
         name="signup"
         form={form}
         initialValues={initialValues}
@@ -245,14 +244,14 @@ function Signup() {
               <div>
                 {t('I.HAVE.READ.AND.AGREE')}
                 <span
-                  onClick={handleReverseAgreement}
+                  onClick={toggleShowAgreement}
                   className="cursor-pointer px-1 font-semibold text-sky-500"
                 >
                   《{t('THE.USER.AGREEMENT')}》
                 </span>
                 {t('COMMON:AND')}
                 <span
-                  onClick={handleReversePrivacy}
+                  onClick={toggleShowPrivacy}
                   className="cursor-pointer px-1 font-semibold text-sky-500"
                 >
                   《{t('THE.PRIVACY.POLICY')}》
@@ -276,8 +275,8 @@ function Signup() {
           </AButton>
         </AConfigProvider>
       </div>
-      {showAgreement && <UserAgreement onCancel={handleReverseAgreement} />}
-      {showPrivacy && <PrivacyPolicy onCancel={handleReversePrivacy} />}
+      {showAgreement && <UserAgreement onCancel={toggleShowAgreement} />}
+      {showPrivacy && <PrivacyPolicy onCancel={toggleShowPrivacy} />}
     </div>
   )
 }
