@@ -1,6 +1,6 @@
 import { httpRequest } from '@/axios'
 
-import type { UserVo } from './users.type'
+import type { UserVo } from './users.vo'
 
 export class UsersAPI {
   static #API_PREFIX = `${GlobalEnvConfig.BASE_API_PREFIX}/raipiot-system/user`

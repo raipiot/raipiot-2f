@@ -1,4 +1,4 @@
-import { userInfoQueryOptions } from '@/features/users'
+import { useUserInfoSuspenseQuery } from '@/features/users'
 
 enum UserAction {
   'USER.INFO' = '1',
@@ -11,7 +11,7 @@ export default function UserAvatar() {
   const { message } = AApp.useApp()
   const navigate = useNavigate()
 
-  const { data: userInfo } = useSuspenseQuery(userInfoQueryOptions)
+  const { data: userInfo } = useUserInfoSuspenseQuery()
 
   const logoutMutation = useMutation({
     mutationFn: () => AuthAPI.logout(),

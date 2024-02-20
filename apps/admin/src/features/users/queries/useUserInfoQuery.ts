@@ -6,3 +6,5 @@ export const userInfoQueryOptions = queryOptions({
 })
 
 export const useUserInfoQuery = () => useQuery(userInfoQueryOptions)
+
+export const useUserInfoSuspenseQuery = () => useSuspenseQuery(userInfoQueryOptions)
