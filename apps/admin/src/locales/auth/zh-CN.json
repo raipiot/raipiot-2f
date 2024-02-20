@@ -23,5 +23,9 @@
   "VERIFICATION.CODE": "验证码",
   "GET.SMS.VERIFICATION.CODE": "获取短信验证码",
   "SEND.VERIFICATION.CODE.SUCCESS": "验证码发送成功",
-  "PLEASE.AGREE.TERMS": "请同意服务条款"
+  "PLEASE.AGREE.TERMS": "请同意服务条款",
+  "RESEND.SMS.VERIFICATION.CODE": "重新发送验证码",
+  "I.HAVE.READ.AND.AGREE": "我已阅读并同意",
+  "THE.USER.AGREEMENT": "用户协议",
+  "THE.PRIVACY.POLICY": "隐私政策"
 }
