@@ -1,9 +1,10 @@
 import type { ModalProps } from 'antd'
 
 export default function PrivacyPolicy(props: ModalProps) {
+  const { t } = useTranslation(['AUTH'])
   return (
     <AModal
-      title="隐私政策"
+      title={t('THE.PRIVACY.POLICY')}
       visible
       footer={null}
       {...props}
