@@ -105,6 +105,9 @@ importers:
       '@ant-design/happy-work-theme':
         specifier: ^1.0.0
         version: 1.0.0(antd@5.14.1)(react-dom@18.2.0)(react@18.2.0)
+      '@raipiot-srm/hooks':
+        specifier: workspace:*
+        version: link:../../packages/hooks
       '@tanstack/react-query':
         specifier: ^5.22.2
         version: 5.22.2(react@18.2.0)
@@ -8576,7 +8579,6 @@ packages:
 
   /lodash-es@4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
-    dev: false
 
   /lodash.camelcase@4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
