@@ -30,7 +30,6 @@ function Signup() {
     handleLogin,
     handleSendVerificationCode,
     handleSignup,
-    isAgreed,
     setIsAgreed,
     showAgreement,
     showPrivacy,
