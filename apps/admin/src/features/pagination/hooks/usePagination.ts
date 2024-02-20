@@ -7,14 +7,14 @@ export const usePagination = () => {
   const response = useResponsive()
 
   const [pageParams, setPageParams] = useImmer({
-    page: 1,
+    current: 1,
     pageSize: DEFAULT_PAGE_SIZE
   })
   const [total, setTotal] = useState(0)
 
   const setPagination = (page: number, pageSize: number) =>
     setPageParams((draft) => {
-      draft.page = page
+      draft.current = page
       draft.pageSize = pageSize
     })
 
@@ -25,8 +25,7 @@ export const usePagination = () => {
     setTotal,
     pagination: {
       total,
-      current: pageParams.page,
-      pageSize: pageParams.pageSize,
+      ...pageParams,
       onChange: setPagination,
       size: (response.sm ? 'default' : 'small') as PaginationProps['size'],
       rootClassName: '!mb-0',

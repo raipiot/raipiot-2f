@@ -3,13 +3,8 @@ import { md5 } from 'hash-wasm'
 import type { R } from '@/axios'
 import { httpRequest } from '@/axios'
 
-import type {
-  ChangePasswordDto,
-  ForgotPasswordDto,
-  LoginDto,
-  LoginVo,
-  SignupDto
-} from './auth.type'
+import type { ChangePasswordDto, ForgotPasswordDto, LoginDto, SignupDto } from './auth.dto'
+import type { LoginVo } from './auth.vo'
 
 export class AuthAPI {
   static #API_PREFIX = `${GlobalEnvConfig.BASE_API_PREFIX}/raipiot-auth/oauth`

@@ -1,5 +1,8 @@
 import { httpRequest } from '@/axios'
 
+import type { DictPageDto, DictSubmitDto } from './dict.dto'
+import type { DictsVo, DictVo } from './dict.vo'
+
 export class SystemDictAPI {
   static #API_PREFIX = `${GlobalEnvConfig.BASE_API_PREFIX}/raipiot-system/dict`
 
@@ -13,8 +16,8 @@ export class SystemDictAPI {
   /**
    * 列表
    */
-  static async list() {
-    return httpRequest.get(`${this.#API_PREFIX}/list`)
+  static async list(params: DictPageDto) {
+    return httpRequest.get<DictsVo>(`${this.#API_PREFIX}/list`, params)
   }
 
   /**
@@ -56,7 +59,7 @@ export class SystemDictAPI {
    * 详情
    */
   static async detail() {
-    return httpRequest.get(`${this.#API_PREFIX}/detail`)
+    return httpRequest.get<DictVo>(`${this.#API_PREFIX}/detail`)
   }
 
   /**
@@ -74,16 +77,24 @@ export class SystemDictAPI {
   }
 
   /**
-   * 新增或修改
+   * 提交
    */
-  static async submit() {
-    return httpRequest.post(`${this.#API_PREFIX}/submit`)
+  static async submit(data: DictSubmitDto) {
+    return httpRequest.post(`${this.#API_PREFIX}/submit`, data)
   }
 
   /**
    * 删除
    */
-  static async remove() {
-    return httpRequest.post(`${this.#API_PREFIX}/remove`)
+  static async remove(ids: string) {
+    return httpRequest.post(
+      `${this.#API_PREFIX}/remove`,
+      {},
+      {
+        params: {
+          ids
+        }
+      }
+    )
   }
 }
