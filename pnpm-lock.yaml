@@ -105,7 +105,7 @@ importers:
       '@ant-design/happy-work-theme':
         specifier: ^1.0.0
         version: 1.0.0(antd@5.14.1)(react-dom@18.2.0)(react@18.2.0)
-      '@raipiot-srm/hooks':
+      '@raipiot-2f/hooks':
         specifier: workspace:*
         version: link:../../packages/hooks
       '@tanstack/react-query':
