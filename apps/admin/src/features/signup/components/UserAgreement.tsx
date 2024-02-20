@@ -1,9 +1,11 @@
 import type { ModalProps } from 'antd'
 
 export default function UserAgreement(props: ModalProps) {
+  const { t } = useTranslation(['AUTH'])
+
   return (
     <AModal
-      title="用户协议"
+      title={t('THE.USER.AGREEMENT')}
       visible
       footer={null}
       {...props}
