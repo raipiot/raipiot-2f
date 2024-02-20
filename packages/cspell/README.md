@@ -1,1 +1,1 @@
-# @raipiot-srm/cspell
+# @raipiot-2f/cspell

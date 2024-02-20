@@ -1,3 +1,14 @@
+.next/
+build/
+dist/
+
+node_modules/
+target/
+coverage/
+snapshot/
+generated/
 .husky
 pnpm-lock.yaml
+
 apps/admin/@types/auto-imports.d.ts
+apps/admin/src/routeTree.gen.ts
