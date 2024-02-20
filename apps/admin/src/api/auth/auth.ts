@@ -1,6 +1,6 @@
 import { md5 } from 'hash-wasm'
 
-import type { R } from '@/axios'
+import type { R } from '@/api/common.type'
 import { httpRequest } from '@/axios'
 
 import type { ChangePasswordDto, ForgotPasswordDto, LoginDto, SignupDto } from './auth.dto'
