@@ -1,5 +1,6 @@
 import { fileURLToPath, URL } from 'node:url'
 
+import { hooksImportMeta } from '@raipiot-2f/hooks/meta'
 import { AntdResolver, RaipiotAntdResolver, reactPresets } from '@raipiot-infra/auto-import'
 import { BootstrapAnimation } from '@raipiot-infra/bootstrap-animation'
 import { TanStackRouterVite } from '@tanstack/router-vite-plugin'
@@ -71,7 +72,7 @@ export default defineConfig(({ mode }) => {
           },
           {
             from: '@raipiot-2f/hooks',
-            imports: ['useBoolean', 'useToggle', 'useFullscreen']
+            imports: hooksImportMeta
           }
         ],
         resolvers: [

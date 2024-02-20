@@ -7,6 +7,16 @@
       "persistent": true,
       "dotEnv": [".env.development.local", ".env.development", ".env.local", ".env"]
     },
+    "@raipiot-2f/admin#dev": {
+      "cache": false,
+      "persistent": true,
+      "dotEnv": [".env.development.local", ".env.development", ".env.local", ".env"],
+      "dependsOn": ["@raipiot-2f/hooks#build:hooks:meta"]
+    },
+    "build:hooks:meta": {
+      "dependsOn": ["^type:check", "^build"],
+      "outputs": ["dist/**"]
+    },
     "build:staging": {
       "dependsOn": ["^type:check", "^build"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"],

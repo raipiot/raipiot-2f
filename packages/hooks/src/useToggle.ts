@@ -19,7 +19,7 @@ export const useToggle = <T>({
   initialValue: T
   reverseValue: T
   onChange?: (value: T) => unknown
-}) => {
+}): [T, () => void, React.Dispatch<React.SetStateAction<T>>] => {
   const [value, setValue] = useState(initialValue)
   const toggle = (..._: any) => {
     setValue((prev) => {
@@ -29,5 +29,5 @@ export const useToggle = <T>({
       return newValue
     })
   }
-  return [value, toggle, setValue] as const
+  return [value, toggle, setValue]
 }

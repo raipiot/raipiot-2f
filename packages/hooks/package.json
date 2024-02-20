@@ -1,10 +1,16 @@
 {
   "name": "@raipiot-2f/hooks",
+  "description": "raipiot 2f 通用 Hooks",
+  "author": "Aaron <rivenqinyy@gmail.com> (https://github.com/Developer27149/)",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./meta": "./dist/meta.mjs"
   },
   "types": "./src/index.d.ts",
   "scripts": {
+    "build:hooks:meta": "tsup",
+    "clean": "rimraf dist",
+    "type:check": "tsc --pretty --noEmit",
     "cspell:check": "cspell --no-progress --show-suggestions --show-context **",
     "prettier:check": "prettier --check --cache --ignore-unknown --ignore-path=../../.prettierignore .",
     "prettier:fix": "prettier --write --cache --ignore-unknown --ignore-path=../../.prettierignore ."

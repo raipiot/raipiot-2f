@@ -136,7 +136,7 @@ declare global {
   const useReducer: typeof import('react')['useReducer']
   const useRef: typeof import('react')['useRef']
   const useRemoteTranslation: typeof import('../src/hooks/useRemoteTranslation')['useRemoteTranslation']
-  const useResponsive: typeof import('ahooks')['useResponsive']
+  const useResponsive: typeof import('@raipiot-2f/hooks')['useResponsive']
   const useRouteContext: typeof import('@tanstack/react-router')['useRouteContext']
   const useRouter: typeof import('@tanstack/react-router')['useRouter']
   const useRouterState: typeof import('@tanstack/react-router')['useRouterState']

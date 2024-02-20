@@ -1,6 +1,6 @@
 {
   "name": "@raipiot-2f/cspell",
-  "description": "CSpell 业务字典",
+  "description": "raipiot 2f 业务字典",
   "author": "Bruce Song <recall4056@gmail.com> (https://github.com/recallwei/)",
   "exports": {
     ".": "./cspell-ext.json",
