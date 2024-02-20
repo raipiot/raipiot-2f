@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@raipiot-2f/hooks':
+        specifier: workspace:^
+        version: link:packages/hooks
       '@raipiot-infra/antd':
         specifier: ^0.0.14
         version: 0.0.14(antd@5.14.1)(react@18.2.0)
@@ -340,12 +343,12 @@ importers:
 
   packages/hooks:
     dependencies:
-      '@raipiot-infra/utils':
-        specifier: ^0.0.9
-        version: 0.0.9
       ahooks:
         specifier: ^3.7.10
         version: 3.7.10(react@18.2.0)
+      lodash-es:
+        specifier: ^4.17.21
+        version: 4.17.21
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -353,12 +356,6 @@ importers:
         specifier: latest
         version: 5.3.3
     devDependencies:
-      '@raipiot-srm/cspell':
-        specifier: workspace:*
-        version: link:../cspell
-      lodash-es:
-        specifier: ^4.17.21
-        version: 4.17.21
       type-fest:
         specifier: ^4.10.2
         version: 4.10.2

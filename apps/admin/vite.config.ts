@@ -70,8 +70,8 @@ export default defineConfig(({ mode }) => {
             imports: [['default', 'i18n']]
           },
           {
-            from: '@tanstack/react-query',
-            imports: ['useSuspenseQuery']
+            from: '@raipiot-2f/hooks',
+            imports: ['useBoolean', 'useToggle', 'useFullscreen']
           }
         ],
         resolvers: [

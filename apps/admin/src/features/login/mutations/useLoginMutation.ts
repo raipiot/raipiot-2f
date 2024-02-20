@@ -1,4 +1,4 @@
-import type { LoginDto } from '@/api/auth.type'
+import type { LoginDto } from '@/api/auth/auth.dto'
 
 export const useLoginMutation = () => {
   const { message } = AApp.useApp()

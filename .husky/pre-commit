@@ -1,3 +1,4 @@
+pnpm type:check
 pnpm cspell:sort:dict
 git add ./packages/cspell/dict/temp.txt
 pnpm cspell:check

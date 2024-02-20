@@ -1,4 +1,4 @@
-import type { SignupDto } from '@/api/auth.type'
+import type { SignupDto } from '@/api/auth/auth.dto'
 
 export const useSignupMutation = () =>
   useMutation({

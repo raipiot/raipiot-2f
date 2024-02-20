@@ -1,4 +1,4 @@
-import type { SignupDto } from '@/api/auth.type'
+import type { SignupDto } from '@/api/auth/auth.dto'
 import { useSignupForm } from '@/features/signup'
 import PrivacyPolicy from '@/features/signup/components/PrivacyPolicy'
 import UserAgreement from '@/features/signup/components/UserAgreement'
