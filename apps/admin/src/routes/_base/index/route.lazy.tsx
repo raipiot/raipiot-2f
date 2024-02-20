@@ -3,7 +3,6 @@ export const Route = createLazyFileRoute('/_base/')({
 })
 
 function Dashboard() {
-  const userStore = useUserStore()
   const navigate = useNavigate()
   return (
     <div className="flex space-x-2 p-1">
@@ -15,7 +14,6 @@ function Dashboard() {
       </Link>
       <AButton
         onClick={() => {
-          userStore.clearUser()
           AuthUtils.clearAccessToken()
           AuthUtils.clearRefreshToken()
           navigate({ to: '/login' })

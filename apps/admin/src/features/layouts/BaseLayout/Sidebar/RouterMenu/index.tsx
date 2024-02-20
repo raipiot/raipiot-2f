@@ -34,7 +34,7 @@ export default function RouterMenu() {
 
   return (
     <AMenu
-      className="!border-0 !border-l border-gray-300 dark:border-gray-950"
+      className="overflow-hidden !border-0 !border-l border-gray-300 dark:border-gray-950"
       style={{ backgroundColor: siderBg }}
       items={routerMenus()}
       selectedKeys={selectedKeys}

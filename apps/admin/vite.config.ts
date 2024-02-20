@@ -73,6 +73,10 @@ export default defineConfig(({ mode }) => {
           {
             from: '@/i18n',
             imports: [['default', 'i18n']]
+          },
+          {
+            from: '@tanstack/react-query',
+            imports: ['useSuspenseQuery']
           }
         ],
         resolvers: [
