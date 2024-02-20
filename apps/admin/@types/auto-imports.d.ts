@@ -30,7 +30,7 @@ declare global {
   const ATooltip: (typeof import('antd'))['Tooltip']
   const AnimatePresence: (typeof import('framer-motion'))['AnimatePresence']
   const AppMetadata: (typeof import('@/constants'))['AppMetadata']
-  const AuthAPI: (typeof import('../src/api/auth/auth'))['AuthAPI']
+  const AuthAPI: (typeof import('../src/api/auth'))['AuthAPI']
   const AuthUtils: (typeof import('@raipiot-infra/utils'))['AuthUtils']
   const Await: (typeof import('@tanstack/react-router'))['Await']
   const Block: (typeof import('@tanstack/react-router'))['Block']
@@ -79,7 +79,7 @@ declare global {
   const SystemDictAPI: (typeof import('../src/api/system/dict/dict'))['SystemDictAPI']
   const TeamConfig: (typeof import('@raipiot-infra/config'))['TeamConfig']
   const ThemeUtils: (typeof import('@raipiot-infra/utils'))['ThemeUtils']
-  const UsersAPI: (typeof import('../src/api/system/user/users'))['UsersAPI']
+  const UsersAPI: (typeof import('../src/api/users'))['UsersAPI']
   const clsx: (typeof import('clsx'))['default']
   const createFileRoute: (typeof import('@tanstack/react-router'))['createFileRoute']
   const createLazyFileRoute: (typeof import('@tanstack/react-router'))['createLazyFileRoute']
@@ -150,5 +150,4 @@ declare global {
   const useThemeStore: (typeof import('../src/store/theme'))['useThemeStore']
   const useTransition: (typeof import('react'))['useTransition']
   const useTranslation: (typeof import('react-i18next'))['useTranslation']
-  const useUserStore: (typeof import('../src/store/user'))['useUserStore']
 }
