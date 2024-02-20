@@ -1,4 +1,4 @@
 {
   "extends": "@raipiot-infra",
-  "ignorePatterns": ["src-tauri"]
+  "ignorePatterns": ["src-tauri", "@types/auto-imports.d.ts"]
 }
