@@ -1,5 +1,3 @@
-import { useBoolean } from '@raipiot-srm/hooks'
-
 import type { SignupDto } from '@/api/auth/auth.dto'
 import { saveTokens } from '@/features/login'
 

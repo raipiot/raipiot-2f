@@ -10,6 +10,7 @@
 ## Packages
 
 - [`cspell`](packages/cspell/): CSpell 业务词典
+- [`hooks`](packages/hooks/): 通用 Hooks
 
 ## 安装依赖
 

@@ -34,6 +34,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@raipiot-2f/hooks": "workspace:^",
     "@raipiot-infra/antd": "^0.0.14",
     "@raipiot-infra/config": "^0.0.9",
     "@raipiot-infra/enums": "^0.0.6",

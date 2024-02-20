@@ -1,4 +1,3 @@
-import { useFullscreen } from '@raipiot-srm/hooks'
 import type { SVGProps } from 'react'
 
 interface IconProps extends SVGProps<SVGSVGElement> {

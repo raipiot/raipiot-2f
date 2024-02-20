@@ -48,8 +48,7 @@
     "react-i18next": "^14.0.5",
     "use-immer": "^0.9.0",
     "zod": "^3.22.4",
-    "zustand": "^4.5.1",
-    "@raipiot-srm/hooks": "workspace:*"
+    "zustand": "^4.5.1"
   },
   "devDependencies": {
     "@iconify/json": "^2.2.184",

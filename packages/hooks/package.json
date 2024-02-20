@@ -1,21 +1,24 @@
 {
-  "name": "@raipiot-srm/hooks",
+  "name": "@raipiot-2f/hooks",
   "exports": {
     ".": "./src/index.ts"
   },
+  "types": "./src/index.d.ts",
+  "scripts": {
+    "cspell:check": "cspell --no-progress --show-suggestions --show-context **",
+    "prettier:check": "prettier --check --cache --ignore-unknown --ignore-path=../../.prettierignore .",
+    "prettier:fix": "prettier --write --cache --ignore-unknown --ignore-path=../../.prettierignore ."
+  },
+  "peerDependencies": {
+    "lodash-es": "^4.17.21",
+    "react": "^18.2.0"
+  },
   "dependencies": {
-    "@raipiot-infra/utils": "^0.0.9",
     "ahooks": "^3.7.10",
     "typescript": "latest"
   },
   "devDependencies": {
-    "@raipiot-srm/cspell": "workspace:*",
-    "lodash-es": "^4.17.21",
     "type-fest": "^4.10.2"
   },
-  "types": "./src/index.d.ts",
-  "peerDependencies": {
-    "lodash-es": "^4.17.21",
-    "react": "^18.2.0"
-  }
+  "private": true
 }
