@@ -1,4 +1,3 @@
-import { uniqBy } from 'lodash-es'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
@@ -12,8 +11,8 @@ interface State {
 }
 
 interface Actions {
-  addRecord: (record: Record) => void
-  removeRecordByPath: (key: string) => void
+  addRecordByPath: (path: string) => void
+  removeRecordByPath: (path: string) => void
   clearRecords: () => void
 }
 
@@ -29,6 +28,8 @@ const initialState: State = {
   ]
 }
 
+const tabBlackList = ['/signup', '/login', '/forgot-password', '/reset-password']
+
 export const useTabStore = create<State & Actions>()(
   persist(
     (set) => ({
@@ -38,10 +39,19 @@ export const useTabStore = create<State & Actions>()(
        * 添加一个路由地址到记录中
        * @param record 路由记录
        */
-      addRecord: (record: Record) =>
-        set((state) => ({
-          records: uniqBy([...state.records, record], 'path')
-        })),
+      addRecordByPath: (path: string) => {
+        set((state) => {
+          const isBlackListItem = tabBlackList.some((p) => p === path)
+          if (isBlackListItem) {
+            return state
+          }
+          return {
+            records: state.records.some((i) => i.path === path)
+              ? state.records.map((i) => ({ ...i, active: i.path === path }))
+              : [...state.records, { path, active: true }]
+          }
+        })
+      },
       /**
        * 移除一个路由地址
        * @param path 路由地址

@@ -58,10 +58,7 @@ export default function Tabs() {
                         key: 'close-others',
                         onClick: () => {
                           tabStore.clearRecords()
-                          tabStore.addRecord({
-                            path,
-                            active: true
-                          })
+                          tabStore.addRecordByPath(path)
                         }
                       },
                       {

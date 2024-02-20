@@ -30,7 +30,6 @@ function Signup() {
     handleLogin,
     handleSendVerificationCode,
     handleSignup,
-    isAgreed,
     setIsAgreed,
     showAgreement,
     showPrivacy,
@@ -162,6 +161,7 @@ function Signup() {
             <ACol span={16}>
               <AInput
                 type="photo"
+                maxLength={11}
                 placeholder={t('VALIDATION:PHONE.NUMBER')}
               />
             </ACol>
@@ -236,23 +236,22 @@ function Signup() {
               className="my-4"
               gap={8}
               align="center"
+              wrap="wrap"
             >
-              <ACheckbox
-                value={isAgreed}
-                onChange={(v) => setIsAgreed(v.target.checked)}
-              />
-              <div>
+              <ACheckbox onChange={(v) => setIsAgreed(v.target.checked)}>
                 {t('I.HAVE.READ.AND.AGREE')}
+              </ACheckbox>
+              <div>
                 <span
                   onClick={toggleShowAgreement}
-                  className="cursor-pointer px-1 font-semibold text-sky-500"
+                  className="cursor-pointer font-semibold text-sky-500"
                 >
                   《{t('THE.USER.AGREEMENT')}》
                 </span>
                 {t('COMMON:AND')}
                 <span
                   onClick={toggleShowPrivacy}
-                  className="cursor-pointer px-1 font-semibold text-sky-500"
+                  className="cursor-pointer font-semibold text-sky-500"
                 >
                   《{t('THE.PRIVACY.POLICY')}》
                 </span>
