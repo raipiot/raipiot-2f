@@ -27,6 +27,7 @@ import { Route as Base404RouteImport } from './routes/_base/404/route'
 import { Route as Base403RouteImport } from './routes/_base/403/route'
 import { Route as BaseIndexRouteImport } from './routes/_base/index/route'
 import { Route as BaseSystemUsersRouteImport } from './routes/_base/system/users/route'
+import { Route as BaseSystemDictsRouteImport } from './routes/_base/system/dicts/route'
 
 // Create/Update Routes
 
@@ -134,6 +135,13 @@ const BaseSystemUsersRouteRoute = BaseSystemUsersRouteImport.update({
   import('./routes/_base/system/users/route.lazy').then((d) => d.Route),
 )
 
+const BaseSystemDictsRouteRoute = BaseSystemDictsRouteImport.update({
+  path: '/system/dicts',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_base/system/dicts/route.lazy').then((d) => d.Route),
+)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -198,6 +206,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalSsoRouteImport
       parentRoute: typeof PortalRouteImport
     }
+    '/_base/system/dicts': {
+      preLoaderRoute: typeof BaseSystemDictsRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
     '/_base/system/users': {
       preLoaderRoute: typeof BaseSystemUsersRouteImport
       parentRoute: typeof BaseRouteImport
@@ -218,6 +230,7 @@ export const routeTree = rootRoute.addChildren([
     BaseDashboardRouteRoute,
     BaseTestRouteRoute,
     BaseUserInfoRouteRoute,
+    BaseSystemDictsRouteRoute,
     BaseSystemUsersRouteRoute,
   ]),
   PortalRouteRoute.addChildren([

@@ -70,6 +70,7 @@ declare global {
   const RpGlobalLoading: typeof import('../src/components/RpGlobalLoading/index')['default']
   const StorageConfig: typeof import('@raipiot-infra/config')['StorageConfig']
   const Suspense: typeof import('react')['Suspense']
+  const SystemDictAPI: typeof import('../src/api/system-dict')['SystemDictAPI']
   const TeamConfig: typeof import('@raipiot-infra/config')['TeamConfig']
   const ThemeUtils: typeof import('@raipiot-infra/utils')['ThemeUtils']
   const UsersAPI: typeof import('../src/api/users')['UsersAPI']
