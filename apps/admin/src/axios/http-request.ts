@@ -7,7 +7,7 @@ import type {
 } from 'axios'
 import axios from 'axios'
 
-import type { TokensVo } from '@/api/auth.type'
+import type { TokensVo } from '@/api/auth/auth.vo'
 import type { R } from '@/api/common.type'
 import { router } from '@/router'
 
