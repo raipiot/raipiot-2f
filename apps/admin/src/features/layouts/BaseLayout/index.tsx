@@ -7,9 +7,18 @@ import Tabs from './Tabs'
 export function BaseLayout() {
   const { location } = useRouterState()
   const tabStore = useTabStore()
+  // const match = useMatch({
+  //   from: '/_base'
+  // })
+
+  // const match = useMatches()
+  // useEffect(() => {
+  //   console.log(match)
+  // }, [match])
 
   // 监听路由变化，添加标签记录
   useEffect(() => {
+    // console.log('location.pathname', location.pathname)
     const newRecord = {
       path: location.pathname,
       active: true

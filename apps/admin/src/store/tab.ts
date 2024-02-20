@@ -29,6 +29,8 @@ const initialState: State = {
   ]
 }
 
+const tabWhitelist = ['/signup', '/login', '/forgot-password', '/reset-password']
+
 export const useTabStore = create<State & Actions>()(
   persist(
     (set) => ({
@@ -39,9 +41,14 @@ export const useTabStore = create<State & Actions>()(
        * @param record 路由记录
        */
       addRecord: (record: Record) =>
-        set((state) => ({
-          records: uniqBy([...state.records, record], 'path')
-        })),
+        set((state) => {
+          const isWhitelisted = tabWhitelist.some((path) => record.path === path)
+          return {
+            records: isWhitelisted
+              ? uniqBy([...state.records.map((i) => ({ ...i, active: false })), record], 'path')
+              : state.records
+          }
+        }),
       /**
        * 移除一个路由地址
        * @param path 路由地址
