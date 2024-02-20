@@ -1,11 +1,11 @@
-import { Controller, Post } from '@nestjs/common';
+import { Controller, Post } from '@nestjs/common'
 
 @Controller('register')
 export class RegisterController {
   @Post()
   register() {
     return {
-      message: 'Hello World!',
-    };
+      message: 'Hello World!'
+    }
   }
 }

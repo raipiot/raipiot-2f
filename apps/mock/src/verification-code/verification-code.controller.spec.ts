@@ -1,18 +1,20 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { VerificationCodeController } from './verification-code.controller';
+import type { TestingModule } from '@nestjs/testing'
+import { Test } from '@nestjs/testing'
+
+import { VerificationCodeController } from './verification-code.controller'
 
 describe('VerificationCodeController', () => {
-  let controller: VerificationCodeController;
+  let controller: VerificationCodeController
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [VerificationCodeController],
-    }).compile();
+      controllers: [VerificationCodeController]
+    }).compile()
 
-    controller = module.get<VerificationCodeController>(VerificationCodeController);
-  });
+    controller = module.get<VerificationCodeController>(VerificationCodeController)
+  })
 
   it('should be defined', () => {
-    expect(controller).toBeDefined();
-  });
-});
+    expect(controller).toBeDefined()
+  })
+})

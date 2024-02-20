@@ -36,7 +36,7 @@ export class HttpRequest {
   /**
    * 刷新令牌接口地址
    */
-  readonly #REFRESH_API_URL = `${GlobalEnvConfig.BASE_API_PREFIX}/auth/refresh-token`
+  readonly #REFRESH_API_URL = `${GlobalEnvConfig.BASE_API_PREFIX}/raipiot-auth/oauth/token`
 
   // Axios 配置
   readonly #config: AxiosRequestConfig = {
@@ -194,11 +194,17 @@ export class HttpRequest {
   /**
    * 刷新令牌
    */
-  async #refresh(refreshToken: string) {
-    const res = await this.post<R<TokensVo>>(this.#REFRESH_API_URL, undefined, {
-      params: { refreshToken }
+  #refresh(refreshToken: string) {
+    return this.post<TokensVo>(this.#REFRESH_API_URL, undefined, {
+      params: {
+        tenantId: '000000', // TODO: 移除 Hard Code
+        refresh_token: refreshToken,
+        grant_type: 'refresh_token',
+        scope: 'all',
+        client_id: 'raipiot',
+        client_secret: 'raipiot_secret'
+      }
     })
-    return res.data
   }
 
   static #getBasicAuthorization() {

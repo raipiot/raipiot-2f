@@ -7,7 +7,7 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "raipiot SRM Admin",
+    "productName": "raipiot 2F Admin",
     "version": "0.0.1"
   },
   "tauri": {
@@ -37,7 +37,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "raipiot.srm.admin",
+      "identifier": "raipiot.2f.admin",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -71,7 +71,7 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "raipiot SRM Admin",
+        "title": "raipiot 2F Admin",
         "center": true,
         "width": 1300,
         "height": 800,

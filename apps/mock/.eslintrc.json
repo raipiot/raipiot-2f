@@ -1,0 +1,6 @@
+{
+  "extends": "@raipiot-infra/eslint-config-ts",
+  "rules": {
+    "no-console": "off"
+  }
+}

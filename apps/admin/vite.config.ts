@@ -94,8 +94,8 @@ export default defineConfig(({ mode }) => {
         dirs: ['src/api/**', 'src/components/**', 'src/hooks/**', 'src/store/**', 'src/utils/**']
       }),
       BootstrapAnimation({
-        name: 'raipiot SRM',
-        description: 'raipiot SRM SaaS 管理系统',
+        name: 'raipiot 2F Admin',
+        description: 'raipiot SaaS 管理系统',
         lang: 'zh-CN'
       }),
       Inspect(),

@@ -61,7 +61,7 @@ function Login() {
       </div>
 
       <div className="mb-4 flex flex-col items-center space-y-2">
-        <span className="text-xl">{BrandConfig.companyName} SRM</span>
+        <span className="text-xl">{AppMetadata.appName}</span>
         <span>🎉 {t('WELCOME.BACK')}</span>
       </div>
 
