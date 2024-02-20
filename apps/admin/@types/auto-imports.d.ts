@@ -101,6 +101,7 @@ declare global {
   const redirect: typeof import('@tanstack/react-router')['redirect']
   const startTransition: typeof import('react')['startTransition']
   const useBlocker: typeof import('@tanstack/react-router')['useBlocker']
+  const useBoolean: typeof import('ahooks')['useBoolean']
   const useCallback: typeof import('react')['useCallback']
   const useChildMatches: typeof import('@tanstack/react-router')['useChildMatches']
   const useContext: typeof import('react')['useContext']
