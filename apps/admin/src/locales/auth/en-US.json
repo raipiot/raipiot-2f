@@ -12,5 +12,19 @@
   "REMEMBER.PASSWORD": "Remember password",
   "TENANT.CODE": "Tenant code",
   "USERNAME": "Username",
-  "PASSWORD": "Password"
+  "PASSWORD": "Password",
+  "EMAIL": "Email",
+  "COMPANY.NAME": "Company name",
+  "CONFIRM.PASSWORD": "Confirm password",
+  "LOGIN.PASSWORD": "Login password",
+  "REGISTER.COUNTRY": "Register country or region",
+  "PHOTO.NUMBER": "Photo number",
+  "VERIFICATION.CODE": "Verification code",
+  "GET.SMS.VERIFICATION.CODE": "Get SMS verification code",
+  "SEND.VERIFICATION.CODE.SUCCESS": "Send verification code success",
+  "PLEASE.AGREE.TERMS": "Please agree to the terms",
+  "RESEND.SMS.VERIFICATION.CODE": "Resend SMS verification code",
+  "I.HAVE.READ.AND.AGREE": "I have read and agree",
+  "THE.USER.AGREEMENT": "the user agreement",
+  "THE.PRIVACY.POLICY": "the privacy policy"
 }

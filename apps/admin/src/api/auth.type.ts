@@ -26,8 +26,13 @@ export interface LoginVo extends TokensVo {
 
 export interface SignupDto {
   username: string
+  companyName: string
   password: string
   confirmPassword: string
+  registerCountry: string
+  photo: string
+  email: string
+  verificationCode: string
 }
 
 export interface ChangePasswordDto {
