@@ -1,5 +1,6 @@
+import type { SignupDto } from '@/api/auth.type'
 import type { SignupInfo } from '@/features/signup'
-import { initialValues, useSignupForm } from '@/features/signup'
+import { useSignupForm } from '@/features/signup'
 import PrivacyPolicy from '@/features/signup/components/PrivacyPolicy'
 import UserAgreement from '@/features/signup/components/UserAgreement'
 
@@ -7,8 +8,19 @@ export const Route = createLazyFileRoute('/_portal/signup')({
   component: Signup
 })
 
+const initialValues: SignupDto = {
+  username: 'test',
+  companyName: 'test',
+  password: 'test1234',
+  confirmPassword: 'test1234',
+  registerCountry: 'china',
+  photo: 'test',
+  email: 'test@qq.com',
+  verificationCode: 'test'
+}
+
 function Signup() {
-  const { t } = useTranslation(['AUTH', 'VALIDATION', 'DESCRIPTION'])
+  const { t } = useTranslation(['AUTH', 'VALIDATION', 'DESCRIPTION', 'COMMON'])
 
   const match = useMatch({ from: '/_portal/signup' })
 
@@ -24,7 +36,8 @@ function Signup() {
     showAgreement,
     showPrivacy,
     handleReverseAgreement,
-    handleReversePrivacy
+    handleReversePrivacy,
+    countdown
   } = useSignupForm()
 
   return (
@@ -67,12 +80,20 @@ function Signup() {
 
         <AForm.Item
           name="password"
-          rules={[{ required: true, message: t('VALIDATION:PASSWORD') }]}
+          rules={[
+            { required: true, message: t('VALIDATION:PASSWORD') },
+            {
+              min: 6,
+              message: t('VALIDATION:PASSWORD.LENGTH')
+            }
+          ]}
           label={t('LOGIN.PASSWORD')}
           rootClassName="!mb-4"
         >
           <AInput.Password
             placeholder={t('VALIDATION:LOGIN.PASSWORD')}
+            min={6}
+            max={20}
             autoComplete="new-password"
           />
         </AForm.Item>
@@ -96,7 +117,8 @@ function Signup() {
         >
           <AInput.Password
             placeholder={t('VALIDATION:CONFIRM.PASSWORD')}
-            autoComplete="new-password"
+            min={6}
+            max={20}
           />
         </AForm.Item>
 
@@ -113,10 +135,15 @@ function Signup() {
           name="phone"
           label={t('PHONE.NUMBER')}
           required
+          validateTrigger="onBlur"
           rules={[
             {
               required: true,
               message: t('VALIDATION:PHONE.NUMBER')
+            },
+            {
+              pattern: /^1[3-9]\d{9}$/,
+              message: t('VALIDATION:PHONE.NUMBER.FORMAT')
             }
           ]}
         >
@@ -174,14 +201,18 @@ function Signup() {
           <AInput
             type="photo"
             placeholder={t('AUTH:VERIFICATION.CODE')}
-            addonAfter={
+            suffix={
               <button
                 type="button"
-                className="text-[12px]"
-                disabled={verificationCodeMutation.isPending}
+                className={clsx('min-w-[84px] text-center text-[12px]', {
+                  'text-gray-400': countdown !== 60
+                })}
+                disabled={verificationCodeMutation.isPending || countdown !== 60}
                 onClick={handleSendVerificationCode}
               >
-                {t('AUTH:GET.SMS.VERIFICATION.CODE')}
+                {countdown !== 60
+                  ? `${t('RESEND.SMS.VERIFICATION.CODE')}(${countdown}s)`
+                  : t('AUTH:GET.SMS.VERIFICATION.CODE')}
               </button>
             }
           />
@@ -212,19 +243,19 @@ function Signup() {
                 onChange={(v) => setIsAgreed(v.target.checked)}
               />
               <div>
-                我已阅读并同意
+                {t('I.HAVE.READ.AND.AGREE')}
                 <span
                   onClick={handleReverseAgreement}
                   className="cursor-pointer px-1 font-semibold text-sky-500"
                 >
-                  《用户协议》
+                  《{t('THE.USER.AGREEMENT')}》
                 </span>
-                和
+                {t('COMMON:AND')}
                 <span
                   onClick={handleReversePrivacy}
                   className="cursor-pointer px-1 font-semibold text-sky-500"
                 >
-                  《隐私政策》
+                  《{t('THE.PRIVACY.POLICY')}》
                 </span>
               </div>
             </AFlex>

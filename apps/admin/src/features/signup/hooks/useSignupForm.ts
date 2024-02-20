@@ -42,12 +42,25 @@ export const useSignupForm = () => {
       AMessage.error(t('VALIDATION:PHONE.NUMBER'))
       return
     }
-
     verificationCodeMutation.mutate(
       { phone },
       {
         onSuccess: () => {
           AMessage.success(t('SEND.VERIFICATION.CODE.SUCCESS'))
+
+          // 发送验证码成功后，开始倒计时
+          let timer: NodeJS.Timeout
+          const fc = () => {
+            setCountdown((prev) => {
+              if (prev === 0) {
+                clearInterval(timer)
+                return 60
+              }
+              return prev - 1
+            })
+          }
+          timer = setInterval(fc, 1000)
+          fc()
         },
         onError: (e) => {
           AMessage.error(`...${e.message}`)
@@ -68,6 +81,7 @@ export const useSignupForm = () => {
     showAgreement,
     showPrivacy,
     handleReverseAgreement,
-    handleReversePrivacy
+    handleReversePrivacy,
+    countdown
   }
 }

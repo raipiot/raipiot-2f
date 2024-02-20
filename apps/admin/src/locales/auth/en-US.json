@@ -23,5 +23,9 @@
   "VERIFICATION.CODE": "Verification code",
   "GET.SMS.VERIFICATION.CODE": "Get SMS verification code",
   "SEND.VERIFICATION.CODE.SUCCESS": "Send verification code success",
-  "PLEASE.AGREE.TERMS": "Please agree to the terms"
+  "PLEASE.AGREE.TERMS": "Please agree to the terms",
+  "RESEND.SMS.VERIFICATION.CODE": "Resend SMS verification code",
+  "I.HAVE.READ.AND.AGREE": "I have read and agree",
+  "THE.USER.AGREEMENT": "the user agreement",
+  "THE.PRIVACY.POLICY": "the privacy policy"
 }
