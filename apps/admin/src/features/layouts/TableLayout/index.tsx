@@ -25,7 +25,7 @@ interface TableLayoutProps {
   renderModal?: RenderModal
 }
 
-export default function TableLayout(props: TableLayoutProps) {
+export function TableLayout(props: TableLayoutProps) {
   const { renderContent, ...modalProps } = props.renderModal ?? {}
 
   const { t } = useTranslation()

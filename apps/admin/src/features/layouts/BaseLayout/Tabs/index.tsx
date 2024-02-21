@@ -21,11 +21,7 @@ export default function Tabs() {
     }
   }
 
-  const generateTitle = (path: string) => {
-    const item = router.matchRoutes(path, {})
-    const { title } = item.at(-1)!.staticData
-    return I18nUtils.getText(title)
-  }
+  const getRouteMeta = (path: string) => router.matchRoutes(path, {}).at(-1)!.staticData ?? {}
 
   return (
     <ATabs
@@ -43,46 +39,52 @@ export default function Tabs() {
       activeKey={router.state.location.pathname}
       onEdit={onEdit}
       size="small"
-      items={tabStore.records.map(({ path }) => ({
-        label: (
-          <ADropdown
-            key={path}
-            trigger={['contextMenu']}
-            menu={{
-              items:
-                path === '/'
-                  ? []
-                  : [
-                      {
-                        label: '关闭其他标签',
-                        key: 'close-others',
-                        onClick: () => {
-                          tabStore.clearRecords()
-                          tabStore.addRecordByPath(path)
+      items={tabStore.records.map(({ path }) => {
+        const { title, icon } = getRouteMeta(path)
+        return {
+          label: (
+            <ADropdown
+              key={path}
+              trigger={['contextMenu']}
+              menu={{
+                items:
+                  path === '/'
+                    ? []
+                    : [
+                        {
+                          label: '关闭其他标签',
+                          key: 'close-others',
+                          onClick: () => {
+                            tabStore.clearRecords()
+                            tabStore.addRecordByPath(path)
+                          }
+                        },
+                        {
+                          label: '关闭所有标签',
+                          key: 'close-all',
+                          onClick: () => {
+                            tabStore.clearRecords()
+                            navigate({ to: '/' })
+                          }
                         }
-                      },
-                      {
-                        label: '关闭所有标签',
-                        key: 'close-all',
-                        onClick: () => {
-                          tabStore.clearRecords()
-                          navigate({ to: '/' })
-                        }
-                      }
-                    ]
-            }}
-          >
-            <Link
-              className="cursor-pointer p-2 !text-inherit"
-              to={path}
+                      ]
+              }}
             >
-              {generateTitle(path)}
-            </Link>
-          </ADropdown>
-        ),
-        key: path,
-        closable: path !== '/'
-      }))}
+              <Link
+                className="cursor-pointer !text-inherit"
+                to={path}
+              >
+                <div className="flex items-center space-x-1 text-sm">
+                  <div className="mb-0.5">{icon && icon}</div>
+                  <span>{I18nUtils.getText(title)}</span>
+                </div>
+              </Link>
+            </ADropdown>
+          ),
+          key: path,
+          closable: path !== '/'
+        }
+      })}
     />
   )
 }

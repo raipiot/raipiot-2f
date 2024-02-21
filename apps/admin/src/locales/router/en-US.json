@@ -10,13 +10,14 @@
   "500": "Internal Server Error",
   "SYSTEM": {
     "USERS": "User Management",
-    "DEPT": "Dept Management",
-    "POSITION": "Position Management",
-    "SYSTEM.DICT": "System Dict",
-    "BUSINESS.DICT": "Business Dict",
+    "DEPTS": "Dept Management",
+    "POSITIONS": "Position Management",
+    "SYSTEM.DICTS": "System Dict",
+    "BUSINESS.DICTS": "Business Dict",
+    "ROLES": "Role Management",
     "PERMISSIONS": "Permission Management",
     "PARAMS": "Parameter Management",
-    "TENANT": "Tenant Management"
+    "TENANTS": "Tenant Management"
   },
   "MODULE.MENU": {
     "DASHBOARD": "Dashboard",

@@ -10,13 +10,14 @@
   "500": "服务器错误",
   "SYSTEM": {
     "USERS": "用户管理",
-    "DEPT": "部门管理",
-    "POSITION": "岗位管理",
-    "SYSTEM.DICT": "系统字典",
-    "BUSINESS.DICT": "业务字典",
+    "DEPTS": "部门管理",
+    "POSITIONS": "岗位管理",
+    "SYSTEM.DICTS": "系统字典",
+    "BUSINESS.DICTS": "业务字典",
+    "ROLES": "角色管理",
     "PERMISSIONS": "权限管理",
     "PARAMS": "参数管理",
-    "TENANT": "租户管理"
+    "TENANTS": "租户管理"
   },
   "MODULE.MENU": {
     "DASHBOARD": "仪表盘",

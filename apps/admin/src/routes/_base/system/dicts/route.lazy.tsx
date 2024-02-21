@@ -1,4 +1,4 @@
-import TableLayout from '@/features/layouts/TableLayout'
+import { TableLayout } from '@/features/layouts'
 
 export const Route = createLazyFileRoute('/_base/system/dicts')({
   component: SystemDicts

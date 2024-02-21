@@ -1,5 +1,6 @@
 import { defaultQueryConfig } from '@raipiot-infra/tanstack-query'
 import nprogress from 'nprogress'
+import type { JSXElementConstructor } from 'react'
 
 import type { MaybeI18nString } from './features/i18n'
 import { routeTree } from './routeTree.gen'
@@ -34,5 +35,6 @@ declare module '@tanstack/react-router' {
 
   interface StaticDataRouteOption {
     title?: MaybeI18nString
+    icon?: React.ReactElement<any, string | JSXElementConstructor<any>>
   }
 }

@@ -1,75 +1,39 @@
+import { router } from '@/router'
+
 import type { MenuItem } from '../types'
 
 const t = i18n.getFixedT(null, 'ROUTER')
 
+const getRouteMeta = (key: string) => {
+  const { title, icon } = router.matchRoutes(key, {}).at(-1)?.staticData ?? {}
+  return {
+    label: I18nUtils.getText(title),
+    key,
+    icon: icon ?? <MaterialSymbolsGridViewOutlineRounded />
+  }
+}
+
 export const routerMenus = (): MenuItem[] => [
-  {
-    label: t('DASHBOARD'),
-    key: '/',
-    icon: <MaterialSymbolsGridViewOutlineRounded />
-  },
+  getRouteMeta('/'),
   {
     label: t('MODULE.MENU.SYSTEM'),
     key: '/system',
-    icon: <MaterialSymbolsGridViewOutlineRounded />,
+    icon: <MaterialSymbolsSettingsOutlineRounded />,
     children: [
-      {
-        label: t('SYSTEM.USERS'),
-        key: '/system/users',
-        icon: <MaterialSymbolsGridViewOutlineRounded />
-      },
-      {
-        label: t('SYSTEM.DEPT'),
-        key: '/system/dept',
-        icon: <MaterialSymbolsGridViewOutlineRounded />
-      },
-      {
-        label: t('SYSTEM.POSITION'),
-        key: '/system/positions',
-        icon: <MaterialSymbolsGridViewOutlineRounded />
-      },
-      {
-        label: t('SYSTEM.SYSTEM.DICT'),
-        key: '/system/dicts',
-        icon: <MaterialSymbolsGridViewOutlineRounded />
-      },
-      {
-        label: t('SYSTEM.BUSINESS.DICT'),
-        key: '/system/business-dicts',
-        icon: <MaterialSymbolsGridViewOutlineRounded />
-      },
-      {
-        label: t('SYSTEM.PERMISSIONS'),
-        key: '/system/permissions',
-        icon: <MaterialSymbolsGridViewOutlineRounded />
-      },
-      {
-        label: t('SYSTEM.PARAMS'),
-        key: '/system/params',
-        icon: <MaterialSymbolsGridViewOutlineRounded />
-      },
-      {
-        label: t('SYSTEM.TENANT'),
-        key: '/system/tenants',
-        icon: <MaterialSymbolsGridViewOutlineRounded />
-      }
+      getRouteMeta('/system/users'),
+      getRouteMeta('/system/depts'),
+      getRouteMeta('/system/posts'),
+      getRouteMeta('/system/dicts'),
+      getRouteMeta('/system/business-dicts'),
+      getRouteMeta('/system/roles'),
+      getRouteMeta('/system/params'),
+      getRouteMeta('/system/tenants')
     ]
   },
   {
-    label: 'Temp',
+    label: '非菜单页面',
     key: '/_temp',
     icon: <MaterialSymbolsGridViewOutlineRounded />,
-    children: [
-      {
-        label: t('CHANGE.PASSWORD'),
-        key: '/change-password',
-        icon: <MaterialSymbolsGridViewOutlineRounded />
-      },
-      {
-        label: t('USER.INFO'),
-        key: '/user-info',
-        icon: <MaterialSymbolsGridViewOutlineRounded />
-      }
-    ]
+    children: [getRouteMeta('/user-info'), getRouteMeta('/change-password')]
   }
 ]
