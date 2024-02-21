@@ -5,6 +5,7 @@ import { AntdResolver, RaipiotAntdResolver, reactPresets } from '@raipiot-infra/
 import { BootstrapAnimation } from '@raipiot-infra/bootstrap-animation'
 import { TanStackRouterVite } from '@tanstack/router-vite-plugin'
 import React from '@vitejs/plugin-react-swc'
+import { visualizer } from 'rollup-plugin-visualizer'
 import AutoImport from 'unplugin-auto-import/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
@@ -97,6 +98,7 @@ export default defineConfig(({ mode }) => {
       TurboConsole(),
       Info(),
       WebfontDownload(),
+      visualizer({ open: false, gzipSize: true }),
       ViteCompression({
         verbose: true, // 是否在控制台中输出压缩结果
         disable: true,
@@ -132,10 +134,21 @@ export default defineConfig(({ mode }) => {
     build: {
       rollupOptions: {
         output: {
-          manualChunks: {
-            // axios: ['axios'],
-            // antd: ['antd'],
-            // 'lodash-es': ['lodash-es']
+          // 优化 node_modules 打包
+          manualChunks(id) {
+            try {
+              if (id.includes('node_modules')) {
+                const name = id.split('node_modules/')[1].split('/')
+                if (name[0] === '.pnpm') {
+                  return name[1]
+                }
+                return name[0]
+              }
+              return undefined
+            } catch (e) {
+              process.stdout.write(e)
+              return undefined
+            }
           }
         }
       }

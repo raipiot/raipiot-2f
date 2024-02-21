@@ -25,3 +25,14 @@ pnpm dev:admin    # 启动 2F 管理系统
 pnpm dev:shopping # 启动 2F 商城
 pnpm dev:mock     # 启动 2F Mock 服务
 ```
+
+## 部署
+
+### Staging
+
+```bash
+pnpm i
+VITE_BASIC_AUTH_CODE=$xxx VITE_BASE_API_PREFIX=/base-api pnpm build:admin:staging
+```
+
+生成的 dist 包位于 /apps/admin/dist。

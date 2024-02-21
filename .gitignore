@@ -70,3 +70,6 @@ lerna-debug.log*
 # Zip
 *.zip
 *.rar
+
+# Generated files
+stats.html
