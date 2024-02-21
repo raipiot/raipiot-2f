@@ -87,6 +87,13 @@ const BaseUserInfoRouteRoute = BaseUserInfoRouteImport.update({
   import('./routes/_base/user-info/route.lazy').then((d) => d.Route),
 )
 
+const BaseTestRouteRoute = BaseTestRouteImport.update({
+  path: '/test',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_base/test/route.lazy').then((d) => d.Route),
+)
+
 const BaseChangePasswordRouteRoute = BaseChangePasswordRouteImport.update({
   path: '/change-password',
   getParentRoute: () => BaseRouteRoute,
@@ -197,6 +204,23 @@ const BaseSystemDictsIndexRouteRoute = BaseSystemDictsIndexRouteImport.update({
   import('./routes/_base/system/dicts/index/route.lazy').then((d) => d.Route),
 )
 
+const BaseSystemDeptsRouteRoute = BaseSystemDeptsRouteImport.update({
+  path: '/system/depts',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_base/system/depts/route.lazy').then((d) => d.Route),
+)
+
+const BaseSystemBusinessDictsRouteRoute =
+  BaseSystemBusinessDictsRouteImport.update({
+    path: '/system/business-dicts',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_base/system/business-dicts/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -233,6 +257,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseChangePasswordRouteImport
       parentRoute: typeof BaseRouteImport
     }
+    '/_base/test': {
+      preLoaderRoute: typeof BaseTestRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
     '/_base/user-info': {
       preLoaderRoute: typeof BaseUserInfoRouteImport
       parentRoute: typeof BaseRouteImport
@@ -259,6 +287,10 @@ declare module '@tanstack/react-router' {
     }
     '/_base/system/depts': {
       preLoaderRoute: typeof BaseSystemDeptsRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/system/dicts': {
+      preLoaderRoute: typeof BaseSystemDictsRouteImport
       parentRoute: typeof BaseRouteImport
     }
     '/_base/system/params': {
@@ -306,9 +338,11 @@ export const routeTree = rootRoute.addChildren([
     Base404RouteRoute,
     Base500RouteRoute,
     BaseChangePasswordRouteRoute,
+    BaseTestRouteRoute,
     BaseUserInfoRouteRoute,
     BaseSystemBusinessDictsRouteRoute,
     BaseSystemDeptsRouteRoute,
+    BaseSystemDictsRouteRoute,
     BaseSystemParamsRouteRoute,
     BaseSystemPermissionsRouteRoute,
     BaseSystemPostsRouteRoute,
