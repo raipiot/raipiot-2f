@@ -56,7 +56,7 @@ export default function ThemeToggle() {
     >
       <Icon
         isLightTheme={themeStore.isLightTheme()}
-        className="cursor-pointer text-lg"
+        className="cursor-pointer text-xl"
         color={themeStore.isLightTheme() ? '#FDC022' : '#FED736'}
         onClick={handleToggleTheme}
       />

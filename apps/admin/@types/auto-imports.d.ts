@@ -84,7 +84,6 @@ declare global {
   const MaterialSymbolsManageSearchRounded: typeof import('~icons/material-symbols/manage-search-rounded.jsx')['default']
   const MaterialSymbolsPaidOutlineRounded: typeof import('~icons/material-symbols/paid-outline-rounded.jsx')['default']
   const MaterialSymbolsPersonPinRounded: typeof import('~icons/material-symbols/person-pin-rounded.jsx')['default']
-  const MaterialSymbolsRefreshRounded: typeof import('~icons/material-symbols/refresh-rounded.jsx')['default']
   const MaterialSymbolsSettingsOutlineRounded: typeof import('~icons/material-symbols/settings-outline-rounded.jsx')['default']
   const MaterialSymbolsShieldPersonRounded: typeof import('~icons/material-symbols/shield-person-rounded.jsx')['default']
   const MaterialSymbolsShoppingCartOutlineRounded: typeof import('~icons/material-symbols/shopping-cart-outline-rounded.jsx')['default']
