@@ -2,8 +2,7 @@ import AUTH from './auth/zh-CN.json'
 import COMMON from './common/zh-CN.json'
 import LAYOUT from './layout/zh-CN.json'
 import ROUTER from './router/zh-CN.json'
-import SYSTEM_DICTS from './system/dicts/zh-CN.json'
-import SYSTEM_PARAMS from './system/params/zh-CN.json'
+import SYSTEM from './system/zh-CN.json'
 import VALIDATION from './validation/zh-CN.json'
 /**
  * 用于给 `@types/i18next.d.ts` 提供类型定义
@@ -15,8 +14,7 @@ const resources = {
   LAYOUT,
   ROUTER,
   VALIDATION,
-  'SYSTEM/DICTS': SYSTEM_DICTS,
-  'SYSTEM/PARAMS': SYSTEM_PARAMS
+  SYSTEM
 }
 
 export default resources
