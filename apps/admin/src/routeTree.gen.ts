@@ -87,13 +87,6 @@ const BaseUserInfoRouteRoute = BaseUserInfoRouteImport.update({
   import('./routes/_base/user-info/route.lazy').then((d) => d.Route),
 )
 
-const BaseTestRouteRoute = BaseTestRouteImport.update({
-  path: '/test',
-  getParentRoute: () => BaseRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_base/test/route.lazy').then((d) => d.Route),
-)
-
 const BaseChangePasswordRouteRoute = BaseChangePasswordRouteImport.update({
   path: '/change-password',
   getParentRoute: () => BaseRouteRoute,
@@ -257,10 +250,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseChangePasswordRouteImport
       parentRoute: typeof BaseRouteImport
     }
-    '/_base/test': {
-      preLoaderRoute: typeof BaseTestRouteImport
-      parentRoute: typeof BaseRouteImport
-    }
     '/_base/user-info': {
       preLoaderRoute: typeof BaseUserInfoRouteImport
       parentRoute: typeof BaseRouteImport
@@ -338,7 +327,6 @@ export const routeTree = rootRoute.addChildren([
     Base404RouteRoute,
     Base500RouteRoute,
     BaseChangePasswordRouteRoute,
-    BaseTestRouteRoute,
     BaseUserInfoRouteRoute,
     BaseSystemBusinessDictsRouteRoute,
     BaseSystemDeptsRouteRoute,
