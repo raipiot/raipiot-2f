@@ -12,3 +12,4 @@ pnpm-lock.yaml
 
 apps/admin/@types/auto-imports.d.ts
 apps/admin/src/routeTree.gen.ts
+apps/admin/stats.html
