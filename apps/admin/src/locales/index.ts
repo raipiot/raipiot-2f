@@ -1,8 +1,8 @@
 import AUTH from './auth/zh-CN.json'
 import COMMON from './common/zh-CN.json'
-import DESCRIPTION from './description/zh-CN.json'
 import LAYOUT from './layout/zh-CN.json'
 import ROUTER from './router/zh-CN.json'
+import SYSTEM from './system/zh-CN.json'
 import VALIDATION from './validation/zh-CN.json'
 
 /**
@@ -15,7 +15,7 @@ const resources = {
   LAYOUT,
   ROUTER,
   VALIDATION,
-  DESCRIPTION
+  SYSTEM
 }
 
 export default resources

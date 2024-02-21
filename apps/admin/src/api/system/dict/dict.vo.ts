@@ -15,7 +15,7 @@ export interface DictVo {
    */
   dictValue?: string
   hasChildren?: boolean
-  id?: number
+  id?: string
   /**
    * 是否已删除
    */
@@ -24,7 +24,7 @@ export interface DictVo {
    * 是否已封存
    */
   isSealed?: number
-  parentId?: number
+  parentId?: string
   parentName?: string
   /**
    * 字典备注

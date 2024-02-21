@@ -26,6 +26,7 @@ declare global {
   const ASelect: typeof import('antd')['Select']
   const ASpace: (typeof import('antd'))['Space']
   const ASpin: typeof import('antd')['Spin']
+  const ATable: typeof import('antd')['Table']
   const ATabs: typeof import('antd')['Tabs']
   const ATheme: typeof import('antd')['theme']
   const ATooltip: typeof import('antd')['Tooltip']

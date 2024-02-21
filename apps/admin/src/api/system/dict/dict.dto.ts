@@ -27,7 +27,7 @@ export interface DictSubmitDto {
   /**
    * 主键
    */
-  id?: number
+  id?: string
   /**
    * 是否已删除
    */
@@ -39,7 +39,7 @@ export interface DictSubmitDto {
   /**
    * 父主键
    */
-  parentId?: number
+  parentId?: string
   /**
    * 字典备注
    */
