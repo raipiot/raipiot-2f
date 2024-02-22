@@ -22,8 +22,7 @@ const initialValues: SignupDto = {
 }
 
 function Signup() {
-  const { t } = useTranslation(['AUTH', 'VALIDATION', 'COMMON'])
-
+  const { t, i18n } = useTranslation(['AUTH', 'VALIDATION', 'COMMON'])
   const match = useMatch({ from: '/_portal/signup' })
 
   const {
