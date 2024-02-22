@@ -11,7 +11,7 @@
     "strict": true,
     "jsx": "react-jsx",
     "types": ["vitest/globals"],
-    "lib": ["dom", "es2017", "esnext.asynciterable"]
+    "lib": ["dom", "esnext"]
   },
   "exclude": ["node_modules"],
   "include": [
