@@ -1,4 +1,4 @@
-export * from './useBoolean'
+export * from './useBoolean/useBoolean'
 export * from './useFullscreen'
 export * from './useResponsive'
-export * from './useToggle'
+export * from './useToggle/useToggle'
