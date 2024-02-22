@@ -18,7 +18,9 @@ export const useBoolean = (initialValue = false, callback?: (newValue?: boolean)
     (..._: any) => {
       setValue((prev) => {
         // 确保回调拿到的是最新的值
-        if (isFunction(cb)) requestAnimationFrame(() => cb(!prev))
+        if (isFunction(cb)) {
+          requestAnimationFrame(() => cb(!prev))
+        }
         return !prev
       })
     }

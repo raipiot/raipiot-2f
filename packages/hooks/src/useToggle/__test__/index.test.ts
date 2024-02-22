@@ -76,7 +76,7 @@ describe('test useToggle', () => {
         reverseValue: false
       })
     )
-    const value: any = 1
-    expect(() => result.current[2](value)).toThrowError()
+    // @ts-expect-error test
+    expect(() => result.current[2](1)).toThrowError()
   })
 })
