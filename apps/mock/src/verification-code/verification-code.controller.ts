@@ -7,7 +7,6 @@ export class VerificationCodeController {
   @Post()
   @HttpCode(200)
   sendVerificationCode(@Body() sendVerificationCodeDto: VerificationCodeDto) {
-    // Use VerificationCodeDto as the type for sendVerificationCodeDto
     try {
       console.log(sendVerificationCodeDto)
       return {

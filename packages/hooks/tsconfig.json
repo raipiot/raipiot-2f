@@ -24,5 +24,5 @@
     "src/__tests__/**/*.js",
     "src/__tests__/**/*.jsx"
   ],
-  "extends": "@raipiot-infra/tsconfig/base.json",
+  "extends": "@raipiot-infra/tsconfig/base.json"
 }
