@@ -12,7 +12,8 @@ export default defineConfig({
     globals: true, // 免导入常用的测试函数
     coverage: {
       enabled: true,
-      include: ['src/**/use*.ts']
+      include: ['src/**/*.ts'],
+      exclude: ['src/*.ts']
     },
     clearMocks: true,
     onConsoleLog(log, type) {

@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react'
 
-import { useBoolean } from '../useBoolean'
+import { useBoolean } from '..'
 
 // result.current will change after each render!!!
 
