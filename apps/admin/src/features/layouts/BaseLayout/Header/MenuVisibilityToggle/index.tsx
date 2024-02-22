@@ -21,7 +21,7 @@ export default function MenuVisibilityToggle() {
     >
       <Icon
         isSidebarDisplay={sidebarStore.isDisplay}
-        className="cursor-pointer text-xl"
+        className="cursor-pointer text-lg"
         onClick={sidebarStore.toggleDisplay}
       />
     </ATooltip>

@@ -30,9 +30,10 @@ import { Route as BaseSystemRolesRouteImport } from './routes/_base/system/roles
 import { Route as BaseSystemPostsRouteImport } from './routes/_base/system/posts/route'
 import { Route as BaseSystemPermissionsRouteImport } from './routes/_base/system/permissions/route'
 import { Route as BaseSystemParamsRouteImport } from './routes/_base/system/params/route'
-import { Route as BaseSystemDictsRouteImport } from './routes/_base/system/dicts/route'
 import { Route as BaseSystemDeptsRouteImport } from './routes/_base/system/depts/route'
 import { Route as BaseSystemBusinessDictsRouteImport } from './routes/_base/system/business-dicts/route'
+import { Route as BaseSystemDictsIdRouteImport } from './routes/_base/system/dicts/$id/route'
+import { Route as BaseSystemDictsIndexRouteImport } from './routes/_base/system/dicts/index/route'
 
 // Create/Update Routes
 
@@ -165,13 +166,6 @@ const BaseSystemParamsRouteRoute = BaseSystemParamsRouteImport.update({
   import('./routes/_base/system/params/route.lazy').then((d) => d.Route),
 )
 
-const BaseSystemDictsRouteRoute = BaseSystemDictsRouteImport.update({
-  path: '/system/dicts',
-  getParentRoute: () => BaseRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_base/system/dicts/route.lazy').then((d) => d.Route),
-)
-
 const BaseSystemDeptsRouteRoute = BaseSystemDeptsRouteImport.update({
   path: '/system/depts',
   getParentRoute: () => BaseRouteRoute,
@@ -188,6 +182,20 @@ const BaseSystemBusinessDictsRouteRoute =
       (d) => d.Route,
     ),
   )
+
+const BaseSystemDictsIdRouteRoute = BaseSystemDictsIdRouteImport.update({
+  path: '/system/dicts/$id',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_base/system/dicts/$id/route.lazy').then((d) => d.Route),
+)
+
+const BaseSystemDictsIndexRouteRoute = BaseSystemDictsIndexRouteImport.update({
+  path: '/system/dicts/',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_base/system/dicts/index/route.lazy').then((d) => d.Route),
+)
 
 // Populate the FileRoutesByPath interface
 
@@ -253,10 +261,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSystemDeptsRouteImport
       parentRoute: typeof BaseRouteImport
     }
-    '/_base/system/dicts': {
-      preLoaderRoute: typeof BaseSystemDictsRouteImport
-      parentRoute: typeof BaseRouteImport
-    }
     '/_base/system/params': {
       preLoaderRoute: typeof BaseSystemParamsRouteImport
       parentRoute: typeof BaseRouteImport
@@ -281,6 +285,14 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSystemUsersRouteImport
       parentRoute: typeof BaseRouteImport
     }
+    '/_base/system/dicts/': {
+      preLoaderRoute: typeof BaseSystemDictsIndexRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/system/dicts/$id': {
+      preLoaderRoute: typeof BaseSystemDictsIdRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
   }
 }
 
@@ -297,13 +309,14 @@ export const routeTree = rootRoute.addChildren([
     BaseUserInfoRouteRoute,
     BaseSystemBusinessDictsRouteRoute,
     BaseSystemDeptsRouteRoute,
-    BaseSystemDictsRouteRoute,
     BaseSystemParamsRouteRoute,
     BaseSystemPermissionsRouteRoute,
     BaseSystemPostsRouteRoute,
     BaseSystemRolesRouteRoute,
     BaseSystemTenantsRouteRoute,
     BaseSystemUsersRouteRoute,
+    BaseSystemDictsIndexRouteRoute,
+    BaseSystemDictsIdRouteRoute,
   ]),
   PortalRouteRoute.addChildren([
     PortalForgotPasswordRouteRoute,

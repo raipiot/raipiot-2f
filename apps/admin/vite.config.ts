@@ -79,7 +79,7 @@ export default defineConfig(({ mode }) => {
           IconsResolver({
             prefix: false,
             extension: 'jsx',
-            enabledCollections: ['line-md', 'material-symbols']
+            enabledCollections: ['line-md', 'material-symbols', 'svg-spinners']
           }),
           AntdResolver({
             prefix: 'A'

@@ -1,21 +1,19 @@
 import type { PaginationProps } from 'antd'
 
-import { DEFAULT_PAGE_SIZE } from '../constants'
+import { PageDto } from '@/api/common.type'
 
-export const usePagination = () => {
+export const usePagination = <T extends PageDto>(initialValue?: T) => {
   const { t } = useTranslation()
   const response = useResponsive()
 
-  const [pageParams, setPageParams] = useImmer({
-    current: 1,
-    pageSize: DEFAULT_PAGE_SIZE
-  })
+  const [pageParams, setPageParams] = useImmer(initialValue ?? new PageDto())
+
   const [total, setTotal] = useState(0)
 
   const setPagination = (page: number, pageSize: number) =>
     setPageParams((draft) => {
       draft.current = page
-      draft.pageSize = pageSize
+      draft.size = pageSize
     })
 
   return {
@@ -25,7 +23,10 @@ export const usePagination = () => {
     setTotal,
     pagination: {
       total,
-      ...pageParams,
+      pageParams: {
+        current: pageParams.current,
+        pageSize: pageParams.size
+      },
       onChange: setPagination,
       size: (response.sm ? 'default' : 'small') as PaginationProps['size'],
       rootClassName: '!mb-0',

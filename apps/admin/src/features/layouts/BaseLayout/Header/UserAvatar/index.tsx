@@ -73,7 +73,7 @@ export default function UserAvatar() {
           className="cursor-pointer !bg-gray-300 hover:shadow"
         />
       ) : (
-        <MaterialSymbolsAccountCircle className="cursor-pointer text-xl" />
+        <MaterialSymbolsAccountCircle className="cursor-pointer text-lg" />
       )}
     </ADropdown>
   )
