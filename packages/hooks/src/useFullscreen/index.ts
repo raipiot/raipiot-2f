@@ -1,1 +1,0 @@
-export { useFullscreen } from 'ahooks'

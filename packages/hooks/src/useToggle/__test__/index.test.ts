@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react'
 
-import { useToggle } from '../useToggle'
+import { useToggle } from '..'
 
 // result.current will change after each render!!!
 

@@ -1,4 +1,3 @@
-export * from './useBoolean/useBoolean'
-export * from './useFullscreen'
-export * from './useResponsive'
-export * from './useToggle/useToggle'
+export * from './useBoolean'
+export * from './useToggle'
+export { useFullscreen, useResponsive } from 'ahooks'
