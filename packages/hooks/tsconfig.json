@@ -1,4 +1,28 @@
 {
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "strict": true,
+    "jsx": "react-jsx",
+    "types": ["vitest/globals"],
+    "lib": ["dom", "esnext"]
+  },
+  "exclude": ["node_modules"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/__tests__/**/*.ts",
+    "src/__tests__/**/*.tsx",
+    "src/__tests__/**/*.js",
+    "src/__tests__/**/*.jsx"
+  ],
   "extends": "@raipiot-infra/tsconfig/base.json",
-  "include": ["src", "tsup.config.ts"]
 }
