@@ -22,7 +22,5 @@
       "dictionaryDefinitions": []
     }
   ],
-  "ignorePaths": ["**/stats.html"],
-  "allowCompoundWords": true,
-  "enableFiletypes": ["astro"]
+  "ignorePaths": []
 }

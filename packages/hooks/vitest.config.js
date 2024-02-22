@@ -16,8 +16,7 @@ export default defineConfig({
       exclude: ['src/*.ts']
     },
     clearMocks: true,
-    onConsoleLog(log, type) {
-      // if (log === 'message from third party library' && type === 'stdout') return false
+    onConsoleLog() {
       return true
     }
   }
