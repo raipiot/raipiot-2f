@@ -19,15 +19,21 @@ import { Route as PortalSignupRouteImport } from './routes/_portal/signup/route'
 import { Route as PortalLoginRouteImport } from './routes/_portal/login/route'
 import { Route as PortalForgotPasswordRouteImport } from './routes/_portal/forgot-password/route'
 import { Route as BaseUserInfoRouteImport } from './routes/_base/user-info/route'
-import { Route as BaseTestRouteImport } from './routes/_base/test/route'
-import { Route as BaseDashboardRouteImport } from './routes/_base/dashboard/route'
 import { Route as BaseChangePasswordRouteImport } from './routes/_base/change-password/route'
 import { Route as Base500RouteImport } from './routes/_base/500/route'
 import { Route as Base404RouteImport } from './routes/_base/404/route'
 import { Route as Base403RouteImport } from './routes/_base/403/route'
 import { Route as BaseIndexRouteImport } from './routes/_base/index/route'
 import { Route as BaseSystemUsersRouteImport } from './routes/_base/system/users/route'
-import { Route as BaseSystemDictsRouteImport } from './routes/_base/system/dicts/route'
+import { Route as BaseSystemTenantsRouteImport } from './routes/_base/system/tenants/route'
+import { Route as BaseSystemRolesRouteImport } from './routes/_base/system/roles/route'
+import { Route as BaseSystemPostsRouteImport } from './routes/_base/system/posts/route'
+import { Route as BaseSystemPermissionsRouteImport } from './routes/_base/system/permissions/route'
+import { Route as BaseSystemParamsRouteImport } from './routes/_base/system/params/route'
+import { Route as BaseSystemDeptsRouteImport } from './routes/_base/system/depts/route'
+import { Route as BaseSystemBusinessDictsRouteImport } from './routes/_base/system/business-dicts/route'
+import { Route as BaseSystemDictsIdRouteImport } from './routes/_base/system/dicts/$id/route'
+import { Route as BaseSystemDictsIndexRouteImport } from './routes/_base/system/dicts/index/route'
 
 // Create/Update Routes
 
@@ -81,18 +87,6 @@ const BaseUserInfoRouteRoute = BaseUserInfoRouteImport.update({
   import('./routes/_base/user-info/route.lazy').then((d) => d.Route),
 )
 
-const BaseTestRouteRoute = BaseTestRouteImport.update({
-  path: '/test',
-  getParentRoute: () => BaseRouteRoute,
-} as any).lazy(() =>
-  import('./routes/_base/test/route.lazy').then((d) => d.Route),
-)
-
-const BaseDashboardRouteRoute = BaseDashboardRouteImport.update({
-  path: '/dashboard',
-  getParentRoute: () => BaseRouteRoute,
-} as any)
-
 const BaseChangePasswordRouteRoute = BaseChangePasswordRouteImport.update({
   path: '/change-password',
   getParentRoute: () => BaseRouteRoute,
@@ -135,11 +129,72 @@ const BaseSystemUsersRouteRoute = BaseSystemUsersRouteImport.update({
   import('./routes/_base/system/users/route.lazy').then((d) => d.Route),
 )
 
-const BaseSystemDictsRouteRoute = BaseSystemDictsRouteImport.update({
-  path: '/system/dicts',
+const BaseSystemTenantsRouteRoute = BaseSystemTenantsRouteImport.update({
+  path: '/system/tenants',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./routes/_base/system/dicts/route.lazy').then((d) => d.Route),
+  import('./routes/_base/system/tenants/route.lazy').then((d) => d.Route),
+)
+
+const BaseSystemRolesRouteRoute = BaseSystemRolesRouteImport.update({
+  path: '/system/roles',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_base/system/roles/route.lazy').then((d) => d.Route),
+)
+
+const BaseSystemPostsRouteRoute = BaseSystemPostsRouteImport.update({
+  path: '/system/posts',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_base/system/posts/route.lazy').then((d) => d.Route),
+)
+
+const BaseSystemPermissionsRouteRoute = BaseSystemPermissionsRouteImport.update(
+  {
+    path: '/system/permissions',
+    getParentRoute: () => BaseRouteRoute,
+  } as any,
+).lazy(() =>
+  import('./routes/_base/system/permissions/route.lazy').then((d) => d.Route),
+)
+
+const BaseSystemParamsRouteRoute = BaseSystemParamsRouteImport.update({
+  path: '/system/params',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_base/system/params/route.lazy').then((d) => d.Route),
+)
+
+const BaseSystemDeptsRouteRoute = BaseSystemDeptsRouteImport.update({
+  path: '/system/depts',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_base/system/depts/route.lazy').then((d) => d.Route),
+)
+
+const BaseSystemBusinessDictsRouteRoute =
+  BaseSystemBusinessDictsRouteImport.update({
+    path: '/system/business-dicts',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_base/system/business-dicts/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const BaseSystemDictsIdRouteRoute = BaseSystemDictsIdRouteImport.update({
+  path: '/system/dicts/$id',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_base/system/dicts/$id/route.lazy').then((d) => d.Route),
+)
+
+const BaseSystemDictsIndexRouteRoute = BaseSystemDictsIndexRouteImport.update({
+  path: '/system/dicts/',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./routes/_base/system/dicts/index/route.lazy').then((d) => d.Route),
 )
 
 // Populate the FileRoutesByPath interface
@@ -178,14 +233,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseChangePasswordRouteImport
       parentRoute: typeof BaseRouteImport
     }
-    '/_base/dashboard': {
-      preLoaderRoute: typeof BaseDashboardRouteImport
-      parentRoute: typeof BaseRouteImport
-    }
-    '/_base/test': {
-      preLoaderRoute: typeof BaseTestRouteImport
-      parentRoute: typeof BaseRouteImport
-    }
     '/_base/user-info': {
       preLoaderRoute: typeof BaseUserInfoRouteImport
       parentRoute: typeof BaseRouteImport
@@ -206,12 +253,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalSsoRouteImport
       parentRoute: typeof PortalRouteImport
     }
-    '/_base/system/dicts': {
-      preLoaderRoute: typeof BaseSystemDictsRouteImport
+    '/_base/system/business-dicts': {
+      preLoaderRoute: typeof BaseSystemBusinessDictsRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/system/depts': {
+      preLoaderRoute: typeof BaseSystemDeptsRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/system/params': {
+      preLoaderRoute: typeof BaseSystemParamsRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/system/permissions': {
+      preLoaderRoute: typeof BaseSystemPermissionsRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/system/posts': {
+      preLoaderRoute: typeof BaseSystemPostsRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/system/roles': {
+      preLoaderRoute: typeof BaseSystemRolesRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/system/tenants': {
+      preLoaderRoute: typeof BaseSystemTenantsRouteImport
       parentRoute: typeof BaseRouteImport
     }
     '/_base/system/users': {
       preLoaderRoute: typeof BaseSystemUsersRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/system/dicts/': {
+      preLoaderRoute: typeof BaseSystemDictsIndexRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/system/dicts/$id': {
+      preLoaderRoute: typeof BaseSystemDictsIdRouteImport
       parentRoute: typeof BaseRouteImport
     }
   }
@@ -227,11 +306,17 @@ export const routeTree = rootRoute.addChildren([
     Base404RouteRoute,
     Base500RouteRoute,
     BaseChangePasswordRouteRoute,
-    BaseDashboardRouteRoute,
-    BaseTestRouteRoute,
     BaseUserInfoRouteRoute,
-    BaseSystemDictsRouteRoute,
+    BaseSystemBusinessDictsRouteRoute,
+    BaseSystemDeptsRouteRoute,
+    BaseSystemParamsRouteRoute,
+    BaseSystemPermissionsRouteRoute,
+    BaseSystemPostsRouteRoute,
+    BaseSystemRolesRouteRoute,
+    BaseSystemTenantsRouteRoute,
     BaseSystemUsersRouteRoute,
+    BaseSystemDictsIndexRouteRoute,
+    BaseSystemDictsIdRouteRoute,
   ]),
   PortalRouteRoute.addChildren([
     PortalForgotPasswordRouteRoute,

@@ -18,7 +18,7 @@ export interface UserVo {
   deptId?: string
   deptName?: string
   email?: string
-  id?: number
+  id?: string
   /**
    * 是否已删除
    */

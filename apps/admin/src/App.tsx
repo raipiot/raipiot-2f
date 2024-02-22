@@ -6,6 +6,7 @@ import { queryClient, router } from '@/router'
 
 export default function App() {
   const themeStore = useThemeStore()
+  const langStore = useLangStore()
 
   const px2rem = px2remTransformer({
     rootValue: 16,
@@ -18,6 +19,7 @@ export default function App() {
         theme={{
           ...(themeStore.isLightTheme() ? themeStore.lightThemeConfig : themeStore.darkThemeConfig)
         }}
+        locale={langStore.locale}
       >
         <StyleProvider
           hashPriority="high"

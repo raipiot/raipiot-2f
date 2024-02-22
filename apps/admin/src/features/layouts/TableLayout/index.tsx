@@ -25,17 +25,17 @@ interface TableLayoutProps {
   renderModal?: RenderModal
 }
 
-export default function TableLayout(props: TableLayoutProps) {
+export function TableLayout(props: TableLayoutProps) {
   const { renderContent, ...modalProps } = props.renderModal ?? {}
 
   const { t } = useTranslation()
 
   return (
     <>
-      <Header />
+      <Header renderRight={props.renderOperate} />
       <ACard
         hoverable
-        rootClassName="!cursor-default min-h-[calc(100vh-210px)] sm:min-h-[calc(100vh-216px)]"
+        rootClassName="!cursor-default h-[calc(100vh-210px)] sm:h-[calc(100vh-212px)] !overflow-hidden"
       >
         {props.renderHeader && <ACard rootClassName="!mb-2">{props.renderHeader}</ACard>}
         <div>{props.renderTable}</div>

@@ -11,7 +11,7 @@ const Header = memo<Props>((props) => {
   const hideTitle = false // TODO: 用于隐藏标题
 
   const responsive = useResponsive()
-  const title = useMatches().at(-1)?.staticData.title
+  const { title, icon } = useMatches().at(-1)?.staticData ?? {}
 
   return (
     <div>
@@ -23,9 +23,7 @@ const Header = memo<Props>((props) => {
           )}
         >
           <div className="flex items-center space-x-2">
-            {/* {icon && (
-            TODO: 放置 Icon
-            )} */}
+            <div className="text-xl">{icon && icon}</div>
             <div className={clsx('text-2xl', hideTitle && 'hidden')}>
               {I18nUtils.getText(title)}
             </div>

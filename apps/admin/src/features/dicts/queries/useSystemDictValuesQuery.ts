@@ -1,10 +1,16 @@
+import { DictValuePageDto } from '@/api/system/dict/dict.dto'
+
 import { systemDictValuesQK } from './query-keys'
 
-export const systemDictValuesQueryOptions = queryOptions({
-  queryKey: systemDictValuesQK,
-  queryFn: () => SystemDictAPI.childList()
-})
+export const systemDictValuesQueryOptions = (params: DictValuePageDto) =>
+  queryOptions({
+    queryKey: systemDictValuesQK(params),
+    queryFn: ({ signal }) => SystemDictAPI.childList(new DictValuePageDto(params), signal),
+    placeholderData: keepPreviousData
+  })
 
-export const useSystemDictValuesQuery = () => useQuery(systemDictValuesQueryOptions)
+export const useSystemDictValuesQuery = (params: DictValuePageDto) =>
+  useQuery(systemDictValuesQueryOptions(params))
 
-export const useSystemDictValuesSuspenseQuery = () => useSuspenseQuery(systemDictValuesQueryOptions)
+export const useSystemDictValuesSuspenseQuery = (params: DictValuePageDto) =>
+  useSuspenseQuery(systemDictValuesQueryOptions(params))

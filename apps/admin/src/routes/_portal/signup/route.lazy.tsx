@@ -19,7 +19,7 @@ const initialValues: SignupDto = {
 }
 
 function Signup() {
-  const { t } = useTranslation(['AUTH', 'VALIDATION', 'DESCRIPTION', 'COMMON'])
+  const { t } = useTranslation(['AUTH', 'VALIDATION', 'COMMON'])
 
   const match = useMatch({ from: '/_portal/signup' })
 
@@ -41,7 +41,7 @@ function Signup() {
   return (
     <div className="absolute inset-0 m-auto flex h-fit w-[560px] max-w-[90%] flex-col rounded-lg bg-[#ffffff] p-8 shadow-md dark:bg-[#222222]">
       <div className="mb-6 flex flex-col items-center">
-        <span className="text-2xl">{t('DESCRIPTION:SUPPLIER.REGISTRATION')}</span>
+        <span className="text-2xl">{t('SUPPLIER.REGISTRATION')}</span>
       </div>
 
       <AForm

@@ -3,11 +3,21 @@ export class DictPageDto extends PageDto {
 
   dictValue?: string
 
-  constructor(dictPageDto: DictPageDto) {
-    const { code, dictValue, ...pageDto } = dictPageDto
+  constructor(dictPageDto?: DictPageDto) {
+    const { code, dictValue, ...pageDto } = dictPageDto ?? {}
     super(pageDto)
     this.code = code
     this.dictValue = dictValue
+  }
+}
+
+export class DictValuePageDto extends DictPageDto {
+  parentId?: string
+
+  constructor(dictValuePageDto?: DictValuePageDto) {
+    const { parentId, ...dictPageDto } = dictValuePageDto ?? {}
+    super(dictPageDto)
+    this.parentId = parentId
   }
 }
 
@@ -27,7 +37,7 @@ export interface DictSubmitDto {
   /**
    * 主键
    */
-  id?: number
+  id?: string
   /**
    * 是否已删除
    */
@@ -39,7 +49,7 @@ export interface DictSubmitDto {
   /**
    * 父主键
    */
-  parentId?: number
+  parentId?: string
   /**
    * 字典备注
    */

@@ -52,7 +52,6 @@ export default defineConfig(({ mode }) => {
         jsx: 'react',
         iconCustomizer(_collection, _icon, props) {
           props.opacity = '0.8' // 图标添加灰度
-          props.fontSize = '1.125rem' // 默认图标尺寸为 TailwindCSS text-lg 大小
         }
       }),
       AutoImport({
@@ -80,7 +79,7 @@ export default defineConfig(({ mode }) => {
           IconsResolver({
             prefix: false,
             extension: 'jsx',
-            enabledCollections: ['line-md', 'material-symbols']
+            enabledCollections: ['line-md', 'material-symbols', 'svg-spinners']
           }),
           AntdResolver({
             prefix: 'A'

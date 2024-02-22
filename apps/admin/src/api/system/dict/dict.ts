@@ -1,6 +1,6 @@
 import { httpRequest } from '@/axios'
 
-import type { DictPageDto, DictSubmitDto } from './dict.dto'
+import type { DictPageDto, DictSubmitDto, DictValuePageDto } from './dict.dto'
 import type { DictsVo, DictVo } from './dict.vo'
 
 export class SystemDictAPI {
@@ -17,21 +17,25 @@ export class SystemDictAPI {
    * 列表
    */
   static async list(params: DictPageDto) {
-    return httpRequest.get<DictsVo>(`${this.#API_PREFIX}/list`, params)
-  }
-
-  /**
-   * 子列表
-   */
-  static async childList() {
-    return httpRequest.get(`${this.#API_PREFIX}/child-list`)
+    return httpRequest.get(`${this.#API_PREFIX}/list`, params)
   }
 
   /**
    * 父列表
    */
-  static async parentList() {
-    return httpRequest.get(`${this.#API_PREFIX}/parent-list`)
+  static async parentList(params: DictPageDto, signal?: AbortSignal) {
+    return httpRequest.get<DictsVo>(`${this.#API_PREFIX}/parent-list`, params, {
+      signal
+    })
+  }
+
+  /**
+   * 子列表
+   */
+  static async childList(params: DictValuePageDto, signal?: AbortSignal) {
+    return httpRequest.get<DictVo[]>(`${this.#API_PREFIX}/child-list`, params, {
+      signal
+    })
   }
 
   /**

@@ -37,7 +37,7 @@ function dynamicLoadTrans() {
     })
   ).map<[string, string, Record<string, unknown>]>(([path, resource]) => [
     path.match(/([^/]+)\.json$/)![1], // 语言 key
-    path.split('/')[2].replaceAll('-', '_').toUpperCase(), // 命名空间 key
+    path.split('/').slice(2, -1).join('/').toUpperCase(), // 命名空间 key
     resource // 资源文件内容
   ])
 }
