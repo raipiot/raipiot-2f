@@ -26,23 +26,16 @@ function SystemDictItem() {
       }
       renderHeader={<RpTableSearch handleSearch={() => {}} />}
       renderTable={
-        <div>
-          <ATable<DictVo>
-            rowKey={(record) => record.id!}
-            rowSelection={{
-              type: 'checkbox',
-              columnWidth: 20
-            }}
-            columns={columns}
-            dataSource={listData}
-            scroll={{
-              scrollToFirstRowOnChange: true,
-              x: 800,
-              y: 1200
-            }}
-            loading={isFetching}
-          />
-        </div>
+        <RpTable<DictVo>
+          rowKey={(record) => record.id!}
+          rowSelection={{
+            type: 'checkbox',
+            columnWidth: 20
+          }}
+          columns={columns}
+          dataSource={listData}
+          loading={isFetching}
+        />
       }
     />
   )
