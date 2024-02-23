@@ -1,7 +1,7 @@
 import type { DictVo } from '@/api/system/dict/dict.vo'
-import { useDictValuesColumns, useSystemDictValuesSuspenseQuery } from '@/features/dicts'
 import { TableLayout } from '@/features/layouts'
 import { usePagination } from '@/features/pagination'
+import { useDictValuesColumns, useSystemDictValuesSuspenseQuery } from '@/features/system/dicts'
 
 export const Route = createLazyFileRoute('/_base/system/dicts/$id')({
   component: SystemDictItem
@@ -10,13 +10,9 @@ export const Route = createLazyFileRoute('/_base/system/dicts/$id')({
 function SystemDictItem() {
   const { id } = useParams({ from: '/_base/system/dicts/$id' })
   const { t } = useTranslation(['COMMON', 'SYSTEM/DICTS'])
-  const { containerRef, y } = useTableContainer()
   const { pageParams } = usePagination(new DictValuePageDto({ parentId: id }))
   const { data: listData, isFetching } = useSystemDictValuesSuspenseQuery({ ...pageParams })
-  const columns = useDictValuesColumns({
-    handleDelete: () => {},
-    isDeleteLoading: false
-  })
+  const columns = useDictValuesColumns()
 
   return (
     <TableLayout
@@ -30,24 +26,16 @@ function SystemDictItem() {
       }
       renderHeader={<RpTableSearch handleSearch={() => {}} />}
       renderTable={
-        <div>
-          <ATable<DictVo>
-            ref={containerRef}
-            rowKey={(record) => record.id!}
-            rowSelection={{
-              type: 'checkbox',
-              columnWidth: 20
-            }}
-            columns={columns}
-            dataSource={listData}
-            scroll={{
-              scrollToFirstRowOnChange: true,
-              x: 800,
-              y
-            }}
-            loading={isFetching}
-          />
-        </div>
+        <RpTable<DictVo>
+          rowKey={(record) => record.id!}
+          rowSelection={{
+            type: 'checkbox',
+            columnWidth: 20
+          }}
+          columns={columns}
+          dataSource={listData}
+          loading={isFetching}
+        />
       }
     />
   )

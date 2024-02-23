@@ -1,7 +1,7 @@
 import { systemDictQK } from './query-keys'
 
 export const systemDictQueryOptions = queryOptions({
-  queryKey: systemDictQK,
+  queryKey: systemDictQK(),
   queryFn: () => SystemDictAPI.detail()
 })
 

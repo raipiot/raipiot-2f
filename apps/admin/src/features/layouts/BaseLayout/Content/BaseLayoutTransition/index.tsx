@@ -10,7 +10,7 @@ export function BaseLayoutTransition(props: BaseLayoutTransitionProps) {
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        key={location.state.key}
+        key={location.pathname}
         initial="initialState"
         animate="animateState"
         exit="exitState"

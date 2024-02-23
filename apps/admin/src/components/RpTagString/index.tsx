@@ -1,6 +1,6 @@
 import rpWithSkeleton from '../RpWithSkeleton'
 
-interface RpTagStringProps {
+export interface RpTagStringProps {
   value?: any
   copyable?: boolean
   skeleton?: boolean

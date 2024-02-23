@@ -20,7 +20,7 @@ export const router = createRouter({
 
 // NProgress
 nprogress.configure({ showSpinner: false })
-router.subscribe('onBeforeLoad', () => nprogress.start())
+router.subscribe('onBeforeLoad', ({ pathChanged }) => pathChanged && nprogress.start())
 router.subscribe('onLoad', () => nprogress.done())
 
 // 类型安全路由
@@ -32,5 +32,6 @@ declare module '@tanstack/react-router' {
   interface StaticDataRouteOption {
     title?: MaybeI18nString
     icon?: React.ReactElement<any, string | JSXElementConstructor<any>>
+    hideTitle?: boolean
   }
 }

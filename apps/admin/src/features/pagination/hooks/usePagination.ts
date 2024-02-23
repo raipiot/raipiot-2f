@@ -1,4 +1,4 @@
-import type { PaginationProps } from 'antd'
+import type { PaginationProps, TablePaginationConfig } from 'antd'
 
 import { PageDto } from '@/api/common.type'
 
@@ -14,23 +14,19 @@ export const usePagination = <T extends PageDto>(initialValue?: T) => {
       draft.size = pageSize
     })
 
-  const genPagination = ({ total }: { total: number }) => ({
-    pageParams: {
-      current: pageParams.current,
-      pageSize: pageParams.size
-    },
+  const pagination: TablePaginationConfig = {
+    current: pageParams.current,
     onChange: setPagination,
     size: (response.sm ? 'default' : 'small') as PaginationProps['size'],
     rootClassName: '!mb-0',
     showSizeChanger: true,
     showQuickJumper: true,
-    showTotal: (totalPage: number) => t('SHOW.TOTAL', { total: totalPage }),
-    total
-  })
+    showTotal: (totalPage: number) => t('SHOW.TOTAL', { total: totalPage })
+  }
 
   return {
     pageParams,
     setPageParams,
-    genPagination
+    pagination
   }
 }

@@ -1,7 +1,7 @@
 import { systemDictTreeQK } from './query-keys'
 
 export const systemDictTreeQueryOptions = queryOptions({
-  queryKey: systemDictTreeQK,
+  queryKey: systemDictTreeQK(),
   queryFn: () => SystemDictAPI.tree()
 })
 
