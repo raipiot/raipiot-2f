@@ -1,4 +1,7 @@
+import { Lang } from '@raipiot-infra/enums'
+
 import type { SignupDto } from '@/api/auth/auth.dto'
+import LanguageButton from '@/features/layouts/BaseLayout/Header/LanguageButton'
 import { useSignupForm } from '@/features/signup'
 import PrivacyPolicy from '@/features/signup/components/PrivacyPolicy'
 import UserAgreement from '@/features/signup/components/UserAgreement'
@@ -19,8 +22,7 @@ const initialValues: SignupDto = {
 }
 
 function Signup() {
-  const { t } = useTranslation(['AUTH', 'VALIDATION', 'COMMON'])
-
+  const { t, i18n } = useTranslation(['AUTH', 'VALIDATION', 'COMMON'])
   const match = useMatch({ from: '/_portal/signup' })
 
   const {
@@ -39,7 +41,10 @@ function Signup() {
   } = useSignupForm()
 
   return (
-    <div className="absolute inset-0 m-auto flex h-fit w-[560px] max-w-[90%] flex-col rounded-lg bg-[#ffffff] p-8 shadow-md dark:bg-[#222222]">
+    <div className="absolute inset-0 m-auto flex h-fit w-[520px] max-w-[90%] flex-col rounded-lg bg-[#ffffff] p-8 shadow-md dark:bg-[#222222]">
+      <div className="absolute right-4 top-4">
+        <LanguageButton />
+      </div>
       <div className="mb-6 flex flex-col items-center">
         <span className="text-2xl">{t('SUPPLIER.REGISTRATION')}</span>
       </div>
@@ -51,6 +56,7 @@ function Signup() {
         onFinish={handleSignup}
         autoComplete="off"
         labelAlign="right"
+        layout={i18n.language !== Lang['zh-CN'] ? 'vertical' : 'horizontal'}
         labelCol={{ span: 6 }}
         disabled={signupMutation.isPending}
         className="pr-0 md:!pr-[50px]"

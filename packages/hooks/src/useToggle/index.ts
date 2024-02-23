@@ -29,7 +29,12 @@ export const useToggle = <T, K>({
     toggle,
     (v: T | K | React.SetStateAction<T | K>) => {
       if (isFunction(v) || [initialValue, reverseValue].includes(v)) {
-        setValue(v)
+        if (isFunction(v)) {
+          const newValue = isEqual(value, initialValue) ? reverseValue : initialValue
+          v(newValue)
+        } else {
+          setValue(v)
+        }
       } else {
         throw new Error(INVALID_PARAMS)
       }
