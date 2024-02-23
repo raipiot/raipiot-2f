@@ -8,8 +8,6 @@ export const usePagination = <T extends PageDto>(initialValue?: T) => {
 
   const [pageParams, setPageParams] = useImmer(initialValue ?? new PageDto())
 
-  const [total, setTotal] = useState(0)
-
   const setPagination = (page: number, pageSize: number) =>
     setPageParams((draft) => {
       draft.current = page
@@ -19,10 +17,7 @@ export const usePagination = <T extends PageDto>(initialValue?: T) => {
   return {
     pageParams,
     setPageParams,
-    total,
-    setTotal,
     pagination: {
-      total,
       pageParams: {
         current: pageParams.current,
         pageSize: pageParams.size

@@ -59,6 +59,7 @@ declare global {
   const MatchRoute: typeof import('@tanstack/react-router')['MatchRoute']
   const MaterialSymbolsAccountCircle: typeof import('~icons/material-symbols/account-circle.jsx')['default']
   const MaterialSymbolsAccountTreeOutlineRounded: typeof import('~icons/material-symbols/account-tree-outline-rounded.jsx')['default']
+  const MaterialSymbolsAddCircleRounded: typeof import('~icons/material-symbols/add-circle-rounded.jsx')['default']
   const MaterialSymbolsBook2Rounded: typeof import('~icons/material-symbols/book2-rounded.jsx')['default']
   const MaterialSymbolsBook3Rounded: typeof import('~icons/material-symbols/book3-rounded.jsx')['default']
   const MaterialSymbolsChatRounded: typeof import('~icons/material-symbols/chat-rounded.jsx')['default']
