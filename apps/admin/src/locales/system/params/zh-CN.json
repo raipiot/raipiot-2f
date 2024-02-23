@@ -1,1 +1,5 @@
-{}
+{
+  "PARAMS.NAME": "参数名称",
+  "PARAMS.VALUE": "参数键值",
+  "PARAMS.KEY": "参数键名"
+}
