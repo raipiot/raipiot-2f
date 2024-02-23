@@ -1,6 +1,5 @@
 /**
  * 计算表格容器高度
- * @deprecated
  */
 export const useTableContainer = () => {
   const containerRef = useRef<any>(null)

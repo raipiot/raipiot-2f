@@ -35,7 +35,7 @@ export function TableLayout(props: TableLayoutProps) {
       <Header renderRight={props.renderOperate} />
       <ACard
         hoverable
-        rootClassName="!cursor-default min-h-[calc(100vh-212px)]"
+        rootClassName="!cursor-default !h-[calc(100vh-216px)]"
       >
         {props.renderHeader && <ACard rootClassName="!mb-2">{props.renderHeader}</ACard>}
         {props.renderTable}

@@ -1,6 +1,6 @@
 import rpWithSkeleton from '../RpWithSkeleton'
 
-interface RpBooleanProps {
+export interface RpBooleanProps {
   value?: any
   type?: 'text' | 'icon'
   skeleton?: boolean

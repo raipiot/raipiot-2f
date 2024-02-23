@@ -15,9 +15,7 @@ function SystemDicts() {
     data: { records, total },
     isFetching
   } = useSystemDictsSuspenseQuery(pageParams)
-  const columns = useDictsColumns({
-    handleDelete: () => {}
-  })
+  const columns = useDictsColumns()
 
   return (
     <TableLayout
@@ -36,7 +34,7 @@ function SystemDicts() {
       }
       renderHeader={<RpTableSearch handleSearch={() => {}} />}
       renderTable={
-        <ATable<DictVo>
+        <RpTable<DictVo>
           rowKey={(record) => record.id!}
           rowSelection={{
             type: 'checkbox',
@@ -44,11 +42,6 @@ function SystemDicts() {
           }}
           columns={columns}
           dataSource={records}
-          scroll={{
-            scrollToFirstRowOnChange: true,
-            x: 800,
-            y: 500
-          }}
           loading={isFetching}
           pagination={{ ...pagination, total }}
         />

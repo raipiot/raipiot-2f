@@ -12,10 +12,7 @@ function SystemDictItem() {
   const { t } = useTranslation(['COMMON', 'SYSTEM/DICTS'])
   const { pageParams } = usePagination(new DictValuePageDto({ parentId: id }))
   const { data: listData, isFetching } = useSystemDictValuesSuspenseQuery({ ...pageParams })
-  const columns = useDictValuesColumns({
-    handleDelete: () => {},
-    isDeleteLoading: false
-  })
+  const columns = useDictValuesColumns()
 
   return (
     <TableLayout

@@ -102,6 +102,7 @@ declare global {
   const RpErrorPage: typeof import('../src/components/RpErrorPage/index')['default']
   const RpGlobalLoading: typeof import('../src/components/RpGlobalLoading/index')['default']
   const RpString: typeof import('../src/components/RpString/index')['default']
+  const RpTable: typeof import('../src/components/RpTable/index')['default']
   const RpTableField: typeof import('../src/components/RpTableField/index')['default']
   const RpTableSearch: typeof import('../src/components/RpTableSearch/index')['default']
   const RpTagString: typeof import('../src/components/RpTagString/index')['default']

@@ -1,50 +1,37 @@
 import type { ColumnsType } from 'antd/es/table'
 
 import type { DictVo } from '@/api/system/dict/dict.vo'
+import { createColumns } from '@/features/data'
 
-interface Props {
-  handleDelete: (id: string) => void
-  // toggleEditModal: (id: string) => void
-  // toggleDetailModal: (id: string) => void
-  isDeleteLoading: boolean
-}
-
-export const useDictValuesColumns = (props: Props): ColumnsType<DictVo> => {
+export const useDictValuesColumns = (): ColumnsType<DictVo> => {
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
   const response = useResponsive()
 
-  return [
+  return createColumns<DictVo>([
     {
       title: t('CODE'),
       dataIndex: 'code',
-      width: 150,
       align: 'left',
-      render: (value) => (
-        <RpTagString
-          value={value}
-          copyable
-        />
-      )
+      custom: {
+        type: 'tagString',
+        tagStringProps: { copyable: true }
+      }
     },
     {
       title: t('DICT.VALUE'),
-      dataIndex: 'dictValue',
-      width: 150,
-      align: 'center'
+      dataIndex: 'dictValue'
     },
     {
       title: t('COMMON:SORT'),
       dataIndex: 'sort',
       width: 80,
-      align: 'center',
-      render: (value) => <RpTagString value={value} />
+      custom: { type: 'tagString' }
     },
     {
       title: t('COMMON:IS.SEALED'),
       dataIndex: 'isSealed',
       width: 80,
-      align: 'center',
-      render: (value) => <RpBoolean value={value} />
+      custom: { type: 'boolean' }
     },
     {
       title: t('COMMON:ACTIONS'),
@@ -80,8 +67,8 @@ export const useDictValuesColumns = (props: Props): ColumnsType<DictVo> => {
             description={t('COMMON:OPERATION.CONFIRMATION')}
             okText={t('COMMON:CONFIRM')}
             cancelText={t('COMMON:CANCEL')}
-            okButtonProps={{ loading: props.isDeleteLoading }}
-            onConfirm={() => props.handleDelete(record.id!)}
+            okButtonProps={{ loading: undefined }}
+            onConfirm={() => {}}
           >
             <AButton
               danger
@@ -93,5 +80,5 @@ export const useDictValuesColumns = (props: Props): ColumnsType<DictVo> => {
         </ASpace>
       )
     }
-  ]
+  ])
 }
