@@ -1,4 +1,4 @@
-import { systemDictValuesQueryOptions } from '@/features/dicts'
+import { systemDictValuesQueryOptions } from '@/features/system/dicts'
 import { queryClient } from '@/router'
 
 const t = i18n.getFixedT(null, 'ROUTER')

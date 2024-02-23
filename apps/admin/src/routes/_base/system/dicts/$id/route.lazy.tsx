@@ -1,7 +1,7 @@
 import type { DictVo } from '@/api/system/dict/dict.vo'
-import { useDictValuesColumns, useSystemDictValuesSuspenseQuery } from '@/features/dicts'
 import { TableLayout } from '@/features/layouts'
 import { usePagination } from '@/features/pagination'
+import { useDictValuesColumns, useSystemDictValuesSuspenseQuery } from '@/features/system/dicts'
 
 export const Route = createLazyFileRoute('/_base/system/dicts/$id')({
   component: SystemDictItem

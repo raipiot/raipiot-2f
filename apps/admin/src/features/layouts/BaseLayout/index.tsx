@@ -7,8 +7,9 @@ import Tabs from './Tabs'
 export function BaseLayout() {
   const { location } = useRouterState()
   const tabStore = useTabStore()
-  // 监听路由变化，添加标签记录
+
   useEffect(() => {
+    // 监听路由变化，添加标签记录
     tabStore.addRecordByPath(location.pathname)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname])

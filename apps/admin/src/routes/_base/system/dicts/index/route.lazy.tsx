@@ -1,8 +1,8 @@
 import { DictPageDto } from '@/api/system/dict/dict.dto'
 import type { DictVo } from '@/api/system/dict/dict.vo'
-import { useDictsColumns, useSystemDictsSuspenseQuery } from '@/features/dicts'
 import { TableLayout } from '@/features/layouts'
 import { usePagination } from '@/features/pagination'
+import { useDictsColumns, useSystemDictsSuspenseQuery } from '@/features/system/dicts'
 
 export const Route = createLazyFileRoute('/_base/system/dicts/')({
   component: SystemDicts

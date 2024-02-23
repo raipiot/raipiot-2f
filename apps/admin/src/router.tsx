@@ -32,5 +32,6 @@ declare module '@tanstack/react-router' {
   interface StaticDataRouteOption {
     title?: MaybeI18nString
     icon?: React.ReactElement<any, string | JSXElementConstructor<any>>
+    hideTitle?: boolean
   }
 }
