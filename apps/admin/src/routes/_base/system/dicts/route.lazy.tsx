@@ -6,7 +6,7 @@ export const Route = createLazyFileRoute('/_base/system/dicts')({
 })
 
 function SystemDicts() {
-  const { t } = useTranslation(['COMMON', 'SYSTEM', 'VALIDATION'])
+  const { t } = useTranslation(['COMMON', 'VALIDATION'])
   return (
     <TableLayout
       renderOperate={[

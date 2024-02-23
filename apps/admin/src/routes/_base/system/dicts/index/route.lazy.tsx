@@ -11,18 +11,12 @@ export const Route = createLazyFileRoute('/_base/system/dicts/')({
 function SystemDicts() {
   const { t } = useTranslation(['COMMON', 'SYSTEM/DICTS'])
   const { containerRef, y } = useTableContainer()
-  const { pageParams, setTotal, pagination } = usePagination(new DictPageDto())
-  const { data: listData, isFetching } = useSystemDictsSuspenseQuery({ ...pageParams })
+  const { pageParams, genPagination } = usePagination(new DictPageDto())
+  const { data: listData, isFetching } = useSystemDictsSuspenseQuery(pageParams)
   const columns = useDictsColumns({
     handleDelete: () => {},
     isDeleteLoading: false
   })
-
-  useEffect(() => {
-    if (listData) {
-      setTotal(listData.total)
-    }
-  }, [listData, setTotal])
 
   return (
     <TableLayout
@@ -52,7 +46,7 @@ function SystemDicts() {
               y
             }}
             loading={isFetching}
-            pagination={pagination}
+            pagination={genPagination(listData)}
           />
         </div>
       }
