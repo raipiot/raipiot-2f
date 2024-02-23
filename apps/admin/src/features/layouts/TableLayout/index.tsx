@@ -35,10 +35,10 @@ export function TableLayout(props: TableLayoutProps) {
       <Header renderRight={props.renderOperate} />
       <ACard
         hoverable
-        rootClassName="!cursor-default min-h-[calc(100vh-212px)] !overflow-scroll"
+        rootClassName="!cursor-default min-h-[calc(100vh-212px)]"
       >
         {props.renderHeader && <ACard rootClassName="!mb-2">{props.renderHeader}</ACard>}
-        <div>{props.renderTable}</div>
+        {props.renderTable}
       </ACard>
       {props.renderModal && (
         <AModal
