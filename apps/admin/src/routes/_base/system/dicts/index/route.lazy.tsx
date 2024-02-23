@@ -10,7 +10,6 @@ export const Route = createLazyFileRoute('/_base/system/dicts/')({
 
 function SystemDicts() {
   const { t } = useTranslation(['COMMON', 'SYSTEM/DICTS'])
-  const { containerRef, y } = useTableContainer()
   const { pageParams, setTotal, pagination } = usePagination(new DictPageDto())
   const { data: listData, isFetching } = useSystemDictsSuspenseQuery({ ...pageParams })
   const columns = useDictsColumns({
@@ -36,9 +35,8 @@ function SystemDicts() {
       }
       renderHeader={<RpTableSearch handleSearch={() => {}} />}
       renderTable={
-        <div>
+        <div className="space-y-20">
           <ATable<DictVo>
-            ref={containerRef}
             rowKey={(record) => record.id!}
             rowSelection={{
               type: 'checkbox',
@@ -49,7 +47,24 @@ function SystemDicts() {
             scroll={{
               scrollToFirstRowOnChange: true,
               x: 800,
-              y
+              y: 500
+            }}
+            loading={isFetching}
+            pagination={pagination}
+          />
+
+          <ATable<DictVo>
+            rowKey={(record) => record.id!}
+            rowSelection={{
+              type: 'checkbox',
+              columnWidth: 20
+            }}
+            columns={columns}
+            dataSource={listData.records}
+            scroll={{
+              scrollToFirstRowOnChange: true,
+              x: 800,
+              y: 500
             }}
             loading={isFetching}
             pagination={pagination}

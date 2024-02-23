@@ -10,7 +10,6 @@ export const Route = createLazyFileRoute('/_base/system/dicts/$id')({
 function SystemDictItem() {
   const { id } = useParams({ from: '/_base/system/dicts/$id' })
   const { t } = useTranslation(['COMMON', 'SYSTEM/DICTS'])
-  const { containerRef, y } = useTableContainer()
   const { pageParams } = usePagination(new DictValuePageDto({ parentId: id }))
   const { data: listData, isFetching } = useSystemDictValuesSuspenseQuery({ ...pageParams })
   const columns = useDictValuesColumns({
@@ -32,7 +31,6 @@ function SystemDictItem() {
       renderTable={
         <div>
           <ATable<DictVo>
-            ref={containerRef}
             rowKey={(record) => record.id!}
             rowSelection={{
               type: 'checkbox',
@@ -43,7 +41,7 @@ function SystemDictItem() {
             scroll={{
               scrollToFirstRowOnChange: true,
               x: 800,
-              y
+              y: 1200
             }}
             loading={isFetching}
           />
