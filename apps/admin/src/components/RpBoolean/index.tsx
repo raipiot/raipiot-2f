@@ -2,19 +2,26 @@ import rpWithSkeleton from '../RpWithSkeleton'
 
 interface RpBooleanProps {
   value?: any
-  mode?: 'text' | 'icon'
+  type?: 'text' | 'icon'
   skeleton?: boolean
 }
 
 const RpBoolean = rpWithSkeleton((props: RpBooleanProps) => {
-  const { value, mode } = props
+  const { value, type } = props
 
   const { t } = useTranslation()
 
   const booleanValue = value === '1' || !!value
 
-  switch (mode) {
-    case 'text': {
+  switch (type) {
+    case 'icon':
+      return booleanValue ? (
+        <MaterialSymbolsCheckSmallRounded />
+      ) : (
+        <MaterialSymbolsCloseSmallRounded />
+      )
+    case 'text':
+    default:
       return (
         <ATag
           style={{
@@ -27,9 +34,6 @@ const RpBoolean = rpWithSkeleton((props: RpBooleanProps) => {
           {booleanValue ? t('Y') : t('N')}
         </ATag>
       )
-    }
-    default:
-      return booleanValue && <MaterialSymbolsCheckSmallRounded />
   }
 })
 export default RpBoolean

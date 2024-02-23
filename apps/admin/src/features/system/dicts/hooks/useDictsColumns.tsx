@@ -44,12 +44,7 @@ export const useDictsColumns = (props: Props): ColumnsType<DictVo> => {
       dataIndex: 'isSealed',
       width: 80,
       align: 'center',
-      render: (value) => (
-        <RpBoolean
-          value={value}
-          mode="text"
-        />
-      )
+      render: (value) => <RpBoolean value={value} />
     },
     {
       title: t('COMMON:ACTIONS'),
@@ -63,7 +58,16 @@ export const useDictsColumns = (props: Props): ColumnsType<DictVo> => {
             to="/system/dicts/$id"
             params={{ id: record.id! }}
           >
-            <AButton size="small">{t('COMMON:EDIT')}</AButton>
+            <AButton
+              size="small"
+              icon={
+                <AIcon>
+                  <MaterialSymbolsEditSquareOutlineRounded className="text-xs" />
+                </AIcon>
+              }
+            >
+              {t('COMMON:EDIT')}
+            </AButton>
           </Link>
           {/* <APopconfirm
             title={record.enabled ? t('ENABLE') : t('DISABLE')}
@@ -91,6 +95,11 @@ export const useDictsColumns = (props: Props): ColumnsType<DictVo> => {
             <AButton
               danger
               size="small"
+              icon={
+                <AIcon>
+                  <MaterialSymbolsDeleteForever className="text-xs" />
+                </AIcon>
+              }
             >
               {t('COMMON:DELETE')}
             </AButton>

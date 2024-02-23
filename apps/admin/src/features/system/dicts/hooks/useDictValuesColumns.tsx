@@ -44,12 +44,7 @@ export const useDictValuesColumns = (props: Props): ColumnsType<DictVo> => {
       dataIndex: 'isSealed',
       width: 80,
       align: 'center',
-      render: (value) => (
-        <RpBoolean
-          value={value}
-          mode="text"
-        />
-      )
+      render: (value) => <RpBoolean value={value} />
     },
     {
       title: t('COMMON:ACTIONS'),
