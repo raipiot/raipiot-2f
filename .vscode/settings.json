@@ -1,9 +1,6 @@
 {
-  "eslint.workingDirectories": [
-    {
-      "mode": "location"
-    }
-  ],
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact"],
   "editor.codeActionsOnSave": {
     "source.fixAll": "never",
     "source.fixAll.eslint": "explicit",
