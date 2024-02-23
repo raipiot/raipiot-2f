@@ -44,11 +44,11 @@ export const useDictsColumns = () => {
               size="small"
               icon={
                 <AIcon>
-                  <MaterialSymbolsEditSquareOutlineRounded className="text-xs" />
+                  <MaterialSymbolsVisibilityRounded className="text-xs" />
                 </AIcon>
               }
             >
-              {t('COMMON:EDIT')}
+              {t('COMMON:VIEW')}
             </AButton>
           </Link>
           {/* <APopconfirm

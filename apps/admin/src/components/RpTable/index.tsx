@@ -12,7 +12,8 @@ export default function RpTable<T extends object = any>(props: RpTableProps<T>) 
         scrollToFirstRowOnChange: true,
         x: 800,
         y
-      }
+      },
+      pagination: false
     }),
     [y]
   )

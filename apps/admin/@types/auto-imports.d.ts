@@ -90,6 +90,7 @@ declare global {
   const MaterialSymbolsShoppingCartOutlineRounded: typeof import('~icons/material-symbols/shopping-cart-outline-rounded.jsx')['default']
   const MaterialSymbolsTranslateRounded: typeof import('~icons/material-symbols/translate-rounded.jsx')['default']
   const MaterialSymbolsTrophyRounded: typeof import('~icons/material-symbols/trophy-rounded.jsx')['default']
+  const MaterialSymbolsVisibilityRounded: typeof import('~icons/material-symbols/visibility-rounded.jsx')['default']
   const MaterialSymbolsWork: typeof import('~icons/material-symbols/work.jsx')['default']
   const NotFoundRoute: typeof import('@tanstack/react-router')['NotFoundRoute']
   const Outlet: typeof import('@tanstack/react-router')['Outlet']
