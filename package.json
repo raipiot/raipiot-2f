@@ -27,6 +27,7 @@
     "test:hooks": "turbo test --filter=@raipiot-2f/hooks",
     "test:unit:hooks": "turbo test:unit --filter=@raipiot-2f/hooks",
     "test:coverage:hooks": "turbo test:coverage --filter=@raipiot-2f/hooks",
+    "gen:package": "turbo gen workspace --copy @raipiot-2f/template",
     "cspell:sort:dict": "turbo cspell:sort:dict --filter=@raipiot-2f/cspell",
     "cspell:check": "turbo cspell:check",
     "type:check": "turbo type:check",

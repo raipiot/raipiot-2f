@@ -354,6 +354,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
 
+  packages/api: {}
+
   packages/cspell: {}
 
   packages/hooks:

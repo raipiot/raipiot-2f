@@ -11,6 +11,7 @@
 
 - [`cspell`](packages/cspell/): CSpell 业务词典
 - [`hooks`](packages/hooks/): 通用 Hooks
+- [`template`](packages/template/): Monorepo 通用子包模版
 
 ## 安装依赖
 
@@ -36,3 +37,9 @@ VITE_BASIC_AUTH_CODE=$xxx VITE_BASE_API_PREFIX=/base-api pnpm build:admin:stagin
 ```
 
 生成的 dist 包位于 /apps/admin/dist。
+
+## 新建子包
+
+```bash
+pnpm gen:package
+```
