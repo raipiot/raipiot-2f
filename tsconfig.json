@@ -1,3 +1,6 @@
 {
+  "compilerOptions": {
+    "typeRoots": ["./packages/config/@types/.env.d.ts"]
+  },
   "extends": "@raipiot-infra/tsconfig/base.json"
 }

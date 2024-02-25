@@ -1,0 +1,10 @@
+{
+  "extends": "@raipiot-infra/tsconfig/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src", "@types"]
+}

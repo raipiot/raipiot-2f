@@ -1,0 +1,29 @@
+{
+  "name": "@raipiot-2f/config",
+  "description": "raipiot 2F 通用配置",
+  "author": "Bruce Song <recall4056@gmail.com> (https://github.com/recallwei/)",
+  "homepage": "https://github.com/raipiot/raipiot-2f#readme",
+  "bugs": "https://github.com/raipiot/raipiot-2f/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raipiot/raipiot-2f.git",
+    "directory": "packages/config"
+  },
+  "keywords": [
+    "raipiot",
+    "config",
+    "env"
+  ],
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "types": "./src/index.d.ts",
+  "scripts": {
+    "clean": "rimraf dist",
+    "type:check": "tsc --pretty --noEmit",
+    "cspell:check": "cspell --no-progress --show-suggestions --show-context **",
+    "prettier:check": "prettier --check --cache --ignore-unknown --ignore-path=../../.prettierignore .",
+    "prettier:fix": "prettier --write --cache --ignore-unknown --ignore-path=../../.prettierignore ."
+  },
+  "private": true
+}

@@ -1,3 +1,4 @@
+import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 
 import { hooksImportMeta } from '@raipiot-2f/hooks/meta'
@@ -18,7 +19,8 @@ import Inspect from 'vite-plugin-inspect'
 import WebfontDownload from 'vite-plugin-webfont-dl'
 
 export default defineConfig(({ mode }) => {
-  const environment = loadEnv(mode, process.cwd())
+  const envPath = path.resolve(process.cwd(), '../..')
+  const environment = loadEnv(mode, envPath)
   const {
     VITE_PORT,
     VITE_BASE_API_PREFIX,
@@ -32,17 +34,18 @@ export default defineConfig(({ mode }) => {
     [VITE_BASE_API_PREFIX]: {
       target: VITE_BASE_API_URL,
       changeOrigin: true,
-      rewrite: (path: string) => path.replace(VITE_BASE_API_PREFIX, '')
+      rewrite: (p: string) => p.replace(VITE_BASE_API_PREFIX, '')
     },
     [VITE_MOCK_API_PREFIX]: {
       target: VITE_MOCK_API_URL,
       changeOrigin: true,
-      rewrite: (path: string) => path.replace(VITE_MOCK_API_PREFIX, '')
+      rewrite: (p: string) => p.replace(VITE_MOCK_API_PREFIX, '')
     }
   }
 
   return {
     base: '/',
+    envDir: '../..',
     plugins: [
       React(),
       TanStackRouterVite(),
@@ -63,12 +66,12 @@ export default defineConfig(({ mode }) => {
         imports: [
           ...reactPresets,
           {
-            from: '@/constants',
-            imports: ['GlobalEnvConfig', 'AppMetadata']
-          },
-          {
             from: '@/i18n',
             imports: [['default', 'i18n']]
+          },
+          {
+            from: '@raipiot-2f/config',
+            imports: ['GlobalEnvConfig', 'AppMetadata']
           },
           {
             from: '@raipiot-2f/hooks',

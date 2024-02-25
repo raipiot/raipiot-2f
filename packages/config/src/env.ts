@@ -10,6 +10,9 @@ export const GlobalEnvConfig = Object.freeze({
   MOCK_API_URL: import.meta.env.VITE_MOCK_API_URL ?? '',
   BASIC_AUTH_CODE: import.meta.env.VITE_BASIC_AUTH_CODE ?? '',
   MODE: import.meta.env.MODE,
-  IS_DEV: import.meta.env.DEV,
-  IS_PROD: import.meta.env.PROD
+  IS_DEV: import.meta.env.MODE === 'development',
+  IS_STAGING: import.meta.env.MODE === 'staging',
+  IS_PROD: import.meta.env.MODE === 'production',
+  DEV_ONLY: import.meta.env.DEV,
+  PROD_ONLY: import.meta.env.PROD
 })
