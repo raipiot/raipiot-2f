@@ -4,14 +4,14 @@ import { messageConfig } from '@raipiot-infra/theme'
 
 import { queryClient, router } from '@/router'
 
+const px2rem = px2remTransformer({
+  rootValue: 16,
+  mediaQuery: true
+})
+
 export default function App() {
   const themeStore = useThemeStore()
   const langStore = useLangStore()
-
-  const px2rem = px2remTransformer({
-    rootValue: 16,
-    mediaQuery: true
-  })
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -27,7 +27,9 @@ export default function App() {
         >
           <AApp message={messageConfig}>
             <HappyProvider disabled={false}>
-              <RouterProvider router={router} />
+              <Suspense fallback={null}>
+                <RouterProvider router={router} />
+              </Suspense>
             </HappyProvider>
           </AApp>
         </StyleProvider>

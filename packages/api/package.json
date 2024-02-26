@@ -1,0 +1,36 @@
+{
+  "name": "@raipiot-2f/api",
+  "description": "raipiot 2F 通用 API 模块",
+  "author": "Bruce Song <recall4056@gmail.com> (https://github.com/recallwei/)",
+  "homepage": "https://github.com/raipiot/raipiot-2f#readme",
+  "bugs": "https://github.com/raipiot/raipiot-2f/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raipiot/raipiot-2f.git",
+    "directory": "packages/api"
+  },
+  "keywords": [
+    "raipiot",
+    "api"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./meta": "./meta.json"
+  },
+  "types": "./src/index.ts",
+  "scripts": {
+    "clean": "rimraf dist",
+    "type:check": "tsc --pretty --noEmit",
+    "cspell:check": "cspell --no-progress --show-suggestions --show-context **",
+    "eslint:check": "eslint . --color",
+    "eslint:fix": "eslint . --color --fix",
+    "prettier:check": "prettier --check --cache --ignore-unknown --ignore-path=../../.prettierignore .",
+    "prettier:fix": "prettier --write --cache --ignore-unknown --ignore-path=../../.prettierignore ."
+  },
+  "dependencies": {
+    "@raipiot-2f/axios": "workspace:^",
+    "@raipiot-2f/config": "workspace:^",
+    "hash-wasm": "^4.11.0"
+  },
+  "private": true
+}

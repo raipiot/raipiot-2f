@@ -7,92 +7,37 @@ settings:
 importers:
 
   .:
-    dependencies:
-      '@raipiot-2f/config':
-        specifier: workspace:^
-        version: link:packages/config
-      '@raipiot-2f/hooks':
-        specifier: workspace:^
-        version: link:packages/hooks
-      '@raipiot-infra/antd':
-        specifier: ^0.0.16
-        version: 0.0.16(antd@5.14.2)(react@18.2.0)
-      '@raipiot-infra/config':
-        specifier: ^0.0.9
-        version: 0.0.9
-      '@raipiot-infra/enums':
-        specifier: ^0.0.6
-        version: 0.0.6
-      '@raipiot-infra/tanstack-query':
-        specifier: ^0.0.4
-        version: 0.0.4
-      '@raipiot-infra/theme':
-        specifier: ^0.0.4
-        version: 0.0.4(antd@5.14.2)
-      '@raipiot-infra/utils':
-        specifier: ^0.0.10
-        version: 0.0.10
     devDependencies:
       '@commitlint/cli':
-        specifier: ^18.6.0
-        version: 18.6.0(@types/node@20.11.20)(typescript@5.3.3)
+        specifier: ^18.6.1
+        version: 18.6.1(@types/node@20.11.20)(typescript@5.3.3)
       '@commitlint/config-conventional':
-        specifier: ^18.6.0
-        version: 18.6.0
+        specifier: ^18.6.2
+        version: 18.6.2
       '@raipiot-2f/cspell':
         specifier: workspace:^
         version: link:packages/cspell
-      '@raipiot-infra/auto-import':
-        specifier: ^0.0.16
-        version: 0.0.16(unplugin-auto-import@0.17.5)
-      '@raipiot-infra/bootstrap-animation':
-        specifier: ^0.0.12
-        version: 0.0.12(vite@5.1.4)
       '@raipiot-infra/commitlint':
         specifier: ^0.0.5
-        version: 0.0.5(@commitlint/cli@18.6.0)(@commitlint/config-conventional@18.6.0)(commitizen@4.3.0)(cz-git@1.8.0)
+        version: 0.0.5(@commitlint/cli@18.6.1)(@commitlint/config-conventional@18.6.2)(commitizen@4.3.0)(cz-git@1.8.0)
       '@raipiot-infra/cspell':
         specifier: ^0.0.10
         version: 0.0.10(cspell@8.4.1)
       '@raipiot-infra/eslint-config':
-        specifier: ^0.0.10
-        version: 0.0.10(eslint@8.57.0)(tailwindcss@3.4.1)(typescript@5.3.3)
+        specifier: ^0.0.12
+        version: 0.0.12(eslint@8.57.0)(tailwindcss@3.4.1)(typescript@5.3.3)
       '@raipiot-infra/eslint-config-ts':
-        specifier: ^0.0.8
-        version: 0.0.8(eslint-plugin-jsx-a11y@6.8.0)(eslint@8.57.0)(typescript@5.3.3)
+        specifier: ^0.0.10
+        version: 0.0.10(eslint-plugin-jsx-a11y@6.8.0)(eslint@8.57.0)(typescript@5.3.3)
       '@raipiot-infra/prettier':
         specifier: ^0.0.4
         version: 0.0.4(prettier@3.2.5)
       '@raipiot-infra/rpx':
         specifier: ^0.0.6
         version: 0.0.6
-      '@raipiot-infra/tailwind':
-        specifier: ^0.0.4
-        version: 0.0.4(tailwindcss@3.4.1)
       '@raipiot-infra/tsconfig':
         specifier: ^0.0.4
         version: 0.0.4(typescript@5.3.3)
-      '@testing-library/react':
-        specifier: ^14.2.1
-        version: 14.2.1(react-dom@18.2.0)(react@18.2.0)
-      '@types/lodash-es':
-        specifier: ^4.17.12
-        version: 4.17.12
-      '@types/nprogress':
-        specifier: ^0.2.3
-        version: 0.2.3
-      '@types/react':
-        specifier: ^18.2.58
-        version: 18.2.58
-      '@types/react-dom':
-        specifier: ^18.2.19
-        version: 18.2.19
-      '@vitest/coverage-v8':
-        specifier: ^1.3.1
-        version: 1.3.1(vitest@1.3.1)
-      '@vitest/ui':
-        specifier: ^1.3.1
-        version: 1.3.1(vitest@1.3.1)
       commitizen:
         specifier: ^4.3.0
         version: 4.3.0(@types/node@20.11.20)(typescript@5.3.3)
@@ -108,9 +53,6 @@ importers:
       husky:
         specifier: ^9.0.11
         version: 9.0.11
-      jsdom:
-        specifier: ^24.0.0
-        version: 24.0.0
       lint-staged:
         specifier: ^15.2.2
         version: 15.2.2
@@ -120,21 +62,12 @@ importers:
       rimraf:
         specifier: ^5.0.5
         version: 5.0.5
-      tsup:
-        specifier: ^8.0.2
-        version: 8.0.2(typescript@5.3.3)
       turbo:
         specifier: ^1.12.4
         version: 1.12.4
-      type-fest:
-        specifier: ^4.10.3
-        version: 4.10.3
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
-      vitest:
-        specifier: ^1.3.1
-        version: 1.3.1(@types/node@20.11.20)(@vitest/ui@1.3.1)(jsdom@24.0.0)
 
   apps/admin:
     dependencies:
@@ -147,33 +80,60 @@ importers:
       '@ant-design/icons':
         specifier: ^5.3.0
         version: 5.3.0(react-dom@18.2.0)(react@18.2.0)
+      '@raipiot-2f/api':
+        specifier: workspace:^
+        version: link:../../packages/api
+      '@raipiot-2f/axios':
+        specifier: workspace:^
+        version: link:../../packages/axios
+      '@raipiot-2f/config':
+        specifier: workspace:^
+        version: link:../../packages/config
+      '@raipiot-2f/hooks':
+        specifier: workspace:^
+        version: link:../../packages/hooks
+      '@raipiot-2f/i18n':
+        specifier: workspace:^
+        version: link:../../packages/i18n
+      '@raipiot-infra/antd':
+        specifier: ^0.0.16
+        version: 0.0.16(antd@5.14.2)(dayjs@1.11.10)(react@18.2.0)
+      '@raipiot-infra/config':
+        specifier: ^0.0.9
+        version: 0.0.9
+      '@raipiot-infra/enums':
+        specifier: ^0.0.6
+        version: 0.0.6
+      '@raipiot-infra/tanstack-query':
+        specifier: ^0.0.4
+        version: 0.0.4
+      '@raipiot-infra/theme':
+        specifier: ^0.0.4
+        version: 0.0.4(antd@5.14.2)
+      '@raipiot-infra/utils':
+        specifier: ^0.0.10
+        version: 0.0.10(dayjs@1.11.10)
       '@tanstack/react-query':
-        specifier: ^5.22.2
-        version: 5.22.2(react@18.2.0)
+        specifier: ^5.24.1
+        version: 5.24.1(react@18.2.0)
       '@tanstack/react-query-devtools':
-        specifier: ^5.24.0
-        version: 5.24.0(@tanstack/react-query@5.22.2)(react@18.2.0)
+        specifier: ^5.24.1
+        version: 5.24.1(@tanstack/react-query@5.24.1)(react@18.2.0)
       '@tanstack/react-router':
-        specifier: ^1.16.6
-        version: 1.16.6(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.17.4
+        version: 1.17.4(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/router-devtools':
-        specifier: ^1.16.6
-        version: 1.16.6(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.17.4
+        version: 1.17.4(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0)
       '@tauri-apps/api':
         specifier: ^1.5.3
         version: 1.5.3
       '@types/dom-view-transitions':
         specifier: ^1.0.4
         version: 1.0.4
-      ahooks:
-        specifier: ^3.7.10
-        version: 3.7.10(react@18.2.0)
       antd:
         specifier: ^5.14.2
         version: 5.14.2(react-dom@18.2.0)(react@18.2.0)
-      axios:
-        specifier: ^1.6.7
-        version: 1.6.7
       clsx:
         specifier: ^2.1.0
         version: 2.1.0
@@ -183,12 +143,6 @@ importers:
       framer-motion:
         specifier: ^11.0.6
         version: 11.0.6(react-dom@18.2.0)(react@18.2.0)
-      hash-wasm:
-        specifier: ^4.11.0
-        version: 4.11.0
-      i18next:
-        specifier: ^23.10.0
-        version: 23.10.0
       immer:
         specifier: ^10.0.3
         version: 10.0.3
@@ -223,6 +177,15 @@ importers:
       '@iconify/react':
         specifier: ^4.1.1
         version: 4.1.1(react@18.2.0)
+      '@raipiot-infra/auto-import':
+        specifier: ^0.0.16
+        version: 0.0.16(unplugin-auto-import@0.17.5)
+      '@raipiot-infra/bootstrap-animation':
+        specifier: ^0.0.12
+        version: 0.0.12(vite@5.1.4)
+      '@raipiot-infra/tailwind':
+        specifier: ^0.0.4
+        version: 0.0.4(tailwindcss@3.4.1)
       '@svgr/core':
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.3.3)
@@ -235,9 +198,30 @@ importers:
       '@tauri-apps/cli':
         specifier: ^1.5.10
         version: 1.5.10
+      '@testing-library/react':
+        specifier: ^14.2.1
+        version: 14.2.1(react-dom@18.2.0)(react@18.2.0)
+      '@types/lodash-es':
+        specifier: ^4.17.12
+        version: 4.17.12
+      '@types/nprogress':
+        specifier: ^0.2.3
+        version: 0.2.3
+      '@types/react':
+        specifier: ^18.2.58
+        version: 18.2.58
+      '@types/react-dom':
+        specifier: ^18.2.19
+        version: 18.2.19
       '@vitejs/plugin-react-swc':
         specifier: ^3.6.0
         version: 3.6.0(vite@5.1.4)
+      '@vitest/coverage-v8':
+        specifier: ^1.3.1
+        version: 1.3.1(vitest@1.3.1)
+      '@vitest/ui':
+        specifier: ^1.3.1
+        version: 1.3.1(vitest@1.3.1)
       autoprefixer:
         specifier: ^10.4.17
         version: 10.4.17(postcss@8.4.35)
@@ -247,9 +231,15 @@ importers:
       cypress-vite:
         specifier: ^1.5.0
         version: 1.5.0(vite@5.1.4)
+      jsdom:
+        specifier: ^24.0.0
+        version: 24.0.0
       postcss:
         specifier: ^8.4.35
         version: 8.4.35
+      rc-table:
+        specifier: ^7.41.0
+        version: 7.41.0(react-dom@18.2.0)(react@18.2.0)
       rollup-plugin-visualizer:
         specifier: ^5.12.0
         version: 5.12.0
@@ -259,6 +249,9 @@ importers:
       tailwindcss:
         specifier: ^3.4.1
         version: 3.4.1
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
       unplugin-auto-import:
         specifier: ^0.17.5
         version: 0.17.5
@@ -267,10 +260,10 @@ importers:
         version: 0.18.5(@svgr/core@8.1.0)
       unplugin-info:
         specifier: ^1.1.0
-        version: 1.1.0(esbuild@0.19.12)(vite@5.1.4)
+        version: 1.1.0(vite@5.1.4)
       unplugin-turbo-console:
         specifier: ^1.4.0
-        version: 1.4.0(esbuild@0.19.12)(vite@5.1.4)
+        version: 1.4.0(vite@5.1.4)
       vite:
         specifier: ^5.1.4
         version: 5.1.4(@types/node@20.11.20)(sass@1.71.1)
@@ -283,6 +276,9 @@ importers:
       vite-plugin-webfont-dl:
         specifier: ^3.9.1
         version: 3.9.1(vite@5.1.4)
+      vitest:
+        specifier: ^1.3.1
+        version: 1.3.1(@types/node@20.11.20)(@vitest/ui@1.3.1)(jsdom@24.0.0)(sass@1.71.1)
 
   apps/mock:
     dependencies:
@@ -313,13 +309,16 @@ importers:
     devDependencies:
       '@nestjs/cli':
         specifier: ^10.3.2
-        version: 10.3.2(esbuild@0.19.12)
+        version: 10.3.2
       '@nestjs/schematics':
         specifier: ^10.1.1
         version: 10.1.1(chokidar@3.6.0)(typescript@5.3.3)
       '@nestjs/testing':
         specifier: ^10.3.3
         version: 10.3.3(@nestjs/common@10.3.3)(@nestjs/core@10.3.3)(@nestjs/platform-express@10.3.3)
+      '@raipiot-infra/bootstrap-animation':
+        specifier: ^0.0.12
+        version: 0.0.12(vite@5.1.4)
       '@types/express':
         specifier: ^4.17.21
         version: 4.17.21
@@ -343,7 +342,7 @@ importers:
         version: 6.3.4
       ts-jest:
         specifier: ^29.1.2
-        version: 29.1.2(@babel/core@7.23.9)(esbuild@0.19.12)(jest@29.7.0)(typescript@5.3.3)
+        version: 29.1.2(@babel/core@7.23.9)(jest@29.7.0)(typescript@5.3.3)
       ts-loader:
         specifier: ^9.5.1
         version: 9.5.1(typescript@5.3.3)(webpack@5.90.2)
@@ -357,14 +356,51 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
 
+  packages/api:
+    dependencies:
+      '@raipiot-2f/axios':
+        specifier: workspace:^
+        version: link:../axios
+      '@raipiot-2f/config':
+        specifier: workspace:^
+        version: link:../config
+      hash-wasm:
+        specifier: ^4.11.0
+        version: 4.11.0
+
+  packages/axios:
+    dependencies:
+      '@raipiot-2f/config':
+        specifier: workspace:^
+        version: link:../config
+      '@raipiot-infra/enums':
+        specifier: ^0.0.6
+        version: 0.0.6
+      '@raipiot-infra/utils':
+        specifier: ^0.0.10
+        version: 0.0.10(dayjs@1.11.10)
+      '@tanstack/react-router':
+        specifier: ^1.17.4
+        version: 1.17.4(react-dom@18.2.0)(react@18.2.0)
+      antd:
+        specifier: ^5.14.2
+        version: 5.14.2(react-dom@18.2.0)(react@18.2.0)
+      axios:
+        specifier: ^1.6.7
+        version: 1.6.7
+      i18next:
+        specifier: ^23.10.0
+        version: 23.10.0
+
   packages/config:
     dependencies:
-      dotenv:
-        specifier: ^16.4.5
-        version: 16.4.5
-      dotenv-expand:
-        specifier: ^11.0.6
-        version: 11.0.6
+      '@raipiot-infra/config':
+        specifier: ^0.0.9
+        version: 0.0.9
+    devDependencies:
+      vite:
+        specifier: ^5.1.4
+        version: 5.1.4(@types/node@20.11.20)(sass@1.71.1)
 
   packages/cspell: {}
 
@@ -379,6 +415,52 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.2.0
+    devDependencies:
+      '@testing-library/react':
+        specifier: ^14.2.1
+        version: 14.2.1(react-dom@18.2.0)(react@18.2.0)
+      '@types/lodash-es':
+        specifier: ^4.17.12
+        version: 4.17.12
+      '@types/react':
+        specifier: ^18.2.58
+        version: 18.2.58
+      '@types/react-dom':
+        specifier: ^18.2.19
+        version: 18.2.19
+      '@vitest/coverage-v8':
+        specifier: ^1.3.1
+        version: 1.3.1(vitest@1.3.1)
+      '@vitest/ui':
+        specifier: ^1.3.1
+        version: 1.3.1(vitest@1.3.1)
+      jsdom:
+        specifier: ^24.0.0
+        version: 24.0.0
+      tsup:
+        specifier: ^8.0.2
+        version: 8.0.2(typescript@5.3.3)
+      type-fest:
+        specifier: ^4.10.3
+        version: 4.10.3
+      vitest:
+        specifier: ^1.3.1
+        version: 1.3.1(@types/node@20.11.20)(@vitest/ui@1.3.1)(jsdom@24.0.0)(sass@1.71.1)
+
+  packages/i18n:
+    dependencies:
+      '@raipiot-infra/enums':
+        specifier: ^0.0.6
+        version: 0.0.6
+      '@raipiot-infra/utils':
+        specifier: ^0.0.10
+        version: 0.0.10(dayjs@1.11.10)
+      i18next:
+        specifier: ^23.10.0
+        version: 23.10.0
+      react-i18next:
+        specifier: ^14.0.5
+        version: 14.0.5(i18next@23.10.0)(react-dom@18.2.0)(react@18.2.0)
 
   packages/template: {}
 
@@ -1065,8 +1147,8 @@ packages:
     dev: true
     optional: true
 
-  /@commitlint/cli@18.6.0(@types/node@20.11.20)(typescript@5.3.3):
-    resolution: {integrity: sha512-FiH23cr9QG8VdfbmvJJZmdfHGVMCouOOAzoXZ3Cd7czGC52RbycwNt8YCI7SA69pAl+t30vh8LMaO/N+kcel6w==}
+  /@commitlint/cli@18.6.1(@types/node@20.11.20)(typescript@5.3.3):
+    resolution: {integrity: sha512-5IDE0a+lWGdkOvKH892HHAZgbAjcj1mT5QrfA/SVbLJV/BbBMGyKN0W5mhgjekPJJwEQdVNvhl9PwUacY58Usw==}
     engines: {node: '>=v18'}
     hasBin: true
     dependencies:
@@ -1085,10 +1167,11 @@ packages:
       - typescript
     dev: true
 
-  /@commitlint/config-conventional@18.6.0:
-    resolution: {integrity: sha512-CDCOf2eJz9D/TL44IBks0stM9TmdLCNE2B48owIU3YCadwzts/bobXPScagIgPQF6hhKYMEdj5zpUDlmbwuqwQ==}
+  /@commitlint/config-conventional@18.6.2:
+    resolution: {integrity: sha512-PcgSYg1AKGQIwDQKbaHtJsfqYy4uJTC7crLVZ83lfjcPaec4Pry2vLeaWej7ao2KsT20l9dWoMPpEGg8LWdUuA==}
     engines: {node: '>=v18'}
     dependencies:
+      '@commitlint/types': 18.6.1
       conventional-changelog-conventionalcommits: 7.0.2
     dev: true
 
@@ -2216,7 +2299,7 @@ packages:
       read-yaml-file: 1.1.0
     dev: true
 
-  /@nestjs/cli@10.3.2(esbuild@0.19.12):
+  /@nestjs/cli@10.3.2:
     resolution: {integrity: sha512-aWmD1GLluWrbuC4a1Iz/XBk5p74Uj6nIVZj6Ov03JbTfgtWqGFLtXuMetvzMiHxfrHehx/myt2iKAPRhKdZvTg==}
     engines: {node: '>= 16.14'}
     hasBin: true
@@ -2249,7 +2332,7 @@ packages:
       tsconfig-paths: 4.2.0
       tsconfig-paths-webpack-plugin: 4.1.0
       typescript: 5.3.3
-      webpack: 5.90.1(esbuild@0.19.12)
+      webpack: 5.90.1
       webpack-node-externals: 3.0.0
     transitivePeerDependencies:
       - esbuild
@@ -2402,14 +2485,14 @@ packages:
     resolution: {integrity: sha512-2LuNTFBIO0m7kKIQvvPHN6UE63VjpmL9rnEEaOOaiSPbZK+zUOYIzBAWcED+3XYzhYsd/0mD57VdxAEqqV52CQ==}
     dev: true
 
-  /@raipiot-infra/antd@0.0.16(antd@5.14.2)(react@18.2.0):
+  /@raipiot-infra/antd@0.0.16(antd@5.14.2)(dayjs@1.11.10)(react@18.2.0):
     resolution: {integrity: sha512-M1JbnBhicoEL5Swu3nVuOHcMN7OSPr5EuwM/MzfA2pgvz+srzc9708GFw4xJphPlXIXSv3B6ehOjLU+3AgxuUg==}
     peerDependencies:
       antd: '>=5.14.2'
       react: '>=18.2.0'
     dependencies:
       '@raipiot-infra/enums': 0.0.6
-      '@raipiot-infra/utils': 0.0.10
+      '@raipiot-infra/utils': 0.0.10(dayjs@1.11.10)
       antd: 5.14.2(react-dom@18.2.0)(react@18.2.0)
       clsx: 2.1.0
       lodash-es: 4.17.21
@@ -2443,7 +2526,7 @@ packages:
       vite: 5.1.4(@types/node@20.11.20)(sass@1.71.1)
     dev: true
 
-  /@raipiot-infra/commitlint@0.0.5(@commitlint/cli@18.6.0)(@commitlint/config-conventional@18.6.0)(commitizen@4.3.0)(cz-git@1.8.0):
+  /@raipiot-infra/commitlint@0.0.5(@commitlint/cli@18.6.1)(@commitlint/config-conventional@18.6.2)(commitizen@4.3.0)(cz-git@1.8.0):
     resolution: {integrity: sha512-jqxrDwpD18WjVai+9T6FUy8XULsnldqUYD/1jxdjG4Em6zPNJ5vUl7LwTNQQW8wWx0QWsrgL2s+GfC6jsH9fSw==}
     peerDependencies:
       '@commitlint/cli': ^18.6.0
@@ -2454,8 +2537,8 @@ packages:
       cz-git:
         optional: true
     dependencies:
-      '@commitlint/cli': 18.6.0(@types/node@20.11.20)(typescript@5.3.3)
-      '@commitlint/config-conventional': 18.6.0
+      '@commitlint/cli': 18.6.1(@types/node@20.11.20)(typescript@5.3.3)
+      '@commitlint/config-conventional': 18.6.2
       commitizen: 4.3.0(@types/node@20.11.20)(typescript@5.3.3)
       cz-git: 1.8.0
     dev: true
@@ -2475,21 +2558,21 @@ packages:
     resolution: {integrity: sha512-vWlDnsdiKYAueLtBjpGigX0QoYComt/3Ej7v8CTGBE1nFladOqqbc30+t3se7XMteEB/Y0f830iK6YO1MCh3lQ==}
     dev: false
 
-  /@raipiot-infra/eslint-config-base@0.0.6(eslint-plugin-jsx-a11y@6.8.0):
-    resolution: {integrity: sha512-hzJpqaTNj15FzDkyGvCKJXHrtHSlphtwSRm4RVRUOFa0FVdcRPwaDdyAATNnTwuTyaIUJ1hF4vIege2zhjLgMA==}
+  /@raipiot-infra/eslint-config-base@0.0.8(eslint-plugin-jsx-a11y@6.8.0):
+    resolution: {integrity: sha512-zFIw68utNaGdp/+jvjrBAbWYPYVshxzwazyiCChA45uoWpnYNNoeZhYtrvnfmA8pT+noOaXB5USAWO9fr9wfLA==}
     peerDependencies:
       eslint-plugin-jsx-a11y: ^6.8.0
     dependencies:
       eslint-plugin-jsx-a11y: 6.8.0(eslint@8.57.0)
     dev: true
 
-  /@raipiot-infra/eslint-config-react@0.0.10(eslint@8.57.0)(tailwindcss@3.4.1)(typescript@5.3.3):
-    resolution: {integrity: sha512-/p8OzKnw6jXt0VA51CWdB4ftB8ZhpXuCK5x8Y55VipNgoStOiC/DpbLfktGyNQdMUUSugswsUt8/UzB8a7BPgw==}
+  /@raipiot-infra/eslint-config-react@0.0.12(eslint@8.57.0)(tailwindcss@3.4.1)(typescript@5.3.3):
+    resolution: {integrity: sha512-1zhHHQRIUJX1fq68BKQv8PJyFoByV0W14w2PSKsaF0Xa4CX1XyrJnvIE8g4ERFEr5KRYlkzGfuI8pjH/B+S8sg==}
     peerDependencies:
       eslint: ^8.57.0
       typescript: '>=5.0.0'
     dependencies:
-      '@raipiot-infra/eslint-config-base': 0.0.6(eslint-plugin-jsx-a11y@6.8.0)
+      '@raipiot-infra/eslint-config-base': 0.0.8(eslint-plugin-jsx-a11y@6.8.0)
       '@tanstack/eslint-plugin-query': 5.20.1(eslint@8.57.0)(typescript@5.3.3)
       '@typescript-eslint/eslint-plugin': 7.0.2(@typescript-eslint/parser@7.0.2)(eslint@8.57.0)(typescript@5.3.3)
       '@typescript-eslint/parser': 7.0.2(eslint@8.57.0)(typescript@5.3.3)
@@ -2514,13 +2597,13 @@ packages:
       - tailwindcss
     dev: true
 
-  /@raipiot-infra/eslint-config-ts@0.0.8(eslint-plugin-jsx-a11y@6.8.0)(eslint@8.57.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-w2VRvs+hwHVKGXLnz6mWeEadr6MgOz6gisiBeiLlaw+ZxrDmE4/HZzT3FWIHkkrf3UCn866ztdpJFsfCaleXmw==}
+  /@raipiot-infra/eslint-config-ts@0.0.10(eslint-plugin-jsx-a11y@6.8.0)(eslint@8.57.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-vADZ5q845JduDXdOOk7gmaFPTvYC/RxerB2mfmXYV0HCMosPOWJk2A0W99uZdMgpBUiD1RNHMGkfl2mO4lY8rg==}
     peerDependencies:
       eslint: ^8.57.0
       typescript: '>=5.0.0'
     dependencies:
-      '@raipiot-infra/eslint-config-base': 0.0.6(eslint-plugin-jsx-a11y@6.8.0)
+      '@raipiot-infra/eslint-config-base': 0.0.8(eslint-plugin-jsx-a11y@6.8.0)
       '@typescript-eslint/eslint-plugin': 7.0.2(@typescript-eslint/parser@7.0.2)(eslint@8.57.0)(typescript@5.3.3)
       '@typescript-eslint/parser': 7.0.2(eslint@8.57.0)(typescript@5.3.3)
       eslint: 8.57.0
@@ -2540,13 +2623,13 @@ packages:
       - supports-color
     dev: true
 
-  /@raipiot-infra/eslint-config@0.0.10(eslint@8.57.0)(tailwindcss@3.4.1)(typescript@5.3.3):
-    resolution: {integrity: sha512-cQxy8Apl9RleO3d6xbI7MayzbajEfA518EcGIQK1nVf6cB7S6eu4ITGDshF+CQEtUoIrbmEFrihg7AHGRKya+Q==}
+  /@raipiot-infra/eslint-config@0.0.12(eslint@8.57.0)(tailwindcss@3.4.1)(typescript@5.3.3):
+    resolution: {integrity: sha512-E0g7ldW2dBItMbTy6fRgRuaPpAapCv9RNs3uvsAQQNAyydelzJ1Ywmzy3M++hzeFue4Nh6LWxJPnD7JDEjrj9w==}
     peerDependencies:
       eslint: ^8.57.0
       typescript: '>=5.0.0'
     dependencies:
-      '@raipiot-infra/eslint-config-react': 0.0.10(eslint@8.57.0)(tailwindcss@3.4.1)(typescript@5.3.3)
+      '@raipiot-infra/eslint-config-react': 0.0.12(eslint@8.57.0)(tailwindcss@3.4.1)(typescript@5.3.3)
       eslint: 8.57.0
       typescript: 5.3.3
     transitivePeerDependencies:
@@ -2608,7 +2691,7 @@ packages:
       typescript: 5.3.3
     dev: true
 
-  /@raipiot-infra/utils@0.0.10:
+  /@raipiot-infra/utils@0.0.10(dayjs@1.11.10):
     resolution: {integrity: sha512-2RFLJA2NwBZEgqOf4skCNZZzq7gbVHDglUECy8jjwvK5UzVns4ohrgL6JJtJ7uLM+/bzXPPgG9dae9YzedOhGw==}
     peerDependencies:
       dayjs: ^1.11.10
@@ -2617,6 +2700,7 @@ packages:
         optional: true
     dependencies:
       '@raipiot-infra/enums': 0.0.6
+      dayjs: 1.11.10
     dev: false
 
   /@rc-component/color-picker@1.5.2(react-dom@18.2.0)(react@18.2.0):
@@ -2643,7 +2727,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /@rc-component/mini-decimal@1.1.0:
     resolution: {integrity: sha512-jS4E7T9Li2GuYwI6PyiVXmxTiM6b07rlD9Ge8uGZSCz3WlzcG5ZK7g5bbuKNeZ9pgUuPK/5guV781ujdVpm4HQ==}
@@ -3113,36 +3196,36 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /@tanstack/query-core@5.22.2:
-    resolution: {integrity: sha512-z3PwKFUFACMUqe1eyesCIKg3Jv1mysSrYfrEW5ww5DCDUD4zlpTKBvUDaEjsfZzL3ULrFLDM9yVUxI/fega1Qg==}
+  /@tanstack/query-core@5.24.1:
+    resolution: {integrity: sha512-DZ6Nx9p7BhjkG50ayJ+MKPgff+lMeol7QYXkvuU5jr2ryW/4ok5eanaS9W5eooA4xN0A/GPHdLGOZGzArgf5Cg==}
     dev: false
 
   /@tanstack/query-devtools@5.24.0:
     resolution: {integrity: sha512-pThim455t69zrZaQKa7IRkEIK8UBTS+gHVAdNfhO72Xh4rWpMc63ovRje5/n6iw63+d6QiJzVadsJVdPoodSeQ==}
     dev: false
 
-  /@tanstack/react-query-devtools@5.24.0(@tanstack/react-query@5.22.2)(react@18.2.0):
-    resolution: {integrity: sha512-ae3TSg9hKSicLP6TZMj4hglLsLBaS8O3ex/mgHZNQ8yKCDLnVoLO1a9EqYWPzw2k+uaK5uMCKBAVbLVBLx93oA==}
+  /@tanstack/react-query-devtools@5.24.1(@tanstack/react-query@5.24.1)(react@18.2.0):
+    resolution: {integrity: sha512-qa4SEugN+EF8JJXcpsM9Lu05HfUv5cvHvLuB0uw/81eJZyNHFdtHFBi5RLCgpBrOyVMDfH8UQ3VBMqXzFKV68A==}
     peerDependencies:
-      '@tanstack/react-query': ^5.22.2
+      '@tanstack/react-query': ^5.24.1
       react: ^18.0.0
     dependencies:
       '@tanstack/query-devtools': 5.24.0
-      '@tanstack/react-query': 5.22.2(react@18.2.0)
+      '@tanstack/react-query': 5.24.1(react@18.2.0)
       react: 18.2.0
     dev: false
 
-  /@tanstack/react-query@5.22.2(react@18.2.0):
-    resolution: {integrity: sha512-TaxJDRzJ8/NWRT4lY2jguKCrNI6MRN+67dELzPjNUlvqzTxGANlMp68l7aC7hG8Bd1uHNxHl7ihv7MT50i/43A==}
+  /@tanstack/react-query@5.24.1(react@18.2.0):
+    resolution: {integrity: sha512-4+09JEdO4d6+Gc8Y/g2M/MuxDK5IY0QV8+2wL2304wPKJgJ54cBbULd3nciJ5uvh/as8rrxx6s0mtIwpRuGd1g==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-core': 5.22.2
+      '@tanstack/query-core': 5.24.1
       react: 18.2.0
     dev: false
 
-  /@tanstack/react-router@1.16.6(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-d1Kjs38IF3bH7jKwihMBrdnh7BMVOHSNhJ9sltCiP4gLHcZkG7V9BwwJn5yL4V7YHIPNxdrJ3v4yrkvdrPJ0Ww==}
+  /@tanstack/react-router@1.17.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-iW/TgJN/qZ+Ly73jDU3D2AuC3IlAHGx3ybXTvVuZ1hihsud7arEg7g83hsuU+xbkPcVWfly9ndTb1XKxrovw9w==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16'
@@ -3168,17 +3251,21 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  /@tanstack/router-devtools@1.16.6(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-zjyLuStYA1TM4L1IfgQJ1ZCq36o3UVaLLCVmBBHukxbc6n2cKR2U11BXJW5RpkNZDyAPyGcPLEgJ2qcZCYSDcQ==}
+  /@tanstack/router-devtools@1.17.4(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-tt02Xi1WpM/WkSrgmiKDvFa9OsLApWSfxulHVzyl/F9JMulOjqy45s0BxH2PlQSKGHjp8CNIBRyd4Ajs+sIN3A==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@tanstack/react-router': 1.16.6(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/react-router': 1.17.4(react-dom@18.2.0)(react@18.2.0)
+      clsx: 2.1.0
       date-fns: 2.30.0
+      goober: 2.1.14(csstype@3.1.3)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - csstype
     dev: false
 
   /@tanstack/router-generator@1.16.5:
@@ -3856,7 +3943,7 @@ packages:
       std-env: 3.7.0
       test-exclude: 6.0.0
       v8-to-istanbul: 9.2.0
-      vitest: 1.3.1(@types/node@20.11.20)(@vitest/ui@1.3.1)(jsdom@24.0.0)
+      vitest: 1.3.1(@types/node@20.11.20)(@vitest/ui@1.3.1)(jsdom@24.0.0)(sass@1.71.1)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3903,7 +3990,7 @@ packages:
       pathe: 1.1.2
       picocolors: 1.0.0
       sirv: 2.0.4
-      vitest: 1.3.1(@types/node@20.11.20)(@vitest/ui@1.3.1)(jsdom@24.0.0)
+      vitest: 1.3.1(@types/node@20.11.20)(@vitest/ui@1.3.1)(jsdom@24.0.0)(sass@1.71.1)
     dev: true
 
   /@vitest/utils@1.3.1:
@@ -4936,7 +5023,6 @@ packages:
 
   /classnames@2.5.1:
     resolution: {integrity: sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==}
-    dev: false
 
   /clean-css@5.3.3:
     resolution: {integrity: sha512-D5J+kHaVb/wKSFcyyV75uCn8fiY4sV38XJoe4CUyGQ+mOU/fMVYUdH1hJC+CJQ5uY3EnW27SbJYS4X8BiLrAFg==}
@@ -5885,18 +5971,6 @@ packages:
     dependencies:
       is-obj: 2.0.0
     dev: true
-
-  /dotenv-expand@11.0.6:
-    resolution: {integrity: sha512-8NHi73otpWsZGBSZwwknTXS5pqMOrk9+Ssrna8xCaxkzEpU9OTf9R5ArQGVw03//Zmk9MOwLPng9WwndvpAJ5g==}
-    engines: {node: '>=12'}
-    dependencies:
-      dotenv: 16.4.5
-    dev: false
-
-  /dotenv@16.4.5:
-    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
-    engines: {node: '>=12'}
-    dev: false
 
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -6922,7 +6996,7 @@ packages:
       semver: 7.6.0
       tapable: 2.2.1
       typescript: 5.3.3
-      webpack: 5.90.1(esbuild@0.19.12)
+      webpack: 5.90.1
     dev: true
 
   /form-data@2.3.3:
@@ -7296,6 +7370,14 @@ packages:
       merge2: 1.4.1
       slash: 3.0.0
     dev: true
+
+  /goober@2.1.14(csstype@3.1.3):
+    resolution: {integrity: sha512-4UpC0NdGyAFqLNPnhCT2iHpza2q+RAY3GV85a/mRPdzyPQMsj0KmMMuetdIkzWRbJ+Hgau1EZztq8ImmiMGhsg==}
+    peerDependencies:
+      csstype: ^3.0.10
+    dependencies:
+      csstype: 3.1.3
+    dev: false
 
   /gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
@@ -10350,7 +10432,6 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       resize-observer-polyfill: 1.5.1
-    dev: false
 
   /rc-segmented@2.3.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-I3FtM5Smua/ESXutFfb8gJ8ZPcvFR+qUgeeGFQHBOvRiRKyAk4aBE5nfqrxXx+h8/vn60DQjOt6i4RNtrbOobg==}
@@ -10441,6 +10522,23 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
+
+  /rc-table@7.41.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-366Ru8eZwDokhTaEaYL28D3HI3CebkdKAbjihFTs3quYal+y4odrcADWV4sD0jFvNIU467faynwF9+pZPpHJFg==}
+    engines: {node: '>=8.x'}
+    peerDependencies:
+      react: '>=16.9.0'
+      react-dom: '>=16.9.0'
+    dependencies:
+      '@babel/runtime': 7.23.9
+      '@rc-component/context': 1.4.0(react-dom@18.2.0)(react@18.2.0)
+      classnames: 2.5.1
+      rc-resize-observer: 1.4.0(react-dom@18.2.0)(react@18.2.0)
+      rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
+      rc-virtual-list: 3.11.3(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: true
 
   /rc-tabs@14.0.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-lp1YWkaPnjlyhOZCPrAWxK6/P6nMGX/BAZcAC3nuVwKz0Byfp+vNnQKK8BRCP2g/fzu+SeB5dm9aUigRu3tRkQ==}
@@ -10554,7 +10652,6 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-is: 18.2.0
-    dev: false
 
   /rc-virtual-list@3.11.3(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-tu5UtrMk/AXonHwHxUogdXAWynaXsrx1i6dsgg+lOo/KJSF8oBAcprh1z5J3xgnPJD5hXxTL58F8s8onokdt0Q==}
@@ -10569,7 +10666,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /react-dom@18.2.0(react@18.2.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
@@ -10759,7 +10855,6 @@ packages:
 
   /resize-observer-polyfill@1.5.1:
     resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==}
-    dev: false
 
   /resolve-cwd@3.0.0:
     resolution: {integrity: sha512-OrZaX2Mb+rJCpH/6CpSqt9xFVpN++x01XnN2ie9g6P5/3xelLAkXWVADpdz1IHD/KFfEXyE6V0U01OQ3UO2rEg==}
@@ -11648,7 +11743,7 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /terser-webpack-plugin@5.3.10(esbuild@0.19.12)(webpack@5.90.1):
+  /terser-webpack-plugin@5.3.10(webpack@5.90.1):
     resolution: {integrity: sha512-BKFPWlPDndPs+NGGCr1U59t0XScL5317Y0UReNrHaw9/FwhPENlq6bfgs+4yPfyP51vqC1bQ4rp1EfXW5ZSH9w==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -11665,15 +11760,14 @@ packages:
         optional: true
     dependencies:
       '@jridgewell/trace-mapping': 0.3.22
-      esbuild: 0.19.12
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.27.1
-      webpack: 5.90.1(esbuild@0.19.12)
+      webpack: 5.90.1
     dev: true
 
-  /terser-webpack-plugin@5.3.10(esbuild@0.19.12)(webpack@5.90.2):
+  /terser-webpack-plugin@5.3.10(webpack@5.90.2):
     resolution: {integrity: sha512-BKFPWlPDndPs+NGGCr1U59t0XScL5317Y0UReNrHaw9/FwhPENlq6bfgs+4yPfyP51vqC1bQ4rp1EfXW5ZSH9w==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -11690,12 +11784,11 @@ packages:
         optional: true
     dependencies:
       '@jridgewell/trace-mapping': 0.3.22
-      esbuild: 0.19.12
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.27.1
-      webpack: 5.90.2(esbuild@0.19.12)
+      webpack: 5.90.2
     dev: true
 
   /terser@5.27.1:
@@ -11893,7 +11986,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /ts-jest@29.1.2(@babel/core@7.23.9)(esbuild@0.19.12)(jest@29.7.0)(typescript@5.3.3):
+  /ts-jest@29.1.2(@babel/core@7.23.9)(jest@29.7.0)(typescript@5.3.3):
     resolution: {integrity: sha512-br6GJoH/WUX4pu7FbZXuWGKGNDuU7b8Uj77g/Sp7puZV6EXzuByl6JrECvm0MzVzSTkSHWTihsXt+5XYER5b+g==}
     engines: {node: ^16.10.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -11916,7 +12009,6 @@ packages:
     dependencies:
       '@babel/core': 7.23.9
       bs-logger: 0.2.6
-      esbuild: 0.19.12
       fast-json-stable-stringify: 2.1.0
       jest: 29.7.0(@types/node@20.11.20)(ts-node@10.9.2)
       jest-util: 29.7.0
@@ -11941,7 +12033,7 @@ packages:
       semver: 7.6.0
       source-map: 0.7.4
       typescript: 5.3.3
-      webpack: 5.90.2(esbuild@0.19.12)
+      webpack: 5.90.2
     dev: true
 
   /ts-node@10.9.2(@types/node@20.11.20)(typescript@5.3.3):
@@ -12433,7 +12525,7 @@ packages:
       - supports-color
     dev: true
 
-  /unplugin-info@1.1.0(esbuild@0.19.12)(vite@5.1.4):
+  /unplugin-info@1.1.0(vite@5.1.4):
     resolution: {integrity: sha512-sJfczOBdpY+6tpJswBrQej0qvyAPLODe7cimnu1PCRgWHOuMnSAwaWUps1BUlBKhnWEXe7nzLjfw9fWOUM/P9Q==}
     peerDependencies:
       '@nuxt/kit': ^3
@@ -12457,7 +12549,6 @@ packages:
         optional: true
     dependencies:
       ci-info: 4.0.0
-      esbuild: 0.19.12
       git-url-parse: 14.0.0
       simple-git: 3.22.0
       unplugin: 1.7.1
@@ -12466,7 +12557,7 @@ packages:
       - supports-color
     dev: true
 
-  /unplugin-turbo-console@1.4.0(esbuild@0.19.12)(vite@5.1.4):
+  /unplugin-turbo-console@1.4.0(vite@5.1.4):
     resolution: {integrity: sha512-okvqqEZrgopvEU8hOGUYOqponJHMU1TUiFCtDVnur0bBj6AltuJmHq5+NZY4CmNbdHZ0rldoaYGOTmyVOn4h7A==}
     peerDependencies:
       '@nuxt/kit': '>=3'
@@ -12497,7 +12588,6 @@ packages:
     dependencies:
       '@rollup/pluginutils': 5.1.0
       ast-kit: 0.11.3
-      esbuild: 0.19.12
       get-port-please: 3.1.2
       h3: 1.10.1
       launch-editor: 2.6.1
@@ -12625,7 +12715,7 @@ packages:
       extsprintf: 1.3.0
     dev: true
 
-  /vite-node@1.3.1(@types/node@20.11.20):
+  /vite-node@1.3.1(@types/node@20.11.20)(sass@1.71.1):
     resolution: {integrity: sha512-azbRrqRxlWTJEVbzInZCTchx0X69M/XPTCz4H+TLvlTcR/xH/3hkRqhOakT41fMJCMzXTu4UvegkZiEoJAWvng==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -12735,7 +12825,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitest@1.3.1(@types/node@20.11.20)(@vitest/ui@1.3.1)(jsdom@24.0.0):
+  /vitest@1.3.1(@types/node@20.11.20)(@vitest/ui@1.3.1)(jsdom@24.0.0)(sass@1.71.1):
     resolution: {integrity: sha512-/1QJqXs8YbCrfv/GPQ05wAZf2eakUPLPa18vkJAKE7RXOKfVHqMZZ1WlTjiwl6Gcn65M5vpNUB6EFLnEdRdEXQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -12781,7 +12871,7 @@ packages:
       tinybench: 2.6.0
       tinypool: 0.8.2
       vite: 5.1.4(@types/node@20.11.20)(sass@1.71.1)
-      vite-node: 1.3.1(@types/node@20.11.20)
+      vite-node: 1.3.1(@types/node@20.11.20)(sass@1.71.1)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
@@ -12859,7 +12949,7 @@ packages:
     resolution: {integrity: sha512-poXpCylU7ExuvZK8z+On3kX+S8o/2dQ/SVYueKA0D4WEMXROXgY8Ez50/bQEUmvoSMMrWcrJqCHuhAbsiwg7Dg==}
     dev: true
 
-  /webpack@5.90.1(esbuild@0.19.12):
+  /webpack@5.90.1:
     resolution: {integrity: sha512-SstPdlAC5IvgFnhiRok8hqJo/+ArAbNv7rhU4fnWGHNVfN59HSQFaxZDSAL3IFG2YmqxuRs+IU33milSxbPlog==}
     engines: {node: '>=10.13.0'}
     hasBin: true
@@ -12890,7 +12980,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(esbuild@0.19.12)(webpack@5.90.1)
+      terser-webpack-plugin: 5.3.10(webpack@5.90.1)
       watchpack: 2.4.0
       webpack-sources: 3.2.3
     transitivePeerDependencies:
@@ -12899,7 +12989,7 @@ packages:
       - uglify-js
     dev: true
 
-  /webpack@5.90.2(esbuild@0.19.12):
+  /webpack@5.90.2:
     resolution: {integrity: sha512-ziXu8ABGr0InCMEYFnHrYweinHK2PWrMqnwdHk2oK3rRhv/1B+2FnfwYv5oD+RrknK/Pp/Hmyvu+eAsaMYhzCw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
@@ -12930,7 +13020,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(esbuild@0.19.12)(webpack@5.90.2)
+      terser-webpack-plugin: 5.3.10(webpack@5.90.2)
       watchpack: 2.4.0
       webpack-sources: 3.2.3
     transitivePeerDependencies:

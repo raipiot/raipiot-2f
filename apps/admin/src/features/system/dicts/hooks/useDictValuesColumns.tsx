@@ -1,6 +1,6 @@
+import type { DictVo } from '@raipiot-2f/api'
 import type { ColumnsType } from 'antd/es/table'
 
-import type { DictVo } from '@/api/system/dict/dict.vo'
 import { createColumns } from '@/features/data'
 
 export const useDictValuesColumns = (): ColumnsType<DictVo> => {

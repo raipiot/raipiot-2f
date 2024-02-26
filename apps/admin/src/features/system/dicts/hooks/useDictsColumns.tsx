@@ -1,4 +1,5 @@
-import type { DictVo } from '@/api/system/dict/dict.vo'
+import type { DictVo } from '@raipiot-2f/api'
+
 import { createColumns } from '@/features/data'
 
 export const useDictsColumns = () => {

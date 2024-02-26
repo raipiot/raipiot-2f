@@ -1,6 +1,5 @@
+import { type ParamVo, ParamVoDataIndex } from '@raipiot-2f/api'
 import type { ColumnsType } from 'antd/es/table'
-
-import type { ParamVo } from '@/api/system/params/params.vo'
 
 interface Props {
   handleEdit: (paramsObj: ParamVo) => void

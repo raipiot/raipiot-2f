@@ -2,7 +2,7 @@ import { userInfoQK } from './query-keys'
 
 export const userInfoQueryOptions = queryOptions({
   queryKey: userInfoQK,
-  queryFn: () => UsersAPI.info()
+  queryFn: () => usersAPI.info()
 })
 
 export const useUserInfoQuery = () => useQuery(userInfoQueryOptions)

@@ -14,7 +14,7 @@ export default function UserAvatar() {
   const { data: userInfo } = useUserInfoSuspenseQuery()
 
   const logoutMutation = useMutation({
-    mutationFn: () => AuthAPI.logout(),
+    mutationFn: () => authAPI.logout(),
     onSuccess: () => {
       AuthUtils.clearAccessToken()
       AuthUtils.clearRefreshToken()

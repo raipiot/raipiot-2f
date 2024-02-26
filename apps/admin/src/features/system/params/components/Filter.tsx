@@ -1,3 +1,5 @@
+import { ParamVoDataIndex } from '@raipiot-2f/api'
+
 import { useCommonForm } from '../hooks/useCommonForm'
 
 export default function FilterForm() {

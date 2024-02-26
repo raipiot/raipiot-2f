@@ -14,16 +14,16 @@
       "dotEnv": [".env.development.local", ".env.development", ".env.local", ".env"]
     },
     "build:hooks:meta": {
-      "dependsOn": ["^type:check", "^build"],
+      "dependsOn": ["^type:check"],
       "outputs": ["dist/**"]
     },
     "build:staging": {
-      "dependsOn": ["^type:check", "^build", "@raipiot-2f/hooks#build:hooks:meta"],
+      "dependsOn": ["^type:check", "@raipiot-2f/hooks#build:hooks:meta"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
       "dotEnv": [".env.staging.local", ".env.staging", ".env.local", ".env"]
     },
     "build:prod": {
-      "dependsOn": ["^type:check", "^build", "@raipiot-2f/hooks#build:hooks:meta"],
+      "dependsOn": ["^type:check", "@raipiot-2f/hooks#build:hooks:meta"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
       "dotEnv": [".env.production.local", ".env.production", ".env.local", ".env"]
     },

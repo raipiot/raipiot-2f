@@ -1,3 +1,5 @@
+import { DictPageDto } from '@raipiot-2f/api'
+
 import { systemDictsQueryOptions } from '@/features/system/dicts'
 import { queryClient } from '@/router'
 

@@ -1,6 +1,7 @@
 import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 
+import APIImportMeta from '@raipiot-2f/api/meta' assert { type: 'json' }
 import { hooksImportMeta } from '@raipiot-2f/hooks/meta'
 import { AntdResolver, RaipiotAntdResolver, reactPresets } from '@raipiot-infra/auto-import'
 import { BootstrapAnimation } from '@raipiot-infra/bootstrap-animation'
@@ -68,6 +69,10 @@ export default defineConfig(({ mode }) => {
           {
             from: '@/i18n',
             imports: [['default', 'i18n']]
+          },
+          {
+            from: '@raipiot-2f/api',
+            imports: APIImportMeta
           },
           {
             from: '@raipiot-2f/config',
@@ -139,6 +144,7 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       rollupOptions: {
+        external: [],
         output: {
           // 优化 node_modules 打包
           manualChunks(id) {

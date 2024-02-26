@@ -1,5 +1,5 @@
-import type { ParamsPageDto } from '@/api/system/params/params.dto'
+import type { ParamPageDto } from '@raipiot-2f/api'
 
-export const genSystemParamsQK = (params: ParamsPageDto) => ['system:params', params]
+export const genSystemParamsQK = (params: ParamPageDto) => ['system:params', params]
 
 export const genSystemParamQK = () => ['system:param']

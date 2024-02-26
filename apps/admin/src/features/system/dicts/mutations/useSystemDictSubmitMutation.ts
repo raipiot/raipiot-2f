@@ -1,6 +1,6 @@
-import type { DictSubmitDto } from '@/api/system/dict/dict.dto'
+import type { DictSubmitDto } from '@raipiot-2f/api'
 
 export const useSystemDictSubmitMutation = () =>
   useMutation({
-    mutationFn: (data: DictSubmitDto) => SystemDictAPI.submit(data)
+    mutationFn: (data: DictSubmitDto) => systemDictsAPI.submit(data)
   })

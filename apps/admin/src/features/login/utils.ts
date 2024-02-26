@@ -1,4 +1,4 @@
-import type { LoginVo } from '@/api/auth/auth.vo'
+import type { LoginVo } from '@raipiot-2f/api'
 
 export const saveTokens = (loginVo: LoginVo) => {
   const { access_token: accessToken, refresh_token: refreshToken } = loginVo ?? {}

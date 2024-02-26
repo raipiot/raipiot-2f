@@ -1,4 +1,5 @@
-import type { SignupDto } from '@/api/auth/auth.dto'
+import type { SignupDto } from '@raipiot-2f/api'
+
 import { saveTokens } from '@/features/login'
 
 import { useSignupMutation, useSMSVerificationMutation } from '../mutations'

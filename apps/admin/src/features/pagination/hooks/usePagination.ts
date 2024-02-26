@@ -1,6 +1,5 @@
+import { PageDto } from '@raipiot-2f/api'
 import type { PaginationProps, TablePaginationConfig } from 'antd'
-
-import { PageDto } from '@/api/common.type'
 
 export const usePagination = <T extends PageDto>(initialValue?: T) => {
   const { t } = useTranslation()
