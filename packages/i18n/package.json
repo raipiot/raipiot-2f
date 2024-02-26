@@ -25,9 +25,12 @@
     "prettier:check": "prettier --check --cache --ignore-unknown --ignore-path=../../.prettierignore .",
     "prettier:fix": "prettier --write --cache --ignore-unknown --ignore-path=../../.prettierignore ."
   },
+  "peerDependencies": {
+    "antd": "^5.14.2"
+  },
   "dependencies": {
-    "@raipiot-infra/enums": "^0.0.6",
-    "@raipiot-infra/utils": "^0.0.10",
+    "@raipiot-infra/enums": "^0.1.1",
+    "@raipiot-infra/utils": "^0.1.1",
     "i18next": "^23.10.0",
     "react-i18next": "^14.0.5"
   },

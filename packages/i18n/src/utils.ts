@@ -1,5 +1,7 @@
 import { type i18n } from 'i18next'
 
+import type { LocaleResource } from './types'
+
 /**
  * 动态加载 i18n 资源文件
  * @description 读取 /locales 下的全部 JSON 文件
@@ -27,4 +29,16 @@ function dynamicLoadTrans() {
 export function loadTrans(i18n: i18n) {
   dynamicLoadTrans().forEach((transItem) => i18n.addResourceBundle(...transItem))
   return i18n
+}
+
+// 处理多语言资源，添加到 i18n 实例
+export const processLocaleResources = (
+  lang: string,
+  localeResources: LocaleResource[],
+  i18n: i18n
+) => {
+  localeResources.forEach(({ ns, resources }) =>
+    // NOTE: i18n.addResources 不会工作，可能是由于 JSON 键前缀重合导致的
+    i18n.addResourceBundle(lang, ns, resources, true, true)
+  )
 }
