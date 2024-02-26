@@ -15,7 +15,8 @@
     "env"
   ],
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./meta": "./meta.json"
   },
   "types": "./src/index.ts",
   "scripts": {

@@ -6,8 +6,6 @@ import zhCN from 'antd/locale/zh_CN'
 import { create } from 'zustand'
 import { subscribeWithSelector } from 'zustand/middleware'
 
-import { router } from '@/router'
-
 interface State {
   lang: string
   locale: Locale

@@ -2,6 +2,7 @@ import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 
 import APIImportMeta from '@raipiot-2f/api/meta' assert { type: 'json' }
+import ConfigImportMeta from '@raipiot-2f/config/meta' assert { type: 'json' }
 import { hooksImportMeta } from '@raipiot-2f/hooks/meta'
 import { AntdResolver, RaipiotAntdResolver, reactPresets } from '@raipiot-infra/auto-import'
 import { BootstrapAnimation } from '@raipiot-infra/bootstrap-animation'
@@ -67,7 +68,15 @@ export default defineConfig(({ mode }) => {
         imports: [
           ...reactPresets,
           {
-            from: '@/i18n',
+            from: '@/app/router',
+            imports: ['router']
+          },
+          {
+            from: '@/app/query-client',
+            imports: ['queryClient']
+          },
+          {
+            from: '@/app/i18n',
             imports: [['default', 'i18n']]
           },
           {
@@ -76,7 +85,7 @@ export default defineConfig(({ mode }) => {
           },
           {
             from: '@raipiot-2f/config',
-            imports: ['GlobalEnvConfig', 'AppMetadata']
+            imports: ConfigImportMeta
           },
           {
             from: '@raipiot-2f/hooks',
@@ -98,7 +107,13 @@ export default defineConfig(({ mode }) => {
           }),
           RaipiotAntdResolver()
         ],
-        dirs: ['src/api/**', 'src/components/**', 'src/hooks/**', 'src/store/**', 'src/utils/**']
+        dirs: [
+          'src/shared/api/**',
+          'src/shared/components/**',
+          'src/shared/hooks/**',
+          'src/shared/store/**',
+          'src/shared/utils/**'
+        ]
       }),
       BootstrapAnimation({
         name: 'raipiot 2F Admin',

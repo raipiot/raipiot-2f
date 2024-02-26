@@ -1,7 +1,5 @@
 import type { PropsWithChildren } from 'react'
 
-import { router } from '@/router'
-
 export default function RpAxiosProvider({ children }: PropsWithChildren) {
   const { message } = AApp.useApp()
 
