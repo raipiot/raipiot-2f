@@ -1,0 +1,38 @@
+{
+  "name": "@raipiot-2f/i18n",
+  "description": "raipiot 2F 通用 i18n 模块",
+  "author": "Bruce Song <recall4056@gmail.com> (https://github.com/recallwei/)",
+  "homepage": "https://github.com/raipiot/raipiot-2f#readme",
+  "bugs": "https://github.com/raipiot/raipiot-2f/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raipiot/raipiot-2f.git",
+    "directory": "packages/i18n"
+  },
+  "keywords": [
+    "raipiot",
+    "i18n"
+  ],
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "types": "./src/index.ts",
+  "scripts": {
+    "type:check": "tsc --pretty --noEmit",
+    "cspell:check": "cspell --no-progress --show-suggestions --show-context **",
+    "eslint:check": "eslint . --color",
+    "eslint:fix": "eslint . --color --fix",
+    "prettier:check": "prettier --check --cache --ignore-unknown --ignore-path=../../.prettierignore .",
+    "prettier:fix": "prettier --write --cache --ignore-unknown --ignore-path=../../.prettierignore ."
+  },
+  "peerDependencies": {
+    "antd": "^5.14.2"
+  },
+  "dependencies": {
+    "@raipiot-infra/enums": "^0.1.1",
+    "@raipiot-infra/utils": "^0.1.1",
+    "i18next": "^23.10.0",
+    "react-i18next": "^14.0.5"
+  },
+  "private": true
+}

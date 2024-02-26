@@ -3,9 +3,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { ScrollRestoration } from '@tanstack/react-router'
 import React from 'react'
 
-import { GlobalEnvConfig } from '@/constants'
-
-const TanStackRouterDevtools = GlobalEnvConfig.IS_PROD
+const TanStackRouterDevtools = GlobalEnvConfig.PROD_ONLY
   ? () => null // 生产环境下，不加载
   : React.lazy(() =>
       // 开发环境下，懒加载

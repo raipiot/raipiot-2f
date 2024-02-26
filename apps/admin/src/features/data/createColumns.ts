@@ -1,8 +1,8 @@
 import type { ColumnType } from 'antd/es/table'
 import type { DataIndex } from 'rc-table/lib/interface'
 
-import type { RpBooleanProps } from '@/components/RpBoolean'
-import type { RpTagStringProps } from '@/components/RpTagString'
+import type { RpBooleanProps } from '@/shared/components/RpBoolean'
+import type { RpTagStringProps } from '@/shared/components/RpTagString'
 
 interface CustomOptions {
   type?: 'string' | 'tagString' | 'dateString' | 'boolean'

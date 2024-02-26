@@ -1,7 +1,4 @@
 {
   "extends": "@raipiot-infra",
-  "ignorePatterns": ["src-tauri", "@types/auto-imports.d.ts"],
-  "rules": {
-    "max-classes-per-file": "off"
-  }
+  "ignorePatterns": ["src-tauri", "@types/auto-imports.d.ts"]
 }

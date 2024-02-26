@@ -2,7 +2,7 @@ import { systemDictTreeQK } from './query-keys'
 
 export const systemDictTreeQueryOptions = queryOptions({
   queryKey: systemDictTreeQK(),
-  queryFn: () => SystemDictAPI.tree()
+  queryFn: () => systemDictsAPI.tree()
 })
 
 export const useSystemDictTreeQuery = () => useQuery(systemDictTreeQueryOptions)

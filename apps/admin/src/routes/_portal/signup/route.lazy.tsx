@@ -1,6 +1,6 @@
+import type { SignupDto } from '@raipiot-2f/api'
 import { Lang } from '@raipiot-infra/enums'
 
-import type { SignupDto } from '@/api/auth/auth.dto'
 import LanguageButton from '@/features/layouts/BaseLayout/Header/LanguageButton'
 import { useSignupForm } from '@/features/signup'
 import PrivacyPolicy from '@/features/signup/components/PrivacyPolicy'

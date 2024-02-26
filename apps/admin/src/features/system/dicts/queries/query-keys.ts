@@ -1,4 +1,4 @@
-import type { DictPageDto } from '@/api/system/dict/dict.dto'
+import type { DictPageDto } from '@raipiot-2f/api'
 
 export const systemDictsQK = (params: DictPageDto) => ['system:dicts', params]
 

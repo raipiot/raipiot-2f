@@ -1,4 +1,5 @@
-import type { DictVo } from '@/api/system/dict/dict.vo'
+import { DictValuePageDto, type DictVo } from '@raipiot-2f/api'
+
 import { TableLayout } from '@/features/layouts'
 import { usePagination } from '@/features/pagination'
 import { useDictValuesColumns, useSystemDictValuesSuspenseQuery } from '@/features/system/dicts'

@@ -1,13 +1,9 @@
 {
   "extends": "@raipiot-infra/tsconfig/base.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx",
-    "types": ["vitest/globals"],
-    "lib": ["DOM", "DOM.Iterable", "ESNext"]
+    "types": ["vitest/globals"]
   },
-  "include": ["src"]
+  "include": ["src", "tsup.config.ts"]
 }

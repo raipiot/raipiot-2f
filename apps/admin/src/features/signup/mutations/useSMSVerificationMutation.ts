@@ -1,4 +1,4 @@
 export const useSMSVerificationMutation = () =>
   useMutation({
-    mutationFn: (data: { phone: string }) => AuthAPI.sendSMSVerification(data)
+    mutationFn: (data: { phone: string }) => authAPI.sendSMSVerification(data)
   })

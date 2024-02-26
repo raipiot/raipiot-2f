@@ -1,6 +1,6 @@
-import type { SignupDto } from '@/api/auth/auth.dto'
+import type { SignupDto } from '@raipiot-2f/api'
 
 export const useSignupMutation = () =>
   useMutation({
-    mutationFn: (data: SignupDto) => AuthAPI.signup(data)
+    mutationFn: (data: SignupDto) => authAPI.signup(data)
   })

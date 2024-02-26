@@ -1,4 +1,5 @@
-import { getImageFromAssets } from '@/features/assets'
+import raipiotLogo from '@/assets/images/raipiot.png'
+import raipiotDarkLogo from '@/assets/images/raipiot_dark.png'
 
 export default function Footer() {
   const themeStore = useThemeStore()
@@ -14,7 +15,7 @@ export default function Footer() {
           <span>©</span>
           <AImage
             className="-mb-2 cursor-pointer pb-2 transition-all hover:-translate-y-1 hover:scale-110 active:-translate-y-0 active:scale-105 active:opacity-75"
-            src={getImageFromAssets(themeStore.isDarkTheme() ? 'raipiot_dark.png' : 'raipiot.png')}
+            src={themeStore.isDarkTheme() ? raipiotDarkLogo : raipiotLogo}
             alt=""
             loading="eager"
             width={20}

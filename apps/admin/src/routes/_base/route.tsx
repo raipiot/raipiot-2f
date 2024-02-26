@@ -1,5 +1,4 @@
 import { userInfoQueryOptions } from '@/features/users'
-import { queryClient } from '@/router'
 
 export const Route = createFileRoute('/_base')({
   beforeLoad: async (params) => {

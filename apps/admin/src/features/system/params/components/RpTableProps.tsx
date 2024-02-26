@@ -1,7 +1,6 @@
+import type { Page } from '@raipiot-2f/api'
 import type { PaginationProps, TablePaginationConfig, TableProps } from 'antd/lib'
 import type { SetStateAction } from 'react'
-
-import type { Page } from '@/api/common.type'
 
 export interface RpTableProps<T = any> extends TableProps {
   rawData: Page<T>

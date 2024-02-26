@@ -1,5 +1,3 @@
-import { router } from '@/router'
-
 import type { MenuItem } from '../types'
 
 const t = i18n.getFixedT(null, 'ROUTER')

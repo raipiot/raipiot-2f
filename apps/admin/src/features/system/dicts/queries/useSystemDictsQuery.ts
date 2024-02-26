@@ -1,11 +1,11 @@
-import type { DictPageDto } from '@/api/system/dict/dict.dto'
+import type { DictPageDto } from '@raipiot-2f/api'
 
 import { systemDictsQK } from './query-keys'
 
 export const systemDictsQueryOptions = (params: DictPageDto) =>
   queryOptions({
     queryKey: systemDictsQK(params),
-    queryFn: ({ signal }) => SystemDictAPI.parentList(params, signal),
+    queryFn: ({ signal }) => systemDictsAPI.parentList(params, signal),
     placeholderData: keepPreviousData
   })
 

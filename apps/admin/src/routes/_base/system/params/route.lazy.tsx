@@ -1,7 +1,5 @@
-// import type { ParamVo } from '@/api/system/params/params.vo'
-// import { TableLayout } from '@/features/layouts'
-import type { IParamsPageDto } from '@/api/system/params/params.dto'
-import type { ParamVo } from '@/api/system/params/params.vo'
+import type { IParamPageDto, ParamVo } from '@raipiot-2f/api'
+
 import { useParamsColumns } from '@/features/system/params'
 import Filter from '@/features/system/params/components/Filter'
 import Modal from '@/features/system/params/components/RpModal'
@@ -15,7 +13,7 @@ export const Route = createLazyFileRoute('/_base/system/params')({
 function Params() {
   const { t } = useTranslation(['COMMON', 'SYSTEM/PARAMS'])
 
-  const [pageParams, setPageParams] = useState<IParamsPageDto>({
+  const [pageParams, setPageParams] = useState<IParamPageDto>({
     current: 1,
     size: 10,
     paramsKey: '',

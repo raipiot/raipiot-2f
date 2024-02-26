@@ -1,0 +1,41 @@
+{
+  "name": "@raipiot-2f/axios",
+  "description": "raipiot 2F 通用 Axios 模块",
+  "author": "Bruce Song <recall4056@gmail.com> (https://github.com/recallwei/)",
+  "homepage": "https://github.com/raipiot/raipiot-2f#readme",
+  "bugs": "https://github.com/raipiot/raipiot-2f/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raipiot/raipiot-2f.git",
+    "directory": "packages/axios"
+  },
+  "keywords": [
+    "raipiot",
+    "template"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./meta": "./meta.json"
+  },
+  "types": "./src/index.ts",
+  "scripts": {
+    "type:check": "tsc --pretty --noEmit",
+    "cspell:check": "cspell --no-progress --show-suggestions --show-context **",
+    "eslint:check": "eslint . --color",
+    "eslint:fix": "eslint . --color --fix",
+    "prettier:check": "prettier --check --cache --ignore-unknown --ignore-path=../../.prettierignore .",
+    "prettier:fix": "prettier --write --cache --ignore-unknown --ignore-path=../../.prettierignore ."
+  },
+  "peerDependencies": {
+    "@tanstack/react-router": "^1.17.4",
+    "antd": "^5.14.2",
+    "i18next": "^23.10.0"
+  },
+  "dependencies": {
+    "@raipiot-2f/config": "workspace:^",
+    "@raipiot-infra/enums": "^0.1.1",
+    "@raipiot-infra/utils": "^0.1.1",
+    "axios": "^1.6.7"
+  },
+  "private": true
+}

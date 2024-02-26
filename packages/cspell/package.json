@@ -1,7 +1,18 @@
 {
   "name": "@raipiot-2f/cspell",
-  "description": "raipiot 2f 业务字典",
+  "description": "raipiot 2F 业务字典",
   "author": "Bruce Song <recall4056@gmail.com> (https://github.com/recallwei/)",
+  "homepage": "https://github.com/raipiot/raipiot-2f#readme",
+  "bugs": "https://github.com/raipiot/raipiot-2f/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raipiot/raipiot-2f.git",
+    "directory": "packages/cspell"
+  },
+  "keywords": [
+    "raipiot",
+    "api"
+  ],
   "exports": {
     ".": "./cspell-ext.json",
     "./cspell": "./cspell-ext.json",

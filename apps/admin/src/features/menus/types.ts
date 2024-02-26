@@ -1,7 +1,6 @@
+import type { MaybeI18nString } from '@raipiot-infra/utils'
 import type { MenuProps } from 'antd'
 import type { JSXElementConstructor } from 'react'
-
-import type { MaybeI18nString } from '../i18n'
 
 // TODO: 考虑移到 infra
 export type MenuItem = Required<MenuProps>['items'][number]
