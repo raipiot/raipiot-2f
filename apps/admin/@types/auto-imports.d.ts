@@ -101,6 +101,7 @@ declare global {
   const QueryClient: typeof import('@tanstack/react-query')['QueryClient']
   const QueryClientProvider: typeof import('@tanstack/react-query')['QueryClientProvider']
   const RouterProvider: typeof import('@tanstack/react-router')['RouterProvider']
+  const RpAxiosProvider: typeof import('../src/components/RpAxiosProvider/index')['default']
   const RpBoolean: typeof import('../src/components/RpBoolean/index')['default']
   const RpCommonInputItem: typeof import('../src/components/RpFormItems/RpFormInputItem')['default']
   const RpDateString: typeof import('../src/components/RpDateString/index')['default']

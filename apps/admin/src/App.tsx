@@ -27,9 +27,11 @@ export default function App() {
         >
           <AApp message={messageConfig}>
             <HappyProvider disabled={false}>
-              <Suspense fallback={null}>
-                <RouterProvider router={router} />
-              </Suspense>
+              <RpAxiosProvider>
+                <Suspense fallback={null}>
+                  <RouterProvider router={router} />
+                </Suspense>
+              </RpAxiosProvider>
             </HappyProvider>
           </AApp>
         </StyleProvider>
