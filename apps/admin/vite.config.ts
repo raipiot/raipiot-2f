@@ -90,10 +90,6 @@ export default defineConfig(({ mode }) => {
           {
             from: '@raipiot-2f/hooks',
             imports: hooksImportMeta
-          },
-          {
-            from: '@ant-design/icons',
-            imports: [['default', 'AIcon']]
           }
         ],
         resolvers: [
