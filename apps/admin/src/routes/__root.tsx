@@ -13,7 +13,8 @@ const TanStackRouterDevtools = GlobalEnvConfig.PROD_ONLY
     )
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  component: Root
+  component: Root,
+  notFoundComponent: NotFoundComponent
 })
 
 function Root() {
@@ -35,5 +36,14 @@ function Root() {
         />
       </Suspense>
     </>
+  )
+}
+
+function NotFoundComponent() {
+  return (
+    <RpErrorPage
+      title="页面或资源不存在"
+      subTitle="404 - 无法找到您要访问的页面或资源"
+    />
   )
 }
