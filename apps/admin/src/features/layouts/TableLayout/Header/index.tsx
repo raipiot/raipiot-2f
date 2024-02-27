@@ -9,7 +9,7 @@ interface Props {
 
 const Header = memo<Props>((props) => {
   const responsive = useResponsive()
-  const { title, icon, hideTitle } = useMatches().at(-1)?.staticData ?? {}
+  const { title, icon, hideTitle } = useRouteMeta()
 
   return (
     <div>
