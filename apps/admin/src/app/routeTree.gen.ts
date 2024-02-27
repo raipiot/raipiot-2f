@@ -40,125 +40,178 @@ import { Route as BaseSystemDictsIndexRouteImport } from './../routes/_base/syst
 
 const PortalRouteRoute = PortalRouteImport.update({
   id: '/_portal',
-  getParentRoute: () => rootRoute
-} as any).lazy(() => import('./../routes/_portal/route.lazy').then((d) => d.Route))
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./../routes/_portal/route.lazy').then((d) => d.Route),
+)
 
 const BaseRouteRoute = BaseRouteImport.update({
   id: '/_base',
-  getParentRoute: () => rootRoute
-} as any).lazy(() => import('./../routes/_base/route.lazy').then((d) => d.Route))
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./../routes/_base/route.lazy').then((d) => d.Route),
+)
 
 const RouteRoute = RouteImport.update({
   path: '/*',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any)
 
 const PortalSsoRouteRoute = PortalSsoRouteImport.update({
   path: '/sso',
-  getParentRoute: () => PortalRouteRoute
-} as any).lazy(() => import('./../routes/_portal/sso/route.lazy').then((d) => d.Route))
+  getParentRoute: () => PortalRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_portal/sso/route.lazy').then((d) => d.Route),
+)
 
 const PortalSignupRouteRoute = PortalSignupRouteImport.update({
   path: '/signup',
-  getParentRoute: () => PortalRouteRoute
-} as any).lazy(() => import('./../routes/_portal/signup/route.lazy').then((d) => d.Route))
+  getParentRoute: () => PortalRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_portal/signup/route.lazy').then((d) => d.Route),
+)
 
 const PortalLoginRouteRoute = PortalLoginRouteImport.update({
   path: '/login',
-  getParentRoute: () => PortalRouteRoute
-} as any).lazy(() => import('./../routes/_portal/login/route.lazy').then((d) => d.Route))
+  getParentRoute: () => PortalRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_portal/login/route.lazy').then((d) => d.Route),
+)
 
 const PortalForgotPasswordRouteRoute = PortalForgotPasswordRouteImport.update({
   path: '/forgot-password',
-  getParentRoute: () => PortalRouteRoute
-} as any).lazy(() => import('./../routes/_portal/forgot-password/route.lazy').then((d) => d.Route))
+  getParentRoute: () => PortalRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_portal/forgot-password/route.lazy').then((d) => d.Route),
+)
 
 const BaseUserInfoRouteRoute = BaseUserInfoRouteImport.update({
   path: '/user-info',
-  getParentRoute: () => BaseRouteRoute
-} as any).lazy(() => import('./../routes/_base/user-info/route.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_base/user-info/route.lazy').then((d) => d.Route),
+)
 
 const BaseChangePasswordRouteRoute = BaseChangePasswordRouteImport.update({
   path: '/change-password',
-  getParentRoute: () => BaseRouteRoute
-} as any).lazy(() => import('./../routes/_base/change-password/route.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_base/change-password/route.lazy').then((d) => d.Route),
+)
 
 const Base500RouteRoute = Base500RouteImport.update({
   path: '/500',
-  getParentRoute: () => BaseRouteRoute
-} as any).lazy(() => import('./../routes/_base/500/route.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_base/500/route.lazy').then((d) => d.Route),
+)
 
 const Base404RouteRoute = Base404RouteImport.update({
   path: '/404',
-  getParentRoute: () => BaseRouteRoute
-} as any).lazy(() => import('./../routes/_base/404/route.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_base/404/route.lazy').then((d) => d.Route),
+)
 
 const Base403RouteRoute = Base403RouteImport.update({
   path: '/403',
-  getParentRoute: () => BaseRouteRoute
-} as any).lazy(() => import('./../routes/_base/403/route.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_base/403/route.lazy').then((d) => d.Route),
+)
 
 const BaseIndexRouteRoute = BaseIndexRouteImport.update({
   path: '/',
-  getParentRoute: () => BaseRouteRoute
-} as any).lazy(() => import('./../routes/_base/index/route.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_base/index/route.lazy').then((d) => d.Route),
+)
 
 const BaseSystemUsersRouteRoute = BaseSystemUsersRouteImport.update({
   path: '/system/users',
-  getParentRoute: () => BaseRouteRoute
-} as any).lazy(() => import('./../routes/_base/system/users/route.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_base/system/users/route.lazy').then((d) => d.Route),
+)
 
 const BaseSystemTenantsRouteRoute = BaseSystemTenantsRouteImport.update({
   path: '/system/tenants',
-  getParentRoute: () => BaseRouteRoute
-} as any).lazy(() => import('./../routes/_base/system/tenants/route.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_base/system/tenants/route.lazy').then((d) => d.Route),
+)
 
 const BaseSystemRolesRouteRoute = BaseSystemRolesRouteImport.update({
   path: '/system/roles',
-  getParentRoute: () => BaseRouteRoute
-} as any).lazy(() => import('./../routes/_base/system/roles/route.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_base/system/roles/route.lazy').then((d) => d.Route),
+)
 
 const BaseSystemPostsRouteRoute = BaseSystemPostsRouteImport.update({
   path: '/system/posts',
-  getParentRoute: () => BaseRouteRoute
-} as any).lazy(() => import('./../routes/_base/system/posts/route.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_base/system/posts/route.lazy').then((d) => d.Route),
+)
 
-const BaseSystemPermissionsRouteRoute = BaseSystemPermissionsRouteImport.update({
-  path: '/system/permissions',
-  getParentRoute: () => BaseRouteRoute
-} as any).lazy(() => import('./../routes/_base/system/permissions/route.lazy').then((d) => d.Route))
+const BaseSystemPermissionsRouteRoute = BaseSystemPermissionsRouteImport.update(
+  {
+    path: '/system/permissions',
+    getParentRoute: () => BaseRouteRoute,
+  } as any,
+).lazy(() =>
+  import('./../routes/_base/system/permissions/route.lazy').then(
+    (d) => d.Route,
+  ),
+)
 
 const BaseSystemParamsRouteRoute = BaseSystemParamsRouteImport.update({
   path: '/system/params',
-  getParentRoute: () => BaseRouteRoute
-} as any).lazy(() => import('./../routes/_base/system/params/route.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_base/system/params/route.lazy').then((d) => d.Route),
+)
 
 const BaseSystemDictsRouteRoute = BaseSystemDictsRouteImport.update({
   path: '/system/dicts',
-  getParentRoute: () => BaseRouteRoute
-} as any).lazy(() => import('./../routes/_base/system/dicts/route.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_base/system/dicts/route.lazy').then((d) => d.Route),
+)
 
 const BaseSystemDeptsRouteRoute = BaseSystemDeptsRouteImport.update({
   path: '/system/depts',
-  getParentRoute: () => BaseRouteRoute
-} as any).lazy(() => import('./../routes/_base/system/depts/route.lazy').then((d) => d.Route))
-
-const BaseSystemBusinessDictsRouteRoute = BaseSystemBusinessDictsRouteImport.update({
-  path: '/system/business-dicts',
-  getParentRoute: () => BaseRouteRoute
+  getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/system/business-dicts/route.lazy').then((d) => d.Route)
+  import('./../routes/_base/system/depts/route.lazy').then((d) => d.Route),
 )
+
+const BaseSystemBusinessDictsRouteRoute =
+  BaseSystemBusinessDictsRouteImport.update({
+    path: '/system/business-dicts',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./../routes/_base/system/business-dicts/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
 
 const BaseSystemDictsIdRouteRoute = BaseSystemDictsIdRouteImport.update({
   path: '/$id',
-  getParentRoute: () => BaseSystemDictsRouteRoute
-} as any).lazy(() => import('./../routes/_base/system/dicts/$id/route.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseSystemDictsRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_base/system/dicts/$id/route.lazy').then((d) => d.Route),
+)
 
 const BaseSystemDictsIndexRouteRoute = BaseSystemDictsIndexRouteImport.update({
   path: '/',
-  getParentRoute: () => BaseSystemDictsRouteRoute
-} as any).lazy(() => import('./../routes/_base/system/dicts/index/route.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseSystemDictsRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_base/system/dicts/index/route.lazy').then(
+    (d) => d.Route,
+  ),
+)
 
 // Populate the FileRoutesByPath interface
 
@@ -278,21 +331,21 @@ export const routeTree = rootRoute.addChildren([
     BaseSystemDeptsRouteRoute,
     BaseSystemDictsRouteRoute.addChildren([
       BaseSystemDictsIndexRouteRoute,
-      BaseSystemDictsIdRouteRoute
+      BaseSystemDictsIdRouteRoute,
     ]),
     BaseSystemParamsRouteRoute,
     BaseSystemPermissionsRouteRoute,
     BaseSystemPostsRouteRoute,
     BaseSystemRolesRouteRoute,
     BaseSystemTenantsRouteRoute,
-    BaseSystemUsersRouteRoute
+    BaseSystemUsersRouteRoute,
   ]),
   PortalRouteRoute.addChildren([
     PortalForgotPasswordRouteRoute,
     PortalLoginRouteRoute,
     PortalSignupRouteRoute,
-    PortalSsoRouteRoute
-  ])
+    PortalSsoRouteRoute,
+  ]),
 ])
 
 /* prettier-ignore-end */
