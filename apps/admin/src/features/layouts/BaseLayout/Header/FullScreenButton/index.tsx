@@ -22,11 +22,12 @@ export default function FullScreenButton() {
       title={t('HEADER.FULL.SCREEN')}
       placement="bottom"
     >
-      <Icon
-        isFullscreen={isFullscreen}
+      <div
         className="cursor-pointer text-xl"
         onClick={toggleFullscreen}
-      />
+      >
+        <Icon isFullscreen={isFullscreen} />
+      </div>
     </ATooltip>
   )
 }

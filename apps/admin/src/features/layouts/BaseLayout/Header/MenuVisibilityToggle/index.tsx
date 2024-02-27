@@ -19,11 +19,12 @@ export default function MenuVisibilityToggle() {
       title={t('SIDEBAR.HIDE')}
       placement="bottom"
     >
-      <Icon
-        isSidebarDisplay={sidebarStore.isDisplay}
-        className="cursor-pointer text-xl"
+      <div
         onClick={sidebarStore.toggleDisplay}
-      />
+        className="cursor-pointer text-xl"
+      >
+        <Icon isSidebarDisplay={sidebarStore.isDisplay} />
+      </div>
     </ATooltip>
   )
 }

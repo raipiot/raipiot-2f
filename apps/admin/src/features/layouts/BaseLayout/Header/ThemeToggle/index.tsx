@@ -54,12 +54,15 @@ export default function ThemeToggle() {
       title={t('HEADER.SWITCH.THEME')}
       placement="bottom"
     >
-      <Icon
-        isLightTheme={themeStore.isLightTheme()}
+      <div
         className="cursor-pointer text-xl"
-        color={themeStore.isLightTheme() ? '#FDC022' : '#FED736'}
         onClick={handleToggleTheme}
-      />
+      >
+        <Icon
+          isLightTheme={themeStore.isLightTheme()}
+          color={themeStore.isLightTheme() ? '#FDC022' : '#FED736'}
+        />
+      </div>
     </ATooltip>
   )
 }
