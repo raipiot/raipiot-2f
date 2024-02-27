@@ -1,5 +1,6 @@
 export * from './auth'
 export * from './auth/dto'
 export * from './auth/vo'
+export * from './portal'
 export * from './system'
 export * from './types'

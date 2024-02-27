@@ -1,6 +1,7 @@
 import AUTH from './auth/zh-CN.json'
 import COMMON from './common/zh-CN.json'
 import LAYOUT from './layout/zh-CN.json'
+import PORTAL from './portal/zh-CN.json'
 import ROUTER from './router/zh-CN.json'
 import SYSTEM_DICTS from './system/DICTS/zh-CN.json'
 import SYSTEM_PARAMS from './system/PARAMS/zh-CN.json'
@@ -16,7 +17,8 @@ const resources = {
   ROUTER,
   VALIDATION,
   'SYSTEM/DICTS': SYSTEM_DICTS,
-  'SYSTEM/PARAMS': SYSTEM_PARAMS
+  'SYSTEM/PARAMS': SYSTEM_PARAMS,
+  PORTAL
 }
 
 export default resources

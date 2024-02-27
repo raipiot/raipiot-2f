@@ -6,7 +6,12 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src", "@types/**/*.d.ts", "../../packages/config/@types/env.d.ts"],
+  "include": [
+    "src",
+    "@types/**/*.d.ts",
+    "../../packages/config/@types/env.d.ts",
+    "../../packages/i18n/src/locales/index.ts"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

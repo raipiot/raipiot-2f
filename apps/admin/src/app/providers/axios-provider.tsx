@@ -9,7 +9,7 @@ export default function AxiosProvider({ children }: PropsWithChildren) {
     if (initialized) {
       return
     }
-    httpRequest.initInterceptors({ router, i18n, message })
+    httpRequest.initInterceptors({ router, i18n, message, logoutRedirectUrl: '/' })
     setInitialized(true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

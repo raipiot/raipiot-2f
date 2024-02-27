@@ -22,10 +22,13 @@ export class AuthAPI extends BaseAPI {
       `${this.#API_PREFIX}/token`,
       {},
       {
-        params: {
-          ...data,
-          password: await md5(data.password)
-        }
+        // TODO: 将 md5 放到 mutation
+        params: data?.password
+          ? {
+              ...data,
+              password: await md5(data.password)
+            }
+          : data
       }
     )
   }
