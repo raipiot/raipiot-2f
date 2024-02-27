@@ -28,12 +28,7 @@ function Root() {
       {/* 不加 Suspense 会报错 */}
       <Suspense fallback={null}>
         <ReactQueryDevtools buttonPosition="bottom-left" />
-        <TanStackRouterDevtools
-          position="bottom-right"
-          toggleButtonProps={{
-            style: { margin: '0.3em' }
-          }}
-        />
+        <TanStackRouterDevtools position="bottom-right" />
       </Suspense>
     </>
   )
