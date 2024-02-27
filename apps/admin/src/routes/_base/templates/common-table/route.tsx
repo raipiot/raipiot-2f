@@ -1,4 +1,5 @@
 export const Route = createFileRoute('/_base/templates/common-table')({
-  staticData: {},
-  beforeLoad: () => {}
+  staticData: {
+    title: '通用表格'
+  }
 })

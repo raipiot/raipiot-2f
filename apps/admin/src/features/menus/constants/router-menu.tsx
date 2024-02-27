@@ -33,5 +33,11 @@ export const routerMenus = (): MenuItem[] => [
     key: '/_temp',
     icon: <MaterialSymbolsGridViewOutlineRounded />,
     children: [getRouteMeta('/user-info'), getRouteMeta('/change-password')]
+  },
+  {
+    label: t('MODULE.MENU.DEVELOPER'),
+    key: '/_dev',
+    icon: <MaterialSymbolsCodeRounded />,
+    children: [getRouteMeta('/templates/common-table')]
   }
 ]

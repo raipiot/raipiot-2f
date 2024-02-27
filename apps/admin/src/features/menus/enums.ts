@@ -7,5 +7,6 @@ export enum ModuleMenuCode {
   BILLING = 'billing',
   SHOPPING = 'shopping',
   GROUP = 'group',
-  SYSTEM = 'system'
+  SYSTEM = 'system',
+  DEVELOPER = 'developer'
 }
