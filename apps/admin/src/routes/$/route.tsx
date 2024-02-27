@@ -1,4 +1,4 @@
-export const Route = createFileRoute('/*')({
+export const Route = createFileRoute('/$')({
   beforeLoad: () => {
     throw redirect({
       to: '/404'
