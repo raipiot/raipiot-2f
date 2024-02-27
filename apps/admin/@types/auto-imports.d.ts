@@ -19,7 +19,6 @@ declare global {
   const ADropdown: typeof import('antd')['Dropdown']
   const AFlex: typeof import('antd')['Flex']
   const AForm: typeof import('antd')['Form']
-  const AIcon: typeof import('@ant-design/icons')['default']
   const AImage: typeof import('antd')['Image']
   const AInput: typeof import('antd')['Input']
   const ALayout: typeof import('antd')['Layout']
