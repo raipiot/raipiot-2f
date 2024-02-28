@@ -1,8 +1,9 @@
 import type { R } from '@raipiot-2f/axios'
 import type HttpRequest from '@raipiot-2f/axios'
+import { md5 } from 'hash-wasm'
 
 import { BaseAPI } from '../base'
-import type { ChangePasswordDto, ForgotPasswordDto, LoginDto, SignupDto } from './dto'
+import type { ChangePasswordDto, ForgotPasswordDto, LoginDto, SignupDto, SMSLoginDto } from './dto'
 import type { LoginVo } from './vo'
 
 export class AuthAPI extends BaseAPI {
@@ -14,9 +15,22 @@ export class AuthAPI extends BaseAPI {
   }
 
   /**
-   * 登录
+   * 密码登录
    */
   async login(params: LoginDto) {
+    return this.httpRequest.post<LoginVo>(
+      `${this.#API_PREFIX}/token`,
+      {},
+      {
+        params: {
+          ...params,
+          password: await md5(params.password)
+        }
+      }
+    )
+  }
+
+  async SMSLogin(params: SMSLoginDto) {
     return this.httpRequest.post<LoginVo>(
       `${this.#API_PREFIX}/token`,
       {},
