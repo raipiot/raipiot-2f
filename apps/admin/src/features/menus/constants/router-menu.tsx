@@ -12,7 +12,7 @@ const getRouteMeta = (key: string) => {
 }
 
 export const routerMenus = (): MenuItem[] => [
-  getRouteMeta('/'),
+  getRouteMeta('/dashboard'),
   {
     label: t('MODULE.MENU.SYSTEM'),
     key: '/system',
