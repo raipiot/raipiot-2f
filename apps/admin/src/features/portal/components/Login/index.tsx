@@ -1,8 +1,10 @@
-import type { LoginDto } from '@raipiot-2f/api'
+import type { LoginDto, UserVo } from '@raipiot-2f/api'
+import { md5 } from 'hash-wasm'
 import type { HTMLAttributes } from 'react'
 
 import LanguageButton from '@/features/layouts/BaseLayout/Header/LanguageButton'
 import { useLoginMutation, useLogoutMutation } from '@/features/login'
+import { userInfoQK } from '@/features/users'
 
 import AccountFormItems from './AccountFormItems'
 import { PhoneNumberFormItems } from './PhoneNumberFormItems'
@@ -16,44 +18,60 @@ export function Login(props: HTMLAttributes<HTMLDivElement>) {
   const initFormValue = {
     tenantId: '000000'
   }
+  const userInfo = queryClient.getQueryData<UserVo>(userInfoQK)
   const loginMutation = useLoginMutation()
   const logoutMutation = useLogoutMutation()
 
-  const [isLogin, setIsLogin] = useState(false)
+  const { refetch } = useQuery({
+    queryKey: userInfoQK,
+    queryFn: usersAPI.info,
+    enabled: false
+  })
 
   const onFinish = async () => {
     if (loginMutation.isPending || loginMutation.isError) return
     try {
       const values = await form.validateFields()
-      loginMutation.mutate(values, {})
+      if (values.password) {
+        values.password = await md5(values.password)
+      }
+      loginMutation.mutate(values, {
+        onSuccess: () => refetch()
+      })
     } catch (error) {
       console.log(error)
     }
   }
-  // useEffect(() => {
-  //   if(AuthUtils.isAuthenticated()) {
 
-  //     setIsLogin(true)
-  //   }
-  // }, [])
-
-  // if (!isLogin) {
-  //   return (
-  //     <div {...props}>
-  //       <div className="flex min-h-[220px] flex-col items-center justify-center">
-  //         <AAvatar
-  //           src={data.avatar}
-  //           size={64}
-  //         />
-  //         <div className="mt-2 text-xl font-semibold">{data.name}</div>
-  //         <div className="mt-4 flex gap-4">
-  //           <AButton onClick={() => logoutMutation.mutate()}>Logout</AButton>
-  //           <AButton type="primary">Profile</AButton>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   )
-  // }
+  if (userInfo) {
+    return (
+      <div {...props}>
+        <div className="flex min-h-[220px] flex-col items-center justify-center">
+          <AAvatar
+            src={userInfo.avatar}
+            size={64}
+          />
+          <div className="mt-2 text-xl font-semibold">{userInfo.name}</div>
+          <div className="mt-4 flex gap-4">
+            <AButton
+              onClick={() =>
+                logoutMutation.mutate(undefined, {
+                  onSuccess: () => {
+                    queryClient.invalidateQueries({
+                      queryKey: userInfoQK
+                    })
+                  }
+                })
+              }
+            >
+              Logout
+            </AButton>
+            <AButton type="primary">Profile</AButton>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div {...props}>

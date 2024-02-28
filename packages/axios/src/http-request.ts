@@ -235,12 +235,14 @@ export class HttpRequest {
     AuthUtils.clearRefreshToken()
     // 如果非登录页面，需要重定向到登录页，且需要带上 redirect 参数
     const { pathname } = router.state.location
-
-    router.navigate({
-      to: logoutRedirectUrl,
-      replace: true,
-      search: pathname === logoutRedirectUrl ? undefined : { redirect: pathname }
-    })
+    // 如果当前页不等于重定向目标，才需要重定向
+    if (pathname !== logoutRedirectUrl) {
+      router.navigate({
+        to: logoutRedirectUrl,
+        replace: true,
+        search: pathname === logoutRedirectUrl ? undefined : { redirect: pathname }
+      })
+    }
   }
 
   /**

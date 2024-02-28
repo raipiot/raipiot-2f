@@ -17,6 +17,7 @@ export default function BannerSwiper({ className = '' }: Props) {
           <img
             alt="banner"
             src={item}
+            key={item}
             className="h-[320px]"
           />
         ))}

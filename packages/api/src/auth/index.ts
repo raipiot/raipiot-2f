@@ -1,6 +1,5 @@
 import type { R } from '@raipiot-2f/axios'
 import type HttpRequest from '@raipiot-2f/axios'
-import { md5 } from 'hash-wasm'
 
 import { BaseAPI } from '../base'
 import type { ChangePasswordDto, ForgotPasswordDto, LoginDto, SignupDto } from './dto'
@@ -17,18 +16,12 @@ export class AuthAPI extends BaseAPI {
   /**
    * 登录
    */
-  async login(data: LoginDto) {
+  async login(params: LoginDto) {
     return this.httpRequest.post<LoginVo>(
       `${this.#API_PREFIX}/token`,
       {},
       {
-        // TODO: 将 md5 放到 mutation
-        params: data?.password
-          ? {
-              ...data,
-              password: await md5(data.password)
-            }
-          : data
+        params
       }
     )
   }
