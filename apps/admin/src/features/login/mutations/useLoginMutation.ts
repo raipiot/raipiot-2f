@@ -1,17 +1,24 @@
-import type { LoginDto } from '@raipiot-2f/api'
+import type { LoginDto, LoginVo, SMSLoginDto } from '@raipiot-2f/api'
+import type { MutateFunction } from '@tanstack/react-query'
 
 import { saveTokens } from '../utils'
 
-export const useLoginMutation = () => {
-  const { message } = AApp.useApp()
-  const tabStore = useTabStore()
-  return useMutation({
-    mutationFn: (data: LoginDto) => authAPI.login(data),
-    onSuccess: (data) => {
-      saveTokens(data)
-      message.success('登录成功')
-      // 清除 Tab 记录
-      tabStore.clearRecords()
-    }
-  })
-}
+const mutationWrapper =
+  <T>(mutationFn: MutateFunction<LoginVo, any, T>) =>
+  () => {
+    const { message } = AApp.useApp()
+    const tabStore = useTabStore()
+    return useMutation({
+      mutationFn,
+      onSuccess: (data) => {
+        saveTokens(data)
+        message.success('登录成功')
+        // 清除 Tab 记录
+        tabStore.clearRecords()
+      }
+    })
+  }
+
+export const useLoginMutation = mutationWrapper<LoginDto>((data) => authAPI.login(data))
+
+export const useSMSLoginMutation = mutationWrapper<SMSLoginDto>((data) => authAPI.SMSLogin(data))

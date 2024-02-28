@@ -1,71 +1,20 @@
-import type { LoginDto, UserVo } from '@raipiot-2f/api'
+import type { LoginDto, SMSLoginDto, UserVo } from '@raipiot-2f/api'
 import type { HTMLAttributes } from 'react'
 
 import LanguageButton from '@/features/layouts/BaseLayout/Header/LanguageButton'
-import { useLoginMutation, useLogoutMutation } from '@/features/login'
+import { useLoginMutation, useSMSLoginMutation } from '@/features/login'
 import { userInfoQK, userInfoQueryOptions } from '@/features/users'
 
 import AccountFormItems from './AccountFormItems'
 import { PhoneNumberFormItems } from './PhoneNumberFormItems'
-
-interface UserCardProps extends HTMLAttributes<HTMLDivElement> {
-  onLogout: () => void
-}
-
-function UserCard(props: UserCardProps) {
-  const { onLogout, ...divProps } = props
-  const { data } = useSuspenseQuery(userInfoQueryOptions)
-  const logoutMutation = useLogoutMutation()
-
-  return (
-    <Suspense
-      fallback={
-        <div>
-          <ASkeleton.Avatar size={64} />
-          <ASkeleton.Button
-            style={{ width: 100 }}
-            active
-          />
-          <ASkeleton.Button
-            style={{ width: 100 }}
-            active
-          />
-        </div>
-      }
-    >
-      <div {...divProps}>
-        <div className="flex min-h-[220px] flex-col items-center justify-center">
-          <AAvatar
-            src={data?.avatar}
-            size={64}
-          />
-          <div className="mt-2 text-xl font-semibold">{data?.name}</div>
-          <div className="mt-4 flex gap-4">
-            <AButton
-              onClick={() =>
-                logoutMutation.mutate(undefined, {
-                  onSuccess: () => onLogout()
-                })
-              }
-            >
-              Logout
-            </AButton>
-            <Link to="/dashboard">
-              <AButton type="primary">Profile</AButton>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </Suspense>
-  )
-}
+import UserCard from './UserCard'
 
 export function Login(props: HTMLAttributes<HTMLDivElement>) {
   const [isAccountLogin, setIsAccountLogin] = useState(true)
 
   const { t } = useTranslation(['PORTAL'])
 
-  const [form] = AForm.useForm<LoginDto>()
+  const [form] = AForm.useForm<LoginDto & SMSLoginDto>()
   const initFormValue = {
     tenantId: '000000',
     username: 'admin',
@@ -75,16 +24,22 @@ export function Login(props: HTMLAttributes<HTMLDivElement>) {
   const [hadLogin, setHadLogin] = useState(!!queryClient.getQueryData<UserVo>(userInfoQK()))
 
   const loginMutation = useLoginMutation()
+  const SMSLoginMutation = useSMSLoginMutation()
 
   const onFinish = async () => {
     if (loginMutation.isPending || loginMutation.isError) return
     const values = await form.validateFields()
-    loginMutation.mutate(values, {
+    const options = {
       onSuccess: async () => {
         await queryClient.ensureQueryData(userInfoQueryOptions)
         setHadLogin(true)
       }
-    })
+    }
+    if (isAccountLogin) {
+      loginMutation.mutate(values, options)
+    } else {
+      SMSLoginMutation.mutate(values, options)
+    }
   }
 
   if (hadLogin) {
@@ -155,7 +110,7 @@ export function Login(props: HTMLAttributes<HTMLDivElement>) {
           </AButton>
         </AForm.Item>
       </AForm>
-      <div className="grid grid-cols-[auto_2px_auto] items-center text-center">
+      <div className="mt-4 grid grid-cols-[auto_2px_auto] items-center text-center">
         <Link
           to="/forgot-password"
           color="gray"

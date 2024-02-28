@@ -9,10 +9,7 @@ enum UserAction {
 
 export default function UserAvatar() {
   const { t } = useTranslation(['COMMON', 'AUTH'])
-  const { message } = AApp.useApp()
-
   const navigate = useNavigate()
-
   const { data: userInfo } = useUserInfoSuspenseQuery()
 
   const logoutMutation = useLogoutMutation()

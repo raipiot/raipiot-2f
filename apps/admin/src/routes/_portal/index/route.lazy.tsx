@@ -1,5 +1,6 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 import type { TabsProps } from 'antd/lib'
+import type { PropsWithChildren } from 'react'
 
 import BannerSwiper from '@/features/portal/components/BannerSwiper'
 import { Login } from '@/features/portal/components/Login'
@@ -10,9 +11,9 @@ export const Route = createLazyFileRoute('/_portal/')({
   component: Portal
 })
 
-function Container({ children }: { children: React.ReactNode }) {
+function Container({ children }: PropsWithChildren) {
   return (
-    <div className="grid grid-cols-1 gap-0 bg-gray-200 md:grid-cols-[1fr_1fr_350px] md:gap-[6px]">
+    <div className="grid grid-cols-1 gap-0 shadow-sm shadow-gray-200 md:grid-cols-[1fr_1fr_350px] md:gap-[6px]">
       {children}
     </div>
   )
@@ -48,14 +49,14 @@ function Portal() {
   ]
 
   return (
-    <div className="flex flex-col gap-y-4  bg-gray-200 md:gap-[6px]">
+    <div className="max-w-screen mx-auto flex w-[1200px] flex-col gap-y-4 bg-gray-50 md:gap-[8px]">
       <Container>
-        <BannerSwiper className="col-span-2 bg-white" />
-        <Login className="flex h-[320px] flex-col bg-white p-3 px-8 md:px-6" />
+        <BannerSwiper className="col-span-3 bg-white lg:col-span-2" />
+        <Login className="col-span-3 flex h-[320px] flex-col bg-white p-3 px-8 md:px-6 lg:col-span-1" />
       </Container>
       {/* 中间 */}
       <Container>
-        <div className="col-span-2 grid grid-cols-1 gap-x-[6px] bg-gray-200 md:grid-cols-2">
+        <div className="col-span-2 grid grid-cols-1 gap-x-[6px] lg:grid-cols-2">
           <PublicNotify
             title={t('BID.WINNING.NOTICE')}
             items={data.bidNoticeList}
@@ -65,7 +66,7 @@ function Portal() {
             items={data.inviteBidList}
           />
         </div>
-        <div className="col-span-3 block h-[10px] bg-gray-200 sm:hidden" />
+        <div className="col-span-3 block h-[10px] sm:hidden" />
         <div className="col-span-1 min-h-[400px] bg-white px-8 md:px-4">
           <ATabs
             defaultActiveKey="1"
@@ -100,10 +101,7 @@ function Portal() {
       <Container>
         <div className="col-span-3 p-6 text-center">
           <section className="mb-4">注册协议隐私政策说明</section>
-          <p>
-            版权所有 Copyright © 一道新能源科技（衢州）有限公司 All Rights Reserved.
-            浙ICP备19001487号-1
-          </p>
+          <p>版权所有 Copyright © xxxxxxx有限公司 All Rights Reserved. 浙ICP备19001487号-1</p>
         </div>
       </Container>
     </div>

@@ -2,8 +2,12 @@ export interface LoginDto {
   username: string
   password: string
   tenantId: string
-  phone?: string
-  verificationCode?: string
+}
+
+export interface SMSLoginDto {
+  phone: string
+  verificationCode: string
+  tenantId: string
 }
 
 export interface SignupDto {
