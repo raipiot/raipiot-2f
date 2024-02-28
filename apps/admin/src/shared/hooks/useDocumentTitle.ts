@@ -1,5 +1,5 @@
 export const useDocumentTitle = () => {
-  const routeMeta = useRouteMeta()
+  const routeMeta = useRouteStaticData()
   const { i18n } = useTranslation()
 
   useEffect(() => {

@@ -23,7 +23,7 @@ export interface HeaderProps {
 
 const Header = memo<HeaderProps>((props) => {
   const responsive = useResponsive()
-  const { title, icon } = useRouteMeta()
+  const { title, icon } = useRouteStaticData()
 
   return (
     <div className={props.headerClassName}>
