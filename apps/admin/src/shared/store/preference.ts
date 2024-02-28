@@ -1,6 +1,6 @@
 import type { TableProps } from 'antd'
 import { create } from 'zustand'
-import { createJSONStorage, persist } from 'zustand/middleware'
+import { persist } from 'zustand/middleware'
 
 interface State {
   tableSize: TableProps['size']
@@ -11,6 +11,9 @@ interface Actions {
 }
 
 const initialState: State = {
+  /**
+   * 表格的尺寸大小
+   */
   tableSize: 'middle'
 }
 
@@ -21,8 +24,7 @@ export const usePreferenceStore = create<State & Actions>()(
       setTableSize: (size) => set({ tableSize: size })
     }),
     {
-      name: 'preference_store',
-      storage: createJSONStorage(() => localStorage)
+      name: 'preference_store'
     }
   )
 )

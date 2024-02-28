@@ -21,6 +21,7 @@ export default function RowGapButton() {
             selectedKeys: [preferenceStore.tableSize!],
             onSelect: (item) => preferenceStore.setTableSize(item.key as TableProps['size'])
           }}
+          placement="bottom"
         >
           <AButton
             className="!flex items-center justify-center"
