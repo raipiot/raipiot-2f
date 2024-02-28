@@ -22,7 +22,7 @@ function Portal() {
   const { data } = usePortalInfoSusptenseQuery()
 
   return (
-    <div className="flex flex-col gap-y-4 bg-gray-200 md:gap-[6px]">
+    <div className="flex flex-col gap-y-4  bg-gray-200 md:gap-[6px]">
       <Container>
         <BannerSwiper className="col-span-2 bg-white" />
         <Login className="flex h-[320px] flex-col bg-white p-3 px-8 md:px-6" />
