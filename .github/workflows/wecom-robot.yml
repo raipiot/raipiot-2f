@@ -1,0 +1,19 @@
+on:
+  push:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  send-msg:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - name: WeChat Work notification by news
+        uses: chf007/action-wechat-work@master
+        env:
+          WECHAT_WORK_BOT_WEBHOOK: ${{secrets.WECHAT_WORK_BOT_WEBHOOK}}
+        with:
+          msgtype: news
+          articles: '[{"title":"Github 代码 review 通知","description":"${{ github.event.pull_request.title }}","url":"URL","picurl":"https://images.unsplash.com/photo-1647166545674-ce28ce93bdca?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}]'
