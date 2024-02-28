@@ -19,8 +19,6 @@ const mutationWrapper =
     })
   }
 
-export const useLoginMutation = mutationWrapper<LoginDto>((data: LoginDto) => authAPI.login(data))
+export const useLoginMutation = mutationWrapper<LoginDto>((data) => authAPI.login(data))
 
-export const useSMSLoginMutation = mutationWrapper<SMSLoginDto>((data: SMSLoginDto) =>
-  authAPI.SMSLogin(data)
-)
+export const useSMSLoginMutation = mutationWrapper<SMSLoginDto>((data) => authAPI.SMSLogin(data))
