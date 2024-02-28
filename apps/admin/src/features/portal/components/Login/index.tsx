@@ -13,6 +13,7 @@ interface UserCardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 function UserCard(props: UserCardProps) {
+  const { onLogout, ...divProps } = props
   const { data } = useSuspenseQuery(userInfoQueryOptions)
   const logoutMutation = useLogoutMutation()
 
@@ -32,7 +33,7 @@ function UserCard(props: UserCardProps) {
         </div>
       }
     >
-      <div {...props}>
+      <div {...divProps}>
         <div className="flex min-h-[220px] flex-col items-center justify-center">
           <AAvatar
             src={data?.avatar}
@@ -43,13 +44,15 @@ function UserCard(props: UserCardProps) {
             <AButton
               onClick={() =>
                 logoutMutation.mutate(undefined, {
-                  onSuccess: () => props.onLogout()
+                  onSuccess: () => onLogout()
                 })
               }
             >
               Logout
             </AButton>
-            <AButton type="primary">Profile</AButton>
+            <Link to="/dashboard">
+              <AButton type="primary">Profile</AButton>
+            </Link>
           </div>
         </div>
       </div>

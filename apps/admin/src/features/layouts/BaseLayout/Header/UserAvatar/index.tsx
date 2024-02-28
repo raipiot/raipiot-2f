@@ -10,7 +10,7 @@ enum UserAction {
 export default function UserAvatar() {
   const { t } = useTranslation(['COMMON', 'AUTH'])
   const { message } = AApp.useApp()
-        
+
   const navigate = useNavigate()
 
   const { data: userInfo } = useUserInfoSuspenseQuery()
@@ -45,9 +45,7 @@ export default function UserAvatar() {
       }
       case UserAction.QUIT: {
         logoutMutation.mutate(undefined, {
-          onSuccess: () => {
-            navigate({ to: '/login' })
-          }
+          onSuccess: () => navigate({ to: '/' })
         })
         break
       }
