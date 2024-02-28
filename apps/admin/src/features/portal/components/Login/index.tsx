@@ -1,5 +1,4 @@
 import type { LoginDto, UserVo } from '@raipiot-2f/api'
-import { md5 } from 'hash-wasm'
 import type { HTMLAttributes } from 'react'
 
 import LanguageButton from '@/features/layouts/BaseLayout/Header/LanguageButton'
@@ -14,6 +13,7 @@ interface UserCardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 function UserCard(props: UserCardProps) {
+  const { onLogout, ...divProps } = props
   const { data } = useSuspenseQuery(userInfoQueryOptions)
   const logoutMutation = useLogoutMutation()
 
@@ -33,7 +33,7 @@ function UserCard(props: UserCardProps) {
         </div>
       }
     >
-      <div {...props}>
+      <div {...divProps}>
         <div className="flex min-h-[220px] flex-col items-center justify-center">
           <AAvatar
             src={data?.avatar}
@@ -44,13 +44,15 @@ function UserCard(props: UserCardProps) {
             <AButton
               onClick={() =>
                 logoutMutation.mutate(undefined, {
-                  onSuccess: () => props.onLogout()
+                  onSuccess: () => onLogout()
                 })
               }
             >
               Logout
             </AButton>
-            <AButton type="primary">Profile</AButton>
+            <Link to="/dashboard">
+              <AButton type="primary">Profile</AButton>
+            </Link>
           </div>
         </div>
       </div>
@@ -77,9 +79,6 @@ export function Login(props: HTMLAttributes<HTMLDivElement>) {
   const onFinish = async () => {
     if (loginMutation.isPending || loginMutation.isError) return
     const values = await form.validateFields()
-    if (values.password) {
-      values.password = await md5(values.password)
-    }
     loginMutation.mutate(values, {
       onSuccess: async () => {
         await queryClient.ensureQueryData(userInfoQueryOptions)

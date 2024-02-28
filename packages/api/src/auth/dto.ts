@@ -1,6 +1,6 @@
 export interface LoginDto {
-  username?: string
-  password?: string
+  username: string
+  password: string
   tenantId: string
   phone?: string
   verificationCode?: string
