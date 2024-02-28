@@ -1,5 +1,4 @@
 import type { LoginDto, UserVo } from '@raipiot-2f/api'
-import { md5 } from 'hash-wasm'
 import type { HTMLAttributes } from 'react'
 
 import LanguageButton from '@/features/layouts/BaseLayout/Header/LanguageButton'
@@ -77,9 +76,6 @@ export function Login(props: HTMLAttributes<HTMLDivElement>) {
   const onFinish = async () => {
     if (loginMutation.isPending || loginMutation.isError) return
     const values = await form.validateFields()
-    if (values.password) {
-      values.password = await md5(values.password)
-    }
     loginMutation.mutate(values, {
       onSuccess: async () => {
         await queryClient.ensureQueryData(userInfoQueryOptions)

@@ -1,5 +1,6 @@
 import type { R } from '@raipiot-2f/axios'
 import type HttpRequest from '@raipiot-2f/axios'
+import { md5 } from 'hash-wasm'
 
 import { BaseAPI } from '../base'
 import type { ChangePasswordDto, ForgotPasswordDto, LoginDto, SignupDto } from './dto'
@@ -21,7 +22,10 @@ export class AuthAPI extends BaseAPI {
       `${this.#API_PREFIX}/token`,
       {},
       {
-        params
+        params: {
+          ...params,
+          password: await md5(params.password)
+        }
       }
     )
   }
