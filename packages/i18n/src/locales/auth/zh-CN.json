@@ -20,7 +20,7 @@
   "PHONE.NUMBER": "手机号",
   "EMAIL": "邮箱",
   "VERIFICATION.CODE": "验证码",
-  "GET.SMS.VERIFICATION.CODE": "获取短信验证码",
+  "GET.SMS.VERIFICATION.CODE": "获取验证码",
   "SEND.VERIFICATION.CODE.SUCCESS": "验证码发送成功",
   "PLEASE.AGREE.TERMS": "请同意服务条款",
   "RESEND.SMS.VERIFICATION.CODE": "重新发送验证码",

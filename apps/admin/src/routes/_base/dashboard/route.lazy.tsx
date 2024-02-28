@@ -1,4 +1,4 @@
-export const Route = createLazyFileRoute('/_base/')({
+export const Route = createLazyFileRoute('/_base/dashboard')({
   component: Dashboard
 })
 

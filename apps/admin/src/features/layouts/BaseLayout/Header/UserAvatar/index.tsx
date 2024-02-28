@@ -1,3 +1,4 @@
+import { useLogoutMutation } from '@/features/login'
 import { useUserInfoSuspenseQuery } from '@/features/users'
 
 enum UserAction {
@@ -8,20 +9,11 @@ enum UserAction {
 
 export default function UserAvatar() {
   const { t } = useTranslation(['LAYOUT', 'AUTH'])
-  const { message } = AApp.useApp()
   const navigate = useNavigate()
 
   const { data: userInfo } = useUserInfoSuspenseQuery()
 
-  const logoutMutation = useMutation({
-    mutationFn: () => authAPI.logout(),
-    onSuccess: () => {
-      AuthUtils.clearAccessToken()
-      AuthUtils.clearRefreshToken()
-      navigate({ to: '/login', replace: true })
-      message.success(t('AUTH:LOG.OUT.SUCCESS'))
-    }
-  })
+  const logoutMutation = useLogoutMutation()
 
   const menuItems = [
     {
@@ -50,7 +42,11 @@ export default function UserAvatar() {
         break
       }
       case UserAction.QUIT: {
-        logoutMutation.mutate()
+        logoutMutation.mutate(undefined, {
+          onSuccess: () => {
+            navigate({ to: '/login' })
+          }
+        })
         break
       }
       default: {

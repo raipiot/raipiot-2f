@@ -1,1 +1,1 @@
-export const userInfoQK = ['users:info']
+export const userInfoQK = () => ['users:info']

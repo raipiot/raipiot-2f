@@ -20,6 +20,7 @@ export interface InterceptorInitConfig {
   router: Router
   i18n: i18n
   message: MessageInstance
+  logoutRedirectUrl?: string // 登出后重定向地址.默认为 /login
 }
 
 // 通用响应数据
