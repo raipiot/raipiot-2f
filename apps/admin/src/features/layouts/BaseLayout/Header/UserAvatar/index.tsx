@@ -43,9 +43,7 @@ export default function UserAvatar() {
       }
       case UserAction.QUIT: {
         logoutMutation.mutate(undefined, {
-          onSuccess: () => {
-            navigate({ to: '/login' })
-          }
+          onSuccess: () => navigate({ to: '/' })
         })
         break
       }
