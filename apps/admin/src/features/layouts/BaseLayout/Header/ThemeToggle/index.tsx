@@ -20,7 +20,7 @@ const isAppearanceTransition = () =>
   !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 export default function ThemeToggle() {
-  const { t } = useTranslation('LAYOUT')
+  const { t } = useTranslation()
   const themeStore = useThemeStore()
 
   const handleToggleTheme = async (event: MouseEvent) => {
@@ -51,11 +51,11 @@ export default function ThemeToggle() {
 
   return (
     <ATooltip
-      title={t('HEADER.SWITCH.THEME')}
+      title={t('SWITCH.THEME')}
       placement="bottom"
     >
       <div
-        className="cursor-pointer text-xl"
+        className="cursor-pointer text-lg"
         onClick={handleToggleTheme}
       >
         <Icon

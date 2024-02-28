@@ -25,9 +25,8 @@ function SystemDictItem() {
           {t('CREATE')}
         </AButton>
       }
-      renderHeader={<RpTableSearch handleSearch={() => {}} />}
       renderTable={
-        <RpTable<DictVo>
+        <ATable<DictVo>
           rowKey={(record) => record.id!}
           rowSelection={{
             type: 'checkbox',

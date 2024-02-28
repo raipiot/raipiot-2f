@@ -52,3 +52,12 @@ body {
     background-color: transparent;
   }
 }
+
+.table-layout-full-screen-container {
+  background: white;
+  padding: 20px;
+}
+
+[data-theme='dark'] .table-layout-full-screen-container {
+  background: #1f1f1f;
+}

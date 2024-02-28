@@ -60,5 +60,19 @@
   "Y": "Yes",
   "COPY.SUCCESS": "Copy success",
   "AND": "And",
-  "IS.SEALED": "Sealed"
+  "IS.SEALED": "Sealed",
+  "ROW.GAP": "Row gap",
+  "SMALL": "Small",
+  "MIDDLE": "Middle",
+  "LARGE": "Large",
+  "CHANGE.PASSWORD": "Change password",
+  "EXIT.FULL.SCREEN": "Exit full screen",
+  "FULL.SCREEN": "Full screen",
+  "LANGUAGE": "Language",
+  "LOCK.SCREEN": "Lock screen",
+  "LOG.OUT": "Logout",
+  "SWITCH.THEME": "Switch theme",
+  "USER.INFO": "User info",
+  "HIDE.SIDEBAR": "Hide sidebar",
+  "SHOW.SIDEBAR": "Show sidebar"
 }
