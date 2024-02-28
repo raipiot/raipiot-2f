@@ -8,7 +8,9 @@ enum UserAction {
 }
 
 export default function UserAvatar() {
-  const { t } = useTranslation(['LAYOUT', 'AUTH'])
+  const { t } = useTranslation(['COMMON', 'AUTH'])
+  const { message } = AApp.useApp()
+        
   const navigate = useNavigate()
 
   const { data: userInfo } = useUserInfoSuspenseQuery()
@@ -18,15 +20,15 @@ export default function UserAvatar() {
   const menuItems = [
     {
       key: UserAction['USER.INFO'],
-      label: t('HEADER.USER.INFO')
+      label: t('USER.INFO')
     },
     {
       key: UserAction['CHANGE.PASSWORD'],
-      label: t('HEADER.CHANGE.PASSWORD')
+      label: t('CHANGE.PASSWORD')
     },
     {
       key: UserAction.QUIT,
-      label: t('HEADER.LOG.OUT')
+      label: t('LOG.OUT')
     }
   ]
 
@@ -69,7 +71,7 @@ export default function UserAvatar() {
           className="cursor-pointer !bg-gray-300 hover:shadow"
         />
       ) : (
-        <MaterialSymbolsAccountCircle className="cursor-pointer text-xl" />
+        <MaterialSymbolsAccountCircle className="cursor-pointer text-lg" />
       )}
     </ADropdown>
   )

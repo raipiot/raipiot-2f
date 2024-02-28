@@ -7,28 +7,15 @@ import type { ParamsVo } from './vo'
 export class SystemParamsAPI extends BaseAPI {
   #API_PREFIX: string
 
-  #MOCK_API_PREFIX: string
-
   constructor(httpRequest: HttpRequest) {
     super(httpRequest)
     this.#API_PREFIX = `${this.BASE_API_PREFIX}/raipiot-system/param`
-    this.#MOCK_API_PREFIX = `${this.MOCK_API_PREFIX}/param`
   }
 
-  // 接口如下
   list(params: ParamPageDto, signal?: AbortSignal) {
-    return this.httpRequest
-      .get<ParamsVo>(`${this.#MOCK_API_PREFIX}/list`, params, {
-        signal
-      })
-      .then((res) => ({
-        ...res,
-        total: 100,
-        records: Array.from({ length: 100 }, (_, idx) => ({
-          ...res.records[0],
-          id: idx.toString()
-        }))
-      }))
+    return this.httpRequest.get<ParamsVo>(`${this.#API_PREFIX}/list`, params, {
+      signal
+    })
   }
 
   submit(params: ParamsSubmitDto) {

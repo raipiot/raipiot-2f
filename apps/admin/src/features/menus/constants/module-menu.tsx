@@ -48,5 +48,10 @@ export const moduleMenus: ModuleMenuItem[] = [
     title: () => t('MODULE.MENU.SYSTEM'),
     code: ModuleMenuCode.SYSTEM,
     icon: <MaterialSymbolsSettingsOutlineRounded />
+  },
+  {
+    title: () => t('MODULE.MENU.DEVELOPER'),
+    code: ModuleMenuCode.DEVELOPER,
+    icon: <MaterialSymbolsCodeRounded />
   }
 ]

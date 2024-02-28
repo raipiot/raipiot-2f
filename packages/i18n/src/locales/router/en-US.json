@@ -28,6 +28,7 @@
     "BILLING": "Billing",
     "SHOPPING": "Mall",
     "GROUP": "Group",
-    "SYSTEM": "System"
+    "SYSTEM": "System",
+    "DEVELOPER": "Developer"
   }
 }

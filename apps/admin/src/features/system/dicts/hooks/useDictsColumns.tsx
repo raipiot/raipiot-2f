@@ -41,16 +41,7 @@ export const useDictsColumns = () => {
             to="/system/dicts/$id"
             params={{ id: record.id! }}
           >
-            <AButton
-              size="small"
-              icon={
-                <AIcon>
-                  <MaterialSymbolsVisibilityRounded className="text-xs" />
-                </AIcon>
-              }
-            >
-              {t('COMMON:VIEW')}
-            </AButton>
+            <AButton size="small">{t('COMMON:VIEW')}</AButton>
           </Link>
           {/* <APopconfirm
             title={record.enabled ? t('ENABLE') : t('DISABLE')}
@@ -78,11 +69,6 @@ export const useDictsColumns = () => {
             <AButton
               danger
               size="small"
-              icon={
-                <AIcon>
-                  <MaterialSymbolsDeleteForever className="text-xs" />
-                </AIcon>
-              }
             >
               {t('COMMON:DELETE')}
             </AButton>

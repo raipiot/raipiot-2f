@@ -28,6 +28,7 @@
     "BILLING": "结算",
     "SHOPPING": "商城",
     "GROUP": "集团",
-    "SYSTEM": "系统"
+    "SYSTEM": "系统",
+    "DEVELOPER": "开发"
   }
 }

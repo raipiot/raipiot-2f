@@ -11,19 +11,20 @@ const Icon = memo<IconProps>((iconProps) => {
 })
 
 export default function MenuVisibilityToggle() {
-  const { t } = useTranslation('LAYOUT')
+  const { t } = useTranslation()
   const sidebarStore = useSidebarStore()
 
   return (
     <ATooltip
-      title={t('SIDEBAR.HIDE')}
+      title={sidebarStore.isDisplay ? t('HIDE.SIDEBAR') : t('SHOW.SIDEBAR')}
       placement="bottom"
     >
-      <Icon
-        isSidebarDisplay={sidebarStore.isDisplay}
-        className="cursor-pointer text-xl"
+      <div
         onClick={sidebarStore.toggleDisplay}
-      />
+        className="cursor-pointer text-lg"
+      >
+        <Icon isSidebarDisplay={sidebarStore.isDisplay} />
+      </div>
     </ATooltip>
   )
 }

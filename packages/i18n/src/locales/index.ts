@@ -1,6 +1,5 @@
 import AUTH from './auth/zh-CN.json'
 import COMMON from './common/zh-CN.json'
-import LAYOUT from './layout/zh-CN.json'
 import PORTAL from './portal/zh-CN.json'
 import ROUTER from './router/zh-CN.json'
 import SYSTEM_DICTS from './system/DICTS/zh-CN.json'
@@ -13,7 +12,6 @@ import VALIDATION from './validation/zh-CN.json'
 const resources = {
   AUTH,
   COMMON,
-  LAYOUT,
   ROUTER,
   VALIDATION,
   'SYSTEM/DICTS': SYSTEM_DICTS,

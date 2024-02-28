@@ -1,6 +1,6 @@
 import { uniqBy } from 'lodash-es'
 import { create } from 'zustand'
-import { createJSONStorage, persist } from 'zustand/middleware'
+import { persist } from 'zustand/middleware'
 
 type Record = {
   path: string
@@ -58,8 +58,7 @@ export const useTabStore = create<State & Actions>()(
       }
     }),
     {
-      name: 'tab_store',
-      storage: createJSONStorage(() => localStorage)
+      name: 'tab_store'
     }
   )
 )

@@ -1,10 +1,9 @@
 export const useDocumentTitle = () => {
-  const matches = useMatches()
+  const routeMeta = useRouteMeta()
   const { i18n } = useTranslation()
 
   useEffect(() => {
-    const matchedLeafItem = matches.at(-1)!.staticData.title ?? ''
-    const title = I18nUtils.getText(matchedLeafItem)
+    const title = I18nUtils.getText(routeMeta.title)
     document.title = title ? `${title} | ${AppMetadata.appName}` : AppMetadata.appName
-  }, [matches, i18n.language])
+  }, [routeMeta, i18n.language])
 }
