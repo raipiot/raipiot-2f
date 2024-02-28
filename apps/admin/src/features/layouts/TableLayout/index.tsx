@@ -1,54 +1,77 @@
-import type { ModalProps } from 'antd'
+import type { ModalProps, TableProps } from 'antd'
+import { type HTMLAttributes, type PropsWithChildren, type ReactNode } from 'react'
 
+import { TableLayoutContext } from './context'
+import type { HeaderProps } from './Header'
 import Header from './Header'
+import Modal from './Modal'
+import Table from './Table'
 
-export interface RenderModal extends ModalProps {
-  renderContent?: React.ReactNode
+interface TableLayoutProps<T extends object = any>
+  extends PropsWithChildren<HTMLAttributes<HTMLDivElement>> {
+  className?: string
+  /**
+   * 自定义渲染操作区域
+   */
+  renderOperate?: ReactNode | (() => ReactNode)
+  /**
+   * 头部 Props
+   */
+  headerProps?: HeaderProps
+  /**
+   * 自定义渲染搜索区域
+   */
+  renderSearch?: ReactNode
+  /**
+   * 表格 Props
+   */
+  tableProps?: TableProps<T>
+  /**
+   * 自定义渲染表格
+   */
+  renderTable?: ReactNode
+  /**
+   * 弹窗 Props
+   */
+  modalProps?: ModalProps
+  /**
+   * 自定义渲染弹窗
+   */
+  renderModal?: ReactNode
 }
 
-interface TableLayoutProps {
-  /**
-   * 顶部操作区域
-   */
-  renderOperate?: React.ReactNode
-  /**
-   * 头部区域
-   */
-  renderHeader?: React.ReactNode
-  /**
-   * 表格区域
-   */
-  renderTable?: React.ReactNode
-  /**
-   * 模态框区域
-   */
-  renderModal?: RenderModal
-}
+export function TableLayout<T extends object = any>(props: TableLayoutProps<T>) {
+  const {
+    children,
+    renderOperate,
+    headerProps,
+    tableProps,
+    modalProps,
+    renderSearch,
+    renderTable,
+    renderModal,
+    ...divProps
+  } = props
 
-export function TableLayout(props: TableLayoutProps) {
-  const { renderContent, ...modalProps } = props.renderModal ?? {}
-
-  const { t } = useTranslation()
+  const containerRef = useRef(null)
 
   return (
-    <>
-      <Header renderRight={props.renderOperate} />
-      <ACard
-        hoverable
-        rootClassName="!cursor-default !h-[calc(100vh-216px)]"
+    <TableLayoutContext.Provider value={containerRef}>
+      <div
+        {...divProps}
+        ref={containerRef}
+        className="h-[calc(100vh-240px)] sm:h-[calc(100vh-176px)]"
       >
-        {props.renderHeader && <ACard rootClassName="!mb-2">{props.renderHeader}</ACard>}
-        {props.renderTable}
-      </ACard>
-      {props.renderModal && (
-        <AModal
-          okText={t('CONFIRM')}
-          cancelText={t('CANCEL')}
-          {...modalProps}
-        >
-          {renderContent}
-        </AModal>
-      )}
-    </>
+        <Header {...{ renderOperate, ...headerProps }} />
+        {renderSearch ?? (
+          <ACard rootClassName="!mb-2">
+            <RpSearchBar />
+          </ACard>
+        )}
+        {renderTable ?? <Table {...tableProps} />}
+        {children}
+        {renderModal ?? <Modal {...modalProps} />}
+      </div>
+    </TableLayoutContext.Provider>
   )
 }

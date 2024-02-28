@@ -14,16 +14,16 @@ const Icon = memo<IconProps>((iconProps) => {
 })
 
 export default function FullScreenButton() {
-  const { t } = useTranslation('LAYOUT')
+  const { t } = useTranslation()
   const [isFullscreen, { toggleFullscreen }] = useFullscreen(document.body)
 
   return (
     <ATooltip
-      title={t('HEADER.FULL.SCREEN')}
+      title={isFullscreen ? t('EXIT.FULL.SCREEN') : t('FULL.SCREEN')}
       placement="bottom"
     >
       <div
-        className="cursor-pointer text-xl"
+        className="cursor-pointer text-lg"
         onClick={toggleFullscreen}
       >
         <Icon isFullscreen={isFullscreen} />

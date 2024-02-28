@@ -1,19 +1,33 @@
 import type { ReactNode } from 'react'
 
-interface Props {
+export interface HeaderProps {
   /**
    * 右侧操作区域
+   * @description 用于放置新增、导出、下载等操作按钮
    */
-  renderRight?: ReactNode
+  renderOperate?: ReactNode | (() => ReactNode)
+  /**
+   * 顶部 className
+   */
+  headerClassName?: string
+  /**
+   * 顶部右侧操作区域 className
+   */
+  operateClassName?: string
+  /**
+   * 隐藏图标、标题
+   * @default false
+   */
+  hideTitle?: boolean
 }
 
-const Header = memo<Props>((props) => {
+const Header = memo<HeaderProps>((props) => {
   const responsive = useResponsive()
-  const { title, icon, hideTitle } = useRouteMeta()
+  const { title, icon } = useRouteMeta()
 
   return (
-    <div>
-      {(!hideTitle || props.renderRight) && (
+    <div className={props.headerClassName}>
+      {(!props.hideTitle || props.renderOperate) && (
         <div
           className={clsx(
             'mb-2 flex',
@@ -21,14 +35,18 @@ const Header = memo<Props>((props) => {
           )}
         >
           <div className="flex items-center space-x-2">
-            {!hideTitle && (
+            {!props.hideTitle && (
               <>
                 <div className="text-xl">{icon && icon}</div>
                 <div className="text-2xl">{I18nUtils.getText(title)}</div>
               </>
             )}
           </div>
-          <div className="space-x-2">{props.renderRight && props.renderRight}</div>
+          <div className={clsx('space-x-2', props.operateClassName)}>
+            {typeof props.renderOperate === 'function'
+              ? props.renderOperate()
+              : props.renderOperate}
+          </div>
         </div>
       )}
     </div>

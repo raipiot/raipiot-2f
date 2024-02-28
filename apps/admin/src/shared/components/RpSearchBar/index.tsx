@@ -1,13 +1,13 @@
 import type { ChangeEvent } from 'react'
 
-interface RpTableSearchProps {
+interface RpSearchBarProps {
   searchText?: string
   setSearchText?: (value: string) => void
   loading?: boolean
   handleSearch?: () => void
 }
 
-const RpTableSearch = memo<RpTableSearchProps>((props: RpTableSearchProps) => {
+const RpSearchBar = memo<RpSearchBarProps>((props: RpSearchBarProps) => {
   const { t } = useTranslation()
 
   const handleSearchTextChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -26,6 +26,7 @@ const RpTableSearch = memo<RpTableSearchProps>((props: RpTableSearchProps) => {
     <AFlex
       justify="space-between"
       align="center"
+      className="h-8"
     >
       <ASpace>
         <AInput.Search
@@ -46,4 +47,4 @@ const RpTableSearch = memo<RpTableSearchProps>((props: RpTableSearchProps) => {
     </AFlex>
   )
 })
-export default RpTableSearch
+export default RpSearchBar
