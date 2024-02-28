@@ -1,4 +1,5 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
+import type { TabsProps } from 'antd/lib'
 
 import BannerSwiper from '@/features/portal/components/BannerSwiper'
 import { Login } from '@/features/portal/components/Login'
@@ -11,7 +12,7 @@ export const Route = createLazyFileRoute('/_portal/')({
 
 function Container({ children }: { children: React.ReactNode }) {
   return (
-    <div className="grid grid-cols-1 gap-0 bg-gray-200 md:gap-[6px] lg:grid-cols-[1fr_1fr_350px]">
+    <div className="grid grid-cols-1 gap-0 bg-gray-200 md:grid-cols-[1fr_1fr_350px] md:gap-[6px]">
       {children}
     </div>
   )
@@ -20,6 +21,31 @@ function Container({ children }: { children: React.ReactNode }) {
 function Portal() {
   const { t } = useTranslation(['PORTAL'])
   const { data } = usePortalInfoSusptenseQuery()
+
+  const items: TabsProps['items'] = [
+    {
+      key: '1',
+      label: t('ENTERPRISE.NOTICE'),
+      children: (
+        <ul>
+          {data.companyNoticeList.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      )
+    },
+    {
+      key: '2',
+      label: t('PLATFORM.NOTICE'),
+      children: (
+        <ul>
+          {data.platformNoticeList.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      )
+    }
+  ]
 
   return (
     <div className="flex flex-col gap-y-4  bg-gray-200 md:gap-[6px]">
@@ -41,40 +67,10 @@ function Portal() {
         </div>
         <div className="col-span-3 block h-[10px] bg-gray-200 sm:hidden" />
         <div className="col-span-1 min-h-[400px] bg-white px-8 md:px-4">
-          <ATabs defaultActiveKey="1">
-            <ATabs.TabPane
-              tab={t('PORTAL:ENTERPRISE.NOTICE')}
-              key="1"
-            >
-              <div className="flex flex-col">
-                {data.companyNoticeList.map((text, idx) => (
-                  <Link
-                    className="space-y-2 !text-sm !text-gray-900/70"
-                    key={idx}
-                    to="/"
-                  >
-                    {text}
-                  </Link>
-                ))}
-              </div>
-            </ATabs.TabPane>
-            <ATabs.TabPane
-              tab={t('PORTAL:PLATFORM.NOTICE')}
-              key="2"
-            >
-              <div className="flex flex-col">
-                {data.platformNoticeList.map((text, idx) => (
-                  <Link
-                    className="space-y-2 !text-sm !text-gray-900/70"
-                    key={idx}
-                    to="/"
-                  >
-                    {text}
-                  </Link>
-                ))}
-              </div>
-            </ATabs.TabPane>
-          </ATabs>
+          <ATabs
+            defaultActiveKey="1"
+            items={items}
+          />
         </div>
       </Container>
       {/* 底部 */}

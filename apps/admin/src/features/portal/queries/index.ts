@@ -1,7 +1,7 @@
-export const portalInfoQueryKey = [Symbol('portalInfo')]
+export const portalInfoQK = () => ['portalInfo']
 
 export const portalInfoQueryOptions = queryOptions({
-  queryKey: portalInfoQueryKey,
+  queryKey: portalInfoQK(),
   queryFn: ({ signal }) => portalAPI.info({ signal })
 })
 

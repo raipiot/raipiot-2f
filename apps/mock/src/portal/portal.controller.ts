@@ -11,8 +11,6 @@ export class PortalController {
     // https://stackoverflow.com/questions/64660830/how-to-get-header-from-request-header-in-nestjs
     const lang = request.headers['accept-language'] as string
 
-    console.log(lang)
-
     const fakerInstance = new Faker({ locale: lang === 'zh-CN' ? zh_CN : en })
 
     return {

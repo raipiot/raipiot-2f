@@ -4,63 +4,47 @@ import type { HTMLAttributes } from 'react'
 
 import LanguageButton from '@/features/layouts/BaseLayout/Header/LanguageButton'
 import { useLoginMutation, useLogoutMutation } from '@/features/login'
-import { userInfoQK } from '@/features/users'
+import { userInfoQK, userInfoQueryOptions } from '@/features/users'
 
 import AccountFormItems from './AccountFormItems'
 import { PhoneNumberFormItems } from './PhoneNumberFormItems'
 
-export function Login(props: HTMLAttributes<HTMLDivElement>) {
-  const [isAccountLogin, setIsAccountLogin] = useState(true)
+interface UserCardProps extends HTMLAttributes<HTMLDivElement> {
+  onLogout: () => void
+}
 
-  const { t } = useTranslation(['PORTAL'])
-
-  const [form] = AForm.useForm<LoginDto>()
-  const initFormValue = {
-    tenantId: '000000'
-  }
-  const userInfo = queryClient.getQueryData<UserVo>(userInfoQK)
-  const loginMutation = useLoginMutation()
+function UserCard(props: UserCardProps) {
+  const { data } = useSuspenseQuery(userInfoQueryOptions)
   const logoutMutation = useLogoutMutation()
 
-  const { refetch } = useQuery({
-    queryKey: userInfoQK,
-    queryFn: usersAPI.info,
-    enabled: false
-  })
-
-  const onFinish = async () => {
-    if (loginMutation.isPending || loginMutation.isError) return
-    try {
-      const values = await form.validateFields()
-      if (values.password) {
-        values.password = await md5(values.password)
+  return (
+    <Suspense
+      fallback={
+        <div>
+          <ASkeleton.Avatar size={64} />
+          <ASkeleton.Button
+            style={{ width: 100 }}
+            active
+          />
+          <ASkeleton.Button
+            style={{ width: 100 }}
+            active
+          />
+        </div>
       }
-      loginMutation.mutate(values, {
-        onSuccess: () => refetch()
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  if (userInfo) {
-    return (
+    >
       <div {...props}>
         <div className="flex min-h-[220px] flex-col items-center justify-center">
           <AAvatar
-            src={userInfo.avatar}
+            src={data?.avatar}
             size={64}
           />
-          <div className="mt-2 text-xl font-semibold">{userInfo.name}</div>
+          <div className="mt-2 text-xl font-semibold">{data?.name}</div>
           <div className="mt-4 flex gap-4">
             <AButton
               onClick={() =>
                 logoutMutation.mutate(undefined, {
-                  onSuccess: () => {
-                    queryClient.invalidateQueries({
-                      queryKey: userInfoQK
-                    })
-                  }
+                  onSuccess: () => props.onLogout()
                 })
               }
             >
@@ -70,6 +54,46 @@ export function Login(props: HTMLAttributes<HTMLDivElement>) {
           </div>
         </div>
       </div>
+    </Suspense>
+  )
+}
+
+export function Login(props: HTMLAttributes<HTMLDivElement>) {
+  const [isAccountLogin, setIsAccountLogin] = useState(true)
+
+  const { t } = useTranslation(['PORTAL'])
+
+  const [form] = AForm.useForm<LoginDto>()
+  const initFormValue = {
+    tenantId: '000000',
+    username: 'admin',
+    password: 'admin'
+  }
+
+  const [hadLogin, setHadLogin] = useState(!!queryClient.getQueryData<UserVo>(userInfoQK()))
+
+  const loginMutation = useLoginMutation()
+
+  const onFinish = async () => {
+    if (loginMutation.isPending || loginMutation.isError) return
+    const values = await form.validateFields()
+    if (values.password) {
+      values.password = await md5(values.password)
+    }
+    loginMutation.mutate(values, {
+      onSuccess: async () => {
+        await queryClient.ensureQueryData(userInfoQueryOptions)
+        setHadLogin(true)
+      }
+    })
+  }
+
+  if (hadLogin) {
+    return (
+      <UserCard
+        {...props}
+        onLogout={() => setHadLogin(false)}
+      />
     )
   }
 
