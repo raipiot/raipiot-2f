@@ -31,7 +31,7 @@
     "gen:package": "turbo gen workspace --copy @raipiot-2f/template --type package",
     "cspell:sort:dict": "turbo cspell:sort:dict --filter=@raipiot-2f/cspell",
     "cspell:check": "turbo cspell:check",
-    "type:check": "turbo type:check --filter=!@raipiot-2f/mock",
+    "type:check": "turbo type:check",
     "prettier:check": "turbo prettier:check",
     "prettier:fix": "turbo prettier:fix",
     "eslint:check": "turbo eslint:check",
