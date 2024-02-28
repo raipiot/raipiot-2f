@@ -51,8 +51,11 @@ pnpm dev:mock     # 启动 2F Mock 服务
 ### Staging
 
 ```bash
+npm i -g pnpm
 pnpm i
-VITE_BASIC_AUTH_CODE=$xxx VITE_BASE_API_PREFIX=/base-api pnpm build:admin:staging
+VITE_BASIC_AUTH_CODE=$xxx VITE_BASE_API_PREFIX=/base-api VITE_MOCK_API_URL=/mock-api pnpm build:admin:staging
+scp- r ./apps/admin/dist/* xxx:/usr/local/nginx/nginx/html
+pnpm start:mock
 ```
 
 生成的 dist 包位于 /apps/admin/dist。
