@@ -51,7 +51,12 @@ export class HttpRequest {
     this.#instance = axios.create(this.#config)
   }
 
-  async initInterceptors({ router, i18n, message }: InterceptorInitConfig) {
+  async initInterceptors({
+    router,
+    i18n,
+    message,
+    logoutRedirectUrl = '/login'
+  }: InterceptorInitConfig) {
     if (this.#interceptorsLoaded) {
       return
     }
@@ -168,7 +173,7 @@ export class HttpRequest {
               }
             }
             // 处理认证失败
-            HttpRequest.#handleUnauthorized(router)
+            HttpRequest.#handleUnauthorized(router, logoutRedirectUrl)
             message.error(errorMessage)
             break
           }
@@ -225,16 +230,19 @@ export class HttpRequest {
    * - 清除 token
    * - 跳转到登录页
    */
-  static #handleUnauthorized(router: Router) {
+  static #handleUnauthorized(router: Router, logoutRedirectUrl: string) {
     AuthUtils.clearAccessToken()
     AuthUtils.clearRefreshToken()
     // 如果非登录页面，需要重定向到登录页，且需要带上 redirect 参数
     const { pathname } = router.state.location
-    router.navigate({
-      to: '/login',
-      replace: true,
-      search: pathname === '/login' ? undefined : { redirect: pathname }
-    })
+    // 如果当前页不等于重定向目标，才需要重定向
+    if (pathname !== logoutRedirectUrl) {
+      router.navigate({
+        to: logoutRedirectUrl,
+        replace: true,
+        search: pathname === logoutRedirectUrl ? undefined : { redirect: pathname }
+      })
+    }
   }
 
   /**

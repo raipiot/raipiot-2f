@@ -37,14 +37,14 @@ export const useSignupForm = () => {
   const handleSendVerificationCode = () => {
     const phone = form.getFieldValue('phone')
     if (!phone) {
-      AMessage.error(t('VALIDATION:PHONE.NUMBER'))
+      message.error(t('VALIDATION:PHONE.NUMBER'))
       return
     }
     verificationCodeMutation.mutate(
       { phone },
       {
         onSuccess: () => {
-          AMessage.success(t('SEND.VERIFICATION.CODE.SUCCESS'))
+          message.success(t('SEND.VERIFICATION.CODE.SUCCESS'))
 
           // 发送验证码成功后，开始倒计时
           let timer: NodeJS.Timeout
@@ -61,7 +61,7 @@ export const useSignupForm = () => {
           fc()
         },
         onError: (e) => {
-          AMessage.error(`...${e.message}`)
+          message.error(`...${e.message}`)
         }
       }
     )
