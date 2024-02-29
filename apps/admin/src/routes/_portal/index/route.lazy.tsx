@@ -3,7 +3,7 @@ import type { TabsProps } from 'antd/lib'
 import type { PropsWithChildren } from 'react'
 
 import BannerSwiper from '@/features/portal/components/BannerSwiper'
-import { Login } from '@/features/portal/components/Login'
+import PortalHeader from '@/features/portal/components/PortalHeader'
 import PublicNotify from '@/features/portal/components/PublicNotify'
 import { usePortalInfoSusptenseQuery } from '@/features/portal/queries'
 
@@ -13,7 +13,7 @@ export const Route = createLazyFileRoute('/_portal/')({
 
 function Container({ children }: PropsWithChildren) {
   return (
-    <div className="grid grid-cols-1 gap-0 shadow-sm shadow-gray-200 md:grid-cols-[1fr_1fr_350px] md:gap-[6px]">
+    <div className="grid grid-cols-2 gap-0 rounded-md shadow-sm shadow-gray-200 sm:grid-cols-[1fr_1fr_250px] md:grid-cols-[1fr_1fr_350px] md:gap-[6px] dark:shadow-gray-700">
       {children}
     </div>
   )
@@ -49,61 +49,92 @@ function Portal() {
   ]
 
   return (
-    <div className="max-w-screen mx-auto flex w-[1200px] flex-col gap-y-4 bg-gray-50 md:gap-[8px]">
-      <Container>
-        <BannerSwiper className="col-span-3 bg-white lg:col-span-2" />
-        <Login className="col-span-3 flex h-[320px] flex-col bg-white p-3 px-8 md:px-6 lg:col-span-1" />
-      </Container>
-      {/* 中间 */}
-      <Container>
-        <div className="col-span-2 grid grid-cols-1 gap-x-[6px] lg:grid-cols-2">
-          <PublicNotify
-            title={t('BID.WINNING.NOTICE')}
-            items={data.bidNoticeList}
-          />
-          <PublicNotify
-            title={t('TENDER.AND.FIND.SOURCE')}
-            items={data.inviteBidList}
-          />
-        </div>
-        <div className="col-span-3 block h-[10px] sm:hidden" />
-        <div className="col-span-1 min-h-[400px] bg-white px-8 md:px-4">
-          <ATabs
-            defaultActiveKey="1"
-            items={items}
-          />
-        </div>
-      </Container>
-      {/* 底部 */}
-      <Container>
-        <div className="col-span-2 min-h-[300px] bg-white p-4">
-          <h3 className="mb-4 font-semibold">{t('ENTERPRISE.INTRODUCTION')}</h3>
-          <p className="indent-8">{t('COMPANY.INTRODUCTION.DETAIL.A')}</p>
-          <br />
-          <p className="indent-8">{t('COMPANY.INTRODUCTION.DETAIL.B')}</p>
-        </div>
-        <div className="col-span-1 bg-white p-4">
-          <h3 className="mb-4 font-semibold">{t('CONTACT.INFORMATION')}</h3>
-          <ul
-            className="pl-4"
-            style={{
-              listStyle: 'inside'
-            }}
-          >
-            <li>{t('VX.INFO')}</li>
-            <li>{t('COMPANY.OFFICIAL.WEBSITE')}</li>
-            <li>{t('COMPANY.CONTACT.NUMBER')}</li>
-            <li>{t('COMPANY.ADDRESS')}</li>
-          </ul>
-        </div>
-      </Container>
-      {/* 企业声明 */}
-      <Container>
+    <div className="box-border min-h-[100vh] overflow-x-hidden bg-[#f8f8fa] dark:bg-gray-800">
+      <PortalHeader />
+      <div className="mx-auto flex w-[1200px] max-w-[100vw] flex-col gap-y-[1px] bg-gray-50 md:mt-4 md:gap-[8px] md:gap-y-4 dark:bg-gray-800">
+        <Container>
+          <BannerSwiper className="col-span-3 bg-white md:col-span-2" />
+          <div className="col-span-3 bg-white p-4 md:col-span-1 dark:bg-gray-900">
+            <AFlex
+              align="center"
+              className="mb-4 gap-2 font-semibold"
+            >
+              <MaterialSymbolsFiberNewSharp className="text-blue-600" />
+              快讯
+            </AFlex>
+            <ul
+              className="grid grid-cols-2 pl-4 md:block md:h-[250px]"
+              style={{
+                listStyle: 'inside'
+              }}
+            >
+              {data.platformNoticeList.map((i) => (
+                <li key={i}>{i}</li>
+              ))}
+            </ul>
+          </div>
+        </Container>
+        {/* 中间 */}
+        <Container>
+          <div className="col-span-2 grid grid-cols-1 gap-x-[6px] lg:grid-cols-2">
+            <PublicNotify
+              title={t('BID.WINNING.NOTICE')}
+              items={data.bidNoticeList}
+            />
+            <PublicNotify
+              title={t('TENDER.AND.FIND.SOURCE')}
+              items={data.inviteBidList}
+            />
+          </div>
+          <div className="col-span-3 block h-[10px] sm:hidden" />
+          <div className="col-span-3 min-h-[400px] bg-white px-8 md:col-span-1 md:px-4 dark:bg-gray-900">
+            <ATabs
+              defaultActiveKey="1"
+              items={items}
+            />
+          </div>
+        </Container>
+        {/* 底部 */}
+        <Container>
+          <div className="col-span-2 min-h-[300px] bg-white p-4 dark:bg-gray-900">
+            <AFlex
+              align="center"
+              className="mb-4 gap-2 font-semibold"
+            >
+              <MaterialSymbolsHomeWorkOutlineRounded className="text-blue-600" />{' '}
+              {t('ENTERPRISE.INTRODUCTION')}
+            </AFlex>
+            <p className="indent-8">{t('COMPANY.INTRODUCTION.DETAIL.A')}</p>
+            <br />
+            <p className="indent-8">{t('COMPANY.INTRODUCTION.DETAIL.B')}</p>
+          </div>
+          <div className="col-span-3 bg-white p-4 md:col-span-1 dark:bg-gray-900">
+            <AFlex
+              align="center"
+              className="mb-4 gap-2 font-semibold"
+            >
+              <MaterialSymbolsContactPhoneOutlineSharp className="text-blue-600" />{' '}
+              {t('CONTACT.INFORMATION')}
+            </AFlex>
+            <ul
+              className="pl-4"
+              style={{
+                listStyle: 'inside'
+              }}
+            >
+              <li>{t('VX.INFO')}</li>
+              <li>{t('COMPANY.OFFICIAL.WEBSITE')}</li>
+              <li>{t('COMPANY.CONTACT.NUMBER')}</li>
+              <li>{t('COMPANY.ADDRESS')}</li>
+            </ul>
+          </div>
+        </Container>
+        {/* 企业声明 */}
         <div className="col-span-3 p-6 text-center">
           <section className="mb-4">注册协议隐私政策说明</section>
           <p>版权所有 Copyright © xxxxxxx有限公司 All Rights Reserved. 浙ICP备19001487号-1</p>
         </div>
-      </Container>
+      </div>
     </div>
   )
 }

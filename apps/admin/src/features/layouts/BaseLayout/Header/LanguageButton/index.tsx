@@ -1,6 +1,11 @@
 import { Lang } from '@raipiot-infra/enums'
 
-export default function LanguageButton() {
+interface LanguageButtonProps {
+  iconSize?: number
+  text?: string
+}
+
+export default function LanguageButton({ iconSize = 18, text }: LanguageButtonProps) {
   const langStore = useLangStore()
 
   const [langOptions, setLangOptions] = useImmer([
@@ -31,8 +36,12 @@ export default function LanguageButton() {
       }}
       placement="bottom"
     >
-      <div className="cursor-pointer text-lg">
-        <MaterialSymbolsTranslateRounded />
+      <div className="flex items-center">
+        <MaterialSymbolsTranslateRounded
+          className="cursor-pointer"
+          fontSize={iconSize}
+        />
+        {text && <span className="pl-2">{text}</span>}
       </div>
     </ADropdown>
   )

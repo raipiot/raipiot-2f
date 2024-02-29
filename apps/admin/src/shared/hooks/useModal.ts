@@ -1,12 +1,12 @@
 // create a standard modal hook
 import { useState } from 'react'
 
-interface UseModal {
+interface UseModalProps {
   initVisible?: boolean
   beforeOpen?: () => void
   beforeClose?: () => void
 }
-export function useModal({ beforeOpen, beforeClose, initVisible }: UseModal = {}) {
+export function useModal({ beforeOpen, beforeClose, initVisible }: UseModalProps = {}) {
   const [visible, setVisible] = useState(!!initVisible)
 
   const open = () => {

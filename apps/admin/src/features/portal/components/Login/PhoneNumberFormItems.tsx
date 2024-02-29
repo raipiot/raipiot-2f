@@ -18,7 +18,10 @@ export function PhoneNumberFormItems({ form }: RpVerificationCodeItemProps) {
           }
         ]}
       >
-        <AInput placeholder={t('PLEASE.ENTER.YOUR.PHONE.NUMBER')} />
+        <AInput
+          prefix={<MaterialSymbolsPhoneIphone className="opacity-50" />}
+          placeholder={t('PLEASE.ENTER.YOUR.PHONE.NUMBER')}
+        />
       </AForm.Item>
       <RpVerificationCodeItem
         rules={[

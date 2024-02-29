@@ -1,15 +1,18 @@
-import type { LoginDto, SMSLoginDto, UserVo } from '@raipiot-2f/api'
+import type { LoginDto, SMSLoginDto } from '@raipiot-2f/api'
+import { omit } from 'lodash-es'
 import type { HTMLAttributes } from 'react'
 
-import LanguageButton from '@/features/layouts/BaseLayout/Header/LanguageButton'
 import { useLoginMutation, useSMSLoginMutation } from '@/features/login'
-import { userInfoQK, userInfoQueryOptions } from '@/features/users'
+import { userInfoQueryOptions } from '@/features/users'
 
 import AccountFormItems from './AccountFormItems'
 import { PhoneNumberFormItems } from './PhoneNumberFormItems'
-import UserCard from './UserCard'
 
-export function Login(props: HTMLAttributes<HTMLDivElement>) {
+interface LoginProps extends HTMLAttributes<HTMLDivElement> {
+  onLoginSuccess?: () => void
+}
+
+export function Login(props: LoginProps) {
   const [isAccountLogin, setIsAccountLogin] = useState(true)
 
   const { t } = useTranslation(['PORTAL'])
@@ -21,18 +24,22 @@ export function Login(props: HTMLAttributes<HTMLDivElement>) {
     password: 'admin'
   }
 
-  const [hadLogin, setHadLogin] = useState(!!queryClient.getQueryData<UserVo>(userInfoQK()))
-
   const loginMutation = useLoginMutation()
   const SMSLoginMutation = useSMSLoginMutation()
 
   const onFinish = async () => {
-    if (loginMutation.isPending || loginMutation.isError) return
+    // 不同的登录情况
+    if (
+      (loginMutation.isPending && isAccountLogin) ||
+      (!isAccountLogin && SMSLoginMutation.isPending)
+    ) {
+      return
+    }
     const values = await form.validateFields()
     const options = {
       onSuccess: async () => {
         await queryClient.ensureQueryData(userInfoQueryOptions)
-        setHadLogin(true)
+        props.onLoginSuccess?.()
       }
     }
     if (isAccountLogin) {
@@ -42,24 +49,12 @@ export function Login(props: HTMLAttributes<HTMLDivElement>) {
     }
   }
 
-  if (hadLogin) {
-    return (
-      <UserCard
-        {...props}
-        onLogout={() => setHadLogin(false)}
-      />
-    )
-  }
-
   return (
-    <div {...props}>
-      <div className="absolute right-2 top-[10px] scale-[0.7] rounded-full bg-sky-600 text-white">
-        <LanguageButton />
-      </div>
+    <div {...omit(props, 'onLoginSuccess')}>
       <div className="flex space-x-8">
         <div
           className={clsx('cursor-pointer', {
-            'text-sky-500 underline underline-offset-8 decoration-sky-400': isAccountLogin
+            'text-sky-600 underline underline-offset-8 decoration-sky-500': isAccountLogin
           })}
           onClick={() => setIsAccountLogin(true)}
         >
@@ -68,7 +63,7 @@ export function Login(props: HTMLAttributes<HTMLDivElement>) {
         <div
           onClick={() => setIsAccountLogin(false)}
           className={clsx('cursor-pointer underline-offset-8', {
-            'text-sky-500 underline decoration-sky-400 font-semibold': !isAccountLogin
+            'text-sky-600 underline decoration-sky-500 font-semibold': !isAccountLogin
           })}
         >
           {t('PHONE.NUMBER.LOGIN')}
@@ -102,19 +97,13 @@ export function Login(props: HTMLAttributes<HTMLDivElement>) {
           >
             {t('LOGIN')}
           </AButton>
-          <AButton
-            className="mt-2 w-full"
-            rootClassName="!h-9"
-          >
-            <Link to="/signup">{t('SUPPLIER.REGISTRATION')}</Link>
-          </AButton>
         </AForm.Item>
       </AForm>
       <div className="mt-4 grid grid-cols-[auto_2px_auto] items-center text-center">
         <Link
           to="/forgot-password"
           color="gray"
-          className="!text-xs !text-gray-800/60"
+          className="!text-xs !text-inherit"
         >
           {t('FORGET.PASSWORD')}
         </Link>
@@ -122,7 +111,7 @@ export function Login(props: HTMLAttributes<HTMLDivElement>) {
         <Link
           to="/forgot-password"
           color="gray"
-          className="!text-xs !text-gray-800/60"
+          className="!text-xs !text-inherit"
         >
           {t('ENTERPRISE.RETRIEVE')}
         </Link>
