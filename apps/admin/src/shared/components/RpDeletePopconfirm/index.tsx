@@ -19,7 +19,13 @@ export default function RpDeletePopconfirm(props: RpDeletePopconfirmProps) {
       description={t('OPERATION.CONFIRMATION')}
       okText={t('CONFIRM')}
       cancelText={t('CANCEL')}
-      okButtonProps={{ loading: okBtnLoading }}
+      okButtonProps={{
+        loading: okBtnLoading,
+        disabled: okBtnLoading
+      }}
+      cancelButtonProps={{
+        disabled: okBtnLoading
+      }}
       {...popconfirmProps}
     >
       <div>{children}</div>

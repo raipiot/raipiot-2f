@@ -1,7 +1,10 @@
 import type { DictVo } from '@raipiot-2f/api'
 
+import { useSystemDictRemoveMutation } from '../mutations'
+
 export const useDictsColumns = () => {
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
+  const { mutateAsync, isPending } = useSystemDictRemoveMutation()
   const { createActions, createColumns } = useTableFields<DictVo>()
 
   return createColumns<DictVo>([
@@ -39,8 +42,8 @@ export const useDictsColumns = () => {
             <RpViewBtn size="small" />
           </Link>
           <RpDeletePopconfirm
-            okBtnLoading={false}
-            onConfirm={() => {}}
+            okBtnLoading={isPending}
+            onConfirm={() => mutateAsync(record.id!)}
           >
             <RpDeleteBtn size="small" />
           </RpDeletePopconfirm>

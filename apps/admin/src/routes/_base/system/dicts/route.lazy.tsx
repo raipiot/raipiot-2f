@@ -2,7 +2,6 @@ import type { DictPageDto, DictVo } from '@raipiot-2f/api'
 
 import { TableLayout } from '@/features/layouts'
 import {
-  systemDictsQK,
   useDictsColumns,
   useSystemDictRemoveMutation,
   useSystemDictsSuspenseQuery
@@ -51,13 +50,7 @@ function SystemDicts() {
       batchDeleteLoading={isPending}
       onBatchDelete={(ids) =>
         mutateAsync(ids.join(), {
-          onSuccess: () => {
-            clearSelectedRowKeys()
-            queryClient.invalidateQueries({
-              predicate: ({ queryKey }) => queryKey.includes(systemDictsQK().at(0)),
-              refetchType: 'active'
-            })
-          }
+          onSuccess: () => clearSelectedRowKeys()
         })
       }
     />
