@@ -7,11 +7,5 @@ export const Route = createFileRoute('/_base/system/dicts')({
     title: () => t('SYSTEM.SYSTEM.DICTS'),
     icon: <MaterialSymbolsBook2Rounded />
   },
-  loader: () =>
-    queryClient.ensureQueryData(
-      systemDictsQueryOptions({
-        current: 1,
-        size: 10
-      })
-    )
+  loader: () => queryClient.ensureQueryData(systemDictsQueryOptions(PageUtils.formatParams()))
 })
