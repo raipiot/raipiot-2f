@@ -30,6 +30,7 @@ export default function TableTitle() {
               <AButton>{t('BATCH.DELETE')}</AButton>
             </APopconfirm>
             {tableLayoutProps.renderTableBatchOpeate && tableLayoutProps.renderTableBatchOpeate}
+            <span>{t('ALREADY.SELECTED', { count: selectedRowKeys!.length })} </span>
           </>
         ) : (
           <>{tableLayoutProps.renderTableOpeate && tableLayoutProps.renderTableOpeate}</>

@@ -75,5 +75,7 @@
   "USER.INFO": "User info",
   "HIDE.SIDEBAR": "Hide sidebar",
   "SHOW.SIDEBAR": "Show sidebar",
-  "BATCH.DELETE": "Batch delete"
+  "BATCH.DELETE": "Batch delete",
+  "ALREADY.SELECTED_one": "Already selected {{count}} item",
+  "ALREADY.SELECTED_other": "Already selected {{count}} items"
 }
