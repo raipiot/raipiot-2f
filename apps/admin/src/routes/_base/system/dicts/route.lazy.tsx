@@ -18,7 +18,6 @@ function SystemDicts() {
   const { pageParams, pagination } = usePagination<DictPageDto>()
   const { rowSelection } = useRowSelection<DictVo>()
 
-  const queryClient = useQueryClient()
   const {
     data: { records, total },
     isFetching,
@@ -54,7 +53,7 @@ function SystemDicts() {
         mutateAsync(ids.join(), {
           onSuccess: () =>
             queryClient.invalidateQueries({
-              predicate: (query) => query.queryKey.includes(systemDictsQK().at(0)),
+              predicate: ({ queryKey }) => queryKey.includes(systemDictsQK().at(0)),
               refetchType: 'active'
             })
         })

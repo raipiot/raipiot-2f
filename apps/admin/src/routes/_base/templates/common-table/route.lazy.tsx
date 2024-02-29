@@ -19,7 +19,6 @@ function CommonTable() {
   const { pageParams, pagination } = usePagination<DictPageDto>()
   const { rowSelection, selectedRowKeys } = useRowSelection<DictVo>()
 
-  const queryClient = useQueryClient()
   const {
     data: { records, total },
     isFetching,
@@ -74,7 +73,16 @@ function CommonTable() {
       // 表格操作区域
       renderTableOpeate={
         <>
-          <AButton>打印表格</AButton>
+          <AButton
+            onClick={() => {
+              queryClient.invalidateQueries({
+                predicate: ({ queryKey }) => queryKey.includes(systemDictsQK().at(0)),
+                refetchType: 'active'
+              })
+            }}
+          >
+            打印表格
+          </AButton>
           <AButton>导出数据</AButton>
         </>
       }
