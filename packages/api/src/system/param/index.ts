@@ -4,6 +4,9 @@ import { BaseAPI } from '../../base'
 import type { ParamPageDto, ParamsSubmitDto } from './dto'
 import type { ParamsVo } from './vo'
 
+export * from './dto'
+export * from './vo'
+
 export class SystemParamsAPI extends BaseAPI {
   #API_PREFIX: string
 

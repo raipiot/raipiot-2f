@@ -1,4 +1,4 @@
-import type { IParamPageDto, ParamVo } from '@raipiot-2f/api'
+import type { ParamVo } from '@raipiot-2f/api'
 
 import { useParamsColumns } from '@/features/system/params'
 import Filter from '@/features/system/params/components/Filter'
@@ -13,12 +13,7 @@ export const Route = createLazyFileRoute('/_base/system/params')({
 function Params() {
   const { t } = useTranslation(['COMMON', 'SYSTEM/PARAMS'])
 
-  const [pageParams, setPageParams] = useState<IParamPageDto>({
-    current: 1,
-    size: 10,
-    paramsKey: '',
-    paramsName: ''
-  })
+  const { pageParams, setPageParams } = usePagination()
 
   const { data, isPending } = useSystemParamsSuspenseQuery(pageParams)
   const { close, open, visible } = useModal({ initVisible: false })

@@ -1,7 +1,8 @@
+import { TableLayoutPropsContext } from '../../../context'
+
 export default function RefreshButton() {
   const { t } = useTranslation()
-
-  const onRefresh = () => {}
+  const tableLayoutProps = useContext(TableLayoutPropsContext)
 
   return (
     <ATooltip
@@ -11,8 +12,15 @@ export default function RefreshButton() {
       <AButton
         className="!flex items-center justify-center"
         shape="circle"
-        icon={true ? <SvgSpinners180RingWithBg /> : <MaterialSymbolsRefreshRounded />}
-        onClick={onRefresh}
+        icon={
+          tableLayoutProps.refreshLoading ? (
+            <SvgSpinners180RingWithBg />
+          ) : (
+            <MaterialSymbolsRefreshRounded />
+          )
+        }
+        disabled={tableLayoutProps.refreshLoading}
+        onClick={() => tableLayoutProps?.onRefresh?.()}
       />
     </ATooltip>
   )

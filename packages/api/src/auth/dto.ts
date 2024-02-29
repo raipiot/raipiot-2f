@@ -1,13 +1,15 @@
-export interface LoginDto {
-  username: string
-  password: string
+export interface BaseLoginDto {
   tenantId: string
 }
 
-export interface SMSLoginDto {
+export interface LoginDto extends BaseLoginDto {
+  username: string
+  password: string
+}
+
+export interface SMSLoginDto extends BaseLoginDto {
   phone: string
   verificationCode: string
-  tenantId: string
 }
 
 export interface SignupDto {

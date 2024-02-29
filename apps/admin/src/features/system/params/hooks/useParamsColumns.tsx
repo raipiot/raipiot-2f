@@ -1,4 +1,4 @@
-import { type ParamVo, ParamVoDataIndex } from '@raipiot-2f/api'
+import { type ParamVo } from '@raipiot-2f/api'
 import type { ColumnsType } from 'antd/es/table'
 
 interface Props {
@@ -13,7 +13,7 @@ export const useParamsColumns = (props: Props): ColumnsType<ParamVo> => {
   return [
     {
       title: t('PARAMS.NAME'),
-      dataIndex: ParamVoDataIndex.paramName,
+      dataIndex: 'paramName',
       width: 150,
       align: 'center',
       render: (value) => (
@@ -25,13 +25,13 @@ export const useParamsColumns = (props: Props): ColumnsType<ParamVo> => {
     },
     {
       title: t('PARAMS.KEY'),
-      dataIndex: ParamVoDataIndex.paramKey,
+      dataIndex: 'paramKey',
       width: 150,
       align: 'center'
     },
     {
       title: t('PARAMS.VALUE'),
-      dataIndex: ParamVoDataIndex.paramValue,
+      dataIndex: 'paramValue',
       width: 80,
       align: 'center',
       render: (value) => <RpTagString value={value} />
@@ -49,7 +49,6 @@ export const useParamsColumns = (props: Props): ColumnsType<ParamVo> => {
             description={t('COMMON:OPERATION.CONFIRMATION')}
             okText={t('COMMON:CONFIRM')}
             cancelText={t('COMMON:CANCEL')}
-            // 使用 mutation 时，可以使用 loading 属性
             // okButtonProps={{ loading: props.isDeleteLoading }}
             // onConfirm={() => props.handleDelete(record)}
           >

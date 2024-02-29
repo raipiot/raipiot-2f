@@ -16,7 +16,7 @@ export default function UserCard(props: UserCardProps) {
         <div className="ml-4 flex items-center rounded-full bg-white pl-2 text-gray-900 shadow-md shadow-sky-500">
           <div className="group relative h-[22px] w-20 overflow-hidden">
             <div className="absolute top-[50%] w-full translate-y-[-50%] truncate text-center transition-all group-hover:top-[-100%]">
-              Hi, {data?.name}
+              Hi, {data.name}
             </div>
             <button
               type="button"
@@ -28,7 +28,7 @@ export default function UserCard(props: UserCardProps) {
             </button>
           </div>
           <AAvatar
-            src={data?.avatar}
+            src={data.avatar}
             size={32}
           />
         </div>

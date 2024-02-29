@@ -1,5 +1,3 @@
-import { ParamVoDataIndex } from '@raipiot-2f/api'
-
 import { useCommonForm } from '../hooks/useCommonForm'
 
 export default function FilterForm() {
@@ -8,7 +6,7 @@ export default function FilterForm() {
       <RpFormInputItem
         itemProps={{
           label: '参数名称',
-          name: ParamVoDataIndex.paramName
+          name: 'paramName'
         }}
         inputProps={{
           placeholder: '请输入参数名称'
@@ -17,7 +15,7 @@ export default function FilterForm() {
       <RpFormInputItem
         itemProps={{
           label: '参数键名',
-          name: ParamVoDataIndex.paramKey
+          name: 'paramKey'
         }}
         inputProps={{
           placeholder: '请输入参数名称'
@@ -27,8 +25,8 @@ export default function FilterForm() {
     formProps: {
       labelAlign: 'right',
       initialValues: {
-        [ParamVoDataIndex.paramName]: '1',
-        [ParamVoDataIndex.paramKey]: ''
+        paramName: '1',
+        paramKey: ''
       }
     }
   })

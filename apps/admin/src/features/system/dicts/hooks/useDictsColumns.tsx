@@ -43,21 +43,6 @@ export const useDictsColumns = () => {
           >
             <AButton size="small">{t('COMMON:VIEW')}</AButton>
           </Link>
-          {/* <APopconfirm
-            title={record.enabled ? t('ENABLE') : t('DISABLE')}
-            description={t('OPERATION.CONFIRMATION')}
-            okText={t('CONFIRM')}
-            cancelText={t('CANCEL')}
-            okButtonProps={{ loading: props.isPatchLoading }}
-            onConfirm={() => props.toggleEnabled({ ...record })}
-          >
-            <AButton
-              size="small"
-              danger={!record.enabled}
-            >
-              {record.enabled ? t('ENABLE') : t('DISABLE')}
-            </AButton>
-          </APopconfirm> */}
           <APopconfirm
             title={t('COMMON:DELETE')}
             description={t('COMMON:OPERATION.CONFIRMATION')}
@@ -67,8 +52,8 @@ export const useDictsColumns = () => {
             onConfirm={() => {}}
           >
             <AButton
-              danger
               size="small"
+              danger
             >
               {t('COMMON:DELETE')}
             </AButton>

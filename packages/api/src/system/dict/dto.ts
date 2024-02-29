@@ -1,26 +1,12 @@
-import { PageDto } from '../../types'
+import type { PageDto } from '../../types'
 
-export class DictPageDto extends PageDto {
+export interface DictPageDto extends PageDto {
   code?: string
-
   dictValue?: string
-
-  constructor(dictPageDto?: DictPageDto) {
-    const { code, dictValue, ...pageDto } = dictPageDto ?? {}
-    super(pageDto)
-    this.code = code
-    this.dictValue = dictValue
-  }
 }
 
-export class DictValuePageDto extends DictPageDto {
-  parentId?: string
-
-  constructor(dictValuePageDto?: DictValuePageDto) {
-    const { parentId, ...dictPageDto } = dictValuePageDto ?? {}
-    super(dictPageDto)
-    this.parentId = parentId
-  }
+export interface DictValuePageDto extends DictPageDto {
+  parentId: string
 }
 
 export interface DictSubmitDto {

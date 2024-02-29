@@ -88,7 +88,8 @@ export class HttpRequest {
       (res) => {
         const {
           data,
-          // msg,
+          code,
+          msg,
           error_code: errorCode,
           error_description: errorDescription
         } = res.data ?? {}
@@ -96,6 +97,12 @@ export class HttpRequest {
         if (errorCode && errorDescription) {
           message.error(errorDescription)
           return Promise.reject(errorCode)
+        }
+
+        // 请求成功，错误码处理
+        if ([400].includes(code)) {
+          message.error(msg)
+          return Promise.reject(new Error(`${code} - ${msg}`))
         }
 
         // 成功消息提示

@@ -74,5 +74,6 @@
   "SWITCH.THEME": "切换主题",
   "USER.INFO": "个人信息",
   "HIDE.SIDEBAR": "隐藏侧边栏",
-  "SHOW.SIDEBAR": "显示侧边栏"
+  "SHOW.SIDEBAR": "显示侧边栏",
+  "BATCH.DELETE": "批量删除"
 }

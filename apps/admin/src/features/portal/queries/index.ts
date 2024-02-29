@@ -1,4 +1,4 @@
-export const portalInfoQK = () => ['portalInfo']
+export const portalInfoQK = () => ['portal:info']
 
 export const portalInfoQueryOptions = queryOptions({
   queryKey: portalInfoQK(),
