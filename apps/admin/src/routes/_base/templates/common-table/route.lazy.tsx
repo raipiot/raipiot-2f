@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import type { DictPageDto, DictVo } from '@raipiot-2f/api'
+import type { DictVo, PageDto } from '@raipiot-2f/api'
 
 import { TableLayout } from '@/features/layouts'
 import {
@@ -13,18 +13,26 @@ export const Route = createLazyFileRoute('/_base/templates/common-table')({
   component: CommonTable
 })
 
+interface UIPageParams extends PageDto {
+  array: string[]
+}
+
 function CommonTable() {
   const { t } = useTranslation()
 
-  const { pageParams, pagination } = usePagination<DictPageDto>()
+  const { pageParams, pagination } = usePagination<UIPageParams>()
   const { rowSelection, selectedRowKeys } = useRowSelection<DictVo>()
 
-  const queryClient = useQueryClient()
   const {
     data: { records, total },
     isFetching,
     refetch
-  } = useSystemDictsSuspenseQuery(pageParams)
+  } = useSystemDictsSuspenseQuery(
+    PageUtils.formatParams(pageParams, (draft) => ({
+      ...draft,
+      array: draft.array.join()
+    }))
+  )
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
 
   const columns = useDictsColumns()
@@ -74,7 +82,16 @@ function CommonTable() {
       // 表格操作区域
       renderTableOpeate={
         <>
-          <AButton>打印表格</AButton>
+          <AButton
+            onClick={() => {
+              queryClient.invalidateQueries({
+                predicate: ({ queryKey }) => queryKey.includes(systemDictsQK().at(0)),
+                refetchType: 'active'
+              })
+            }}
+          >
+            打印表格
+          </AButton>
           <AButton>导出数据</AButton>
         </>
       }
