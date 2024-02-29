@@ -16,7 +16,7 @@ export const Route = createFileRoute('/_base/system/dicts/$id')({
     }
     await queryClient.ensureQueryData(
       systemDictValuesQueryOptions(
-        PageUtils.formatParams<DictValuePageDto>({
+        PageUtils.initParams<DictValuePageDto>({
           parentId: id
         })
       )
