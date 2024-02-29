@@ -44,7 +44,7 @@ export default function PortalHeader() {
 
   return (
     <header className="sticky top-0 z-[999] w-full bg-gradient-to-t from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-      <div className="mx-auto flex w-[1200px] max-w-[100vw] items-center justify-between p-4 text-gray-800 md:px-8 dark:text-gray-50">
+      <div className="mx-auto flex w-[1200px] max-w-[100vw] items-center justify-between p-4 text-gray-800 dark:text-gray-50 md:px-8">
         <section className="text-lg font-semibold md:text-xl">raipiot 2f portal</section>
         <div className="flex items-center justify-end">
           <div className="mr-4 hidden gap-4 md:ml-auto md:flex">
@@ -95,7 +95,7 @@ export default function PortalHeader() {
             )}
           </AFlex>
 
-          <div className="ml-4 flex gap-1 rounded-sm border border-gray-800 bg-gray-50 p-[4px] text-[20px] text-gray-900 md:hidden dark:border-white dark:bg-gray-900 dark:text-white">
+          <div className="ml-4 flex gap-1 rounded-sm border border-gray-800 bg-gray-50 p-[4px] text-[20px] text-gray-900 dark:border-white dark:bg-gray-900 dark:text-white md:hidden">
             <MaterialSymbolsMenuOpenRounded onClick={() => setShowMiniMenu(!showMiniMenu)} />
             <ThemeToggle />
           </div>
@@ -104,7 +104,7 @@ export default function PortalHeader() {
 
       <div
         className={clsx(
-          'flex flex-col gap-2 overflow-hidden bg-gray-50 transition-all md:hidden dark:bg-gray-900',
+          'flex flex-col gap-2 overflow-hidden bg-gray-50 transition-all dark:bg-gray-900 md:hidden',
           showMiniMenu ? 'h-[120px] p-4' : 'h-0'
         )}
       >

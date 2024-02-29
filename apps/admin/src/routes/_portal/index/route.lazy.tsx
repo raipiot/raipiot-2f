@@ -13,7 +13,7 @@ export const Route = createLazyFileRoute('/_portal/')({
 
 function Container({ children }: PropsWithChildren) {
   return (
-    <div className="grid grid-cols-2 gap-0 rounded-md shadow-sm shadow-gray-200 sm:grid-cols-[1fr_1fr_250px] md:grid-cols-[1fr_1fr_350px] md:gap-[6px] dark:shadow-gray-700">
+    <div className="grid grid-cols-2 gap-0 rounded-md shadow-sm shadow-gray-200 dark:shadow-gray-700 sm:grid-cols-[1fr_1fr_250px] md:grid-cols-[1fr_1fr_350px] md:gap-[6px]">
       {children}
     </div>
   )
@@ -51,10 +51,10 @@ function Portal() {
   return (
     <div className="box-border min-h-[100vh] overflow-x-hidden bg-[#f8f8fa] dark:bg-gray-800">
       <PortalHeader />
-      <div className="mx-auto flex w-[1200px] max-w-[100vw] flex-col gap-y-[1px] bg-gray-50 md:mt-4 md:gap-[8px] md:gap-y-4 dark:bg-gray-800">
+      <div className="mx-auto flex w-[1200px] max-w-[100vw] flex-col gap-y-[1px] bg-gray-50 dark:bg-gray-800 md:mt-4 md:gap-[8px] md:gap-y-4">
         <Container>
           <BannerSwiper className="col-span-3 bg-white md:col-span-2" />
-          <div className="col-span-3 bg-white p-4 md:col-span-1 dark:bg-gray-900">
+          <div className="col-span-3 bg-white p-4 dark:bg-gray-900 md:col-span-1">
             <AFlex
               align="center"
               className="mb-4 gap-2 font-semibold"
@@ -87,7 +87,7 @@ function Portal() {
             />
           </div>
           <div className="col-span-3 block h-[10px] sm:hidden" />
-          <div className="col-span-3 min-h-[400px] bg-white px-8 md:col-span-1 md:px-4 dark:bg-gray-900">
+          <div className="col-span-3 min-h-[400px] bg-white px-8 dark:bg-gray-900 md:col-span-1 md:px-4">
             <ATabs
               defaultActiveKey="1"
               items={items}
@@ -108,7 +108,7 @@ function Portal() {
             <br />
             <p className="indent-8">{t('COMPANY.INTRODUCTION.DETAIL.B')}</p>
           </div>
-          <div className="col-span-3 bg-white p-4 md:col-span-1 dark:bg-gray-900">
+          <div className="col-span-3 bg-white p-4 dark:bg-gray-900 md:col-span-1">
             <AFlex
               align="center"
               className="mb-4 gap-2 font-semibold"
