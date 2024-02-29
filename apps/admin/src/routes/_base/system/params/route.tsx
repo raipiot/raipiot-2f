@@ -7,5 +7,5 @@ export const Route = createFileRoute('/_base/system/params')({
     title: () => t('SYSTEM.PARAMS'),
     icon: <MaterialSymbolsChatRounded />
   },
-  loader: () => queryClient.ensureQueryData(systemParamsQueryOptions(PageUtils.initParams()))
+  loader: () => queryClient.ensureQueryData(systemParamsQueryOptions(PageUtils.formatParams()))
 })
