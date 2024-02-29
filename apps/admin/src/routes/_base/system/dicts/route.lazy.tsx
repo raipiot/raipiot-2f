@@ -1,20 +1,31 @@
-import type { DictVo } from '@raipiot-2f/api'
+import type { DictPageDto, DictVo } from '@raipiot-2f/api'
 
 import { TableLayout } from '@/features/layouts'
-import { usePagination } from '@/features/pagination'
-import { useDictsColumns, useSystemDictsSuspenseQuery } from '@/features/system/dicts'
+import {
+  systemDictsQK,
+  useDictsColumns,
+  useSystemDictRemoveMutation,
+  useSystemDictsSuspenseQuery
+} from '@/features/system/dicts'
 
 export const Route = createLazyFileRoute('/_base/system/dicts')({
   component: SystemDicts
 })
 
 function SystemDicts() {
-  const { t } = useTranslation(['COMMON', 'SYSTEM/DICTS'])
-  const { pageParams, pagination } = usePagination()
+  const { t } = useTranslation()
+
+  const { pageParams, pagination } = usePagination<DictPageDto>()
+  const { rowSelection } = useRowSelection<DictVo>()
+
+  const queryClient = useQueryClient()
   const {
     data: { records, total },
-    isFetching
+    isFetching,
+    refetch
   } = useSystemDictsSuspenseQuery(pageParams)
+  const { mutateAsync, isPending } = useSystemDictRemoveMutation()
+
   const columns = useDictsColumns()
 
   return (
@@ -31,15 +42,23 @@ function SystemDicts() {
       }}
       tableProps={{
         rowKey: (record) => record.id!,
-        rowSelection: {
-          type: 'checkbox',
-          columnWidth: 20
-        },
+        rowSelection,
         columns,
         dataSource: records,
-        loading: isFetching,
         pagination: { ...pagination, total }
       }}
+      refreshLoading={isFetching}
+      onRefresh={refetch}
+      batchDeleteLoading={isPending}
+      onBatchDelete={(ids) =>
+        mutateAsync(ids.join(), {
+          onSuccess: () =>
+            queryClient.invalidateQueries({
+              predicate: (query) => query.queryKey.includes(systemDictsQK().at(0)),
+              refetchType: 'active'
+            })
+        })
+      }
     />
   )
 }

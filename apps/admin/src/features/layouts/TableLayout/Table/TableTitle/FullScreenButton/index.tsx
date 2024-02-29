@@ -1,9 +1,9 @@
-import { TableLayoutContext } from '../../../context'
+import { TableLayoutRefContext } from '../../../context'
 
 export default function FullScreenButton() {
   const { t } = useTranslation()
 
-  const containerRef = useContext(TableLayoutContext)
+  const containerRef = useContext(TableLayoutRefContext)
 
   const [isFullscreen, { toggleFullscreen }] = useFullscreen(containerRef, {
     pageFullscreen: {

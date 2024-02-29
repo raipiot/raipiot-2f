@@ -3,6 +3,8 @@ import type HttpRequest from '@raipiot-2f/axios'
 import { BaseAPI } from '../../base'
 import type { UserVo } from './vo'
 
+export * from './vo'
+
 export class UsersAPI extends BaseAPI {
   #API_PREFIX: string
 
@@ -12,7 +14,7 @@ export class UsersAPI extends BaseAPI {
   }
 
   /**
-   * 当前用户
+   * 当前用户信息
    */
   info() {
     return this.httpRequest.get<UserVo>(`${this.#API_PREFIX}/info`)

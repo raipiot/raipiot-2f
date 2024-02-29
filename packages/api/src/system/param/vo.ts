@@ -1,5 +1,4 @@
 import type { Page } from '../../types'
-import { genType } from '../../utils'
 
 export interface ParamVo {
   id?: string
@@ -15,7 +14,5 @@ export interface ParamVo {
   paramValue?: string
   remark?: string
 }
-
-export const ParamVoDataIndex = genType<ParamVo>()
 
 export type ParamsVo = Page<ParamVo>
