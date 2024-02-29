@@ -181,6 +181,7 @@ declare global {
   const useIsFetching: typeof import('@tanstack/react-query')['useIsFetching']
   const useIsMutating: typeof import('@tanstack/react-query')['useIsMutating']
   const useLangStore: typeof import('../src/shared/store/lang')['useLangStore']
+  const useLanguageMenu: typeof import('../src/shared/hooks/useLanguageMenu')['useLanguageMenu']
   const useLayoutEffect: typeof import('react')['useLayoutEffect']
   const useLoaderData: typeof import('@tanstack/react-router')['useLoaderData']
   const useMatch: typeof import('@tanstack/react-router')['useMatch']

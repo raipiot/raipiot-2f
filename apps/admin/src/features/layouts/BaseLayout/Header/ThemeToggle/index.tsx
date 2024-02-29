@@ -1,5 +1,3 @@
-import './index.module.scss'
-
 import type { MouseEvent, SVGProps } from 'react'
 
 interface IconProps extends SVGProps<SVGSVGElement> {

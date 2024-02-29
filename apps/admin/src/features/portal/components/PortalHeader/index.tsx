@@ -73,7 +73,7 @@ export default function PortalHeader() {
               <MaterialSymbolsDashboardSharp />
               Dashboard
             </Link>
-            <LanguageButton iconSize={12} />
+            <LanguageButton />
             <ThemeToggle />
           </div>
           <AFlex
@@ -101,6 +101,7 @@ export default function PortalHeader() {
           </div>
         </div>
       </div>
+
       <div
         className={clsx(
           'flex flex-col gap-2 overflow-hidden bg-gray-50 transition-all md:hidden dark:bg-gray-900',
@@ -132,11 +133,12 @@ export default function PortalHeader() {
           <MaterialSymbolsDashboardSharp />
           Dashboard
         </Link>
-        <LanguageButton
-          iconSize={12}
-          text={t('COMMON:LANGUAGE')}
-        />
+        <div className="flex">
+          <LanguageButton />
+          {t('COMMON:LANGUAGE')}
+        </div>
       </div>
+
       <AModal
         destroyOnClose
         open={visible}
