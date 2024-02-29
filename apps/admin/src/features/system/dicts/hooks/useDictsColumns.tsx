@@ -1,10 +1,8 @@
 import type { DictVo } from '@raipiot-2f/api'
 
-import { createColumns } from '@/features/data'
-
 export const useDictsColumns = () => {
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
-  const response = useResponsive()
+  const { createActions, createColumns } = useTableFields<DictVo>()
 
   return createColumns<DictVo>([
     {
@@ -31,35 +29,23 @@ export const useDictsColumns = () => {
       width: 80,
       custom: { type: 'boolean' }
     },
-    {
-      title: t('COMMON:ACTIONS'),
-      key: 'actions',
-      fixed: response.sm && 'right',
+    createActions({
       render: (_, record) => (
         <ASpace>
           <Link
             to="/system/dicts/$id"
             params={{ id: record.id! }}
           >
-            <AButton size="small">{t('COMMON:VIEW')}</AButton>
+            <RpViewBtn size="small" />
           </Link>
-          <APopconfirm
-            title={t('COMMON:DELETE')}
-            description={t('COMMON:OPERATION.CONFIRMATION')}
-            okText={t('COMMON:CONFIRM')}
-            cancelText={t('COMMON:CANCEL')}
-            okButtonProps={{ loading: undefined }}
+          <RpDeletePopconfirm
+            okBtnLoading={false}
             onConfirm={() => {}}
           >
-            <AButton
-              size="small"
-              danger
-            >
-              {t('COMMON:DELETE')}
-            </AButton>
-          </APopconfirm>
+            <RpDeleteBtn size="small" />
+          </RpDeletePopconfirm>
         </ASpace>
       )
-    }
+    })
   ])
 }

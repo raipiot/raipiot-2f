@@ -11,18 +11,18 @@ interface CustomOptions {
   booleanProps?: Pick<RpBooleanProps, 'type'>
 }
 
-interface RpColumnType<T> extends Omit<ColumnType<T>, 'dataIndex'> {
+export interface RpColumnType<T> extends Omit<ColumnType<T>, 'dataIndex'> {
   dataIndex?: T extends object ? keyof T : DataIndex
   custom?: CustomOptions
 }
 
-interface RpColumnGroupType<T> extends Omit<RpColumnType<T>, 'dataIndex'> {
+export interface RpColumnGroupType<T> extends Omit<RpColumnType<T>, 'dataIndex'> {
   children: RpColumnsType<T>
 }
 
 type RpColumnsType<T> = (RpColumnGroupType<T> | RpColumnType<T>)[]
 
-export const createColumns = <T>(columns: RpColumnsType<T>) => {
+const createColumns = <T>(columns: RpColumnsType<T>) => {
   const getRender = (column: RpColumnType<T>) => {
     const { custom } = column
     const { type, skeleton, tagStringProps, booleanProps } = custom ?? {}
@@ -49,4 +49,21 @@ export const createColumns = <T>(columns: RpColumnsType<T>) => {
         ...column
       }) as ColumnType<T>
   )
+}
+
+export const useTableFields = <T>() => {
+  const { t } = useTranslation()
+  const response = useResponsive()
+
+  const createActions = (config: RpColumnType<T>): RpColumnType<T> => ({
+    title: t('ACTIONS'),
+    key: 'actions',
+    fixed: response.sm && 'right',
+    ...config
+  })
+
+  return {
+    createActions,
+    createColumns
+  }
 }

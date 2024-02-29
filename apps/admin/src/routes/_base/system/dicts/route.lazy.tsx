@@ -16,7 +16,7 @@ function SystemDicts() {
   const { t } = useTranslation()
 
   const { pageParams, pagination } = usePagination<DictPageDto>()
-  const { rowSelection } = useRowSelection<DictVo>()
+  const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
 
   const {
     data: { records, total },
@@ -51,11 +51,13 @@ function SystemDicts() {
       batchDeleteLoading={isPending}
       onBatchDelete={(ids) =>
         mutateAsync(ids.join(), {
-          onSuccess: () =>
+          onSuccess: () => {
+            clearSelectedRowKeys()
             queryClient.invalidateQueries({
               predicate: ({ queryKey }) => queryKey.includes(systemDictsQK().at(0)),
               refetchType: 'active'
             })
+          }
         })
       }
     />

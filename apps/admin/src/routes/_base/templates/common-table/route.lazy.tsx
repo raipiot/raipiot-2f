@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import type { DictVo, PageDto } from '@raipiot-2f/api'
+import type { DictPageDto, DictVo } from '@raipiot-2f/api'
 
 import { TableLayout } from '@/features/layouts'
 import {
@@ -13,26 +13,17 @@ export const Route = createLazyFileRoute('/_base/templates/common-table')({
   component: CommonTable
 })
 
-interface UIPageParams extends PageDto {
-  array: string[]
-}
-
 function CommonTable() {
   const { t } = useTranslation()
 
-  const { pageParams, pagination } = usePagination<UIPageParams>()
+  const { pageParams, pagination } = usePagination<DictPageDto>()
   const { rowSelection, selectedRowKeys } = useRowSelection<DictVo>()
 
   const {
     data: { records, total },
     isFetching,
     refetch
-  } = useSystemDictsSuspenseQuery(
-    PageUtils.formatParams(pageParams, (draft) => ({
-      ...draft,
-      array: draft.array.join()
-    }))
-  )
+  } = useSystemDictsSuspenseQuery(pageParams)
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
 
   const columns = useDictsColumns()
