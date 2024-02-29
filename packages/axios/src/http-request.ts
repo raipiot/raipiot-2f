@@ -93,7 +93,6 @@ export class HttpRequest {
           error_code: errorCode,
           error_description: errorDescription
         } = res.data ?? {}
-
         // 业务错误码处理
         if (errorCode && errorDescription) {
           message.error(errorDescription)

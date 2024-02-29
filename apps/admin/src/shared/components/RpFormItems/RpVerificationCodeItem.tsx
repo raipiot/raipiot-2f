@@ -55,6 +55,7 @@ export function RpVerificationCodeItem({
         {...inputProps}
         placeholder={t('VERIFICATION.CODE')}
         autoComplete="off"
+        prefix={<MaterialSymbolsDomainVerificationOutlineSharp className="opacity-50" />}
         suffix={
           <button
             type="button"

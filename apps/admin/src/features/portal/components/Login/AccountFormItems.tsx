@@ -14,6 +14,7 @@ export default function AccountFormItems() {
         ]}
       >
         <AInput
+          prefix={<MaterialSymbolsAccountCircle className="opacity-50" />}
           type="text"
           placeholder={t('PLEASE.ENTER.YOUR.ACCOUNT')}
         />
@@ -28,6 +29,7 @@ export default function AccountFormItems() {
         ]}
       >
         <AInput
+          prefix={<MaterialSymbolsLock className="opacity-50" />}
           placeholder={t('PLEASE.ENTER.YOUR.PASSWORD')}
           type="password"
         />

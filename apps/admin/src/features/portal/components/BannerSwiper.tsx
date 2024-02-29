@@ -18,7 +18,7 @@ export default function BannerSwiper({ className = '' }: Props) {
             alt="banner"
             src={item}
             key={item}
-            className="h-[320px]"
+            className="h-[200px] md:h-[320px]"
           />
         ))}
       </ACarousel>
