@@ -51,7 +51,7 @@ function Portal() {
   return (
     <div className="box-border min-h-[100vh] overflow-x-hidden bg-[#f8f8fa] dark:bg-gray-800">
       <PortalHeader />
-      <div className="mx-auto flex w-[1200px] max-w-[100vw] flex-col gap-y-[1px] bg-gray-50 dark:bg-gray-800 md:mt-4 md:gap-[8px] md:gap-y-4">
+      <div className="mx-auto flex w-[1200px] max-w-[100vw] flex-col gap-y-[1px] bg-gray-50  dark:bg-gray-800 md:mt-4 md:gap-[8px] md:gap-y-4">
         <Container>
           <BannerSwiper className="col-span-3 bg-white md:col-span-2" />
           <div className="col-span-3 bg-white p-4 dark:bg-gray-900 md:col-span-1">
