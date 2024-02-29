@@ -2,7 +2,7 @@ import { PortalLayoutTransition } from './PortalLayoutTransition'
 
 export function PortalLayout() {
   return (
-    <PortalLayoutTransition>
+    <PortalLayoutTransition className="overflow-x-hidden">
       <Outlet />
     </PortalLayoutTransition>
   )
