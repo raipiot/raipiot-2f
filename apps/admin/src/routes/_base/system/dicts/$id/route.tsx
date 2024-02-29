@@ -1,4 +1,4 @@
-import { DictValuePageDto } from '@raipiot-2f/api'
+import type { DictValuePageDto } from '@raipiot-2f/api'
 
 import { systemDictValuesQueryOptions } from '@/features/system/dicts'
 
@@ -16,7 +16,7 @@ export const Route = createFileRoute('/_base/system/dicts/$id')({
     }
     await queryClient.ensureQueryData(
       systemDictValuesQueryOptions(
-        new DictValuePageDto({
+        PageUtils.initParams<DictValuePageDto>({
           parentId: id
         })
       )

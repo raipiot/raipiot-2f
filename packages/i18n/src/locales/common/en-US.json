@@ -74,5 +74,6 @@
   "SWITCH.THEME": "Switch theme",
   "USER.INFO": "User info",
   "HIDE.SIDEBAR": "Hide sidebar",
-  "SHOW.SIDEBAR": "Show sidebar"
+  "SHOW.SIDEBAR": "Show sidebar",
+  "BATCH.DELETE": "Batch delete"
 }

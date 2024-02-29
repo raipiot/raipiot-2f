@@ -1,4 +1,4 @@
-import type { IParamPageDto, ParamPageDto } from '@raipiot-2f/api'
+import type { ParamPageDto } from '@raipiot-2f/api'
 
 import { genSystemParamsQK } from './query-keys'
 
@@ -10,8 +10,8 @@ export const systemParamsQueryOptions = (params: ParamPageDto) =>
     enabled: false
   })
 
-export const useSystemParamsQuery = (params: IParamPageDto) =>
+export const useSystemParamsQuery = (params: ParamPageDto) =>
   useQuery(systemParamsQueryOptions(params))
 
-export const useSystemParamsSuspenseQuery = (params: IParamPageDto) =>
+export const useSystemParamsSuspenseQuery = (params: ParamPageDto) =>
   useSuspenseQuery(systemParamsQueryOptions(params))

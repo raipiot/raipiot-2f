@@ -4,6 +4,9 @@ import { BaseAPI } from '../../base'
 import type { DictPageDto, DictSubmitDto, DictValuePageDto } from './dto'
 import type { DictsVo, DictVo } from './vo'
 
+export * from './dto'
+export * from './vo'
+
 export class SystemDictsAPI extends BaseAPI {
   #API_PREFIX: string
 

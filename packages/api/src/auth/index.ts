@@ -6,6 +6,9 @@ import { BaseAPI } from '../base'
 import type { ChangePasswordDto, ForgotPasswordDto, LoginDto, SignupDto, SMSLoginDto } from './dto'
 import type { LoginVo } from './vo'
 
+export * from './dto'
+export * from './vo'
+
 export class AuthAPI extends BaseAPI {
   #API_PREFIX: string
 

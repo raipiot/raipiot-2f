@@ -17,10 +17,10 @@ export default function UserCard(props: UserCardProps) {
       <div {...divProps}>
         <div className="flex min-h-[220px] flex-col items-center justify-center">
           <AAvatar
-            src={data?.avatar}
+            src={data.avatar}
             size={64}
           />
-          <div className="mt-2 text-xl font-semibold">{data?.name}</div>
+          <div className="mt-2 text-xl font-semibold">{data.name}</div>
           <div className="mt-4 flex gap-4">
             <AButton
               onClick={() =>
@@ -31,9 +31,9 @@ export default function UserCard(props: UserCardProps) {
             >
               Logout
             </AButton>
-            <AButton type="primary">
-              <Link to="/dashboard">Dashboard</Link>
-            </AButton>
+            <Link to="/dashboard">
+              <AButton type="primary">Dashboard</AButton>
+            </Link>
           </div>
         </div>
       </div>

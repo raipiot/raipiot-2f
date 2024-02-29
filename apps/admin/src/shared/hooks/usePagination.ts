@@ -1,11 +1,11 @@
-import { PageDto } from '@raipiot-2f/api'
+import type { PageDto } from '@raipiot-2f/api'
 import type { PaginationProps, TablePaginationConfig } from 'antd'
 
-export const usePagination = <T extends PageDto>(initialValue?: T) => {
+export const usePagination = <T extends PageDto>(initialValue?: Partial<T>) => {
   const { t } = useTranslation()
   const response = useResponsive()
 
-  const [pageParams, setPageParams] = useImmer(initialValue ?? new PageDto())
+  const [pageParams, setPageParams] = useImmer(PageUtils.initParams<T>(initialValue))
 
   const setPagination = (page: number, pageSize: number) =>
     setPageParams((draft) => {
