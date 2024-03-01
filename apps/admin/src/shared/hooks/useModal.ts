@@ -1,25 +1,17 @@
-// create a standard modal hook
-import { useState } from 'react'
+import type { ModalType } from '@/features/modal'
+import { modalTitleMap } from '@/features/modal/maps'
 
-interface UseModalProps {
-  initVisible?: boolean
-  beforeOpen?: () => void
-  beforeClose?: () => void
-}
-export function useModal({ beforeOpen, beforeClose, initVisible }: UseModalProps = {}) {
-  const [visible, setVisible] = useState(!!initVisible)
+export const useModal = (defaultValue?: boolean) => {
+  const [open, toggle] = useBoolean(!!defaultValue)
+  const [modalType, setModalType] = useState<ModalType>('detail')
 
-  const open = () => {
-    beforeOpen?.()
-    setVisible(true)
-  }
-  const close = () => {
-    beforeClose?.()
-    setVisible(false)
-  }
+  const getModalTitle = () => modalTitleMap.get(modalType)!()
+
   return {
-    visible,
     open,
-    close
+    toggle,
+    modalType,
+    setModalType,
+    getModalTitle
   }
 }

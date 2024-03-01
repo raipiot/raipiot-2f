@@ -22,7 +22,8 @@ export const useBoolean = (initialValue = false, callback?: (newValue?: boolean)
       return !prev
     })
   }
-  const toggle = (_: unknown) => {
+
+  const toggle = (_?: unknown) => {
     setValue((prev) => !prev)
   }
 

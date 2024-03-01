@@ -17,6 +17,7 @@ function SystemDicts() {
 
   const { pageParams, setPageParams, pagination } = usePagination<DictPageDto>()
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
+  const { open, toggle, setModalType, getModalTitle } = useModal()
 
   const {
     data: { records, total },
@@ -39,7 +40,10 @@ function SystemDicts() {
         renderOperate: (
           <AButton
             type="primary"
-            onClick={() => {}}
+            onClick={() => {
+              setModalType('create')
+              toggle()
+            }}
           >
             {t('CREATE')}
           </AButton>
@@ -65,6 +69,14 @@ function SystemDicts() {
           onSuccess: () => clearSelectedRowKeys()
         })
       }
+      modalProps={{
+        open,
+        title: getModalTitle(),
+        onOk: () => {},
+        onCancel: toggle,
+        confirmLoading: true,
+        children: 123
+      }}
     />
   )
 }

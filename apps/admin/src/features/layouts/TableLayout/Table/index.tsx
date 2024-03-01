@@ -1,7 +1,7 @@
 import type { TableProps as ATableProps } from 'antd'
 import { merge } from 'lodash-es'
 
-import { TableLayoutPropsContext } from '../context'
+import { TableLayoutPropsContext, TableLayoutRefContext } from '../context'
 import styles from './index.module.scss'
 import TableTitle from './TableTitle'
 
@@ -11,13 +11,17 @@ export interface TableProps<T> extends Omit<ATableProps<T>, 'title' | 'size' | '
 export default function Table<T extends object = any>(props: TableProps<T>) {
   const { ...restProps } = props
 
+  const tableLayoutRef = useContext(TableLayoutRefContext)
   const tableLayoutProps = useContext(TableLayoutPropsContext)
   const preferenceStore = usePreferenceStore()
   const size = useSize(window.document.body)
 
   return (
     <ACard>
-      <div className={styles.customTable}>
+      <div
+        className={styles.customTable}
+        ref={tableLayoutRef}
+      >
         <ATable<T>
           // NOTE: 这里第一个参数是空对象，是为了防止改变原对象
           {...merge(
