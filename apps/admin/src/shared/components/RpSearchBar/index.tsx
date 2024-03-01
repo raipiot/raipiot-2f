@@ -1,8 +1,15 @@
-import type { FormItemProps } from 'antd'
+import type { FormItemProps, FormProps } from 'antd'
 
 import type { RpSearchFormItem } from '@/features/form'
 
-export interface RpSearchBarProps<T> {
+export interface RpSearchBarProps<T> extends Omit<FormProps, 'initialValues'> {
+  /**
+   * 表单初始值
+   */
+  initialValues?: T
+  /**
+   * 搜索表单配置项
+   */
   formItems?: RpSearchFormItem<T>[]
   /**
    * 搜索加载状态
@@ -15,16 +22,17 @@ export interface RpSearchBarProps<T> {
   /**
    * 重置事件
    */
-  onReset?: (values: T) => void
+  onClear?: (values: T) => void
   /**
    * 显示 Expand 按钮
    */
   showExpand?: boolean
 }
 
-function RpSearchBar<T>(props: RpSearchBarProps<T>) {
+function RpSearchBar<T extends Record<string, any>>(props: RpSearchBarProps<T>) {
+  const { initialValues, formItems, searchLoading, onSearch, onClear, showExpand, ...formProps } =
+    props
   const { t } = useTranslation()
-  const [form] = AForm.useForm()
   const [expand, setExpand] = useState(false)
 
   return (
@@ -32,12 +40,13 @@ function RpSearchBar<T>(props: RpSearchBarProps<T>) {
       name="advanced_search"
       layout="horizontal"
       size="middle"
-      form={form}
-      onFinish={(values) => props.onSearch?.(values)}
+      onFinish={(values) => onSearch?.(values)}
+      initialValues={initialValues}
+      {...formProps}
     >
       <ARow gutter={24}>
-        {props.formItems &&
-          props.formItems.map((item) => {
+        {formItems &&
+          formItems.map((item) => {
             const { type } = item
             if (type === 'custom') {
               return typeof item.render === 'function' ? item.render() : item.render
@@ -73,20 +82,22 @@ function RpSearchBar<T>(props: RpSearchBarProps<T>) {
             <AButton
               type="primary"
               htmlType="submit"
-              loading={props.searchLoading}
-              disabled={props.searchLoading}
+              loading={searchLoading}
+              disabled={searchLoading}
             >
               {t('SEARCH')}
             </AButton>
             <AButton
               onClick={() => {
-                form.resetFields()
-                props.onReset?.(form.getFieldsValue())
+                formProps.form?.resetFields()
+                if (formProps.form) {
+                  onClear?.(formProps.form.getFieldsValue())
+                }
               }}
             >
               {t('RESET')}
             </AButton>
-            {props.showExpand && (
+            {showExpand && (
               <ATooltip
                 title={expand ? t('COLLAPSE') : t('EXPAND')}
                 placement="bottom"

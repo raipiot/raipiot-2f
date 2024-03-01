@@ -10,8 +10,7 @@ import Modal from './Modal'
 import type { TableProps } from './Table'
 import Table from './Table'
 
-export interface TableLayoutProps<T extends object = any, D extends object = any>
-  extends PropsWithChildren {
+export interface TableLayoutProps<T, D> extends PropsWithChildren {
   containerProps?: HTMLAttributes<HTMLDivElement>
   /**
    * 自定义渲染操作区域
@@ -71,9 +70,10 @@ export interface TableLayoutProps<T extends object = any, D extends object = any
   renderTableOpeate?: ReactNode
 }
 
-export function TableLayout<T extends object = any, D extends object = any>(
-  props: TableLayoutProps<T, D>
-) {
+export function TableLayout<
+  T extends Record<string, any> = any,
+  D extends Record<string, any> = any
+>(props: TableLayoutProps<T, D>) {
   const {
     children,
     renderOperate,

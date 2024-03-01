@@ -141,8 +141,8 @@ importers:
         specifier: ^1.11.10
         version: 1.11.10
       framer-motion:
-        specifier: ^11.0.6
-        version: 11.0.6(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^11.0.8
+        version: 11.0.8(react-dom@18.2.0)(react@18.2.0)
       immer:
         specifier: ^10.0.3
         version: 10.0.3
@@ -169,11 +169,11 @@ importers:
         version: 3.22.4
       zustand:
         specifier: ^4.5.1
-        version: 4.5.1(@types/react@18.2.60)(immer@10.0.3)(react@18.2.0)
+        version: 4.5.1(@types/react@18.2.61)(immer@10.0.3)(react@18.2.0)
     devDependencies:
       '@iconify/json':
-        specifier: ^2.2.187
-        version: 2.2.187
+        specifier: ^2.2.188
+        version: 2.2.188
       '@iconify/react':
         specifier: ^4.1.1
         version: 4.1.1(react@18.2.0)
@@ -208,8 +208,8 @@ importers:
         specifier: ^0.2.3
         version: 0.2.3
       '@types/react':
-        specifier: ^18.2.60
-        version: 18.2.60
+        specifier: ^18.2.61
+        version: 18.2.61
       '@types/react-dom':
         specifier: ^18.2.19
         version: 18.2.19
@@ -2011,8 +2011,8 @@ packages:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
     dev: true
 
-  /@iconify/json@2.2.187:
-    resolution: {integrity: sha512-s2YGP9Nuz1x4xAQq78Y6TZFqGZ8wUO7YlOdbqjwoMgmwJPhEhUrxLs2S17im1rG5g9TzAQsYzt4vsSlgCmoKDA==}
+  /@iconify/json@2.2.188:
+    resolution: {integrity: sha512-gsJwZ60Vb5IrtjYu+Al4qMaML9ZKUnop6Gi0537ZcA6nEhe3Nb58WH4c6b1+mXOHwOkFlLA8AFBXJUHY5nKMdA==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -3812,11 +3812,19 @@ packages:
   /@types/react-dom@18.2.19:
     resolution: {integrity: sha512-aZvQL6uUbIJpjZk4U8JZGbau9KDeAwMfmhyWorxgBkqDIEf6ROjRozcmPIicqsUwPUjbkDfHKgGee1Lq65APcA==}
     dependencies:
-      '@types/react': 18.2.60
+      '@types/react': 18.2.61
     dev: true
 
   /@types/react@18.2.60:
     resolution: {integrity: sha512-dfiPj9+k20jJrLGOu9Nf6eqxm2EyJRrq2NvwOFsfbb7sFExZ9WELPs67UImHj3Ayxg8ruTtKtNnbjaF8olPq0A==}
+    dependencies:
+      '@types/prop-types': 15.7.11
+      '@types/scheduler': 0.16.8
+      csstype: 3.1.3
+    dev: true
+
+  /@types/react@18.2.61:
+    resolution: {integrity: sha512-NURTN0qNnJa7O/k4XUkEW2yfygA+NxS0V5h1+kp9jPwhzZy95q3ADoGMP0+JypMhrZBTTgjKAUlTctde1zzeQA==}
     dependencies:
       '@types/prop-types': 15.7.11
       '@types/scheduler': 0.16.8
@@ -7355,8 +7363,8 @@ packages:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
     dev: true
 
-  /framer-motion@11.0.6(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-BpO3mWF8UwxzO3Ca5AmSkrg14QYTeJa9vKgoLOoBdBdTPj0e81i1dMwnX6EQJXRieUx20uiDBXq8bA6y7N6b8Q==}
+  /framer-motion@11.0.8(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-1KSGNuqe1qZkS/SWQlDnqK2VCVzRVEoval379j0FiUBJAZoqgwyvqFkfvJbgW2IPFo4wX16K+M0k5jO23lCIjA==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -13984,7 +13992,7 @@ packages:
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
 
-  /zustand@4.5.1(@types/react@18.2.60)(immer@10.0.3)(react@18.2.0):
+  /zustand@4.5.1(@types/react@18.2.61)(immer@10.0.3)(react@18.2.0):
     resolution: {integrity: sha512-XlauQmH64xXSC1qGYNv00ODaQ3B+tNPoy22jv2diYiP4eoDKr9LA+Bh5Bc3gplTrFdb6JVI+N4kc1DZ/tbtfPg==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -13999,7 +14007,7 @@ packages:
       react:
         optional: true
     dependencies:
-      '@types/react': 18.2.60
+      '@types/react': 18.2.61
       immer: 10.0.3
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)

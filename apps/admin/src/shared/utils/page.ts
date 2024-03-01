@@ -12,7 +12,7 @@ export class PageUtils {
    * 初始化分页参数
    * @param params 额外参数
    */
-  static initParams<T>(params?: Partial<T>) {
+  static initParams<T extends PageDto>(params?: Partial<T>) {
     return { ...this.#defaultValues, ...params } as T
   }
 
@@ -21,11 +21,15 @@ export class PageUtils {
    * @param params 额外参数
    * @param formatter 格式化函数
    */
-  static formatParams<T extends PageDto, D extends object = Record<string, unknown>>(
-    params: D,
+  static mergeParams<T extends PageDto, D extends Record<string, any> = object>(
+    params: T,
+    searchParams?: D,
     formatter?: (draft: D) => T
   ): T {
-    const target = formatter ? formatter(params) : params
-    return { ...this.#defaultValues, ...target } as T
+    if (!searchParams) {
+      return params
+    }
+    const target = formatter ? formatter(searchParams) : searchParams
+    return { ...params, ...target } as T
   }
 }

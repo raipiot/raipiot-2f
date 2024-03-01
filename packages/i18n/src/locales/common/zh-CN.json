@@ -78,5 +78,6 @@
   "BATCH.DELETE": "批量删除",
   "ALREADY.SELECTED": "已选中 {{count}} 项",
   "EXPAND": "展开",
-  "COLLAPSE": "收起"
+  "COLLAPSE": "收起",
+  "CREATE.CHILD": "新增子项"
 }
