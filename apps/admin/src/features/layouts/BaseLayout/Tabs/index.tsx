@@ -10,7 +10,6 @@ export default function Tabs() {
   ) => {
     if (action === 'remove' && typeof targetKey === 'string') {
       tabStore.removeRecordByPath(targetKey)
-      // 切换至上一个 Tab
       const historyRecords = tabStore.records
       if (historyRecords.length > 0) {
         const lastRecord = historyRecords.at(-1)
@@ -25,10 +24,10 @@ export default function Tabs() {
 
   return (
     <ATabs
-      className="border-b border-gray-300 dark:border-gray-950"
+      className="h-10 border-b border-gray-300 dark:border-gray-950"
       style={{
         backgroundColor: Layout!.headerBg,
-        padding: '8px 0 0 8px'
+        padding: '4px 0 0 8px'
       }}
       tabBarStyle={{
         marginBottom: 0

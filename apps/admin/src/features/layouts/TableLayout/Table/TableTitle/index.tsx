@@ -6,13 +6,14 @@ import RowGapButton from './RowGapButton'
 export default function TableTitle() {
   const { t } = useTranslation()
   const tableLayoutProps = useContext(TableLayoutPropsContext)
+  const responsive = useResponsive()
 
   const selectedRowKeys = tableLayoutProps.tableProps?.rowSelection?.selectedRowKeys
   const hadSelected = (selectedRowKeys?.length ?? 0) > 0
 
   return (
     <div className="flex justify-between">
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-2 sm:space-x-4">
         {hadSelected ? (
           <>
             <APopconfirm
@@ -30,17 +31,19 @@ export default function TableTitle() {
               <AButton>{t('BATCH.DELETE')}</AButton>
             </APopconfirm>
             {tableLayoutProps.renderTableBatchOpeate && tableLayoutProps.renderTableBatchOpeate}
-            <span>{t('ALREADY.SELECTED', { count: selectedRowKeys!.length })} </span>
+            <span className="text-xs sm:text-sm">
+              {t('ALREADY.SELECTED', { count: selectedRowKeys!.length })}{' '}
+            </span>
           </>
         ) : (
           <>{tableLayoutProps.renderTableOpeate && tableLayoutProps.renderTableOpeate}</>
         )}
       </div>
 
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-2 sm:space-x-4">
         <RefreshButton />
         <RowGapButton />
-        <FullScreenButton />
+        {responsive.sm && <FullScreenButton />}
       </div>
     </div>
   )

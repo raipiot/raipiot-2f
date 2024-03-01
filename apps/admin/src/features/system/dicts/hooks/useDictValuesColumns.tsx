@@ -2,7 +2,7 @@ import type { DictVo } from '@raipiot-2f/api'
 
 export const useDictValuesColumns = () => {
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
-  const { createActions, createColumns } = useTableFields<DictVo>()
+  const { createActions, createColumns } = useTableCreator<DictVo>()
 
   return createColumns<DictVo>([
     {

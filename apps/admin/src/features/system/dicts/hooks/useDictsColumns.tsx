@@ -5,7 +5,7 @@ import { useSystemDictRemoveMutation } from '../mutations'
 export const useDictsColumns = () => {
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
-  const { createActions, createColumns } = useTableFields<DictVo>()
+  const { createActions, createColumns } = useTableCreator<DictVo>()
 
   return createColumns<DictVo>([
     {

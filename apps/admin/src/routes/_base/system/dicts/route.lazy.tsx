@@ -14,8 +14,9 @@ export const Route = createLazyFileRoute('/_base/system/dicts')({
 function SystemDicts() {
   const { t } = useTranslation()
 
-  const { pageParams, pagination } = usePagination<DictPageDto>()
+  const { pageParams, setPageParams, pagination } = usePagination<DictPageDto>()
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
+  const { createSearchFormItems } = useSearchFormCreator<DictPageDto>()
 
   const {
     data: { records, total },
@@ -27,7 +28,7 @@ function SystemDicts() {
   const columns = useDictsColumns()
 
   return (
-    <TableLayout<DictVo>
+    <TableLayout<DictVo, DictPageDto>
       headerProps={{
         renderOperate: (
           <AButton
@@ -37,6 +38,22 @@ function SystemDicts() {
             {t('CREATE')}
           </AButton>
         )
+      }}
+      searchBarProps={{
+        formItems: createSearchFormItems([
+          {
+            type: 'input',
+            key: 'code',
+            formItemProps: { name: 'code', label: '字典编码' }
+          },
+          {
+            type: 'input',
+            key: 'dictValue',
+            formItemProps: { name: 'code', label: '字典值' }
+          }
+        ]),
+        onSearch: (values) => setPageParams({ ...values }),
+        onReset: (values) => setPageParams({ ...values })
       }}
       tableProps={{
         rowKey: (record) => record.id!,

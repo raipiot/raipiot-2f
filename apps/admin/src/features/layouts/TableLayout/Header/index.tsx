@@ -22,18 +22,12 @@ export interface HeaderProps {
 }
 
 const Header = memo<HeaderProps>((props) => {
-  const responsive = useResponsive()
   const { title, icon } = useRouteStaticData()
 
   return (
     <div className={props.headerClassName}>
       {(!props.hideTitle || props.renderOperate) && (
-        <div
-          className={clsx(
-            'mb-2 flex',
-            responsive.sm ? 'flex items-center justify-between space-x-2' : 'flex-col space-y-2'
-          )}
-        >
+        <div className="mb-2 flex items-center justify-between space-x-2 sm:space-x-4">
           <div className="flex items-center space-x-2">
             {!props.hideTitle && (
               <>
