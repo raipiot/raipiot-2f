@@ -19,9 +19,9 @@ type RpCascader = { type: 'cascader' } & { cascaderProps?: CascaderProps }
 type RpDatePicker = { type: 'date-picker' } & { datePickerProps?: DatePickerProps }
 type RpInputNumber = { type: 'input-number' } & { inputNumberProps?: InputNumberProps }
 type RpSwitch = { type: 'switch' } & { switchProps?: SwitchProps }
-type RpButton = { type: 'button' } & { buttonProps: ButtonProps }
-type RpCustomFormItem = { type: 'form-item'; render: () => ReactNode | ReactNode }
-type RpCustom<T> = { type: 'custom'; key: keyof T } & { render: () => ReactNode | ReactNode }
+type RpButton = { type: 'button' } & { buttonProps?: ButtonProps }
+type RpCustomFormItem = { type: 'form-item'; render?: () => ReactNode | ReactNode }
+type RpCustom<T> = { type: 'custom'; key: keyof T } & { render?: () => ReactNode | ReactNode }
 
 interface RpFormItemProps<T> extends Omit<FormItemProps, 'name'> {
   name?: keyof T
