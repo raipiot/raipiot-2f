@@ -13,17 +13,18 @@ import { INVALID_PARAMS } from '../common'
 export const useBoolean = (initialValue = false, callback?: (newValue?: boolean) => unknown) => {
   const [value, setValue] = useState(!!initialValue)
 
-  const toggle =
-    (cb = callback) =>
-    (..._: any) => {
-      setValue((prev) => {
-        // 确保回调拿到的是最新的值
-        if (isFunction(cb)) {
-          requestAnimationFrame(() => cb(!prev))
-        }
-        return !prev
-      })
-    }
+  const toggleWithCallback = (cb = callback) => {
+    setValue((prev) => {
+      // 确保回调拿到的是最新的值
+      if (isFunction(cb)) {
+        requestAnimationFrame(() => cb(!prev))
+      }
+      return !prev
+    })
+  }
+  const toggle = (_: unknown) => {
+    setValue((prev) => !prev)
+  }
 
   return [
     value,
@@ -34,6 +35,7 @@ export const useBoolean = (initialValue = false, callback?: (newValue?: boolean)
       } else {
         throw new Error(INVALID_PARAMS)
       }
-    }
+    },
+    toggleWithCallback
   ] as const
 }

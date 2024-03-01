@@ -17,12 +17,12 @@ describe('test useBoolean', () => {
     expect(value).toBe(false)
   })
 
-  it('should be toggle value', () => {
+  it('call toggleWithCallback should be toggle value', () => {
     const { result } = renderHook(() => useBoolean(true))
     expect(result.current[0]).toBe(true)
-    act(result.current[1](() => {}))
+    act(result.current[3])
     expect(result.current[0]).toBe(false)
-    act(result.current[1](() => 1))
+    act(() => result.current[3](() => 1))
     expect(result.current[0]).toBe(true)
   })
 
@@ -34,10 +34,10 @@ describe('test useBoolean', () => {
     expect(result.current[0]).toBe(false)
   })
 
-  it('should execute callback with hooks params', async () => {
+  it('call toggleWithCallback should execute callback with hooks params', async () => {
     const callback = vi.fn()
     const { result } = renderHook(() => useBoolean(false, callback))
-    act(() => result.current[1]())
+    act(() => result.current[3]())
     await vi.waitFor(callback)
     expect(callback).toBeCalledTimes(1)
   })
