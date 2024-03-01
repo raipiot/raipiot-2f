@@ -1,11 +1,13 @@
 import type { PageDto } from '../../types'
 
-export interface DictPageDto extends PageDto {
+export interface DictSearchForm {
   code?: string
   dictValue?: string
 }
 
-export interface DictValuePageDto extends DictPageDto {
+export type DictPageDto = DictSearchForm & PageDto
+
+export type DictValuePageDto = DictPageDto & {
   parentId: string
 }
 

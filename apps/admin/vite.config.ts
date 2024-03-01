@@ -3,7 +3,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 import APIImportMeta from '@raipiot-2f/api/meta' assert { type: 'json' }
 import ConfigImportMeta from '@raipiot-2f/config/meta' assert { type: 'json' }
-import { hooksImportMeta } from '@raipiot-2f/hooks/meta'
+import HooksImportMeta from '@raipiot-2f/hooks/meta' assert { type: 'json' }
 import { AntdResolver, RaipiotAntdResolver, reactPresets } from '@raipiot-infra/auto-import'
 import { BootstrapAnimation } from '@raipiot-infra/bootstrap-animation'
 import { TanStackRouterVite } from '@tanstack/router-vite-plugin'
@@ -89,7 +89,7 @@ export default defineConfig(({ mode }) => {
           },
           {
             from: '@raipiot-2f/hooks',
-            imports: hooksImportMeta
+            imports: HooksImportMeta
           }
         ],
         resolvers: [

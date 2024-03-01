@@ -4,4 +4,4 @@ import type { TableLayoutProps } from '.'
 
 export const TableLayoutRefContext = createContext<any>(null)
 
-export const TableLayoutPropsContext = createContext<TableLayoutProps<any>>({})
+export const TableLayoutPropsContext = createContext<TableLayoutProps<any, any>>({})

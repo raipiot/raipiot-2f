@@ -16,6 +16,16 @@ const px2rem = px2remTransformer({
   mediaQuery: true
 })
 
+// useResponsive 配置，同步 Tailwind CSS 的断点
+configResponsive({
+  xs: 0,
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  xxl: 1536
+})
+
 export default function App() {
   const themeStore = useThemeStore()
   const langStore = useLangStore()

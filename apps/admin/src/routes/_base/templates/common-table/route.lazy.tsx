@@ -5,6 +5,7 @@ import { TableLayout } from '@/features/layouts'
 import {
   systemDictsQK,
   useDictsColumns,
+  useDictsSearchFormItems,
   useSystemDictRemoveMutation,
   useSystemDictsSuspenseQuery
 } from '@/features/system/dicts'
@@ -16,9 +17,10 @@ export const Route = createLazyFileRoute('/_base/templates/common-table')({
 function CommonTable() {
   const { t } = useTranslation()
 
-  const { pageParams, pagination } = usePagination<DictPageDto>()
-  const { rowSelection, selectedRowKeys } = useRowSelection<DictVo>()
+  const { pageParams, setPageParams, pagination } = usePagination<DictPageDto>()
+  const { rowSelection, selectedRowKeys, clearSelectedRowKeys } = useRowSelection<DictVo>()
 
+  const [form] = AForm.useForm()
   const {
     data: { records, total },
     isFetching,
@@ -26,6 +28,7 @@ function CommonTable() {
   } = useSystemDictsSuspenseQuery(pageParams)
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
 
+  const formItems = useDictsSearchFormItems()
   const columns = useDictsColumns()
 
   return (
@@ -42,12 +45,25 @@ function CommonTable() {
           </AButton>
         )
       }}
+      // 搜索栏属性
+      searchBarProps={{
+        // 搜索栏表单项
+        formItems,
+        // 搜索栏表单
+        form,
+        // 搜索事件
+        onSearch: (values) => setPageParams(PageUtils.mergeParams(values))
+      }}
       // 表格属性
       tableProps={{
         rowKey: (record) => record.id!,
+        // 批量选择
         rowSelection,
+        // 表格列
         columns,
+        // 数据源
         dataSource: records,
+        // 分页
         pagination: { ...pagination, total }
       }}
       // 刷新加载状态
@@ -59,11 +75,7 @@ function CommonTable() {
       // 批量删除
       onBatchDelete={(ids) =>
         mutateAsync(ids.join(), {
-          onSuccess: () =>
-            queryClient.invalidateQueries({
-              predicate: (query) => query.queryKey.includes(systemDictsQK().at(0)),
-              refetchType: 'active'
-            })
+          onSuccess: () => clearSelectedRowKeys()
         })
       }
       // 表格批量操作区域

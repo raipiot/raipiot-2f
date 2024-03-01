@@ -51,7 +51,7 @@ const createColumns = <T>(columns: RpColumnsType<T>) => {
   )
 }
 
-export const useTableFields = <T>() => {
+export const useTableCreator = <T>() => {
   const { t } = useTranslation()
   const response = useResponsive()
 

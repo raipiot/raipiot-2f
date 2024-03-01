@@ -1,6 +1,5 @@
 import type { TableProps as ATableProps } from 'antd'
 import { merge } from 'lodash-es'
-import type { CSSProperties } from 'react'
 
 import { TableLayoutPropsContext } from '../context'
 import styles from './index.module.scss'
@@ -15,22 +14,11 @@ export default function Table<T extends object = any>(props: TableProps<T>) {
   const tableLayoutProps = useContext(TableLayoutPropsContext)
   const preferenceStore = usePreferenceStore()
   const size = useSize(window.document.body)
-  const containerRef = useRef(null)
 
   return (
     <ACard>
-      <div
-        className={styles.customTable}
-        style={
-          {
-            '--dynamic-max-height': size?.height ? `${size.height - 480}px` : undefined,
-            // min-height 兼容移动端
-            '--dynamic-min-height': size?.height ? `${size.height - 370}px` : undefined
-          } as CSSProperties
-        }
-      >
+      <div className={styles.customTable}>
         <ATable<T>
-          ref={containerRef}
           // NOTE: 这里第一个参数是空对象，是为了防止改变原对象
           {...merge(
             {},
@@ -38,7 +26,7 @@ export default function Table<T extends object = any>(props: TableProps<T>) {
               scroll: {
                 scrollToFirstRowOnChange: true,
                 x: 800,
-                y: size?.height ? size.height - 480 : 300
+                y: size?.height ? size.height - 200 : 0
               },
               pagination: false,
               title: () => <TableTitle />,

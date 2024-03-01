@@ -3,20 +3,22 @@ import type { DictPageDto, DictVo } from '@raipiot-2f/api'
 import { TableLayout } from '@/features/layouts'
 import {
   useDictsColumns,
+  useDictsSearchFormItems,
   useSystemDictRemoveMutation,
   useSystemDictsSuspenseQuery
 } from '@/features/system/dicts'
 
-export const Route = createLazyFileRoute('/_base/system/dicts')({
+export const Route = createLazyFileRoute('/_base/system/dicts/')({
   component: SystemDicts
 })
 
 function SystemDicts() {
   const { t } = useTranslation()
 
-  const { pageParams, pagination } = usePagination<DictPageDto>()
+  const { pageParams, setPageParams, pagination } = usePagination<DictPageDto>()
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
 
+  const [form] = AForm.useForm()
   const {
     data: { records, total },
     isFetching,
@@ -24,6 +26,7 @@ function SystemDicts() {
   } = useSystemDictsSuspenseQuery(pageParams)
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
 
+  const formItems = useDictsSearchFormItems()
   const columns = useDictsColumns()
 
   return (
@@ -37,6 +40,11 @@ function SystemDicts() {
             {t('CREATE')}
           </AButton>
         )
+      }}
+      searchBarProps={{
+        formItems,
+        form,
+        onSearch: (values) => setPageParams(PageUtils.mergeParams(values))
       }}
       tableProps={{
         rowKey: (record) => record.id!,

@@ -1,6 +1,8 @@
 import type { ModalProps } from 'antd'
 import { type HTMLAttributes, type PropsWithChildren, type ReactNode } from 'react'
 
+import type { RpSearchBarProps } from '@/shared/components/RpSearchBar'
+
 import { TableLayoutPropsContext, TableLayoutRefContext } from './context'
 import type { HeaderProps } from './Header'
 import Header from './Header'
@@ -8,7 +10,7 @@ import Modal from './Modal'
 import type { TableProps } from './Table'
 import Table from './Table'
 
-export interface TableLayoutProps<T extends object = any> extends PropsWithChildren {
+export interface TableLayoutProps<T, D> extends PropsWithChildren {
   containerProps?: HTMLAttributes<HTMLDivElement>
   /**
    * 自定义渲染操作区域
@@ -18,6 +20,10 @@ export interface TableLayoutProps<T extends object = any> extends PropsWithChild
    * 头部 Props
    */
   headerProps?: HeaderProps
+  /**
+   *
+   */
+  searchBarProps?: RpSearchBarProps<D>
   /**
    * 自定义渲染搜索区域
    */
@@ -64,11 +70,15 @@ export interface TableLayoutProps<T extends object = any> extends PropsWithChild
   renderTableOpeate?: ReactNode
 }
 
-export function TableLayout<T extends object = any>(props: TableLayoutProps<T>) {
+export function TableLayout<
+  T extends Record<string, any> = any,
+  D extends Record<string, any> = any
+>(props: TableLayoutProps<T, D>) {
   const {
     children,
     renderOperate,
     headerProps,
+    searchBarProps,
     tableProps,
     modalProps,
     renderSearch,
@@ -77,20 +87,17 @@ export function TableLayout<T extends object = any>(props: TableLayoutProps<T>) 
     containerProps
   } = props
 
+  // 提供给表格全屏按钮使用
   const containerRef = useRef(null)
 
   return (
     <TableLayoutRefContext.Provider value={containerRef}>
       <TableLayoutPropsContext.Provider value={props}>
-        <div
-          {...containerProps}
-          ref={containerRef}
-          className="h-[calc(100vh-240px)] sm:h-[calc(100vh-176px)]"
-        >
+        <div {...containerProps}>
           <Header {...{ renderOperate, ...headerProps }} />
           {renderSearch ?? (
             <ACard rootClassName="!mb-2">
-              <RpSearchBar />
+              <RpSearchBar {...searchBarProps} />
             </ACard>
           )}
           {renderTable ?? <Table {...tableProps} />}
