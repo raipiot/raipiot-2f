@@ -11,7 +11,7 @@ import UserCard from './UserCard'
 export default function PortalHeader() {
   const [hadLogin, setHadLogin] = useState(!!queryClient.getQueryData(userInfoQK()))
   const logoutMutation = useLogoutMutation()
-  const { visible, open, close } = useModal()
+  const { open, toggle } = useModal()
   const [showMiniMenu, setShowMiniMenu] = useState(false)
 
   const { t } = useTranslation(['PORTAL', 'COMMON'])
@@ -27,7 +27,7 @@ export default function PortalHeader() {
     {
       key: '1',
       label: t('LOGIN'),
-      onClick: open
+      onClick: toggle
     },
     {
       key: '2',
@@ -66,7 +66,7 @@ export default function PortalHeader() {
               disabled={!hadLogin}
               onClick={() => {
                 if (!hadLogin) {
-                  open()
+                  toggle()
                 }
               }}
             >
@@ -126,7 +126,7 @@ export default function PortalHeader() {
           disabled={!hadLogin}
           onClick={() => {
             if (!hadLogin) {
-              open()
+              toggle()
             }
           }}
         >
@@ -141,15 +141,15 @@ export default function PortalHeader() {
 
       <AModal
         destroyOnClose
-        open={visible}
+        open={open}
         footer={null}
         width={380}
-        onCancel={close}
+        onCancel={toggle}
       >
         <Login
           className="flex flex-col p-3 px-8 md:px-6"
           onLoginSuccess={() => {
-            close()
+            toggle()
             setHadLogin(true)
           }}
         />

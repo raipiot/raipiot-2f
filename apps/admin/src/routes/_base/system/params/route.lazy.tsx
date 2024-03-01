@@ -16,7 +16,7 @@ function Params() {
   const { pageParams, setPageParams } = usePagination()
 
   const { data, isPending } = useSystemParamsSuspenseQuery(pageParams)
-  const { close, open, visible } = useModal({ initVisible: false })
+  const { open, toggle } = useModal()
   const [modalMode, , setModalMode] = useToggle({
     initialValue: 'view',
     reverseValue: 'edit'
@@ -47,7 +47,7 @@ function Params() {
     // 修改目前查看或编辑的数据和模式
     (param: ParamVo) => {
       setModalMode(mode)
-      open()
+      toggle()
       setTargetParam(param)
     }
 
@@ -72,14 +72,10 @@ function Params() {
 
       {/* 编辑模态框 */}
       <Modal
-        open={visible}
+        open={open}
         title={t(modalMode === 'edit' ? 'EDIT' : 'VIEW')}
-        onCancel={() => {
-          close()
-        }}
-        onOk={() => {
-          close()
-        }}
+        onCancel={toggle}
+        onOk={toggle}
       >
         {ModalContent}
       </Modal>
