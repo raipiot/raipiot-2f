@@ -10,7 +10,7 @@ export const useSearchFormCreator = <T>() => {
     if (responsive.lg) {
       return 6
     }
-    if (responsive.sm) {
+    if (responsive.md) {
       return 8
     }
     return 12

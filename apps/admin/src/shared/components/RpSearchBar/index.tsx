@@ -34,6 +34,20 @@ function RpSearchBar<T extends Record<string, any>>(props: RpSearchBarProps<T>) 
     props
   const { t } = useTranslation()
   const [expand, setExpand] = useState(false)
+  const responsive = useResponsive()
+
+  const computeResponsiveSpan = () => {
+    if (responsive.xxl) {
+      return 4
+    }
+    if (responsive.lg) {
+      return 6
+    }
+    if (responsive.md) {
+      return 8
+    }
+    return 12
+  }
 
   return (
     <AForm<T>
@@ -77,7 +91,7 @@ function RpSearchBar<T extends Record<string, any>>(props: RpSearchBarProps<T>) 
               </ACol>
             )
           })}
-        <ACol>
+        <ACol span={computeResponsiveSpan()}>
           <div className="space-x-2 sm:space-x-4">
             <AButton
               type="primary"
