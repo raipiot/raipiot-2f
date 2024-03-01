@@ -8,9 +8,7 @@ const Modal = memo<ModalProps>((props) => {
       okText={t('CONFIRM')}
       cancelText={t('CANCEL')}
       {...props}
-    >
-      123
-    </AModal>
+    />
   )
 })
 export default Modal

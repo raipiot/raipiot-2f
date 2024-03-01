@@ -38,13 +38,13 @@ export const useDictValuesColumns = () => {
       render: (_, record) => (
         <ASpace>
           <RpViewBtn size="small" />
+          <AButton size="small">{t('COMMON:CREATE.CHILD')}</AButton>
           <RpDeletePopconfirm
             okBtnLoading={isPending}
             onConfirm={() => mutateAsync(record.id!)}
           >
             <RpDeleteBtn size="small" />
           </RpDeletePopconfirm>
-          <AButton size="small">{t('COMMON:CREATE.CHILD')}</AButton>
         </ASpace>
       )
     })

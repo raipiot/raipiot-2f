@@ -7,7 +7,7 @@ export default function FullScreenButton() {
 
   const [isFullscreen, { toggleFullscreen }] = useFullscreen(containerRef, {
     pageFullscreen: {
-      zIndex: 999,
+      zIndex: 9999,
       className: 'table-layout-full-screen-container'
     }
   })
