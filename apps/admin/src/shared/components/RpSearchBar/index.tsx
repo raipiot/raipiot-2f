@@ -1,3 +1,5 @@
+import type { FormItemProps } from 'antd'
+
 import type { RpSearchFormItem } from '@/features/form'
 
 export interface RpSearchBarProps<T> {
@@ -47,7 +49,7 @@ function RpSearchBar<T>(props: RpSearchBarProps<T>) {
                 {...colProps}
               >
                 <AForm.Item
-                  name={key}
+                  name={key as FormItemProps['name']}
                   {...formItemProps}
                 >
                   {type === 'input' && <AInput {...item.inputProps} />}

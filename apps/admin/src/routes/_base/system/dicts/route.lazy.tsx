@@ -40,7 +40,7 @@ function SystemDicts() {
         )
       }}
       searchBarProps={{
-        formItems: createSearchFormItems([
+        formItems: [
           {
             type: 'input',
             key: 'code',
@@ -49,9 +49,9 @@ function SystemDicts() {
           {
             type: 'input',
             key: 'dictValue',
-            formItemProps: { name: 'code', label: '字典值' }
+            formItemProps: { name: 'size', label: '字典值' }
           }
-        ]),
+        ],
         onSearch: (values) => setPageParams({ ...values }),
         onReset: (values) => setPageParams({ ...values })
       }}

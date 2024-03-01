@@ -10,7 +10,6 @@
     "build:shopping:staging": "turbo build:staging --filter=@raipiot-2f/shopping",
     "build:admin:prod": "turbo build:prod --filter=@raipiot-2f/admin",
     "build:shopping:prod": "turbo build:prod --filter=@raipiot-2f/shopping",
-    "build:hooks:meta": "turbo build:hooks:meta",
     "preview:admin": "turbo preview --filter=@raipiot-2f/admin",
     "preview:shopping": "turbo preview --filter=@raipiot-2f/shopping",
     "desktop:dev:admin": "turbo desktop:dev --filter=@raipiot-2f/admin",

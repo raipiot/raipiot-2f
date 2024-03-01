@@ -8,22 +8,17 @@
       "dotEnv": [".env.development.local", ".env.development", ".env.local", ".env"]
     },
     "@raipiot-2f/admin#dev": {
-      "dependsOn": ["@raipiot-2f/hooks#build:hooks:meta"],
       "cache": false,
       "persistent": true,
       "dotEnv": [".env.development.local", ".env.development", ".env.local", ".env"]
     },
-    "build:hooks:meta": {
-      "dependsOn": ["^type:check"],
-      "outputs": ["dist/**"]
-    },
     "build:staging": {
-      "dependsOn": ["^type:check", "@raipiot-2f/hooks#build:hooks:meta"],
+      "dependsOn": ["^type:check"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
       "dotEnv": [".env.staging.local", ".env.staging", ".env.local", ".env"]
     },
     "build:prod": {
-      "dependsOn": ["^type:check", "@raipiot-2f/hooks#build:hooks:meta"],
+      "dependsOn": ["^type:check"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
       "dotEnv": [".env.production.local", ".env.production", ".env.local", ".env"]
     },

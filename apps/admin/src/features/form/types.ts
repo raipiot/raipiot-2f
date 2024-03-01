@@ -24,7 +24,7 @@ type RpCustomFormItem = { type: 'form-item'; render: () => ReactNode | ReactNode
 type RpCustom<T> = { type: 'custom'; key: keyof T } & { render: () => ReactNode | ReactNode }
 
 interface RpFormItemProps<T> extends Omit<FormItemProps, 'name'> {
-  name?: keyof T | FormItemProps['name']
+  name?: keyof T
 }
 
 interface RpBaseFormItem<T> {

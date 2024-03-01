@@ -1,3 +1,3 @@
 export * from './useBoolean'
 export * from './useToggle'
-export { useAsyncEffect, useFullscreen, useResponsive, useSize } from 'ahooks'
+export { configResponsive, useAsyncEffect, useFullscreen, useResponsive, useSize } from 'ahooks'
