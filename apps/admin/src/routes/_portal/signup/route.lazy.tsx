@@ -242,14 +242,14 @@ function Signup() {
                 </ACheckbox>
                 <div>
                   <span
-                    onClick={toggleShowAgreement()}
+                    onClick={toggleShowAgreement}
                     className="cursor-pointer font-semibold text-sky-500"
                   >
                     《{t('THE.USER.AGREEMENT')}》
                   </span>
                   {t('COMMON:AND')}
                   <span
-                    onClick={toggleShowPrivacy()}
+                    onClick={toggleShowPrivacy}
                     className="cursor-pointer font-semibold text-sky-500"
                   >
                     《{t('THE.PRIVACY.POLICY')}》
@@ -275,8 +275,8 @@ function Signup() {
           </AConfigProvider>
         </div>
 
-        {showAgreement && <UserAgreement onCancel={toggleShowAgreement()} />}
-        {showPrivacy && <PrivacyPolicy onCancel={toggleShowPrivacy()} />}
+        {showAgreement && <UserAgreement onCancel={toggleShowAgreement} />}
+        {showPrivacy && <PrivacyPolicy onCancel={toggleShowPrivacy} />}
       </div>
     </>
   )

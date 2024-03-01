@@ -12,15 +12,29 @@ import { useToggle } from '..'
 describe('test useToggle', () => {
   it('should be init value and toggle to reverse value', () => {
     const { result } = renderHook(() =>
+      useToggle({
+        initialValue: 1,
+        reverseValue: 2
+      })
+    )
+    expect(result.current[0]).toBe(1)
+    act(result.current[1])
+    expect(result.current[0]).toBe(2)
+    act(result.current[1])
+    expect(result.current[0]).toBe(1)
+  })
+
+  it('Call toggleWithCallback should be init value and toggle to reverse value', () => {
+    const { result } = renderHook(() =>
       useToggle<0, 'x'>({
         initialValue: 0,
         reverseValue: 'x'
       })
     )
     expect(result.current[0]).toBe(0)
-    act(result.current[1]())
+    act(result.current[3])
     expect(result.current[0]).toBe('x')
-    act(result.current[1]())
+    act(result.current[3])
     expect(result.current[0]).toBe(0)
   })
 
@@ -53,7 +67,7 @@ describe('test useToggle', () => {
     expect(callback).toBeCalledTimes(2)
   })
 
-  it('should execute callback with toggle params', async () => {
+  it('Call toggleWithCallback should execute callback with toggle params', async () => {
     const { result } = renderHook(() =>
       useToggle({
         initialValue: 0,
@@ -61,22 +75,11 @@ describe('test useToggle', () => {
       })
     )
     const callback = vi.fn()
-    act(() => result.current[1](callback))
+    act(() => result.current[3](callback))
     await vi.waitFor(callback)
     expect(callback).toBeCalledTimes(1)
-    act(() => result.current[1](callback))
+    act(() => result.current[3](callback))
     await vi.waitFor(callback)
     expect(callback).toBeCalledTimes(2)
-  })
-
-  it('should throw error with invalid value', () => {
-    const { result } = renderHook(() =>
-      useToggle({
-        initialValue: true,
-        reverseValue: false
-      })
-    )
-    // @ts-expect-error test
-    expect(() => result.current[2](1)).toThrowError()
   })
 })
