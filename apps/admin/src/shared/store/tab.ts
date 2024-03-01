@@ -21,12 +21,7 @@ const initialState: State = {
   /**
    * 系统内历史记录的标签页
    */
-  records: [
-    {
-      path: '/',
-      active: true
-    }
-  ]
+  records: []
 }
 
 export const useTabStore = create<State & Actions>()(

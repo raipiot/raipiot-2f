@@ -5,14 +5,14 @@ import Sidebar from './Sidebar'
 import Tabs from './Tabs'
 
 export function BaseLayout() {
-  const { location } = useRouterState()
-  const tabStore = useTabStore()
+  // const { location } = useRouterState()
+  // const tabStore = useTabStore()
 
-  useEffect(() => {
-    // 监听路由变化，添加标签记录
-    tabStore.addRecordByPath(location.pathname)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname])
+  // useEffect(() => {
+  //   // 监听路由变化，添加标签记录
+  //   tabStore.addRecordByPath(location.pathname)
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [location.pathname])
 
   return (
     // NOTE: 此处 rootClassName 不加 !flex-row 会导致加载布局闪屏

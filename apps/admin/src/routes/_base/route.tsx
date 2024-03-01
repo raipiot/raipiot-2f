@@ -12,5 +12,11 @@ export const Route = createFileRoute('/_base')({
       })
     }
   },
-  loader: () => queryClient.ensureQueryData(userInfoQueryOptions)
+  loader: () => queryClient.ensureQueryData(userInfoQueryOptions),
+  onEnter: (match) => {
+    console.log('进入基础布局页面', match)
+  },
+  onLeave: (match) => {
+    console.log('离开基础布局页面', match)
+  }
 })
