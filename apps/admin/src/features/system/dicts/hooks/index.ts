@@ -1,3 +1,3 @@
 export * from './useDictsColumns'
-export * from './useDictsSearchFormItems'
+export * from './useDictsSearchForm'
 export * from './useDictValuesColumns'

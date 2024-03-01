@@ -5,7 +5,7 @@ import { TableLayout } from '@/features/layouts'
 import {
   systemDictsQK,
   useDictsColumns,
-  useDictsSearchFormItems,
+  useDictsSearchForm,
   useSystemDictRemoveMutation,
   useSystemDictsSuspenseQuery
 } from '@/features/system/dicts'
@@ -17,19 +17,30 @@ export const Route = createLazyFileRoute('/_base/templates/common-table')({
 function CommonTable() {
   const { t } = useTranslation()
 
+  // 构造分页器
   const { pageParams, setPageParams, pagination } = usePagination<DictPageDto>()
+  // 构造批量选择
   const { rowSelection, selectedRowKeys, clearSelectedRowKeys } = useRowSelection<DictVo>()
 
-  const [form] = AForm.useForm()
+  // 列表查询
   const {
     data: { records, total },
     isFetching,
     refetch
   } = useSystemDictsSuspenseQuery(pageParams)
+  // 删除
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
 
-  const formItems = useDictsSearchFormItems()
+  // 构造搜索表单
+  const { form, formItems } = useDictsSearchForm()
+  // 构造表格列
   const columns = useDictsColumns()
+
+  // 重置批量选择
+  useEffect(() => {
+    clearSelectedRowKeys()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFetching])
 
   return (
     <TableLayout<DictVo>

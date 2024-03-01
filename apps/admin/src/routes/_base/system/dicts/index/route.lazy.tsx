@@ -3,7 +3,7 @@ import type { DictPageDto, DictVo } from '@raipiot-2f/api'
 import { TableLayout } from '@/features/layouts'
 import {
   useDictsColumns,
-  useDictsSearchFormItems,
+  useDictsSearchForm,
   useSystemDictRemoveMutation,
   useSystemDictsSuspenseQuery
 } from '@/features/system/dicts'
@@ -18,7 +18,6 @@ function SystemDicts() {
   const { pageParams, setPageParams, pagination } = usePagination<DictPageDto>()
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
 
-  const [form] = AForm.useForm()
   const {
     data: { records, total },
     isFetching,
@@ -26,8 +25,13 @@ function SystemDicts() {
   } = useSystemDictsSuspenseQuery(pageParams)
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
 
-  const formItems = useDictsSearchFormItems()
+  const { form, formItems } = useDictsSearchForm()
   const columns = useDictsColumns()
+
+  useEffect(() => {
+    clearSelectedRowKeys()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFetching])
 
   return (
     <TableLayout<DictVo>
