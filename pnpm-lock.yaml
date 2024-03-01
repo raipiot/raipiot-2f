@@ -193,8 +193,8 @@ importers:
         specifier: ^8.1.0
         version: 8.1.0(@svgr/core@8.1.0)
       '@tanstack/router-vite-plugin':
-        specifier: ^1.16.5
-        version: 1.16.5
+        specifier: ^1.18.0
+        version: 1.18.0
       '@tauri-apps/cli':
         specifier: ^1.5.10
         version: 1.5.10
@@ -3371,19 +3371,19 @@ packages:
       - csstype
     dev: false
 
-  /@tanstack/router-generator@1.16.5:
-    resolution: {integrity: sha512-np9+DASQvD4ff+FrCZ4XqRMGpVC6Y2213kma/X05mvo241yh0D5C6paUY7N7pSBPpuTlJbYKi+73cm/xRtK3Hg==}
+  /@tanstack/router-generator@1.18.0:
+    resolution: {integrity: sha512-DxIKETps3H0m+sefZfg8pf6eBq90h1j1TlC8G5yAjsq8EJx56B33jrj+yqYLeU91nmZPtNlpzOpA7bqUHGi3Cw==}
     engines: {node: '>=12'}
     dependencies:
       prettier: 3.2.5
       zod: 3.22.4
     dev: true
 
-  /@tanstack/router-vite-plugin@1.16.5:
-    resolution: {integrity: sha512-rNfAuWIScl0KnjWOda5hzQYgHdwpLu1OljvqZa260UrCB6e32882X2Ci687+OUBfydhZT/V53XtQ+la7/AO5Rw==}
+  /@tanstack/router-vite-plugin@1.18.0:
+    resolution: {integrity: sha512-WdjMiZEl+Y6lJIPAen3jCViBXBlSTKWy0Wn1CHI+XYrCtdxxzSyenLrT/qT2trtd23+CBaxgi29T6JaScaKJew==}
     engines: {node: '>=12'}
     dependencies:
-      '@tanstack/router-generator': 1.16.5
+      '@tanstack/router-generator': 1.18.0
     dev: true
 
   /@tanstack/store@0.1.3:

@@ -65,7 +65,7 @@
     "@raipiot-infra/tailwind": "^0.1.5",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
-    "@tanstack/router-vite-plugin": "^1.16.5",
+    "@tanstack/router-vite-plugin": "^1.18.0",
     "@tauri-apps/cli": "^1.5.10",
     "@testing-library/react": "^14.2.1",
     "@types/lodash-es": "^4.17.12",
