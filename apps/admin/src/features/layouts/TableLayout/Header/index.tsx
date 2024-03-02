@@ -27,7 +27,7 @@ const Header = memo<HeaderProps>((props) => {
   return (
     <div className={props.headerClassName}>
       {(!props.hideTitle || props.renderOperate) && (
-        <div className="mb-2 flex items-center justify-between space-x-2 sm:space-x-4">
+        <div className="mb-2 flex items-center justify-between space-x-2 sm:mb-4 sm:space-x-4">
           <div className="flex items-center space-x-2">
             {!props.hideTitle && (
               <>

@@ -5,7 +5,7 @@ export const useSearchFormCreator = <T>() => {
 
   const computeResponsiveSpan = () => {
     if (responsive.xxl) {
-      return 4
+      return 6
     }
     if (responsive.lg) {
       return 6

@@ -96,9 +96,11 @@ export function TableLayout<
         <div {...containerProps}>
           <Header {...{ renderOperate, ...headerProps }} />
           {renderSearch ?? (
-            <ACard rootClassName="!mb-2">
-              <RpSearchBar {...searchBarProps} />
-            </ACard>
+            <div className="mb-2 sm:mb-4">
+              <ACard>
+                <RpSearchBar {...searchBarProps} />
+              </ACard>
+            </div>
           )}
           {renderTable ?? <Table {...tableProps} />}
           {children}

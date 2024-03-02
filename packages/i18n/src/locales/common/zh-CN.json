@@ -79,5 +79,7 @@
   "ALREADY.SELECTED": "已选中 {{count}} 项",
   "EXPAND": "展开",
   "COLLAPSE": "收起",
-  "CREATE.CHILD": "新增子项"
+  "CREATE.CHILD": "新增子项",
+  "CLOSE.ALL.TAGS": "关闭所有标签",
+  "CLOSE.OTHER.TAGS": "关闭其他标签"
 }

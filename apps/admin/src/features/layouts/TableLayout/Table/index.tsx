@@ -3,10 +3,12 @@ import { merge } from 'lodash-es'
 
 import { TableLayoutPropsContext, TableLayoutRefContext } from '../context'
 import styles from './index.module.scss'
-import TableTitle from './TableTitle'
+import TableTitleRow from './TableTitleRow'
 
 // 一些属性例如 size 在内部指定，所以需要过滤掉
-export interface TableProps<T> extends Omit<ATableProps<T>, 'title' | 'size' | 'loading'> {}
+type IgnoreProps = 'title' | 'size' | 'loading'
+
+export interface TableProps<T> extends Omit<ATableProps<T>, IgnoreProps> {}
 
 export default function Table<T extends object = any>(props: TableProps<T>) {
   const { ...restProps } = props
@@ -14,32 +16,38 @@ export default function Table<T extends object = any>(props: TableProps<T>) {
   const tableLayoutRef = useContext(TableLayoutRefContext)
   const tableLayoutProps = useContext(TableLayoutPropsContext)
   const preferenceStore = usePreferenceStore()
-  const size = useSize(window.document.body)
 
   return (
     <ACard>
       <div
-        className={styles.customTable}
         ref={tableLayoutRef}
+        className={styles.tableWrapper}
       >
-        <ATable<T>
-          // NOTE: 这里第一个参数是空对象，是为了防止改变原对象
-          {...merge(
-            {},
-            {
-              scroll: {
-                scrollToFirstRowOnChange: true,
-                x: 800,
-                y: size?.height ? size.height - 200 : 0
-              },
-              pagination: false,
-              title: () => <TableTitle />,
-              size: preferenceStore.tableSize,
-              loading: tableLayoutProps.refreshLoading
-            } satisfies ATableProps<T>,
-            restProps
+        <TableTitleRow />
+        <div
+          className={clsx(
+            'mt-2 h-[calc(100vh-200px)] overflow-auto sm:mt-4 sm:h-[calc(100vh-252px)]',
+            styles.tableContainer
           )}
-        />
+        >
+          <ATable<T>
+            // NOTE: 这里第一个参数是空对象，是为了防止改变原对象
+            {...merge(
+              {},
+              {
+                scroll: {
+                  scrollToFirstRowOnChange: true,
+                  x: 800
+                },
+                pagination: false,
+                size: preferenceStore.tableSize,
+                loading: tableLayoutProps.refreshLoading,
+                sticky: true
+              } satisfies ATableProps<T>,
+              restProps
+            )}
+          />
+        </div>
       </div>
     </ACard>
   )

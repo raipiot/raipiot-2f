@@ -14,6 +14,7 @@ export const usePagination = <T extends PageDto>(initialValue?: Partial<T>) => {
     })
 
   const pagination: TablePaginationConfig = {
+    pageSize: pageParams.size,
     current: pageParams.current,
     onChange: setPagination,
     size: (response.sm ? 'default' : 'small') as PaginationProps['size'],

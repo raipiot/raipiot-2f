@@ -1,7 +1,7 @@
 import type { PageDto } from '@raipiot-2f/api'
 
 export class PageUtils {
-  static readonly DEFAULT_PAGE_SIZE = 10
+  static readonly DEFAULT_PAGE_SIZE = 20
 
   static #defaultValues: PageDto = {
     current: 1,

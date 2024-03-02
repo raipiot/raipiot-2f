@@ -3,7 +3,7 @@ import FullScreenButton from './FullScreenButton'
 import RefreshButton from './RefreshButton'
 import RowGapButton from './RowGapButton'
 
-export default function TableTitle() {
+export default function TableTitleRow() {
   const { t } = useTranslation()
   const tableLayoutProps = useContext(TableLayoutPropsContext)
   const responsive = useResponsive()

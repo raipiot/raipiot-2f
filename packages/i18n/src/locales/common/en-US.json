@@ -80,5 +80,7 @@
   "ALREADY.SELECTED_other": "Already selected {{count}} items",
   "EXPAND": "Expand",
   "COLLAPSE": "Collapse",
-  "CREATE.CHILD": "Create child"
+  "CREATE.CHILD": "Create child",
+  "CLOSE.ALL.TAGS": "Close all tags",
+  "CLOSE.OTHER.TAGS": "Close other tags"
 }

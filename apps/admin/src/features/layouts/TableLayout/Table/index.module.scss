@@ -1,10 +1,26 @@
-.customTable {
+.tableWrapper {
   :global {
     .ant-table-title {
       padding: 0 0 12px 0 !important;
     }
     .ant-table-footer {
       padding: 12px !important;
+    }
+  }
+
+  .tableContainer {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    -webkit-overflow-scrolling: touch; /* iOS (Safari and Chrome) */
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      background: transparent; /* Chrome, Safari, and Edge */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: transparent;
     }
   }
 }

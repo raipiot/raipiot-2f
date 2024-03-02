@@ -1,4 +1,5 @@
 export default function Tabs() {
+  const { t } = useTranslation()
   const { Layout } = ATheme.useToken().token!
   const tabStore = useTabStore()
   const router = useRouter()
@@ -24,15 +25,18 @@ export default function Tabs() {
 
   return (
     <ATabs
-      className="h-10 border-b border-gray-300 dark:border-gray-950"
+      className="border-b border-gray-300 dark:border-gray-950"
       style={{
         backgroundColor: Layout!.headerBg,
-        padding: '4px 0 0 8px'
+        paddingTop: 4,
+        borderBottom: 0
       }}
       tabBarStyle={{
-        marginBottom: 0
+        marginBottom: 0,
+        height: 36,
+        paddingLeft: 4
       }}
-      tabPosition="top"
+      tabBarGutter={4}
       type="editable-card"
       hideAdd
       activeKey={router.state.location.pathname}
@@ -51,7 +55,7 @@ export default function Tabs() {
                     ? []
                     : [
                         {
-                          label: '关闭其他标签',
+                          label: t('CLOSE.OTHER.TAGS'),
                           key: 'close-others',
                           onClick: () => {
                             tabStore.clearRecords()
@@ -59,11 +63,11 @@ export default function Tabs() {
                           }
                         },
                         {
-                          label: '关闭所有标签',
+                          label: t('CLOSE.ALL.TAGS'),
                           key: 'close-all',
                           onClick: () => {
                             tabStore.clearRecords()
-                            navigate({ to: '/' })
+                            navigate({ to: '/dashboard' })
                           }
                         }
                       ]
