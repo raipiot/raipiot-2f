@@ -1,6 +1,6 @@
 {
   "name": "@raipiot-2f/config",
-  "description": "raipiot 2F 通用配置模块",
+  "description": "raipiot 2f 通用配置模块",
   "author": "Bruce Song <recall4056@gmail.com> (https://github.com/recallwei/)",
   "homepage": "https://github.com/raipiot/raipiot-2f#readme",
   "bugs": "https://github.com/raipiot/raipiot-2f/issues",
@@ -28,7 +28,7 @@
     "prettier:fix": "prettier --write --cache --ignore-unknown --ignore-path=../../.prettierignore ."
   },
   "dependencies": {
-    "@raipiot-infra/config": "^0.1.5"
+    "@raipiot-infra/config": "^0.1.6"
   },
   "devDependencies": {
     "vite": "^5.1.4"

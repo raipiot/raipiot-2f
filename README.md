@@ -9,10 +9,10 @@
 
 ## Admin
 
-- [`/app`](apps/admin/src/app/): 应用层，用于存放应用基本资源、初始化脚本等
-- [`/features`](apps/admin/src/features/): 业务层，用于存放应用功能模块
-- [`/routes`](apps/admin/src/routes/): 路由层，用于存放应用路由配置、页面组件等
-- [`/shared`](apps/adin/src/shared/): 共享层，用于存放应用共享资源、通用组件等
+- [`app`](apps/admin/src/app/): 应用层，用于存放应用基本资源、初始化脚本等
+- [`features`](apps/admin/src/features/): 业务层，用于存放应用功能模块
+- [`routes`](apps/admin/src/routes/): 路由层，用于存放应用路由配置、页面组件等
+- [`shared`](apps/adin/src/shared/): 共享层，用于存放应用共享资源、通用组件等
 
 ## Packages
 

@@ -1,6 +1,6 @@
 {
   "name": "@raipiot-2f/mock",
-  "description": "raipiot 2F Mock 服务",
+  "description": "raipiot 2f Mock 服务",
   "author": "",
   "scripts": {
     "dev": "nest start --watch",
@@ -26,7 +26,6 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "reflect-metadata": "^0.2.1",
-    "remove": "^0.1.5",
     "rxjs": "^7.8.1"
   },
   "devDependencies": {
@@ -34,10 +33,10 @@
     "@nestjs/cli": "^10.3.2",
     "@nestjs/schematics": "^10.1.1",
     "@nestjs/testing": "^10.3.3",
-    "@raipiot-infra/bootstrap-animation": "^0.1.5",
+    "@raipiot-infra/bootstrap-animation": "^0.1.6",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.11.21",
+    "@types/node": "^20.11.24",
     "@types/supertest": "^6.0.2",
     "jest": "^29.7.0",
     "source-map-support": "^0.5.21",

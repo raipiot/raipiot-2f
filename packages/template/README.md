@@ -1,3 +1,3 @@
 # @raipiot-2f/template
 
-raipiot 2F 通用子包模版。
+raipiot 2f 通用子包模版。

@@ -1,6 +1,6 @@
 {
   "name": "@raipiot-2f/axios",
-  "description": "raipiot 2F 通用 Axios 模块",
+  "description": "raipiot 2f 通用 Axios 模块",
   "author": "Bruce Song <recall4056@gmail.com> (https://github.com/recallwei/)",
   "homepage": "https://github.com/raipiot/raipiot-2f#readme",
   "bugs": "https://github.com/raipiot/raipiot-2f/issues",
@@ -27,14 +27,14 @@
     "prettier:fix": "prettier --write --cache --ignore-unknown --ignore-path=../../.prettierignore ."
   },
   "peerDependencies": {
-    "@tanstack/react-router": "^1.18.1",
+    "@tanstack/react-router": "^1.18.2",
     "antd": "^5.14.2",
     "i18next": "^23.10.0"
   },
   "dependencies": {
     "@raipiot-2f/config": "workspace:^",
-    "@raipiot-infra/enums": "^0.1.5",
-    "@raipiot-infra/utils": "^0.1.5",
+    "@raipiot-infra/enums": "^0.1.6",
+    "@raipiot-infra/utils": "^0.1.6",
     "axios": "^1.6.7"
   },
   "private": true

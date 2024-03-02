@@ -1,13 +1,3 @@
 {
-  "extends": "@raipiot-infra/eslint-config",
-  "rules": {
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": true,
-        "peerDependencies": true,
-        "optionalDependencies": false
-      }
-    ] // 允许 devDependencies，peerDependencies，不允许 optionalDependencies}
-  }
+  "extends": "@raipiot-infra"
 }
