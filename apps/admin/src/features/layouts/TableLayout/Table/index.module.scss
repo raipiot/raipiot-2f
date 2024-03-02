@@ -6,6 +6,16 @@
     .ant-table-footer {
       padding: 12px !important;
     }
+    .ant-table-selection-extra {
+      bottom: 0;
+      padding-inline-start: 4px !important;
+      .ant-dropdown-trigger {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
   }
 
   .tableContainer {

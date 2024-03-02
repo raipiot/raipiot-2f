@@ -1,7 +1,7 @@
-import type { TableProps as ATableProps } from 'antd'
+import { type TableProps as ATableProps } from 'antd'
 import { merge } from 'lodash-es'
 
-import { TableLayoutPropsContext, TableLayoutRefContext } from '../context'
+import { TableLayoutFullScreenContext, TableLayoutPropsContext } from '../context'
 import styles from './index.module.scss'
 import TableTitleRow from './TableTitleRow'
 
@@ -11,22 +11,40 @@ type IgnoreProps = 'title' | 'size' | 'loading'
 export interface TableProps<T> extends Omit<ATableProps<T>, IgnoreProps> {}
 
 export default function Table<T extends object = any>(props: TableProps<T>) {
-  const { ...restProps } = props
+  const { pagination, ...restProps } = props
 
-  const tableLayoutRef = useContext(TableLayoutRefContext)
-  const tableLayoutProps = useContext(TableLayoutPropsContext)
   const preferenceStore = usePreferenceStore()
+  const tableLayoutProps = useContext(TableLayoutPropsContext)
+
+  const containerRef = useRef(null)
+  const [isFullscreen, { toggleFullscreen }] = useFullscreen(containerRef, {
+    pageFullscreen: {
+      zIndex: 9999,
+      className: 'table-layout-full-screen-container'
+    }
+  })
+
+  const tableLayoutFullScreenContextValue = useMemo(
+    () => ({
+      isFullscreen,
+      toggleFullscreen
+    }),
+    [isFullscreen, toggleFullscreen]
+  )
 
   return (
     <ACard>
       <div
-        ref={tableLayoutRef}
+        ref={containerRef}
         className={styles.tableWrapper}
       >
-        <TableTitleRow />
+        <TableLayoutFullScreenContext.Provider value={tableLayoutFullScreenContextValue}>
+          <TableTitleRow />
+        </TableLayoutFullScreenContext.Provider>
         <div
           className={clsx(
-            'mt-2 h-[calc(100vh-200px)] overflow-auto sm:mt-4 sm:h-[calc(100vh-252px)]',
+            'mt-2 h-[calc(100vh-258px)] overflow-auto sm:mt-4 sm:h-[calc(100vh-298px)]',
+            isFullscreen && 'h-[calc(100vh-104px)] sm:h-[calc(100vh-136px)]',
             styles.tableContainer
           )}
         >
@@ -48,6 +66,11 @@ export default function Table<T extends object = any>(props: TableProps<T>) {
             )}
           />
         </div>
+        {pagination && (
+          <div className="mt-2 text-right sm:mt-4">
+            <APagination {...pagination} />
+          </div>
+        )}
       </div>
     </ACard>
   )

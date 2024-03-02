@@ -6,7 +6,6 @@ import RowGapButton from './RowGapButton'
 export default function TableTitleRow() {
   const { t } = useTranslation()
   const tableLayoutProps = useContext(TableLayoutPropsContext)
-  const responsive = useResponsive()
 
   const selectedRowKeys = tableLayoutProps.tableProps?.rowSelection?.selectedRowKeys
   const hadSelected = (selectedRowKeys?.length ?? 0) > 0
@@ -43,7 +42,7 @@ export default function TableTitleRow() {
       <div className="flex items-center space-x-2 sm:space-x-4">
         <RefreshButton />
         <RowGapButton />
-        {responsive.sm && <FullScreenButton />}
+        <FullScreenButton />
       </div>
     </div>
   )

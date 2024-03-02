@@ -181,6 +181,7 @@ declare global {
   const useDeferredValue: typeof import('react')['useDeferredValue']
   const useDocumentTitle: typeof import('../src/shared/hooks/useDocumentTitle')['useDocumentTitle']
   const useEffect: typeof import('react')['useEffect']
+  const useFormResponsiveSpan: typeof import('../src/shared/hooks/useFormResponsiveSpan')['useFormResponsiveSpan']
   const useFullscreen: typeof import('@raipiot-2f/hooks')['useFullscreen']
   const useId: typeof import('react')['useId']
   const useImmer: typeof import('use-immer')['useImmer']

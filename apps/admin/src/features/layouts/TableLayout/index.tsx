@@ -3,7 +3,7 @@ import { type HTMLAttributes, type PropsWithChildren, type ReactNode } from 'rea
 
 import type { RpSearchBarProps } from '@/shared/components/RpSearchBar'
 
-import { TableLayoutPropsContext, TableLayoutRefContext } from './context'
+import { TableLayoutPropsContext } from './context'
 import type { HeaderProps } from './Header'
 import Header from './Header'
 import Modal from './Modal'
@@ -87,26 +87,21 @@ export function TableLayout<
     containerProps
   } = props
 
-  // 提供给表格全屏按钮使用
-  const containerRef = useRef(null)
-
   return (
-    <TableLayoutRefContext.Provider value={containerRef}>
-      <TableLayoutPropsContext.Provider value={props}>
-        <div {...containerProps}>
-          <Header {...{ renderOperate, ...headerProps }} />
-          {renderSearch ?? (
-            <div className="mb-2 sm:mb-4">
-              <ACard>
-                <RpSearchBar {...searchBarProps} />
-              </ACard>
-            </div>
-          )}
-          {renderTable ?? <Table {...tableProps} />}
-          {children}
-          {renderModal ?? <Modal {...modalProps} />}
-        </div>
-      </TableLayoutPropsContext.Provider>
-    </TableLayoutRefContext.Provider>
+    <TableLayoutPropsContext.Provider value={props}>
+      <div {...containerProps}>
+        <Header {...{ renderOperate, ...headerProps }} />
+        {renderSearch ?? (
+          <div className="mb-2 sm:mb-4">
+            <ACard>
+              <RpSearchBar {...searchBarProps} />
+            </ACard>
+          </div>
+        )}
+        {renderTable ?? <Table {...tableProps} />}
+        {children}
+        {renderModal ?? <Modal {...modalProps} />}
+      </div>
+    </TableLayoutPropsContext.Provider>
   )
 }

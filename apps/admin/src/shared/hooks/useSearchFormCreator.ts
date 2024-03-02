@@ -1,20 +1,7 @@
 import type { RpSearchFormItem } from '@/features/form'
 
 export const useSearchFormCreator = <T>() => {
-  const responsive = useResponsive()
-
-  const computeResponsiveSpan = () => {
-    if (responsive.xxl) {
-      return 6
-    }
-    if (responsive.lg) {
-      return 6
-    }
-    if (responsive.md) {
-      return 8
-    }
-    return 12
-  }
+  const { computeResponsiveSpan } = useFormResponsiveSpan()
 
   const createSearchFormItems = (items: RpSearchFormItem<T>[]) =>
     items.map<RpSearchFormItem<T>>((item) => {
