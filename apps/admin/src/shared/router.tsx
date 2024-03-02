@@ -2,7 +2,7 @@ import type { MaybeI18nString } from '@raipiot-infra/utils'
 import nprogress from 'nprogress'
 import type { JSXElementConstructor } from 'react'
 
-import { routeTree } from './routeTree.gen'
+import { routeTree } from '@/app/routeTree.gen'
 
 export const router = createRouter({
   routeTree,
@@ -12,6 +12,9 @@ export const router = createRouter({
   defaultPendingComponent: () => <RpGlobalLoading />,
   defaultErrorComponent: () => <RpErrorPage title="出错了" />
 })
+
+export const getRouterStaticData = (path: string) =>
+  router.matchRoutes(path, {}).at(-1)!.staticData ?? {}
 
 // NProgress
 nprogress.configure({ showSpinner: false })

@@ -68,15 +68,15 @@ export default defineConfig(({ mode }) => {
         imports: [
           ...reactPresets,
           {
-            from: '@/app/router',
+            from: '@/shared/router',
             imports: ['router']
           },
           {
-            from: '@/app/query-client',
+            from: '@/shared/query-client',
             imports: ['queryClient']
           },
           {
-            from: '@/app/i18n',
+            from: '@/shared/i18n',
             imports: [['default', 'i18n']]
           },
           {
@@ -107,6 +107,7 @@ export default defineConfig(({ mode }) => {
           'src/shared/api/**',
           'src/shared/components/**',
           'src/shared/hooks/**',
+          'src/shared/providers/**',
           'src/shared/store/**',
           'src/shared/utils/**'
         ]

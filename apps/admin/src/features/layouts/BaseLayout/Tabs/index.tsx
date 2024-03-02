@@ -1,3 +1,40 @@
+import type { DragEndEvent } from '@dnd-kit/core'
+import { DndContext, PointerSensor, useSensor } from '@dnd-kit/core'
+import {
+  arrayMove,
+  horizontalListSortingStrategy,
+  SortableContext,
+  useSortable
+} from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
+import { cloneElement } from 'react'
+
+import { getRouterStaticData } from '@/shared/router'
+
+interface DraggableTabPaneProps extends React.HTMLAttributes<HTMLDivElement> {
+  'data-node-key': string
+}
+
+const DraggableTabNode = ({ className, ...props }: DraggableTabPaneProps) => {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+    id: props['data-node-key']
+  })
+
+  const style: React.CSSProperties = {
+    ...props.style,
+    transform: CSS.Transform.toString(transform && { ...transform, scaleX: 1 }),
+    transition,
+    cursor: 'move'
+  }
+
+  return cloneElement(props.children as React.ReactElement, {
+    ref: setNodeRef,
+    style,
+    ...attributes,
+    ...listeners
+  })
+}
+
 export default function Tabs() {
   const { t } = useTranslation()
   const { Layout } = ATheme.useToken().token!
@@ -21,7 +58,16 @@ export default function Tabs() {
     }
   }
 
-  const getRouteMeta = (path: string) => router.matchRoutes(path, {}).at(-1)!.staticData ?? {}
+  const sensor = useSensor(PointerSensor, { activationConstraint: { distance: 50 } })
+
+  const onDragEnd = ({ active, over }: DragEndEvent) => {
+    if (active.id !== over?.id) {
+      const activeIndex = tabStore.records.findIndex((i) => i.path === active.id)
+      const overIndex = tabStore.records.findIndex((i) => i.path === over?.id)
+      const newRecords = arrayMove(tabStore.records, activeIndex, overIndex)
+      tabStore.setRecords(newRecords)
+    }
+  }
 
   return (
     <ATabs
@@ -43,7 +89,7 @@ export default function Tabs() {
       onEdit={onEdit}
       size="small"
       items={tabStore.records.map(({ path }) => {
-        const { title, icon } = getRouteMeta(path)
+        const { title, icon } = getRouterStaticData(path)
         return {
           label: (
             <ADropdown
@@ -88,6 +134,28 @@ export default function Tabs() {
           closable: path !== '/'
         }
       })}
+      renderTabBar={(tabBarProps, DefaultTabBar) => (
+        <DndContext
+          sensors={[sensor]}
+          onDragEnd={onDragEnd}
+        >
+          <SortableContext
+            items={tabStore.records.map((i) => i.path)}
+            strategy={horizontalListSortingStrategy}
+          >
+            <DefaultTabBar {...tabBarProps}>
+              {(node) => (
+                <DraggableTabNode
+                  {...node.props}
+                  key={node.key}
+                >
+                  {node}
+                </DraggableTabNode>
+              )}
+            </DefaultTabBar>
+          </SortableContext>
+        </DndContext>
+      )}
     />
   )
 }

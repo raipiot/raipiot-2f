@@ -14,6 +14,7 @@ interface State {
 interface Actions {
   addRecordByPath: (path: string) => void
   removeRecordByPath: (path: string) => void
+  setRecords: (records: Record[]) => void
   clearRecords: () => void
 }
 
@@ -50,6 +51,13 @@ export const useTabStore = create<State & Actions>()(
         set((state) => ({
           records: state.records.filter((record) => path !== record.path || record.path === '/')
         })),
+      /**
+       * 更新记录
+       * @param records 记录
+       */
+      setRecords: (records: Record[]) => {
+        set(() => ({ records }))
+      },
       /**
        * 清空所有记录
        */
