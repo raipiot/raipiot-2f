@@ -3,7 +3,7 @@ import { modalTitleMap } from '@/features/modal/maps'
 
 export const useModal = (defaultValue?: boolean) => {
   const [open, setOpen] = useState(defaultValue)
-  const [modalType, setModalType] = useState<ModalType>('detail')
+  const [modalType, setModalType] = useState<ModalType>('read')
 
   const toggle = () => setOpen((prev) => !prev)
 

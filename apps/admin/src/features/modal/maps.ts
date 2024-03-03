@@ -5,5 +5,5 @@ const t = i18n.getFixedT(null, 'COMMON')
 export const modalTitleMap = new Map<ModalType, () => string>([
   ['create', () => t('CREATE')],
   ['edit', () => t('EDIT')],
-  ['detail', () => t('DETAIL')]
+  ['read', () => t('DETAIL')]
 ])

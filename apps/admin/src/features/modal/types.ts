@@ -1,1 +1,1 @@
-export type ModalType = 'create' | 'detail' | 'edit'
+export type ModalType = 'read' | 'create' | 'edit'
