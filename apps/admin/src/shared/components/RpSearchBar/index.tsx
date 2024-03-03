@@ -46,12 +46,16 @@ function RpSearchBar<T extends Record<string, any>>(props: RpSearchBarProps<T>) 
 
   return (
     <AForm<T>
-      name="advanced_search"
+      name="search"
       layout="horizontal"
-      size="middle"
-      onFinish={(values) => onSearch?.(values)}
-      initialValues={initialValues}
       form={form}
+      initialValues={initialValues}
+      onFinish={(values) => {
+        // 处理搜索事件
+        if (onSearch) {
+          onSearch(values)
+        }
+      }}
       {...formProps}
     >
       <ARow gutter={24}>
@@ -100,7 +104,9 @@ function RpSearchBar<T extends Record<string, any>>(props: RpSearchBarProps<T>) 
             <AButton
               onClick={() => {
                 if (form) {
+                  // 清空表单
                   form.resetFields()
+                  // 处理清空事件
                   if (onClear) {
                     onClear(form.getFieldsValue())
                   }

@@ -8,7 +8,7 @@ export const useRowSelection = <T>(initialState: React.Key[] = []) => {
     setSelectedRowKeys(newSelectedRowKeys)
   }
 
-  const clearSelectedRowKeys = () => setSelectedRowKeys([])
+  const clearSelectedRowKeys = useCallback(() => setSelectedRowKeys([]), [])
 
   const rowSelection = {
     selectedRowKeys,

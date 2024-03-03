@@ -53,6 +53,7 @@ declare global {
   const BrowserUtils: typeof import('@raipiot-infra/utils')['BrowserUtils']
   const CommomInputItem: typeof import('../src/components/RpFormItems/index')['CommomInputItem']
   const DateUtils: typeof import('@raipiot-infra/utils')['DateUtils']
+  const FormatUtils: typeof import('../src/shared/utils/format')['FormatUtils']
   const GlobalEnvConfig: typeof import('@raipiot-2f/config')['GlobalEnvConfig']
   const I18nUtils: typeof import('@raipiot-infra/utils')['I18nUtils']
   const InputItem: typeof import('../src/components/RpFormItems/index')['InputItem']

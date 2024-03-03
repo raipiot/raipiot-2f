@@ -13,10 +13,6 @@ import Table from './Table'
 export interface TableLayoutProps<T, D> extends PropsWithChildren {
   containerProps?: HTMLAttributes<HTMLDivElement>
   /**
-   * 自定义渲染操作区域
-   */
-  renderOperate?: ReactNode | (() => ReactNode)
-  /**
    * 头部 Props
    */
   headerProps?: HeaderProps
@@ -76,7 +72,6 @@ export function TableLayout<
 >(props: TableLayoutProps<T, D>) {
   const {
     children,
-    renderOperate,
     headerProps,
     searchBarProps,
     tableProps,
@@ -90,7 +85,7 @@ export function TableLayout<
   return (
     <TableLayoutPropsContext.Provider value={props}>
       <div {...containerProps}>
-        <Header {...{ renderOperate, ...headerProps }} />
+        <Header {...headerProps} />
         {renderSearch ?? (
           <div className="mb-2 sm:mb-4">
             <ACard>

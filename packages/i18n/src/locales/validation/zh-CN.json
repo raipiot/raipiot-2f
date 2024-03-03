@@ -4,7 +4,7 @@
   "LOGIN.PASSWORD": "请输入登录密码",
   "CONFIRM.PASSWORD": "请输入确认密码",
   "CONFIRM.PASSWORD.NOT.MATCH": "两次输入的密码不一致",
-  "DICTIONARY.CODE": "请输入字典编码",
+  "DICTIONARY.CODE": "请输入字典编号",
   "DICTIONARY.LABEL": "请输入字典名称",
   "EMAIL": "请输入邮箱",
   "EMAIL.FORMAT": "请输入正确格式的邮箱",

@@ -3,7 +3,6 @@ import type { DictPageDto, DictVo } from '@raipiot-2f/api'
 
 import { TableLayout } from '@/features/layouts'
 import {
-  systemDictsQK,
   useDictsColumns,
   useDictsSearchForm,
   useSystemDictRemoveMutation,
@@ -32,9 +31,9 @@ function CommonTable() {
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
 
   // 构造搜索表单
-  const { form, formItems } = useDictsSearchForm()
+  const { searchForm, searchFormItems } = useDictsSearchForm()
   // 构造表格列
-  const columns = useDictsColumns()
+  const { columns } = useDictsColumns()
 
   // 重置批量选择
   useEffect(() => {
@@ -58,10 +57,10 @@ function CommonTable() {
       }}
       // 搜索栏属性
       searchBarProps={{
-        // 搜索栏表单项
-        formItems,
         // 搜索栏表单
-        form,
+        form: searchForm,
+        // 搜索栏表单项
+        formItems: searchFormItems,
         // 搜索事件
         onSearch: (values) => setPageParams(PageUtils.mergeParams(values))
       }}
@@ -96,16 +95,7 @@ function CommonTable() {
       // 表格操作区域
       renderTableOpeate={
         <>
-          <AButton
-            onClick={() => {
-              queryClient.invalidateQueries({
-                predicate: ({ queryKey }) => queryKey.includes(systemDictsQK().at(0)),
-                refetchType: 'active'
-              })
-            }}
-          >
-            打印表格
-          </AButton>
+          <AButton>打印表格</AButton>
           <AButton>导出数据</AButton>
         </>
       }

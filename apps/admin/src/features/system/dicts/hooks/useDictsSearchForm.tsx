@@ -1,13 +1,13 @@
-import type { DictSearchForm } from '@raipiot-2f/api'
+import type { DictSearchFormModel } from '@/features/system/dicts'
 
 export const useDictsSearchForm = () => {
   const { t } = useTranslation('SYSTEM/DICTS')
-  const { createSearchFormItems } = useSearchFormCreator<DictSearchForm>()
-  const [form] = AForm.useForm()
+  const { createSearchFormItems } = useSearchFormCreator<DictSearchFormModel>()
+  const [searchForm] = AForm.useForm()
 
   return {
-    form,
-    formItems: createSearchFormItems([
+    searchForm,
+    searchFormItems: createSearchFormItems([
       {
         type: 'input',
         key: 'code',

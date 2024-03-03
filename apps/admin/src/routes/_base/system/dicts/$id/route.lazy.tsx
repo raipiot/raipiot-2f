@@ -20,7 +20,7 @@ function SystemDictItem() {
     parentId: id
   })
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
-  const { form, formItems } = useDictsSearchForm()
+  const { searchForm, searchFormItems } = useDictsSearchForm()
   const columns = useDictValuesColumns()
 
   const { data, isFetching, refetch } = useSystemDictValuesSuspenseQuery(pageParams)
@@ -45,8 +45,8 @@ function SystemDictItem() {
         )
       }}
       searchBarProps={{
-        formItems,
-        form,
+        form: searchForm,
+        formItems: searchFormItems,
         onSearch: (values) => setPageParams(PageUtils.mergeParams(pageParams, values))
       }}
       tableProps={{
