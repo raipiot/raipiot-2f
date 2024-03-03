@@ -30,24 +30,19 @@ export interface RpSearchBarProps<T> extends Omit<FormProps, 'initialValues'> {
 }
 
 function RpSearchBar<T extends Record<string, any>>(props: RpSearchBarProps<T>) {
-  const { initialValues, formItems, searchLoading, onSearch, onClear, showExpand, ...formProps } =
-    props
+  const {
+    initialValues,
+    formItems,
+    form,
+    searchLoading,
+    onSearch,
+    onClear,
+    showExpand,
+    ...formProps
+  } = props
   const { t } = useTranslation()
+  const { computeResponsiveSpan } = useFormResponsiveSpan()
   const [expand, setExpand] = useState(false)
-  const responsive = useResponsive()
-
-  const computeResponsiveSpan = () => {
-    if (responsive.xxl) {
-      return 4
-    }
-    if (responsive.lg) {
-      return 6
-    }
-    if (responsive.md) {
-      return 8
-    }
-    return 12
-  }
 
   return (
     <AForm<T>
@@ -56,6 +51,7 @@ function RpSearchBar<T extends Record<string, any>>(props: RpSearchBarProps<T>) 
       size="middle"
       onFinish={(values) => onSearch?.(values)}
       initialValues={initialValues}
+      form={form}
       {...formProps}
     >
       <ARow gutter={24}>
@@ -103,9 +99,11 @@ function RpSearchBar<T extends Record<string, any>>(props: RpSearchBarProps<T>) 
             </AButton>
             <AButton
               onClick={() => {
-                formProps.form?.resetFields()
-                if (formProps.form) {
-                  onClear?.(formProps.form.getFieldsValue())
+                if (form) {
+                  form.resetFields()
+                  if (onClear) {
+                    onClear(form.getFieldsValue())
+                  }
                 }
               }}
             >

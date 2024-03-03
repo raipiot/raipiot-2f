@@ -6,7 +6,8 @@ export const systemDictsQueryOptions = (params: DictPageDto) =>
   queryOptions({
     queryKey: systemDictsQK(params),
     queryFn: ({ signal }) => systemDictsAPI.parentList(params, signal),
-    placeholderData: keepPreviousData
+    placeholderData: keepPreviousData,
+    throwOnError: false
   })
 
 export const useSystemDictsQuery = (params: DictPageDto) =>

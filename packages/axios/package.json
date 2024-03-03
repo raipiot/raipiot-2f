@@ -14,8 +14,7 @@
     "template"
   ],
   "exports": {
-    ".": "./src/index.ts",
-    "./meta": "./meta.json"
+    ".": "./src/index.ts"
   },
   "types": "./src/index.ts",
   "scripts": {
@@ -27,8 +26,8 @@
     "prettier:fix": "prettier --write --cache --ignore-unknown --ignore-path=../../.prettierignore ."
   },
   "peerDependencies": {
-    "@tanstack/react-router": "^1.18.2",
-    "antd": "^5.14.2",
+    "@tanstack/react-router": "^1.18.3",
+    "antd": "^5.15.0",
     "i18next": "^23.10.0"
   },
   "dependencies": {

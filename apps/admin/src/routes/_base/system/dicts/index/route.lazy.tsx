@@ -18,21 +18,21 @@ function SystemDicts() {
   const { pageParams, setPageParams, pagination } = usePagination<DictPageDto>()
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
   const { open, toggle, setModalType, getModalTitle } = useModal()
+  const { form, formItems } = useDictsSearchForm()
+  const columns = useDictsColumns()
 
   const {
     data: { records, total },
     isFetching,
     refetch
-  } = useSystemDictsSuspenseQuery(pageParams)
+  } = useSystemDictsSuspenseQuery(PageUtils.mergeParams(pageParams))
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
 
-  const { form, formItems } = useDictsSearchForm()
-  const columns = useDictsColumns()
-
-  useEffect(() => {
-    clearSelectedRowKeys()
+  useEffect(
+    () => clearSelectedRowKeys(),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isFetching])
+    [isFetching]
+  )
 
   return (
     <TableLayout<DictVo>
@@ -52,7 +52,7 @@ function SystemDicts() {
       searchBarProps={{
         formItems,
         form,
-        onSearch: (values) => setPageParams(PageUtils.mergeParams(values))
+        onSearch: (values) => setPageParams(PageUtils.mergeParams(pageParams, values))
       }}
       tableProps={{
         rowKey: (record) => record.id!,

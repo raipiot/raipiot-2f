@@ -15,6 +15,7 @@ interface DraggableTabPaneProps extends React.HTMLAttributes<HTMLDivElement> {
   'data-node-key': string
 }
 
+// eslint-disable-next-line unused-imports/no-unused-vars
 const DraggableTabNode = ({ className, ...props }: DraggableTabPaneProps) => {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
     id: props['data-node-key']

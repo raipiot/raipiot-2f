@@ -43,8 +43,10 @@ export default function Table<T extends object = any>(props: TableProps<T>) {
         </TableLayoutFullScreenContext.Provider>
         <div
           className={clsx(
-            'mt-2 h-[calc(100vh-258px)] overflow-auto sm:mt-4 sm:h-[calc(100vh-298px)]',
-            isFullscreen && 'h-[calc(100vh-104px)] sm:h-[calc(100vh-136px)]',
+            'mt-2  overflow-auto sm:mt-4',
+            isFullscreen
+              ? 'h-[calc(100vh-104px)] sm:h-[calc(100vh-136px)]'
+              : 'h-[calc(100vh-258px)] sm:h-[calc(100vh-298px)]',
             styles.tableContainer
           )}
         >

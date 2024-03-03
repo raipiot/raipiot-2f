@@ -31,7 +31,7 @@ export default function TableTitleRow() {
             </APopconfirm>
             {tableLayoutProps.renderTableBatchOpeate && tableLayoutProps.renderTableBatchOpeate}
             <span className="text-xs sm:text-sm">
-              {t('ALREADY.SELECTED', { count: selectedRowKeys!.length })}{' '}
+              {t('ALREADY.SELECTED', { count: selectedRowKeys!.length })}
             </span>
           </>
         ) : (

@@ -11,8 +11,8 @@ export const useSignupForm = () => {
   const { handleSignupRedirect, handleLogin } = useRedirect()
   const signupMutation = useSignupMutation()
   const [isAgreed, setIsAgreed] = useState(false)
-  const [showAgreement, toggleShowAgreement] = useBoolean(false)
-  const [showPrivacy, toggleShowPrivacy] = useBoolean(false)
+  const [showAgreement, toggleShowAgreement] = useBoolean()
+  const [showPrivacy, toggleShowPrivacy] = useBoolean()
   const { message } = AApp.useApp()
 
   const handleSignup = (values: SignupDto) => {

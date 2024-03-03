@@ -13,35 +13,37 @@ export const Route = createLazyFileRoute('/_base/system/dicts/$id')({
 })
 
 function SystemDictItem() {
-  const { id } = useParams({ from: '/_base/system/dicts/$id' })
-  const { t } = useTranslation(['COMMON', 'SYSTEM/DICTS'])
+  const { t } = useTranslation()
 
+  const { id } = useParams({ from: '/_base/system/dicts/$id' })
   const { pageParams, setPageParams, pagination } = usePagination<DictValuePageDto>({
     parentId: id
   })
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
+  const { form, formItems } = useDictsSearchForm()
+  const columns = useDictValuesColumns()
 
   const { data, isFetching, refetch } = useSystemDictValuesSuspenseQuery(pageParams)
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
 
-  const { form, formItems } = useDictsSearchForm()
-  const columns = useDictValuesColumns()
-
-  useEffect(() => {
-    clearSelectedRowKeys()
+  useEffect(
+    () => clearSelectedRowKeys(),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isFetching])
+    [isFetching]
+  )
 
   return (
     <TableLayout<DictVo>
-      renderOperate={
-        <AButton
-          type="primary"
-          onClick={() => {}}
-        >
-          {t('CREATE')}
-        </AButton>
-      }
+      headerProps={{
+        renderOperate: (
+          <AButton
+            type="primary"
+            onClick={() => {}}
+          >
+            {t('CREATE')}
+          </AButton>
+        )
+      }}
       searchBarProps={{
         formItems,
         form,

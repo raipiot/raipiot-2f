@@ -1,10 +1,10 @@
 import type { ParamPageDto } from '@raipiot-2f/api'
 
-import { genSystemParamsQK } from './query-keys'
+import { systemParamsQK } from './query-keys'
 
 export const systemParamsQueryOptions = (params: ParamPageDto) =>
   queryOptions({
-    queryKey: genSystemParamsQK(params),
+    queryKey: systemParamsQK(params),
     queryFn: ({ signal }) => systemParamsAPI.list(params, signal),
     placeholderData: keepPreviousData,
     enabled: false
