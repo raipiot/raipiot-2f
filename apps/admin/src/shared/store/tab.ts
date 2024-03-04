@@ -13,7 +13,7 @@ interface State {
 
 interface Actions {
   addRecordByPath: (path: string) => void
-  removeRecordByPath: (path: string) => void
+  removeRecordByPath: (path: string) => Record[]
   clearRecords: () => void
 }
 
@@ -41,10 +41,14 @@ export const useTabStore = create<State & Actions>()(
        * 移除一个路由地址
        * @param path 路由地址
        */
-      removeRecordByPath: (path: string) =>
-        set((state) => ({
-          records: state.records.filter((record) => path !== record.path || record.path === '/')
-        })),
+      removeRecordByPath: (path: string) => {
+        let records: Record[] = []
+        set((state) => {
+          records = state.records.filter((record) => record.path !== path)
+          return { records }
+        })
+        return records
+      },
       /**
        * 清空所有记录
        */

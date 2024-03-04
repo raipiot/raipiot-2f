@@ -4,18 +4,12 @@ export default function Tabs() {
   const router = useRouter()
   const navigate = useNavigate()
 
-  const onEdit = (
-    targetKey: React.MouseEvent | React.KeyboardEvent | string,
-    action: 'add' | 'remove'
-  ) => {
-    if (action === 'remove' && typeof targetKey === 'string') {
-      tabStore.removeRecordByPath(targetKey)
-      const historyRecords = tabStore.records
-      if (historyRecords.length > 0) {
-        const lastRecord = historyRecords.at(-1)
-        if (lastRecord) {
-          navigate({ to: lastRecord.path })
-        }
+  const onRemove = (targetKey: string) => {
+    const historyRecords = tabStore.removeRecordByPath(targetKey)
+    if (historyRecords.length > 0) {
+      const lastRecord = historyRecords.at(-1)
+      if (lastRecord) {
+        navigate({ to: lastRecord.path })
       }
     }
   }
@@ -36,7 +30,6 @@ export default function Tabs() {
       type="editable-card"
       hideAdd
       activeKey={router.state.location.pathname}
-      onEdit={onEdit}
       size="small"
       items={tabStore.records.map(({ path }) => {
         const { title, icon } = getRouteMeta(path)
@@ -47,7 +40,7 @@ export default function Tabs() {
               trigger={['contextMenu']}
               menu={{
                 items:
-                  path === '/'
+                  path === '/dashboard'
                     ? []
                     : [
                         {
@@ -63,7 +56,7 @@ export default function Tabs() {
                           key: 'close-all',
                           onClick: () => {
                             tabStore.clearRecords()
-                            navigate({ to: '/' })
+                            navigate({ to: '/dashboard' })
                           }
                         }
                       ]
@@ -81,7 +74,16 @@ export default function Tabs() {
             </ADropdown>
           ),
           key: path,
-          closable: path !== '/'
+          closable: path !== '/dashboard',
+          closeIcon: (
+            <MaterialSymbolsCloseSmallOutline
+              className="cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation()
+                onRemove(path)
+              }}
+            />
+          )
         }
       })}
     />

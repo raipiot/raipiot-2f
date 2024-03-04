@@ -71,6 +71,7 @@ declare global {
   const MaterialSymbolsBook3Rounded: typeof import('~icons/material-symbols/book3-rounded.jsx')['default']
   const MaterialSymbolsChatRounded: typeof import('~icons/material-symbols/chat-rounded.jsx')['default']
   const MaterialSymbolsCheckSmallRounded: typeof import('~icons/material-symbols/check-small-rounded.jsx')['default']
+  const MaterialSymbolsCloseSmallOutline: typeof import('~icons/material-symbols/close-small-outline.jsx')['default']
   const MaterialSymbolsCloseSmallRounded: typeof import('~icons/material-symbols/close-small-rounded.jsx')['default']
   const MaterialSymbolsCodeRounded: typeof import('~icons/material-symbols/code-rounded.jsx')['default']
   const MaterialSymbolsCollapseContentRounded: typeof import('~icons/material-symbols/collapse-content-rounded.jsx')['default']
