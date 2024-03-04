@@ -4,6 +4,7 @@ import type { FormItemProps } from 'antd'
 import { TableLayout } from '@/features/layouts'
 import type { DictSearchFormModel, DictSubmitFormModel } from '@/features/system/dicts'
 import {
+  SystemDictDetail,
   useDictsColumns,
   useDictsModalForm,
   useDictsSearchForm,
@@ -23,9 +24,9 @@ function SystemDicts() {
     usePagination<DictPageDto>()
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
   const modal = useModal()
-  const { columns } = useDictsColumns(modal)
   const { searchForm, searchFormItems } = useDictsSearchForm()
   const { modalForm, modalFormItems } = useDictsModalForm()
+  const { columns } = useDictsColumns({ modal, form: modalForm })
 
   const responsive = useResponsive()
 
@@ -45,7 +46,7 @@ function SystemDicts() {
       return '90%'
     }
     if (modal.type === 'read') {
-      return '50%'
+      return '60%'
     }
     return '75%'
   }
@@ -56,7 +57,10 @@ function SystemDicts() {
         renderOperate: (
           <AButton
             type="primary"
-            onClick={modal.openCreate}
+            onClick={() => {
+              modalForm.resetFields()
+              modal.openCreate()
+            }}
           >
             {t('CREATE')}
           </AButton>
@@ -94,6 +98,7 @@ function SystemDicts() {
         confirmLoading: isSubmitPending,
         onOk: modalForm.submit,
         onCancel: modal.toggle,
+        footer: modal.isRead ? null : undefined,
         children: (
           <AForm<DictSubmitFormModel>
             name="modal"
@@ -113,7 +118,7 @@ function SystemDicts() {
             }}
             labelCol={{ span: 6 }}
           >
-            {modal.isCreate && (
+            {(modal.isCreate || modal.isEdit) && (
               <ARow gutter={24}>
                 {modalFormItems &&
                   modalFormItems.map((item) => {
@@ -150,13 +155,17 @@ function SystemDicts() {
               </ARow>
             )}
             {modal.isRead && (
-              <ADescriptions
-                items={modalFormItems.map((i) => ({
-                  label: i.type !== 'custom' && i.formItemProps?.label,
-                  children: '123',
-                  span: 4
-                }))}
-              />
+              <Suspense
+                fallback={
+                  <ASkeleton
+                    active
+                    round
+                    paragraph={{ rows: 10 }}
+                  />
+                }
+              >
+                <SystemDictDetail id={modal.meta} />
+              </Suspense>
             )}
           </AForm>
         )

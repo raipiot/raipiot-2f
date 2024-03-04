@@ -40,6 +40,10 @@ export interface UseModal<T = any> {
    */
   setMeta: Dispatch<SetStateAction<T | undefined>>
   /**
+   * 重置模态框元数据
+   */
+  resetMeta: () => void
+  /**
    * 获取模态框标题（国际化）
    */
   getTitle: () => string
@@ -88,6 +92,8 @@ export const useModal = <T = any>(props?: UseModalProps<T>): UseModal<T> => {
 
   const getTitle = useCallback(() => modalTitleMap.get(type)!(), [type])
 
+  const resetMeta = useCallback(() => setMeta(defaultMeta), [defaultMeta])
+
   const openRead = useCallback(() => setType('read'), [])
 
   const openCreate = useCallback(() => setType('create'), [])
@@ -121,6 +127,7 @@ export const useModal = <T = any>(props?: UseModalProps<T>): UseModal<T> => {
     getTitle,
     meta,
     setMeta,
+    resetMeta,
     isRead,
     isCreate,
     isEdit,

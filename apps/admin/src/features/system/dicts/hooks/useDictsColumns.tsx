@@ -1,10 +1,20 @@
 import type { DictVo } from '@raipiot-2f/api'
+import type { FormInstance } from 'antd'
+import { isMobile } from 'react-device-detect'
 
 import type { UseModal } from '@/shared/hooks/useModal'
 
 import { useSystemDictRemoveMutation } from '../mutations'
+import { systemDictQueryOptions } from '../queries'
 
-export const useDictsColumns = (modal?: UseModal) => {
+interface UseDictsColumnsProps {
+  modal?: UseModal<string>
+  form?: FormInstance
+}
+
+export const useDictsColumns = (props?: UseDictsColumnsProps) => {
+  const { modal, form } = props ?? {}
+
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
   const { createActions, createColumns } = useTableCreator<DictVo>()
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
@@ -36,12 +46,29 @@ export const useDictsColumns = (modal?: UseModal) => {
         custom: { type: 'boolean' }
       },
       createActions({
+        width: 250,
         render: (_, record) => (
-          <ASpace>
+          // rp-table-action 用于非 Hover 表格行上隐藏操作按钮
+          <ASpace className={clsx(!isMobile && 'rp-table-action', 'transition-all ease-out')}>
             <RpViewBtn
               size="small"
-              onClick={modal?.openRead}
+              onClick={() => {
+                modal?.openRead()
+                modal?.setMeta(record.id)
+              }}
             />
+            <AButton
+              size="small"
+              onClick={async () => {
+                modal?.openEdit()
+                modal?.setMeta(record.id)
+                form?.setFieldsValue(
+                  await queryClient.ensureQueryData(systemDictQueryOptions(record.id!))
+                )
+              }}
+            >
+              {t('COMMON:EDIT')}
+            </AButton>
             <Link
               to="/system/dicts/$id"
               params={{ id: record.id! }}
