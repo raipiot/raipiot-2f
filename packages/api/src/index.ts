@@ -1,4 +1,5 @@
 export * from './auth'
+export * from './dashboard'
 export * from './portal'
 export * from './system'
 export * from './types'

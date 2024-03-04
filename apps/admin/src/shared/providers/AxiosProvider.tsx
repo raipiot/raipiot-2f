@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react'
 
-export default function AxiosProvider({ children }: PropsWithChildren) {
+export function AxiosProvider({ children }: PropsWithChildren) {
   const { message } = AApp.useApp()
 
   const [initialized, setInitialized] = useState(false)
