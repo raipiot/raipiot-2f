@@ -16,6 +16,18 @@
         justify-content: center;
       }
     }
+    .ant-table-row {
+      .rp-table-action {
+        opacity: 0;
+        transform: rotateX(60deg) translateX(20%);
+      }
+      &:hover {
+        .rp-table-action {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    }
   }
 
   .tableContainer {

@@ -71,8 +71,8 @@ export class SystemDictsAPI extends BaseAPI {
   /**
    * 详情
    */
-  async detail() {
-    return this.httpRequest.get<DictVo>(`${this.#API_PREFIX}/detail`)
+  async detail(id: string) {
+    return this.httpRequest.get<DictVo>(`${this.#API_PREFIX}/detail`, { id })
   }
 
   /**

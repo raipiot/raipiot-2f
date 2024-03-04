@@ -4,6 +4,7 @@ import type { FormItemProps } from 'antd'
 import { TableLayout } from '@/features/layouts'
 import type { DictSearchFormModel, DictSubmitFormModel } from '@/features/system/dicts'
 import {
+  SystemDictDetail,
   useDictsColumns,
   useDictsModalForm,
   useDictsSearchForm,
@@ -19,12 +20,13 @@ export const Route = createLazyFileRoute('/_base/system/dicts/')({
 function SystemDicts() {
   const { t } = useTranslation()
 
-  const { pageParams, pagination, isPending, onSearch } = usePagination<DictPageDto>()
+  const { pageParams, setPageParams, pagination, isPending, startTransition } =
+    usePagination<DictPageDto>()
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
-  const { open, toggle, setModalType, getModalTitle } = useModal()
-  const { columns } = useDictsColumns()
+  const modal = useModal()
   const { searchForm, searchFormItems } = useDictsSearchForm()
   const { modalForm, modalFormItems } = useDictsModalForm()
+  const { columns } = useDictsColumns({ modal, form: modalForm })
 
   const responsive = useResponsive()
 
@@ -39,6 +41,16 @@ function SystemDicts() {
 
   useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
 
+  const computedModalWidth = () => {
+    if (!responsive.sm) {
+      return '90%'
+    }
+    if (modal.type === 'read') {
+      return '60%'
+    }
+    return '75%'
+  }
+
   return (
     <TableLayout<DictVo, DictSearchFormModel>
       headerProps={{
@@ -46,8 +58,8 @@ function SystemDicts() {
           <AButton
             type="primary"
             onClick={() => {
-              setModalType('create')
-              toggle()
+              modalForm.resetFields()
+              modal.openCreate()
             }}
           >
             {t('CREATE')}
@@ -57,7 +69,8 @@ function SystemDicts() {
       searchBarProps={{
         form: searchForm,
         formItems: searchFormItems,
-        onSearch
+        onSearch: (values) =>
+          startTransition(() => setPageParams(PageUtils.mergeParams(pageParams, values)))
       }}
       tableProps={{
         rowKey: (record) => record.id!,
@@ -67,20 +80,25 @@ function SystemDicts() {
         pagination: { ...pagination, total }
       }}
       refreshLoading={isPending}
-      onRefresh={refetch}
+      onRefresh={() =>
+        startTransition(() => {
+          refetch()
+        })
+      }
       batchDeleteLoading={isRemovePending}
       onBatchDelete={(ids) =>
         removeMutateAsync(ids.join(), {
-          onSuccess: () => clearSelectedRowKeys()
+          onSuccess: clearSelectedRowKeys
         })
       }
       modalProps={{
-        open,
-        title: getModalTitle(),
-        width: responsive.sm ? '75%' : '90%',
+        open: modal.open,
+        title: modal.getTitle(),
+        width: computedModalWidth(),
         confirmLoading: isSubmitPending,
-        onOk: () => modalForm.submit(),
-        onCancel: () => toggle(),
+        onOk: modalForm.submit,
+        onCancel: modal.toggle,
+        footer: modal.isRead ? null : undefined,
         children: (
           <AForm<DictSubmitFormModel>
             name="modal"
@@ -96,44 +114,59 @@ function SystemDicts() {
                 isSealed: FormatUtils.toDbNum(values.isSealed)
               })
               modalForm.resetFields()
-              toggle()
+              modal.toggle()
             }}
             labelCol={{ span: 6 }}
           >
-            <ARow gutter={24}>
-              {modalFormItems &&
-                modalFormItems.map((item) => {
-                  const { type } = item
-                  if (type === 'custom') {
-                    return typeof item.render === 'function' ? item.render() : item.render
-                  }
-                  const { key, colProps, formItemProps } = item
-                  return (
-                    <ACol
-                      key={key.toString()}
-                      {...colProps}
-                    >
-                      <AForm.Item
-                        name={key as FormItemProps['name']}
-                        {...formItemProps}
+            {(modal.isCreate || modal.isEdit) && (
+              <ARow gutter={24}>
+                {modalFormItems &&
+                  modalFormItems.map((item) => {
+                    const { type } = item
+                    if (type === 'custom') {
+                      return typeof item.render === 'function' ? item.render() : item.render
+                    }
+                    const { key, colProps, formItemProps } = item
+                    return (
+                      <ACol
+                        key={key.toString()}
+                        {...colProps}
                       >
-                        {type === 'input' && <AInput {...item.inputProps} />}
-                        {type === 'select' && <ASelect {...item.selectProps} />}
-                        {type === 'tree-select' && <ATreeSelect {...item.treeSelectProps} />}
-                        {type === 'cascader' && <ACascader {...item.cascaderProps} />}
-                        {type === 'date-picker' && <ADatePicker {...item.datePickerProps} />}
-                        {type === 'input-number' && <AInputNumber {...item.inputNumberProps} />}
-                        {type === 'switch' && <ASwitch {...item.switchProps} />}
-                        {type === 'button' && (
-                          <AButton {...item.buttonProps}>{item.buttonProps?.children}</AButton>
-                        )}
-                        {type === 'form-item' &&
-                          (typeof item.render === 'function' ? item.render() : item.render)}
-                      </AForm.Item>
-                    </ACol>
-                  )
-                })}
-            </ARow>
+                        <AForm.Item
+                          name={key as FormItemProps['name']}
+                          {...formItemProps}
+                        >
+                          {type === 'input' && <AInput {...item.inputProps} />}
+                          {type === 'select' && <ASelect {...item.selectProps} />}
+                          {type === 'tree-select' && <ATreeSelect {...item.treeSelectProps} />}
+                          {type === 'cascader' && <ACascader {...item.cascaderProps} />}
+                          {type === 'date-picker' && <ADatePicker {...item.datePickerProps} />}
+                          {type === 'input-number' && <AInputNumber {...item.inputNumberProps} />}
+                          {type === 'switch' && <ASwitch {...item.switchProps} />}
+                          {type === 'button' && (
+                            <AButton {...item.buttonProps}>{item.buttonProps?.children}</AButton>
+                          )}
+                          {type === 'form-item' &&
+                            (typeof item.render === 'function' ? item.render() : item.render)}
+                        </AForm.Item>
+                      </ACol>
+                    )
+                  })}
+              </ARow>
+            )}
+            {modal.isRead && (
+              <Suspense
+                fallback={
+                  <ASkeleton
+                    active
+                    round
+                    paragraph={{ rows: 10 }}
+                  />
+                }
+              >
+                <SystemDictDetail id={modal.meta} />
+              </Suspense>
+            )}
           </AForm>
         )
       }}

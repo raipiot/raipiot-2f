@@ -28,7 +28,7 @@ const RpBoolean = rpWithSkeleton((props: RpBooleanProps) => {
             // NOTE: 消除默认内联边距
             marginInlineEnd: 0
           }}
-          color="blue"
+          color={booleanValue ? 'success' : 'gold'}
           bordered
         >
           {booleanValue ? t('Y') : t('N')}

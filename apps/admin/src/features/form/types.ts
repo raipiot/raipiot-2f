@@ -54,4 +54,5 @@ export type RpSearchFormItem<T> =
         | RpCustomFormItem
       ))
   | RpCustom<T>
+
 export interface RpFormItem<T> extends RpBaseFormItem<T> {}

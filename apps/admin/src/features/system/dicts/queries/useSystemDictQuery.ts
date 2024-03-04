@@ -1,10 +1,12 @@
 import { systemDictQK } from './query-keys'
 
-export const systemDictQueryOptions = queryOptions({
-  queryKey: systemDictQK(),
-  queryFn: () => systemDictsAPI.detail()
-})
+export const systemDictQueryOptions = (id: string) =>
+  queryOptions({
+    queryKey: systemDictQK(id),
+    queryFn: () => systemDictsAPI.detail(id)
+  })
 
-export const useSystemDictQuery = () => useQuery(systemDictQueryOptions)
+export const useSystemDictQuery = (id: string) => useQuery(systemDictQueryOptions(id))
 
-export const useSystemDictSuspenseQuery = () => useSuspenseQuery(systemDictQueryOptions)
+export const useSystemDictSuspenseQuery = (id: string) =>
+  useSuspenseQuery(systemDictQueryOptions(id))

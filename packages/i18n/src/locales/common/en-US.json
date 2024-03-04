@@ -82,5 +82,6 @@
   "COLLAPSE": "Collapse",
   "CREATE.CHILD": "Create child",
   "CLOSE.ALL.TAGS": "Close all tags",
-  "CLOSE.OTHER.TAGS": "Close other tags"
+  "CLOSE.OTHER.TAGS": "Close other tags",
+  "CONFIG": "Config"
 }
