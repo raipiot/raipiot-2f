@@ -1,6 +1,6 @@
 import { BaseLayoutTransition } from './BaseLayoutTransition'
 
-// TODO: Add dark mode
+// TODO: 添加暗黑模式，移动到 ThemeConfig 里
 export default function Content() {
   return (
     <ALayout.Content>
