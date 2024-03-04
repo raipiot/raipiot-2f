@@ -3,7 +3,12 @@ import type { Dispatch, SetStateAction } from 'react'
 import type { ModalType } from '@/features/modal'
 import { modalTitleMap } from '@/features/modal/maps'
 
-export interface UseModal {
+interface UseModalProps<T> {
+  meta: T
+  open?: boolean
+}
+
+export interface UseModal<T = any> {
   /**
    * 模态框当前打开状态
    * @default false
@@ -27,6 +32,14 @@ export interface UseModal {
    */
   setType: Dispatch<SetStateAction<ModalType>>
   /**
+   * 模态框元数据
+   */
+  meta?: T
+  /**
+   * 设置模态框元数据
+   */
+  setMeta: Dispatch<SetStateAction<T | undefined>>
+  /**
    * 获取模态框标题（国际化）
    */
   getTitle: () => string
@@ -46,19 +59,29 @@ export interface UseModal {
    * 打开查看模态框
    */
   openRead: () => void
+  /**
+   * 打开创建模态框
+   */
   openCreate: () => void
+  /**
+   * 打开编辑模态框
+   */
   openEdit: () => void
+  /**
+   * 关闭模态框
+   */
   close: () => void
 }
 
-export const useModal = (defaultValue: boolean = false): UseModal => {
+export const useModal = <T = any>(props?: UseModalProps<T>): UseModal<T> => {
+  const { meta: defaultMeta, open: defaultValue = false } = props ?? {}
+
+  const [meta, setMeta] = useState<T | undefined>(defaultMeta)
   const [open, setOpen] = useState(defaultValue)
   const [type, setType] = useState<ModalType>('closed')
 
   const isRead = useMemo(() => type === 'read', [type])
-
   const isCreate = useMemo(() => type === 'create', [type])
-
   const isEdit = useMemo(() => type === 'edit', [type])
 
   const toggle = useCallback(() => setOpen((prev) => !prev), [])
@@ -76,8 +99,16 @@ export const useModal = (defaultValue: boolean = false): UseModal => {
   useEffect(() => setOpen(type !== 'closed'), [type])
 
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout | null = null
     if (!open) {
-      setType('closed')
+      timeoutId = setTimeout(() => {
+        setType('closed')
+      }, 100) // 延迟执行，避免模态框宽度闪烁
+    }
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId)
+      }
     }
   }, [open])
 
@@ -88,6 +119,8 @@ export const useModal = (defaultValue: boolean = false): UseModal => {
     type,
     setType,
     getTitle,
+    meta,
+    setMeta,
     isRead,
     isCreate,
     isEdit,

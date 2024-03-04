@@ -34,14 +34,10 @@ export const usePagination = <T extends PageDto>(initialValue?: Partial<T>) => {
         : null
   }
 
-  const onSearch = <D extends Record<string, any>>(values?: D) =>
-    startTransition(() => setPageParams(PageUtils.mergeParams(pageParams, values)))
-
   return {
     pageParams,
     setPageParams,
     pagination,
-    onSearch,
     isPending,
     startTransition
   }

@@ -19,7 +19,8 @@ export const Route = createLazyFileRoute('/_base/system/dicts/')({
 function SystemDicts() {
   const { t } = useTranslation()
 
-  const { pageParams, pagination, onSearch, isPending } = usePagination<DictPageDto>()
+  const { pageParams, setPageParams, pagination, isPending, startTransition } =
+    usePagination<DictPageDto>()
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
   const modal = useModal()
   const { columns } = useDictsColumns(modal)
@@ -39,6 +40,16 @@ function SystemDicts() {
 
   useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
 
+  const computedModalWidth = () => {
+    if (!responsive.sm) {
+      return '90%'
+    }
+    if (modal.type === 'read') {
+      return '50%'
+    }
+    return '75%'
+  }
+
   return (
     <TableLayout<DictVo, DictSearchFormModel>
       headerProps={{
@@ -54,7 +65,8 @@ function SystemDicts() {
       searchBarProps={{
         form: searchForm,
         formItems: searchFormItems,
-        onSearch
+        onSearch: (values) =>
+          startTransition(() => setPageParams(PageUtils.mergeParams(pageParams, values)))
       }}
       tableProps={{
         rowKey: (record) => record.id!,
@@ -64,7 +76,11 @@ function SystemDicts() {
         pagination: { ...pagination, total }
       }}
       refreshLoading={isPending}
-      onRefresh={refetch}
+      onRefresh={() =>
+        startTransition(() => {
+          refetch()
+        })
+      }
       batchDeleteLoading={isRemovePending}
       onBatchDelete={(ids) =>
         removeMutateAsync(ids.join(), {
@@ -74,7 +90,7 @@ function SystemDicts() {
       modalProps={{
         open: modal.open,
         title: modal.getTitle(),
-        width: responsive.sm ? '75%' : '90%',
+        width: computedModalWidth(),
         confirmLoading: isSubmitPending,
         onOk: modalForm.submit,
         onCancel: modal.toggle,
@@ -133,7 +149,15 @@ function SystemDicts() {
                   })}
               </ARow>
             )}
-            {modal.isRead && <div>123</div>}
+            {modal.isRead && (
+              <ADescriptions
+                items={modalFormItems.map((i) => ({
+                  label: i.type !== 'custom' && i.formItemProps?.label,
+                  children: '123',
+                  span: 4
+                }))}
+              />
+            )}
           </AForm>
         )
       }}
