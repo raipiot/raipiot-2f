@@ -18,26 +18,26 @@ importers:
         specifier: workspace:^
         version: link:packages/cspell
       '@raipiot-infra/commitlint-config':
-        specifier: ^0.1.7
-        version: 0.1.7(@commitlint/cli@19.0.3)(@commitlint/config-conventional@19.0.3)(commitizen@4.3.0)(cz-git@1.9.0)
+        specifier: ^0.1.8
+        version: 0.1.8(@commitlint/cli@19.0.3)(@commitlint/config-conventional@19.0.3)(commitizen@4.3.0)(cz-git@1.9.0)
       '@raipiot-infra/cspell':
-        specifier: ^0.1.7
-        version: 0.1.7(cspell@8.5.0)
+        specifier: ^0.1.8
+        version: 0.1.8(cspell@8.5.0)
       '@raipiot-infra/eslint-config':
-        specifier: ^0.1.7
-        version: 0.1.7(eslint@8.57.0)(tailwindcss@3.4.1)(typescript@5.3.3)
+        specifier: ^0.1.8
+        version: 0.1.8(eslint@8.57.0)(tailwindcss@3.4.1)(typescript@5.3.3)
       '@raipiot-infra/eslint-config-ts':
-        specifier: ^0.1.7
-        version: 0.1.7(eslint-plugin-jsx-a11y@6.8.0)(eslint@8.57.0)(typescript@5.3.3)
+        specifier: ^0.1.8
+        version: 0.1.8(eslint-plugin-jsx-a11y@6.8.0)(eslint@8.57.0)(typescript@5.3.3)
       '@raipiot-infra/prettier':
-        specifier: ^0.1.7
-        version: 0.1.7(prettier@3.2.5)
+        specifier: ^0.1.8
+        version: 0.1.8(prettier@3.2.5)
       '@raipiot-infra/rpx':
-        specifier: ^0.1.7
-        version: 0.1.7
+        specifier: ^0.1.8
+        version: 0.1.8
       '@raipiot-infra/tsconfig':
-        specifier: ^0.1.7
-        version: 0.1.7(typescript@5.3.3)
+        specifier: ^0.1.8
+        version: 0.1.8(typescript@5.3.3)
       commitizen:
         specifier: ^4.3.0
         version: 4.3.0(@types/node@20.11.24)(typescript@5.3.3)
@@ -105,23 +105,23 @@ importers:
         specifier: workspace:^
         version: link:../../packages/i18n
       '@raipiot-infra/antd':
-        specifier: ^0.1.7
-        version: 0.1.7(antd@5.15.0)(dayjs@1.11.10)(react@18.2.0)
+        specifier: ^0.1.8
+        version: 0.1.8(antd@5.15.0)(dayjs@1.11.10)(react@18.2.0)
       '@raipiot-infra/config':
-        specifier: ^0.1.7
-        version: 0.1.7
+        specifier: ^0.1.8
+        version: 0.1.8
       '@raipiot-infra/enums':
-        specifier: ^0.1.7
-        version: 0.1.7
+        specifier: ^0.1.8
+        version: 0.1.8
       '@raipiot-infra/tanstack-query':
-        specifier: ^0.1.7
-        version: 0.1.7
+        specifier: ^0.1.8
+        version: 0.1.8
       '@raipiot-infra/theme':
-        specifier: ^0.1.7
-        version: 0.1.7(antd@5.15.0)
+        specifier: ^0.1.8
+        version: 0.1.8(antd@5.15.0)
       '@raipiot-infra/utils':
-        specifier: ^0.1.7
-        version: 0.1.7(dayjs@1.11.10)
+        specifier: ^0.1.8
+        version: 0.1.8(dayjs@1.11.10)
       '@tanstack/react-query':
         specifier: ^5.24.7
         version: 5.24.7(react@18.2.0)
@@ -190,14 +190,14 @@ importers:
         specifier: ^4.1.1
         version: 4.1.1(react@18.2.0)
       '@raipiot-infra/auto-import':
-        specifier: ^0.1.7
-        version: 0.1.7(unplugin-auto-import@0.17.5)
+        specifier: ^0.1.8
+        version: 0.1.8(unplugin-auto-import@0.17.5)
       '@raipiot-infra/bootstrap-animation':
-        specifier: ^0.1.7
-        version: 0.1.7(vite@5.1.4)
+        specifier: ^0.1.8
+        version: 0.1.8(vite@5.1.4)
       '@raipiot-infra/tailwind':
-        specifier: ^0.1.7
-        version: 0.1.7(tailwindcss@3.4.1)
+        specifier: ^0.1.8
+        version: 0.1.8(antd@5.15.0)(tailwindcss@3.4.1)
       '@svgr/core':
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.3.3)
@@ -329,8 +329,8 @@ importers:
         specifier: ^10.3.3
         version: 10.3.3(@nestjs/common@10.3.3)(@nestjs/core@10.3.3)(@nestjs/platform-express@10.3.3)
       '@raipiot-infra/bootstrap-animation':
-        specifier: ^0.1.7
-        version: 0.1.7(vite@5.1.4)
+        specifier: ^0.1.8
+        version: 0.1.8(vite@5.1.4)
       '@types/express':
         specifier: ^4.17.21
         version: 4.17.21
@@ -386,11 +386,11 @@ importers:
         specifier: workspace:^
         version: link:../config
       '@raipiot-infra/enums':
-        specifier: ^0.1.7
-        version: 0.1.7
+        specifier: ^0.1.8
+        version: 0.1.8
       '@raipiot-infra/utils':
-        specifier: ^0.1.7
-        version: 0.1.7(dayjs@1.11.10)
+        specifier: ^0.1.8
+        version: 0.1.8(dayjs@1.11.10)
       '@tanstack/react-router':
         specifier: ^1.18.3
         version: 1.18.3(react-dom@18.2.0)(react@18.2.0)
@@ -407,8 +407,8 @@ importers:
   packages/config:
     dependencies:
       '@raipiot-infra/config':
-        specifier: ^0.1.7
-        version: 0.1.7
+        specifier: ^0.1.8
+        version: 0.1.8
     devDependencies:
       vite:
         specifier: ^5.1.4
@@ -459,11 +459,11 @@ importers:
   packages/i18n:
     dependencies:
       '@raipiot-infra/enums':
-        specifier: ^0.1.7
-        version: 0.1.7
+        specifier: ^0.1.8
+        version: 0.1.8
       '@raipiot-infra/utils':
-        specifier: ^0.1.7
-        version: 0.1.7(dayjs@1.11.10)
+        specifier: ^0.1.8
+        version: 0.1.8(dayjs@1.11.10)
       antd:
         specifier: ^5.15.0
         version: 5.15.0(react-dom@18.2.0)(react@18.2.0)
@@ -546,7 +546,6 @@ packages:
     resolution: {integrity: sha512-7KJkhTiPiLHSu+LmMJnehfJ6242OCxSlR3xHVBecYxnMW8MS/878NXct1GqYARyL59fyeFdKRxXTfvR9SnDgJg==}
     dependencies:
       '@ctrl/tinycolor': 3.6.1
-    dev: false
 
   /@ant-design/cssinjs@1.18.4(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-IrUAOj5TYuMG556C9gdbFuOrigyhzhU5ZYpWb3gYTxAwymVqRbvLzFCZg6OsjLBR6GhzcxYF3AhxKmjB+rA2xA==}
@@ -563,7 +562,6 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       stylis: 4.3.1
-    dev: false
 
   /@ant-design/happy-work-theme@1.0.0(antd@5.15.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-BKuz5PZkGZwXqzDwTE9fiHYlpKdDyoGnApEih2MG1GF79/a/YekxBc4tdqocykDtWzt3z1wwmHv8AiB7EUTWsQ==}
@@ -586,7 +584,6 @@ packages:
 
   /@ant-design/icons-svg@4.4.1:
     resolution: {integrity: sha512-dIEsZNOeikwCsgSLpwE0Vsgiaj10bKcgut+CvGD5Dck4kOA+TuFcTCM+l2uEs4cMUANkfjrt3hDg1PzlDNhXqg==}
-    dev: false
 
   /@ant-design/icons@5.3.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-85zROTJCCApQn0Ee6L9561+Vd7yVKtSWNm2TpmOsYMrumchbzaRK83x1WWHv2VG+Y1ZAaKkDwcnnSPS/eSwNHA==}
@@ -602,7 +599,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /@ant-design/react-slick@1.0.2(react@18.2.0):
     resolution: {integrity: sha512-Wj8onxL/T8KQLFFiCA4t8eIRGpRR+UPgOdac2sYzonv+i0n3kXHmvHLLiOYL655DQx2Umii9Y9nNgL7ssu5haQ==}
@@ -615,7 +611,6 @@ packages:
       react: 18.2.0
       resize-observer-polyfill: 1.5.1
       throttle-debounce: 5.0.0
-    dev: false
 
   /@antfu/install-pkg@0.1.1:
     resolution: {integrity: sha512-LyB/8+bSfa0DFGC06zpCEfs89/XoWZwws5ygEa5D+Xsm3OfI+aXQ86VgVG7Acyef+rSZ5HE7J8rrxzrQeM3PjQ==}
@@ -1635,7 +1630,6 @@ packages:
   /@ctrl/tinycolor@3.6.1:
     resolution: {integrity: sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==}
     engines: {node: '>=10'}
-    dev: false
 
   /@cypress/request@3.0.1:
     resolution: {integrity: sha512-TWivJlJi8ZDx2wGOw1dbLuHJKUYX7bWySw377nlnGOW3hP9/MUKIsEdXT/YngWxVdgNCHRBmFlBipE+5/2ZZlQ==}
@@ -1715,7 +1709,6 @@ packages:
 
   /@emotion/hash@0.8.0:
     resolution: {integrity: sha512-kBJtf7PH6aWwZ6fka3zQ0p6SBYzx4fl1LoZXE2RrnYST9Xljm7WfKJrU4g/Xr3Beg72MLrp1AWNUmuYJTL7Cow==}
-    dev: false
 
   /@emotion/is-prop-valid@0.8.8:
     resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
@@ -1733,7 +1726,6 @@ packages:
 
   /@emotion/unitless@0.7.5:
     resolution: {integrity: sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==}
-    dev: false
 
   /@esbuild/aix-ppc64@0.19.12:
     resolution: {integrity: sha512-bmoCYyWdEL3wDQIVbcyzRyeKLgk2WtWLTWz1ZIAZF/EGbNOwSA6ew3PftJ1PqMiOOGu0OyFMzG53L0zqIpPeNA==}
@@ -2646,14 +2638,14 @@ packages:
     resolution: {integrity: sha512-2LuNTFBIO0m7kKIQvvPHN6UE63VjpmL9rnEEaOOaiSPbZK+zUOYIzBAWcED+3XYzhYsd/0mD57VdxAEqqV52CQ==}
     dev: true
 
-  /@raipiot-infra/antd@0.1.7(antd@5.15.0)(dayjs@1.11.10)(react@18.2.0):
-    resolution: {integrity: sha512-aHhM46mrlLHN4tXLm6Jvfi96HMf3gkTmXQQdyQXHtOhq1+rEpKQmsaWL0MEnFv5g7ddnxE+xM0+fG5TZ+/lSQg==}
+  /@raipiot-infra/antd@0.1.8(antd@5.15.0)(dayjs@1.11.10)(react@18.2.0):
+    resolution: {integrity: sha512-iRCHbBHcerNkUppUxHiRKq92+21RXANmRe2wljTG56+CXPrg5LJJWVytJwNWFl641SE5Youcrc8XkvDLh3DpsA==}
     peerDependencies:
       antd: '>=5.15.0'
       react: '>=18.2.0'
     dependencies:
-      '@raipiot-infra/enums': 0.1.7
-      '@raipiot-infra/utils': 0.1.7(dayjs@1.11.10)
+      '@raipiot-infra/enums': 0.1.8
+      '@raipiot-infra/utils': 0.1.8(dayjs@1.11.10)
       antd: 5.15.0(react-dom@18.2.0)(react@18.2.0)
       clsx: 2.1.0
       lodash-es: 4.17.21
@@ -2662,8 +2654,8 @@ packages:
       - dayjs
     dev: false
 
-  /@raipiot-infra/auto-import@0.1.7(unplugin-auto-import@0.17.5):
-    resolution: {integrity: sha512-9nHDrWJdBlh9Anl5NuUQvhB137hpNEVJh/Uqfel4osLsW8T8DPe2Hus65aW+LHVUBQ0+1FZ0lHTvKVzwSRws6Q==}
+  /@raipiot-infra/auto-import@0.1.8(unplugin-auto-import@0.17.5):
+    resolution: {integrity: sha512-w7lRRZlj2lz4pAuWerZAn9ls8V1QMTL+T3BmcYLVoyuq3wxC02KSaDI/p3SfOnpx1QZU4OLt2YgWYzC+ULSyYg==}
     peerDependencies:
       unplugin-auto-import: ^0.17.5
     dependencies:
@@ -2676,27 +2668,24 @@ packages:
       - rollup
     dev: true
 
-  /@raipiot-infra/bootstrap-animation@0.1.7(vite@5.1.4):
-    resolution: {integrity: sha512-IEAcwvm9LQnbwvWma46ziGMmJkSw17uWEWAACJ63Y+YPRVrq+cdm5Y4IwA6o5AGEr56zaAHHbznxdO6pXdWAgA==}
+  /@raipiot-infra/bootstrap-animation@0.1.8(vite@5.1.4):
+    resolution: {integrity: sha512-exbN/QEm73tQDCIhgr/kadLXFHDV2QKaL0lNz2D3cxiL0lPofCqgxzaD6DatTxEwF2uKt7TXJAarPn9T4zY4hA==}
     peerDependencies:
       vite: ^5.1.4
     dependencies:
-      '@raipiot-infra/config': 0.1.7
+      '@raipiot-infra/config': 0.1.8
       figlet: 1.7.0
       gradient-string: 2.0.2
       vite: 5.1.4(@types/node@20.11.24)(sass@1.71.1)
     dev: true
 
-  /@raipiot-infra/commitlint-config@0.1.7(@commitlint/cli@19.0.3)(@commitlint/config-conventional@19.0.3)(commitizen@4.3.0)(cz-git@1.9.0):
-    resolution: {integrity: sha512-QkQREe+jPUxlXmV+NfPElIterL0xSCcdhroc2ed1wVhMlCLQtuZ4/73pBKvbkWIn+4Yr4sAz6MniluSFejfHDA==}
+  /@raipiot-infra/commitlint-config@0.1.8(@commitlint/cli@19.0.3)(@commitlint/config-conventional@19.0.3)(commitizen@4.3.0)(cz-git@1.9.0):
+    resolution: {integrity: sha512-TRZ/atxJAIo+J6Ndj2hQDgvZfUYAkSvaBs27vfMNhOrh/9ukzMZUHbsp9DCyqtT+YcphAy8+1vUClrozSj2BiQ==}
     peerDependencies:
       '@commitlint/cli': ^19.0.3
       '@commitlint/config-conventional': ^19.0.3
       commitizen: ^4.3.0
       cz-git: ^1.9.0
-    peerDependenciesMeta:
-      cz-git:
-        optional: true
     dependencies:
       '@commitlint/cli': 19.0.3(@types/node@20.11.24)(typescript@5.3.3)
       '@commitlint/config-conventional': 19.0.3
@@ -2704,36 +2693,36 @@ packages:
       cz-git: 1.9.0
     dev: true
 
-  /@raipiot-infra/config@0.1.7:
-    resolution: {integrity: sha512-CIw5guMbIto6f3Q8LOO5lSf9+4w554wy5j1ViZXeSx8FNQR7byVHFhV+RdGcYuOpDGHoDnZ2VmmqfzuDjQoaBQ==}
+  /@raipiot-infra/config@0.1.8:
+    resolution: {integrity: sha512-iq1uRL2kYR+PD8SQBXGQjQ+Vy/3UPWN+/i7jalzDHSbj0cWpmbSCG/o+mFmaSit2Kc3jUYfFVBICdUtUeSwGww==}
 
-  /@raipiot-infra/cspell@0.1.7(cspell@8.5.0):
-    resolution: {integrity: sha512-760xFZPKL3xOiOi0r/g+/cx5xdUV4jxUMGs/tks4Zl9l+6b4fYOkQ92vnDACzdsWLrW1lzYZpMDlB+eaL6dh6Q==}
+  /@raipiot-infra/cspell@0.1.8(cspell@8.5.0):
+    resolution: {integrity: sha512-KJVL8yCIH+pq5LZXV7+gNrnpLkxe0KNMi2/RsGbxjGc+f0f0ASvANx4z0c7Tzme3d9WhOVb2DgFPNoYrEyAVLQ==}
     peerDependencies:
       cspell: ^8.5.0
     dependencies:
       cspell: 8.5.0
     dev: true
 
-  /@raipiot-infra/enums@0.1.7:
-    resolution: {integrity: sha512-tKipAhwTdBvIZtxFw7UDvnFjvsghubRT9CWOLfq63QMFLJHqIaOtCtSt4O5DM2xks/znQbG98sveobI041buig==}
+  /@raipiot-infra/enums@0.1.8:
+    resolution: {integrity: sha512-vac5SWl5IR4UMIB9lxvIQcmyuSGU65h54WtFSWpPsCpjSxX+mT0Z3V/f0D+59NDgBVnJ/2Hm4uurA/aJoDXIpg==}
     dev: false
 
-  /@raipiot-infra/eslint-config-base@0.1.7(eslint-plugin-jsx-a11y@6.8.0):
-    resolution: {integrity: sha512-NHnysJc7PtePEPJEFboV7JCT2BkNnrn06jS87XrB+eR1LnvyodwO3aJtDTFFqbCgeLEFdmPdMVZSzoncix+n2g==}
+  /@raipiot-infra/eslint-config-base@0.1.8(eslint-plugin-jsx-a11y@6.8.0):
+    resolution: {integrity: sha512-Or83OJrSw9XPuPiCnTYTcVFGIN2SQuW6sNacSxmbelSymeKaSsPnMXSMTuV/eQiTvS1Y54ahLgaVZYSRI4WQjg==}
     peerDependencies:
       eslint-plugin-jsx-a11y: ^6.8.0
     dependencies:
       eslint-plugin-jsx-a11y: 6.8.0(eslint@8.57.0)
     dev: true
 
-  /@raipiot-infra/eslint-config-react@0.1.7(eslint@8.57.0)(tailwindcss@3.4.1)(typescript@5.3.3):
-    resolution: {integrity: sha512-ngKm6NWeGLx5KKBq51VjYL/Uce1PpXnZ2D/5aQR6r2DIEdCoGRBD8B02dZkQVMeV+ExODrpFfbg8XwH8kgeaig==}
+  /@raipiot-infra/eslint-config-react@0.1.8(eslint@8.57.0)(tailwindcss@3.4.1)(typescript@5.3.3):
+    resolution: {integrity: sha512-AKp8ZEGHBfGSEZT0wQ7SuaOxhDspT9XBmD9QwWqJEZkd08DRYde1GbI7+v+h1wohiM/zsHMaQa7UA2orzmquXw==}
     peerDependencies:
       eslint: ^8.57.0
       typescript: '>=5.0.0'
     dependencies:
-      '@raipiot-infra/eslint-config-base': 0.1.7(eslint-plugin-jsx-a11y@6.8.0)
+      '@raipiot-infra/eslint-config-base': 0.1.8(eslint-plugin-jsx-a11y@6.8.0)
       '@tanstack/eslint-plugin-query': 5.20.1(eslint@8.57.0)(typescript@5.3.3)
       '@typescript-eslint/eslint-plugin': 7.1.0(@typescript-eslint/parser@7.1.0)(eslint@8.57.0)(typescript@5.3.3)
       '@typescript-eslint/parser': 7.1.0(eslint@8.57.0)(typescript@5.3.3)
@@ -2758,13 +2747,13 @@ packages:
       - tailwindcss
     dev: true
 
-  /@raipiot-infra/eslint-config-ts@0.1.7(eslint-plugin-jsx-a11y@6.8.0)(eslint@8.57.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-PdiCRXW3QSnsm0jccl/SRqpX80WGHi6DbQJIOe7ojernY/0UiAfOAqn24KsPjWwxCjS6POkl4q8VXWNd2nvTlQ==}
+  /@raipiot-infra/eslint-config-ts@0.1.8(eslint-plugin-jsx-a11y@6.8.0)(eslint@8.57.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-vg8UdVMXgGpAHB8eVGWfO+6nKp7DbbwCDuEl8wv3YbGYmBwfdBiidO0RvDxkhJdywlTzIQyCRqPrKyEc+HiazA==}
     peerDependencies:
       eslint: ^8.57.0
       typescript: '>=5.0.0'
     dependencies:
-      '@raipiot-infra/eslint-config-base': 0.1.7(eslint-plugin-jsx-a11y@6.8.0)
+      '@raipiot-infra/eslint-config-base': 0.1.8(eslint-plugin-jsx-a11y@6.8.0)
       '@typescript-eslint/eslint-plugin': 7.1.0(@typescript-eslint/parser@7.1.0)(eslint@8.57.0)(typescript@5.3.3)
       '@typescript-eslint/parser': 7.1.0(eslint@8.57.0)(typescript@5.3.3)
       eslint: 8.57.0
@@ -2784,13 +2773,13 @@ packages:
       - supports-color
     dev: true
 
-  /@raipiot-infra/eslint-config@0.1.7(eslint@8.57.0)(tailwindcss@3.4.1)(typescript@5.3.3):
-    resolution: {integrity: sha512-ckqC3jSM9u5a/k1Dyo/wiFJyLhLdLQZByf8q5VvooXn7wGAu8rtHDPDiYn1sNeV/UtnDhjDimny4oYZ4/3aS6A==}
+  /@raipiot-infra/eslint-config@0.1.8(eslint@8.57.0)(tailwindcss@3.4.1)(typescript@5.3.3):
+    resolution: {integrity: sha512-VplPz+w/XPGREcJlagTEexEJ0oXh9DtdhdggeJQ3YqN9Ib8WTqZYIMheFR37L1X4Cn9Qg7yifmbN1k5IxYj95g==}
     peerDependencies:
       eslint: ^8.57.0
       typescript: '>=5.0.0'
     dependencies:
-      '@raipiot-infra/eslint-config-react': 0.1.7(eslint@8.57.0)(tailwindcss@3.4.1)(typescript@5.3.3)
+      '@raipiot-infra/eslint-config-react': 0.1.8(eslint@8.57.0)(tailwindcss@3.4.1)(typescript@5.3.3)
       eslint: 8.57.0
       typescript: 5.3.3
     transitivePeerDependencies:
@@ -2800,16 +2789,16 @@ packages:
       - tailwindcss
     dev: true
 
-  /@raipiot-infra/prettier@0.1.7(prettier@3.2.5):
-    resolution: {integrity: sha512-90gQDtxja+5dKjIDnMjeQBTIffAvgpaWSaRHlt9ncuhjKyCcmLsa1THExv+BGfnS1SCmIhlsFObRhu84Z1yOEw==}
+  /@raipiot-infra/prettier@0.1.8(prettier@3.2.5):
+    resolution: {integrity: sha512-hlZ/HpGOs885W/pAZyUCTTR7z6WyY/i0M89qaswT3vSWTQCl7IUwg/LbdkBy5bKiH/udgMi84Xxwot+d3oHINQ==}
     peerDependencies:
       prettier: ^3.2.5
     dependencies:
       prettier: 3.2.5
     dev: true
 
-  /@raipiot-infra/rpx@0.1.7:
-    resolution: {integrity: sha512-yfXXd+smTK64Hrdq1+EMo1jd5/UyfV5RNCRmgqZjFjf8+UVsgwOWwVdXix1Jm732hmuGCAaCsyp/Pu/qFgeGAg==}
+  /@raipiot-infra/rpx@0.1.8:
+    resolution: {integrity: sha512-pJkF8z3357/LP2HafTUNJ80BlW9O59NxF5KewVZ1OuzBHPzVNov8IzaL6mTlKH2WBYmuHbOuYdjun4b28Bu/AQ==}
     hasBin: true
     dependencies:
       commander: 12.0.0
@@ -2821,46 +2810,42 @@ packages:
       - encoding
     dev: true
 
-  /@raipiot-infra/tailwind@0.1.7(tailwindcss@3.4.1):
-    resolution: {integrity: sha512-aFQfy3IubEiV0RonTQF3hnLubgg5YGLQTOFBzWCJrJTw6g5HBx3Ul44ZJebSziaBFHn+uZn6spqc1t13Dbetmw==}
+  /@raipiot-infra/tailwind@0.1.8(antd@5.15.0)(tailwindcss@3.4.1):
+    resolution: {integrity: sha512-nCtpieNvtKX5UHliqWysg6NoyW8/UIEw92DDTnmV5fqHz+CKwI0JL4IpQh93w8Bd4rWIjgejZbvA7I5+2WkgEA==}
     peerDependencies:
       tailwindcss: ^3.4.1
     dependencies:
+      '@raipiot-infra/theme': 0.1.8(antd@5.15.0)
       tailwindcss: 3.4.1
+    transitivePeerDependencies:
+      - antd
     dev: true
 
-  /@raipiot-infra/tanstack-query@0.1.7:
-    resolution: {integrity: sha512-7G81LS/Jy4nzADTrwlVblnlf5WCyfSTsC/fq0Pbpa1MKDmHSlF0Wx8A6n2INfreLsKw8gorsxmQG90IDSAqJrg==}
+  /@raipiot-infra/tanstack-query@0.1.8:
+    resolution: {integrity: sha512-AXgnr17lTgzljCWHjyXBvxuXAeGy1NyBwxk1hhOKO17RSLpT64vNotbqR9N9/0+1kf4BPKygMn3cFhucaEPPHw==}
     dev: false
 
-  /@raipiot-infra/theme@0.1.7(antd@5.15.0):
-    resolution: {integrity: sha512-tDivh+m1OMXui7OPCPk0DqnNNFpcIdXQ2j33+3smyeHthdWD+U1NN5I3UELzdMSYmFLyKLj9A3bTNDr9ZQagvg==}
+  /@raipiot-infra/theme@0.1.8(antd@5.15.0):
+    resolution: {integrity: sha512-7rHIYzVzEEMjzfZXnPjKkKLiX46jZ05DWoDvfb7j9oTdkVjIYDBBpSlux6i7oBOMJ4vEHUC/WFfK8l8EzZKHqQ==}
     peerDependencies:
       antd: ^5.15.0
-    peerDependenciesMeta:
-      antd:
-        optional: true
     dependencies:
       antd: 5.15.0(react-dom@18.2.0)(react@18.2.0)
-    dev: false
 
-  /@raipiot-infra/tsconfig@0.1.7(typescript@5.3.3):
-    resolution: {integrity: sha512-iuGXJo6wDIPxgaQ+pCbwWGW3znvH09O7aAa4Hgm2emKwV8D3XUhMfOGeN6FrbIhQvXdBpD2oEv3FFibSDwLaSw==}
+  /@raipiot-infra/tsconfig@0.1.8(typescript@5.3.3):
+    resolution: {integrity: sha512-EaZpFzGdwhRzUfclfPylMsAdC9wX2UUz4mnqgRngFtbpNcExeaY7jj1U/6RWW34kg/vOOiQTgQr5e4g6n154fw==}
     peerDependencies:
       typescript: '>=5.0.0'
     dependencies:
       typescript: 5.3.3
     dev: true
 
-  /@raipiot-infra/utils@0.1.7(dayjs@1.11.10):
-    resolution: {integrity: sha512-mjISNmJdgDPMj5GOY2FECwGta5PjLV2C+JddXB/7PrGktjfL88Zr38HeHz4HvW70EJSVDIXhX+NADmNeqIGrVQ==}
+  /@raipiot-infra/utils@0.1.8(dayjs@1.11.10):
+    resolution: {integrity: sha512-jZptGOhkos2KSTHEexMQdNnZDcok0vAev+kR+GDaRriqTtf17Y2EGMWXUyCNUeODJtQeISOX6RvpJBe4XJKu0A==}
     peerDependencies:
       dayjs: ^1.11.10
-    peerDependenciesMeta:
-      dayjs:
-        optional: true
     dependencies:
-      '@raipiot-infra/enums': 0.1.7
+      '@raipiot-infra/enums': 0.1.8
       dayjs: 1.11.10
     dev: false
 
@@ -2876,7 +2861,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /@rc-component/context@1.4.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-kFcNxg9oLRMoL3qki0OMxK+7g5mypjgaaJp/pkOis/6rVxma9nJBF/8kCIuTYHUQNr0ii7MxqE33wirPZLJQ2w==}
@@ -2894,7 +2878,6 @@ packages:
     engines: {node: '>=8.x'}
     dependencies:
       '@babel/runtime': 7.23.9
-    dev: false
 
   /@rc-component/mutate-observer@1.1.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-QjrOsDXQusNwGZPf4/qRQasg7UFEj06XiCJ8iuiq/Io7CrHrgVi6Uuetw60WAMG1799v+aM8kyc+1L/GBbHSlw==}
@@ -2908,7 +2891,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /@rc-component/portal@1.1.2(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-6f813C0IsasTZms08kfA8kPAGxbbkYToa8ALaiDIGGECU4i9hj8Plgbx0sNJDrey3EtHO30hmdaxtT0138xZcg==}
@@ -2922,7 +2904,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /@rc-component/tour@1.12.3(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-U4mf1FiUxGCwrX4ed8op77Y8VKur+8Y/61ylxtqGbcSoh1EBC7bWd/DkLu0ClTUrKZInqEi1FL7YgFtnT90vHA==}
@@ -2938,7 +2919,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /@rc-component/trigger@1.18.3(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Ksr25pXreYe1gX6ayZ1jLrOrl9OAUHUqnuhEx6MeHnNa1zVM5Y2Aj3Q35UrER0ns8D2cJYtmJtVli+i+4eKrvA==}
@@ -2955,7 +2935,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /@rollup/pluginutils@5.1.0:
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
@@ -4531,7 +4510,6 @@ packages:
       - date-fns
       - luxon
       - moment
-    dev: false
 
   /any-promise@1.3.0:
     resolution: {integrity: sha512-7UvmKalWRt1wgjL1RrGxoSJW/0QZFIegpeGvZG9kjp8vrRu55XTHbwnqq2GpXm9uLbcuhxm3IqX9OB4MZR1b2A==}
@@ -4613,7 +4591,6 @@ packages:
 
   /array-tree-filter@2.1.0:
     resolution: {integrity: sha512-4ROwICNlNw/Hqa9v+rk5h22KjmzB1JGTMVKP2AKJBOCgb0yL0ASf0+YvCcLNNwquOHNX48jkeZIJ3a+oOQqKcw==}
-    dev: false
 
   /array-union@2.1.0:
     resolution: {integrity: sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==}
@@ -4735,7 +4712,6 @@ packages:
 
   /async-validator@4.2.5:
     resolution: {integrity: sha512-7HhHjtERjqlNbZtqNqy2rckN/SpOOlmDliet+lP7k+eKZEjPk3DgyeU9lIXLdeLz0uBbbVp+9Qdow9wJWgwwfg==}
-    dev: false
 
   /async@2.6.4:
     resolution: {integrity: sha512-mzo5dfJYwAn29PeiJ0zvwTo04zj8HDJj0Mn8TD7sno7q12prdbnasKJHhkm2c1LgrhlJ0teaea8860oxi51mGA==}
@@ -5489,7 +5465,6 @@ packages:
 
   /compute-scroll-into-view@3.1.0:
     resolution: {integrity: sha512-rj8l8pD4bJ1nx+dAkMhV1xB5RuZEyVysfxJqB1pRchh1KVvwOv9b7CGB8ZfjTImVv2oF+sYMUkMZq6Na5Ftmbg==}
-    dev: false
 
   /concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
@@ -5596,7 +5571,6 @@ packages:
     resolution: {integrity: sha512-2KV8NhB5JqC3ky0r9PMCAZKbUHSwtEo4CwCs0KXgruG43gX5PMqDEBbVU4OUzw2MuAWUfsuFmWvEKG5QRfSnJA==}
     dependencies:
       toggle-selection: 1.0.6
-    dev: false
 
   /core-util-is@1.0.2:
     resolution: {integrity: sha512-3lqz5YjWTYnW6dlDa5TLaTCcShfar1e40rmcJVwCBJC6mWlFuj0eCHIElmG1g5kyuJ/GD+8Wn4FFCcz4gJPfaQ==}
@@ -9077,7 +9051,6 @@ packages:
     resolution: {integrity: sha512-SzoRg7ux5DWTII9J2qkrZrqV1gt+rTaoufMxEzXbS26Uid0NwaJd123HcoB80TgubEppxxIGdNxCx50fEoEWQA==}
     dependencies:
       string-convert: 0.2.1
-    dev: false
 
   /json5@1.0.2:
     resolution: {integrity: sha512-g1MWMLBiz8FKi1e4w0UyVL3w+iJceWAFBAaBnnGKOpNa5f8TLktkbre1+s6oICydWAm+HRUGTmI+//xv2hvXYA==}
@@ -10622,7 +10595,6 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
-    dev: false
 
   /qs@6.10.4:
     resolution: {integrity: sha512-OQiU+C+Ds5qiH91qh/mg0w+8nwQuLjM4F4M/PbmhDOoYehPh+Fb0bDjtR1sOvy7YKxvj28Y/M0PhP5uVX0kB+g==}
@@ -10703,7 +10675,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-checkbox@3.2.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-8inzw4y9dAhZmv/Ydl59Qdy5tdp9CKg4oPVcRigi+ga/yKPZS5m5SyyQPtYSgbcqHRYOdUhiPSeKfktc76du1A==}
@@ -10716,7 +10687,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-collapse@3.7.2(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-ZRw6ipDyOnfLFySxAiCMdbHtb5ePAsB9mT17PA6y1mRD/W6KHRaZeb5qK/X9xDV1CqgyxMpzw0VdS74PCcUk4A==}
@@ -10730,7 +10700,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-dialog@9.4.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-AScCexaLACvf8KZRqCPz12BJ8olszXOS4lKlkMyzDQHS1m0zj1KZMYgmMCh39ee0Dcv8kyrj8mTqxuLyhH+QuQ==}
@@ -10745,7 +10714,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-drawer@7.1.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-nBE1rF5iZvpavoyqhSSz2mk/yANltA7g3aF0U45xkx381n3we/RKs9cJfNKp9mSWCedOKWt9FLEwZDaAaOGn2w==}
@@ -10760,7 +10728,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-dropdown@4.1.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-VZjMunpBdlVzYpEdJSaV7WM7O0jf8uyDjirxXLZRNZ+tAC+NzD3PXPEtliFwGzVwBBdCmGuSqiS9DWcOLxQ9tw==}
@@ -10774,7 +10741,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-field-form@1.42.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-z7U8J4wivKIRZ60VUhl/v5d4J4jgokcDVvzCFhJAxGjGYjpTUeSlZtEyH+CjiA5es6LgTkNS7P7vy4nsQOPBnQ==}
@@ -10788,7 +10754,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-image@7.6.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-tL3Rvd1sS+frZQ01i+tkeUPaOeFz2iG9/scAt/Cfs0hyCRVA/w0Pu1J/JxIX8blalvmHE0bZQRYdOmRAzWu4Hg==}
@@ -10804,7 +10769,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-input-number@9.0.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-RfcDBDdWFFetouWFXBA+WPEC8LzBXyngr9b+yTLVIygfFu7HiLRGn/s/v9wwno94X7KFvnb28FNynMGj9XJlDQ==}
@@ -10819,7 +10783,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-input@1.4.3(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-aHyQUAIRmTlOnvk5EcNqEpJ+XMtfMpYRAJayIlJfsvvH9cAKUWboh4egm23vgMA7E+c/qm4BZcnrDcA960GC1w==}
@@ -10832,7 +10795,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-mentions@2.10.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-72qsEcr/7su+a07ndJ1j8rI9n0Ka/ngWOLYnWMMv0p2mi/5zPwPrEDTt6Uqpe8FWjWhueDJx/vzunL6IdKDYMg==}
@@ -10849,7 +10811,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-menu@9.12.4(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-t2NcvPLV1mFJzw4F21ojOoRVofK2rWhpKPx69q2raUsiHPDP6DDevsBILEYdsIegqBeSXoWs2bf6CueBKg3BFg==}
@@ -10865,7 +10826,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-motion@2.9.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-XIU2+xLkdIr1/h6ohPZXyPBMvOmuyFZQ/T0xnawz+Rh+gh4FINcnZmMT5UTIj6hgI0VLDjTaPeRd+smJeSPqiQ==}
@@ -10878,7 +10838,6 @@ packages:
       rc-util: 5.38.1(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-notification@5.3.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-WCf0uCOkZ3HGfF0p1H4Sgt7aWfipxORWTPp7o6prA3vxwtWhtug3GfpYls1pnBp4WA+j8vGIi5c2/hQRpGzPcQ==}
@@ -10893,7 +10852,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-overflow@1.3.2(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-nsUm78jkYAoPygDAcGZeC2VwIg/IBGSodtOY3pMof4W3M9qRJgqaDYm03ZayHlde3I6ipliAxbN0RUcGf5KOzw==}
@@ -10907,7 +10865,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-pagination@4.0.4(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-GGrLT4NgG6wgJpT/hHIpL9nELv27A1XbSZzECIuQBQTVSf4xGKxWr6I/jhpRPauYEWEbWVw22ObG6tJQqwJqWQ==}
@@ -10920,7 +10877,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-picker@4.2.0(dayjs@1.11.10)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-4a5Gv9UtxDMGhqzJPDDAfXni6DGReqyHI4nu7e3nPrHsuTLH13lL1ykqIXqJ25f5ZqqyjpnMeogU1F4aaOdwhA==}
@@ -10951,7 +10907,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-progress@3.5.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-V6Amx6SbLRwPin/oD+k1vbPrO8+9Qf8zW1T8A7o83HdNafEVvAxPV5YsgtKFP+Ud5HghLj33zKOcEHrcrUGkfw==}
@@ -10964,7 +10919,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-rate@2.12.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-g092v5iZCdVzbjdn28FzvWebK2IutoVoiTeqoLTj9WM7SjA/gOJIw5/JFZMRyJYYVe1jLAU2UhAfstIpCNRozg==}
@@ -10978,7 +10932,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-resize-observer@1.4.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-PnMVyRid9JLxFavTjeDXEXo65HCRqbmLBw9xX9gfC4BZiSzbLXKzW3jPz+J0P71pLbD5tBMTT+mkstV5gD0c9Q==}
@@ -11005,7 +10958,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-select@14.12.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-DJgL3pZGjoLOhV1IL8MUSyiZW+yLf/ArMvxZK8ES5HUadfAP2i5uPcaex9nGdX+MMk9iQ0iFTdMwwNt0ufNlqQ==}
@@ -11023,7 +10975,6 @@ packages:
       rc-virtual-list: 3.11.3(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-slider@10.5.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-xiYght50cvoODZYI43v3Ylsqiw14+D7ELsgzR40boDZaya1HFa1Etnv9MDkQE8X/UrXAffwv2AcNAhslgYuDTw==}
@@ -11037,7 +10988,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-steps@6.0.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-lKHL+Sny0SeHkQKKDJlAjV5oZ8DwCdS2hFhAkIjuQt1/pB81M0cA0ErVFdHq9+jmPmFw1vJB2F5NBzFXLJxV+g==}
@@ -11051,7 +11001,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-switch@4.1.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-TI8ufP2Az9oEbvyCeVE4+90PDSljGyuwix3fV58p7HV2o4wBnVToEyomJRVyTaZeqNPAp+vqeo4Wnj5u0ZZQBg==}
@@ -11064,7 +11013,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-table@7.42.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-GwHV9Zs3HvWxBkoXatO/IeKoElzy3Ojf3dcyw1Rj3cyQVb+ZHtexslKdyzsrKRPJ0mUa62BoX+ZAg3zgTEql8w==}
@@ -11098,7 +11046,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-textarea@1.6.3(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-8k7+8Y2GJ/cQLiClFMg8kUXOOdvcFQrnGeSchOvI2ZMIVvX5a3zQpLxoODL0HTrvU63fPkRmMuqaEcOF9dQemA==}
@@ -11113,7 +11060,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-tooltip@6.1.3(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-HMSbSs5oieZ7XddtINUddBLSVgsnlaSb3bZrzzGWjXa7/B7nNedmsuz72s7EWFEro9mNa7RyF3gOXKYqvJiTcQ==}
@@ -11126,7 +11072,6 @@ packages:
       classnames: 2.5.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-tree-select@5.18.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-gctFd1ATKom/YGQ3NBKDPaYkHhJvJbd2hC0cvNXspbg9jYEJe8QBVgCwVnt0QvSkxN4Jxjx/CxA4UEidl084Sw==}
@@ -11141,7 +11086,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-tree@5.8.5(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-PRfcZtVDNkR7oh26RuNe1hpw11c1wfgzwmPFL0lnxGnYefe9lDAO6cg5wJKIAwyXFVt5zHgpjYmaz0CPy1ZtKg==}
@@ -11157,7 +11101,6 @@ packages:
       rc-virtual-list: 3.11.3(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-upload@4.5.2(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-QO3ne77DwnAPKFn0bA5qJM81QBjQi0e0NHdkvpFyY73Bea2NfITiotqJqVjHgeYPOJu5lLVR32TNGP084aSoXA==}
@@ -11170,7 +11113,6 @@ packages:
       rc-util: 5.38.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /rc-util@5.38.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-e4ZMs7q9XqwTuhIK7zBIVFltUtMSjphuPPQXHoHlzRzNdOwUxDejo0Zls5HYaJfRKNURcsS/ceKVULlhjBrxng==}
@@ -11182,7 +11124,6 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-is: 18.2.0
-    dev: false
 
   /rc-util@5.38.2(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-yRGRPKyi84H7NkRSP6FzEIYBdUt4ufdsmXUZ7qM2H5qoByPax70NnGPkfo36N+UKUnUBj2f2Q2eUbwYMuAsIOQ==}
@@ -11666,7 +11607,6 @@ packages:
     resolution: {integrity: sha512-49oNpRjWRvnU8NyGVmUaYG4jtTkNonFZI86MmGRDqBphEK2EXT9gdEUoQPZhuBM8yWHxCWbobltqYO5M4XrUvQ==}
     dependencies:
       compute-scroll-into-view: 3.1.0
-    dev: false
 
   /scule@1.2.0:
     resolution: {integrity: sha512-CRCmi5zHQnSoeCik9565PONMg0kfkvYmcSqrbOJY4txFfy1wvVULV4FDaiXhUblUgahdqz3F2NwHZ8i4eBTwUw==}
@@ -12063,7 +12003,6 @@ packages:
 
   /string-convert@0.2.1:
     resolution: {integrity: sha512-u/1tdPl4yQnPBjnVrmdLo9gtuLvELKsAoRapekWggdiQNvvvum+jYF329d84NAa660KQw7pB2n36KrIKVoXa3A==}
-    dev: false
 
   /string-length@4.0.2:
     resolution: {integrity: sha512-+l6rNN5fYHNhZZy41RXsYptCjA2Igmq4EG7kZAYFQI1E1VTXarr6ZPXBg6eq7Y6eK4FEhY6AJlyuFIb/v/S0VQ==}
@@ -12210,7 +12149,6 @@ packages:
 
   /stylis@4.3.1:
     resolution: {integrity: sha512-EQepAV+wMsIaGVGX1RECzgrcqRRU/0sYOHkeLsZ3fzHaHXZy4DaOOX0vOlGQdlsjkh3mFHAIlVimpwAs4dslyQ==}
-    dev: false
 
   /sucrase@3.35.0:
     resolution: {integrity: sha512-8EbVDiu9iN/nESwxeSxDKe0dunta1GOlHufmSSXxMD2z2/tMZpDMpvXQGsc+ajGo8y2uYUmixaSRUc/QPoQ0GA==}
@@ -12434,7 +12372,6 @@ packages:
   /throttle-debounce@5.0.0:
     resolution: {integrity: sha512-2iQTSgkkc1Zyk0MeVrt/3BvuOXYPl/R8Z0U2xxo9rjwNciaHDG3R+Lm6dh4EeUci49DanvBnuqI6jshoQQRGEg==}
     engines: {node: '>=12.22'}
-    dev: false
 
   /throttleit@1.0.1:
     resolution: {integrity: sha512-vDZpf9Chs9mAdfY046mcPt8fg5QSZr37hEH4TXYBnDF+izxgrbRGUAAaBvIk/fJm9aOFCGFd1EsNg5AZCbnQCQ==}
@@ -12509,7 +12446,6 @@ packages:
 
   /toggle-selection@1.0.6:
     resolution: {integrity: sha512-BiZS+C1OS8g/q2RRbJmy59xpyghNBqrr6k5L/uKBGRsTfxmu3ffiRnd8mlGPUVayg8pvfi5urfnu8TU7DVOkLQ==}
-    dev: false
 
   /toidentifier@1.0.1:
     resolution: {integrity: sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==}

@@ -1,6 +1,6 @@
 import { px2remTransformer, StyleProvider } from '@ant-design/cssinjs'
 import { HappyProvider } from '@ant-design/happy-work-theme'
-import { messageConfig } from '@raipiot-infra/theme'
+import { messageConfig, themeBaseToken } from '@raipiot-infra/theme'
 
 BrowserUtils.loadFavicon() // 动态加载 favicon
 BrowserUtils.disableGestureScale() // 禁用移动端手势缩放
@@ -16,12 +16,12 @@ const px2rem = px2remTransformer({
 
 // useResponsive 配置，同步 Tailwind CSS 的断点
 configResponsive({
-  xs: 0,
-  sm: 640,
-  md: 768,
-  lg: 1024,
-  xl: 1280,
-  xxl: 1536
+  xs: themeBaseToken.screenXSMin!,
+  sm: themeBaseToken.screenSMMin!,
+  md: themeBaseToken.screenMDMin!,
+  lg: themeBaseToken.screenLGMin!,
+  xl: themeBaseToken.screenXLMin!,
+  xxl: themeBaseToken.screenXXLMin!
 })
 
 export default function App() {
