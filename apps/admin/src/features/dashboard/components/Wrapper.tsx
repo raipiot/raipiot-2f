@@ -13,7 +13,7 @@ export function Wrapper({
   className,
   rootClassName,
   ...props
-}: WrapperProps) {
+}: PropsWithChildren<WrapperProps>) {
   return (
     <div
       {...props}
