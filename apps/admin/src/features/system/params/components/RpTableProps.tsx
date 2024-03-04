@@ -1,5 +1,5 @@
 import type { Page } from '@raipiot-2f/api'
-import type { PaginationProps, TablePaginationConfig, TableProps } from 'antd/lib'
+import type { TablePaginationConfig, TableProps } from 'antd/lib'
 import type { SetStateAction } from 'react'
 
 export interface RpTableProps<T = any> extends TableProps {
@@ -22,7 +22,7 @@ const RpTable = forwardRef<any, RpTableProps>((props, ref) => {
         size: pageSize
       }))
     },
-    size: (response.sm ? 'default' : 'small') as PaginationProps['size'],
+    size: response.sm ? 'default' : 'small',
     rootClassName: '!mb-0',
     showSizeChanger: true,
     showQuickJumper: true,

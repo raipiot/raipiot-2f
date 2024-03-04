@@ -1,5 +1,5 @@
 import type { PageDto } from '@raipiot-2f/api'
-import type { PaginationProps, TablePaginationConfig } from 'antd'
+import type { TablePaginationConfig } from 'antd'
 
 export const usePagination = <T extends PageDto>(initialValue?: Partial<T>) => {
   const { t } = useTranslation()
@@ -22,7 +22,7 @@ export const usePagination = <T extends PageDto>(initialValue?: Partial<T>) => {
     pageSize: pageParams.size,
     current: pageParams.current,
     onChange: onPaginationChange,
-    size: (response.sm ? 'default' : 'small') as PaginationProps['size'],
+    size: response.sm ? 'default' : 'small',
     rootClassName: '!mb-0',
     showSizeChanger: true,
     showQuickJumper: true,
