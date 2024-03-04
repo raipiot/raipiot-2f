@@ -18,11 +18,11 @@ export function Wrapper({
     <div
       {...props}
       className={clsx(
-        'border-translate rounded-sm border-x border-b shadow dark:border-[#333]',
+        'border-translate rounded-sm border-x border-b shadow dark:border-dark',
         rootClassName
       )}
     >
-      <div className="flex justify-between bg-white p-2 dark:bg-[#37393e]">
+      <div className="flex justify-between bg-white p-2 dark:bg-dark">
         <div className="font-semibold">{title}</div>
         {aside}
       </div>

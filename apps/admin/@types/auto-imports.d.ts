@@ -48,7 +48,7 @@ declare global {
   const AuthAPI: typeof import('@raipiot-2f/api')['AuthAPI']
   const AuthUtils: typeof import('@raipiot-infra/utils')['AuthUtils']
   const Await: typeof import('@tanstack/react-router')['Await']
-  const AxiosProvider: typeof import('../src/shared/providers/index')['AxiosProvider']
+  const AxiosProvider: typeof import('../src/shared/providers/AxiosProvider')['AxiosProvider']
   const Block: typeof import('@tanstack/react-router')['Block']
   const BrandConfig: typeof import('@raipiot-infra/config')['BrandConfig']
   const BrowserUtils: typeof import('@raipiot-infra/utils')['BrowserUtils']

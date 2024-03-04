@@ -11,7 +11,7 @@ function Dashboard() {
   const { data } = useDashboardSuspenseQuery()
 
   return (
-    <div className="flex flex-col gap-2 bg-gray-50 dark:bg-[#121212]">
+    <div className="flex flex-col gap-2 bg-gray-50 dark:bg-dark">
       <Wrapper title="我的工作台" />
       <Wrapper
         title="待办事项"
