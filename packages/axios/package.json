@@ -32,8 +32,8 @@
   },
   "dependencies": {
     "@raipiot-2f/config": "workspace:^",
-    "@raipiot-infra/enums": "^0.1.8",
-    "@raipiot-infra/utils": "^0.1.8",
+    "@raipiot-infra/enums": "^0.1.9",
+    "@raipiot-infra/utils": "^0.1.9",
     "axios": "^1.6.7"
   },
   "private": true

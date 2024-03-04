@@ -29,8 +29,8 @@
     "antd": "^5.15.0"
   },
   "dependencies": {
-    "@raipiot-infra/enums": "^0.1.8",
-    "@raipiot-infra/utils": "^0.1.8",
+    "@raipiot-infra/enums": "^0.1.9",
+    "@raipiot-infra/utils": "^0.1.9",
     "i18next": "^23.10.0",
     "react-i18next": "^14.0.5"
   },
