@@ -97,26 +97,26 @@ function SystemDicts() {
         width: computedModalWidth(),
         confirmLoading: isSubmitPending,
         onOk: modalForm.submit,
-        onCancel: modal.toggle,
+        onCancel: modal.close,
         footer: modal.isRead ? null : undefined,
         children: (
           <AForm<DictSubmitFormModel>
             name="modal"
             layout="horizontal"
             form={modalForm}
+            labelCol={{ span: 6 }}
             initialValues={{
               sort: 1,
               isSealed: false
             }}
-            onFinish={async (values) => {
+            onFinish={async () => {
+              const values = modalForm.getFieldsValue(true)
               await submitMutateAsync({
                 ...values,
                 isSealed: FormatUtils.toDbNum(values.isSealed)
               })
-              modalForm.resetFields()
-              modal.toggle()
+              modal.close()
             }}
-            labelCol={{ span: 6 }}
           >
             {(modal.isCreate || modal.isEdit) && (
               <ARow gutter={24}>
