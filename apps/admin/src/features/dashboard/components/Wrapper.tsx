@@ -1,11 +1,11 @@
 import type { PropsWithChildren } from 'react'
 
-export type WrapperProps = PropsWithChildren<{
+export interface WrapperProps {
   title: string | React.ReactNode
   aside?: React.ReactNode
   className?: string
   rootClassName?: string
-}>
+}
 export function Wrapper({
   title,
   children,
