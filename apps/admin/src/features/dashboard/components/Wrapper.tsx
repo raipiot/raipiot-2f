@@ -26,7 +26,7 @@ export function Wrapper({
         <div className="font-semibold">{title}</div>
         {aside}
       </div>
-      <div className={clsx('', className)}>{children}</div>
+      <div className={className}>{children}</div>
     </div>
   )
 }
