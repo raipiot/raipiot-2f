@@ -3,8 +3,8 @@ import type { PaginationProps, TablePaginationConfig } from 'antd'
 
 export const usePagination = <T extends PageDto>(initialValue?: Partial<T>) => {
   const { t } = useTranslation()
-  const response = useResponsive()
   const [isPending, startTransition] = useTransition()
+  const response = useResponsive()
 
   const [pageParams, setPageParams] = useState(PageUtils.initParams<T>(initialValue))
 
@@ -17,9 +17,6 @@ export const usePagination = <T extends PageDto>(initialValue?: Partial<T>) => {
         })
       )
     )
-
-  const onSearch = <D extends Record<string, any>>(values?: D) =>
-    startTransition(() => setPageParams(PageUtils.mergeParams(pageParams, values)))
 
   const pagination: TablePaginationConfig = {
     pageSize: pageParams.size,
@@ -37,11 +34,15 @@ export const usePagination = <T extends PageDto>(initialValue?: Partial<T>) => {
         : null
   }
 
+  const onSearch = <D extends Record<string, any>>(values?: D) =>
+    startTransition(() => setPageParams(PageUtils.mergeParams(pageParams, values)))
+
   return {
     pageParams,
     setPageParams,
     pagination,
+    onSearch,
     isPending,
-    onSearch
+    startTransition
   }
 }

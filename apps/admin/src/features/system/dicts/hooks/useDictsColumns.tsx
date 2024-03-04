@@ -1,8 +1,10 @@
 import type { DictVo } from '@raipiot-2f/api'
 
+import type { UseModal } from '@/shared/hooks/useModal'
+
 import { useSystemDictRemoveMutation } from '../mutations'
 
-export const useDictsColumns = () => {
+export const useDictsColumns = (modal?: UseModal) => {
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
   const { createActions, createColumns } = useTableCreator<DictVo>()
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
@@ -36,11 +38,15 @@ export const useDictsColumns = () => {
       createActions({
         render: (_, record) => (
           <ASpace>
+            <RpViewBtn
+              size="small"
+              onClick={modal?.openRead}
+            />
             <Link
               to="/system/dicts/$id"
               params={{ id: record.id! }}
             >
-              <RpViewBtn size="small" />
+              <AButton size="small">{t('COMMON:CONFIG')}</AButton>
             </Link>
             <RpDeletePopconfirm
               okBtnLoading={isPending}
