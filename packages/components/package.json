@@ -1,28 +1,27 @@
 {
-  "name": "@raipiot-2f/hooks",
-  "description": "raipiot 2f 通用 Hooks",
-  "author": "Aaron <rivenqinyy@gmail.com> (https://github.com/Developer27149/)",
+  "name": "@raipiot-2f/components",
+  "description": "raipiot 2f 通用组件库",
+  "author": "Bruce Song <recall4056@gmail.com> (https://github.com/recallwei/)",
   "homepage": "https://github.com/raipiot/raipiot-2f#readme",
   "bugs": "https://github.com/raipiot/raipiot-2f/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/raipiot/raipiot-2f.git",
-    "directory": "packages/hooks"
+    "directory": "packages/components"
   },
   "keywords": [
     "raipiot",
-    "hooks"
+    "components"
   ],
   "exports": {
     ".": "./src/index.ts",
-    "./meta": "./meta.json"
+    "./meta": "./src/meta.json"
   },
   "types": "./src/index.ts",
   "scripts": {
-    "test": "vitest --ui",
-    "test:unit": "vitest",
-    "test:coverage": "vitest --coverage",
-    "clean": "rimraf dist",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
+    "clean": "rimraf dist storybook-static",
     "type:check": "tsc --pretty --noEmit",
     "cspell:check": "cspell --no-progress --show-suggestions --show-context --cache **",
     "eslint:check": "eslint . --color --cache",
@@ -31,22 +30,22 @@
     "prettier:fix": "prettier --write --cache --ignore-unknown --ignore-path=../../.prettierignore ."
   },
   "peerDependencies": {
-    "lodash-es": "^4.17.21",
-    "react": "^18.2.0"
+    "antd": ">=5.15.0",
+    "clsx": "^2.1.0",
+    "react": ">=18.2.0"
   },
   "dependencies": {
-    "ahooks": "^3.7.10"
-  },
-  "devDependencies": {
-    "@testing-library/react": "^14.2.1",
-    "@types/lodash-es": "^4.17.12",
+    "@storybook/addon-essentials": "^7.6.17",
+    "@storybook/addon-interactions": "^7.6.17",
+    "@storybook/addon-links": "^7.6.17",
+    "@storybook/addon-onboarding": "^1.0.11",
+    "@storybook/blocks": "^7.6.17",
+    "@storybook/react": "^7.6.17",
+    "@storybook/react-vite": "^7.6.17",
+    "@storybook/test": "^7.6.17",
     "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
-    "@vitest/coverage-v8": "^1.3.1",
-    "@vitest/ui": "^1.3.1",
-    "jsdom": "^24.0.0",
-    "type-fest": "^4.11.0",
-    "vitest": "^1.3.1"
+    "storybook": "^7.6.17"
   },
+  "devDependencies": {},
   "private": true
 }
