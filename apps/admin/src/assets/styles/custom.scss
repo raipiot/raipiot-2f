@@ -48,12 +48,11 @@
   }
 }
 
-.ant-table {
-  min-height: calc(100vh - 358px);
+// 略微调整 Modal 的 Header 和 Footer 与 Content 的间距
+.ant-modal-header {
+  margin-bottom: 1rem !important;
 }
-// 表格容器添加最小高度，避免内容过少时，表格高度不满一屏
-@media (min-width: 640px) {
-  .ant-table {
-    min-height: calc(100vh - 372px);
-  }
+
+.ant-modal-footer {
+  margin-top: 1rem !important;
 }
