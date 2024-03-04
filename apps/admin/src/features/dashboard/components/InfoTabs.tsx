@@ -36,7 +36,8 @@ function CommonItems({ items }: CommonItemProps) {
 
 export function InfoTabs() {
   const { data } = useDashboardSuspenseQuery()
-  const tabItems = [
+
+  const tabItems: TabsProps['items'] = [
     {
       label: '系统消息',
       key: 'systemInfo',
@@ -52,7 +53,7 @@ export function InfoTabs() {
       key: 'platformPublish',
       children: <CommonItems items={data.notify.platformPublish} />
     }
-  ] as TabsProps['items']
+  ]
 
   return (
     <div className="border border-transparent bg-white px-4 pb-4 shadow dark:border-[#37393e] dark:bg-transparent">
