@@ -8,6 +8,7 @@ const Modal = memo<ModalProps>((props) => {
     <AModal
       okText={t('CONFIRM')}
       cancelText={t('CANCEL')}
+      forceRender // 防止模态框内的表单因为未渲染而没有绑定表单实例
       destroyOnClose
       okButtonProps={{
         loading: confirmLoading,

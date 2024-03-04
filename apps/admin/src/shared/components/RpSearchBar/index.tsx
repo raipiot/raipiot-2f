@@ -106,6 +106,8 @@ function RpSearchBar<T extends Record<string, any>>(props: RpSearchBarProps<T>) 
                 if (form) {
                   // 清空表单
                   form.resetFields()
+                  // 提交表单
+                  form.submit()
                   // 处理清空事件
                   if (onClear) {
                     onClear(form.getFieldsValue())
