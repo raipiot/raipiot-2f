@@ -38,6 +38,6 @@ export const routerMenus = (): MenuItem[] => [
     label: t('MODULE.MENU.DEVELOPER'),
     key: '/_dev',
     icon: <MaterialSymbolsCodeRounded />,
-    children: [getRouteMeta('/templates/common-table')]
+    children: [getRouteMeta('/dev/storybook'), getRouteMeta('/dev/templates/common-table')]
   }
 ]

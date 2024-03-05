@@ -19,15 +19,12 @@ import { Route as PortalSignupRouteImport } from './../routes/_portal/signup/rou
 import { Route as PortalLoginRouteImport } from './../routes/_portal/login/route'
 import { Route as PortalForgotPasswordRouteImport } from './../routes/_portal/forgot-password/route'
 import { Route as BaseUserInfoRouteImport } from './../routes/_base/user-info/route'
-import { Route as BaseTemplatesRouteImport } from './../routes/_base/templates/route'
 import { Route as BaseDashboardRouteImport } from './../routes/_base/dashboard/route'
 import { Route as BaseChangePasswordRouteImport } from './../routes/_base/change-password/route'
 import { Route as Base500RouteImport } from './../routes/_base/500/route'
 import { Route as Base404RouteImport } from './../routes/_base/404/route'
 import { Route as Base403RouteImport } from './../routes/_base/403/route'
 import { Route as PortalIndexRouteImport } from './../routes/_portal/index/route'
-import { Route as BaseTemplatesCommonTableRouteImport } from './../routes/_base/templates/common-table/route'
-import { Route as BaseTemplatesSplatRouteImport } from './../routes/_base/templates/$/route'
 import { Route as BaseSystemUsersRouteImport } from './../routes/_base/system/users/route'
 import { Route as BaseSystemTenantsRouteImport } from './../routes/_base/system/tenants/route'
 import { Route as BaseSystemRolesRouteImport } from './../routes/_base/system/roles/route'
@@ -36,9 +33,13 @@ import { Route as BaseSystemPermissionsRouteImport } from './../routes/_base/sys
 import { Route as BaseSystemParamsRouteImport } from './../routes/_base/system/params/route'
 import { Route as BaseSystemDeptsRouteImport } from './../routes/_base/system/depts/route'
 import { Route as BaseSystemBusinessDictsRouteImport } from './../routes/_base/system/business-dicts/route'
-import { Route as BaseTemplatesIndexRouteImport } from './../routes/_base/templates/index/route'
+import { Route as BaseDevTemplatesRouteImport } from './../routes/_base/dev/templates/route'
+import { Route as BaseDevStorybookRouteImport } from './../routes/_base/dev/storybook/route'
 import { Route as BaseSystemDictsIdRouteImport } from './../routes/_base/system/dicts/$id/route'
+import { Route as BaseDevTemplatesCommonTableRouteImport } from './../routes/_base/dev/templates/common-table/route'
+import { Route as BaseDevTemplatesSplatRouteImport } from './../routes/_base/dev/templates/$/route'
 import { Route as BaseSystemDictsIndexRouteImport } from './../routes/_base/system/dicts/index/route'
+import { Route as BaseDevTemplatesIndexRouteImport } from './../routes/_base/dev/templates/index/route'
 
 // Create/Update Routes
 
@@ -96,11 +97,6 @@ const BaseUserInfoRouteRoute = BaseUserInfoRouteImport.update({
   import('./../routes/_base/user-info/route.lazy').then((d) => d.Route),
 )
 
-const BaseTemplatesRouteRoute = BaseTemplatesRouteImport.update({
-  path: '/templates',
-  getParentRoute: () => BaseRouteRoute,
-} as any)
-
 const BaseDashboardRouteRoute = BaseDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => BaseRouteRoute,
@@ -142,21 +138,6 @@ const PortalIndexRouteRoute = PortalIndexRouteImport.update({
 } as any).lazy(() =>
   import('./../routes/_portal/index/route.lazy').then((d) => d.Route),
 )
-
-const BaseTemplatesCommonTableRouteRoute =
-  BaseTemplatesCommonTableRouteImport.update({
-    path: '/common-table',
-    getParentRoute: () => BaseTemplatesRouteRoute,
-  } as any).lazy(() =>
-    import('./../routes/_base/templates/common-table/route.lazy').then(
-      (d) => d.Route,
-    ),
-  )
-
-const BaseTemplatesSplatRouteRoute = BaseTemplatesSplatRouteImport.update({
-  path: '/$',
-  getParentRoute: () => BaseTemplatesRouteRoute,
-} as any)
 
 const BaseSystemUsersRouteRoute = BaseSystemUsersRouteImport.update({
   path: '/system/users',
@@ -221,16 +202,40 @@ const BaseSystemBusinessDictsRouteRoute =
     ),
   )
 
-const BaseTemplatesIndexRouteRoute = BaseTemplatesIndexRouteImport.update({
-  path: '/',
-  getParentRoute: () => BaseTemplatesRouteRoute,
+const BaseDevTemplatesRouteRoute = BaseDevTemplatesRouteImport.update({
+  path: '/dev/templates',
+  getParentRoute: () => BaseRouteRoute,
 } as any)
+
+const BaseDevStorybookRouteRoute = BaseDevStorybookRouteImport.update({
+  path: '/dev/storybook',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../routes/_base/dev/storybook/route.lazy').then((d) => d.Route),
+)
 
 const BaseSystemDictsIdRouteRoute = BaseSystemDictsIdRouteImport.update({
   path: '/system/dicts/$id',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
   import('./../routes/_base/system/dicts/$id/route.lazy').then((d) => d.Route),
+)
+
+const BaseDevTemplatesCommonTableRouteRoute =
+  BaseDevTemplatesCommonTableRouteImport.update({
+    path: '/common-table',
+    getParentRoute: () => BaseDevTemplatesRouteRoute,
+  } as any).lazy(() =>
+    import('./../routes/_base/dev/templates/common-table/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const BaseDevTemplatesSplatRouteRoute = BaseDevTemplatesSplatRouteImport.update(
+  {
+    path: '/$',
+    getParentRoute: () => BaseDevTemplatesRouteRoute,
+  } as any,
 )
 
 const BaseSystemDictsIndexRouteRoute = BaseSystemDictsIndexRouteImport.update({
@@ -240,6 +245,13 @@ const BaseSystemDictsIndexRouteRoute = BaseSystemDictsIndexRouteImport.update({
   import('./../routes/_base/system/dicts/index/route.lazy').then(
     (d) => d.Route,
   ),
+)
+
+const BaseDevTemplatesIndexRouteRoute = BaseDevTemplatesIndexRouteImport.update(
+  {
+    path: '/',
+    getParentRoute: () => BaseDevTemplatesRouteRoute,
+  } as any,
 )
 
 // Populate the FileRoutesByPath interface
@@ -282,10 +294,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseDashboardRouteImport
       parentRoute: typeof BaseRouteImport
     }
-    '/_base/templates': {
-      preLoaderRoute: typeof BaseTemplatesRouteImport
-      parentRoute: typeof BaseRouteImport
-    }
     '/_base/user-info': {
       preLoaderRoute: typeof BaseUserInfoRouteImport
       parentRoute: typeof BaseRouteImport
@@ -306,9 +314,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalSsoRouteImport
       parentRoute: typeof PortalRouteImport
     }
-    '/_base/templates/': {
-      preLoaderRoute: typeof BaseTemplatesIndexRouteImport
-      parentRoute: typeof BaseTemplatesRouteImport
+    '/_base/dev/storybook': {
+      preLoaderRoute: typeof BaseDevStorybookRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/dev/templates': {
+      preLoaderRoute: typeof BaseDevTemplatesRouteImport
+      parentRoute: typeof BaseRouteImport
     }
     '/_base/system/business-dicts': {
       preLoaderRoute: typeof BaseSystemBusinessDictsRouteImport
@@ -342,17 +354,21 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSystemUsersRouteImport
       parentRoute: typeof BaseRouteImport
     }
-    '/_base/templates/$': {
-      preLoaderRoute: typeof BaseTemplatesSplatRouteImport
-      parentRoute: typeof BaseTemplatesRouteImport
-    }
-    '/_base/templates/common-table': {
-      preLoaderRoute: typeof BaseTemplatesCommonTableRouteImport
-      parentRoute: typeof BaseTemplatesRouteImport
+    '/_base/dev/templates/': {
+      preLoaderRoute: typeof BaseDevTemplatesIndexRouteImport
+      parentRoute: typeof BaseDevTemplatesRouteImport
     }
     '/_base/system/dicts/': {
       preLoaderRoute: typeof BaseSystemDictsIndexRouteImport
       parentRoute: typeof BaseRouteImport
+    }
+    '/_base/dev/templates/$': {
+      preLoaderRoute: typeof BaseDevTemplatesSplatRouteImport
+      parentRoute: typeof BaseDevTemplatesRouteImport
+    }
+    '/_base/dev/templates/common-table': {
+      preLoaderRoute: typeof BaseDevTemplatesCommonTableRouteImport
+      parentRoute: typeof BaseDevTemplatesRouteImport
     }
     '/_base/system/dicts/$id': {
       preLoaderRoute: typeof BaseSystemDictsIdRouteImport
@@ -371,12 +387,13 @@ export const routeTree = rootRoute.addChildren([
     Base500RouteRoute,
     BaseChangePasswordRouteRoute,
     BaseDashboardRouteRoute,
-    BaseTemplatesRouteRoute.addChildren([
-      BaseTemplatesIndexRouteRoute,
-      BaseTemplatesSplatRouteRoute,
-      BaseTemplatesCommonTableRouteRoute,
-    ]),
     BaseUserInfoRouteRoute,
+    BaseDevStorybookRouteRoute,
+    BaseDevTemplatesRouteRoute.addChildren([
+      BaseDevTemplatesIndexRouteRoute,
+      BaseDevTemplatesSplatRouteRoute,
+      BaseDevTemplatesCommonTableRouteRoute,
+    ]),
     BaseSystemBusinessDictsRouteRoute,
     BaseSystemDeptsRouteRoute,
     BaseSystemParamsRouteRoute,

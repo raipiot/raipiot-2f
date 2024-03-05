@@ -9,7 +9,7 @@ import {
   useSystemDictsSuspenseQuery
 } from '@/features/system/dicts'
 
-export const Route = createLazyFileRoute('/_base/templates/common-table')({
+export const Route = createLazyFileRoute('/_base/dev/templates/common-table')({
   component: CommonTable
 })
 
