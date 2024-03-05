@@ -27,6 +27,13 @@
       "persistent": true,
       "dotEnv": [".env.development.local", ".env.development", ".env.local", ".env"]
     },
+    "storybook": {
+      "cache": false,
+      "persistent": true
+    },
+    "build:storybook": {
+      "outputs": ["storybook-static/**"]
+    },
     "clean": {},
     "desktop:dev": {
       "cache": false,

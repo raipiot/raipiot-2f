@@ -12,7 +12,10 @@ export const useFormResponsiveSpan = () => {
     if (responsive.lg) {
       return sidebarStore.isDisplay ? 12 : 8
     }
-    return 12
+    if (responsive.md) {
+      return 12
+    }
+    return 24
   }
 
   return {
