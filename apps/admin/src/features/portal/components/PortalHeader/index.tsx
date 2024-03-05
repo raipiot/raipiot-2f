@@ -1,6 +1,5 @@
-import type { MenuProps } from 'antd/lib'
+import type { MenuProps } from 'antd'
 
-import { useLogoutMutation } from '@/features/auth/login'
 import LanguageButton from '@/features/layouts/BaseLayout/Header/LanguageButton'
 import ThemeToggle from '@/features/layouts/BaseLayout/Header/ThemeToggle'
 import { userInfoQK } from '@/features/system/users'
@@ -9,19 +8,13 @@ import { Login } from '../Login'
 import UserCard from './UserCard'
 
 export function PortalHeader() {
-  const [hadLogin, setHadLogin] = useState(!!queryClient.getQueryData(userInfoQK()))
-  const logoutMutation = useLogoutMutation()
-  const { open, toggle } = useModal()
-  const [showMiniMenu, setShowMiniMenu] = useState(false)
-
   const { t } = useTranslation(['PORTAL', 'COMMON'])
+  const queryClient = useQueryClient()
 
-  const onLogout = () => {
-    if (logoutMutation.isPending) return
-    logoutMutation.mutate(undefined, {
-      onSuccess: () => setHadLogin(false)
-    })
-  }
+  const [showMiniMenu, setShowMiniMenu] = useState(false)
+  const { open, toggle } = useModal()
+
+  const isLogin = () => !!queryClient.getQueryData(userInfoQK())
 
   const accountItems: MenuProps['items'] = [
     {
@@ -63,9 +56,9 @@ export function PortalHeader() {
             <Link
               className="flex items-center gap-1 !text-inherit"
               to="/dashboard"
-              disabled={!hadLogin}
+              disabled={!isLogin()}
               onClick={() => {
-                if (!hadLogin) {
+                if (!isLogin()) {
                   toggle()
                 }
               }}
@@ -80,11 +73,10 @@ export function PortalHeader() {
             align="center"
             className="gap-4 md:ml-0"
           >
-            {hadLogin ? (
-              <UserCard
-                onLogout={onLogout}
-                className="flex items-center gap-2"
-              />
+            {isLogin() ? (
+              <Suspense fallback={<SvgSpinners12DotsScaleRotate />}>
+                <UserCard />
+              </Suspense>
             ) : (
               <ADropdown menu={{ items: accountItems }}>
                 <AAvatar
@@ -123,9 +115,9 @@ export function PortalHeader() {
         <Link
           className="flex items-center gap-1 !text-inherit"
           to="/dashboard"
-          disabled={!hadLogin}
+          disabled={!isLogin()}
           onClick={() => {
-            if (!hadLogin) {
+            if (!isLogin()) {
               toggle()
             }
           }}
@@ -148,10 +140,7 @@ export function PortalHeader() {
       >
         <Login
           className="flex flex-col p-3 px-8 md:px-6"
-          onLoginSuccess={() => {
-            toggle()
-            setHadLogin(true)
-          }}
+          onLoginSuccess={() => toggle()}
         />
       </AModal>
     </header>

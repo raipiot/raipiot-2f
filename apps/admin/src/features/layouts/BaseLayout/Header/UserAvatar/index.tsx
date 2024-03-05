@@ -10,8 +10,9 @@ enum UserAction {
 export default function UserAvatar() {
   const { t } = useTranslation(['COMMON', 'AUTH'])
   const navigate = useNavigate()
-  const { data: userInfo } = useUserInfoSuspenseQuery()
+  const queryClient = useQueryClient()
 
+  const { data: userInfo } = useUserInfoSuspenseQuery()
   const logoutMutation = useLogoutMutation()
 
   const menuItems = [
@@ -42,7 +43,11 @@ export default function UserAvatar() {
       }
       case UserAction.QUIT: {
         logoutMutation.mutate(undefined, {
-          onSuccess: () => navigate({ to: '/' })
+          // 先进行路由跳转，再清除所有缓存
+          onSuccess: async () => {
+            await navigate({ to: '/', replace: true })
+            queryClient.clear()
+          }
         })
         break
       }

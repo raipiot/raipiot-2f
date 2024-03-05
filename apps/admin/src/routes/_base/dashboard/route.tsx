@@ -7,5 +7,5 @@ export const Route = createFileRoute('/_base/dashboard')({
     title: () => t('DASHBOARD'),
     icon: <MaterialSymbolsDashboardRounded />
   },
-  loader: () => queryClient.ensureQueryData(useDashboardQueryOptions)
+  loader: () => queryClient.ensureQueryData(useDashboardQueryOptions())
 })
