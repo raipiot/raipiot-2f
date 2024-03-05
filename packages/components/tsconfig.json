@@ -1,5 +1,5 @@
 {
-  "extends": "@raipiot-infra/tsconfig/base.json",
+  "extends": "@raipiot-infra/tsconfig/react.json",
 
   "include": ["src"]
 }

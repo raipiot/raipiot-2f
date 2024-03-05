@@ -35,6 +35,8 @@
     "react": ">=18.2.0"
   },
   "dependencies": {
+    "@raipiot-infra/enums": "^0.1.9",
+    "@raipiot-infra/utils": "^0.1.9",
     "@storybook/addon-essentials": "^7.6.17",
     "@storybook/addon-interactions": "^7.6.17",
     "@storybook/addon-links": "^7.6.17",
@@ -43,9 +45,10 @@
     "@storybook/react": "^7.6.17",
     "@storybook/react-vite": "^7.6.17",
     "@storybook/test": "^7.6.17",
+    "@types/lodash-es": "^4.17.12",
     "@types/react": "^18.2.61",
+    "lodash-es": "^4.17.21",
     "storybook": "^7.6.17"
   },
-  "devDependencies": {},
   "private": true
 }

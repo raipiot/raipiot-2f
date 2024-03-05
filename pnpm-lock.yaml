@@ -406,6 +406,12 @@ importers:
 
   packages/components:
     dependencies:
+      '@raipiot-infra/enums':
+        specifier: ^0.1.9
+        version: 0.1.9
+      '@raipiot-infra/utils':
+        specifier: ^0.1.9
+        version: 0.1.9(dayjs@1.11.10)
       '@storybook/addon-essentials':
         specifier: ^7.6.17
         version: 7.6.17(@types/react@18.2.61)(react-dom@18.2.0)(react@18.2.0)
@@ -430,6 +436,9 @@ importers:
       '@storybook/test':
         specifier: ^7.6.17
         version: 7.6.17
+      '@types/lodash-es':
+        specifier: ^4.17.12
+        version: 4.17.12
       '@types/react':
         specifier: ^18.2.61
         version: 18.2.61
@@ -439,6 +448,9 @@ importers:
       clsx:
         specifier: ^2.1.0
         version: 2.1.0
+      lodash-es:
+        specifier: ^4.17.21
+        version: 4.17.21
       react:
         specifier: '>=18.2.0'
         version: 18.2.0
@@ -6361,7 +6373,6 @@ packages:
     resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
     dependencies:
       '@types/lodash': 4.14.202
-    dev: true
 
   /@types/lodash@4.14.202:
     resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
