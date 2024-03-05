@@ -19,7 +19,7 @@ export default function Sidebar() {
         collapsedWidth={sidebarStore.isDisplay ? 146 : 0}
         trigger={null}
       >
-        <div className="flex h-[calc(100%-40px)]">
+        <div className="flex min-h-[calc(100%-40px)]">
           <ModuleMenu />
           <RouterMenu />
         </div>
