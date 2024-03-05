@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react'
 
-import { userInfoQueryOptions } from '@/features/users'
+import { userInfoQueryOptions } from '@/features/system/users'
 
 interface UserCardProps extends HTMLAttributes<HTMLDivElement> {
   onLogout: () => void

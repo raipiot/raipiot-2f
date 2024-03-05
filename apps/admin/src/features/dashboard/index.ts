@@ -1,1 +1,2 @@
-export * from './components/TodoTask'
+export * from './components'
+export * from './queries'

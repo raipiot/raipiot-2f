@@ -2,10 +2,12 @@ import { createLazyFileRoute } from '@tanstack/react-router'
 import type { TabsProps } from 'antd/lib'
 import type { PropsWithChildren } from 'react'
 
-import BannerSwiper from '@/features/portal/components/BannerSwiper'
-import PortalHeader from '@/features/portal/components/PortalHeader'
-import PublicNotify from '@/features/portal/components/PublicNotify'
-import { usePortalInfoSusptenseQuery } from '@/features/portal/queries'
+import {
+  BannerSwiper,
+  PortalHeader,
+  PublicNotify,
+  usePortalInfoSusptenseQuery
+} from '@/features/portal'
 
 export const Route = createLazyFileRoute('/_portal/')({
   component: Portal

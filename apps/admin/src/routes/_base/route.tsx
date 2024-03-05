@@ -1,4 +1,4 @@
-import { userInfoQueryOptions } from '@/features/users'
+import { userInfoQueryOptions } from '@/features/system/users'
 
 export const Route = createFileRoute('/_base')({
   beforeLoad: async (params) => {

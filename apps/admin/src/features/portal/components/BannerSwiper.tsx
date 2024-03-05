@@ -1,13 +1,13 @@
+import type { HTMLAttributes } from 'react'
+
 import { usePortalInfoSusptenseQuery } from '../queries'
 
-type Props = {
-  className?: string
-}
+interface Props extends HTMLAttributes<HTMLDivElement> {}
 
-export default function BannerSwiper({ className = '' }: Props) {
+export function BannerSwiper(props: Props) {
   const { data } = usePortalInfoSusptenseQuery()
   return (
-    <div className={clsx(className, 'overflow-hidden')}>
+    <div {...props}>
       <ACarousel
         autoplay
         fade

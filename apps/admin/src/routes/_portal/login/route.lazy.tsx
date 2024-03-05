@@ -1,12 +1,12 @@
-import LanguageButton from '@/features/layouts/BaseLayout/Header/LanguageButton'
-import type { LoginInfo } from '@/features/login'
+import type { LoginInfo } from '@/features/auth/login'
 import {
   LoginType,
   saveTokens,
   useLoginForm,
   useLoginMutation,
   useRedirect
-} from '@/features/login'
+} from '@/features/auth/login'
+import LanguageButton from '@/features/layouts/BaseLayout/Header/LanguageButton'
 
 export const Route = createLazyFileRoute('/_portal/login')({
   component: Login

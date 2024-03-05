@@ -1,4 +1,4 @@
-import { useDashboardQueryOptions } from '@/features/dashboard/queries'
+import { useDashboardQueryOptions } from '@/features/dashboard'
 
 const t = i18n.getFixedT(null, 'ROUTER')
 

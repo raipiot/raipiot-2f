@@ -1,8 +1,5 @@
 import type { Dispatch, SetStateAction } from 'react'
 
-import type { ModalType } from '@/features/modal'
-import { modalTitleMap } from '@/features/modal/maps'
-
 interface UseModalProps<T> {
   meta: T
   open?: boolean
@@ -76,6 +73,21 @@ export interface UseModal<T = any> {
    */
   close: () => void
 }
+
+/**
+ * 模态框类型
+ */
+export type ModalType = 'read' | 'create' | 'edit' | 'closed'
+
+const t = i18n.getFixedT(null, 'COMMON')
+
+// 【模态框类型 - 国际化】翻译映射
+const modalTitleMap = new Map<ModalType, () => string>([
+  ['create', () => t('CREATE')],
+  ['edit', () => t('EDIT')],
+  ['read', () => t('DETAIL')],
+  ['closed', () => '']
+])
 
 export const useModal = <T = any>(props?: UseModalProps<T>): UseModal<T> => {
   const { meta: defaultMeta, open: defaultValue = false } = props ?? {}
