@@ -7,10 +7,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {}
 export function BannerSwiper(props: Props) {
   const { data } = usePortalInfoSusptenseQuery()
   return (
-    <div
-      className="overflow-hidden"
-      {...props}
-    >
+    <div {...props}>
       <ACarousel
         autoplay
         fade
