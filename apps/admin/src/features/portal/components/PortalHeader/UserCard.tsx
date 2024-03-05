@@ -2,12 +2,16 @@ import { useLogoutMutation } from '@/features/auth/login'
 import { userInfoQueryOptions } from '@/features/system/users'
 
 export default function UserCard() {
+  console.log(1)
   const { data } = useSuspenseQuery(userInfoQueryOptions())
   const logoutMutation = useLogoutMutation()
 
   const handleLogout = () =>
     logoutMutation.mutate(undefined, {
-      onSuccess: () => router.invalidate()
+      onSuccess: async () => {
+        queryClient.removeQueries(userInfoQueryOptions())
+        router.invalidate()
+      }
     })
 
   return (
