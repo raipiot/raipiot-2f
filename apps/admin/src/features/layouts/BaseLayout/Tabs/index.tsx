@@ -7,11 +7,12 @@ import {
   useSortable
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
+import type { HTMLAttributes } from 'react'
 import { cloneElement } from 'react'
 
 import { getRouterStaticData } from '@/shared/router'
 
-interface DraggableTabPaneProps extends React.HTMLAttributes<HTMLDivElement> {
+interface DraggableTabPaneProps extends HTMLAttributes<HTMLDivElement> {
   'data-node-key': string
 }
 

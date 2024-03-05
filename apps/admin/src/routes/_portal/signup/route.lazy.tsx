@@ -1,11 +1,9 @@
 import type { SignupDto } from '@raipiot-2f/api'
 import { Lang } from '@raipiot-infra/enums'
 
-import BgImg from '@/assets/images/login_bg.jpg'
+import loginBg from '@/assets/images/login_bg.jpg'
+import { PrivacyPolicy, UserAgreement, useSignupForm } from '@/features/auth/signup'
 import LanguageButton from '@/features/layouts/BaseLayout/Header/LanguageButton'
-import { useSignupForm } from '@/features/signup'
-import PrivacyPolicy from '@/features/signup/components/PrivacyPolicy'
-import UserAgreement from '@/features/signup/components/UserAgreement'
 
 export const Route = createLazyFileRoute('/_portal/signup')({
   component: Signup
@@ -45,7 +43,7 @@ function Signup() {
       <div
         className="fixed inset-0 h-screen w-screen bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${BgImg})`
+          backgroundImage: `url(${loginBg})`
         }}
       />
       <div className="relative inset-x-0 top-12 m-auto mb-[120px] flex h-fit w-[520px] max-w-[90%] flex-col rounded-lg bg-[#ffffff] p-8 shadow-md dark:bg-[#222222]">

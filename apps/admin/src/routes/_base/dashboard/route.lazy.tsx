@@ -1,7 +1,4 @@
-import { TodoTask } from '@/features/dashboard'
-import { InfoTabs } from '@/features/dashboard/components/InfoTabs'
-import { Wrapper } from '@/features/dashboard/components/Wrapper'
-import { useDashboardSuspenseQuery } from '@/features/dashboard/queries'
+import { InfoTabs, TodoTask, useDashboardSuspenseQuery, Wrapper } from '@/features/dashboard'
 
 export const Route = createLazyFileRoute('/_base/dashboard')({
   component: Dashboard

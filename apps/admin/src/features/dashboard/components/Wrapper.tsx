@@ -6,6 +6,7 @@ export interface WrapperProps {
   className?: string
   rootClassName?: string
 }
+
 export function Wrapper({
   title,
   children,

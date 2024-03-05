@@ -4,8 +4,9 @@ interface PublicNotifyProps {
   items: string[]
 }
 
-export default function PublicNotify({ title, onShowMore, items }: PublicNotifyProps) {
+export function PublicNotify({ title, onShowMore, items }: PublicNotifyProps) {
   const { t } = useTranslation(['PORTAL'])
+
   return (
     <div className="group min-h-[300px] bg-white p-8 dark:bg-gray-900 md:p-4">
       <div className="text-md flex justify-between font-semibold">

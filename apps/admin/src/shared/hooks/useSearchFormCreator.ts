@@ -1,4 +1,4 @@
-import type { RpSearchFormItem } from '@/features/form'
+import type { RpSearchFormItem } from '@/features/forms'
 
 export const useSearchFormCreator = <T>() => {
   const { computeResponsiveSpan } = useFormResponsiveSpan()

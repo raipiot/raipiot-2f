@@ -1,5 +1,5 @@
-import { useLogoutMutation } from '@/features/login'
-import { useUserInfoSuspenseQuery } from '@/features/users'
+import { useLogoutMutation } from '@/features/auth/login'
+import { useUserInfoSuspenseQuery } from '@/features/system/users'
 
 enum UserAction {
   'USER.INFO' = '1',

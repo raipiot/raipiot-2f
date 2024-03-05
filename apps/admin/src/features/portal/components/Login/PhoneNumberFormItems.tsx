@@ -1,9 +1,10 @@
-import type { FormInstance } from 'antd/lib'
+import type { FormInstance } from 'antd'
 
 interface RpVerificationCodeItemProps {
   form: FormInstance
 }
-export function PhoneNumberFormItems({ form }: RpVerificationCodeItemProps) {
+
+export default function PhoneNumberFormItems({ form }: RpVerificationCodeItemProps) {
   const { t } = useTranslation(['PORTAL'])
 
   return (

@@ -1,6 +1,6 @@
 import type { SignupDto } from '@raipiot-2f/api'
 
-import { saveTokens } from '@/features/login'
+import { saveTokens } from '@/features/auth/login'
 
 import { useSignupMutation } from '../mutations'
 import { useRedirect } from './useRedirect'

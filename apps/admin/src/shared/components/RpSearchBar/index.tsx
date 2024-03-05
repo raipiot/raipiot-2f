@@ -1,6 +1,6 @@
 import type { FormItemProps, FormProps } from 'antd'
 
-import type { RpSearchFormItem } from '@/features/form'
+import type { RpSearchFormItem } from '@/features/forms'
 
 export interface RpSearchBarProps<T> extends Omit<FormProps, 'initialValues'> {
   /**

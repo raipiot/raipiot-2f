@@ -1,7 +1,7 @@
 import type { FormItemProps, InputProps } from 'antd/lib'
 import { isEmpty } from 'lodash-es'
 
-import { useSMSVerificationMutation } from '@/features/signup'
+import { useSMSVerificationMutation } from '@/features/auth/signup'
 
 export interface RpVerificationCodeItemProps extends FormItemProps {
   inputProps?: InputProps
