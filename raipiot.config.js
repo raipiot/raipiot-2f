@@ -2,5 +2,12 @@
 module.exports = {
   lang: 'zh-CN',
   org: 'raipiot',
-  repo: 'raipiot-2f'
+  repo: 'raipiot-2f',
+  genCode: {
+    rootPath: './',
+    paths: {
+      api: './packages/api/src',
+      feature: './apps/*/src/features'
+    }
+  }
 }
