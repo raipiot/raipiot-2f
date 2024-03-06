@@ -38,6 +38,7 @@
     "eslint:check": "turbo eslint:check",
     "eslint:fix": "turbo eslint:fix",
     "cz": "git-cz",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "prepare": "husky"
   },
   "devDependencies": {
@@ -52,6 +53,7 @@
     "@raipiot-infra/rpx": "^0.1.10",
     "@raipiot-infra/tsconfig": "^0.1.10",
     "commitizen": "^4.3.0",
+    "conventional-changelog-cli": "^4.1.0",
     "cspell": "^8.5.0",
     "cz-git": "^1.9.0",
     "eslint": "^8.57.0",
