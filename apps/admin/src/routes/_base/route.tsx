@@ -12,5 +12,5 @@ export const Route = createFileRoute('/_base')({
       })
     }
   },
-  loader: () => queryClient.ensureQueryData(userInfoQueryOptions)
+  loader: () => queryClient.ensureQueryData(userInfoQueryOptions())
 })

@@ -16,6 +16,7 @@ export function Login(props: LoginProps) {
   const [isAccountLogin, setIsAccountLogin] = useState(true)
 
   const { t } = useTranslation(['PORTAL'])
+  const queryClient = useQueryClient()
 
   const [form] = AForm.useForm<LoginDto & SMSLoginDto>()
   const initFormValue = {
@@ -38,7 +39,7 @@ export function Login(props: LoginProps) {
     const values = await form.validateFields()
     const options = {
       onSuccess: async () => {
-        await queryClient.ensureQueryData(userInfoQueryOptions)
+        await queryClient.ensureQueryData(userInfoQueryOptions())
         props.onLoginSuccess?.()
       }
     }

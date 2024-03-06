@@ -10,3 +10,6 @@ export const useSystemDictQuery = (id: string) => useQuery(systemDictQueryOption
 
 export const useSystemDictSuspenseQuery = (id: string) =>
   useSuspenseQuery(systemDictQueryOptions(id))
+
+export const prefetchSystemDict = (id: string) =>
+  queryClient.prefetchQuery(systemDictQueryOptions(id))

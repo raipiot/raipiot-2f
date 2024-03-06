@@ -1,4 +1,4 @@
-import { useDashboardQueryOptions } from '@/features/dashboard'
+import { dashboardQueryOptions } from '@/features/dashboard'
 
 const t = i18n.getFixedT(null, 'ROUTER')
 
@@ -7,5 +7,5 @@ export const Route = createFileRoute('/_base/dashboard')({
     title: () => t('DASHBOARD'),
     icon: <MaterialSymbolsDashboardRounded />
   },
-  loader: () => queryClient.ensureQueryData(useDashboardQueryOptions)
+  loader: () => queryClient.ensureQueryData(dashboardQueryOptions())
 })

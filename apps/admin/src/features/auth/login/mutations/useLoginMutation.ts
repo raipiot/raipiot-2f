@@ -3,7 +3,7 @@ import type { MutateFunction } from '@tanstack/react-query'
 
 import { saveTokens } from '../utils'
 
-const mutationWrapper =
+const loginMutation =
   <T>(mutationFn: MutateFunction<LoginVo, any, T>) =>
   () => {
     const { message } = AApp.useApp()
@@ -19,6 +19,6 @@ const mutationWrapper =
     })
   }
 
-export const useLoginMutation = mutationWrapper<LoginDto>((data) => authAPI.login(data))
+export const useLoginMutation = loginMutation<LoginDto>((data) => authAPI.login(data))
 
-export const useSMSLoginMutation = mutationWrapper<SMSLoginDto>((data) => authAPI.SMSLogin(data))
+export const useSMSLoginMutation = loginMutation<SMSLoginDto>((data) => authAPI.SMSLogin(data))

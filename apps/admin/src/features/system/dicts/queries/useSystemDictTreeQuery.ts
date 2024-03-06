@@ -1,10 +1,11 @@
 import { systemDictTreeQK } from './query-keys'
 
-export const systemDictTreeQueryOptions = queryOptions({
-  queryKey: systemDictTreeQK(),
-  queryFn: () => systemDictsAPI.tree()
-})
+export const systemDictTreeQueryOptions = () =>
+  queryOptions({
+    queryKey: systemDictTreeQK(),
+    queryFn: () => systemDictsAPI.tree()
+  })
 
-export const useSystemDictTreeQuery = () => useQuery(systemDictTreeQueryOptions)
+export const useSystemDictTreeQuery = () => useQuery(systemDictTreeQueryOptions())
 
-export const useSystemDictTreeSuspenseQuery = () => useSuspenseQuery(systemDictTreeQueryOptions)
+export const useSystemDictTreeSuspenseQuery = () => useSuspenseQuery(systemDictTreeQueryOptions())

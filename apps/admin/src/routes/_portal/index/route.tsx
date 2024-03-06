@@ -4,9 +4,14 @@ import { portalInfoQueryOptions } from '@/features/portal/queries'
 import { userInfoQueryOptions } from '@/features/system/users'
 
 export const Route = createFileRoute('/_portal/')({
-  loader: () =>
-    Promise.allSettled([
-      queryClient.ensureQueryData(portalInfoQueryOptions),
-      AuthUtils.isAuthenticated() ? queryClient.ensureQueryData(userInfoQueryOptions) : null
-    ])
+  loader: async () => {
+    if (!AuthUtils.isAuthenticated()) {
+      await queryClient.ensureQueryData(portalInfoQueryOptions())
+    } else {
+      await Promise.allSettled([
+        queryClient.ensureQueryData(portalInfoQueryOptions()),
+        queryClient.ensureQueryData(userInfoQueryOptions())
+      ])
+    }
+  }
 })

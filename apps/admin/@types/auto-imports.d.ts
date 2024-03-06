@@ -68,6 +68,7 @@ declare global {
   const LineMdSunnyFilledLoopToMoonAltFilledLoopTransition: typeof import('~icons/line-md/sunny-filled-loop-to-moon-alt-filled-loop-transition.jsx')['default']
   const Link: typeof import('@tanstack/react-router')['Link']
   const LoaderContext: typeof import('@tanstack/react-router')['LoaderContext']
+  const LogosStorybookIcon: typeof import('~icons/logos/storybook-icon.jsx')['default']
   const MatchRoute: typeof import('@tanstack/react-router')['MatchRoute']
   const MaterialSymbolsAccountCircle: typeof import('~icons/material-symbols/account-circle.jsx')['default']
   const MaterialSymbolsAccountTreeOutlineRounded: typeof import('~icons/material-symbols/account-tree-outline-rounded.jsx')['default']

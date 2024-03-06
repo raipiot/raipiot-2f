@@ -1,4 +1,4 @@
-export const Route = createFileRoute('/_base/templates')({
+export const Route = createFileRoute('/_base/dev/templates')({
   staticData: {
     title: '通用模版'
   },

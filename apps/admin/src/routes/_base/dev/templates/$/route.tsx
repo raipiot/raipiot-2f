@@ -1,4 +1,4 @@
-export const Route = createFileRoute('/_base/templates/$')({
+export const Route = createFileRoute('/_base/dev/templates/$')({
   beforeLoad: () => {
     throw redirect({
       to: '/404'
