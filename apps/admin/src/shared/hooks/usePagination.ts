@@ -29,7 +29,7 @@ export const usePagination = <T extends PageDto>(initialValue?: Partial<T>) => {
     showTotal: (totalPage: number) =>
       totalPage
         ? t('SHOW.TOTAL', {
-            total: totalPage
+            count: totalPage
           })
         : null
   }

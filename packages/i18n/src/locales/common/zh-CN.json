@@ -48,7 +48,7 @@
   "SAVE": "保存",
   "SEARCH": "搜索",
   "SETTINGS": "设置",
-  "SHOW.TOTAL": "共计 {{total}}",
+  "SHOW.TOTAL": "共计 {{count}} 条",
   "SORT": "排序",
   "START": "开始",
   "STATUS": "状态",
