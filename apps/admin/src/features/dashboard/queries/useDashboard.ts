@@ -1,6 +1,6 @@
 import { dashboardQK } from './query-keys'
 
-export const useDashboardQueryOptions = () =>
+export const dashboardQueryOptions = () =>
   queryOptions({
     queryKey: dashboardQK(),
     queryFn: () =>
@@ -70,6 +70,6 @@ export const useDashboardQueryOptions = () =>
       })
   })
 
-export const useDashboardQuery = () => useQuery(useDashboardQueryOptions())
+export const useDashboardQuery = () => useQuery(dashboardQueryOptions())
 
-export const useDashboardSuspenseQuery = () => useSuspenseQuery(useDashboardQueryOptions())
+export const useDashboardSuspenseQuery = () => useSuspenseQuery(dashboardQueryOptions())
