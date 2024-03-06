@@ -4,6 +4,7 @@ import type { FormItemProps } from 'antd'
 import { TableLayout } from '@/features/layouts'
 import type { DictSearchFormModel, DictSubmitFormModel } from '@/features/system/dicts'
 import {
+  prefetchSystemDicts,
   SystemDictDetail,
   useDictsColumns,
   useDictsModalForm,
@@ -70,7 +71,8 @@ function SystemDicts() {
         form: searchForm,
         formItems: searchFormItems,
         onSearch: (values) =>
-          startTransition(() => setPageParams(PageUtils.mergeParams(pageParams, values)))
+          startTransition(() => setPageParams(PageUtils.mergeParams(pageParams, values))),
+        onPrefetch: (values) => prefetchSystemDicts(PageUtils.mergeParams(pageParams, values))
       }}
       tableProps={{
         rowKey: (record) => record.id!,

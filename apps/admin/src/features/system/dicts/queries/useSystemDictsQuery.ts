@@ -14,3 +14,6 @@ export const useSystemDictsQuery = (params: DictPageDto) =>
 
 export const useSystemDictsSuspenseQuery = (params: DictPageDto) =>
   useSuspenseQuery(systemDictsQueryOptions(params))
+
+export const prefetchSystemDicts = (params: DictPageDto) =>
+  queryClient.prefetchQuery(systemDictsQueryOptions(params))

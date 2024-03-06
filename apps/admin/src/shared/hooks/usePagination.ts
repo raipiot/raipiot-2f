@@ -2,11 +2,10 @@ import type { PageDto } from '@raipiot-2f/api'
 import type { TablePaginationConfig } from 'antd'
 import { createElement } from 'react'
 
-import { systemDictsQueryOptions } from '@/features/system/dicts'
+import { prefetchSystemDicts } from '@/features/system/dicts'
 
 export const usePagination = <T extends PageDto>(initialValue?: Partial<T>) => {
   const { t } = useTranslation()
-  const queryClient = useQueryClient()
   const [isPending, startTransition] = useTransition()
   const response = useResponsive()
 
@@ -42,8 +41,8 @@ export const usePagination = <T extends PageDto>(initialValue?: Partial<T>) => {
         return createElement(
           'div',
           {
-            onMouseEnter: () =>
-              queryClient.prefetchQuery(systemDictsQueryOptions({ ...pageParams, current: page }))
+            onMouseEnter: () => prefetchSystemDicts({ ...pageParams, current: page }),
+            onMouseOver: () => prefetchSystemDicts({ ...pageParams, current: page })
           },
           originalElement
         )
