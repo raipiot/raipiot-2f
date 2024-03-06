@@ -60,6 +60,7 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
             />
             <AButton
               size="small"
+              onMouseOver={() => queryClient.prefetchQuery(systemDictQueryOptions(record.id!))}
               onClick={async () => {
                 modal?.openEdit()
                 modal?.setMeta(record.id)

@@ -1,8 +1,12 @@
 import type { PageDto } from '@raipiot-2f/api'
 import type { TablePaginationConfig } from 'antd'
+import { createElement } from 'react'
+
+import { systemDictsQueryOptions } from '@/features/system/dicts'
 
 export const usePagination = <T extends PageDto>(initialValue?: Partial<T>) => {
   const { t } = useTranslation()
+  const queryClient = useQueryClient()
   const [isPending, startTransition] = useTransition()
   const response = useResponsive()
 
@@ -31,7 +35,21 @@ export const usePagination = <T extends PageDto>(initialValue?: Partial<T>) => {
         ? t('SHOW.TOTAL', {
             count: totalPage
           })
-        : null
+        : null,
+    pageSizeOptions: ['20', '30', '50', '100'],
+    itemRender: (page, type, originalElement) => {
+      if (type === 'page') {
+        return createElement(
+          'div',
+          {
+            onMouseEnter: () =>
+              queryClient.prefetchQuery(systemDictsQueryOptions({ ...pageParams, current: page }))
+          },
+          originalElement
+        )
+      }
+      return originalElement
+    }
   }
 
   return {
