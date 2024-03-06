@@ -1,5 +1,5 @@
 import type { ModalProps } from 'antd'
-import { type HTMLAttributes, type PropsWithChildren, type ReactNode } from 'react'
+import type { HTMLAttributes, PropsWithChildren, ReactNode } from 'react'
 
 import type { RpSearchBarProps } from '@/shared/components/RpSearchBar'
 
