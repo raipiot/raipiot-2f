@@ -5,7 +5,7 @@ import { isMobile } from 'react-device-detect'
 import type { UseModal } from '@/shared/hooks/useModal'
 
 import { useSystemDictRemoveMutation } from '../mutations'
-import { systemDictQueryOptions } from '../queries'
+import { prefetchSystemDict, systemDictQueryOptions } from '../queries'
 
 interface UseDictsColumnsProps {
   modal?: UseModal<string>
@@ -60,6 +60,8 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
             />
             <AButton
               size="small"
+              onMouseEnter={() => prefetchSystemDict(record.id!)}
+              onMouseOver={() => prefetchSystemDict(record.id!)}
               onClick={async () => {
                 modal?.openEdit()
                 modal?.setMeta(record.id)

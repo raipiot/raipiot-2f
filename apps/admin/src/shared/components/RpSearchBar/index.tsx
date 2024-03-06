@@ -24,6 +24,10 @@ export interface RpSearchBarProps<T> extends Omit<FormProps, 'initialValues'> {
    */
   onClear?: (values: T) => void
   /**
+   * 预渲染事件
+   */
+  onPrefetch?: (values: T) => void
+  /**
    * 显示 Expand 按钮
    */
   showExpand?: boolean
@@ -37,12 +41,16 @@ function RpSearchBar<T extends Record<string, any>>(props: RpSearchBarProps<T>) 
     searchLoading,
     onSearch,
     onClear,
+    onPrefetch,
     showExpand,
     ...formProps
   } = props
   const { t } = useTranslation()
   const { computeResponsiveSpan } = useFormResponsiveSpan()
   const [expand, setExpand] = useState(false)
+
+  // 预渲染
+  const prefetch = () => onPrefetch?.(form?.getFieldsValue(true))
 
   return (
     <AForm<T>
@@ -98,6 +106,8 @@ function RpSearchBar<T extends Record<string, any>>(props: RpSearchBarProps<T>) 
               htmlType="submit"
               loading={searchLoading}
               disabled={searchLoading}
+              onMouseEnter={prefetch}
+              onMouseOver={prefetch}
             >
               {t('SEARCH')}
             </AButton>

@@ -26,7 +26,7 @@ const RpTable = forwardRef<any, RpTableProps>((props, ref) => {
     rootClassName: '!mb-0',
     showSizeChanger: true,
     showQuickJumper: true,
-    showTotal: (totalPage: number) => t('SHOW.TOTAL', { total: totalPage }),
+    showTotal: (totalPage: number) => t('SHOW.TOTAL', { count: totalPage }),
     total: props.rawData.total,
     current: props.pageParams.current,
     pageSize: props.pageParams.size
