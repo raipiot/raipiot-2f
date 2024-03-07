@@ -41,8 +41,7 @@ export const usePagination = <T extends PageDto>(initialValue?: Partial<T>) => {
         return createElement(
           'div',
           {
-            onMouseEnter: () => prefetchSystemDicts({ ...pageParams, current: page }),
-            onMouseOver: () => prefetchSystemDicts({ ...pageParams, current: page })
+            onMouseEnter: () => prefetchSystemDicts({ ...pageParams, current: page })
           },
           originalElement
         )

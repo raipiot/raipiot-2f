@@ -58,10 +58,9 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
                 modal?.setMeta(record.id)
               }}
             />
-            <AButton
+            <RpEditBtn
               size="small"
               onMouseEnter={() => prefetchSystemDict(record.id!)}
-              onMouseOver={() => prefetchSystemDict(record.id!)}
               onClick={async () => {
                 modal?.openEdit()
                 modal?.setMeta(record.id)
@@ -69,14 +68,12 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
                   await queryClient.ensureQueryData(systemDictQueryOptions(record.id!))
                 )
               }}
-            >
-              {t('COMMON:EDIT')}
-            </AButton>
+            />
             <Link
               to="/system/dicts/$id"
               params={{ id: record.id! }}
             >
-              <AButton size="small">{t('COMMON:CONFIG')}</AButton>
+              <RpConfigBtn size="small" />
             </Link>
             <RpDeletePopconfirm
               okBtnLoading={isPending}
