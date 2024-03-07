@@ -36,7 +36,7 @@
     "@raipiot-infra/antd": "~0.1.12",
     "@raipiot-infra/config": "~0.1.12",
     "@raipiot-infra/enums": "~0.1.12",
-    "@raipiot-infra/hooks": "^0.1.10",
+    "@raipiot-infra/hooks": "~0.1.12",
     "@raipiot-infra/tanstack-query": "~0.1.12",
     "@raipiot-infra/theme": "~0.1.12",
     "@raipiot-infra/utils": "~0.1.12",
