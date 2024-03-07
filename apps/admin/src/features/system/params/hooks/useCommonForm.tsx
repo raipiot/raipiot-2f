@@ -1,4 +1,3 @@
-import { useForm } from 'antd/es/form/Form'
 import type { FormProps } from 'antd/lib'
 import { Fragment, type ReactNode } from 'react'
 
@@ -8,10 +7,8 @@ interface UseCommonForm {
   renderActionComponent?: React.ReactNode
 }
 
-const { Item } = AForm
-
 export function useCommonForm({ items, renderActionComponent, formProps }: UseCommonForm) {
-  const [form] = useForm()
+  const [form] = AForm.useForm()
   return {
     form,
     component: (
@@ -25,7 +22,7 @@ export function useCommonForm({ items, renderActionComponent, formProps }: UseCo
           ))}
 
           {renderActionComponent || (
-            <Item rootClassName="!mb-4">
+            <AForm.Item rootClassName="!mb-4">
               <AFlex gap={8}>
                 <AButton
                   htmlType="submit"
@@ -35,7 +32,7 @@ export function useCommonForm({ items, renderActionComponent, formProps }: UseCo
                 </AButton>
                 <AButton htmlType="reset">重置</AButton>
               </AFlex>
-            </Item>
+            </AForm.Item>
           )}
         </ARow>
       </AForm>
