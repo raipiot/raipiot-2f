@@ -21,6 +21,10 @@
     "PARAMS": "Parameter Management",
     "TENANTS": "Tenant Management"
   },
+  "DEVELOPER": {
+    "TEMPLATES": "Code Templates",
+    "TEMPLATES.BASIC": "Basic Table"
+  },
   "MODULE.MENU": {
     "DASHBOARD": "Dashboard",
     "SUPPLIER": "Supplier",

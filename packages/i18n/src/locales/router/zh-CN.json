@@ -21,6 +21,10 @@
     "PARAMS": "参数管理",
     "TENANTS": "租户管理"
   },
+  "DEVELOPER": {
+    "TEMPLATES": "代码模版",
+    "TEMPLATES.BASIC": "基础表格"
+  },
   "MODULE.MENU": {
     "DASHBOARD": "仪表盘",
     "SUPPLIER": "供应商",

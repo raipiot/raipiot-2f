@@ -5,7 +5,7 @@ type IgnoreProps = 'danger'
 
 interface RpDeleteBtnProps extends PropsWithChildren<Omit<ButtonProps, IgnoreProps>> {}
 
-export default function RpDeleteBtn(props: RpDeleteBtnProps) {
+function RpDeleteBtn(props: RpDeleteBtnProps) {
   const { children, ...btnProps } = props
   const { t } = useTranslation()
   return (
@@ -17,3 +17,4 @@ export default function RpDeleteBtn(props: RpDeleteBtnProps) {
     </AButton>
   )
 }
+export default RpDeleteBtn

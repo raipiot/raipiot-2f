@@ -1,4 +1,4 @@
-export default function RpGlobalLoading() {
+function RpGlobalLoading() {
   return (
     <main className="absolute inset-0 m-auto flex flex-col items-center justify-center">
       <ASpin size="large" />
@@ -9,3 +9,4 @@ export default function RpGlobalLoading() {
     </main>
   )
 }
+export default RpGlobalLoading

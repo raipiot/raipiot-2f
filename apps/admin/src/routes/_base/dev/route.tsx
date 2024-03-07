@@ -1,7 +1,4 @@
-export const Route = createFileRoute('/_base/dev/templates')({
-  staticData: {
-    title: '通用模版'
-  },
+export const Route = createFileRoute('/_base/dev')({
   component: () => <Outlet />,
   beforeLoad: () => {
     // 模版页面仅开发环境可用

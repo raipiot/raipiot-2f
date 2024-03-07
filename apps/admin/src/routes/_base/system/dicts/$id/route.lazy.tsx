@@ -26,11 +26,7 @@ function SystemDictItem() {
   const { data, isFetching, refetch } = useSystemDictValuesSuspenseQuery(pageParams)
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
 
-  useEffect(
-    () => clearSelectedRowKeys(),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isFetching]
-  )
+  useEffect(() => clearSelectedRowKeys(), [isFetching, clearSelectedRowKeys])
 
   return (
     <TableLayout<DictVo>
