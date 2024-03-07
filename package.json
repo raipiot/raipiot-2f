@@ -19,8 +19,6 @@
     "desktop:build:prod:admin": "turbo desktop:build:prod --filter=@raipiot-2f/admin",
     "desktop:build:prod:shopping": "turbo desktop:build:prod --filter=@raipiot-2f/shopping",
     "start:mock": "pnpm --filter=@raipiot-2f/mock build &&pnpm --filter=@raipiot-2f/mock pm2:start",
-    "storybook:components": "turbo storybook --filter=@raipiot-2f/components",
-    "storybook:build:components": "turbo build:storybook --filter=@raipiot-2finfra/components",
     "clean": "turbo clean",
     "test:admin": "turbo test --filter=@raipiot-2f/admin",
     "test:unit:admin": "turbo test:unit --filter=@raipiot-2f/admin",
