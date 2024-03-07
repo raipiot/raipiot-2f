@@ -2,10 +2,10 @@ import type { DictValuePageDto, DictVo } from '@raipiot-2f/api'
 
 import { TableLayout } from '@/features/layouts'
 import {
+  systemDictValuesQueryOptions,
   useDictsSearchForm,
   useDictValuesColumns,
-  useSystemDictRemoveMutation,
-  useSystemDictValuesSuspenseQuery
+  useSystemDictRemoveMutation
 } from '@/features/system/dicts'
 
 export const Route = createLazyFileRoute('/_base/system/dicts/$id')({
@@ -23,7 +23,7 @@ function SystemDictItem() {
   const { searchForm, searchFormItems } = useDictsSearchForm()
   const columns = useDictValuesColumns()
 
-  const { data, isFetching, refetch } = useSystemDictValuesSuspenseQuery(pageParams)
+  const { data, isFetching, refetch } = useSuspenseQuery(systemDictValuesQueryOptions(pageParams))
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
 
   useEffect(() => clearSelectedRowKeys(), [isFetching, clearSelectedRowKeys])
@@ -50,7 +50,7 @@ function SystemDictItem() {
         rowSelection,
         columns,
         dataSource: data,
-        pagination
+        pagination: pagination()
       }}
       refreshLoading={isFetching}
       onRefresh={refetch}

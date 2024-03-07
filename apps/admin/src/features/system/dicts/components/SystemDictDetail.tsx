@@ -1,8 +1,7 @@
-import { useSystemDictSuspenseQuery } from '../queries'
+import { systemDictQueryOptions } from '../queries'
 
 export function SystemDictDetail({ id }: { id: string }) {
-  const { data } = useSystemDictSuspenseQuery(id)
-
+  const { data } = useSuspenseQuery(systemDictQueryOptions(id))
   return (
     <ADescriptions
       bordered

@@ -5,7 +5,7 @@ import { isMobile } from 'react-device-detect'
 import type { UseModal } from '@/shared/hooks/useModal'
 
 import { useSystemDictRemoveMutation } from '../mutations'
-import { prefetchSystemDict, systemDictQueryOptions } from '../queries'
+import { systemDictQueryOptions } from '../queries'
 
 interface UseDictsColumnsProps {
   modal?: UseModal<string>
@@ -16,8 +16,9 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
   const { modal, form } = props ?? {}
 
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
-  const queryClient = useQueryClient()
   const { createActions, createColumns } = useTableCreator<DictVo>()
+
+  const queryClient = useQueryClient()
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
 
   return {
@@ -60,7 +61,7 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
             />
             <RpEditBtn
               size="small"
-              onMouseEnter={() => prefetchSystemDict(record.id!)}
+              onMouseEnter={() => queryClient.prefetchQuery(systemDictQueryOptions(record.id!))}
               onClick={async () => {
                 modal?.openEdit()
                 modal?.setMeta(record.id)

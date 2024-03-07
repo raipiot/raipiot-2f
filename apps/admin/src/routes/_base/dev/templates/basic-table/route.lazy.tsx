@@ -3,10 +3,10 @@ import type { DictPageDto, DictVo } from '@raipiot-2f/api'
 
 import { TableLayout } from '@/features/layouts'
 import {
+  systemDictsQueryOptions,
   useDictsColumns,
   useDictsSearchForm,
-  useSystemDictRemoveMutation,
-  useSystemDictsSuspenseQuery
+  useSystemDictRemoveMutation
 } from '@/features/system/dicts'
 
 export const Route = createLazyFileRoute('/_base/dev/templates/basic-table')({
@@ -26,7 +26,7 @@ function CommonTable() {
     data: { records, total },
     isFetching,
     refetch
-  } = useSystemDictsSuspenseQuery(pageParams)
+  } = useSuspenseQuery(systemDictsQueryOptions(pageParams))
   // 删除
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
 

@@ -5,7 +5,3 @@ export const userInfoQueryOptions = () =>
     queryKey: userInfoQK(),
     queryFn: () => usersAPI.info()
   })
-
-export const useUserInfoQuery = () => useQuery(userInfoQueryOptions())
-
-export const useUserInfoSuspenseQuery = () => useSuspenseQuery(userInfoQueryOptions())

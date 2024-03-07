@@ -4,13 +4,12 @@ import type { FormItemProps } from 'antd'
 import { TableLayout } from '@/features/layouts'
 import type { DictSearchFormModel, DictSubmitFormModel } from '@/features/system/dicts'
 import {
-  prefetchSystemDicts,
   SystemDictDetail,
+  systemDictsQueryOptions,
   useDictsColumns,
   useDictsModalForm,
   useDictsSearchForm,
   useSystemDictRemoveMutation,
-  useSystemDictsSuspenseQuery,
   useSystemDictSubmitMutation
 } from '@/features/system/dicts'
 
@@ -31,10 +30,11 @@ function SystemDicts() {
 
   const responsive = useResponsive()
 
+  const queryClient = useQueryClient()
   const {
     data: { records, total },
     refetch
-  } = useSystemDictsSuspenseQuery(PageUtils.mergeParams(pageParams))
+  } = useSuspenseQuery(systemDictsQueryOptions(PageUtils.mergeParams(pageParams)))
   const { mutateAsync: removeMutateAsync, isPending: isRemovePending } =
     useSystemDictRemoveMutation()
   const { mutateAsync: submitMutateAsync, isPending: isSubmitPending } =
@@ -72,14 +72,20 @@ function SystemDicts() {
         formItems: searchFormItems,
         onSearch: (values) =>
           startTransition(() => setPageParams(PageUtils.mergeParams(pageParams, values))),
-        onPrefetch: (values) => prefetchSystemDicts(PageUtils.mergeParams(pageParams, values))
+        onPrefetch: (values) =>
+          queryClient.prefetchQuery(
+            systemDictsQueryOptions(PageUtils.mergeParams(pageParams, values))
+          )
       }}
       tableProps={{
         rowKey: (record) => record.id!,
         rowSelection,
         columns,
         dataSource: records,
-        pagination: { ...pagination, total }
+        pagination: pagination({
+          total,
+          onPrefetch: (values) => queryClient.prefetchQuery(systemDictsQueryOptions(values))
+        })
       }}
       refreshLoading={isPending}
       onRefresh={() =>
