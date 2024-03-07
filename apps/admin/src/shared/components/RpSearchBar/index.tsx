@@ -107,7 +107,6 @@ function RpSearchBar<T extends Record<string, any>>(props: RpSearchBarProps<T>) 
               loading={searchLoading}
               disabled={searchLoading}
               onMouseEnter={prefetch}
-              onMouseOver={prefetch}
             >
               {t('SEARCH')}
             </AButton>
