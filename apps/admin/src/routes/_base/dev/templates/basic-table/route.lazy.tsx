@@ -52,7 +52,8 @@ function BasicTable() {
       pageHeaderProps={{
         // 操作区
         operate: (
-          <RpCreateBtn
+          <RpButton
+            variant="create"
             onClick={() => {
               modalForm.resetFields()
               modal.openCreate()

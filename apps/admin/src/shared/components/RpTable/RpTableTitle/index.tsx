@@ -59,7 +59,7 @@ function RpTableTitle(props: RpTableTitleProps) {
               okBtnLoading={batchDeleteLoading}
               onConfirm={() => onBatchDelete?.(selectedRowKeys!)}
             >
-              <AButton>{t('BATCH.DELETE')}</AButton>
+              <RpButton variant="batch-delete" />
             </RpDeletePopconfirm>
             {renderTableBatchOpeate && renderTableBatchOpeate}
             <span className="text-xs sm:text-sm">

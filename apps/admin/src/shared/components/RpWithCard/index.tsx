@@ -15,8 +15,8 @@ export interface RpWithCardProps {
 const rpWithCard = <T extends object = any>(
   WrappedComponent: React.ComponentType<Omit<T, 'cardProps' | 'hideCard'>>
 ) =>
-  function RpWithCard(props: T) {
-    const { hideCard, cardProps, ...restProps } = props as T & RpWithCardProps
+  function RpWithCard(props: T & RpWithCardProps) {
+    const { hideCard, cardProps, ...restProps } = props
     if (!hideCard) {
       return (
         <RpCard {...cardProps}>

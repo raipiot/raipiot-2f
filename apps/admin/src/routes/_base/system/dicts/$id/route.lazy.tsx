@@ -39,7 +39,12 @@ function SystemDictItem() {
   return (
     <RpPageContainer
       pageHeaderProps={{
-        operate: <RpCreateBtn onClick={() => {}} />
+        operate: (
+          <RpButton
+            variant="create"
+            onClick={() => {}}
+          />
+        )
       }}
     >
       <RpSearchBar
@@ -69,7 +74,7 @@ function SystemDictItem() {
         }
         renderTableOpeate={
           <Link to="/system/dicts">
-            <RpBackBtn />
+            <RpButton variant="back" />
           </Link>
         }
       />
