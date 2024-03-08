@@ -103,6 +103,7 @@ function BasicTable() {
       />
       {/* 弹窗 */}
       <RpModal
+        type={modal.type}
         open={modal.open}
         title={modal.getTitle()}
         confirmLoading={isSubmitPending}

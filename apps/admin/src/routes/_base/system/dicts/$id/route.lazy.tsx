@@ -74,6 +74,7 @@ function SystemDictItem() {
         }
       />
       <RpModal
+        type={modal.type}
         open={modal.open}
         title={modal.getTitle()}
         confirmLoading={isSubmitPending}

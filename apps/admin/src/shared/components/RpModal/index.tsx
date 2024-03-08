@@ -1,10 +1,14 @@
 import type { ModalProps } from 'antd'
 
-export interface RpModalProps extends ModalProps {}
+import type { ModalType } from '@/shared/hooks/useModal'
 
-const RpModal = memo<RpModalProps>((props) => {
-  const modalWidth = useResponsiveModalWidth()
-  const { width = modalWidth, confirmLoading, children, ...modalProps } = props
+export interface RpModalProps extends ModalProps {
+  type?: ModalType
+}
+
+const RpModal = memo<RpModalProps>(({ type, ...restProps }) => {
+  const modalWidth = useResponsiveModalWidth(type)
+  const { width = modalWidth, confirmLoading, children, ...modalProps } = restProps
   const { t } = useTranslation()
 
   return (
