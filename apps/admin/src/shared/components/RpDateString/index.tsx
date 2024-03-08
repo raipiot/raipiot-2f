@@ -4,7 +4,6 @@ import rpWithSkeleton from '../RpWithSkeleton'
 
 interface RpDateStringProps {
   value?: any
-  skeleton?: boolean
 }
 
 const RpDateString = rpWithSkeleton((props: RpDateStringProps) => {

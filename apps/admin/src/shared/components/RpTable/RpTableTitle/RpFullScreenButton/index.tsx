@@ -1,10 +1,17 @@
-import { TableLayoutFullScreenContext } from '../../../context'
+interface RpFullScreenButtonProps {
+  /**
+   * 是否全屏
+   */
+  isFullscreen?: boolean
+  /**
+   * 切换全屏事件
+   */
+  toggleFullscreen?: () => void
+}
 
-export default function FullScreenButton() {
+function RpFullScreenButton(props: RpFullScreenButtonProps) {
+  const { isFullscreen, toggleFullscreen } = props
   const { t } = useTranslation()
-
-  const { isFullscreen, toggleFullscreen } = useContext(TableLayoutFullScreenContext)
-
   return (
     <ATooltip
       title={isFullscreen ? t('EXIT.FULL.SCREEN') : t('FULL.SCREEN')}
@@ -20,8 +27,9 @@ export default function FullScreenButton() {
             <MaterialSymbolsExpandContentRounded />
           )
         }
-        onClick={() => toggleFullscreen()}
+        onClick={() => toggleFullscreen?.()}
       />
     </ATooltip>
   )
 }
+export default RpFullScreenButton

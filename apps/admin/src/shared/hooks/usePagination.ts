@@ -3,8 +3,8 @@ import type { TablePaginationConfig } from 'antd'
 import { createElement } from 'react'
 
 interface PaginationParams<T> {
-  total: number
-  onPrefetch: (values: T) => void
+  total?: number
+  onPrefetch?: (values: T) => void
 }
 
 export const usePagination = <T extends PageDto>(initialValue?: Partial<T>) => {

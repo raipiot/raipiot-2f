@@ -1,104 +1,117 @@
-/* eslint-disable no-console */
 import type { DictPageDto, DictVo } from '@raipiot-2f/api'
 
-import { TableLayout } from '@/features/layouts'
 import {
   systemDictsQueryOptions,
   useDictsColumns,
+  useDictsModalForm,
   useDictsSearchForm,
-  useSystemDictRemoveMutation
+  useSystemDictRemoveMutation,
+  useSystemDictSubmitMutation
 } from '@/features/system/dicts'
 
 export const Route = createLazyFileRoute('/_base/dev/templates/basic-table')({
-  component: CommonTable
+  component: BasicTable
 })
 
-function CommonTable() {
+function BasicTable() {
+  // 国际化
   const { t } = useTranslation()
 
-  // 构造分页器
-  const { pageParams, setPageParams, pagination } = usePagination<DictPageDto>()
-  // 构造批量选择
-  const { rowSelection, selectedRowKeys, clearSelectedRowKeys } = useRowSelection<DictVo>()
+  // 分页器
+  const { pageParams, setPageParams, pagination, isPending, startTransition } =
+    usePagination<DictPageDto>()
+  // 多选器：范型为列表行数据类型
+  const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
+  // 弹窗
+  const modal = useModal()
+  // 搜索表单
+  const { searchForm, searchFormItems } = useDictsSearchForm()
+  // 弹窗表单
+  const { modalForm, modalFormItems } = useDictsModalForm()
+  // 表格列
+  const { columns } = useDictsColumns({ modal, form: modalForm })
 
-  // 列表查询
+  // 异步查询：列表数据
   const {
     data: { records, total },
-    isFetching,
     refetch
-  } = useSuspenseQuery(systemDictsQueryOptions(pageParams))
-  // 删除
-  const { mutateAsync, isPending } = useSystemDictRemoveMutation()
+  } = useSuspenseQuery(systemDictsQueryOptions(PageUtils.mergeParams(pageParams)))
+  // 异步删除
+  const { mutateAsync: removeMutateAsync, isPending: isRemovePending } =
+    useSystemDictRemoveMutation()
+  // 异步提交
+  const { mutateAsync: submitMutateAsync, isPending: isSubmitPending } =
+    useSystemDictSubmitMutation()
 
-  // 构造搜索表单
-  const { searchForm, searchFormItems } = useDictsSearchForm()
-  // 构造表格列
-  const { columns } = useDictsColumns()
-
-  // 重置批量选择
-  useEffect(() => {
-    clearSelectedRowKeys()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isFetching])
+  // 清空选中行
+  useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
 
   return (
-    <TableLayout<DictVo>
-      // 头部属性
-      headerProps={{
-        // 头部操作区域
-        renderOperate: (
-          <AButton
-            type="primary"
-            onClick={() => {}}
-          >
-            {t('CREATE')}
-          </AButton>
+    // 页面容器
+    <RpPageContainer
+      pageHeaderProps={{
+        // 操作区
+        operate: (
+          <RpButton
+            variant="create"
+            onClick={() => {
+              modalForm.resetFields()
+              modal.openCreate()
+            }}
+          />
         )
       }}
-      // 搜索栏属性
-      searchBarProps={{
-        // 搜索栏表单
-        form: searchForm,
-        // 搜索栏表单项
-        formItems: searchFormItems,
-        // 搜索事件
-        onSearch: (values) => setPageParams(PageUtils.mergeParams(values))
-      }}
-      // 表格属性
-      tableProps={{
-        rowKey: (record) => record.id!,
-        // 批量选择
-        rowSelection,
-        // 表格列
-        columns,
-        // 数据源
-        dataSource: records,
-        // 分页
-        pagination: { ...pagination, total }
-      }}
-      // 刷新加载状态
-      refreshLoading={isFetching}
-      // 刷新事件
-      onRefresh={refetch}
-      // 批量删除加载状态
-      batchDeleteLoading={isPending}
-      // 批量删除
-      onBatchDelete={(ids) =>
-        mutateAsync(ids.join(), {
-          onSuccess: () => clearSelectedRowKeys()
-        })
-      }
-      // 表格批量操作区域
-      renderTableBatchOpeate={
-        <AButton onClick={() => console.log(selectedRowKeys)}>批量操作</AButton>
-      }
-      // 表格操作区域
-      renderTableOpeate={
-        <>
-          <AButton>打印表格</AButton>
-          <AButton>导出数据</AButton>
-        </>
-      }
-    />
+    >
+      {/* 搜索区域 */}
+      <RpSearchBar
+        // 搜索表单
+        formProps={{ form: searchForm }}
+        // 表单配置项
+        formItems={searchFormItems}
+        // 事件：搜索
+        onSearch={(values) =>
+          startTransition(() => setPageParams(PageUtils.mergeParams(pageParams, values)))
+        }
+        // 事件：预渲染
+        onPrefetch={(values) =>
+          queryClient.prefetchQuery(
+            systemDictsQueryOptions(PageUtils.mergeParams(pageParams, values))
+          )
+        }
+      />
+      {/* 表格 */}
+      <RpTable<DictVo>
+        rowKey={(record) => record.id!}
+        rowSelection={rowSelection}
+        columns={columns}
+        dataSource={records}
+        pagination={pagination({
+          total,
+          onPrefetch: (values) => queryClient.prefetchQuery(systemDictsQueryOptions(values))
+        })}
+        refreshLoading={isPending}
+        onRefresh={() =>
+          startTransition(() => {
+            refetch()
+          })
+        }
+        batchDeleteLoading={isRemovePending}
+        onBatchDelete={(ids) =>
+          removeMutateAsync(ids.join(), {
+            onSuccess: clearSelectedRowKeys
+          })
+        }
+      />
+      {/* 弹窗 */}
+      <RpModal
+        type={modal.type}
+        open={modal.open}
+        title={modal.getTitle()}
+        confirmLoading={isSubmitPending}
+        onOk={modalForm.submit}
+        onCancel={modal.close}
+        footer={modal.isRead ? null : undefined}
+      />
+    </RpPageContainer>
   )
 }

@@ -84,5 +84,6 @@
   "CREATE.CHILD": "Create child",
   "CLOSE.ALL.TAGS": "Close all tags",
   "CLOSE.OTHER.TAGS": "Close other tags",
-  "CONFIG": "Config"
+  "CONFIG": "Config",
+  "DEV.WAITING": "Still in development, please wait ..."
 }
