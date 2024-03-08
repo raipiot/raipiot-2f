@@ -16,7 +16,6 @@ export function Login(props: LoginProps) {
   const [isAccountLogin, setIsAccountLogin] = useState(true)
 
   const { t } = useTranslation(['PORTAL'])
-  const queryClient = useQueryClient()
 
   const [form] = AForm.useForm<LoginDto & SMSLoginDto>()
   const initFormValue = {

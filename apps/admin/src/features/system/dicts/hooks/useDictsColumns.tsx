@@ -18,7 +18,6 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
   const { createActions, createColumns } = useTableCreator<DictVo>()
 
-  const queryClient = useQueryClient()
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
 
   return {

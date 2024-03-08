@@ -9,7 +9,6 @@ import UserCard from './UserCard'
 
 export function PortalHeader() {
   const { t } = useTranslation(['PORTAL', 'COMMON'])
-  const queryClient = useQueryClient()
 
   const [showMiniMenu, setShowMiniMenu] = useState(false)
   const { open, toggle } = useModal()

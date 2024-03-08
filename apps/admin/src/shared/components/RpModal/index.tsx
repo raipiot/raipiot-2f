@@ -1,11 +1,15 @@
 import type { ModalProps } from 'antd'
 
-const Modal = memo<ModalProps>((props) => {
-  const { confirmLoading, ...modalProps } = props
+export interface RpModalProps extends ModalProps {}
+
+const RpModal = memo<RpModalProps>((props) => {
+  const modalWidth = useResponsiveModalWidth()
+  const { width = modalWidth, confirmLoading, children, ...modalProps } = props
   const { t } = useTranslation()
 
   return (
     <AModal
+      width={width}
       okText={t('CONFIRM')}
       cancelText={t('CANCEL')}
       forceRender // 防止模态框内的表单因为未渲染而没有绑定表单实例
@@ -15,7 +19,9 @@ const Modal = memo<ModalProps>((props) => {
         disabled: confirmLoading
       }}
       {...modalProps}
-    />
+    >
+      {children}
+    </AModal>
   )
 })
-export default Modal
+export default RpModal

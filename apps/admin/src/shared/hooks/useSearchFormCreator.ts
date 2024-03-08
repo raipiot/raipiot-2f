@@ -1,7 +1,7 @@
 import type { RpSearchFormItem } from '@/features/forms'
 
 export const useSearchFormCreator = <T>() => {
-  const { computeResponsiveSpan } = useFormResponsiveSpan()
+  const span = useResponsiveSpan()
 
   const createSearchFormItems = (items: RpSearchFormItem<T>[]) =>
     items.map<RpSearchFormItem<T>>((item) => {
@@ -11,7 +11,7 @@ export const useSearchFormCreator = <T>() => {
       return {
         ...item,
         colProps: {
-          span: computeResponsiveSpan(),
+          span,
           ...item.colProps
         }
       }

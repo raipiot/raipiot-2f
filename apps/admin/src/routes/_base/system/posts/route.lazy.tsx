@@ -5,5 +5,5 @@ export const Route = createLazyFileRoute('/_base/system/posts')({
 })
 
 function Posts() {
-  return <TableLayout />
+  return <RpWaiting />
 }

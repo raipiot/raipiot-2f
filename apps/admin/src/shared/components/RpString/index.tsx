@@ -2,7 +2,6 @@ import rpWithSkeleton from '../RpWithSkeleton'
 
 interface RpStringProps {
   value?: any
-  skeleton?: boolean
 }
 
 const RpString = rpWithSkeleton((props: RpStringProps) => {

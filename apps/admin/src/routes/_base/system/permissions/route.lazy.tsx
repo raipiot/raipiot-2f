@@ -5,5 +5,5 @@ export const Route = createLazyFileRoute('/_base/system/permissions')({
 })
 
 function Permissions() {
-  return <TableLayout />
+  return <RpWaiting />
 }
