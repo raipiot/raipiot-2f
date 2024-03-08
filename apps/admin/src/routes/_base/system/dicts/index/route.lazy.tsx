@@ -122,7 +122,7 @@ function SystemDicts() {
           }}
         >
           {(modal.isCreate || modal.isEdit) && (
-            <ARow gutter={24}>
+            <RpRow>
               {modalFormItems &&
                 modalFormItems.map((item) => {
                   const { type } = item
@@ -155,7 +155,7 @@ function SystemDicts() {
                     </ACol>
                   )
                 })}
-            </ARow>
+            </RpRow>
           )}
           {modal.isRead && (
             <Suspense

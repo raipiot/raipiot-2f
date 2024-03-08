@@ -143,6 +143,7 @@ declare global {
   const RpPageContainer: typeof import('../src/shared/components/RpPageContainer/index')['default']
   const RpPageHeader: typeof import('../src/shared/components/RpPageHeader/index')['default']
   const RpRefreshButton: typeof import('../src/shared/components/RpTable/RpTableTitle/RpRefreshButton/index')['default']
+  const RpRow: typeof import('../src/shared/components/RpRow/index')['default']
   const RpRowGapButton: typeof import('../src/shared/components/RpTable/RpTableTitle/RpRowGapButton/index')['default']
   const RpSearchBar: typeof import('../src/shared/components/RpSearchBar/index')['default']
   const RpString: typeof import('../src/shared/components/RpString/index')['default']
