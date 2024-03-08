@@ -5,10 +5,8 @@ interface SkeletonProps {
   skeleton?: boolean
 }
 
-export default function rpWithSkeleton<T extends SkeletonProps>(
-  WrappedComponent: React.ComponentType<T>
-) {
-  return function RpWithSkeleton(props: T) {
+export default function rpWithSkeleton<T>(WrappedComponent: React.ComponentType<T>) {
+  return function RpWithSkeleton(props: T & SkeletonProps) {
     const { skeleton, value } = props
     if (skeleton) {
       return (

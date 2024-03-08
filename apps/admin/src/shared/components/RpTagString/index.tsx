@@ -3,7 +3,6 @@ import rpWithSkeleton from '../RpWithSkeleton'
 export interface RpTagStringProps {
   value?: any
   copyable?: boolean
-  skeleton?: boolean
 }
 
 const RpTagString = rpWithSkeleton((props: RpTagStringProps) => {

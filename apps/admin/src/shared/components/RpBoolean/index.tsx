@@ -3,7 +3,6 @@ import rpWithSkeleton from '../RpWithSkeleton'
 export interface RpBooleanProps {
   value?: any
   type?: 'text' | 'icon'
-  skeleton?: boolean
 }
 
 const RpBoolean = rpWithSkeleton((props: RpBooleanProps) => {

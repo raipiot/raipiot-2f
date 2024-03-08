@@ -30,14 +30,22 @@ export const routerMenus = (): MenuItem[] => [
   },
   {
     label: '非菜单页面',
-    key: '/_temp',
+    key: '/temp',
     icon: <MaterialSymbolsGridViewOutlineRounded />,
     children: [getRouteMeta('/user-info'), getRouteMeta('/change-password')]
   },
   {
     label: t('MODULE.MENU.DEVELOPER'),
-    key: '/_dev',
+    key: '/dev',
     icon: <MaterialSymbolsCodeRounded />,
-    children: [getRouteMeta('/dev/storybook'), getRouteMeta('/dev/templates/common-table')]
+    children: [
+      {
+        label: t('DEVELOPER.TEMPLATES'),
+        key: '/templates',
+        icon: <MaterialSymbolsCodeRounded />,
+        children: [getRouteMeta('/dev/templates/basic-table')]
+      },
+      getRouteMeta('/dev/storybook')
+    ]
   }
 ]

@@ -1,12 +1,10 @@
-import type { FormItemProps, FormProps } from 'antd'
+import type { CardProps, FormItemProps, FormProps } from 'antd'
 
 import type { RpSearchFormItem } from '@/features/forms'
 
-export interface RpSearchBarProps<T> extends Omit<FormProps, 'initialValues'> {
-  /**
-   * 表单初始值
-   */
-  initialValues?: T
+import rpWithCard from '../RpWithCard'
+
+export interface RpSearchBarProps<T> {
   /**
    * 搜索表单配置项
    */
@@ -31,118 +29,128 @@ export interface RpSearchBarProps<T> extends Omit<FormProps, 'initialValues'> {
    * 显示 Expand 按钮
    */
   showExpand?: boolean
+  /**
+   * 表单属性
+   */
+  formProps?: Omit<FormProps, 'initialValues'> & { initialValues?: T }
+  /**
+   * Card 属性
+   */
+  cardProps?: CardProps
+  /**
+   * 隐藏卡片
+   * @default false
+   */
+  hideCard?: boolean
 }
 
-function RpSearchBar<T extends Record<string, any>>(props: RpSearchBarProps<T>) {
-  const {
-    initialValues,
-    formItems,
-    form,
-    searchLoading,
-    onSearch,
-    onClear,
-    onPrefetch,
-    showExpand,
-    ...formProps
-  } = props
-  const { t } = useTranslation()
-  const { computeResponsiveSpan } = useFormResponsiveSpan()
-  const [expand, setExpand] = useState(false)
+type RpSearchBarComponent = <T extends Record<string, any>>(
+  props: RpSearchBarProps<T>
+) => JSX.Element
 
-  // 预渲染
-  const prefetch = () => onPrefetch?.(form?.getFieldsValue(true))
+const RpSearchBar: RpSearchBarComponent = rpWithCard(
+  <T extends Record<string, any>>(props: RpSearchBarProps<T>) => {
+    const { formItems, searchLoading, onSearch, onClear, onPrefetch, showExpand, formProps } =
+      props ?? {}
+    const { form, initialValues } = formProps ?? {}
+    const { t } = useTranslation()
+    const span = useResponsiveSpan()
+    const [expand, setExpand] = useState(false)
 
-  return (
-    <AForm<T>
-      name="search"
-      layout="horizontal"
-      form={form}
-      initialValues={initialValues}
-      onFinish={(values) => {
-        // 处理搜索事件
-        if (onSearch) {
-          onSearch(values)
-        }
-      }}
-      {...formProps}
-    >
-      <ARow gutter={24}>
-        {formItems &&
-          formItems.map((item) => {
-            const { type } = item
-            if (type === 'custom') {
-              return typeof item.render === 'function' ? item.render() : item.render
-            }
-            const { key, colProps, formItemProps } = item
-            return (
-              <ACol
-                key={key.toString()}
-                {...colProps}
-              >
-                <AForm.Item
-                  name={key as FormItemProps['name']}
-                  {...formItemProps}
+    // 预渲染
+    const prefetch = () => onPrefetch?.(form?.getFieldsValue(true))
+
+    return (
+      <AForm<T>
+        name="search"
+        layout="horizontal"
+        form={form}
+        initialValues={initialValues}
+        onFinish={(values) => {
+          // 处理搜索事件
+          if (onSearch) {
+            onSearch(values)
+          }
+        }}
+        {...formProps}
+      >
+        <ARow gutter={24}>
+          {formItems &&
+            formItems.map((item) => {
+              const { type } = item
+              if (type === 'custom') {
+                return typeof item.render === 'function' ? item.render() : item.render
+              }
+              const { key, colProps, formItemProps } = item
+              return (
+                <ACol
+                  key={key.toString()}
+                  {...colProps}
                 >
-                  {type === 'input' && <AInput {...item.inputProps} />}
-                  {type === 'select' && <ASelect {...item.selectProps} />}
-                  {type === 'tree-select' && <ATreeSelect {...item.treeSelectProps} />}
-                  {type === 'cascader' && <ACascader {...item.cascaderProps} />}
-                  {type === 'date-picker' && <ADatePicker {...item.datePickerProps} />}
-                  {type === 'input-number' && <AInputNumber {...item.inputNumberProps} />}
-                  {type === 'switch' && <ASwitch {...item.switchProps} />}
-                  {type === 'button' && (
-                    <AButton {...item.buttonProps}>{item.buttonProps?.children}</AButton>
-                  )}
-                  {type === 'form-item' &&
-                    (typeof item.render === 'function' ? item.render() : item.render)}
-                </AForm.Item>
-              </ACol>
-            )
-          })}
-        <ACol span={computeResponsiveSpan()}>
-          <div className="space-x-2 sm:space-x-4">
-            <AButton
-              type="primary"
-              htmlType="submit"
-              loading={searchLoading}
-              disabled={searchLoading}
-              onMouseEnter={prefetch}
-              onMouseOver={prefetch}
-            >
-              {t('SEARCH')}
-            </AButton>
-            <AButton
-              onClick={() => {
-                if (form) {
-                  // 清空表单
-                  form.resetFields()
-                  // 提交表单
-                  form.submit()
-                  // 处理清空事件
-                  if (onClear) {
-                    onClear(form.getFieldsValue())
-                  }
-                }
-              }}
-            >
-              {t('RESET')}
-            </AButton>
-            {showExpand && (
-              <ATooltip
-                title={expand ? t('COLLAPSE') : t('EXPAND')}
-                placement="bottom"
+                  <AForm.Item
+                    name={key as FormItemProps['name']}
+                    {...formItemProps}
+                  >
+                    {type === 'input' && <AInput {...item.inputProps} />}
+                    {type === 'select' && <ASelect {...item.selectProps} />}
+                    {type === 'tree-select' && <ATreeSelect {...item.treeSelectProps} />}
+                    {type === 'cascader' && <ACascader {...item.cascaderProps} />}
+                    {type === 'date-picker' && <ADatePicker {...item.datePickerProps} />}
+                    {type === 'input-number' && <AInputNumber {...item.inputNumberProps} />}
+                    {type === 'switch' && <ASwitch {...item.switchProps} />}
+                    {type === 'button' && (
+                      <AButton {...item.buttonProps}>{item.buttonProps?.children}</AButton>
+                    )}
+                    {type === 'form-item' &&
+                      (typeof item.render === 'function' ? item.render() : item.render)}
+                  </AForm.Item>
+                </ACol>
+              )
+            })}
+          <ACol span={span}>
+            <div className="space-x-2 sm:space-x-4">
+              <AButton
+                type="primary"
+                htmlType="submit"
+                loading={searchLoading}
+                disabled={searchLoading}
+                onMouseEnter={prefetch}
               >
-                <AButton onClick={() => setExpand(!expand)}>
-                  <MaterialSymbolsKeyboardArrowDownRounded
-                    className={clsx('transition-all', expand ? 'rotate-180' : 'rotate-0')}
-                  />
-                </AButton>
-              </ATooltip>
-            )}
-          </div>
-        </ACol>
-      </ARow>
-    </AForm>
-  )
-}
+                {t('SEARCH')}
+              </AButton>
+              <AButton
+                onClick={() => {
+                  if (form) {
+                    // 清空表单
+                    form.resetFields()
+                    // 提交表单
+                    form.submit()
+                    // 处理清空事件
+                    if (onClear) {
+                      onClear(form.getFieldsValue())
+                    }
+                  }
+                }}
+              >
+                {t('RESET')}
+              </AButton>
+              {showExpand && (
+                <ATooltip
+                  title={expand ? t('COLLAPSE') : t('EXPAND')}
+                  placement="bottom"
+                >
+                  <AButton onClick={() => setExpand(!expand)}>
+                    <MaterialSymbolsKeyboardArrowDownRounded
+                      className={clsx('transition-all', expand ? 'rotate-180' : 'rotate-0')}
+                    />
+                  </AButton>
+                </ATooltip>
+              )}
+            </div>
+          </ACol>
+        </ARow>
+      </AForm>
+    )
+  }
+)
 export default RpSearchBar

@@ -20,7 +20,6 @@
 - [`axios`](packages/axios/): 通用 Axios 模块
 - [`config`](packages/config/): 通用配置、环境变量模块
 - [`cspell`](packages/cspell/): CSpell 业务词典
-- [`hooks`](packages/hooks/): 通用 Hooks 模块
 - [`i18n`](packages/i18n/): 通用 i18n 模块
 - [`template`](packages/template/): 通用子包模版
 

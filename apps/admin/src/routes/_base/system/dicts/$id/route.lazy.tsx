@@ -1,11 +1,13 @@
 import type { DictValuePageDto, DictVo } from '@raipiot-2f/api'
 
-import { TableLayout } from '@/features/layouts'
 import {
+  systemDictsQueryOptions,
+  systemDictValuesQueryOptions,
+  useDictsModalForm,
   useDictsSearchForm,
   useDictValuesColumns,
   useSystemDictRemoveMutation,
-  useSystemDictValuesSuspenseQuery
+  useSystemDictSubmitMutation
 } from '@/features/system/dicts'
 
 export const Route = createLazyFileRoute('/_base/system/dicts/$id')({
@@ -16,59 +18,75 @@ function SystemDictItem() {
   const { t } = useTranslation()
 
   const { id } = useParams({ from: '/_base/system/dicts/$id' })
-  const { pageParams, setPageParams, pagination } = usePagination<DictValuePageDto>({
-    parentId: id
-  })
+  const { pageParams, setPageParams, pagination, isPending, startTransition } =
+    usePagination<DictValuePageDto>({
+      parentId: id
+    })
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
+  const modal = useModal()
   const { searchForm, searchFormItems } = useDictsSearchForm()
+  const { modalForm, modalFormItems } = useDictsModalForm()
   const columns = useDictValuesColumns()
 
-  const { data, isFetching, refetch } = useSystemDictValuesSuspenseQuery(pageParams)
-  const { mutateAsync, isPending } = useSystemDictRemoveMutation()
+  const { data, isFetching, refetch } = useSuspenseQuery(systemDictValuesQueryOptions(pageParams))
+  const { mutateAsync: removeMutateAsync, isPending: isRemovePending } =
+    useSystemDictRemoveMutation()
+  const { mutateAsync: submitMutateAsync, isPending: isSubmitPending } =
+    useSystemDictSubmitMutation()
 
-  useEffect(
-    () => clearSelectedRowKeys(),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isFetching]
-  )
+  useEffect(() => clearSelectedRowKeys(), [isFetching, clearSelectedRowKeys])
 
   return (
-    <TableLayout<DictVo>
-      headerProps={{
-        renderOperate: (
-          <AButton
-            type="primary"
+    <RpPageContainer
+      pageHeaderProps={{
+        operate: (
+          <RpButton
+            variant="create"
             onClick={() => {}}
-          >
-            {t('CREATE')}
-          </AButton>
+          />
         )
       }}
-      searchBarProps={{
-        form: searchForm,
-        formItems: searchFormItems,
-        onSearch: (values) => setPageParams(PageUtils.mergeParams(pageParams, values))
-      }}
-      tableProps={{
-        rowKey: (record) => record.id!,
-        rowSelection,
-        columns,
-        dataSource: data,
-        pagination
-      }}
-      refreshLoading={isFetching}
-      onRefresh={refetch}
-      batchDeleteLoading={isPending}
-      onBatchDelete={(ids) =>
-        mutateAsync(ids.join(), {
-          onSuccess: () => clearSelectedRowKeys()
-        })
-      }
-      renderTableOpeate={
-        <Link to="/system/dicts">
-          <AButton>{t('BACK')}</AButton>
-        </Link>
-      }
-    />
+    >
+      <RpSearchBar
+        formProps={{ form: searchForm }}
+        formItems={searchFormItems}
+        onSearch={(values) => setPageParams(PageUtils.mergeParams(pageParams, values))}
+      />
+      <RpTable<DictVo>
+        rowKey={(record) => record.id!}
+        rowSelection={rowSelection}
+        columns={columns}
+        dataSource={data}
+        pagination={pagination({
+          onPrefetch: (values) => queryClient.prefetchQuery(systemDictsQueryOptions(values))
+        })}
+        refreshLoading={isPending}
+        onRefresh={() =>
+          startTransition(() => {
+            refetch()
+          })
+        }
+        batchDeleteLoading={isRemovePending}
+        onBatchDelete={(ids) =>
+          removeMutateAsync(ids.join(), {
+            onSuccess: clearSelectedRowKeys
+          })
+        }
+        renderTableOpeate={
+          <Link to="/system/dicts">
+            <RpButton variant="back" />
+          </Link>
+        }
+      />
+      <RpModal
+        type={modal.type}
+        open={modal.open}
+        title={modal.getTitle()}
+        confirmLoading={isSubmitPending}
+        onOk={modalForm.submit}
+        onCancel={modal.close}
+        footer={modal.isRead ? null : undefined}
+      />
+    </RpPageContainer>
   )
 }

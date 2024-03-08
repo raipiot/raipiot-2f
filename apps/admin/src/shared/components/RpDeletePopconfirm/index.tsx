@@ -10,7 +10,7 @@ interface RpDeletePopconfirmProps extends Omit<PopconfirmProps, IgnoreProps> {
   okBtnLoading?: boolean
 }
 
-export default function RpDeletePopconfirm(props: RpDeletePopconfirmProps) {
+function RpDeletePopconfirm(props: RpDeletePopconfirmProps) {
   const { okBtnLoading, children, ...popconfirmProps } = props
   const { t } = useTranslation()
   return (
@@ -32,3 +32,4 @@ export default function RpDeletePopconfirm(props: RpDeletePopconfirmProps) {
     </APopconfirm>
   )
 }
+export default RpDeletePopconfirm

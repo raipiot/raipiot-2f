@@ -82,5 +82,6 @@
   "CREATE.CHILD": "新增子项",
   "CLOSE.ALL.TAGS": "关闭所有标签",
   "CLOSE.OTHER.TAGS": "关闭其他标签",
-  "CONFIG": "配置"
+  "CONFIG": "配置",
+  "DEV.WAITING": "正在火速开发中，敬请期待..."
 }

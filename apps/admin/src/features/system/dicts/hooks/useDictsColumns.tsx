@@ -5,7 +5,7 @@ import { isMobile } from 'react-device-detect'
 import type { UseModal } from '@/shared/hooks/useModal'
 
 import { useSystemDictRemoveMutation } from '../mutations'
-import { prefetchSystemDict, systemDictQueryOptions } from '../queries'
+import { systemDictQueryOptions } from '../queries'
 
 interface UseDictsColumnsProps {
   modal?: UseModal<string>
@@ -16,8 +16,8 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
   const { modal, form } = props ?? {}
 
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
-  const queryClient = useQueryClient()
   const { createActions, createColumns } = useTableCreator<DictVo>()
+
   const { mutateAsync, isPending } = useSystemDictRemoveMutation()
 
   return {
@@ -51,17 +51,18 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
         render: (_, record) => (
           // rp-table-action 用于非 Hover 表格行上隐藏操作按钮
           <ASpace className={clsx(!isMobile && 'rp-table-action', 'transition-all ease-out')}>
-            <RpViewBtn
+            <RpButton
               size="small"
+              variant="view"
               onClick={() => {
                 modal?.openRead()
                 modal?.setMeta(record.id)
               }}
             />
-            <AButton
+            <RpButton
               size="small"
-              onMouseEnter={() => prefetchSystemDict(record.id!)}
-              onMouseOver={() => prefetchSystemDict(record.id!)}
+              variant="edit"
+              onMouseEnter={() => queryClient.prefetchQuery(systemDictQueryOptions(record.id!))}
               onClick={async () => {
                 modal?.openEdit()
                 modal?.setMeta(record.id)
@@ -69,20 +70,24 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
                   await queryClient.ensureQueryData(systemDictQueryOptions(record.id!))
                 )
               }}
-            >
-              {t('COMMON:EDIT')}
-            </AButton>
+            />
             <Link
               to="/system/dicts/$id"
               params={{ id: record.id! }}
             >
-              <AButton size="small">{t('COMMON:CONFIG')}</AButton>
+              <RpButton
+                size="small"
+                variant="config"
+              />
             </Link>
             <RpDeletePopconfirm
               okBtnLoading={isPending}
               onConfirm={() => mutateAsync(record.id!)}
             >
-              <RpDeleteBtn size="small" />
+              <RpButton
+                size="small"
+                variant="delete"
+              />
             </RpDeletePopconfirm>
           </ASpace>
         )
