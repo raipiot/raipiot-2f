@@ -82,34 +82,50 @@ function BasicTable() {
       {/* 表格 */}
       <RpTable<DictVo>
         rowKey={(record) => record.id!}
+        // 批量选择选项
         rowSelection={rowSelection}
+        // 表格列
         columns={columns}
+        // 表格数据
         dataSource={records}
+        // 分页器
         pagination={pagination({
           total,
+          // 事件：分页预渲染
           onPrefetch: (values) => queryClient.prefetchQuery(systemDictsQueryOptions(values))
         })}
+        // 刷新加载
         refreshLoading={isPending}
+        // 事件：刷新
         onRefresh={() =>
           startTransition(() => {
             refetch()
           })
         }
+        // 批量删除加载
         batchDeleteLoading={isRemovePending}
+        // 事件：批量删除
         onBatchDelete={(ids) =>
           removeMutateAsync(ids.join(), {
             onSuccess: clearSelectedRowKeys
           })
         }
       />
-      {/* 弹窗 */}
+      {/* 模态框 */}
       <RpModal
+        // 模态框类型
         type={modal.type}
+        // 打开状态
         open={modal.open}
+        // 标题
         title={modal.getTitle()}
+        // 确认按钮加载
         confirmLoading={isSubmitPending}
+        // 事件：确认
         onOk={modalForm.submit}
+        // 事件：取消
         onCancel={modal.close}
+        // 底部区域
         footer={modal.isRead ? null : undefined}
       />
     </RpPageContainer>
