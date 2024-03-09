@@ -7,7 +7,7 @@ const getRouteMeta = (key: string) => {
   return {
     label: I18nUtils.getText(title),
     key,
-    icon: icon ?? <MaterialSymbolsGridViewOutlineRounded />
+    icon: icon ?? createElement(MaterialSymbolsGridViewOutlineRounded)
   }
 }
 
@@ -16,7 +16,7 @@ export const routerMenus = (): MenuItem[] => [
   {
     label: t('MODULE.MENU.SYSTEM'),
     key: '/system',
-    icon: <MaterialSymbolsSettingsOutlineRounded />,
+    icon: createElement(MaterialSymbolsSettingsOutlineRounded),
     children: [
       getRouteMeta('/system/users'),
       getRouteMeta('/system/depts'),
@@ -31,18 +31,18 @@ export const routerMenus = (): MenuItem[] => [
   {
     label: '非菜单页面',
     key: '/temp',
-    icon: <MaterialSymbolsGridViewOutlineRounded />,
+    icon: createElement(MaterialSymbolsGridViewOutlineRounded),
     children: [getRouteMeta('/user-info'), getRouteMeta('/change-password')]
   },
   {
     label: t('MODULE.MENU.DEVELOPER'),
     key: '/dev',
-    icon: <MaterialSymbolsCodeRounded />,
+    icon: createElement(MaterialSymbolsCodeRounded),
     children: [
       {
         label: t('DEVELOPER.TEMPLATES'),
         key: '/templates',
-        icon: <MaterialSymbolsCodeRounded />,
+        icon: createElement(MaterialSymbolsCodeRounded),
         children: [getRouteMeta('/dev/templates/basic-table')]
       },
       getRouteMeta('/dev/storybook')
