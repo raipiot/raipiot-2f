@@ -20,61 +20,64 @@ function RpButton(props: RpButtonProps) {
   const { variant, ...btnProps } = props
   const { t } = useTranslation()
 
-  const getVariantProps = useCallback((type?: RpButtonType): ButtonProps => {
-    switch (type) {
-      // 查看
-      case 'view':
-        return {
-          children: t('VIEW')
-        }
-      // 新增
-      case 'create':
-        return {
-          type: 'primary',
-          children: t('CREATE')
-        }
-      // 编辑
-      case 'edit':
-        return {
-          children: t('EDIT')
-        }
-      // 删除
-      case 'delete':
-        return {
-          danger: true,
-          children: t('DELETE')
-        }
-      // 批量删除
-      case 'batch-delete':
-        return {
-          danger: true,
-          children: t('BATCH.DELETE')
-        }
-      // 返回
-      case 'back':
-        return {
-          children: t('BACK')
-        }
-      // 配置
-      case 'config':
-        return {
-          children: t('CONFIG')
-        }
-      // 重置
-      case 'reset':
-        return {
-          children: t('RESET')
-        }
-      // 搜索
-      case 'search':
-        return {
-          type: 'primary',
-          children: t('SEARCH')
-        }
-      default:
-        return {}
-    }
-  }, [])
+  const getVariantProps = useCallback(
+    (type?: RpButtonType): ButtonProps => {
+      switch (type) {
+        // 查看
+        case 'view':
+          return {
+            children: t('VIEW')
+          }
+        // 新增
+        case 'create':
+          return {
+            type: 'primary',
+            children: t('CREATE')
+          }
+        // 编辑
+        case 'edit':
+          return {
+            children: t('EDIT')
+          }
+        // 删除
+        case 'delete':
+          return {
+            danger: true,
+            children: t('DELETE')
+          }
+        // 批量删除
+        case 'batch-delete':
+          return {
+            danger: true,
+            children: t('BATCH.DELETE')
+          }
+        // 返回
+        case 'back':
+          return {
+            children: t('BACK')
+          }
+        // 配置
+        case 'config':
+          return {
+            children: t('CONFIG')
+          }
+        // 重置
+        case 'reset':
+          return {
+            children: t('RESET')
+          }
+        // 搜索
+        case 'search':
+          return {
+            type: 'primary',
+            children: t('SEARCH')
+          }
+        default:
+          return {}
+      }
+    },
+    [t]
+  )
 
   return <AButton {...merge({}, getVariantProps(variant), btnProps)} />
 }
