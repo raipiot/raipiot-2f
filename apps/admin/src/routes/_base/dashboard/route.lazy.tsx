@@ -26,18 +26,18 @@ function Dashboard() {
         <Wrapper
           title="常用功能"
           className="h-[300px] overflow-y-auto"
-          aside={<MaterialSymbolsSettingsOutline className="cursor-pointer text-sky-600" />}
+          aside={<MaterialSymbolsSettingsOutlineRounded className="cursor-pointer text-sky-600" />}
         >
           <div className="flex flex-wrap gap-4 p-4">
-            <AButton>
-              <Link to="/system/users">供应商管理</Link>
-            </AButton>
-            <AButton>
-              <Link to="/system/users">生命周期管理</Link>
-            </AButton>
-            <AButton>
-              <Link to="/system/users">供应商查询</Link>
-            </AButton>
+            <Link to="/system/users">
+              <AButton>供应商管理</AButton>
+            </Link>
+            <Link to="/system/users">
+              <AButton>生命周期管理</AButton>
+            </Link>
+            <Link to="/system/users">
+              <AButton>供应商查询</AButton>
+            </Link>
           </div>
         </Wrapper>
       </div>

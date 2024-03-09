@@ -1,7 +1,16 @@
 import type { ButtonProps } from 'antd'
 import { merge } from 'lodash-es'
 
-type RpButtonType = 'view' | 'create' | 'edit' | 'delete' | 'batch-delete' | 'back' | 'config'
+type RpButtonType =
+  | 'view'
+  | 'create'
+  | 'edit'
+  | 'delete'
+  | 'batch-delete'
+  | 'back'
+  | 'config'
+  | 'reset'
+  | 'search'
 
 interface RpButtonProps extends ButtonProps {
   variant?: RpButtonType
@@ -50,6 +59,17 @@ function RpButton(props: RpButtonProps) {
       case 'config':
         return {
           children: t('CONFIG')
+        }
+      // 重置
+      case 'reset':
+        return {
+          children: t('RESET')
+        }
+      // 搜索
+      case 'search':
+        return {
+          type: 'primary',
+          children: t('SEARCH')
         }
       default:
         return {}

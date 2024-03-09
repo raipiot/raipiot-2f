@@ -1,6 +1,6 @@
 import type { CardProps, FormItemProps, FormProps } from 'antd'
 
-import type { RpSearchFormItem } from '@/features/forms'
+import type { RpSearchFormItem } from '@/shared/components/RpFormItem/types'
 
 import rpWithCard from '../RpWithCard'
 
@@ -74,7 +74,7 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
         }}
         {...formProps}
       >
-        <ARow gutter={24}>
+        <RpRow>
           {formItems &&
             formItems.map((item) => {
               const { type } = item
@@ -83,11 +83,11 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
               }
               const { key, colProps, formItemProps } = item
               return (
-                <ACol
+                <RpCol
                   key={key.toString()}
                   {...colProps}
                 >
-                  <AForm.Item
+                  <RpFormItem
                     name={key as FormItemProps['name']}
                     {...formItemProps}
                   >
@@ -103,22 +103,19 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
                     )}
                     {type === 'form-item' &&
                       (typeof item.render === 'function' ? item.render() : item.render)}
-                  </AForm.Item>
-                </ACol>
+                  </RpFormItem>
+                </RpCol>
               )
             })}
-          <ACol span={span}>
+          <RpCol span={span}>
             <div className="space-x-2 sm:space-x-4">
-              <AButton
-                type="primary"
+              <RpButton
                 htmlType="submit"
                 loading={searchLoading}
                 disabled={searchLoading}
                 onMouseEnter={prefetch}
-              >
-                {t('SEARCH')}
-              </AButton>
-              <AButton
+              />
+              <RpButton
                 onClick={() => {
                   if (form) {
                     // 清空表单
@@ -131,9 +128,7 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
                     }
                   }
                 }}
-              >
-                {t('RESET')}
-              </AButton>
+              />
               {showExpand && (
                 <ATooltip
                   title={expand ? t('COLLAPSE') : t('EXPAND')}
@@ -147,8 +142,8 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
                 </ATooltip>
               )}
             </div>
-          </ACol>
-        </ARow>
+          </RpCol>
+        </RpRow>
       </AForm>
     )
   }

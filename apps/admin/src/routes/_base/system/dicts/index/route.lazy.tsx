@@ -104,25 +104,25 @@ function SystemDicts() {
         onCancel={modal.close}
         footer={modal.isRead ? null : undefined}
       >
-        <AForm<DictSubmitFormModel>
-          name="modal"
-          layout="horizontal"
-          form={modalForm}
-          labelCol={{ span: 6 }}
-          initialValues={{
-            sort: 1,
-            isSealed: false
-          }}
-          onFinish={async () => {
-            const values = modalForm.getFieldsValue(true)
-            await submitMutateAsync({
-              ...values,
-              isSealed: FormatUtils.toDbNum(values.isSealed)
-            })
-            modal.close()
-          }}
-        >
-          {(modal.isCreate || modal.isEdit) && (
+        {(modal.isCreate || modal.isEdit) && (
+          <AForm<DictSubmitFormModel>
+            name="modal"
+            layout="horizontal"
+            form={modalForm}
+            labelCol={{ span: 6 }}
+            initialValues={{
+              sort: 1,
+              isSealed: false
+            }}
+            onFinish={async () => {
+              const values = modalForm.getFieldsValue(true)
+              await submitMutateAsync({
+                ...values,
+                isSealed: FormatUtils.toDbNum(values.isSealed)
+              })
+              modal.close()
+            }}
+          >
             <RpRow>
               {modalFormItems &&
                 modalFormItems.map((item) => {
@@ -136,7 +136,7 @@ function SystemDicts() {
                       key={key.toString()}
                       {...colProps}
                     >
-                      <AForm.Item
+                      <RpFormItem
                         name={key as FormItemProps['name']}
                         {...formItemProps}
                       >
@@ -152,26 +152,26 @@ function SystemDicts() {
                         )}
                         {type === 'form-item' &&
                           (typeof item.render === 'function' ? item.render() : item.render)}
-                      </AForm.Item>
+                      </RpFormItem>
                     </ACol>
                   )
                 })}
             </RpRow>
-          )}
-          {modal.isRead && (
-            <Suspense
-              fallback={
-                <ASkeleton
-                  active
-                  round
-                  paragraph={{ rows: 10 }}
-                />
-              }
-            >
-              <SystemDictDetail id={modal.meta} />
-            </Suspense>
-          )}
-        </AForm>
+          </AForm>
+        )}
+        {modal.isRead && (
+          <Suspense
+            fallback={
+              <ASkeleton
+                active
+                round
+                paragraph={{ rows: 10 }}
+              />
+            }
+          >
+            <SystemDictDetail id={modal.meta} />
+          </Suspense>
+        )}
       </RpModal>
     </RpPageContainer>
   )

@@ -55,4 +55,17 @@ export type RpSearchFormItem<T> =
       ))
   | RpCustom<T>
 
-export interface RpFormItem<T> extends RpBaseFormItem<T> {}
+export type RpBasicFormItem<T> =
+  | (RpBaseFormItem<T> &
+      (
+        | RpInput
+        | RpSelect
+        | RpTreeSelect
+        | RpCascader
+        | RpDatePicker
+        | RpInputNumber
+        | RpSwitch
+        | RpButton
+        | RpCustomFormItem
+      ))
+  | RpCustom<T>

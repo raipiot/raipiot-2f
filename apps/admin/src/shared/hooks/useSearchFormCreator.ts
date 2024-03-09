@@ -1,4 +1,4 @@
-import type { RpSearchFormItem } from '@/features/forms'
+import type { RpSearchFormItem } from '@/shared/components/RpFormItem/types'
 
 export const useSearchFormCreator = <T>() => {
   const span = useResponsiveSpan()
