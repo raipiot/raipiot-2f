@@ -26,9 +26,9 @@
     "prettier:fix": "prettier --write --cache --ignore-unknown --ignore-path=../../.prettierignore ."
   },
   "peerDependencies": {
-    "@tanstack/react-router": "^1.19.1",
-    "antd": "^5.15.0",
-    "i18next": "^23.10.0"
+    "@tanstack/react-router": "^1.19.2",
+    "antd": "^5.15.1",
+    "i18next": "^23.10.1"
   },
   "dependencies": {
     "@raipiot-2f/config": "workspace:^",

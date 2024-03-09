@@ -36,7 +36,7 @@
     "@raipiot-infra/bootstrap-animation": "~0.1.12",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.11.24",
+    "@types/node": "^20.11.25",
     "@types/supertest": "^6.0.2",
     "jest": "^29.7.0",
     "source-map-support": "^0.5.21",
