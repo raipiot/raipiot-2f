@@ -2,7 +2,7 @@ import type { MaybeI18nString } from '@raipiot-infra/utils'
 import nprogress from 'nprogress'
 import type { JSXElementConstructor } from 'react'
 
-import { routeTree } from '@/app/routeTree.gen'
+import { routeTree } from './routeTree.gen'
 
 export const router = createRouter({
   routeTree,

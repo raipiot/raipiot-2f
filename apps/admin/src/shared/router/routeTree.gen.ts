@@ -10,34 +10,34 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './../routes/__root'
-import { Route as PortalRouteImport } from './../routes/_portal/route'
-import { Route as BaseRouteImport } from './../routes/_base/route'
-import { Route as SplatRouteImport } from './../routes/$/route'
-import { Route as PortalSsoRouteImport } from './../routes/_portal/sso/route'
-import { Route as PortalSignupRouteImport } from './../routes/_portal/signup/route'
-import { Route as PortalLoginRouteImport } from './../routes/_portal/login/route'
-import { Route as PortalForgotPasswordRouteImport } from './../routes/_portal/forgot-password/route'
-import { Route as BaseUserInfoRouteImport } from './../routes/_base/user-info/route'
-import { Route as BaseDevRouteImport } from './../routes/_base/dev/route'
-import { Route as BaseDashboardRouteImport } from './../routes/_base/dashboard/route'
-import { Route as BaseChangePasswordRouteImport } from './../routes/_base/change-password/route'
-import { Route as Base500RouteImport } from './../routes/_base/500/route'
-import { Route as Base404RouteImport } from './../routes/_base/404/route'
-import { Route as Base403RouteImport } from './../routes/_base/403/route'
-import { Route as PortalIndexRouteImport } from './../routes/_portal/index/route'
-import { Route as BaseSystemUsersRouteImport } from './../routes/_base/system/users/route'
-import { Route as BaseSystemTenantsRouteImport } from './../routes/_base/system/tenants/route'
-import { Route as BaseSystemRolesRouteImport } from './../routes/_base/system/roles/route'
-import { Route as BaseSystemPostsRouteImport } from './../routes/_base/system/posts/route'
-import { Route as BaseSystemPermissionsRouteImport } from './../routes/_base/system/permissions/route'
-import { Route as BaseSystemParamsRouteImport } from './../routes/_base/system/params/route'
-import { Route as BaseSystemDeptsRouteImport } from './../routes/_base/system/depts/route'
-import { Route as BaseSystemBusinessDictsRouteImport } from './../routes/_base/system/business-dicts/route'
-import { Route as BaseDevStorybookRouteImport } from './../routes/_base/dev/storybook/route'
-import { Route as BaseSystemDictsIdRouteImport } from './../routes/_base/system/dicts/$id/route'
-import { Route as BaseDevTemplatesBasicTableRouteImport } from './../routes/_base/dev/templates/basic-table/route'
-import { Route as BaseSystemDictsIndexRouteImport } from './../routes/_base/system/dicts/index/route'
+import { Route as rootRoute } from './../../routes/__root'
+import { Route as PortalRouteImport } from './../../routes/_portal/route'
+import { Route as BaseRouteImport } from './../../routes/_base/route'
+import { Route as SplatRouteImport } from './../../routes/$/route'
+import { Route as PortalSsoRouteImport } from './../../routes/_portal/sso/route'
+import { Route as PortalSignupRouteImport } from './../../routes/_portal/signup/route'
+import { Route as PortalLoginRouteImport } from './../../routes/_portal/login/route'
+import { Route as PortalForgotPasswordRouteImport } from './../../routes/_portal/forgot-password/route'
+import { Route as BaseUserInfoRouteImport } from './../../routes/_base/user-info/route'
+import { Route as BaseDevRouteImport } from './../../routes/_base/dev/route'
+import { Route as BaseDashboardRouteImport } from './../../routes/_base/dashboard/route'
+import { Route as BaseChangePasswordRouteImport } from './../../routes/_base/change-password/route'
+import { Route as Base500RouteImport } from './../../routes/_base/500/route'
+import { Route as Base404RouteImport } from './../../routes/_base/404/route'
+import { Route as Base403RouteImport } from './../../routes/_base/403/route'
+import { Route as PortalIndexRouteImport } from './../../routes/_portal/index/route'
+import { Route as BaseSystemUsersRouteImport } from './../../routes/_base/system/users/route'
+import { Route as BaseSystemTenantsRouteImport } from './../../routes/_base/system/tenants/route'
+import { Route as BaseSystemRolesRouteImport } from './../../routes/_base/system/roles/route'
+import { Route as BaseSystemPostsRouteImport } from './../../routes/_base/system/posts/route'
+import { Route as BaseSystemPermissionsRouteImport } from './../../routes/_base/system/permissions/route'
+import { Route as BaseSystemParamsRouteImport } from './../../routes/_base/system/params/route'
+import { Route as BaseSystemDeptsRouteImport } from './../../routes/_base/system/depts/route'
+import { Route as BaseSystemBusinessDictsRouteImport } from './../../routes/_base/system/business-dicts/route'
+import { Route as BaseDevStorybookRouteImport } from './../../routes/_base/dev/storybook/route'
+import { Route as BaseSystemDictsIdRouteImport } from './../../routes/_base/system/dicts/$id/route'
+import { Route as BaseDevTemplatesBasicTableRouteImport } from './../../routes/_base/dev/templates/basic-table/route'
+import { Route as BaseSystemDictsIndexRouteImport } from './../../routes/_base/system/dicts/index/route'
 
 // Create/Update Routes
 
@@ -45,14 +45,14 @@ const PortalRouteRoute = PortalRouteImport.update({
   id: '/_portal',
   getParentRoute: () => rootRoute,
 } as any).lazy(() =>
-  import('./../routes/_portal/route.lazy').then((d) => d.Route),
+  import('./../../routes/_portal/route.lazy').then((d) => d.Route),
 )
 
 const BaseRouteRoute = BaseRouteImport.update({
   id: '/_base',
   getParentRoute: () => rootRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/route.lazy').then((d) => d.Route),
 )
 
 const SplatRouteRoute = SplatRouteImport.update({
@@ -64,35 +64,37 @@ const PortalSsoRouteRoute = PortalSsoRouteImport.update({
   path: '/sso',
   getParentRoute: () => PortalRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_portal/sso/route.lazy').then((d) => d.Route),
+  import('./../../routes/_portal/sso/route.lazy').then((d) => d.Route),
 )
 
 const PortalSignupRouteRoute = PortalSignupRouteImport.update({
   path: '/signup',
   getParentRoute: () => PortalRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_portal/signup/route.lazy').then((d) => d.Route),
+  import('./../../routes/_portal/signup/route.lazy').then((d) => d.Route),
 )
 
 const PortalLoginRouteRoute = PortalLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => PortalRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_portal/login/route.lazy').then((d) => d.Route),
+  import('./../../routes/_portal/login/route.lazy').then((d) => d.Route),
 )
 
 const PortalForgotPasswordRouteRoute = PortalForgotPasswordRouteImport.update({
   path: '/forgot-password',
   getParentRoute: () => PortalRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_portal/forgot-password/route.lazy').then((d) => d.Route),
+  import('./../../routes/_portal/forgot-password/route.lazy').then(
+    (d) => d.Route,
+  ),
 )
 
 const BaseUserInfoRouteRoute = BaseUserInfoRouteImport.update({
   path: '/user-info',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/user-info/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/user-info/route.lazy').then((d) => d.Route),
 )
 
 const BaseDevRouteRoute = BaseDevRouteImport.update({
@@ -104,70 +106,72 @@ const BaseDashboardRouteRoute = BaseDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/dashboard/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/dashboard/route.lazy').then((d) => d.Route),
 )
 
 const BaseChangePasswordRouteRoute = BaseChangePasswordRouteImport.update({
   path: '/change-password',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/change-password/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/change-password/route.lazy').then(
+    (d) => d.Route,
+  ),
 )
 
 const Base500RouteRoute = Base500RouteImport.update({
   path: '/500',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/500/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/500/route.lazy').then((d) => d.Route),
 )
 
 const Base404RouteRoute = Base404RouteImport.update({
   path: '/404',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/404/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/404/route.lazy').then((d) => d.Route),
 )
 
 const Base403RouteRoute = Base403RouteImport.update({
   path: '/403',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/403/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/403/route.lazy').then((d) => d.Route),
 )
 
 const PortalIndexRouteRoute = PortalIndexRouteImport.update({
   path: '/',
   getParentRoute: () => PortalRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_portal/index/route.lazy').then((d) => d.Route),
+  import('./../../routes/_portal/index/route.lazy').then((d) => d.Route),
 )
 
 const BaseSystemUsersRouteRoute = BaseSystemUsersRouteImport.update({
   path: '/system/users',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/system/users/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/system/users/route.lazy').then((d) => d.Route),
 )
 
 const BaseSystemTenantsRouteRoute = BaseSystemTenantsRouteImport.update({
   path: '/system/tenants',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/system/tenants/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/system/tenants/route.lazy').then((d) => d.Route),
 )
 
 const BaseSystemRolesRouteRoute = BaseSystemRolesRouteImport.update({
   path: '/system/roles',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/system/roles/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/system/roles/route.lazy').then((d) => d.Route),
 )
 
 const BaseSystemPostsRouteRoute = BaseSystemPostsRouteImport.update({
   path: '/system/posts',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/system/posts/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/system/posts/route.lazy').then((d) => d.Route),
 )
 
 const BaseSystemPermissionsRouteRoute = BaseSystemPermissionsRouteImport.update(
@@ -176,7 +180,7 @@ const BaseSystemPermissionsRouteRoute = BaseSystemPermissionsRouteImport.update(
     getParentRoute: () => BaseRouteRoute,
   } as any,
 ).lazy(() =>
-  import('./../routes/_base/system/permissions/route.lazy').then(
+  import('./../../routes/_base/system/permissions/route.lazy').then(
     (d) => d.Route,
   ),
 )
@@ -185,14 +189,14 @@ const BaseSystemParamsRouteRoute = BaseSystemParamsRouteImport.update({
   path: '/system/params',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/system/params/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/system/params/route.lazy').then((d) => d.Route),
 )
 
 const BaseSystemDeptsRouteRoute = BaseSystemDeptsRouteImport.update({
   path: '/system/depts',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/system/depts/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/system/depts/route.lazy').then((d) => d.Route),
 )
 
 const BaseSystemBusinessDictsRouteRoute =
@@ -200,7 +204,7 @@ const BaseSystemBusinessDictsRouteRoute =
     path: '/system/business-dicts',
     getParentRoute: () => BaseRouteRoute,
   } as any).lazy(() =>
-    import('./../routes/_base/system/business-dicts/route.lazy').then(
+    import('./../../routes/_base/system/business-dicts/route.lazy').then(
       (d) => d.Route,
     ),
   )
@@ -209,14 +213,16 @@ const BaseDevStorybookRouteRoute = BaseDevStorybookRouteImport.update({
   path: '/storybook',
   getParentRoute: () => BaseDevRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/dev/storybook/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/dev/storybook/route.lazy').then((d) => d.Route),
 )
 
 const BaseSystemDictsIdRouteRoute = BaseSystemDictsIdRouteImport.update({
   path: '/system/dicts/$id',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/system/dicts/$id/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/system/dicts/$id/route.lazy').then(
+    (d) => d.Route,
+  ),
 )
 
 const BaseDevTemplatesBasicTableRouteRoute =
@@ -224,7 +230,7 @@ const BaseDevTemplatesBasicTableRouteRoute =
     path: '/templates/basic-table',
     getParentRoute: () => BaseDevRouteRoute,
   } as any).lazy(() =>
-    import('./../routes/_base/dev/templates/basic-table/route.lazy').then(
+    import('./../../routes/_base/dev/templates/basic-table/route.lazy').then(
       (d) => d.Route,
     ),
   )
@@ -233,7 +239,7 @@ const BaseSystemDictsIndexRouteRoute = BaseSystemDictsIndexRouteImport.update({
   path: '/system/dicts/',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../routes/_base/system/dicts/index/route.lazy').then(
+  import('./../../routes/_base/system/dicts/index/route.lazy').then(
     (d) => d.Route,
   ),
 )

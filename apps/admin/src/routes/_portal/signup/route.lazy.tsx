@@ -2,7 +2,12 @@ import type { SignupDto } from '@raipiot-2f/api'
 import { Lang } from '@raipiot-infra/enums'
 
 import loginBg from '@/assets/images/login_bg.jpg'
-import { PrivacyPolicy, UserAgreement, useSignupForm } from '@/features/auth/signup'
+import {
+  PrivacyPolicy,
+  UserAgreement,
+  useSignupForm,
+  VerificationCode
+} from '@/features/auth/signup'
 import LanguageButton from '@/features/layouts/BaseLayout/Header/LanguageButton'
 
 export const Route = createLazyFileRoute('/_portal/signup')({
@@ -201,7 +206,7 @@ function Signup() {
 
           {/* 验证码 */}
 
-          <RpVerificationCodeItem
+          <VerificationCode
             getPhoneName={() => form.getFieldValue('phone')}
             name="verificationCode"
             rules={[

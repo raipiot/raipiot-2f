@@ -1,10 +1,12 @@
 import type { FormInstance } from 'antd'
 
-interface RpVerificationCodeItemProps {
+import { VerificationCode } from '@/features/auth/signup'
+
+interface VerificationCodeProps {
   form: FormInstance
 }
 
-export default function PhoneNumberFormItems({ form }: RpVerificationCodeItemProps) {
+export default function PhoneNumberFormItems({ form }: VerificationCodeProps) {
   const { t } = useTranslation(['PORTAL'])
 
   return (
@@ -24,7 +26,7 @@ export default function PhoneNumberFormItems({ form }: RpVerificationCodeItemPro
           placeholder={t('PLEASE.ENTER.YOUR.PHONE.NUMBER')}
         />
       </AForm.Item>
-      <RpVerificationCodeItem
+      <VerificationCode
         rules={[
           {
             required: true,

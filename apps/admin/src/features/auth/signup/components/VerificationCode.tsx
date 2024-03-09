@@ -1,17 +1,14 @@
-import type { FormItemProps, InputProps } from 'antd/lib'
+import type { FormItemProps, InputProps } from 'antd'
 import { isEmpty } from 'lodash-es'
 
 import { useSMSVerificationMutation } from '@/features/auth/signup'
 
-export interface RpVerificationCodeItemProps extends FormItemProps {
+export interface VerificationCodeProps extends FormItemProps {
   inputProps?: InputProps
   getPhoneName: () => string
 }
-export function RpVerificationCodeItem({
-  inputProps,
-  getPhoneName,
-  ...props
-}: RpVerificationCodeItemProps) {
+
+export function VerificationCode({ inputProps, getPhoneName, ...props }: VerificationCodeProps) {
   const { t } = useTranslation(['AUTH', 'PORTAL'])
   const { message } = AApp.useApp()
   const verificationCodeMutation = useSMSVerificationMutation()
@@ -25,14 +22,12 @@ export function RpVerificationCodeItem({
     if (isEmpty(phoneName)) {
       message.error(t('PORTAL:PLEASE.ENTER.YOUR.PHONE.NUMBER'))
     } else {
-      // TODO: send verification code
       let timer: NodeJS.Timeout
       verificationCodeMutation.mutate(
         { phone: phoneName },
         {
           onSuccess: () => {
             message.success(t('SEND.VERIFICATION.CODE.SUCCESS'))
-            // start countdown after sending verification code
             const fc = () => {
               setCountDown((prev) => {
                 if (prev === 0) {

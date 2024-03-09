@@ -110,12 +110,14 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
           <RpCol span={span}>
             <div className="space-x-2 sm:space-x-4">
               <RpButton
+                variant="search"
                 htmlType="submit"
                 loading={searchLoading}
                 disabled={searchLoading}
                 onMouseEnter={prefetch}
               />
               <RpButton
+                variant="reset"
                 onClick={() => {
                   if (form) {
                     // 清空表单

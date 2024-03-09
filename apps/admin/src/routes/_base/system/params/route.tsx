@@ -1,5 +1,3 @@
-import { systemParamsQueryOptions } from '@/features/system/params/queries'
-
 const t = i18n.getFixedT(null, 'ROUTER')
 
 export const Route = createFileRoute('/_base/system/params')({
@@ -7,5 +5,5 @@ export const Route = createFileRoute('/_base/system/params')({
     title: () => t('SYSTEM.PARAMS'),
     icon: <MaterialSymbolsChatRounded />
   },
-  loader: () => queryClient.ensureQueryData(systemParamsQueryOptions(PageUtils.initParams()))
+  loader: () => {}
 })
