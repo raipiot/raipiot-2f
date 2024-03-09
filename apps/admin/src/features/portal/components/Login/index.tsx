@@ -1,6 +1,6 @@
 import type { LoginDto, SMSLoginDto } from '@raipiot-2f/api'
 import { omit } from 'lodash-es'
-import type { HTMLAttributes } from 'react'
+import type { ComponentPropsWithoutRef } from 'react'
 
 import { useLoginMutation, useSMSLoginMutation } from '@/features/auth/login'
 import { userInfoQueryOptions } from '@/features/system/users'
@@ -8,7 +8,7 @@ import { userInfoQueryOptions } from '@/features/system/users'
 import AccountFormItems from './AccountFormItems'
 import PhoneNumberFormItems from './PhoneNumberFormItems'
 
-interface LoginProps extends HTMLAttributes<HTMLDivElement> {
+interface LoginProps extends ComponentPropsWithoutRef<'div'> {
   onLoginSuccess?: () => void
 }
 

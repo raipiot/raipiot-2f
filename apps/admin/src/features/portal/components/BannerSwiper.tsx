@@ -1,8 +1,8 @@
-import type { HTMLAttributes } from 'react'
+import type { ComponentPropsWithoutRef } from 'react'
 
 import { usePortalInfoSusptenseQuery } from '../queries'
 
-interface Props extends HTMLAttributes<HTMLDivElement> {}
+interface Props extends ComponentPropsWithoutRef<'div'> {}
 
 export function BannerSwiper(props: Props) {
   const { data } = usePortalInfoSusptenseQuery()

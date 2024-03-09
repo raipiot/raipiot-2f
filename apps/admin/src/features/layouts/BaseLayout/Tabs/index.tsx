@@ -7,12 +7,12 @@ import {
   useSortable
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import type { HTMLAttributes } from 'react'
+import type { ComponentPropsWithoutRef, CSSProperties } from 'react'
 import { cloneElement } from 'react'
 
 import { getRouterStaticData } from '@/shared/router'
 
-interface DraggableTabPaneProps extends HTMLAttributes<HTMLDivElement> {
+interface DraggableTabPaneProps extends ComponentPropsWithoutRef<'div'> {
   'data-node-key': string
 }
 
@@ -22,7 +22,7 @@ const DraggableTabNode = ({ className, ...props }: DraggableTabPaneProps) => {
     id: props['data-node-key']
   })
 
-  const style: React.CSSProperties = {
+  const style: CSSProperties = {
     ...props.style,
     transform: CSS.Transform.toString(transform && { ...transform, scaleX: 1 }),
     transition,

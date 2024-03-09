@@ -1,4 +1,4 @@
-import type { HTMLAttributes, PropsWithChildren, ReactNode } from 'react'
+import type { ComponentPropsWithoutRef, PropsWithChildren, ReactNode } from 'react'
 
 export interface RpPageHeaderProps extends PropsWithChildren {
   /**
@@ -21,11 +21,11 @@ export interface RpPageHeaderProps extends PropsWithChildren {
   /**
    * 操作区域外层样式
    */
-  operateRootProps?: HTMLAttributes<HTMLDivElement>
+  operateRootProps?: ComponentPropsWithoutRef<'div'>
   /**
    * 最外层容器属性
    */
-  rootProps?: HTMLAttributes<HTMLDivElement>
+  rootProps?: ComponentPropsWithoutRef<'div'>
 }
 
 function RpPageHeader(props: RpPageHeaderProps) {
