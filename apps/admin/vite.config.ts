@@ -99,12 +99,12 @@ export default defineConfig(({ mode }) => {
           RaipiotAntdResolver()
         ],
         dirs: [
-          'src/shared/api/**',
-          'src/shared/components/**',
-          'src/shared/hooks/**',
-          'src/shared/providers/**',
-          'src/shared/store/**',
-          'src/shared/utils/**'
+          'src/shared/api/*',
+          'src/shared/components/*',
+          'src/shared/hooks/*',
+          'src/shared/providers/*',
+          'src/shared/store/*',
+          'src/shared/utils/*'
         ]
       }),
       BootstrapAnimation({

@@ -1,8 +1,10 @@
 import type { ReactNode } from 'react'
 
-import type { RpRefreshButtonProps } from './RpRefreshButton'
+import FullScreenButton from './FullScreenButton'
+import { RefreshButton, type RefreshButtonProps } from './RefreshButton'
+import RowGapButton from './RowGapButton'
 
-export interface RpTableTitleProps extends RpRefreshButtonProps {
+export interface TableTitleProps extends RefreshButtonProps {
   /**
    * 选中的行
    */
@@ -33,7 +35,7 @@ export interface RpTableTitleProps extends RpRefreshButtonProps {
   toggleFullscreen?: () => void
 }
 
-function RpTableTitle(props: RpTableTitleProps) {
+function TableTitle(props: TableTitleProps) {
   const {
     selectedRowKeys,
     batchDeleteLoading,
@@ -72,12 +74,12 @@ function RpTableTitle(props: RpTableTitleProps) {
       </div>
 
       <div className="flex items-center space-x-2 sm:space-x-4">
-        <RpRefreshButton
+        <RefreshButton
           refreshLoading={refreshLoading}
           onRefresh={onRefresh}
         />
-        <RpRowGapButton />
-        <RpFullScreenButton
+        <RowGapButton />
+        <FullScreenButton
           isFullscreen={isFullscreen}
           toggleFullscreen={toggleFullscreen}
         />
@@ -85,4 +87,4 @@ function RpTableTitle(props: RpTableTitleProps) {
     </div>
   )
 }
-export default RpTableTitle
+export default TableTitle

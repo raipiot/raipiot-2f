@@ -3,12 +3,13 @@ import { merge } from 'lodash-es'
 
 import rpWithCard from '../RpWithCard'
 import styles from './index.module.scss'
-import type { RpTableTitleProps } from './RpTableTitle'
+import type { TableTitleProps } from './TableTitle'
+import TableTitle from './TableTitle'
 
 // 一些属性例如 size 在内部指定，所以需要过滤掉
 type IgnoreProps = 'title' | 'size' | 'loading'
 
-export interface RpTableProps<T> extends Omit<TableProps<T>, IgnoreProps>, RpTableTitleProps {}
+export interface RpTableProps<T> extends Omit<TableProps<T>, IgnoreProps>, TableTitleProps {}
 
 type RpTableComponent = <T extends object = any>(props: RpTableProps<T>) => JSX.Element
 
@@ -62,7 +63,7 @@ const RpTable: RpTableComponent = rpWithCard(<T extends object = any>(props: RpT
       ref={containerRef}
       className={styles.tableWrapper}
     >
-      <RpTableTitle {...tableTitleProps} />
+      <TableTitle {...tableTitleProps} />
       <div
         className={clsx(
           'mt-2  overflow-auto sm:mt-4',

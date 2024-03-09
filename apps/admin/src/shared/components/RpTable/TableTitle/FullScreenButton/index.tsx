@@ -1,4 +1,4 @@
-interface RpFullScreenButtonProps {
+interface FullScreenButtonProps {
   /**
    * 是否全屏
    */
@@ -9,7 +9,7 @@ interface RpFullScreenButtonProps {
   toggleFullscreen?: () => void
 }
 
-function RpFullScreenButton(props: RpFullScreenButtonProps) {
+function FullScreenButton(props: FullScreenButtonProps) {
   const { isFullscreen, toggleFullscreen } = props
   const { t } = useTranslation()
   return (
@@ -32,4 +32,4 @@ function RpFullScreenButton(props: RpFullScreenButtonProps) {
     </ATooltip>
   )
 }
-export default RpFullScreenButton
+export default FullScreenButton

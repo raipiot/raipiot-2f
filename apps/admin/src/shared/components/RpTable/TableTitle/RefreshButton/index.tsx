@@ -1,4 +1,4 @@
-export interface RpRefreshButtonProps {
+export interface RefreshButtonProps {
   /**
    * 刷新加载状态
    */
@@ -9,7 +9,7 @@ export interface RpRefreshButtonProps {
   onRefresh?: () => void
 }
 
-export function RpRefreshButton(props: RpRefreshButtonProps) {
+export function RefreshButton(props: RefreshButtonProps) {
   const { refreshLoading, onRefresh } = props
   const { t } = useTranslation()
   return (
@@ -27,4 +27,4 @@ export function RpRefreshButton(props: RpRefreshButtonProps) {
     </ATooltip>
   )
 }
-export default RpRefreshButton
+export default RefreshButton

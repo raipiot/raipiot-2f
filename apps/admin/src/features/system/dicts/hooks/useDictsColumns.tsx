@@ -52,7 +52,6 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
           // rp-table-action 用于非 Hover 表格行上隐藏操作按钮
           <ASpace className={clsx(!isMobile && 'rp-table-action', 'transition-all ease-out')}>
             <RpButton
-              size="small"
               variant="view"
               onClick={() => {
                 modal?.openRead()
@@ -60,7 +59,6 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
               }}
             />
             <RpButton
-              size="small"
               variant="edit"
               onMouseEnter={() => queryClient.prefetchQuery(systemDictQueryOptions(record.id!))}
               onClick={async () => {
@@ -75,19 +73,13 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
               to="/system/dicts/$id"
               params={{ id: record.id! }}
             >
-              <RpButton
-                size="small"
-                variant="config"
-              />
+              <RpButton variant="config" />
             </Link>
             <RpDeletePopconfirm
               okBtnLoading={isPending}
               onConfirm={() => mutateAsync(record.id!)}
             >
-              <RpButton
-                size="small"
-                variant="delete"
-              />
+              <RpButton variant="delete" />
             </RpDeletePopconfirm>
           </ASpace>
         )

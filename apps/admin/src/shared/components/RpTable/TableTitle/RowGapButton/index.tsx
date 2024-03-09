@@ -1,6 +1,6 @@
 import type { TableProps } from 'antd'
 
-function RpRowGapButton() {
+function RowGapButton() {
   const { t } = useTranslation()
   const preferenceStore = usePreferenceStore()
 
@@ -33,4 +33,4 @@ function RpRowGapButton() {
     </ATooltip>
   )
 }
-export default RpRowGapButton
+export default RowGapButton
