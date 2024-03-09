@@ -53,6 +53,7 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
           <ASpace className={clsx(!isMobile && 'rp-table-action', 'transition-all ease-out')}>
             <RpButton
               variant="view"
+              size="small"
               onClick={() => {
                 modal?.openRead()
                 modal?.setMeta(record.id)
@@ -60,6 +61,7 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
             />
             <RpButton
               variant="edit"
+              size="small"
               onMouseEnter={() => queryClient.prefetchQuery(systemDictQueryOptions(record.id!))}
               onClick={async () => {
                 modal?.openEdit()
@@ -73,13 +75,19 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
               to="/system/dicts/$id"
               params={{ id: record.id! }}
             >
-              <RpButton variant="config" />
+              <RpButton
+                variant="config"
+                size="small"
+              />
             </Link>
             <RpDeletePopconfirm
               okBtnLoading={isPending}
               onConfirm={() => mutateAsync(record.id!)}
             >
-              <RpButton variant="delete" />
+              <RpButton
+                variant="delete"
+                size="small"
+              />
             </RpDeletePopconfirm>
           </ASpace>
         )
