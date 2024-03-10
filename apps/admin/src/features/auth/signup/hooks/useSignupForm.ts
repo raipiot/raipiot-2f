@@ -21,9 +21,6 @@ export const useSignupForm = () => {
         onSuccess: (data) => {
           saveTokens(data)
           handleSignupRedirect()
-        },
-        onError: () => {
-          // TODO: 需要处理错误吗？
         }
       })
     } else {
