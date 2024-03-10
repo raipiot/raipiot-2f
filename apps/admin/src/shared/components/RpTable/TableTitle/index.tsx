@@ -37,15 +37,15 @@ export interface TableTitleProps extends RefreshButtonProps {
 
 function TableTitle(props: TableTitleProps) {
   const {
+    isFullscreen,
+    toggleFullscreen,
     selectedRowKeys,
+    refreshLoading,
     batchDeleteLoading,
+    onRefresh,
     onBatchDelete,
     renderTableBatchOpeate,
-    renderTableOpeate,
-    refreshLoading,
-    onRefresh,
-    isFullscreen,
-    toggleFullscreen
+    renderTableOpeate
   } = props
 
   const { t } = useTranslation()

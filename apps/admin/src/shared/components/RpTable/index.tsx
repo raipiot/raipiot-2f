@@ -39,6 +39,7 @@ const RpTable: RpTableComponent = rpWithCard(<T extends object = any>(props: RpT
     () => ({
       isFullscreen,
       toggleFullscreen,
+      selectedRowKeys: restProps.rowSelection?.selectedRowKeys,
       refreshLoading,
       batchDeleteLoading,
       onRefresh,
@@ -49,6 +50,7 @@ const RpTable: RpTableComponent = rpWithCard(<T extends object = any>(props: RpT
     [
       isFullscreen,
       toggleFullscreen,
+      restProps.rowSelection?.selectedRowKeys,
       refreshLoading,
       batchDeleteLoading,
       onRefresh,
