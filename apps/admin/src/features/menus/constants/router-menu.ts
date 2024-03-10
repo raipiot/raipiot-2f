@@ -43,13 +43,7 @@ export const routerMenuMap = new Map<ModuleMenuCode, MenuItem[]>([
         icon: createElement(MaterialSymbolsCodeRounded),
         children: [getRouteMeta('/dev/templates/basic-table')]
       },
-      getRouteMeta('/dev/storybook'),
-      {
-        label: '非菜单页面',
-        key: '/temp',
-        icon: createElement(MaterialSymbolsGridViewOutlineRounded),
-        children: [getRouteMeta('/user-info'), getRouteMeta('/change-password')]
-      }
+      getRouteMeta('/dev/storybook')
     ]
   ]
 ])

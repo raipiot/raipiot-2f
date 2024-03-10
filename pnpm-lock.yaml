@@ -395,8 +395,8 @@ importers:
         specifier: ~0.1.12
         version: 0.1.12(dayjs@1.11.10)
       '@tanstack/react-router':
-        specifier: ^1.19.2
-        version: 1.19.2(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.19.4
+        version: 1.19.4(react-dom@18.2.0)(react@18.2.0)
       antd:
         specifier: ^5.15.1
         version: 5.15.1(react-dom@18.2.0)(react@18.2.0)
@@ -3350,21 +3350,6 @@ packages:
     dependencies:
       '@tanstack/query-core': 5.25.0
       react: 18.2.0
-    dev: false
-
-  /@tanstack/react-router@1.19.2(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-OmJD3T31CmaFAvpd8m/p9drzH/M0PBr/DULCztS58NGWW033wOEFljdbth+CNX35pAgdhY/o95vPtt19Z6ZvXA==}
-    engines: {node: '>=12'}
-    peerDependencies:
-      react: '>=16'
-      react-dom: '>=16'
-    dependencies:
-      '@tanstack/history': 1.15.13
-      '@tanstack/react-store': 0.2.1(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      tiny-invariant: 1.3.3
-      tiny-warning: 1.0.3
     dev: false
 
   /@tanstack/react-router@1.19.4(react-dom@18.2.0)(react@18.2.0):
