@@ -1,22 +1,22 @@
 import type { FormItemProps } from 'antd'
 
 import type { RpFormProps } from '../RpForm'
-import type { RpBasicFormItem } from '../RpFormItem/types'
+import type { RpBasicFormItem } from './types'
 
-export type RpAutoFormProps<T extends Record<string, any>> = RpFormProps<T> & {
+export type RpDynamicFormProps<T extends Record<string, any>> = RpFormProps<T> & {
   /**
    * 表单配置项
    */
-  formItems: RpBasicFormItem<T>[]
+  items?: RpBasicFormItem<T>[]
 }
 
-function RpAutoForm<T extends Record<string, any>>(props: RpAutoFormProps<T>) {
-  const { formItems, ...formProps } = props
+function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<T>) {
+  const { items, ...formProps } = props
   return (
     <RpForm<T> {...formProps}>
       <RpRow>
-        {formItems &&
-          formItems.map((item) => {
+        {items &&
+          items.map((item) => {
             const { type } = item
             if (type === 'custom') {
               return typeof item.render === 'function' ? item.render() : item.render
@@ -27,7 +27,7 @@ function RpAutoForm<T extends Record<string, any>>(props: RpAutoFormProps<T>) {
                 key={key.toString()}
                 {...colProps}
               >
-                <RpFormItem
+                <AForm.Item
                   name={key as FormItemProps['name']}
                   {...formItemProps}
                 >
@@ -43,7 +43,7 @@ function RpAutoForm<T extends Record<string, any>>(props: RpAutoFormProps<T>) {
                   )}
                   {type === 'form-item' &&
                     (typeof item.render === 'function' ? item.render() : item.render)}
-                </RpFormItem>
+                </AForm.Item>
               </RpCol>
             )
           })}
@@ -51,4 +51,4 @@ function RpAutoForm<T extends Record<string, any>>(props: RpAutoFormProps<T>) {
     </RpForm>
   )
 }
-export default RpAutoForm
+export default RpDynamicForm

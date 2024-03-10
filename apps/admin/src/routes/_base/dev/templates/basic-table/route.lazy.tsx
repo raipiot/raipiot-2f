@@ -14,9 +14,6 @@ export const Route = createLazyFileRoute('/_base/dev/templates/basic-table')({
 })
 
 function BasicTable() {
-  // 国际化
-  const { t } = useTranslation()
-
   // 分页器
   const { pageParams, setPageParams, pagination, isPending, startTransition } =
     usePagination<DictPageDto>()
@@ -127,7 +124,9 @@ function BasicTable() {
         onCancel={modal.close}
         // 底部区域
         footer={modal.isRead ? null : undefined}
-      />
+      >
+        {(modal.isCreate || modal.isEdit) && <RpDynamicForm />}
+      </RpModal>
     </RpPageContainer>
   )
 }

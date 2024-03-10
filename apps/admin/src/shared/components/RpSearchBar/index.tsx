@@ -1,6 +1,6 @@
 import type { CardProps, FormItemProps, FormProps } from 'antd'
 
-import type { RpSearchFormItem } from '@/shared/components/RpFormItem/types'
+import type { RpSearchFormItem } from '@/shared/components/RpDynamicForm/types'
 
 import rpWithCard from '../RpWithCard'
 
@@ -87,7 +87,7 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
                   key={key.toString()}
                   {...colProps}
                 >
-                  <RpFormItem
+                  <AForm.Item
                     name={key as FormItemProps['name']}
                     {...formItemProps}
                   >
@@ -103,7 +103,7 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
                     )}
                     {type === 'form-item' &&
                       (typeof item.render === 'function' ? item.render() : item.render)}
-                  </RpFormItem>
+                  </AForm.Item>
                 </RpCol>
               )
             })}

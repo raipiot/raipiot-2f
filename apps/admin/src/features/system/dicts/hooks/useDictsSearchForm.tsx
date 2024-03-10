@@ -2,12 +2,12 @@ import type { DictSearchFormModel } from '@/features/system/dicts'
 
 export const useDictsSearchForm = () => {
   const { t } = useTranslation('SYSTEM/DICTS')
-  const { createSearchFormItems } = useSearchFormCreator<DictSearchFormModel>()
+  const { createResponsiveFormItems } = useFormCreator<DictSearchFormModel>()
   const [searchForm] = AForm.useForm()
 
   return {
     searchForm,
-    searchFormItems: createSearchFormItems([
+    searchFormItems: createResponsiveFormItems([
       {
         type: 'input',
         key: 'code',

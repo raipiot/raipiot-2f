@@ -1,10 +1,10 @@
-import type { RpCardProps } from '../RpCard'
+import type { CardProps } from 'antd'
 
 export interface RpWithCardProps {
   /**
    * 卡片属性
    */
-  cardProps?: RpCardProps
+  cardProps?: CardProps
   /**
    * 是否隐藏卡片
    * @default false
@@ -19,9 +19,9 @@ const rpWithCard = <T extends object = any>(
     const { hideCard, cardProps, ...restProps } = props
     if (!hideCard) {
       return (
-        <RpCard {...cardProps}>
+        <ACard {...cardProps}>
           <WrappedComponent {...restProps} />
-        </RpCard>
+        </ACard>
       )
     }
     return <WrappedComponent {...restProps} />

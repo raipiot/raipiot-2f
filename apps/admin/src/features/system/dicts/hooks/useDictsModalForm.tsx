@@ -2,12 +2,12 @@ import type { DictSubmitFormModel } from '../types'
 
 export const useDictsModalForm = () => {
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
-  const { createSearchFormItems } = useSearchFormCreator<DictSubmitFormModel>()
+  const { createResponsiveFormItems } = useFormCreator<DictSubmitFormModel>()
   const [modalForm] = AForm.useForm<DictSubmitFormModel>()
 
   return {
     modalForm,
-    modalFormItems: createSearchFormItems([
+    modalFormItems: createResponsiveFormItems([
       {
         type: 'input',
         key: 'code',

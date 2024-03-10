@@ -1,9 +1,9 @@
-import type { RpSearchFormItem } from '@/shared/components/RpFormItem/types'
+import type { RpSearchFormItem } from '@/shared/components/RpDynamicForm/types'
 
-export const useSearchFormCreator = <T>() => {
+export const useFormCreator = <T>() => {
   const span = useResponsiveSpan()
 
-  const createSearchFormItems = (items: RpSearchFormItem<T>[]) =>
+  const createResponsiveFormItems = (items: RpSearchFormItem<T>[]) =>
     items.map<RpSearchFormItem<T>>((item) => {
       if (item.type === 'custom') {
         return item
@@ -18,6 +18,6 @@ export const useSearchFormCreator = <T>() => {
     })
 
   return {
-    createSearchFormItems
+    createResponsiveFormItems
   }
 }

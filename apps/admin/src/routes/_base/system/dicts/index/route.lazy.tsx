@@ -3,7 +3,6 @@ import type { FormItemProps } from 'antd'
 
 import type { DictSubmitFormModel } from '@/features/system/dicts'
 import {
-  SystemDictDetail,
   systemDictsQueryOptions,
   useDictsColumns,
   useDictsModalForm,
@@ -17,8 +16,6 @@ export const Route = createLazyFileRoute('/_base/system/dicts/')({
 })
 
 function SystemDicts() {
-  const { t } = useTranslation()
-
   const { pageParams, setPageParams, pagination, isPending, startTransition } =
     usePagination<DictPageDto>()
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
@@ -136,7 +133,7 @@ function SystemDicts() {
                       key={key.toString()}
                       {...colProps}
                     >
-                      <RpFormItem
+                      <AForm.Item
                         name={key as FormItemProps['name']}
                         {...formItemProps}
                       >
@@ -152,25 +149,12 @@ function SystemDicts() {
                         )}
                         {type === 'form-item' &&
                           (typeof item.render === 'function' ? item.render() : item.render)}
-                      </RpFormItem>
+                      </AForm.Item>
                     </ACol>
                   )
                 })}
             </RpRow>
           </AForm>
-        )}
-        {modal.isRead && (
-          <Suspense
-            fallback={
-              <ASkeleton
-                active
-                round
-                paragraph={{ rows: 10 }}
-              />
-            }
-          >
-            <SystemDictDetail id={modal.meta} />
-          </Suspense>
         )}
       </RpModal>
     </RpPageContainer>

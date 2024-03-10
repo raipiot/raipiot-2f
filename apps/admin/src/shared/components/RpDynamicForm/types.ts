@@ -53,7 +53,7 @@ export type RpSearchFormItem<T> =
         | RpButton
         | RpCustomFormItem
       ))
-  | RpCustom<T>
+  | (RpCustom<T> & RpSearchOnly)
 
 export type RpBasicFormItem<T> =
   | (RpBaseFormItem<T> &
