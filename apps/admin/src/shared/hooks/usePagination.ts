@@ -3,7 +3,13 @@ import type { TablePaginationConfig } from 'antd'
 import { createElement } from 'react'
 
 interface PaginationParams<T> {
+  /**
+   * 总页数
+   */
   total?: number
+  /**
+   * 事件：预加载
+   */
   onPrefetch?: (values: T) => void
 }
 

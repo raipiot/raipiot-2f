@@ -22,6 +22,9 @@ export interface RpColumnGroupType<T> extends Omit<RpColumnType<T>, 'dataIndex'>
 
 type RpColumnsType<T> = (RpColumnGroupType<T> | RpColumnType<T>)[]
 
+/**
+ * 生成表格列
+ */
 const createColumns = <T>(columns: RpColumnsType<T>) => {
   const getRender = (column: RpColumnType<T>) => {
     const { custom } = column
@@ -55,6 +58,9 @@ export const useTableCreator = <T>() => {
   const { t } = useTranslation()
   const response = useResponsive()
 
+  /**
+   * 生成操作列
+   */
   const createActions = (config: RpColumnType<T>): RpColumnType<T> => ({
     title: t('ACTIONS'),
     key: 'actions',

@@ -1,6 +1,9 @@
 import { Table } from 'antd'
 import type { TableRowSelection } from 'antd/es/table/interface'
 
+/**
+ * 列表多选器
+ */
 export const useRowSelection = <T>(initialState: React.Key[] = []) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>(initialState)
 

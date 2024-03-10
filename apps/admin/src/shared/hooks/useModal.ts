@@ -1,7 +1,13 @@
 import type { Dispatch, SetStateAction } from 'react'
 
-interface UseModalProps<T> {
+export interface UseModalProps<T> {
+  /**
+   * 模态框元数据
+   */
   meta: T
+  /**
+   * 模态框初始化打开状态
+   */
   open?: boolean
 }
 

@@ -18,6 +18,9 @@ interface ResponsiveModalTypeOptions {
   read: string
 }
 
+/**
+ * 响应式弹窗宽度
+ */
 export const useResponsiveModalWidth = (type?: ModalType, options?: ResponsiveModalTypeOptions) => {
   const { create = '80%', edit = '80%', read = '70%' } = options ?? {}
 

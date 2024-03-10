@@ -6,6 +6,10 @@ interface ResponsiveSpan {
   sm?: number
   xs?: number
 }
+
+/**
+ * 响应式栅格宽度
+ */
 export const useResponsiveSpan = (config?: ResponsiveSpan) => {
   const { xxl = 6, xl = 8, lg = 12, md = 12, sm = 24, xs = 24 } = config ?? {}
 

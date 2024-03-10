@@ -1,6 +1,10 @@
 import { Lang } from '@raipiot-infra/enums'
 import type { MenuProps } from 'antd'
 
+/**
+ * 语言菜单选择
+ * @description 构造一个 antd Menu 组件的配置项，用于切换语言
+ */
 export const useLanguageMenu = () => {
   const langStore = useLangStore()
 

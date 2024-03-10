@@ -1,17 +1,17 @@
-import { isNil } from 'lodash-es'
+import type { SkeletonProps } from 'antd'
 
-interface SkeletonProps {
-  value?: any
+interface RpSkeletonProps {
   skeleton?: boolean
+  skeletonProps?: SkeletonProps
 }
 
 export default function rpWithSkeleton<T>(WrappedComponent: React.ComponentType<T>) {
-  return function RpWithSkeleton(props: T & SkeletonProps) {
-    const { skeleton, value } = props
+  return function RpWithSkeleton(props: T & RpSkeletonProps) {
+    const { skeleton } = props
     if (skeleton) {
       return (
         <ASkeleton
-          loading={isNil(value)}
+          loading
           paragraph={{ rows: 1 }}
         >
           <WrappedComponent {...props} />
