@@ -69,7 +69,7 @@ function SystemDicts() {
         }
       />
       {/* 表格 */}
-      <RpTable<DictVo>
+      <RpBasicTable<DictVo>
         rowKey={(record) => record.id!}
         rowSelection={rowSelection}
         columns={columns}

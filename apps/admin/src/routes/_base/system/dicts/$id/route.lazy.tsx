@@ -52,7 +52,7 @@ function SystemDictItem() {
         formItems={searchFormItems}
         onSearch={(values) => setPageParams(PageUtils.mergeParams(pageParams, values))}
       />
-      <RpTable<DictVo>
+      <RpBasicTable<DictVo>
         rowKey={(record) => record.id!}
         rowSelection={rowSelection}
         columns={columns}

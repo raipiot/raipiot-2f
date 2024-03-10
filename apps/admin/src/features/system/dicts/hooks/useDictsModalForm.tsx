@@ -49,6 +49,14 @@ export const useDictsModalForm = () => {
           name: 'remark',
           label: t('COMMON:REMARK')
         }
+      },
+      {
+        type: 'custom',
+        render: () => (
+          <ACol span={24}>
+            <ATable>123</ATable>
+          </ACol>
+        )
       }
     ])
   }

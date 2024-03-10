@@ -77,7 +77,7 @@ function BasicTable() {
         }
       />
       {/* 表格 */}
-      <RpTable<DictVo>
+      <RpBasicTable<DictVo>
         rowKey={(record) => record.id!}
         // 批量选择选项
         rowSelection={rowSelection}
