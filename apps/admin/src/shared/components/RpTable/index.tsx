@@ -31,7 +31,7 @@ const RpTable: RpTableComponent = rpWithCard(<T extends object = any>(props: RpT
   const [isFullscreen, { toggleFullscreen }] = useFullscreen(containerRef, {
     pageFullscreen: {
       zIndex: 9999,
-      className: 'table-layout-full-screen-container'
+      className: 'rp-table-layout-full-screen-container'
     }
   })
 

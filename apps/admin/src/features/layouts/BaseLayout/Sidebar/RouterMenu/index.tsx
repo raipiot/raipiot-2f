@@ -1,5 +1,7 @@
 import { type MenuItem, routerMenus } from '@/features/menus'
 
+import SearchBar from './SearchBar'
+
 export default function RouterMenu() {
   const { siderBg } = ATheme.useToken().token.Layout!
   const navigate = useNavigate()
@@ -33,15 +35,22 @@ export default function RouterMenu() {
   }
 
   return (
-    <AMenu
-      className="overflow-hidden !border-0 !border-l border-gray-300 dark:border-gray-950"
-      style={{ backgroundColor: siderBg }}
-      items={routerMenus()}
-      selectedKeys={selectedKeys}
-      openKeys={openKeys}
-      onOpenChange={setOpenKeys}
-      mode="inline"
-      onClick={handleClickMenuItem}
-    />
+    <div className="flex min-h-[calc(100vh-40px)] w-full flex-col items-center overflow-y-scroll !border-0 !border-l border-gray-300 dark:border-gray-950">
+      <SearchBar />
+      <div className="rp-hide-scrollbar h-[calc(100vh-96px)] w-full overflow-y-auto">
+        <AMenu
+          style={{
+            backgroundColor: siderBg,
+            border: 'none'
+          }}
+          items={routerMenus()}
+          selectedKeys={selectedKeys}
+          openKeys={openKeys}
+          onOpenChange={setOpenKeys}
+          mode="inline"
+          onClick={handleClickMenuItem}
+        />
+      </div>
+    </div>
   )
 }

@@ -49,3 +49,32 @@ export const routerMenus = (): MenuItem[] => [
     ]
   }
 ]
+
+function isMenuItem(menu: any): menu is { label: string; key: string } {
+  return menu?.label !== undefined && menu?.key !== undefined
+}
+
+function hasChildren(menu: any): menu is { children: MenuItem[] } {
+  return Array.isArray(menu.children) && menu.children.length > 0
+}
+
+export const flattenRouterLabels = (
+  menus: MenuItem[] = routerMenus(),
+  parentLabel = ''
+): { label: string; key: string }[] =>
+  menus
+    .flatMap((menu) => {
+      if (isMenuItem(menu)) {
+        const label = I18nUtils.getText(menu.label)
+        const currentLabel = parentLabel ? `${parentLabel}/${label}` : label
+        if (hasChildren(menu)) {
+          return [...flattenRouterLabels(menu.children, currentLabel)]
+        }
+        return {
+          label: currentLabel,
+          key: menu.key
+        }
+      }
+      return []
+    })
+    .filter((item) => item.label && item.key)

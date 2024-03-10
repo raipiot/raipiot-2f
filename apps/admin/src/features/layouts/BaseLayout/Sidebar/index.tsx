@@ -9,7 +9,7 @@ export default function Sidebar() {
     <>
       <ALayout.Sider
         className={clsx(
-          '!absolute inset-y-0 left-0 z-[100] h-screen overflow-auto border border-gray-300 shadow-sm dark:border-gray-950 sm:!static',
+          '!absolute inset-y-0 left-0 z-[100] h-screen overflow-hidden border border-gray-300 shadow-sm dark:border-gray-950 sm:!static',
           !sidebarStore.isDisplay && 'border-r-0'
         )}
         collapsible
@@ -19,7 +19,7 @@ export default function Sidebar() {
         collapsedWidth={sidebarStore.isDisplay ? 146 : 0}
         trigger={null}
       >
-        <div className="flex min-h-[calc(100%-40px)]">
+        <div className="flex h-[calc(100%-40px)] select-none">
           <ModuleMenu />
           <RouterMenu />
         </div>

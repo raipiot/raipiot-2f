@@ -21,7 +21,7 @@ body {
     Arial,
     sans-serif;
   height: 100vh;
-  user-select: none;
+  overflow: hidden;
 }
 
 #app {
@@ -36,7 +36,7 @@ body {
   color: #ffffff;
 }
 
-.global-hide-scrollbar {
+.rp-hide-scrollbar {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   -webkit-overflow-scrolling: touch; /* iOS (Safari and Chrome) */
@@ -52,12 +52,12 @@ body {
   }
 }
 
-.table-layout-full-screen-container {
+.rp-table-layout-full-screen-container {
   background: white;
   padding: 20px;
 }
 
-[data-theme='dark'] .table-layout-full-screen-container {
+[data-theme='dark'] .rp-table-layout-full-screen-container {
   background: #1f1f1f;
 }
 

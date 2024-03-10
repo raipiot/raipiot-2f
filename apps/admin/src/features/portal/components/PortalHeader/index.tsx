@@ -35,9 +35,9 @@ export function PortalHeader() {
   ]
 
   return (
-    <header className="sticky top-0 z-[999] w-full bg-gradient-to-t from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-      <div className="mx-auto flex w-[1200px] max-w-[100vw] items-center justify-between p-4 text-gray-800 dark:text-gray-50 md:px-8">
-        <section className="text-lg font-semibold md:text-xl">raipiot 2f portal</section>
+    <header className="z-[999] w-full bg-gradient-to-t from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+      <div className="container mx-auto flex items-center justify-between px-2 py-4 text-gray-800 dark:text-gray-50">
+        <section className="text-lg font-semibold md:text-xl">{BrandConfig.companyName}</section>
         <div className="flex items-center justify-end">
           <div className="mr-4 hidden gap-4 md:ml-auto md:flex">
             <Link
@@ -49,7 +49,7 @@ export function PortalHeader() {
                 gap={2}
               >
                 <MaterialSymbolsShoppingBagOutlineSharp />
-                SRM 商城
+                商城
               </AFlex>
             </Link>
             <Link
@@ -63,7 +63,7 @@ export function PortalHeader() {
               }}
             >
               <MaterialSymbolsDashboardSharp />
-              Dashboard
+              仪表盘
             </Link>
             <LanguageButton />
             <ThemeToggle />
@@ -86,7 +86,7 @@ export function PortalHeader() {
             )}
           </AFlex>
 
-          <div className="ml-4 flex gap-1 rounded-sm border border-gray-800 bg-gray-50 p-[4px] text-[20px] text-gray-900 dark:border-white dark:bg-gray-900 dark:text-white md:hidden">
+          <div className="ml-4 flex space-x-1 rounded-sm border border-gray-800 bg-gray-50 p-[4px] text-[20px] text-gray-900 dark:border-white dark:bg-gray-900 dark:text-white md:hidden">
             <MaterialSymbolsMenuOpenRounded onClick={() => setShowMiniMenu(!showMiniMenu)} />
             <ThemeToggle />
           </div>
@@ -95,7 +95,7 @@ export function PortalHeader() {
 
       <div
         className={clsx(
-          'flex flex-col gap-2 overflow-hidden bg-gray-50 transition-all dark:bg-gray-900 md:hidden',
+          'flex flex-col space-y-2 overflow-hidden bg-gray-50 transition-all dark:bg-gray-900 md:hidden',
           showMiniMenu ? 'h-[120px] p-4' : 'h-0'
         )}
       >

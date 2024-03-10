@@ -51,9 +51,9 @@ function Portal() {
   ]
 
   return (
-    <div className="box-border min-h-[100vh] overflow-x-hidden bg-[#f8f8fa] dark:bg-gray-800">
+    <div className="bg-[#f8f8fa] dark:bg-gray-800">
       <PortalHeader />
-      <div className="mx-auto flex w-[1200px] max-w-[100vw] flex-col gap-y-[1px] bg-gray-50  dark:bg-gray-800 md:mt-4 md:gap-[8px] md:gap-y-4">
+      <div className="container mx-auto flex h-fit flex-col space-y-0.5 bg-gray-50 dark:bg-gray-800 md:mt-4 md:space-y-4">
         <Container>
           <BannerSwiper className="col-span-3 bg-white md:col-span-2" />
           <div className="col-span-3 bg-white p-4 dark:bg-gray-900 md:col-span-1">
@@ -134,7 +134,7 @@ function Portal() {
         {/* 企业声明 */}
         <div className="col-span-3 p-6 text-center">
           <section className="mb-4">注册协议隐私政策说明</section>
-          <p>版权所有 Copyright © xxxxxxx有限公司 All Rights Reserved. 浙ICP备19001487号-1</p>
+          <p>Copyright © raipiot All Rights Reserved</p>
         </div>
       </div>
     </div>
