@@ -10,7 +10,7 @@ export default function Logo() {
     >
       <div className="flex h-14 w-full items-center justify-center space-x-4">
         <AImage
-          className="cursor-pointer p-2"
+          className="cursor-pointer p-1"
           src={themeStore.isDarkTheme() ? raipiotDarkLogo : raipiotLogo}
           alt=""
           width={64}

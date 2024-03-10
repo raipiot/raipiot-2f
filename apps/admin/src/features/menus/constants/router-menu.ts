@@ -1,3 +1,4 @@
+import { ModuleMenuCode } from '../enums'
 import type { MenuItem } from '../types'
 
 const t = i18n.getFixedT(null, 'ROUTER')
@@ -11,13 +12,18 @@ const getRouteMeta = (key: string) => {
   }
 }
 
-export const routerMenus = (): MenuItem[] => [
-  getRouteMeta('/dashboard'),
-  {
-    label: t('MODULE.MENU.SYSTEM'),
-    key: '/system',
-    icon: createElement(MaterialSymbolsSettingsOutlineRounded),
-    children: [
+export const routerMenuMap = new Map<ModuleMenuCode, MenuItem[]>([
+  [ModuleMenuCode.DASHBOARD, [getRouteMeta('/dashboard')]],
+  [ModuleMenuCode.SUPPLIER, []],
+  [ModuleMenuCode.SOURCE, []],
+  [ModuleMenuCode.CONTRACT, []],
+  [ModuleMenuCode.PURCHASE, []],
+  [ModuleMenuCode.BILLING, []],
+  [ModuleMenuCode.SHOPPING, []],
+  [ModuleMenuCode.GROUP, []],
+  [
+    ModuleMenuCode.SYSTEM,
+    [
       getRouteMeta('/system/users'),
       getRouteMeta('/system/depts'),
       getRouteMeta('/system/posts'),
@@ -27,28 +33,26 @@ export const routerMenus = (): MenuItem[] => [
       getRouteMeta('/system/params'),
       getRouteMeta('/system/tenants')
     ]
-  },
-  {
-    label: '非菜单页面',
-    key: '/temp',
-    icon: createElement(MaterialSymbolsGridViewOutlineRounded),
-    children: [getRouteMeta('/user-info'), getRouteMeta('/change-password')]
-  },
-  {
-    label: t('MODULE.MENU.DEVELOPER'),
-    key: '/dev',
-    icon: createElement(MaterialSymbolsCodeRounded),
-    children: [
+  ],
+  [
+    ModuleMenuCode.DEVELOPER,
+    [
       {
         label: t('DEVELOPER.TEMPLATES'),
         key: '/templates',
         icon: createElement(MaterialSymbolsCodeRounded),
         children: [getRouteMeta('/dev/templates/basic-table')]
       },
-      getRouteMeta('/dev/storybook')
+      getRouteMeta('/dev/storybook'),
+      {
+        label: '非菜单页面',
+        key: '/temp',
+        icon: createElement(MaterialSymbolsGridViewOutlineRounded),
+        children: [getRouteMeta('/user-info'), getRouteMeta('/change-password')]
+      }
     ]
-  }
-]
+  ]
+])
 
 function isMenuItem(menu: any): menu is { label: string; key: string } {
   return menu?.label !== undefined && menu?.key !== undefined
@@ -58,8 +62,12 @@ function hasChildren(menu: any): menu is { children: MenuItem[] } {
   return Array.isArray(menu.children) && menu.children.length > 0
 }
 
+function getAllMenus() {
+  return Array.from(routerMenuMap.values()).flat()
+}
+
 export const flattenRouterLabels = (
-  menus: MenuItem[] = routerMenus(),
+  menus: MenuItem[] = getAllMenus(),
   parentLabel = ''
 ): { label: string; key: string }[] =>
   menus
@@ -78,3 +86,5 @@ export const flattenRouterLabels = (
       return []
     })
     .filter((item) => item.label && item.key)
+
+export const getRouterMenu = (key: ModuleMenuCode) => routerMenuMap.get(key) ?? []

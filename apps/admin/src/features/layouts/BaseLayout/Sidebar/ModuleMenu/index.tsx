@@ -1,20 +1,24 @@
+import type { ModuleMenuCode } from '@/features/menus'
 import { moduleMenus } from '@/features/menus'
 
 import Logo from './Logo'
+import ModuleMenuItem from './ModuleMenuItem'
 
 export default function ModuleMenu() {
+  const menuStore = useMenuStore()
   return (
-    <div className="px-1">
+    <div className="w-16">
       <Logo />
-      <div className="rp-hide-scrollbar h-[calc(100vh-96px)] overflow-y-auto py-2">
+      <div className="rp-hide-scrollbar flex h-[calc(100vh-96px)] flex-col items-center overflow-y-auto">
         {moduleMenus.map((i) => (
-          <div
-            key={i.code}
-            className="mb-6 flex cursor-pointer flex-col items-center justify-center space-y-1.5 transition-all hover:scale-105 active:opacity-85"
-          >
-            {i.icon}
-            <div className="text-xs">{I18nUtils.getText(i.title)}</div>
-          </div>
+          <ModuleMenuItem
+            key={i.key}
+            label={I18nUtils.getText(i.label)}
+            onClick={() => menuStore.setActiveModuleMenuCode(i.key as ModuleMenuCode)}
+            icon={i.icon}
+            active={menuStore.activeModuleMenuCode === i.key}
+            className="mb-2"
+          />
         ))}
       </div>
     </div>

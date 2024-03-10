@@ -1,4 +1,4 @@
-import { type MenuItem, routerMenus } from '@/features/menus'
+import { getRouterMenu, type MenuItem } from '@/features/menus'
 
 import SearchBar from './SearchBar'
 
@@ -6,11 +6,17 @@ export default function RouterMenu() {
   const { siderBg } = ATheme.useToken().token.Layout!
   const navigate = useNavigate()
   const routerState = useRouterState()
+  const menuStore = useMenuStore()
 
   // 选中项
   const [selectedKeys, setSelectedKeys] = useState<string[]>([])
   // 展开项
   const [openKeys, setOpenKeys] = useState<string[]>([])
+
+  const menuItems = useMemo(
+    () => getRouterMenu(menuStore.activeModuleMenuCode),
+    [menuStore.activeModuleMenuCode]
+  )
 
   // 根据路由地址，设置菜单的选中项和展开项
   useEffect(() => {
@@ -43,7 +49,7 @@ export default function RouterMenu() {
             backgroundColor: siderBg,
             border: 'none'
           }}
-          items={routerMenus()}
+          items={menuItems}
           selectedKeys={selectedKeys}
           openKeys={openKeys}
           onOpenChange={setOpenKeys}

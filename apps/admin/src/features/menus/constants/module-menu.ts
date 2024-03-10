@@ -5,53 +5,53 @@ const t = i18n.getFixedT(null, 'ROUTER')
 
 export const moduleMenus: ModuleMenuItem[] = [
   {
-    title: () => t('MODULE.MENU.DASHBOARD'),
-    code: ModuleMenuCode.DASHBOARD,
+    label: () => t('MODULE.MENU.DASHBOARD'),
+    key: ModuleMenuCode.DASHBOARD,
     icon: createElement(MaterialSymbolsGridViewOutlineRounded)
   },
   {
-    title: () => t('MODULE.MENU.SUPPLIER'),
-    code: ModuleMenuCode.SUPPLIER,
+    label: () => t('MODULE.MENU.SUPPLIER'),
+    key: ModuleMenuCode.SUPPLIER,
     icon: createElement(MaterialSymbolsGroupRounded)
   },
   {
-    title: () => t('MODULE.MENU.SOURCE'),
-    code: ModuleMenuCode.SOURCE,
+    label: () => t('MODULE.MENU.SOURCE'),
+    key: ModuleMenuCode.SOURCE,
     icon: createElement(MaterialSymbolsManageSearchRounded)
   },
   {
-    title: () => t('MODULE.MENU.CONTRACT'),
-    code: ModuleMenuCode.CONTRACT,
+    label: () => t('MODULE.MENU.CONTRACT'),
+    key: ModuleMenuCode.CONTRACT,
     icon: createElement(MaterialSymbolsContractOutlineRounded)
   },
   {
-    title: () => t('MODULE.MENU.PURCHASE'),
-    code: ModuleMenuCode.PURCHASE,
+    label: () => t('MODULE.MENU.PURCHASE'),
+    key: ModuleMenuCode.PURCHASE,
     icon: createElement(MaterialSymbolsLocalShippingOutlineRounded)
   },
   {
-    title: () => t('MODULE.MENU.BILLING'),
-    code: ModuleMenuCode.BILLING,
+    label: () => t('MODULE.MENU.BILLING'),
+    key: ModuleMenuCode.BILLING,
     icon: createElement(MaterialSymbolsPaidOutlineRounded)
   },
   {
-    title: () => t('MODULE.MENU.SHOPPING'),
-    code: ModuleMenuCode.SHOPPING,
+    label: () => t('MODULE.MENU.SHOPPING'),
+    key: ModuleMenuCode.SHOPPING,
     icon: createElement(MaterialSymbolsShoppingCartOutlineRounded)
   },
   {
-    title: () => t('MODULE.MENU.GROUP'),
-    code: ModuleMenuCode.GROUP,
+    label: () => t('MODULE.MENU.GROUP'),
+    key: ModuleMenuCode.GROUP,
     icon: createElement(MaterialSymbolsAccountTreeOutlineRounded)
   },
   {
-    title: () => t('MODULE.MENU.SYSTEM'),
-    code: ModuleMenuCode.SYSTEM,
+    label: () => t('MODULE.MENU.SYSTEM'),
+    key: ModuleMenuCode.SYSTEM,
     icon: createElement(MaterialSymbolsSettingsOutlineRounded)
   },
   {
-    title: () => t('MODULE.MENU.DEVELOPER'),
-    code: ModuleMenuCode.DEVELOPER,
+    label: () => t('MODULE.MENU.DEVELOPER'),
+    key: ModuleMenuCode.DEVELOPER,
     icon: createElement(MaterialSymbolsCodeRounded)
   }
 ]

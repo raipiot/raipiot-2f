@@ -4,6 +4,7 @@ import { flattenRouterLabels } from '@/features/menus'
 
 export default function SearchBar() {
   const navigate = useNavigate()
+  const sidebarStore = useSidebarStore()
 
   const [value, setValue] = useState('')
   const [options, setOptions] = useState<DefaultOptionType[]>([])
@@ -40,7 +41,12 @@ export default function SearchBar() {
   }
 
   return (
-    <div className="w-full px-2.5 py-3">
+    <div
+      className={clsx(
+        'w-full px-2.5 py-3 transition-all',
+        sidebarStore.isCollapse ? 'h-0 !p-0 opacity-0' : 'h-14 opacity-100'
+      )}
+    >
       <AAutoComplete
         style={{ width: '100%' }}
         value={value}

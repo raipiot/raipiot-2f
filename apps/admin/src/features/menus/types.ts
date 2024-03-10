@@ -6,8 +6,8 @@ import type { JSXElementConstructor } from 'react'
 export type MenuItem = Required<MenuProps>['items'][number]
 
 export interface ModuleMenuItem {
-  title: MaybeI18nString
-  code: string
+  label: MaybeI18nString
+  key: string
   icon: React.ReactElement<any, string | JSXElementConstructor<any>>
   href?: string
 }
