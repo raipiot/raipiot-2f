@@ -3,5 +3,5 @@ export const Route = createLazyFileRoute('/_base/system/params')({
 })
 
 function Params() {
-  return <div>Params</div>
+  return <RpWaiting />
 }

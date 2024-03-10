@@ -23,7 +23,8 @@
   },
   "DEVELOPER": {
     "TEMPLATES": "Code Templates",
-    "TEMPLATES.BASIC": "Basic Table"
+    "TEMPLATES.BASIC": "Basic Table",
+    "TEMPLATES.ADVANCED": "Advanced Table"
   },
   "MODULE.MENU": {
     "DASHBOARD": "Dashboard",

@@ -41,22 +41,25 @@ export const routerMenuMap = new Map<ModuleMenuCode, MenuItem[]>([
         label: t('DEVELOPER.TEMPLATES'),
         key: '/templates',
         icon: createElement(MaterialSymbolsCodeRounded),
-        children: [getRouteMeta('/dev/templates/basic-table')]
+        children: [
+          getRouteMeta('/dev/templates/basic-table'),
+          getRouteMeta('/dev/templates/advanced-table')
+        ]
       },
       getRouteMeta('/dev/storybook')
     ]
   ]
 ])
 
-function isMenuItem(menu: any): menu is { label: string; key: string } {
+export function isMenuItem(menu: any): menu is { label: string; key: string } {
   return menu?.label !== undefined && menu?.key !== undefined
 }
 
-function hasChildren(menu: any): menu is { children: MenuItem[] } {
+export function hasChildren(menu: any): menu is { children: MenuItem[] } {
   return Array.isArray(menu.children) && menu.children.length > 0
 }
 
-function getAllMenus() {
+export function getAllMenus() {
   return Array.from(routerMenuMap.values()).flat()
 }
 
@@ -81,4 +84,4 @@ export const flattenRouterLabels = (
     })
     .filter((item) => item.label && item.key)
 
-export const getRouterMenu = (key: ModuleMenuCode) => routerMenuMap.get(key) ?? []
+export const getRouterMenu = (key?: ModuleMenuCode) => (key ? routerMenuMap.get(key) ?? [] : [])

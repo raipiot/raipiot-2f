@@ -37,6 +37,7 @@ import { Route as BaseSystemBusinessDictsRouteImport } from './../../routes/_bas
 import { Route as BaseDevStorybookRouteImport } from './../../routes/_base/dev/storybook/route'
 import { Route as BaseSystemDictsIdRouteImport } from './../../routes/_base/system/dicts/$id/route'
 import { Route as BaseDevTemplatesBasicTableRouteImport } from './../../routes/_base/dev/templates/basic-table/route'
+import { Route as BaseDevTemplatesAdvancedTableRouteImport } from './../../routes/_base/dev/templates/advanced-table/route'
 import { Route as BaseSystemDictsIndexRouteImport } from './../../routes/_base/system/dicts/index/route'
 
 // Create/Update Routes
@@ -235,6 +236,16 @@ const BaseDevTemplatesBasicTableRouteRoute =
     ),
   )
 
+const BaseDevTemplatesAdvancedTableRouteRoute =
+  BaseDevTemplatesAdvancedTableRouteImport.update({
+    path: '/templates/advanced-table',
+    getParentRoute: () => BaseDevRouteRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base/dev/templates/advanced-table/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
 const BaseSystemDictsIndexRouteRoute = BaseSystemDictsIndexRouteImport.update({
   path: '/system/dicts/',
   getParentRoute: () => BaseRouteRoute,
@@ -348,6 +359,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSystemDictsIndexRouteImport
       parentRoute: typeof BaseRouteImport
     }
+    '/_base/dev/templates/advanced-table': {
+      preLoaderRoute: typeof BaseDevTemplatesAdvancedTableRouteImport
+      parentRoute: typeof BaseDevRouteImport
+    }
     '/_base/dev/templates/basic-table': {
       preLoaderRoute: typeof BaseDevTemplatesBasicTableRouteImport
       parentRoute: typeof BaseDevRouteImport
@@ -371,6 +386,7 @@ export const routeTree = rootRoute.addChildren([
     BaseDashboardRouteRoute,
     BaseDevRouteRoute.addChildren([
       BaseDevStorybookRouteRoute,
+      BaseDevTemplatesAdvancedTableRouteRoute,
       BaseDevTemplatesBasicTableRouteRoute,
     ]),
     BaseUserInfoRouteRoute,

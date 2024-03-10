@@ -6,6 +6,7 @@ import ModuleMenuItem from './ModuleMenuItem'
 
 export default function ModuleMenu() {
   const menuStore = useMenuStore()
+
   return (
     <div className="w-16">
       <Logo />

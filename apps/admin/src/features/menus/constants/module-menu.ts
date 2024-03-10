@@ -1,5 +1,6 @@
 import { ModuleMenuCode } from '../enums'
 import type { ModuleMenuItem } from '../types'
+import { hasChildren, routerMenuMap } from './router-menu'
 
 const t = i18n.getFixedT(null, 'ROUTER')
 
@@ -55,3 +56,12 @@ export const moduleMenus: ModuleMenuItem[] = [
     icon: createElement(MaterialSymbolsCodeRounded)
   }
 ]
+
+export const getModuleMenuByPath = (path: string): ModuleMenuCode | undefined => {
+  const moduleMenu = Array.from(routerMenuMap.entries()).find(([_, menuItems]) =>
+    menuItems
+      .flatMap((item) => [item, ...(hasChildren(item) ? item.children : [])])
+      .find((item) => item?.key === path)
+  )
+  return moduleMenu ? moduleMenu[0] : undefined
+}

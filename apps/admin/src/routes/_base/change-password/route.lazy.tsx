@@ -3,5 +3,5 @@ export const Route = createLazyFileRoute('/_base/change-password')({
 })
 
 function ChangePassword() {
-  return <div>修改密码</div>
+  return <RpWaiting />
 }

@@ -23,7 +23,8 @@
   },
   "DEVELOPER": {
     "TEMPLATES": "代码模版",
-    "TEMPLATES.BASIC": "基础表格"
+    "TEMPLATES.BASIC": "基础表格",
+    "TEMPLATES.ADVANCED": "高级表格"
   },
   "MODULE.MENU": {
     "DASHBOARD": "仪表盘",
