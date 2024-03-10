@@ -125,7 +125,24 @@ function BasicTable() {
         // 底部区域
         footer={modal.isRead ? null : undefined}
       >
-        {(modal.isCreate || modal.isEdit) && <RpDynamicForm />}
+        <RpDynamicForm
+          name="modal"
+          form={modalForm}
+          items={modalFormItems}
+          mode={modal.type}
+          initialValues={{
+            sort: 1,
+            isSealed: false
+          }}
+          onFinish={async () => {
+            const values = modalForm.getFieldsValue(true)
+            await submitMutateAsync({
+              ...values,
+              isSealed: FormatUtils.toDbNum(values.isSealed)
+            })
+            modal.close()
+          }}
+        />
       </RpModal>
     </RpPageContainer>
   )

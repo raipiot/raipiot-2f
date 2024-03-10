@@ -33,6 +33,13 @@ export const useDictValuesColumns = () => {
       width: 80,
       custom: { type: 'boolean' }
     },
+    {
+      title: t('COMMON:REMARK'),
+      dataIndex: 'remark',
+      width: 200,
+      ellipsis: { showTitle: false },
+      custom: { type: 'string', stringProps: { tooltipProps: true } }
+    },
     createActions({
       width: 180,
       render: (_, record) => (

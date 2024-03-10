@@ -77,7 +77,10 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
         <RpRow>
           {formItems &&
             formItems.map((item, index) => {
-              const { type } = item
+              const { type, hidden } = item
+              if (hidden) {
+                return null
+              }
               if (type === 'custom') {
                 return typeof item.render === 'function' ? item.render() : item.render
               }

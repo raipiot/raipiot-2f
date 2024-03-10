@@ -44,10 +44,13 @@ export const useDictsModalForm = () => {
         }
       },
       {
-        type: 'input',
+        type: 'text-area',
         formItemProps: {
           name: 'remark',
           label: t('COMMON:REMARK')
+        },
+        textAreaProps: {
+          rows: 3
         }
       }
     ])

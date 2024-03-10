@@ -10,9 +10,11 @@ import type {
   SwitchProps,
   TreeSelectProps
 } from 'antd'
+import type { TextAreaProps } from 'antd/es/input'
 import type { ReactNode } from 'react'
 
 type RpInput = { type: 'input' } & { inputProps?: InputProps }
+type RpTextArea = { type: 'text-area' } & { textAreaProps?: TextAreaProps }
 type RpSelect = { type: 'select' } & { selectProps?: SelectProps }
 type RpTreeSelect = { type: 'tree-select' } & { treeSelectProps?: TreeSelectProps }
 type RpCascader = { type: 'cascader' } & { cascaderProps?: CascaderProps }
@@ -21,13 +23,19 @@ type RpInputNumber = { type: 'input-number' } & { inputNumberProps?: InputNumber
 type RpSwitch = { type: 'switch' } & { switchProps?: SwitchProps }
 type RpButton = { type: 'button' } & { buttonProps?: ButtonProps }
 type RpCustomFormItem = { type: 'form-item'; render?: () => ReactNode | ReactNode }
-type RpCustom = { type: 'custom' } & { render?: () => ReactNode | ReactNode }
+type RpCustom = { type: 'custom' } & RpCommonFormItemProps & {
+    render?: () => ReactNode | ReactNode
+  }
 
 interface RpFormItemProps<T> extends Omit<FormItemProps, 'name'> {
   name?: keyof T
 }
 
-interface RpBaseFormItem<T> {
+interface RpCommonFormItemProps {
+  hidden?: boolean
+}
+
+interface RpBaseFormItem<T> extends RpCommonFormItemProps {
   colProps?: ColProps
   formItemProps?: RpFormItemProps<T>
 }
@@ -43,6 +51,7 @@ export type RpSearchFormItem<T> =
   | ((RpBaseFormItem<T> & RpSearchOnly) &
       (
         | RpInput
+        | RpTextArea
         | RpSelect
         | RpTreeSelect
         | RpCascader
@@ -58,6 +67,7 @@ export type RpBasicFormItem<T> =
   | (RpBaseFormItem<T> &
       (
         | RpInput
+        | RpTextArea
         | RpSelect
         | RpTreeSelect
         | RpCascader

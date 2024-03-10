@@ -5,19 +5,22 @@ interface RpSkeletonProps {
   skeletonProps?: SkeletonProps
 }
 
-export default function rpWithSkeleton<T>(WrappedComponent: React.ComponentType<T>) {
+export default function rpWithSkeleton<T extends object = any>(
+  WrappedComponent: React.ComponentType<Omit<T, 'skeleton' | 'skeletonProps'>>
+) {
   return function RpWithSkeleton(props: T & RpSkeletonProps) {
-    const { skeleton } = props
+    const { skeleton, skeletonProps, ...restProps } = props
     if (skeleton) {
       return (
         <ASkeleton
           loading
           paragraph={{ rows: 1 }}
+          {...skeletonProps}
         >
-          <WrappedComponent {...props} />
+          <WrappedComponent {...restProps} />
         </ASkeleton>
       )
     }
-    return <WrappedComponent {...props} />
+    return <WrappedComponent {...restProps} />
   }
 }

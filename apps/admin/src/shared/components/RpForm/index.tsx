@@ -12,14 +12,16 @@ export type RpFormProps<T extends Record<string, any>> = RpBaseFormProps<T> & {
 
 function RpForm<T extends Record<string, any>>(props: RpFormProps<T>) {
   const { children, ...formProps } = props
+  const span = useResponsiveSpan()
+
   const defaultFormProps = useMemo<FormProps>(
     () => ({
       layout: 'horizontal',
-      labelCol: { span: 8 },
+      labelCol: { span },
       labelWrap: true,
       initialValues: {}
     }),
-    []
+    [span]
   )
 
   return <AForm<T> {...merge({}, defaultFormProps, formProps)}>{children}</AForm>

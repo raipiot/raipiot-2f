@@ -46,6 +46,13 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
         width: 80,
         custom: { type: 'boolean' }
       },
+      {
+        title: t('COMMON:REMARK'),
+        dataIndex: 'remark',
+        width: 200,
+        ellipsis: { showTitle: false },
+        custom: { type: 'string', stringProps: { tooltipProps: true } }
+      },
       createActions({
         width: 250,
         render: (_, record) => (

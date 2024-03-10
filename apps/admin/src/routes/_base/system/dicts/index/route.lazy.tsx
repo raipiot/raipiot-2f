@@ -1,7 +1,5 @@
 import type { DictPageDto, DictVo } from '@raipiot-2f/api'
-import type { FormItemProps } from 'antd'
 
-import type { DictSubmitFormModel } from '@/features/system/dicts'
 import {
   systemDictsQueryOptions,
   useDictsColumns,
@@ -91,71 +89,40 @@ function SystemDicts() {
           })
         }
       />
-      {/* 弹窗 */}
+      {/* 模态框 */}
       <RpModal
+        // 模态框类型
         type={modal.type}
+        // 打开状态
         open={modal.open}
+        // 标题
         title={modal.getTitle()}
+        // 确认按钮加载
         confirmLoading={isSubmitPending}
+        // 事件：确认
         onOk={modalForm.submit}
+        // 事件：取消
         onCancel={modal.close}
+        // 底部区域
         footer={modal.isRead ? null : undefined}
       >
-        {(modal.isCreate || modal.isEdit) && (
-          <AForm<DictSubmitFormModel>
-            name="modal"
-            layout="horizontal"
-            form={modalForm}
-            labelCol={{ span: 6 }}
-            initialValues={{
-              sort: 1,
-              isSealed: false
-            }}
-            onFinish={async () => {
-              const values = modalForm.getFieldsValue(true)
-              await submitMutateAsync({
-                ...values,
-                isSealed: FormatUtils.toDbNum(values.isSealed)
-              })
-              modal.close()
-            }}
-          >
-            <RpRow>
-              {modalFormItems &&
-                modalFormItems.map((item, index) => {
-                  const { type } = item
-                  if (type === 'custom') {
-                    return typeof item.render === 'function' ? item.render() : item.render
-                  }
-                  const { colProps, formItemProps } = item
-                  return (
-                    <ACol
-                      key={index}
-                      {...colProps}
-                    >
-                      <AForm.Item
-                        name={formItemProps?.name as FormItemProps['name']}
-                        {...formItemProps}
-                      >
-                        {type === 'input' && <AInput {...item.inputProps} />}
-                        {type === 'select' && <ASelect {...item.selectProps} />}
-                        {type === 'tree-select' && <ATreeSelect {...item.treeSelectProps} />}
-                        {type === 'cascader' && <ACascader {...item.cascaderProps} />}
-                        {type === 'date-picker' && <ADatePicker {...item.datePickerProps} />}
-                        {type === 'input-number' && <AInputNumber {...item.inputNumberProps} />}
-                        {type === 'switch' && <ASwitch {...item.switchProps} />}
-                        {type === 'button' && (
-                          <AButton {...item.buttonProps}>{item.buttonProps?.children}</AButton>
-                        )}
-                        {type === 'form-item' &&
-                          (typeof item.render === 'function' ? item.render() : item.render)}
-                      </AForm.Item>
-                    </ACol>
-                  )
-                })}
-            </RpRow>
-          </AForm>
-        )}
+        <RpDynamicForm
+          name="modal"
+          form={modalForm}
+          items={modalFormItems}
+          initialValues={{
+            sort: 1,
+            isSealed: false
+          }}
+          onFinish={async () => {
+            const values = modalForm.getFieldsValue(true)
+            await submitMutateAsync({
+              ...values,
+              isSealed: FormatUtils.toDbNum(values.isSealed)
+            })
+            modal.close()
+          }}
+        />
       </RpModal>
     </RpPageContainer>
   )

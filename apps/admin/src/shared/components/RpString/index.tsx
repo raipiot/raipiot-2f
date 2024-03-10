@@ -1,12 +1,37 @@
+import type { TooltipProps } from 'antd'
+
 import rpWithSkeleton from '../RpWithSkeleton'
 
-interface RpStringProps {
+export interface RpStringProps {
   value?: any
+  tooltipProps?: TooltipProps | boolean
 }
 
-const RpString = rpWithSkeleton((props: RpStringProps) => {
-  const { value } = props
+const RpString = rpWithSkeleton<RpStringProps>((props) => {
+  const { value, tooltipProps } = props
 
-  return <span>{value}</span>
+  if (!tooltipProps) {
+    return <span title={value}>{value}</span>
+  }
+
+  if (typeof tooltipProps === 'boolean') {
+    return (
+      <ATooltip
+        title={value}
+        placement="bottom"
+      >
+        <span title={value}>{value}</span>
+      </ATooltip>
+    )
+  }
+
+  return (
+    <ATooltip
+      title={value}
+      {...tooltipProps}
+    >
+      <span title={value}>{value}</span>
+    </ATooltip>
+  )
 })
 export default RpString
