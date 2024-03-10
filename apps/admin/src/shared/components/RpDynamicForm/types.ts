@@ -28,7 +28,6 @@ interface RpFormItemProps<T> extends Omit<FormItemProps, 'name'> {
 }
 
 interface RpBaseFormItem<T> {
-  key: keyof T
   colProps?: ColProps
   formItemProps?: RpFormItemProps<T>
 }

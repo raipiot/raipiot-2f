@@ -10,7 +10,6 @@ export const useDictsSearchForm = () => {
     searchFormItems: createResponsiveFormItems([
       {
         type: 'input',
-        key: 'code',
         formItemProps: {
           name: 'code',
           label: t('CODE')
@@ -18,7 +17,6 @@ export const useDictsSearchForm = () => {
       },
       {
         type: 'input',
-        key: 'dictValue',
         formItemProps: {
           name: 'dictValue',
           label: t('DICT.VALUE')

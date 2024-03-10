@@ -122,19 +122,19 @@ function SystemDicts() {
           >
             <RpRow>
               {modalFormItems &&
-                modalFormItems.map((item) => {
+                modalFormItems.map((item, index) => {
                   const { type } = item
                   if (type === 'custom') {
                     return typeof item.render === 'function' ? item.render() : item.render
                   }
-                  const { key, colProps, formItemProps } = item
+                  const { colProps, formItemProps } = item
                   return (
                     <ACol
-                      key={key.toString()}
+                      key={index}
                       {...colProps}
                     >
                       <AForm.Item
-                        name={key as FormItemProps['name']}
+                        name={formItemProps?.name as FormItemProps['name']}
                         {...formItemProps}
                       >
                         {type === 'input' && <AInput {...item.inputProps} />}

@@ -10,7 +10,6 @@ export const useDictsModalForm = () => {
     modalFormItems: createResponsiveFormItems([
       {
         type: 'input',
-        key: 'code',
         formItemProps: {
           name: 'code',
           label: t('CODE'),
@@ -19,7 +18,6 @@ export const useDictsModalForm = () => {
       },
       {
         type: 'input',
-        key: 'dictValue',
         formItemProps: {
           name: 'dictValue',
           label: t('DICT.VALUE'),
@@ -28,7 +26,6 @@ export const useDictsModalForm = () => {
       },
       {
         type: 'input-number',
-        key: 'sort',
         formItemProps: {
           name: 'sort',
           label: t('COMMON:SORT'),
@@ -40,7 +37,6 @@ export const useDictsModalForm = () => {
       },
       {
         type: 'switch',
-        key: 'isSealed',
         formItemProps: {
           name: 'isSealed',
           label: t('COMMON:IS.SEALED'),
@@ -49,7 +45,6 @@ export const useDictsModalForm = () => {
       },
       {
         type: 'input',
-        key: 'remark',
         formItemProps: {
           name: 'remark',
           label: t('COMMON:REMARK')

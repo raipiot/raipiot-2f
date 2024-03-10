@@ -76,19 +76,19 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
       >
         <RpRow>
           {formItems &&
-            formItems.map((item) => {
+            formItems.map((item, index) => {
               const { type } = item
               if (type === 'custom') {
                 return typeof item.render === 'function' ? item.render() : item.render
               }
-              const { key, colProps, formItemProps } = item
+              const { colProps, formItemProps } = item
               return (
                 <RpCol
-                  key={key.toString()}
+                  key={index}
                   {...colProps}
                 >
                   <AForm.Item
-                    name={key as FormItemProps['name']}
+                    name={formItemProps?.name as FormItemProps['name']}
                     {...formItemProps}
                   >
                     {type === 'input' && <AInput {...item.inputProps} />}
