@@ -28,5 +28,21 @@
         }
       }
     }
+
+    .ant-table-body {
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* Internet Explorer 10+ */
+      -webkit-overflow-scrolling: touch; /* iOS (Safari and Chrome) */
+
+      &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        background: transparent; /* Chrome, Safari, and Edge */
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+      }
+    }
   }
 }
