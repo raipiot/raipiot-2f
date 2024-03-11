@@ -1,0 +1,12 @@
+{
+  "NAME": "Menu Name",
+  "CODE": "Menu Code",
+  "ALIAS": "Menu Alias",
+  "TYPE": "Menu Type",
+  "TYPE.MENU": "Menu",
+  "TYPE.BUTTON": "Button",
+  "ROUTER.URL": "Router URL",
+  "PARENT.MENU": "Parent Menu",
+  "ICON": "Menu Icon",
+  "IS.OUTER.LINK": "Is Outer Link"
+}

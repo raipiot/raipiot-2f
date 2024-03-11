@@ -32,6 +32,7 @@ import { Route as BaseSystemRolesRouteImport } from './../../routes/_base/system
 import { Route as BaseSystemPostsRouteImport } from './../../routes/_base/system/posts/route'
 import { Route as BaseSystemPermissionsRouteImport } from './../../routes/_base/system/permissions/route'
 import { Route as BaseSystemParamsRouteImport } from './../../routes/_base/system/params/route'
+import { Route as BaseSystemMenusRouteImport } from './../../routes/_base/system/menus/route'
 import { Route as BaseSystemDeptsRouteImport } from './../../routes/_base/system/depts/route'
 import { Route as BaseSystemBusinessDictsRouteImport } from './../../routes/_base/system/business-dicts/route'
 import { Route as BaseDevStorybookRouteImport } from './../../routes/_base/dev/storybook/route'
@@ -193,6 +194,13 @@ const BaseSystemParamsRouteRoute = BaseSystemParamsRouteImport.update({
   import('./../../routes/_base/system/params/route.lazy').then((d) => d.Route),
 )
 
+const BaseSystemMenusRouteRoute = BaseSystemMenusRouteImport.update({
+  path: '/system/menus',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base/system/menus/route.lazy').then((d) => d.Route),
+)
+
 const BaseSystemDeptsRouteRoute = BaseSystemDeptsRouteImport.update({
   path: '/system/depts',
   getParentRoute: () => BaseRouteRoute,
@@ -331,6 +339,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSystemDeptsRouteImport
       parentRoute: typeof BaseRouteImport
     }
+    '/_base/system/menus': {
+      preLoaderRoute: typeof BaseSystemMenusRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
     '/_base/system/params': {
       preLoaderRoute: typeof BaseSystemParamsRouteImport
       parentRoute: typeof BaseRouteImport
@@ -392,6 +404,7 @@ export const routeTree = rootRoute.addChildren([
     BaseUserInfoRouteRoute,
     BaseSystemBusinessDictsRouteRoute,
     BaseSystemDeptsRouteRoute,
+    BaseSystemMenusRouteRoute,
     BaseSystemParamsRouteRoute,
     BaseSystemPermissionsRouteRoute,
     BaseSystemPostsRouteRoute,

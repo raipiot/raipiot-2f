@@ -6,6 +6,6 @@ export interface RpStringProps {
 
 const RpString = rpWithSkeleton<RpStringProps>((props) => {
   const { value } = props
-  return <span title={value}>{value}</span>
+  return <span>{value}</span>
 })
 export default RpString

@@ -1,9 +1,8 @@
-import type { PageDto } from '../../types'
-
-export interface MenuPageDto extends PageDto {
+export interface LazyMenuPageDto {
   code?: string
   name?: string
   parentId?: string
+  alias?: string
 }
 
 export interface MenuSubmitDto {

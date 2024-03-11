@@ -18,6 +18,7 @@ export type RpDynamicFormProps<T extends Record<string, any>> = RpFormProps<T> &
 
 function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<T>) {
   const { items, mode, ...formProps } = props
+  const { t } = useTranslation()
   return (
     <RpForm<T> {...formProps}>
       <RpRow>
@@ -31,7 +32,9 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
               return typeof item.render === 'function' ? item.render() : item.render
             }
             const { colProps, formItemProps } = item
-            const value = formProps.form?.getFieldValue(formItemProps?.name)
+            const value = formItemProps?.name
+              ? formProps.form?.getFieldValue(formItemProps?.name)
+              : undefined
             return (
               <ACol
                 key={index}
@@ -48,18 +51,39 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
                       {type === 'input' && <RpString value={value} />}
                       {type === 'text-area' && <RpString value={value} />}
                       {type === 'input-number' && <RpString value={value} />}
+                      {type === 'tree-select' && (
+                        <ATreeSelect
+                          value={value}
+                          disabled
+                          {...item.treeSelectProps}
+                        />
+                      )}
                       {type === 'switch' && <RpBoolean value={value} />}
+                      {type === 'radio-group' && (
+                        <ARadio.Group
+                          value={value}
+                          disabled
+                          {...item.radioGroupProps}
+                        />
+                      )}
                     </>
                   ) : (
                     <>
                       {type === 'input' && <AInput {...item.inputProps} />}
                       {type === 'text-area' && <AInput.TextArea {...item.textAreaProps} />}
+                      {type === 'radio-group' && <ARadio.Group {...item.radioGroupProps} />}
                       {type === 'select' && <ASelect {...item.selectProps} />}
                       {type === 'tree-select' && <ATreeSelect {...item.treeSelectProps} />}
                       {type === 'cascader' && <ACascader {...item.cascaderProps} />}
                       {type === 'date-picker' && <ADatePicker {...item.datePickerProps} />}
                       {type === 'input-number' && <AInputNumber {...item.inputNumberProps} />}
-                      {type === 'switch' && <ASwitch {...item.switchProps} />}
+                      {type === 'switch' && (
+                        <ASwitch
+                          checkedChildren={t('Y')}
+                          unCheckedChildren={t('N')}
+                          {...item.switchProps}
+                        />
+                      )}
                       {type === 'button' && (
                         <AButton {...item.buttonProps}>{item.buttonProps?.children}</AButton>
                       )}

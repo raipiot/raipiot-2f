@@ -1,4 +1,4 @@
-import type { DictPageDto, DictVo } from '@raipiot-2f/api'
+import type { DictPageDto, DictSubmitDto, DictVo } from '@raipiot-2f/api'
 
 import {
   systemDictsQueryOptions,
@@ -140,7 +140,7 @@ function SystemDicts() {
           }}
           // 表单提交
           onFinish={async () => {
-            const values = modalForm.getFieldsValue(true)
+            const values = modalForm.getFieldsValue(true) as DictSubmitDto
             await submitMutateAsync({
               ...values,
               isSealed: FormatUtils.toDbNum(values.isSealed)

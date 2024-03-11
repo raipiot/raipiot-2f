@@ -1,9 +1,9 @@
 import type { DictSubmitDto } from '@raipiot-2f/api'
 
 import {
-  invalidateDictQuery,
-  invalidateDictsQueries,
-  invalidateDictValuesQueries
+  invalidateSystemDictQuery,
+  invalidateSystemDictsQueries,
+  invalidateSystemDictValuesQueries
 } from './invalidates'
 
 export const useSystemDictRemoveMutation = () => {
@@ -13,8 +13,8 @@ export const useSystemDictRemoveMutation = () => {
     mutationFn: (ids: string) => systemDictsAPI.remove(ids),
     onSuccess: () => {
       message.success(t('OPERATION.SUCCESS'))
-      invalidateDictsQueries()
-      invalidateDictValuesQueries()
+      invalidateSystemDictsQueries()
+      invalidateSystemDictValuesQueries()
     }
   })
 }
@@ -27,10 +27,10 @@ export const useSystemDictSubmitMutation = () => {
     onSuccess: (_, variables) => {
       message.success(t('OPERATION.SUCCESS'))
       if (variables.id) {
-        invalidateDictQuery(variables.id)
+        invalidateSystemDictQuery(variables.id)
       }
-      invalidateDictsQueries()
-      invalidateDictValuesQueries()
+      invalidateSystemDictsQueries()
+      invalidateSystemDictValuesQueries()
     }
   })
 }

@@ -1,16 +1,16 @@
 import { SYSTEM_DICT_VALUES_QK, SYSTEM_DICTS_QK, systemDictQK } from './query-keys'
 
-export const invalidateDictsQueries = () =>
+export const invalidateSystemDictsQueries = () =>
   queryClient.invalidateQueries({
     queryKey: [SYSTEM_DICTS_QK]
   })
 
-export const invalidateDictValuesQueries = () =>
+export const invalidateSystemDictValuesQueries = () =>
   queryClient.invalidateQueries({
     queryKey: [SYSTEM_DICT_VALUES_QK]
   })
 
-export const invalidateDictQuery = (id: string) =>
+export const invalidateSystemDictQuery = (id: string) =>
   queryClient.invalidateQueries({
     queryKey: systemDictQK(id),
     refetchType: 'all'

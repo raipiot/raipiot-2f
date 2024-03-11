@@ -5,6 +5,8 @@ import ROUTER from './router/zh-CN.json'
 import SYSTEM_DICTS from './system/dicts/zh-CN.json'
 import SYSTEM_PARAMS from './system/params/zh-CN.json'
 import VALIDATION from './validation/zh-CN.json'
+import SYSTEM_MENUS from './system/menus/zh-CN.json'
+
 /**
  * 用于给 `@types/i18next.d.ts` 提供类型定义
  * @see https://www.i18next.com/overview/typescript
@@ -14,6 +16,7 @@ const resources = {
   COMMON,
   ROUTER,
   VALIDATION,
+  'SYSTEM/MENUS': SYSTEM_MENUS,
   'SYSTEM/DICTS': SYSTEM_DICTS,
   'SYSTEM/PARAMS': SYSTEM_PARAMS,
   PORTAL
