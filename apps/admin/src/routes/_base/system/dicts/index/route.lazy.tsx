@@ -14,23 +14,33 @@ export const Route = createLazyFileRoute('/_base/system/dicts/')({
 })
 
 function SystemDicts() {
+  // 分页器
   const { pageParams, setPageParams, pagination, isPending, startTransition } =
     usePagination<DictPageDto>()
+  // 多选器：范型为列表行数据类型
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
+  // 弹窗
   const modal = useModal()
+  // 搜索表单
   const { searchForm, searchFormItems } = useDictsSearchForm()
+  // 弹窗表单
   const { modalForm, modalFormItems } = useDictsModalForm()
+  // 表格列
   const { columns } = useDictsColumns({ modal, form: modalForm })
 
+  // 异步查询：列表数据
   const {
     data: { records, total },
     refetch
   } = useSuspenseQuery(systemDictsQueryOptions(PageUtils.mergeParams(pageParams)))
+  // 异步删除
   const { mutateAsync: removeMutateAsync, isPending: isRemovePending } =
     useSystemDictRemoveMutation()
+  // 异步提交
   const { mutateAsync: submitMutateAsync, isPending: isSubmitPending } =
     useSystemDictSubmitMutation()
 
+  // 清空选中行
   useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
 
   return (
@@ -69,20 +79,29 @@ function SystemDicts() {
       {/* 表格 */}
       <RpBasicTable<DictVo>
         rowKey={(record) => record.id!}
+        // 批量选择选项
         rowSelection={rowSelection}
+        // 表格列
         columns={columns}
+        // 表格数据
         dataSource={records}
+        // 分页器
         pagination={pagination({
           total,
+          // 事件：分页预渲染
           onPrefetch: (values) => queryClient.prefetchQuery(systemDictsQueryOptions(values))
         })}
+        // 刷新加载
         refreshLoading={isPending}
+        // 事件：刷新
         onRefresh={() =>
           startTransition(() => {
             refetch()
           })
         }
+        // 批量删除加载
         batchDeleteLoading={isRemovePending}
+        // 事件：批量删除
         onBatchDelete={(ids) =>
           removeMutateAsync(ids.join(), {
             onSuccess: clearSelectedRowKeys
@@ -108,13 +127,18 @@ function SystemDicts() {
       >
         <RpDynamicForm
           name="modal"
+          // 表单
           form={modalForm}
+          // 表单配置项
           items={modalFormItems}
+          // 表单模式
           mode={modal.type}
+          // 表单初始值
           initialValues={{
             sort: 1,
             isSealed: false
           }}
+          // 表单提交
           onFinish={async () => {
             const values = modalForm.getFieldsValue(true)
             await submitMutateAsync({

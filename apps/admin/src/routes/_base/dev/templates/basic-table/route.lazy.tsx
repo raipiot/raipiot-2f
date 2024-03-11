@@ -127,13 +127,18 @@ function BasicTable() {
       >
         <RpDynamicForm
           name="modal"
+          // 表单
           form={modalForm}
+          // 表单配置项
           items={modalFormItems}
+          // 表单模式
           mode={modal.type}
+          // 表单初始值
           initialValues={{
             sort: 1,
             isSealed: false
           }}
+          // 表单提交
           onFinish={async () => {
             const values = modalForm.getFieldsValue(true)
             await submitMutateAsync({
