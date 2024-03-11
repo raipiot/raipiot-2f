@@ -41,7 +41,7 @@ export default function RouterMenu() {
   }
 
   return (
-    <div className="flex min-h-[calc(100vh-40px)] w-full flex-col items-center overflow-y-scroll !border-0 !border-l border-gray-300 dark:border-gray-950">
+    <div className="flex min-h-[calc(100vh-40px)] w-full flex-col items-center !border-0 !border-l border-gray-300 dark:border-gray-950">
       <SearchBar />
       <div className="rp-hide-scrollbar h-[calc(100vh-96px)] w-full overflow-y-auto">
         <AMenu
