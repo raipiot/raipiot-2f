@@ -12,6 +12,7 @@
     "USERS": "User Management",
     "DEPTS": "Dept Management",
     "POSITIONS": "Position Management",
+    "MENUS": "Menu Management",
     "SYSTEM.DICTS": "System Dict",
     "SYSTEM.DICTS.CONFIG": "System Dict Config",
     "BUSINESS.DICTS": "Business Dict",

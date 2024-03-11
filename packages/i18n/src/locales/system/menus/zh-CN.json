@@ -1,0 +1,12 @@
+{
+  "NAME": "菜单名称",
+  "CODE": "菜单编号",
+  "ALIAS": "菜单别名",
+  "TYPE": "菜单类型",
+  "TYPE.MENU": "菜单",
+  "TYPE.BUTTON": "按钮",
+  "ROUTER.URL": "路由地址",
+  "PARENT.MENU": "上级菜单",
+  "ICON": "菜单图标",
+  "IS.OUTER.LINK": "是否外链"
+}

@@ -6,6 +6,7 @@ import type {
   FormItemProps,
   InputNumberProps,
   InputProps,
+  RadioGroupProps,
   SelectProps,
   SwitchProps,
   TreeSelectProps
@@ -15,6 +16,7 @@ import type { ReactNode } from 'react'
 
 type RpInput = { type: 'input' } & { inputProps?: InputProps }
 type RpTextArea = { type: 'text-area' } & { textAreaProps?: TextAreaProps }
+type RpRadioGroup = { type: 'radio-group' } & { radioGroupProps?: RadioGroupProps }
 type RpSelect = { type: 'select' } & { selectProps?: SelectProps }
 type RpTreeSelect = { type: 'tree-select' } & { treeSelectProps?: TreeSelectProps }
 type RpCascader = { type: 'cascader' } & { cascaderProps?: CascaderProps }
@@ -52,6 +54,7 @@ export type RpSearchFormItem<T> =
       (
         | RpInput
         | RpTextArea
+        | RpRadioGroup
         | RpSelect
         | RpTreeSelect
         | RpCascader
@@ -68,6 +71,7 @@ export type RpBasicFormItem<T> =
       (
         | RpInput
         | RpTextArea
+        | RpRadioGroup
         | RpSelect
         | RpTreeSelect
         | RpCascader

@@ -1,44 +1,43 @@
-import type { DictPageDto, DictSubmitDto, DictVo } from '@raipiot-2f/api'
+import type { DictVo, LazyMenuPageDto, MenuSubmitDto } from '@raipiot-2f/api'
 
 import {
-  systemDictsQueryOptions,
-  useDictsColumns,
-  useDictsModalForm,
-  useDictsSearchForm,
-  useSystemDictRemoveMutation,
-  useSystemDictSubmitMutation
-} from '@/features/system/dicts'
+  menusQueryOptions,
+  updateMenuChildrenByParentId,
+  useMenuRemoveMutation,
+  useMenusColumns,
+  useMenusModalForm,
+  useMenusSearchForm,
+  useMenuSubmitMutation
+} from '@/features/system/menus'
 
-export const Route = createLazyFileRoute('/_base/dev/templates/basic-table')({
-  component: BasicTable
+export const Route = createLazyFileRoute('/_base/system/menus')({
+  component: Menus
 })
 
-function BasicTable() {
-  // 分页器
-  const { pageParams, setPageParams, pagination, isPending, startTransition } =
-    usePagination<DictPageDto>()
+function Menus() {
+  const [isPending, startTransition] = useTransition()
+
+  // 查询参数
+  const [pageParams, setPageParams] = useState<LazyMenuPageDto>({
+    parentId: '0'
+  })
   // 多选器：范型为列表行数据类型
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
   // 弹窗
   const modal = useModal()
   // 搜索表单
-  const { searchForm, searchFormItems } = useDictsSearchForm()
+  const { searchForm, searchFormItems } = useMenusSearchForm()
   // 弹窗表单
-  const { modalForm, modalFormItems } = useDictsModalForm()
+  const { modalForm, modalFormItems } = useMenusModalForm()
   // 表格列
-  const { columns } = useDictsColumns({ modal, form: modalForm })
+  const { columns } = useMenusColumns({ modal, form: modalForm })
 
   // 异步查询：列表数据
-  const {
-    data: { records, total },
-    refetch
-  } = useSuspenseQuery(systemDictsQueryOptions(PageUtils.mergeParams(pageParams)))
+  const { data, refetch } = useSuspenseQuery(menusQueryOptions(pageParams))
   // 异步删除
-  const { mutateAsync: removeMutateAsync, isPending: isRemovePending } =
-    useSystemDictRemoveMutation()
+  const { mutateAsync: removeMutateAsync, isPending: isRemovePending } = useMenuRemoveMutation()
   // 异步提交
-  const { mutateAsync: submitMutateAsync, isPending: isSubmitPending } =
-    useSystemDictSubmitMutation()
+  const { mutateAsync: submitMutateAsync, isPending: isSubmitPending } = useMenuSubmitMutation()
 
   // 清空选中行
   useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
@@ -66,14 +65,10 @@ function BasicTable() {
         // 表单配置项
         formItems={searchFormItems}
         // 事件：搜索
-        onSearch={(values) =>
-          startTransition(() => setPageParams(PageUtils.mergeParams(pageParams, values)))
-        }
+        onSearch={(values) => startTransition(() => setPageParams({ ...pageParams, ...values }))}
         // 事件：预渲染
         onPrefetch={(values) =>
-          queryClient.prefetchQuery(
-            systemDictsQueryOptions(PageUtils.mergeParams(pageParams, values))
-          )
+          queryClient.prefetchQuery(menusQueryOptions({ ...pageParams, ...values }))
         }
       />
       {/* 表格 */}
@@ -84,13 +79,7 @@ function BasicTable() {
         // 表格列
         columns={columns}
         // 表格数据
-        dataSource={records}
-        // 分页器
-        pagination={pagination({
-          total,
-          // 事件：分页预渲染
-          onPrefetch: (values) => queryClient.prefetchQuery(systemDictsQueryOptions(values))
-        })}
+        dataSource={data}
         // 刷新加载
         refreshLoading={isPending}
         // 事件：刷新
@@ -107,6 +96,19 @@ function BasicTable() {
             onSuccess: clearSelectedRowKeys
           })
         }
+        scroll={{ x: 2400 }}
+        expandable={{
+          onExpand: async (expanded, record) => {
+            if (expanded && record.children?.length === 0) {
+              const childrenData = await queryClient.ensureQueryData(
+                menusQueryOptions({ parentId: record.id! })
+              )
+              queryClient.setQueryData(menusQueryOptions(pageParams).queryKey, (oldData) =>
+                updateMenuChildrenByParentId(oldData ?? [], record.id!, childrenData)
+              )
+            }
+          }
+        }}
       />
       {/* 模态框 */}
       <RpModal
@@ -135,15 +137,14 @@ function BasicTable() {
           mode={modal.type}
           // 表单初始值
           initialValues={{
-            sort: 1,
-            isSealed: false
+            sort: 1
           }}
           // 表单提交
           onFinish={async () => {
-            const values = modalForm.getFieldsValue(true) as DictSubmitDto
+            const values = modalForm.getFieldsValue(true) as MenuSubmitDto
             await submitMutateAsync({
               ...values,
-              isSealed: FormatUtils.toDbNum(values.isSealed)
+              isOpen: FormatUtils.toDbNum(values.isOpen)
             })
             modal.close()
           }}

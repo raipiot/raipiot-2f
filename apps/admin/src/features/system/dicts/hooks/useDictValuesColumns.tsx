@@ -48,7 +48,10 @@ export const useDictValuesColumns = () => {
             variant="view"
             size="small"
           />
-          <AButton size="small">{t('COMMON:CREATE.CHILD')}</AButton>
+          <RpButton
+            variant="create-child"
+            size="small"
+          />
           <RpDeletePopconfirm
             okBtnLoading={isPending}
             onConfirm={() => mutateAsync(record.id!)}

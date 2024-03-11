@@ -11,6 +11,7 @@ type RpButtonType =
   | 'config'
   | 'reset'
   | 'search'
+  | 'create-child'
 
 interface RpButtonProps extends ButtonProps {
   variant?: RpButtonType
@@ -71,6 +72,11 @@ function RpButton(props: RpButtonProps) {
           return {
             type: 'primary',
             children: t('SEARCH')
+          }
+        // 新增子项
+        case 'create-child':
+          return {
+            children: t('CREATE.CHILD')
           }
         default:
           return {}
