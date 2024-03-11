@@ -25,7 +25,7 @@ export const useMenusSearchForm = () => {
       {
         type: 'input',
         formItemProps: {
-          name: 'code',
+          name: 'alias',
           label: t('ALIAS')
         }
       }
