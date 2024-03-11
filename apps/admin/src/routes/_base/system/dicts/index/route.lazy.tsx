@@ -110,6 +110,7 @@ function SystemDicts() {
           name="modal"
           form={modalForm}
           items={modalFormItems}
+          mode={modal.type}
           initialValues={{
             sort: 1,
             isSealed: false

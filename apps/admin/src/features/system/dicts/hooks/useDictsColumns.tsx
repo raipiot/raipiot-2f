@@ -61,9 +61,13 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
             <RpButton
               variant="view"
               size="small"
-              onClick={() => {
+              onMouseEnter={() => queryClient.prefetchQuery(systemDictQueryOptions(record.id!))}
+              onClick={async () => {
                 modal?.openRead()
                 modal?.setMeta(record.id)
+                form?.setFieldsValue(
+                  await queryClient.ensureQueryData(systemDictQueryOptions(record.id!))
+                )
               }}
             />
             <RpButton

@@ -31,23 +31,24 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
               return typeof item.render === 'function' ? item.render() : item.render
             }
             const { colProps, formItemProps } = item
+            const value = formProps.form?.getFieldValue(formItemProps?.name)
             return (
               <ACol
                 key={index}
                 {...colProps}
               >
                 <AForm.Item
+                  {...formItemProps}
                   name={
                     mode === 'read' ? undefined : (formItemProps?.name as FormItemProps['name'])
                   }
-                  {...formItemProps}
                 >
                   {mode === 'read' ? (
                     <>
-                      {type === 'input' && <RpString value="xxxx" />}
-                      {type === 'text-area' && <RpString value="xxxx" />}
-                      {type === 'input-number' && <RpString value="xxxx" />}
-                      {type === 'switch' && <RpBoolean value="xxxx" />}
+                      {type === 'input' && <RpString value={value} />}
+                      {type === 'text-area' && <RpString value={value} />}
+                      {type === 'input-number' && <RpString value={value} />}
+                      {type === 'switch' && <RpBoolean value={value} />}
                     </>
                   ) : (
                     <>
