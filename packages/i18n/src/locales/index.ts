@@ -3,9 +3,9 @@ import COMMON from './common/zh-CN.json'
 import PORTAL from './portal/zh-CN.json'
 import ROUTER from './router/zh-CN.json'
 import SYSTEM_DICTS from './system/dicts/zh-CN.json'
+import SYSTEM_MENUS from './system/menus/zh-CN.json'
 import SYSTEM_PARAMS from './system/params/zh-CN.json'
 import VALIDATION from './validation/zh-CN.json'
-import SYSTEM_MENUS from './system/menus/zh-CN.json'
 
 /**
  * 用于给 `@types/i18next.d.ts` 提供类型定义
