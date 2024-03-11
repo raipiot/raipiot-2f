@@ -13,11 +13,6 @@ export default function RouterMenu() {
   // 展开项
   const [openKeys, setOpenKeys] = useState<string[]>([])
 
-  const menuItems = useMemo(
-    () => getRouterMenu(menuStore.activeModuleMenuCode),
-    [menuStore.activeModuleMenuCode]
-  )
-
   // 根据路由地址，设置菜单的选中项和展开项
   useEffect(() => {
     setSelectedKeys([routerState.location.pathname])
@@ -41,22 +36,25 @@ export default function RouterMenu() {
   }
 
   return (
-    <div className="flex min-h-[calc(100vh-40px)] w-full flex-col items-center !border-0 !border-l border-gray-300 dark:border-gray-950">
+    <div className="rp-hide-scrollbar flex min-h-[calc(100vh-40px)] w-full flex-col items-center overflow-y-scroll !border-0 !border-l border-gray-300 dark:border-gray-950">
       <SearchBar />
-      <div className="rp-hide-scrollbar h-[calc(100vh-96px)] w-full overflow-y-auto">
-        <AMenu
-          style={{
-            backgroundColor: siderBg,
-            border: 'none'
-          }}
-          items={menuItems}
-          selectedKeys={selectedKeys}
-          openKeys={openKeys}
-          onOpenChange={setOpenKeys}
-          mode="inline"
-          onClick={handleClickMenuItem}
-        />
-      </div>
+      <AMenu
+        rootClassName="rp-hide-scrollbar"
+        style={{
+          backgroundColor: siderBg,
+          border: 'none',
+          height: 'calc(100vh - 96px)',
+          width: '100%',
+          overflowY: 'auto'
+        }}
+        key={i18n.language}
+        items={getRouterMenu(menuStore.activeModuleMenuCode)}
+        selectedKeys={selectedKeys}
+        openKeys={openKeys}
+        onOpenChange={setOpenKeys}
+        mode="inline"
+        onClick={handleClickMenuItem}
+      />
     </div>
   )
 }

@@ -12,18 +12,19 @@ const getRouteMeta = (key: string) => {
   }
 }
 
-export const routerMenuMap = new Map<ModuleMenuCode, MenuItem[]>([
-  [ModuleMenuCode.DASHBOARD, [getRouteMeta('/dashboard')]],
-  [ModuleMenuCode.SUPPLIER, []],
-  [ModuleMenuCode.SOURCE, []],
-  [ModuleMenuCode.CONTRACT, []],
-  [ModuleMenuCode.PURCHASE, []],
-  [ModuleMenuCode.BILLING, []],
-  [ModuleMenuCode.SHOPPING, []],
-  [ModuleMenuCode.GROUP, []],
+// 兼容 i18n 所以要使用函数
+export const routerMenuMap = new Map<ModuleMenuCode, () => MenuItem[]>([
+  [ModuleMenuCode.DASHBOARD, () => [getRouteMeta('/dashboard')]],
+  [ModuleMenuCode.SUPPLIER, () => []],
+  [ModuleMenuCode.SOURCE, () => []],
+  [ModuleMenuCode.CONTRACT, () => []],
+  [ModuleMenuCode.PURCHASE, () => []],
+  [ModuleMenuCode.BILLING, () => []],
+  [ModuleMenuCode.SHOPPING, () => []],
+  [ModuleMenuCode.GROUP, () => []],
   [
     ModuleMenuCode.SYSTEM,
-    [
+    () => [
       getRouteMeta('/system/users'),
       getRouteMeta('/system/depts'),
       getRouteMeta('/system/posts'),
@@ -37,7 +38,7 @@ export const routerMenuMap = new Map<ModuleMenuCode, MenuItem[]>([
   ],
   [
     ModuleMenuCode.DEVELOPER,
-    [
+    () => [
       {
         label: t('DEVELOPER.TEMPLATES'),
         key: '/templates',
@@ -61,7 +62,9 @@ export function hasChildren(menu: any): menu is { children: MenuItem[] } {
 }
 
 export function getAllMenus() {
-  return Array.from(routerMenuMap.values()).flat()
+  return Array.from(routerMenuMap.values())
+    .map((menu) => menu())
+    .flat()
 }
 
 export const flattenRouterLabels = (
@@ -85,4 +88,4 @@ export const flattenRouterLabels = (
     })
     .filter((item) => item.label && item.key)
 
-export const getRouterMenu = (key?: ModuleMenuCode) => (key ? routerMenuMap.get(key) ?? [] : [])
+export const getRouterMenu = (key?: ModuleMenuCode) => (key ? routerMenuMap.get(key)?.() ?? [] : [])

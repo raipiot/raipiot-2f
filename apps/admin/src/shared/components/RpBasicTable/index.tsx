@@ -69,11 +69,15 @@ const RpBasicTable: RpBasicTableComponent = rpWithCard(
         <TableTitle {...tableTitleProps} />
         <div
           className={clsx(
-            'mt-2  overflow-auto sm:mt-4',
+            'rp-hide-scrollbar mt-2 overflow-auto sm:mt-4',
+            // eslint-disable-next-line no-nested-ternary
             isFullscreen
-              ? 'h-[calc(100vh-104px)] sm:h-[calc(100vh-136px)]'
-              : 'h-[calc(100vh-258px)] sm:h-[calc(100vh-298px)]',
-            styles.tableContainer
+              ? pagination
+                ? 'h-[calc(100vh-104px)] sm:h-[calc(100vh-136px)]'
+                : 'h-[calc(100vh-156px)] sm:h-[calc(100vh-88px)]'
+              : pagination
+                ? 'h-[calc(100vh-258px)] sm:h-[calc(100vh-298px)]'
+                : 'h-[calc(100vh-210px)] sm:h-[calc(100vh-250px)]'
           )}
         >
           <ATable<T>
