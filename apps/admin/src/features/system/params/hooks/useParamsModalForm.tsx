@@ -26,6 +26,7 @@ export const useParamsModalForm = () => {
       },
       {
         type: 'text-area',
+        colProps: { span: 24 },
         formItemProps: {
           name: 'paramValue',
           label: t('PARAMS.VALUE'),

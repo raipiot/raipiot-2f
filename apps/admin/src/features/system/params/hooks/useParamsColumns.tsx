@@ -39,7 +39,7 @@ export const useParamsColumns = (props?: UseParamsColumnsProps) => {
       {
         title: t('PARAMS.VALUE'),
         dataIndex: 'paramValue',
-        width: 80,
+        width: 200,
         custom: { type: 'string' }
       },
       {
