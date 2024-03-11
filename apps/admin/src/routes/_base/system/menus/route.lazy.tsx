@@ -23,6 +23,9 @@ function Menus() {
   })
   // 多选器：范型为列表行数据类型
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
+  // 展开行
+  const { expandedRowKeys, addExpandedRowKey, removeExpandedRowKey, clearExpandedRowKeys } =
+    useExpandedRowkeys()
   // 弹窗
   const modal = useModal()
   // 搜索表单
@@ -65,7 +68,12 @@ function Menus() {
         // 表单配置项
         formItems={searchFormItems}
         // 事件：搜索
-        onSearch={(values) => startTransition(() => setPageParams({ ...pageParams, ...values }))}
+        onSearch={(values) =>
+          startTransition(() => {
+            setPageParams({ ...pageParams, ...values })
+            clearExpandedRowKeys()
+          })
+        }
         // 事件：预渲染
         onPrefetch={(values) =>
           queryClient.prefetchQuery(menusQueryOptions({ ...pageParams, ...values }))
@@ -86,6 +94,7 @@ function Menus() {
         onRefresh={() =>
           startTransition(() => {
             refetch()
+            clearExpandedRowKeys()
           })
         }
         // 批量删除加载
@@ -98,14 +107,18 @@ function Menus() {
         }
         scroll={{ x: 2400 }}
         expandable={{
+          expandedRowKeys,
           onExpand: async (expanded, record) => {
-            if (expanded && record.children?.length === 0) {
+            if (expanded) {
               const childrenData = await queryClient.ensureQueryData(
                 menusQueryOptions({ parentId: record.id! })
               )
               queryClient.setQueryData(menusQueryOptions(pageParams).queryKey, (oldData) =>
                 updateMenuChildrenByParentId(oldData ?? [], record.id!, childrenData)
               )
+              addExpandedRowKey(record.id!)
+            } else {
+              removeExpandedRowKey(record.id!)
             }
           }
         }}

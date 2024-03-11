@@ -50,7 +50,7 @@ export const useParamsColumns = (props?: UseParamsColumnsProps) => {
         render: (value) => <ATooltip title={value}>{value}</ATooltip>
       },
       createActions({
-        width: 250,
+        width: 200,
         render: (_, record) => (
           // rp-table-action 用于非 Hover 表格行上隐藏操作按钮
           <ASpace className={clsx(!isMobile && 'rp-table-action', 'transition-all ease-out')}>

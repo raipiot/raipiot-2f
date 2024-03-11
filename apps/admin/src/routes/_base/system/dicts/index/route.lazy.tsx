@@ -107,6 +107,7 @@ function SystemDicts() {
             onSuccess: clearSelectedRowKeys
           })
         }
+        scroll={{ x: 1500 }}
       />
       {/* 模态框 */}
       <RpModal
