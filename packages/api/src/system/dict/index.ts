@@ -18,8 +18,8 @@ export class SystemDictsAPI extends BaseAPI {
   /**
    * 字典树
    */
-  tree() {
-    return this.httpRequest.get(`${this.#API_PREFIX}/tree`)
+  tree(signal?: AbortSignal) {
+    return this.httpRequest.get(`${this.#API_PREFIX}/tree`, {}, { signal })
   }
 
   /**
@@ -71,8 +71,8 @@ export class SystemDictsAPI extends BaseAPI {
   /**
    * 详情
    */
-  async detail(id: string) {
-    return this.httpRequest.get<DictVo>(`${this.#API_PREFIX}/detail`, { id })
+  async detail(id: string, signal?: AbortSignal) {
+    return this.httpRequest.get<DictVo>(`${this.#API_PREFIX}/detail`, { id }, { signal })
   }
 
   /**

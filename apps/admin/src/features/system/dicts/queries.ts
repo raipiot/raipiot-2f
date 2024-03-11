@@ -5,7 +5,7 @@ import { systemDictQK, systemDictsQK, systemDictTreeQK, systemDictValuesQK } fro
 export const systemDictQueryOptions = (id: string) =>
   queryOptions({
     queryKey: systemDictQK(id),
-    queryFn: () => systemDictsAPI.detail(id)
+    queryFn: ({ signal }) => systemDictsAPI.detail(id, signal)
   })
 
 export const systemDictsQueryOptions = (params: DictPageDto) =>
@@ -18,7 +18,7 @@ export const systemDictsQueryOptions = (params: DictPageDto) =>
 export const systemDictTreeQueryOptions = () =>
   queryOptions({
     queryKey: systemDictTreeQK(),
-    queryFn: () => systemDictsAPI.tree()
+    queryFn: ({ signal }) => systemDictsAPI.tree(signal)
   })
 
 export const systemDictValuesQueryOptions = (params: DictValuePageDto) =>
