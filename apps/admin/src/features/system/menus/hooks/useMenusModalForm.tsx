@@ -34,7 +34,9 @@ export const useMenusModalForm = () => {
           label: t('PARENT.MENU')
         },
         treeSelectProps: {
-          treeData: data
+          treeData: data,
+          showSearch: true,
+          treeNodeFilterProp: 'title'
         }
       },
       {
