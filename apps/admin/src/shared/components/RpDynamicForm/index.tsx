@@ -32,7 +32,7 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
             }
             const { colProps, formItemProps } = item
             return (
-              <RpCol
+              <ACol
                 key={index}
                 {...colProps}
               >
@@ -67,7 +67,7 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
                     </>
                   )}
                 </AForm.Item>
-              </RpCol>
+              </ACol>
             )
           })}
       </RpRow>

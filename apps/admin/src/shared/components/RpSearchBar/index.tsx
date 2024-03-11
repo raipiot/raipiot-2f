@@ -86,7 +86,7 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
               }
               const { colProps, formItemProps } = item
               return (
-                <RpCol
+                <ACol
                   key={index}
                   {...colProps}
                 >
@@ -107,10 +107,10 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
                     {type === 'form-item' &&
                       (typeof item.render === 'function' ? item.render() : item.render)}
                   </AForm.Item>
-                </RpCol>
+                </ACol>
               )
             })}
-          <RpCol span={span}>
+          <ACol span={span}>
             <div className="space-x-2 sm:space-x-4">
               <RpButton
                 variant="search"
@@ -147,7 +147,7 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
                 </ATooltip>
               )}
             </div>
-          </RpCol>
+          </ACol>
         </RpRow>
       </AForm>
     )

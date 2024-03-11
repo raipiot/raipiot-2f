@@ -123,7 +123,6 @@ declare global {
   const RpBasicTable: typeof import('../src/shared/components/RpBasicTable/index')['default']
   const RpBoolean: typeof import('../src/shared/components/RpBoolean/index')['default']
   const RpButton: typeof import('../src/shared/components/RpButton/index')['default']
-  const RpCol: typeof import('../src/shared/components/RpCol/index')['default']
   const RpDateString: typeof import('../src/shared/components/RpDateString/index')['default']
   const RpDeletePopconfirm: typeof import('../src/shared/components/RpDeletePopconfirm/index')['default']
   const RpDynamicForm: typeof import('../src/shared/components/RpDynamicForm/index')['default']

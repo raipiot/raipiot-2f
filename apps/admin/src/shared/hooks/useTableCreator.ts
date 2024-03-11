@@ -2,14 +2,12 @@ import type { ColumnType } from 'antd/es/table'
 import type { DataIndex } from 'rc-table/lib/interface'
 
 import type { RpBooleanProps } from '@/shared/components/RpBoolean'
-import type { RpStringProps } from '@/shared/components/RpString'
 import type { RpTagStringProps } from '@/shared/components/RpTagString'
 
 interface CustomOptions {
   type?: 'string' | 'tagString' | 'dateString' | 'boolean'
   skeleton?: boolean
   ellipsis?: boolean
-  stringProps?: Pick<RpStringProps, 'tooltipProps'>
   tagStringProps?: Pick<RpTagStringProps, 'copyable'>
   booleanProps?: Pick<RpBooleanProps, 'type'>
 }
@@ -31,10 +29,10 @@ type RpColumnsType<T> = (RpColumnGroupType<T> | RpColumnType<T>)[]
 const createColumns = <T>(columns: RpColumnsType<T>) => {
   const getRender = (column: RpColumnType<T>) => {
     const { custom } = column
-    const { type, stringProps, tagStringProps, booleanProps } = custom ?? {}
+    const { type, tagStringProps, booleanProps } = custom ?? {}
     switch (type) {
       case 'string':
-        return (value: any) => RpString({ value, tooltipProps: stringProps?.tooltipProps })
+        return (value: any) => RpString({ value })
       case 'tagString':
         return (value: any) => RpTagString({ value, copyable: tagStringProps?.copyable })
       case 'dateString':

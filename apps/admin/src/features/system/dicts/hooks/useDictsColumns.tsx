@@ -51,7 +51,7 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
         dataIndex: 'remark',
         width: 200,
         ellipsis: { showTitle: false },
-        custom: { type: 'string', stringProps: { tooltipProps: true } }
+        render: (value) => <ATooltip title={value}>{value}</ATooltip>
       },
       createActions({
         width: 250,

@@ -45,6 +45,7 @@ export const useDictsModalForm = () => {
       },
       {
         type: 'text-area',
+        colProps: { span: 24 },
         formItemProps: {
           name: 'remark',
           label: t('COMMON:REMARK')
