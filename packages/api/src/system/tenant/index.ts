@@ -7,7 +7,7 @@ import type { TenantsVo, TenantVo } from './vo'
 export * from './dto'
 export * from './vo'
 
-export class TenantAPI extends BaseAPI {
+export class TenantsAPI extends BaseAPI {
   #API_PREFIX: string
 
   constructor(httpRequest: HttpRequest) {

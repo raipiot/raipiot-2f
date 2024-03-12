@@ -1,6 +1,6 @@
 import { paramQK, PARAMS_QK } from './query-keys'
 
-export const invalidateParamsQueries = () =>
+export const invalidateParamsQuery = () =>
   queryClient.invalidateQueries({
     queryKey: [PARAMS_QK]
   })

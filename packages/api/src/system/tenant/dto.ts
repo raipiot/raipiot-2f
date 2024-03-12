@@ -1,8 +1,9 @@
 import type { PageDto } from '../../types'
 
 export interface TenantPageDto extends PageDto {
-  paramName?: string
-  paramKey?: string
+  tenantId?: string
+  tenantName?: string
+  linkman?: string
 }
 
 export interface TenantSubmitDto {
