@@ -1,0 +1,17 @@
+{
+  "ID": "租户 ID",
+  "NAME": "租户名称",
+  "CONTACT": "联系人",
+  "PHONE": "联系电话",
+  "ADDRESS": "联系地址",
+  "ACCOUNT.LIMIT": "账号额度",
+  "EXPIRE.TIME": "过期时间",
+  "DOMAIN": "绑定域名",
+  "AUTH.CONFIG": "授权配置",
+  "DATA.SOURCE.CONFIG": "数据源配置",
+  "PRODUCT.PACKAGE.CONFIG": "产品包配置",
+  "PRODUCT.PACKAGE.MANAGEMENT": "产品包管理",
+  "SYSTEM.BACKGROUND.IMAGE": "系统背景",
+  "PRODUCT.PACKAGE.NAME": "产品包名称",
+  "MENU.LIST": "菜单列表"
+}

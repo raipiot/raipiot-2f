@@ -20,7 +20,8 @@
     "ROLES": "Role Management",
     "PERMISSIONS": "Permission Management",
     "PARAMS": "Parameter Management",
-    "TENANTS": "Tenant Management"
+    "TENANTS": "Tenant Management",
+    "PRODUCT.PACKAGES": "Product Packages Management"
   },
   "DEVELOPER": {
     "TEMPLATES": "Code Templates",

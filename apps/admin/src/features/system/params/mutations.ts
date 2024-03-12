@@ -1,6 +1,6 @@
 import type { ParamSubmitDto } from '@raipiot-2f/api'
 
-import { invalidateParamQuery, invalidateParamsQueries } from './invalidates'
+import { invalidateParamQuery, invalidateParamsQuery } from './invalidates'
 
 export const useParamRemoveMutation = () => {
   const { t } = useTranslation()
@@ -9,7 +9,7 @@ export const useParamRemoveMutation = () => {
     mutationFn: (ids: string) => paramsAPI.remove(ids),
     onSuccess: () => {
       message.success(t('OPERATION.SUCCESS'))
-      invalidateParamsQueries()
+      invalidateParamsQuery()
     }
   })
 }
@@ -24,7 +24,7 @@ export const useParamSubmitMutation = () => {
       if (variables.id) {
         invalidateParamQuery(variables.id)
       }
-      invalidateParamsQueries()
+      invalidateParamsQuery()
     }
   })
 }
