@@ -11,7 +11,7 @@
   "SYSTEM": {
     "USERS": "User Management",
     "DEPTS": "Dept Management",
-    "POSITIONS": "Position Management",
+    "POSTS": "Position Management",
     "MENUS": "Menu Management",
     "SYSTEM.DICTS": "System Dict",
     "SYSTEM.DICTS.CONFIG": "System Dict Config",
