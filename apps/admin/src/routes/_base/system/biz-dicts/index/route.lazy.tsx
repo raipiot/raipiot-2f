@@ -1,44 +1,42 @@
-import type { SystemDictPageDto, SystemDictSubmitDto, SystemDictVo } from '@raipiot-2f/api'
+import type { BizDictPageDto, BizDictSubmitDto, BizDictVo } from '@raipiot-2f/api'
 
 import {
-  systemDictsQueryOptions,
-  useSystemDictRemoveMutation,
-  useSystemDictsColumns,
-  useSystemDictsModalForm,
-  useSystemDictsSearchForm,
-  useSystemDictSubmitMutation
-} from '@/features/system/dicts'
+  bizDictsQueryOptions,
+  useBizDictRemoveMutation,
+  useBizDictsColumns,
+  useBizDictsModalForm,
+  useBizDictsSearchForm,
+  useBizDictSubmitMutation
+} from '@/features/system/biz-dicts'
 
-export const Route = createLazyFileRoute('/_base/system/dicts/')({
-  component: SystemDicts
+export const Route = createLazyFileRoute('/_base/system/biz-dicts/')({
+  component: BizDicts
 })
 
-function SystemDicts() {
+function BizDicts() {
   // 分页器
   const { pageParams, setPageParams, pagination, isPending, startTransition } =
-    usePagination<SystemDictPageDto>()
+    usePagination<BizDictPageDto>()
   // 多选器：范型为列表行数据类型
-  const { rowSelection, clearSelectedRowKeys } = useRowSelection<SystemDictVo>()
+  const { rowSelection, clearSelectedRowKeys } = useRowSelection<BizDictVo>()
   // 弹窗
   const modal = useModal()
   // 搜索表单
-  const { searchForm, searchFormItems } = useSystemDictsSearchForm()
+  const { searchForm, searchFormItems } = useBizDictsSearchForm()
   // 弹窗表单
-  const { modalForm, modalFormItems } = useSystemDictsModalForm()
+  const { modalForm, modalFormItems } = useBizDictsModalForm()
   // 表格列
-  const { columns } = useSystemDictsColumns({ modal, form: modalForm })
+  const { columns } = useBizDictsColumns({ modal, form: modalForm })
 
   // 异步查询：列表数据
   const {
     data: { records, total },
     refetch
-  } = useSuspenseQuery(systemDictsQueryOptions(PageUtils.mergeParams(pageParams)))
+  } = useSuspenseQuery(bizDictsQueryOptions(PageUtils.mergeParams(pageParams)))
   // 异步删除
-  const { mutateAsync: removeMutateAsync, isPending: isRemovePending } =
-    useSystemDictRemoveMutation()
+  const { mutateAsync: removeMutateAsync, isPending: isRemovePending } = useBizDictRemoveMutation()
   // 异步提交
-  const { mutateAsync: submitMutateAsync, isPending: isSubmitPending } =
-    useSystemDictSubmitMutation()
+  const { mutateAsync: submitMutateAsync, isPending: isSubmitPending } = useBizDictSubmitMutation()
 
   // 清空选中行
   useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
@@ -71,13 +69,11 @@ function SystemDicts() {
         }
         // 事件：预渲染
         onPrefetch={(values) =>
-          queryClient.prefetchQuery(
-            systemDictsQueryOptions(PageUtils.mergeParams(pageParams, values))
-          )
+          queryClient.prefetchQuery(bizDictsQueryOptions(PageUtils.mergeParams(pageParams, values)))
         }
       />
       {/* 表格 */}
-      <RpBasicTable<SystemDictVo>
+      <RpBasicTable<BizDictVo>
         rowKey={(record) => record.id!}
         // 批量选择选项
         rowSelection={rowSelection}
@@ -89,7 +85,7 @@ function SystemDicts() {
         pagination={pagination({
           total,
           // 事件：分页预渲染
-          onPrefetch: (values) => queryClient.prefetchQuery(systemDictsQueryOptions(values))
+          onPrefetch: (values) => queryClient.prefetchQuery(bizDictsQueryOptions(values))
         })}
         // 刷新加载
         refreshLoading={isPending}
@@ -141,7 +137,7 @@ function SystemDicts() {
           }}
           // 表单提交
           onFinish={async () => {
-            const values = modalForm.getFieldsValue(true) as SystemDictSubmitDto
+            const values = modalForm.getFieldsValue(true) as BizDictSubmitDto
             await submitMutateAsync({
               ...values,
               isSealed: FormatUtils.toDbNum(values.isSealed)

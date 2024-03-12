@@ -1,13 +1,13 @@
-import type { DictSubmitDto, DictValuePageDto, DictVo } from '@raipiot-2f/api'
+import type { SystemDictSubmitDto, SystemDictValuePageDto, SystemDictVo } from '@raipiot-2f/api'
 
 import {
   systemDictQueryOptions,
   systemDictValuesQueryOptions,
-  useDictsSearchForm,
-  useDictValuesColumns,
-  useDictValuesModalForm,
   useSystemDictRemoveMutation,
-  useSystemDictSubmitMutation
+  useSystemDictsSearchForm,
+  useSystemDictSubmitMutation,
+  useSystemDictValuesColumns,
+  useSystemDictValuesModalForm
 } from '@/features/system/dicts'
 
 export const Route = createLazyFileRoute('/_base/system/dicts/$id')({
@@ -17,21 +17,20 @@ export const Route = createLazyFileRoute('/_base/system/dicts/$id')({
 function SystemDictItem() {
   const { id } = useParams({ from: '/_base/system/dicts/$id' })
   const staticData = useRouteStaticData()
-  const { pageParams, setPageParams, isPending, startTransition } = usePagination<DictValuePageDto>(
-    {
+  const { pageParams, setPageParams, isPending, startTransition } =
+    usePagination<SystemDictValuePageDto>({
       parentId: id
-    }
-  )
+    })
   // 多选器：范型为列表行数据类型
-  const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
+  const { rowSelection, clearSelectedRowKeys } = useRowSelection<SystemDictVo>()
   // 弹窗
   const modal = useModal()
   // 搜索表单
-  const { searchForm, searchFormItems } = useDictsSearchForm()
+  const { searchForm, searchFormItems } = useSystemDictsSearchForm()
   // 弹窗表单
-  const { modalForm, modalFormItems } = useDictValuesModalForm()
+  const { modalForm, modalFormItems } = useSystemDictValuesModalForm()
   // 表格列
-  const { columns } = useDictValuesColumns({ modal, form: modalForm })
+  const { columns } = useSystemDictValuesColumns({ modal, form: modalForm })
 
   // 异步查询：列表数据
   const { data, refetch } = useSuspenseQuery(
@@ -88,7 +87,7 @@ function SystemDictItem() {
         }
       />
       {/* 表格 */}
-      <RpBasicTable<DictVo>
+      <RpBasicTable<SystemDictVo>
         rowKey={(record) => record.id!}
         // 批量选择选项
         rowSelection={rowSelection}
@@ -151,7 +150,7 @@ function SystemDictItem() {
           }}
           // 表单提交
           onFinish={async () => {
-            const values = modalForm.getFieldsValue(true) as DictSubmitDto
+            const values = modalForm.getFieldsValue(true) as SystemDictSubmitDto
             await submitMutateAsync({
               ...values,
               isSealed: FormatUtils.toDbNum(values.isSealed)

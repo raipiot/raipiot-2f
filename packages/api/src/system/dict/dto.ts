@@ -1,15 +1,15 @@
 import type { PageDto } from '../../types'
 
-export interface DictPageDto extends PageDto {
+export interface SystemDictPageDto extends PageDto {
   code?: string
   dictValue?: string
 }
 
-export interface DictValuePageDto extends DictPageDto {
+export interface SystemDictValuePageDto extends SystemDictPageDto {
   parentId: string
 }
 
-export interface DictSubmitDto {
+export interface SystemDictSubmitDto {
   /**
    * 字典码
    */

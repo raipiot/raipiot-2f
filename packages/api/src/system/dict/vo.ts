@@ -1,7 +1,7 @@
 import type { Page } from '../../types'
 
-export interface DictVo {
-  children?: DictVo[]
+export interface SystemDictVo {
+  children?: SystemDictVo[]
   /**
    * 字典码
    */
@@ -36,4 +36,4 @@ export interface DictVo {
   sort?: number
 }
 
-export type DictsVo = Page<DictVo>
+export type SystemDictsVo = Page<SystemDictVo>

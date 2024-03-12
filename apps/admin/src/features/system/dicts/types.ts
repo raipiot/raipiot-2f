@@ -1,8 +1,8 @@
-import type { DictPageDto, DictSubmitDto } from '@raipiot-2f/api'
+import type { SystemDictPageDto, SystemDictSubmitDto } from '@raipiot-2f/api'
 
-export interface DictSearchFormModel extends Pick<DictPageDto, 'code' | 'dictValue'> {}
+export interface SystemDictSearchFormModel extends Pick<SystemDictPageDto, 'code' | 'dictValue'> {}
 
-export interface DictSubmitFormModel extends Omit<DictSubmitDto, 'isSealed'> {
+export interface SystemDictSubmitFormModel extends Omit<SystemDictSubmitDto, 'isSealed'> {
   isSealed?: boolean
   parentName?: string
 }

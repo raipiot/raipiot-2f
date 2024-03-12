@@ -1,4 +1,4 @@
-import type { DictPageDto } from '@raipiot-2f/api'
+import type { SystemDictPageDto } from '@raipiot-2f/api'
 
 import { paramQK, paramsQK } from './query-keys'
 
@@ -8,7 +8,7 @@ export const paramQueryOptions = (id: string) =>
     queryFn: ({ signal }) => paramsAPI.detail(id, signal)
   })
 
-export const paramsQueryOptions = (params: DictPageDto) =>
+export const paramsQueryOptions = (params: SystemDictPageDto) =>
   queryOptions({
     queryKey: paramsQK(params),
     queryFn: ({ signal }) => paramsAPI.list(params, signal),

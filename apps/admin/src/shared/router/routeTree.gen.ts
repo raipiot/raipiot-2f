@@ -34,12 +34,13 @@ import { Route as BaseSystemPermissionsRouteImport } from './../../routes/_base/
 import { Route as BaseSystemParamsRouteImport } from './../../routes/_base/system/params/route'
 import { Route as BaseSystemMenusRouteImport } from './../../routes/_base/system/menus/route'
 import { Route as BaseSystemDeptsRouteImport } from './../../routes/_base/system/depts/route'
-import { Route as BaseSystemBusinessDictsRouteImport } from './../../routes/_base/system/business-dicts/route'
 import { Route as BaseDevStorybookRouteImport } from './../../routes/_base/dev/storybook/route'
 import { Route as BaseSystemDictsIdRouteImport } from './../../routes/_base/system/dicts/$id/route'
+import { Route as BaseSystemBizDictsIdRouteImport } from './../../routes/_base/system/biz-dicts/$id/route'
 import { Route as BaseDevTemplatesBasicTableRouteImport } from './../../routes/_base/dev/templates/basic-table/route'
 import { Route as BaseDevTemplatesAdvancedTableRouteImport } from './../../routes/_base/dev/templates/advanced-table/route'
 import { Route as BaseSystemDictsIndexRouteImport } from './../../routes/_base/system/dicts/index/route'
+import { Route as BaseSystemBizDictsIndexRouteImport } from './../../routes/_base/system/biz-dicts/index/route'
 
 // Create/Update Routes
 
@@ -208,16 +209,6 @@ const BaseSystemDeptsRouteRoute = BaseSystemDeptsRouteImport.update({
   import('./../../routes/_base/system/depts/route.lazy').then((d) => d.Route),
 )
 
-const BaseSystemBusinessDictsRouteRoute =
-  BaseSystemBusinessDictsRouteImport.update({
-    path: '/system/business-dicts',
-    getParentRoute: () => BaseRouteRoute,
-  } as any).lazy(() =>
-    import('./../../routes/_base/system/business-dicts/route.lazy').then(
-      (d) => d.Route,
-    ),
-  )
-
 const BaseDevStorybookRouteRoute = BaseDevStorybookRouteImport.update({
   path: '/storybook',
   getParentRoute: () => BaseDevRouteRoute,
@@ -230,6 +221,15 @@ const BaseSystemDictsIdRouteRoute = BaseSystemDictsIdRouteImport.update({
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
   import('./../../routes/_base/system/dicts/$id/route.lazy').then(
+    (d) => d.Route,
+  ),
+)
+
+const BaseSystemBizDictsIdRouteRoute = BaseSystemBizDictsIdRouteImport.update({
+  path: '/system/biz-dicts/$id',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base/system/biz-dicts/$id/route.lazy').then(
     (d) => d.Route,
   ),
 )
@@ -262,6 +262,16 @@ const BaseSystemDictsIndexRouteRoute = BaseSystemDictsIndexRouteImport.update({
     (d) => d.Route,
   ),
 )
+
+const BaseSystemBizDictsIndexRouteRoute =
+  BaseSystemBizDictsIndexRouteImport.update({
+    path: '/system/biz-dicts/',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base/system/biz-dicts/index/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
 
 // Populate the FileRoutesByPath interface
 
@@ -331,10 +341,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseDevStorybookRouteImport
       parentRoute: typeof BaseDevRouteImport
     }
-    '/_base/system/business-dicts': {
-      preLoaderRoute: typeof BaseSystemBusinessDictsRouteImport
-      parentRoute: typeof BaseRouteImport
-    }
     '/_base/system/depts': {
       preLoaderRoute: typeof BaseSystemDeptsRouteImport
       parentRoute: typeof BaseRouteImport
@@ -367,6 +373,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSystemUsersRouteImport
       parentRoute: typeof BaseRouteImport
     }
+    '/_base/system/biz-dicts/': {
+      preLoaderRoute: typeof BaseSystemBizDictsIndexRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
     '/_base/system/dicts/': {
       preLoaderRoute: typeof BaseSystemDictsIndexRouteImport
       parentRoute: typeof BaseRouteImport
@@ -378,6 +388,10 @@ declare module '@tanstack/react-router' {
     '/_base/dev/templates/basic-table': {
       preLoaderRoute: typeof BaseDevTemplatesBasicTableRouteImport
       parentRoute: typeof BaseDevRouteImport
+    }
+    '/_base/system/biz-dicts/$id': {
+      preLoaderRoute: typeof BaseSystemBizDictsIdRouteImport
+      parentRoute: typeof BaseRouteImport
     }
     '/_base/system/dicts/$id': {
       preLoaderRoute: typeof BaseSystemDictsIdRouteImport
@@ -402,7 +416,6 @@ export const routeTree = rootRoute.addChildren([
       BaseDevTemplatesBasicTableRouteRoute,
     ]),
     BaseUserInfoRouteRoute,
-    BaseSystemBusinessDictsRouteRoute,
     BaseSystemDeptsRouteRoute,
     BaseSystemMenusRouteRoute,
     BaseSystemParamsRouteRoute,
@@ -411,7 +424,9 @@ export const routeTree = rootRoute.addChildren([
     BaseSystemRolesRouteRoute,
     BaseSystemTenantsRouteRoute,
     BaseSystemUsersRouteRoute,
+    BaseSystemBizDictsIndexRouteRoute,
     BaseSystemDictsIndexRouteRoute,
+    BaseSystemBizDictsIdRouteRoute,
     BaseSystemDictsIdRouteRoute,
   ]),
   PortalRouteRoute.addChildren([

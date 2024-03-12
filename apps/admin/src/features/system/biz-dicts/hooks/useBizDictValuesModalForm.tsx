@@ -1,9 +1,9 @@
-import type { DictSubmitFormModel } from '../types'
+import type { BizDictSubmitFormModel } from '../types'
 
-export const useDictValuesModalForm = () => {
+export const useBizDictValuesModalForm = () => {
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
-  const { createResponsiveFormItems } = useFormCreator<DictSubmitFormModel>()
-  const [modalForm] = AForm.useForm<DictSubmitFormModel>()
+  const { createResponsiveFormItems } = useFormCreator<BizDictSubmitFormModel>()
+  const [modalForm] = AForm.useForm<BizDictSubmitFormModel>()
 
   return {
     modalForm,

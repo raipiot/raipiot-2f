@@ -1,27 +1,27 @@
-import type { DictVo } from '@raipiot-2f/api'
+import type { SystemDictVo } from '@raipiot-2f/api'
 import type { FormInstance } from 'antd'
 import { isMobile } from 'react-device-detect'
 
 import type { UseModal } from '@/shared/hooks/useModal'
 
-import { useSystemDictRemoveMutation } from '../mutations'
-import { systemDictQueryOptions } from '../queries'
+import { useBizDictRemoveMutation } from '../mutations'
+import { bizDictQueryOptions } from '../queries'
 
-interface UseDictValuesColumnsProps {
+interface UseDictsColumnsProps {
   modal?: UseModal<string>
   form?: FormInstance
 }
 
-export const useDictValuesColumns = (props?: UseDictValuesColumnsProps) => {
+export const useBizDictsColumns = (props?: UseDictsColumnsProps) => {
   const { modal, form } = props ?? {}
 
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
-  const { createActions, createColumns } = useTableCreator<DictVo>()
+  const { createActions, createColumns } = useTableCreator<SystemDictVo>()
 
-  const { mutateAsync, isPending } = useSystemDictRemoveMutation()
+  const { mutateAsync, isPending } = useBizDictRemoveMutation()
 
   return {
-    columns: createColumns<DictVo>([
+    columns: createColumns<SystemDictVo>([
       {
         title: t('CODE'),
         dataIndex: 'code',
@@ -56,44 +56,41 @@ export const useDictValuesColumns = (props?: UseDictValuesColumnsProps) => {
       createActions({
         width: 250,
         render: (_, record) => (
+          // rp-table-action 用于非 Hover 表格行上隐藏操作按钮
           <ASpace className={clsx(!isMobile && 'rp-table-action', 'transition-all ease-out')}>
             <RpButton
               variant="view"
               size="small"
-              onMouseEnter={() => queryClient.prefetchQuery(systemDictQueryOptions(record.id!))}
+              onMouseEnter={() => queryClient.prefetchQuery(bizDictQueryOptions(record.id!))}
               onClick={async () => {
                 modal?.openRead()
                 modal?.setMeta(record.id)
                 form?.setFieldsValue(
-                  await queryClient.ensureQueryData(systemDictQueryOptions(record.id!))
+                  await queryClient.ensureQueryData(bizDictQueryOptions(record.id!))
                 )
               }}
             />
             <RpButton
               variant="edit"
               size="small"
-              onMouseEnter={() => queryClient.prefetchQuery(systemDictQueryOptions(record.id!))}
+              onMouseEnter={() => queryClient.prefetchQuery(bizDictQueryOptions(record.id!))}
               onClick={async () => {
                 modal?.openEdit()
                 modal?.setMeta(record.id)
                 form?.setFieldsValue(
-                  await queryClient.ensureQueryData(systemDictQueryOptions(record.id!))
+                  await queryClient.ensureQueryData(bizDictQueryOptions(record.id!))
                 )
               }}
             />
-            <RpButton
-              variant="create-child"
-              size="small"
-              onClick={async () => {
-                modal?.openCreate()
-                form?.resetFields()
-                form?.setFieldsValue({
-                  parentId: record.id,
-                  code: record.code,
-                  parentName: record.dictValue
-                })
-              }}
-            />
+            <Link
+              to="/system/biz-dicts/$id"
+              params={{ id: record.id! }}
+            >
+              <RpButton
+                variant="config"
+                size="small"
+              />
+            </Link>
             <RpDeletePopconfirm
               okBtnLoading={isPending}
               onConfirm={() => mutateAsync(record.id!)}

@@ -1,8 +1,8 @@
 import type HttpRequest from '@raipiot-2f/axios'
 
 import { BaseAPI } from '../../base'
-import type { DictPageDto, DictSubmitDto, DictValuePageDto } from './dto'
-import type { DictsVo, DictVo } from './vo'
+import type { SystemDictPageDto, SystemDictSubmitDto, SystemDictValuePageDto } from './dto'
+import type { SystemDictsVo, SystemDictVo } from './vo'
 
 export * from './dto'
 export * from './vo'
@@ -25,15 +25,15 @@ export class SystemDictsAPI extends BaseAPI {
   /**
    * 列表
    */
-  list(params: DictPageDto) {
+  list(params: SystemDictPageDto) {
     return this.httpRequest.get(`${this.#API_PREFIX}/list`, params)
   }
 
   /**
    * 父列表
    */
-  async parentList(params: DictPageDto, signal?: AbortSignal) {
-    return this.httpRequest.get<DictsVo>(`${this.#API_PREFIX}/parent-list`, params, {
+  async parentList(params: SystemDictPageDto, signal?: AbortSignal) {
+    return this.httpRequest.get<SystemDictsVo>(`${this.#API_PREFIX}/parent-list`, params, {
       signal
     })
   }
@@ -41,8 +41,8 @@ export class SystemDictsAPI extends BaseAPI {
   /**
    * 子列表
    */
-  async childList(params: DictValuePageDto, signal?: AbortSignal) {
-    return this.httpRequest.get<DictVo[]>(`${this.#API_PREFIX}/child-list`, params, {
+  async childList(params: SystemDictValuePageDto, signal?: AbortSignal) {
+    return this.httpRequest.get<SystemDictVo[]>(`${this.#API_PREFIX}/child-list`, params, {
       signal
     })
   }
@@ -72,7 +72,7 @@ export class SystemDictsAPI extends BaseAPI {
    * 详情
    */
   async detail(id: string, signal?: AbortSignal) {
-    return this.httpRequest.get<DictVo>(`${this.#API_PREFIX}/detail`, { id }, { signal })
+    return this.httpRequest.get<SystemDictVo>(`${this.#API_PREFIX}/detail`, { id }, { signal })
   }
 
   /**
@@ -92,7 +92,7 @@ export class SystemDictsAPI extends BaseAPI {
   /**
    * 提交
    */
-  async submit(data: DictSubmitDto) {
+  async submit(data: SystemDictSubmitDto) {
     return this.httpRequest.post(`${this.#API_PREFIX}/submit`, data)
   }
 

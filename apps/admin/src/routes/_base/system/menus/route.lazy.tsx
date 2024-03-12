@@ -1,4 +1,4 @@
-import type { DictVo, LazyMenuPageDto, MenuSubmitDto } from '@raipiot-2f/api'
+import type { LazyMenuPageDto, MenuSubmitDto, SystemDictVo } from '@raipiot-2f/api'
 
 import {
   menusQueryOptions,
@@ -22,7 +22,7 @@ function Menus() {
     parentId: '0'
   })
   // 多选器：范型为列表行数据类型
-  const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
+  const { rowSelection, clearSelectedRowKeys } = useRowSelection<SystemDictVo>()
   // 展开行
   const { expandedRowKeys, addExpandedRowKey, removeExpandedRowKey, clearExpandedRowKeys } =
     useExpandedRowkeys()
@@ -81,7 +81,7 @@ function Menus() {
         }
       />
       {/* 表格 */}
-      <RpBasicTable<DictVo>
+      <RpBasicTable<SystemDictVo>
         rowKey={(record) => record.id!}
         // 批量选择选项
         rowSelection={rowSelection}
