@@ -102,6 +102,7 @@ export const useMenusColumns = (props?: UseMenusColumnsProps) => {
               onClick={async () => {
                 modal?.openCreate()
                 modal?.setMeta(record.id)
+                form?.resetFields()
                 form?.setFieldValue('parentId', record.id)
               }}
             />

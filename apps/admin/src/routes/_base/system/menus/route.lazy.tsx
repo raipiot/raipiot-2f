@@ -55,6 +55,7 @@ function Menus() {
             variant="create"
             onClick={() => {
               modalForm.resetFields()
+              clearExpandedRowKeys()
               modal.openCreate()
             }}
           />
@@ -159,6 +160,7 @@ function Menus() {
               ...values,
               isOpen: FormatUtils.toDbNum(values.isOpen)
             })
+            clearExpandedRowKeys()
             modal.close()
           }}
         />
