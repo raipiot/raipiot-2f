@@ -54,15 +54,19 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
                       {type === 'tree-select' && (
                         <ATreeSelect
                           value={value}
-                          disabled
                           {...item.treeSelectProps}
+                        />
+                      )}
+                      {type === 'select' && (
+                        <ASelect
+                          value={value}
+                          {...item.selectProps}
                         />
                       )}
                       {type === 'switch' && <RpBoolean value={value} />}
                       {type === 'radio-group' && (
                         <ARadio.Group
                           value={value}
-                          disabled
                           {...item.radioGroupProps}
                         />
                       )}

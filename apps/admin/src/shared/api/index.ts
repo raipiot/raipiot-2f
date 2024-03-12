@@ -3,6 +3,7 @@ import {
   DashboardAPI,
   ParamsAPI,
   PortalAPI,
+  PostAPI,
   SystemDictsAPI,
   UsersAPI
 } from '@raipiot-2f/api'
@@ -19,3 +20,4 @@ export const menusAPI = new MenusAPI(httpRequest)
 export const paramsAPI = new ParamsAPI(httpRequest)
 export const portalAPI = new PortalAPI(httpRequest)
 export const dashboardAPI = new DashboardAPI(httpRequest)
+export const systemPostsAPI = new PostAPI(httpRequest)

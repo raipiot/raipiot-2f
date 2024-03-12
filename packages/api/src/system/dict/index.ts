@@ -7,6 +7,12 @@ import type { SystemDictsVo, SystemDictVo } from './vo'
 export * from './dto'
 export * from './vo'
 
+interface DefaultOptionType {
+  label?: React.ReactNode
+  value?: string
+  children?: Omit<DefaultOptionType, 'children'>[]
+}
+
 export class SystemDictsAPI extends BaseAPI {
   #API_PREFIX: string
 
@@ -78,15 +84,28 @@ export class SystemDictsAPI extends BaseAPI {
   /**
    * 字典数据
    */
-  async dictionary() {
-    return this.httpRequest.get(`${this.#API_PREFIX}/dictionary`)
+  async dictionary(code: string, signal?: AbortSignal) {
+    return this.httpRequest.get<DictVo[]>(
+      `${this.#API_PREFIX}/dictionary`,
+      { code },
+      {
+        signal
+      }
+    )
   }
 
   /**
    * 字典数据树
    */
-  async dictionaryTree() {
-    return this.httpRequest.get(`${this.#API_PREFIX}/dictionary-tree`)
+  async dictionaryTree(code: string, signal?: AbortSignal) {
+    const data = await this.httpRequest.get<DictVo[]>(
+      `${this.#API_PREFIX}/dictionary-tree`,
+      { code },
+      {
+        signal
+      }
+    )
+    return this.#rawOptionsTransfer(data, 'dictValue', 'dictKey')
   }
 
   /**
@@ -109,5 +128,23 @@ export class SystemDictsAPI extends BaseAPI {
         }
       }
     )
+  }
+
+  #rawOptionsTransfer<T extends { children?: T[] }>(
+    options: T[],
+    labelKey: keyof T,
+    valueKey: keyof T
+  ): DefaultOptionType[] {
+    return options.map((item) => {
+      const { children } = item
+      return {
+        children:
+          children && children.length > 0
+            ? this.#rawOptionsTransfer(children, labelKey, valueKey)
+            : [],
+        label: item[labelKey] as string,
+        value: item[valueKey] as string
+      }
+    })
   }
 }
