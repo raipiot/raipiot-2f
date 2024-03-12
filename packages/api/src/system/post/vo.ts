@@ -2,9 +2,6 @@ import type { Page } from '../../types'
 import type { PostSubmitDto } from './dto'
 
 export interface PostVo extends PostSubmitDto {
-  /**
-   * 主键
-   */
   categoryName?: string // 岗位类型名称
   createDept?: number // 创建部门
   createTime?: string

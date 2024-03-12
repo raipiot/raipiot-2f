@@ -2,7 +2,7 @@ import type HttpRequest from '@raipiot-2f/axios'
 
 import { BaseAPI } from '../../base'
 import type { PostPageDto, PostSubmitDto } from './dto'
-import type { PostsVo } from './vo'
+import type { PostsVo, PostVo } from './vo'
 
 export * from './dto'
 export * from './vo'
@@ -21,7 +21,7 @@ export class SystemPostAPI extends BaseAPI {
    */
   detail(id: string, signal: AbortSignal) {
     // TODO: 添加泛型响应类型
-    return this.httpRequest.get(
+    return this.httpRequest.get<PostVo>(
       `${this.#API_PREFIX}/detail`,
       {
         id
