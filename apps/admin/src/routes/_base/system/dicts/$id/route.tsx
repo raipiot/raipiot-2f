@@ -1,6 +1,6 @@
 import type { DictValuePageDto } from '@raipiot-2f/api'
 
-import { systemDictValuesQueryOptions } from '@/features/system/dicts'
+import { systemDictQueryOptions, systemDictValuesQueryOptions } from '@/features/system/dicts'
 
 const t = i18n.getFixedT(null, 'ROUTER')
 
@@ -21,5 +21,6 @@ export const Route = createFileRoute('/_base/system/dicts/$id')({
         })
       )
     )
+    await queryClient.ensureQueryData(systemDictQueryOptions(id))
   }
 })

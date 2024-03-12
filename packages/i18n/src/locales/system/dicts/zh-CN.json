@@ -1,4 +1,6 @@
 {
   "CODE": "字典编号",
-  "DICT.VALUE": "字典名称"
+  "DICT.VALUE": "字典名称",
+  "DICT.KEY": "字典键值",
+  "PARENT.DICT": "上级字典"
 }

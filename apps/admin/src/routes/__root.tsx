@@ -1,5 +1,4 @@
 import type { QueryClient } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { ScrollRestoration } from '@tanstack/react-router'
 import React from 'react'
 
@@ -9,6 +8,15 @@ const TanStackRouterDevtools = GlobalEnvConfig.PROD_ONLY
       // 开发环境下，懒加载
       import('@tanstack/router-devtools').then((res) => ({
         default: res.TanStackRouterDevtools
+      }))
+    )
+
+const ReactQueryDevtools = GlobalEnvConfig.PROD_ONLY
+  ? () => null // 生产环境下，不加载
+  : React.lazy(() =>
+      // 开发环境下，懒加载
+      import('@tanstack/react-query-devtools').then((res) => ({
+        default: res.ReactQueryDevtools
       }))
     )
 

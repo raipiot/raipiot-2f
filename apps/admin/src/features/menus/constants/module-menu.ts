@@ -57,7 +57,7 @@ export const moduleMenus: ModuleMenuItem[] = [
   }
 ]
 
-export const getModuleMenuByPath = (path: string): ModuleMenuCode | undefined => {
+export const getModuleMenuCodeByPath = (path: string): ModuleMenuCode | undefined => {
   const moduleMenu = Array.from(routerMenuMap.entries()).find(([_, menuItems]) =>
     menuItems()
       .flatMap((item) => [item, ...(hasChildren(item) ? item.children : [])])
