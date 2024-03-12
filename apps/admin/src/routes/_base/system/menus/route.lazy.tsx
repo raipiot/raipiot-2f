@@ -34,7 +34,7 @@ function Menus() {
   // 弹窗表单
   const { modalForm, modalFormItems } = useMenusModalForm()
   // 表格列
-  const { columns } = useMenusColumns({ modal, form: modalForm, clearExpandedRowKeys })
+  const { columns } = useMenusColumns({ modal, form: modalForm })
 
   // 异步查询：列表数据
   const { data, refetch } = useSuspenseQuery(menusQueryOptions(pageParams))
@@ -44,7 +44,10 @@ function Menus() {
   const { mutateAsync: submitMutateAsync, isPending: isSubmitPending } = useMenuSubmitMutation()
 
   // 清空选中行
-  useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
+  useEffect(() => {
+    clearSelectedRowKeys()
+    clearExpandedRowKeys()
+  }, [isPending, isRemovePending, isSubmitPending, clearSelectedRowKeys, clearExpandedRowKeys])
 
   return (
     // 页面容器
@@ -56,7 +59,6 @@ function Menus() {
             variant="create"
             onClick={() => {
               modalForm.resetFields()
-              clearExpandedRowKeys()
               modal.openCreate()
             }}
           />
@@ -73,7 +75,6 @@ function Menus() {
         onSearch={(values) =>
           startTransition(() => {
             setPageParams({ ...pageParams, ...values })
-            clearExpandedRowKeys()
           })
         }
         // 事件：预渲染
@@ -96,20 +97,12 @@ function Menus() {
         onRefresh={() =>
           startTransition(() => {
             refetch()
-            clearExpandedRowKeys()
           })
         }
         // 批量删除加载
         batchDeleteLoading={isRemovePending}
         // 事件：批量删除
-        onBatchDelete={(ids) =>
-          removeMutateAsync(ids.join(), {
-            onSuccess: () => {
-              clearSelectedRowKeys()
-              clearExpandedRowKeys()
-            }
-          })
-        }
+        onBatchDelete={(ids) => removeMutateAsync(ids.join())}
         scroll={{ x: 2400 }}
         expandable={{
           expandedRowKeys,
@@ -120,7 +113,7 @@ function Menus() {
                   menusQueryOptions({ parentId: record.id! })
                 )
                 queryClient.setQueryData(menusQueryOptions(pageParams).queryKey, (oldData) =>
-                  updateMenuChildrenByParentId(oldData ?? [], record.id!, childrenData)
+                  updateMenuChildrenByParentId(record.id!, childrenData, oldData)
                 )
               }
               addExpandedRowKey(record.id!)
@@ -167,7 +160,6 @@ function Menus() {
               ...values,
               isOpen: FormatUtils.toDbNum(values.isOpen)
             })
-            clearExpandedRowKeys()
             modal.close()
           }}
         />

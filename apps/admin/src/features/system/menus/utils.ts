@@ -1,9 +1,9 @@
 import type { MenuVo } from '@raipiot-2f/api'
 
 export function updateMenuChildrenByParentId(
-  menus: MenuVo[],
   parentId: string,
-  newChildren: MenuVo[]
+  newChildren: MenuVo[],
+  menus: MenuVo[] = []
 ): MenuVo[] {
   return menus.map((menu) => {
     if (menu.id === parentId) {
@@ -15,7 +15,7 @@ export function updateMenuChildrenByParentId(
     if (menu.children && menu.children.length > 0) {
       return {
         ...menu,
-        children: updateMenuChildrenByParentId(menu.children, parentId, newChildren)
+        children: updateMenuChildrenByParentId(parentId, newChildren, menu.children)
       }
     }
     return menu

@@ -1,12 +1,17 @@
 export const useExpandedRowkeys = (initialState: React.Key[] = []) => {
   const [expandedRowKeys, setExpandedRowKeys] = useState<React.Key[]>(initialState)
 
-  const addExpandedRowKey = (key: React.Key) => setExpandedRowKeys((prev) => [...prev, key])
+  const addExpandedRowKey = useCallback(
+    (key: React.Key) => setExpandedRowKeys((prev) => [...prev, key]),
+    []
+  )
 
-  const removeExpandedRowKey = (key: React.Key) =>
-    setExpandedRowKeys((prev) => prev.filter((k) => k !== key))
+  const removeExpandedRowKey = useCallback(
+    (key: React.Key) => setExpandedRowKeys((prev) => prev.filter((k) => k !== key)),
+    []
+  )
 
-  const clearExpandedRowKeys = () => setExpandedRowKeys([])
+  const clearExpandedRowKeys = useCallback(() => setExpandedRowKeys([]), [])
 
   return {
     expandedRowKeys,

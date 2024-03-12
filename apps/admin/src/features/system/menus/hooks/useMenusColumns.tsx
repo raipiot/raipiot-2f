@@ -10,11 +10,10 @@ import { menuQueryOptions } from '../queries'
 interface UseMenusColumnsProps {
   modal?: UseModal<string>
   form?: FormInstance
-  clearExpandedRowKeys?: () => void
 }
 
 export const useMenusColumns = (props?: UseMenusColumnsProps) => {
-  const { modal, form, clearExpandedRowKeys } = props ?? {}
+  const { modal, form } = props ?? {}
 
   const { t } = useTranslation(['SYSTEM/MENUS', 'COMMON'])
   const { createActions, createColumns } = useTableCreator<MenuVo>()
@@ -111,7 +110,6 @@ export const useMenusColumns = (props?: UseMenusColumnsProps) => {
               okBtnLoading={isPending}
               onConfirm={() => {
                 mutateAsync(record.id!)
-                clearExpandedRowKeys?.()
               }}
             >
               <RpButton
