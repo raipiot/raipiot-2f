@@ -1,1 +1,1 @@
-["AuthAPI", "SystemDictsAPI", "BizDictsAPI", "MenusAPI", "ParamsAPI", "UsersAPI"]
+["AuthAPI", "SystemDictsAPI", "BizDictsAPI", "MenusAPI", "ParamsAPI", "UsersAPI", "TenantsAPI"]

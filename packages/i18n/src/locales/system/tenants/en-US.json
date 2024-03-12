@@ -1,0 +1,17 @@
+{
+  "ID": "Tenant ID",
+  "NAME": "Tenant Name",
+  "CONTACT": "Contact",
+  "PHONE": "Phone",
+  "ADDRESS": "Address",
+  "ACCOUNT.LIMIT": "Account Limit",
+  "EXPIRE.TIME": "Expire Time",
+  "DOMAIN": "Domain",
+  "AUTH.CONFIG": "Auth Config",
+  "DATA.SOURCE.CONFIG": "Data Source Config",
+  "PRODUCT.PACKAGE.CONFIG": "Product Package Config",
+  "PRODUCT.PACKAGE.MANAGEMENT": "Product Package Management",
+  "SYSTEM.BACKGROUND.IMAGE": "System Background Image",
+  "PRODUCT.PACKAGE.NAME": "Product Package Name",
+  "MENU.LIST": "Menu List"
+}

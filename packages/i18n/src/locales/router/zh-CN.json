@@ -20,7 +20,8 @@
     "ROLES": "角色管理",
     "PERMISSIONS": "权限管理",
     "PARAMS": "参数管理",
-    "TENANTS": "租户管理"
+    "TENANTS": "租户管理",
+    "PRODUCT.PACKAGES": "产品包管理"
   },
   "DEVELOPER": {
     "TEMPLATES": "代码模版",
