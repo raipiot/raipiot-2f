@@ -1,4 +1,5 @@
-import { PostSubmitDto } from '@raipiot-2f/api'
+import type { PostSubmitDto } from '@raipiot-2f/api'
+
 import { systemDictTreeQueryOptions } from '../../dicts'
 import { SystemDictCode } from '../../dicts/enum'
 

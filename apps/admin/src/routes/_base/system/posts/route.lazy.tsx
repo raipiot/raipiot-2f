@@ -2,10 +2,10 @@ import type { PostPageDto, PostVo } from '@raipiot-2f/api'
 
 import {
   postsQueryOptions,
+  usePostRemoveMutation,
   usePostsColumns,
   usePostsModalForm,
   usePostsSearchForm,
-  usePostRemoveMutation,
   usePostSubmitMutation
 } from '@/features/system/post'
 

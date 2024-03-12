@@ -3,9 +3,9 @@ import {
   DashboardAPI,
   ParamsAPI,
   PortalAPI,
+  PostAPI,
   SystemDictsAPI,
-  UsersAPI,
-  PostAPI
+  UsersAPI
 } from '@raipiot-2f/api'
 import HttpRequest from '@raipiot-2f/axios'
 

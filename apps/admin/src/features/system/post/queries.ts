@@ -1,6 +1,6 @@
 import type { PostPageDto } from '@raipiot-2f/api'
 
-import { postQK, postsQK, postTreeQK, postValuesQK } from './query-keys'
+import { postQK, postsQK } from './query-keys'
 
 export const postQueryOptions = (id: string) =>
   queryOptions({

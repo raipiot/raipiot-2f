@@ -1,4 +1,4 @@
-import { POSTS_QK, postQK } from './query-keys'
+import { postQK, POSTS_QK } from './query-keys'
 
 export const invalidatePostsQuery = () =>
   queryClient.invalidateQueries({

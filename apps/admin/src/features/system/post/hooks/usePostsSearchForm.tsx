@@ -1,6 +1,6 @@
 import { systemDictTreeQueryOptions } from '../../dicts'
 import { SystemDictCode } from '../../dicts/enum'
-import { PostSearchFormModel } from '../types'
+import type { PostSearchFormModel } from '../types'
 
 export const usePostsSearchForm = () => {
   const { t } = useTranslation('SYSTEM/POST')
