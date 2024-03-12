@@ -35,6 +35,10 @@ export const useBizDictValuesColumns = (props?: UseBizDictValuesColumnsProps) =>
         dataIndex: 'dictValue'
       },
       {
+        title: t('DICT.KEY'),
+        dataIndex: 'dictKey'
+      },
+      {
         title: t('COMMON:SORT'),
         dataIndex: 'sort',
         width: 80,
