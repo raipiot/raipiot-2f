@@ -1,4 +1,3 @@
 import type { PostPageDto } from '@raipiot-2f/api'
 
-export interface PostSearchFormModel
-  extends Pick<PostPageDto, 'category' | 'postCode' | 'postName'> {}
+export type PostSearchFormModel = Omit<PostPageDto, 'current' | 'size'>
