@@ -4,7 +4,8 @@ import {
   ParamsAPI,
   PortalAPI,
   SystemDictsAPI,
-  UsersAPI
+  UsersAPI,
+  SystemPostAPI
 } from '@raipiot-2f/api'
 import HttpRequest from '@raipiot-2f/axios'
 
@@ -18,3 +19,4 @@ export const menusAPI = new MenusAPI(httpRequest)
 export const paramsAPI = new ParamsAPI(httpRequest)
 export const portalAPI = new PortalAPI(httpRequest)
 export const dashboardAPI = new DashboardAPI(httpRequest)
+export const systemPostsAPI = new SystemPostAPI(httpRequest)

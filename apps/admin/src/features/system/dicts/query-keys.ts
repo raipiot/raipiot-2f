@@ -14,4 +14,4 @@ export const systemDictQK = (id?: string) => [SYSTEM_DICT_QK, { id }]
 
 export const systemDictValuesQK = (params?: DictPageDto) => [SYSTEM_DICT_VALUES_QK, params]
 
-export const systemDictTreeQK = () => [SYSTEM_DICT_TREE_QK]
+export const systemDictTreeQK = (code: string) => [SYSTEM_DICT_TREE_QK, code]

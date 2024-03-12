@@ -29,7 +29,7 @@ import { Route as PortalIndexRouteImport } from './../../routes/_portal/index/ro
 import { Route as BaseSystemUsersRouteImport } from './../../routes/_base/system/users/route'
 import { Route as BaseSystemTenantsRouteImport } from './../../routes/_base/system/tenants/route'
 import { Route as BaseSystemRolesRouteImport } from './../../routes/_base/system/roles/route'
-import { Route as BaseSystemPostsRouteImport } from './../../routes/_base/system/posts/route'
+import { Route as BaseSystemPostRouteImport } from './../../routes/_base/system/post/route'
 import { Route as BaseSystemPermissionsRouteImport } from './../../routes/_base/system/permissions/route'
 import { Route as BaseSystemParamsRouteImport } from './../../routes/_base/system/params/route'
 import { Route as BaseSystemMenusRouteImport } from './../../routes/_base/system/menus/route'
@@ -169,11 +169,11 @@ const BaseSystemRolesRouteRoute = BaseSystemRolesRouteImport.update({
   import('./../../routes/_base/system/roles/route.lazy').then((d) => d.Route),
 )
 
-const BaseSystemPostsRouteRoute = BaseSystemPostsRouteImport.update({
-  path: '/system/posts',
+const BaseSystemPostRouteRoute = BaseSystemPostRouteImport.update({
+  path: '/system/post',
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../../routes/_base/system/posts/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/system/post/route.lazy').then((d) => d.Route),
 )
 
 const BaseSystemPermissionsRouteRoute = BaseSystemPermissionsRouteImport.update(
@@ -351,8 +351,8 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSystemPermissionsRouteImport
       parentRoute: typeof BaseRouteImport
     }
-    '/_base/system/posts': {
-      preLoaderRoute: typeof BaseSystemPostsRouteImport
+    '/_base/system/post': {
+      preLoaderRoute: typeof BaseSystemPostRouteImport
       parentRoute: typeof BaseRouteImport
     }
     '/_base/system/roles': {
@@ -407,7 +407,7 @@ export const routeTree = rootRoute.addChildren([
     BaseSystemMenusRouteRoute,
     BaseSystemParamsRouteRoute,
     BaseSystemPermissionsRouteRoute,
-    BaseSystemPostsRouteRoute,
+    BaseSystemPostRouteRoute,
     BaseSystemRolesRouteRoute,
     BaseSystemTenantsRouteRoute,
     BaseSystemUsersRouteRoute,

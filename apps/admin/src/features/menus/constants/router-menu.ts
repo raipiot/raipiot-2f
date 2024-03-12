@@ -27,7 +27,7 @@ export const routerMenuMap = new Map<ModuleMenuCode, () => MenuItem[]>([
     () => [
       getRouteMeta('/system/users'),
       getRouteMeta('/system/depts'),
-      getRouteMeta('/system/posts'),
+      getRouteMeta('/system/post'),
       getRouteMeta('/system/roles'),
       getRouteMeta('/system/menus'),
       getRouteMeta('/system/dicts'),
