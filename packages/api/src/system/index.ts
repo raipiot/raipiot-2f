@@ -1,4 +1,5 @@
 export * from './dict'
+export * from './dict-biz'
 export * from './menu'
 export * from './param'
 export * from './user'
