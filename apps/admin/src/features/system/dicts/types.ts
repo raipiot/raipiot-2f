@@ -4,4 +4,5 @@ export interface DictSearchFormModel extends Pick<DictPageDto, 'code' | 'dictVal
 
 export interface DictSubmitFormModel extends Omit<DictSubmitDto, 'isSealed'> {
   isSealed?: boolean
+  parentName?: string
 }

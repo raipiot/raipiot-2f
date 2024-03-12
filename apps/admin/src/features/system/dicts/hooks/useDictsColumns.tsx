@@ -54,7 +54,7 @@ export const useDictsColumns = (props?: UseDictsColumnsProps) => {
         render: (value) => <ATooltip title={value}>{value}</ATooltip>
       },
       createActions({
-        width: 200,
+        width: 250,
         render: (_, record) => (
           // rp-table-action 用于非 Hover 表格行上隐藏操作按钮
           <ASpace className={clsx(!isMobile && 'rp-table-action', 'transition-all ease-out')}>

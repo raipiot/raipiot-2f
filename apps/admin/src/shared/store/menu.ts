@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { getModuleMenuByPath, type ModuleMenuCode } from '@/features/menus'
+import { getModuleMenuCodeByPath, type ModuleMenuCode } from '@/features/menus'
 
 interface State {
   activeModuleMenuCode?: ModuleMenuCode
@@ -11,7 +11,7 @@ interface Actions {
 }
 
 const initialState: State = {
-  activeModuleMenuCode: getModuleMenuByPath(router.state.location.pathname)
+  activeModuleMenuCode: getModuleMenuCodeByPath(router.state.location.pathname)
 }
 
 export const useMenuStore = create<State & Actions>()((set) => ({

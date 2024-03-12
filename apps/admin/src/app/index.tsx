@@ -2,7 +2,7 @@ import { px2remTransformer, StyleProvider } from '@ant-design/cssinjs'
 import { HappyProvider } from '@ant-design/happy-work-theme'
 import { messageConfig, themeBaseToken } from '@raipiot-infra/theme'
 
-import { getModuleMenuByPath } from '@/features/menus'
+import { getModuleMenuCodeByPath } from '@/features/menus'
 
 BrowserUtils.loadFavicon() // 动态加载 favicon
 BrowserUtils.disableGestureScale() // 禁用移动端手势缩放
@@ -33,7 +33,10 @@ export default function App() {
 
   // 路由变化时切换模块菜单
   router.subscribe('onLoad', () => {
-    menuStore.setActiveModuleMenuCode(getModuleMenuByPath(router.state.location.pathname))
+    const moduleMenuCode = getModuleMenuCodeByPath(router.state.location.pathname)
+    if (moduleMenuCode) {
+      menuStore.setActiveModuleMenuCode(moduleMenuCode)
+    }
   })
 
   return (

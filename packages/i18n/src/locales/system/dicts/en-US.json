@@ -1,4 +1,6 @@
 {
   "CODE": "Dict Code",
-  "DICT.VALUE": "Dict Value"
+  "DICT.VALUE": "Dict Value",
+  "DICT.KEY": "Dict Key",
+  "PARENT.DICT": "Parent Dict"
 }
