@@ -177,7 +177,6 @@ declare global {
   const onlineManager: typeof import('@tanstack/react-query')['onlineManager']
   const paramsAPI: typeof import('../src/shared/api/index')['paramsAPI']
   const portalAPI: typeof import('../src/shared/api/index')['portalAPI']
-  const postAPI: typeof import('../src/shared/api/index')['postAPI']
   const postsAPI: typeof import('../src/shared/api/index')['postsAPI']
   const queryClient: typeof import('@/shared/query-client')['queryClient']
   const queryOptions: typeof import('@tanstack/react-query')['queryOptions']

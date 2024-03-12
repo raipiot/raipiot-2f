@@ -9,6 +9,10 @@ import {
   usePostSubmitMutation
 } from '@/features/system/post'
 
+export const Route = createLazyFileRoute('/_base/system/posts')({
+  component: PostTable
+})
+
 function PostTable() {
   // 分页器
   const { pageParams, setPageParams, pagination, isPending, startTransition } =
@@ -140,7 +144,3 @@ function PostTable() {
     </RpPageContainer>
   )
 }
-
-export const Route = createLazyFileRoute('/_base/system/post')({
-  component: PostTable
-})

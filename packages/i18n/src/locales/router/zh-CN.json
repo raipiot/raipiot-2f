@@ -11,7 +11,7 @@
   "SYSTEM": {
     "USERS": "用户管理",
     "DEPTS": "部门管理",
-    "POST": "岗位管理",
+    "POSTS": "岗位管理",
     "MENUS": "菜单管理",
     "SYSTEM.DICTS": "系统字典",
     "SYSTEM.DICTS.CONFIG": "系统字典配置",

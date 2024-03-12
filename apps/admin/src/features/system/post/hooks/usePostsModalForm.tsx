@@ -15,7 +15,7 @@ export const usePostsModalForm = () => {
         type: 'tree-select',
         formItemProps: {
           name: 'category',
-          label: t('POST.CATEGORY')
+          label: t('CATEGORY')
         },
         treeSelectProps: {
           treeData: data
@@ -25,7 +25,7 @@ export const usePostsModalForm = () => {
         type: 'input',
         formItemProps: {
           name: 'postCode',
-          label: t('POST.POST.CODE'),
+          label: t('CODE'),
           rules: [{ required: true }]
         }
       },
@@ -33,7 +33,7 @@ export const usePostsModalForm = () => {
         type: 'input',
         formItemProps: {
           name: 'postName',
-          label: t('POST.POST.NAME'),
+          label: t('NAME'),
           rules: [{ required: true }]
         }
       },

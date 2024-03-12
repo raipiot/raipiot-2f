@@ -1,5 +1,5 @@
 {
-  "POST.CATEGORY": "post category",
-  "POST.POST.CODE": "post code",
-  "POST.POST.NAME": "post name"
+  "CATEGORY": "post category",
+  "CODE": "post code",
+  "NAME": "post name"
 }

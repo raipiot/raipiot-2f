@@ -23,11 +23,11 @@ export const usePostsColumns = (props?: UsePostsColumnsProps) => {
   return {
     columns: createColumns<PostVo>([
       {
-        title: t('POST.POST.CODE'),
+        title: t('CODE'),
         dataIndex: 'postCode'
       },
       {
-        title: t('POST.POST.NAME'),
+        title: t('NAME'),
         dataIndex: 'postName'
       },
       {

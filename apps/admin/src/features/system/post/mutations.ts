@@ -1,10 +1,6 @@
 import type { PostSubmitDto } from '@raipiot-2f/api'
 
-import {
-  invalidatePostQuery,
-  invalidatePostsQueries,
-  invalidatePostValuesQueries
-} from './invalidates'
+import { invalidatePostQuery, invalidatePostsQuery } from './invalidates'
 
 export const usePostRemoveMutation = () => {
   const { t } = useTranslation()
@@ -13,8 +9,7 @@ export const usePostRemoveMutation = () => {
     mutationFn: (ids: string) => systemPostsAPI.remove(ids),
     onSuccess: () => {
       message.success(t('OPERATION.SUCCESS'))
-      invalidatePostsQueries()
-      invalidatePostValuesQueries()
+      invalidatePostsQuery()
     }
   })
 }
@@ -29,8 +24,7 @@ export const usePostSubmitMutation = () => {
       if (variables.id) {
         invalidatePostQuery(variables.id)
       }
-      invalidatePostsQueries()
-      invalidatePostValuesQueries()
+      invalidatePostsQuery()
     }
   })
 }

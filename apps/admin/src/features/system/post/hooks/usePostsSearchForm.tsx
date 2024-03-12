@@ -5,7 +5,6 @@ import { PostSearchFormModel } from '../types'
 export const usePostsSearchForm = () => {
   const { t } = useTranslation('SYSTEM/POST')
   const { data } = useSuspenseQuery(systemDictTreeQueryOptions(SystemDictCode.SYSTEM_POST))
-  console.log(data)
   const { createResponsiveFormItems } = useFormCreator<PostSearchFormModel>()
   const [searchForm] = AForm.useForm()
 
@@ -16,7 +15,7 @@ export const usePostsSearchForm = () => {
         type: 'select',
         formItemProps: {
           name: 'category',
-          label: t('POST.CATEGORY')
+          label: t('CATEGORY')
         },
         selectProps: {
           options: data
@@ -26,14 +25,14 @@ export const usePostsSearchForm = () => {
         type: 'input',
         formItemProps: {
           name: 'postCode',
-          label: t('POST.POST.CODE')
+          label: t('CODE')
         }
       },
       {
         type: 'input',
         formItemProps: {
           name: 'postName',
-          label: t('POST.POST.NAME')
+          label: t('NAME')
         }
       }
     ])

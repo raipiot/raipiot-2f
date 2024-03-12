@@ -1,5 +1,5 @@
 {
-  "POST.CATEGORY": "岗位类型",
-  "POST.POST.CODE": "岗位编号",
-  "POST.POST.NAME": "岗位名称"
+  "CATEGORY": "岗位类型",
+  "CODE": "岗位编号",
+  "NAME": "岗位名称"
 }
