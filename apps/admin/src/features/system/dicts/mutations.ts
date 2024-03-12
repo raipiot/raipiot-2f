@@ -1,4 +1,4 @@
-import type { DictSubmitDto } from '@raipiot-2f/api'
+import type { SystemDictSubmitDto } from '@raipiot-2f/api'
 
 import {
   invalidateSystemDictQuery,
@@ -23,7 +23,7 @@ export const useSystemDictSubmitMutation = () => {
   const { t } = useTranslation()
   const { message } = AApp.useApp()
   return useMutation({
-    mutationFn: (data: DictSubmitDto) => systemDictsAPI.submit(data),
+    mutationFn: (data: SystemDictSubmitDto) => systemDictsAPI.submit(data),
     onSuccess: (_, variables) => {
       message.success(t('OPERATION.SUCCESS'))
       if (variables.id) {

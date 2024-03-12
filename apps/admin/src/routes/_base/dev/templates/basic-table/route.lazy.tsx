@@ -1,11 +1,11 @@
-import type { DictPageDto, DictSubmitDto, DictVo } from '@raipiot-2f/api'
+import type { SystemDictPageDto, SystemDictSubmitDto, SystemDictVo } from '@raipiot-2f/api'
 
 import {
   systemDictsQueryOptions,
-  useDictsColumns,
-  useDictsModalForm,
-  useDictsSearchForm,
   useSystemDictRemoveMutation,
+  useSystemDictsColumns,
+  useSystemDictsModalForm,
+  useSystemDictsSearchForm,
   useSystemDictSubmitMutation
 } from '@/features/system/dicts'
 
@@ -16,17 +16,17 @@ export const Route = createLazyFileRoute('/_base/dev/templates/basic-table')({
 function BasicTable() {
   // 分页器
   const { pageParams, setPageParams, pagination, isPending, startTransition } =
-    usePagination<DictPageDto>()
+    usePagination<SystemDictPageDto>()
   // 多选器：范型为列表行数据类型
-  const { rowSelection, clearSelectedRowKeys } = useRowSelection<DictVo>()
+  const { rowSelection, clearSelectedRowKeys } = useRowSelection<SystemDictVo>()
   // 弹窗
   const modal = useModal()
   // 搜索表单
-  const { searchForm, searchFormItems } = useDictsSearchForm()
+  const { searchForm, searchFormItems } = useSystemDictsSearchForm()
   // 弹窗表单
-  const { modalForm, modalFormItems } = useDictsModalForm()
+  const { modalForm, modalFormItems } = useSystemDictsModalForm()
   // 表格列
-  const { columns } = useDictsColumns({ modal, form: modalForm })
+  const { columns } = useSystemDictsColumns({ modal, form: modalForm })
 
   // 异步查询：列表数据
   const {
@@ -77,7 +77,7 @@ function BasicTable() {
         }
       />
       {/* 表格 */}
-      <RpBasicTable<DictVo>
+      <RpBasicTable<SystemDictVo>
         rowKey={(record) => record.id!}
         // 批量选择选项
         rowSelection={rowSelection}
@@ -140,7 +140,7 @@ function BasicTable() {
           }}
           // 表单提交
           onFinish={async () => {
-            const values = modalForm.getFieldsValue(true) as DictSubmitDto
+            const values = modalForm.getFieldsValue(true) as SystemDictSubmitDto
             await submitMutateAsync({
               ...values,
               isSealed: FormatUtils.toDbNum(values.isSealed)

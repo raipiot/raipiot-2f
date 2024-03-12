@@ -1,18 +1,18 @@
 import type HttpRequest from '@raipiot-2f/axios'
 
 import { BaseAPI } from '../../base'
-import type { SystemDictPageDto, SystemDictSubmitDto, SystemDictValuePageDto } from './dto'
-import type { SystemDictsVo, SystemDictVo } from './vo'
+import type { BizDictPageDto, BizDictSubmitDto, BizDictValuePageDto } from './dto'
+import type { BizDictsVo, BizDictVo } from './vo'
 
 export * from './dto'
 export * from './vo'
 
-export class SystemDictsAPI extends BaseAPI {
+export class BizDictsAPI extends BaseAPI {
   #API_PREFIX: string
 
   constructor(httpRequest: HttpRequest) {
     super(httpRequest)
-    this.#API_PREFIX = `${this.BASE_API_PREFIX}/raipiot-system/dict`
+    this.#API_PREFIX = `${this.BASE_API_PREFIX}/raipiot-system/dict-biz`
   }
 
   /**
@@ -25,15 +25,15 @@ export class SystemDictsAPI extends BaseAPI {
   /**
    * 列表
    */
-  list(params: SystemDictPageDto) {
+  list(params: BizDictPageDto) {
     return this.httpRequest.get(`${this.#API_PREFIX}/list`, params)
   }
 
   /**
    * 父列表
    */
-  async parentList(params: SystemDictPageDto, signal?: AbortSignal) {
-    return this.httpRequest.get<SystemDictsVo>(`${this.#API_PREFIX}/parent-list`, params, {
+  async parentList(params: BizDictPageDto, signal?: AbortSignal) {
+    return this.httpRequest.get<BizDictsVo>(`${this.#API_PREFIX}/parent-list`, params, {
       signal
     })
   }
@@ -41,8 +41,8 @@ export class SystemDictsAPI extends BaseAPI {
   /**
    * 子列表
    */
-  async childList(params: SystemDictValuePageDto, signal?: AbortSignal) {
-    return this.httpRequest.get<SystemDictVo[]>(`${this.#API_PREFIX}/child-list`, params, {
+  async childList(params: BizDictValuePageDto, signal?: AbortSignal) {
+    return this.httpRequest.get<BizDictVo[]>(`${this.#API_PREFIX}/child-list`, params, {
       signal
     })
   }
@@ -72,7 +72,7 @@ export class SystemDictsAPI extends BaseAPI {
    * 详情
    */
   async detail(id: string, signal?: AbortSignal) {
-    return this.httpRequest.get<SystemDictVo>(`${this.#API_PREFIX}/detail`, { id }, { signal })
+    return this.httpRequest.get<BizDictVo>(`${this.#API_PREFIX}/detail`, { id }, { signal })
   }
 
   /**
@@ -92,7 +92,7 @@ export class SystemDictsAPI extends BaseAPI {
   /**
    * 提交
    */
-  async submit(data: SystemDictSubmitDto) {
+  async submit(data: BizDictSubmitDto) {
     return this.httpRequest.post(`${this.#API_PREFIX}/submit`, data)
   }
 

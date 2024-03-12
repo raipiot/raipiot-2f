@@ -1,15 +1,7 @@
-import type { PageDto } from '../../types'
+import type { Page } from '../../types'
 
-export interface SystemDictPageDto extends PageDto {
-  code?: string
-  dictValue?: string
-}
-
-export interface SystemDictValuePageDto extends SystemDictPageDto {
-  parentId: string
-}
-
-export interface SystemDictSubmitDto {
+export interface BizDictVo {
+  children?: BizDictVo[]
   /**
    * 字典码
    */
@@ -22,9 +14,7 @@ export interface SystemDictSubmitDto {
    * 字典名称
    */
   dictValue?: string
-  /**
-   * 主键
-   */
+  hasChildren?: boolean
   id?: string
   /**
    * 是否已删除
@@ -34,10 +24,8 @@ export interface SystemDictSubmitDto {
    * 是否已封存
    */
   isSealed?: number
-  /**
-   * 父主键
-   */
   parentId?: string
+  parentName?: string
   /**
    * 字典备注
    */
@@ -47,3 +35,5 @@ export interface SystemDictSubmitDto {
    */
   sort?: number
 }
+
+export type BizDictsVo = Page<BizDictVo>
