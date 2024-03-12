@@ -1,6 +1,5 @@
-import { systemDictTreeQueryOptions } from '@/features/system/dicts'
-import { SystemDictCode } from '@/features/system/dicts/enum'
-import { postsQueryOptions } from '@/features/system/post'
+import { SystemDictCode, systemDictTreeQueryOptions } from '@/features/system/dicts'
+import { postsQueryOptions } from '@/features/system/posts'
 
 const t = i18n.getFixedT(null, 'ROUTER')
 

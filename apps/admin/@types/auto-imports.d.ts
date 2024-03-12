@@ -123,6 +123,7 @@ declare global {
   const PageUtils: typeof import('../src/shared/utils/page')['PageUtils']
   const ParamsAPI: typeof import('@raipiot-2f/api')['ParamsAPI']
   const PortalAPI: typeof import('@raipiot-2f/api')['PortalAPI']
+  const PostsAPI: typeof import('@raipiot-2f/api')['PostsAPI']
   const QueryClient: typeof import('@tanstack/react-query')['QueryClient']
   const QueryClientProvider: typeof import('@tanstack/react-query')['QueryClientProvider']
   const RegexpUtils: typeof import('../src/shared/utils/regexp')['RegexpUtils']

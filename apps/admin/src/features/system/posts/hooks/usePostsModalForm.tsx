@@ -1,10 +1,10 @@
 import type { PostSubmitDto } from '@raipiot-2f/api'
 
 import { systemDictTreeQueryOptions } from '../../dicts'
-import { SystemDictCode } from '../../dicts/enum'
+import { SystemDictCode } from '../../dicts/enums'
 
 export const usePostsModalForm = () => {
-  const { t } = useTranslation(['SYSTEM/POST', 'COMMON'])
+  const { t } = useTranslation(['SYSTEM/POSTS', 'COMMON'])
   const { createResponsiveFormItems } = useFormCreator<PostSubmitDto>()
   const [modalForm] = AForm.useForm<PostSubmitDto>()
   const { data } = useSuspenseQuery(systemDictTreeQueryOptions(SystemDictCode.SYSTEM_POST))

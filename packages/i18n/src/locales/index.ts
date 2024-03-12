@@ -5,8 +5,8 @@ import ROUTER from './router/zh-CN.json'
 import SYSTEM_DICTS from './system/dicts/zh-CN.json'
 import SYSTEM_MENUS from './system/menus/zh-CN.json'
 import SYSTEM_PARAMS from './system/params/zh-CN.json'
+import SYSTEM_POSTS from './system/posts/zh-CN.json'
 import SYSTEM_TENANTS from './system/tenants/zh-CN.json'
-import SYSTEM_POST from './system/post/zh-CN.json'
 import VALIDATION from './validation/zh-CN.json'
 
 /**
@@ -19,10 +19,10 @@ const resources = {
   ROUTER,
   VALIDATION,
   'SYSTEM/MENUS': SYSTEM_MENUS,
+  'SYSTEM/POSTS': SYSTEM_POSTS,
   'SYSTEM/DICTS': SYSTEM_DICTS,
   'SYSTEM/PARAMS': SYSTEM_PARAMS,
   'SYSTEM/TENANTS': SYSTEM_TENANTS,
-  'SYSTEM/POST': SYSTEM_POST,
   PORTAL
 }
 

@@ -1,10 +1,11 @@
 [
   "AuthAPI",
+  "UsersAPI",
+  "PostsAPI",
   "SystemDictsAPI",
   "BizDictsAPI",
   "MenusAPI",
   "ParamsAPI",
-  "UsersAPI",
   "TenantsAPI",
   "PortalAPI",
   "DashboardAPI"

@@ -7,7 +7,7 @@ import type { PostsVo, PostVo } from './vo'
 export * from './dto'
 export * from './vo'
 
-export class PostAPI extends BaseAPI {
+export class PostsAPI extends BaseAPI {
   #API_PREFIX: string
 
   constructor(httpRequest: HttpRequest) {

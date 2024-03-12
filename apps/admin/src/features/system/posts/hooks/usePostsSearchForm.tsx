@@ -1,9 +1,9 @@
 import { systemDictTreeQueryOptions } from '../../dicts'
-import { SystemDictCode } from '../../dicts/enum'
+import { SystemDictCode } from '../../dicts/enums'
 import type { PostSearchFormModel } from '../types'
 
 export const usePostsSearchForm = () => {
-  const { t } = useTranslation('SYSTEM/POST')
+  const { t } = useTranslation('SYSTEM/POSTS')
   const { data } = useSuspenseQuery(systemDictTreeQueryOptions(SystemDictCode.SYSTEM_POST))
   const { createResponsiveFormItems } = useFormCreator<PostSearchFormModel>()
   const [searchForm] = AForm.useForm()

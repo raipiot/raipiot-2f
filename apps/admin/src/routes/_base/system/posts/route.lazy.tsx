@@ -7,13 +7,13 @@ import {
   usePostsModalForm,
   usePostsSearchForm,
   usePostSubmitMutation
-} from '@/features/system/post'
+} from '@/features/system/posts'
 
 export const Route = createLazyFileRoute('/_base/system/posts')({
-  component: PostTable
+  component: Posts
 })
 
-function PostTable() {
+function Posts() {
   // 分页器
   const { pageParams, setPageParams, pagination, isPending, startTransition } =
     usePagination<PostPageDto>()

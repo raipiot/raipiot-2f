@@ -85,7 +85,7 @@ export class SystemDictsAPI extends BaseAPI {
    * 字典数据
    */
   async dictionary(code: string, signal?: AbortSignal) {
-    return this.httpRequest.get<DictVo[]>(
+    return this.httpRequest.get<SystemDictVo[]>(
       `${this.#API_PREFIX}/dictionary`,
       { code },
       {
@@ -98,7 +98,7 @@ export class SystemDictsAPI extends BaseAPI {
    * 字典数据树
    */
   async dictionaryTree(code: string, signal?: AbortSignal) {
-    const data = await this.httpRequest.get<DictVo[]>(
+    const data = await this.httpRequest.get<SystemDictVo[]>(
       `${this.#API_PREFIX}/dictionary-tree`,
       { code },
       {

@@ -6,7 +6,7 @@ export const usePostRemoveMutation = () => {
   const { t } = useTranslation()
   const { message } = AApp.useApp()
   return useMutation({
-    mutationFn: (ids: string) => systemPostsAPI.remove(ids),
+    mutationFn: (ids: string) => postsAPI.remove(ids),
     onSuccess: () => {
       message.success(t('OPERATION.SUCCESS'))
       invalidatePostsQuery()
@@ -18,7 +18,7 @@ export const usePostSubmitMutation = () => {
   const { t } = useTranslation()
   const { message } = AApp.useApp()
   return useMutation({
-    mutationFn: (data: PostSubmitDto) => systemPostsAPI.submit(data),
+    mutationFn: (data: PostSubmitDto) => postsAPI.submit(data),
     onSuccess: (_, variables) => {
       message.success(t('OPERATION.SUCCESS'))
       if (variables.id) {

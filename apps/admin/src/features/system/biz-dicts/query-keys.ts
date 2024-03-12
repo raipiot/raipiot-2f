@@ -1,5 +1,7 @@
 import type { SystemDictPageDto } from '@raipiot-2f/api'
 
+import type { BizDictCode } from './enums'
+
 export const BIZ_DICTS_QK = 'biz:dicts'
 
 export const BIZ_DICT_QK = 'biz:dict'
@@ -14,4 +16,4 @@ export const bizDictQK = (id?: string) => [BIZ_DICT_QK, { id }]
 
 export const bizDictValuesQK = (params?: SystemDictPageDto) => [BIZ_DICT_VALUES_QK, params]
 
-export const bizDictTreeQK = () => [BIZ_DICT_TREE_QK]
+export const bizDictTreeQK = (code?: BizDictCode) => [BIZ_DICT_TREE_QK, code]

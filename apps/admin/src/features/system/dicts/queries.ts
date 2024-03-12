@@ -1,5 +1,6 @@
 import type { SystemDictPageDto, SystemDictValuePageDto } from '@raipiot-2f/api'
 
+import type { SystemDictCode } from './enums'
 import { systemDictQK, systemDictsQK, systemDictTreeQK, systemDictValuesQK } from './query-keys'
 
 export const systemDictQueryOptions = (id: string) =>
@@ -22,8 +23,9 @@ export const systemDictValuesQueryOptions = (params: SystemDictValuePageDto) =>
     placeholderData: keepPreviousData
   })
 
-export const systemDictTreeQueryOptions = (code: string) =>
+export const systemDictTreeQueryOptions = (code: SystemDictCode) =>
   queryOptions({
     queryKey: systemDictTreeQK(code),
-    queryFn: ({ signal }) => systemDictsAPI.dictionaryTree(code, signal)
+    queryFn: ({ signal }) => systemDictsAPI.dictionaryTree(code, signal),
+    placeholderData: keepPreviousData
   })

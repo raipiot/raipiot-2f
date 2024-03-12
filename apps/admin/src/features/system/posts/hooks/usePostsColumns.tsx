@@ -5,7 +5,7 @@ import { isMobile } from 'react-device-detect'
 import type { UseModal } from '@/shared/hooks/useModal'
 
 import { systemDictTreeQueryOptions } from '../../dicts'
-import { SystemDictCode } from '../../dicts/enum'
+import { SystemDictCode } from '../../dicts/enums'
 import { usePostRemoveMutation } from '../mutations'
 import { postQueryOptions } from '../queries'
 
@@ -17,7 +17,7 @@ interface UsePostsColumnsProps {
 export const usePostsColumns = (props?: UsePostsColumnsProps) => {
   const { modal, form } = props ?? {}
 
-  const { t } = useTranslation(['SYSTEM/POST', 'COMMON', 'PORTAL'])
+  const { t } = useTranslation(['SYSTEM/POSTS', 'SYSTEM/TENANTS', 'COMMON'])
   const { createActions, createColumns } = useTableCreator<PostVo>()
 
   const { mutateAsync, isPending } = usePostRemoveMutation()
@@ -50,7 +50,7 @@ export const usePostsColumns = (props?: UsePostsColumnsProps) => {
         custom: { type: 'tagString' }
       },
       {
-        title: t('PORTAL:TENANT.ID'),
+        title: t('SYSTEM/TENANTS:ID'),
         dataIndex: 'tenantId',
         width: 80
       },
