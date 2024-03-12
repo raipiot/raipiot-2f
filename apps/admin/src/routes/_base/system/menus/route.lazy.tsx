@@ -2,6 +2,7 @@ import type { DictVo, LazyMenuPageDto, MenuSubmitDto } from '@raipiot-2f/api'
 
 import {
   menusQueryOptions,
+  MenuType,
   updateMenuChildrenByParentId,
   useMenuRemoveMutation,
   useMenusColumns,
@@ -33,7 +34,7 @@ function Menus() {
   // 弹窗表单
   const { modalForm, modalFormItems } = useMenusModalForm()
   // 表格列
-  const { columns } = useMenusColumns({ modal, form: modalForm })
+  const { columns } = useMenusColumns({ modal, form: modalForm, clearExpandedRowKeys })
 
   // 异步查询：列表数据
   const { data, refetch } = useSuspenseQuery(menusQueryOptions(pageParams))
@@ -103,7 +104,10 @@ function Menus() {
         // 事件：批量删除
         onBatchDelete={(ids) =>
           removeMutateAsync(ids.join(), {
-            onSuccess: clearSelectedRowKeys
+            onSuccess: () => {
+              clearSelectedRowKeys()
+              clearExpandedRowKeys()
+            }
           })
         }
         scroll={{ x: 2400 }}
@@ -111,12 +115,14 @@ function Menus() {
           expandedRowKeys,
           onExpand: async (expanded, record) => {
             if (expanded) {
-              const childrenData = await queryClient.ensureQueryData(
-                menusQueryOptions({ parentId: record.id! })
-              )
-              queryClient.setQueryData(menusQueryOptions(pageParams).queryKey, (oldData) =>
-                updateMenuChildrenByParentId(oldData ?? [], record.id!, childrenData)
-              )
+              if (!record.children || record.children.length === 0) {
+                const childrenData = await queryClient.ensureQueryData(
+                  menusQueryOptions({ parentId: record.id! })
+                )
+                queryClient.setQueryData(menusQueryOptions(pageParams).queryKey, (oldData) =>
+                  updateMenuChildrenByParentId(oldData ?? [], record.id!, childrenData)
+                )
+              }
               addExpandedRowKey(record.id!)
             } else {
               removeExpandedRowKey(record.id!)
@@ -151,7 +157,8 @@ function Menus() {
           mode={modal.type}
           // 表单初始值
           initialValues={{
-            sort: 1
+            sort: 1,
+            category: MenuType.MENU
           }}
           // 表单提交
           onFinish={async () => {

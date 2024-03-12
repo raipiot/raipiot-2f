@@ -10,10 +10,11 @@ import { menuQueryOptions } from '../queries'
 interface UseMenusColumnsProps {
   modal?: UseModal<string>
   form?: FormInstance
+  clearExpandedRowKeys?: () => void
 }
 
 export const useMenusColumns = (props?: UseMenusColumnsProps) => {
-  const { modal, form } = props ?? {}
+  const { modal, form, clearExpandedRowKeys } = props ?? {}
 
   const { t } = useTranslation(['SYSTEM/MENUS', 'COMMON'])
   const { createActions, createColumns } = useTableCreator<MenuVo>()
@@ -108,7 +109,10 @@ export const useMenusColumns = (props?: UseMenusColumnsProps) => {
             />
             <RpDeletePopconfirm
               okBtnLoading={isPending}
-              onConfirm={() => mutateAsync(record.id!)}
+              onConfirm={() => {
+                mutateAsync(record.id!)
+                clearExpandedRowKeys?.()
+              }}
             >
               <RpButton
                 variant="delete"
