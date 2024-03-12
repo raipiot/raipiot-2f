@@ -6,7 +6,7 @@ const t = i18n.getFixedT(null, 'ROUTER')
 
 export const Route = createFileRoute('/_base/system/biz-dicts/$id')({
   staticData: {
-    title: () => t('SYSTEM.SYSTEM.DICTS.CONFIG'),
+    title: () => t('SYSTEM.BUSINESS.DICTS.CONFIG'),
     icon: <MaterialSymbolsBook2Rounded />
   },
   loader: async ({ params }) => {
