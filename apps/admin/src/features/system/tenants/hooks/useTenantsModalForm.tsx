@@ -58,7 +58,7 @@ export const useTenantsModalForm = (props: UseTenantsModalFormProps) => {
           label: t('ACCOUNT.LIMIT')
         },
         render: (value) => <AccountLimit value={value} />,
-        hidden: modal?.isEdit
+        hidden: !modal?.isRead
       },
       {
         type: 'form-item',
@@ -67,7 +67,7 @@ export const useTenantsModalForm = (props: UseTenantsModalFormProps) => {
           label: t('EXPIRE.TIME')
         },
         render: (value) => <ExpireTime value={value} />,
-        hidden: modal?.isEdit
+        hidden: !modal?.isRead
       },
       {
         type: 'input',
