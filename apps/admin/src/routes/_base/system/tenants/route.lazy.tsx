@@ -6,25 +6,32 @@ import {
   useTenantsColumns,
   useTenantsModalForm,
   useTenantsSearchForm,
+  useTenantsSettingForm,
   useTenantSubmitMutation
 } from '@/features/system/tenants'
+import { SettingModal } from '@/features/system/tenants/components'
 
 export const Route = createLazyFileRoute('/_base/system/tenants')({
   component: Tenants
 })
 
 function Tenants() {
+  const { t } = useTranslation('SYSTEM/TENANTS')
   // 分页器
   const { pageParams, setPageParams, pagination, isPending, startTransition } =
     usePagination<TenantPageDto>()
   // 多选器：范型为列表行数据类型
-  const { rowSelection, clearSelectedRowKeys } = useRowSelection<TenantVo>()
+  const { rowSelection, selectedRowKeys, clearSelectedRowKeys } = useRowSelection<TenantVo>()
   // 弹窗
   const modal = useModal()
+  // 弹窗：授权配置
+  const settingModal = useModal()
   // 搜索表单
   const { searchForm, searchFormItems } = useTenantsSearchForm()
   // 弹窗表单
-  const { modalForm, modalFormItems } = useTenantsModalForm()
+  const { modalForm, modalFormItems } = useTenantsModalForm({ modal })
+  // 表单：授权配置
+  const { settingForm, settingFormItems } = useTenantsSettingForm()
   // 表格列
   const { columns } = useTenantsColumns({ modal, form: modalForm })
 
@@ -104,6 +111,23 @@ function Tenants() {
           })
         }
         scroll={{ x: 1500 }}
+        renderTableOpeate={
+          <ATooltip title={t('AUTH.CONFIG.TOOLTIP')}>
+            <AButton disabled>{t('AUTH.CONFIG')}</AButton>
+          </ATooltip>
+        }
+        renderTableBatchOpeate={
+          <ATooltip title={t('AUTH.CONFIG.TOOLTIP')}>
+            <AButton
+              onClick={() => {
+                settingForm.resetFields()
+                settingModal.openEdit()
+              }}
+            >
+              {t('AUTH.CONFIG')}
+            </AButton>
+          </ATooltip>
+        }
       />
       {/* 模态框 */}
       <RpModal
@@ -135,14 +159,23 @@ function Tenants() {
           // 表单提交
           onFinish={async () => {
             const values = modalForm.getFieldsValue(true)
-            await submitMutateAsync({
-              ...values,
-              isSealed: FormatUtils.toDbNum(values.isSealed)
-            })
-            modal.close()
+            await submitMutateAsync(
+              { ...values },
+              {
+                onSuccess: modal.close
+              }
+            )
           }}
         />
       </RpModal>
+      {/* 授权配置 */}
+      <SettingModal
+        modal={settingModal}
+        form={settingForm}
+        formItems={settingFormItems}
+        selectedRowKeys={selectedRowKeys}
+        clearSelectedRowKeys={clearSelectedRowKeys}
+      />
     </RpPageContainer>
   )
 }

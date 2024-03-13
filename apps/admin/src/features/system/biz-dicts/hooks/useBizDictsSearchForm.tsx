@@ -3,12 +3,12 @@ import type { BizDictSearchFormModel } from '@/features/system/biz-dicts'
 // 在系统字典、系统字典配置中通用
 export const useBizDictsSearchForm = () => {
   const { t } = useTranslation('SYSTEM/DICTS')
-  const { createResponsiveFormItems } = useFormCreator<BizDictSearchFormModel>()
+  const { createSearchForm } = useFormCreator<BizDictSearchFormModel>()
   const [searchForm] = AForm.useForm()
 
   return {
     searchForm,
-    searchFormItems: createResponsiveFormItems([
+    searchFormItems: createSearchForm([
       {
         type: 'input',
         formItemProps: {

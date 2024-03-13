@@ -19,6 +19,7 @@ export type RpDynamicFormProps<T extends Record<string, any>> = RpFormProps<T> &
 function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<T>) {
   const { items, mode, ...formProps } = props
   const { t } = useTranslation()
+  const span = useResponsiveSpan()
   return (
     <RpForm<T> {...formProps}>
       <RpRow>
@@ -29,15 +30,17 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
               return null
             }
             if (type === 'custom') {
-              return typeof item.render === 'function' ? item.render() : item.render
+              return item.render ? item.render(formProps.form?.getFieldsValue(true), index) : null
             }
             const { colProps, formItemProps } = item
             const value = formItemProps?.name
               ? formProps.form?.getFieldValue(formItemProps?.name)
               : undefined
+            const record = formProps.form?.getFieldsValue(true)
             return (
               <ACol
                 key={index}
+                span={span}
                 {...colProps}
               >
                 <AForm.Item
@@ -54,22 +57,43 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
                       {type === 'tree-select' && (
                         <ATreeSelect
                           value={value}
+                          variant="borderless"
                           {...item.treeSelectProps}
                         />
                       )}
                       {type === 'select' && (
                         <ASelect
                           value={value}
+                          variant="borderless"
                           {...item.selectProps}
                         />
                       )}
-                      {type === 'switch' && <RpBoolean value={value} />}
+                      {type === 'switch' && (
+                        <RpBoolean
+                          value={value}
+                          variant="borderless"
+                        />
+                      )}
                       {type === 'radio-group' && (
                         <ARadio.Group
                           value={value}
                           {...item.radioGroupProps}
                         />
                       )}
+                      {type === 'upload' && (
+                        <RpUpload
+                          disabled
+                          {...item.uploadProps}
+                        />
+                      )}
+                      {type === 'date-picker' && (
+                        <ADatePicker
+                          value={value}
+                          variant="borderless"
+                          {...item.datePickerProps}
+                        />
+                      )}
+                      {type === 'form-item' && (item.render ? item.render(value, record) : null)}
                     </>
                   ) : (
                     <>
@@ -81,6 +105,7 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
                       {type === 'cascader' && <ACascader {...item.cascaderProps} />}
                       {type === 'date-picker' && <ADatePicker {...item.datePickerProps} />}
                       {type === 'input-number' && <AInputNumber {...item.inputNumberProps} />}
+                      {type === 'upload' && <RpUpload {...item.uploadProps} />}
                       {type === 'switch' && (
                         <ASwitch
                           checkedChildren={t('Y')}
@@ -92,7 +117,9 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
                         <AButton {...item.buttonProps}>{item.buttonProps?.children}</AButton>
                       )}
                       {type === 'form-item' &&
-                        (typeof item.render === 'function' ? item.render() : item.render)}
+                        (typeof item.render === 'function'
+                          ? item.render(value, record, index)
+                          : item.render)}
                     </>
                   )}
                 </AForm.Item>

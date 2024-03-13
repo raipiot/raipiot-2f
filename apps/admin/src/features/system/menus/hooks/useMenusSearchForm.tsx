@@ -2,12 +2,12 @@ import type { MenuSearchFormModel } from '../types'
 
 export const useMenusSearchForm = () => {
   const { t } = useTranslation('SYSTEM/MENUS')
-  const { createResponsiveFormItems } = useFormCreator<MenuSearchFormModel>()
+  const { createSearchForm } = useFormCreator<MenuSearchFormModel>()
   const [searchForm] = AForm.useForm()
 
   return {
     searchForm,
-    searchFormItems: createResponsiveFormItems([
+    searchFormItems: createSearchForm([
       {
         type: 'input',
         formItemProps: {

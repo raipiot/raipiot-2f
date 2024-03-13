@@ -4,6 +4,7 @@ import { isMobile } from 'react-device-detect'
 
 import type { UseModal } from '@/shared/hooks/useModal'
 
+import { AccountLimit, ExpireTime } from '../components'
 import { useTenantRemoveMutation } from '../mutations'
 import { tenantQueryOptions } from '../queries'
 
@@ -45,12 +46,12 @@ export const useTenantsColumns = (props?: UseTenantsColumnsProps) => {
       {
         title: t('ACCOUNT.LIMIT'),
         dataIndex: 'accountNumber',
-        custom: { type: 'string' }
+        render: (value) => <AccountLimit value={value} />
       },
       {
         title: t('EXPIRE.TIME'),
         dataIndex: 'expireTime',
-        custom: { type: 'string' }
+        render: (value) => <ExpireTime value={value} />
       },
       {
         title: t('DOMAIN'),

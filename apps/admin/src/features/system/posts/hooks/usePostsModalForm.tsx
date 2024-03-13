@@ -5,13 +5,13 @@ import { SystemDictCode } from '../../dicts/enums'
 
 export const usePostsModalForm = () => {
   const { t } = useTranslation(['SYSTEM/POSTS', 'COMMON'])
-  const { createResponsiveFormItems } = useFormCreator<PostSubmitDto>()
+  const { createModalForm } = useFormCreator<PostSubmitDto>()
   const [modalForm] = AForm.useForm<PostSubmitDto>()
   const { data } = useSuspenseQuery(systemDictTreeQueryOptions(SystemDictCode.SYSTEM_POST))
 
   return {
     modalForm,
-    modalFormItems: createResponsiveFormItems([
+    modalFormItems: createModalForm([
       {
         type: 'tree-select',
         formItemProps: {

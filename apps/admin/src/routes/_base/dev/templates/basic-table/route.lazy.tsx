@@ -141,11 +141,13 @@ function BasicTable() {
           // 表单提交
           onFinish={async () => {
             const values = modalForm.getFieldsValue(true) as SystemDictSubmitDto
-            await submitMutateAsync({
-              ...values,
-              isSealed: FormatUtils.toDbNum(values.isSealed)
-            })
-            modal.close()
+            await submitMutateAsync(
+              {
+                ...values,
+                isSealed: FormatUtils.toDbNum(values.isSealed)
+              },
+              { onSuccess: modal.close }
+            )
           }}
         />
       </RpModal>

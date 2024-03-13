@@ -18,6 +18,9 @@ const RpModal = memo<RpModalProps>(({ type, ...restProps }) => {
       cancelText={t('CANCEL')}
       forceRender // 防止模态框内的表单因为未渲染而没有绑定表单实例
       destroyOnClose
+      cancelButtonProps={{
+        disabled: confirmLoading
+      }}
       okButtonProps={{
         loading: confirmLoading,
         disabled: confirmLoading

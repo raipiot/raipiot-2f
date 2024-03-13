@@ -13,5 +13,6 @@
   "PRODUCT.PACKAGE.MANAGEMENT": "Product Package Management",
   "SYSTEM.BACKGROUND.IMAGE": "System Background Image",
   "PRODUCT.PACKAGE.NAME": "Product Package Name",
-  "MENU.LIST": "Menu List"
+  "MENU.LIST": "Menu List",
+  "AUTH.CONFIG.TOOLTIP": "Config auth info for tenants"
 }

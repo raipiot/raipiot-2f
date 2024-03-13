@@ -1,13 +1,22 @@
+import type { UseModal } from '@/shared/hooks/useModal'
+
+import { AccountLimit, ExpireTime } from '../components'
 import type { TenantSubmitFormModel } from '../types'
 
-export const useTenantsModalForm = () => {
+interface UseTenantsModalFormProps {
+  modal?: UseModal<string>
+}
+
+export const useTenantsModalForm = (props: UseTenantsModalFormProps) => {
+  const { modal } = props ?? {}
+
   const { t } = useTranslation(['SYSTEM/TENANTS', 'COMMON'])
-  const { createResponsiveFormItems } = useFormCreator<TenantSubmitFormModel>()
+  const { createModalForm } = useFormCreator<TenantSubmitFormModel>()
   const [modalForm] = AForm.useForm<TenantSubmitFormModel>()
 
   return {
     modalForm,
-    modalFormItems: createResponsiveFormItems([
+    modalFormItems: createModalForm([
       {
         type: 'input',
         formItemProps: {
@@ -43,10 +52,35 @@ export const useTenantsModalForm = () => {
         }
       },
       {
+        type: 'form-item',
+        formItemProps: {
+          name: 'accountNumber',
+          label: t('ACCOUNT.LIMIT')
+        },
+        render: (value) => <AccountLimit value={value} />,
+        hidden: !modal?.isRead
+      },
+      {
+        type: 'form-item',
+        formItemProps: {
+          name: 'expireTime',
+          label: t('EXPIRE.TIME')
+        },
+        render: (value) => <ExpireTime value={value} />,
+        hidden: !modal?.isRead
+      },
+      {
         type: 'input',
         formItemProps: {
           name: 'domainUrl',
           label: t('DOMAIN')
+        }
+      },
+      {
+        type: 'upload',
+        formItemProps: {
+          name: 'backgroundUrl',
+          label: t('SYSTEM.BACKGROUND.IMAGE')
         }
       }
     ])

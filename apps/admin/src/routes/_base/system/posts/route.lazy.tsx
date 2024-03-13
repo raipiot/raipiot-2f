@@ -136,8 +136,12 @@ function Posts() {
           // 表单提交
           onFinish={async () => {
             const values = modalForm.getFieldsValue(true)
-            await submitMutateAsync({ ...values, tenantId: '' })
-            modal.close()
+            await submitMutateAsync(
+              { ...values, tenantId: '' },
+              {
+                onSuccess: modal.close
+              }
+            )
           }}
         />
       </RpModal>

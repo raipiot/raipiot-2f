@@ -84,5 +84,6 @@
   "CLOSE.OTHER.TAGS": "关闭其他标签",
   "CONFIG": "配置",
   "DEV.WAITING": "正在火速开发中，敬请期待...",
-  "OPERATION.SUCCESS": "操作成功"
+  "OPERATION.SUCCESS": "操作成功",
+  "NOT.LIMITED": "不限制"
 }

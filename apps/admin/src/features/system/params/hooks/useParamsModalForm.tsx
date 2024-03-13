@@ -2,12 +2,12 @@ import type { ParamSubmitFormModel } from '../types'
 
 export const useParamsModalForm = () => {
   const { t } = useTranslation(['SYSTEM/PARAMS', 'COMMON'])
-  const { createResponsiveFormItems } = useFormCreator<ParamSubmitFormModel>()
+  const { createModalForm } = useFormCreator<ParamSubmitFormModel>()
   const [modalForm] = AForm.useForm<ParamSubmitFormModel>()
 
   return {
     modalForm,
-    modalFormItems: createResponsiveFormItems([
+    modalFormItems: createModalForm([
       {
         type: 'input',
         formItemProps: {

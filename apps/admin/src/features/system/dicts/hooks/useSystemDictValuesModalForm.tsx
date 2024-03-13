@@ -2,12 +2,12 @@ import type { SystemDictSubmitFormModel } from '../types'
 
 export const useSystemDictValuesModalForm = () => {
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
-  const { createResponsiveFormItems } = useFormCreator<SystemDictSubmitFormModel>()
+  const { createModalForm } = useFormCreator<SystemDictSubmitFormModel>()
   const [modalForm] = AForm.useForm<SystemDictSubmitFormModel>()
 
   return {
     modalForm,
-    modalFormItems: createResponsiveFormItems([
+    modalFormItems: createModalForm([
       {
         type: 'input',
         colProps: {
