@@ -8,5 +8,6 @@
   "ParamsAPI",
   "TenantsAPI",
   "PortalAPI",
-  "DashboardAPI"
+  "DashboardAPI",
+  "DeptsAPI"
 ]

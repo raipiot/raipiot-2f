@@ -36,7 +36,7 @@
   "LOAD.DATA.ERROR": "Loading data error",
   "N": "No",
   "NAME": "Name",
-  "NETWORK.ERROR": "Network Error",
+  "NETWORK.ERROR": "Network error",
   "NOTIFICATION": "Notification",
   "OPERATION": "Operation",
   "OPERATION.CONFIRMATION": "Are you sure you want to do this action?",
@@ -87,5 +87,6 @@
   "CONFIG": "Config",
   "DEV.WAITING": "Still in development, please wait ...",
   "OPERATION.SUCCESS": "Operation success",
-  "NOT.LIMITED": "Not limited"
+  "NOT.LIMITED": "Not limited",
+  "NONE": "None"
 }

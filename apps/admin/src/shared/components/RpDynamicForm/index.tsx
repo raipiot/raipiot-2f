@@ -58,13 +58,15 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
                         <ATreeSelect
                           value={value}
                           variant="borderless"
+                          suffixIcon={null}
                           {...item.treeSelectProps}
                         />
                       )}
                       {type === 'select' && (
                         <ASelect
-                          value={value}
+                          value={String(value)}
                           variant="borderless"
+                          suffixIcon={null}
                           {...item.selectProps}
                         />
                       )}

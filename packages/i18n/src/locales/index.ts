@@ -2,6 +2,7 @@ import AUTH from './auth/zh-CN.json'
 import COMMON from './common/zh-CN.json'
 import PORTAL from './portal/zh-CN.json'
 import ROUTER from './router/zh-CN.json'
+import SYSTEM_DEPTS from './system/depts/zh-CN.json'
 import SYSTEM_DICTS from './system/dicts/zh-CN.json'
 import SYSTEM_MENUS from './system/menus/zh-CN.json'
 import SYSTEM_PARAMS from './system/params/zh-CN.json'
@@ -23,6 +24,7 @@ const resources = {
   'SYSTEM/DICTS': SYSTEM_DICTS,
   'SYSTEM/PARAMS': SYSTEM_PARAMS,
   'SYSTEM/TENANTS': SYSTEM_TENANTS,
+  'SYSTEM/DEPTS': SYSTEM_DEPTS,
   PORTAL
 }
 
