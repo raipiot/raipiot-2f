@@ -156,11 +156,13 @@ function Menus() {
           // 表单提交
           onFinish={async () => {
             const values = modalForm.getFieldsValue(true) as MenuSubmitDto
-            await submitMutateAsync({
-              ...values,
-              isOpen: FormatUtils.toDbNum(values.isOpen)
-            })
-            modal.close()
+            await submitMutateAsync(
+              {
+                ...values,
+                isOpen: FormatUtils.toDbNum(values.isOpen)
+              },
+              { onSuccess: modal.close }
+            )
           }}
         />
       </RpModal>

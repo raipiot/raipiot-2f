@@ -13,5 +13,6 @@
   "PRODUCT.PACKAGE.MANAGEMENT": "产品包管理",
   "SYSTEM.BACKGROUND.IMAGE": "系统背景",
   "PRODUCT.PACKAGE.NAME": "产品包名称",
-  "MENU.LIST": "菜单列表"
+  "MENU.LIST": "菜单列表",
+  "AUTH.CONFIG.TOOLTIP": "为租户配置账号额度、过期时间等授权信息"
 }

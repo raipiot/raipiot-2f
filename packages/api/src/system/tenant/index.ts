@@ -1,7 +1,7 @@
 import type HttpRequest from '@raipiot-2f/axios'
 
 import { BaseAPI } from '../../base'
-import type { TenantPageDto, TenantSubmitDto } from './dto'
+import type { TenantPageDto, TenantSelectDto, TenantSettingsDto, TenantSubmitDto } from './dto'
 import type { TenantsVo, TenantVo } from './vo'
 
 export * from './dto'
@@ -49,6 +49,35 @@ export class TenantsAPI extends BaseAPI {
         params: {
           ids
         }
+      }
+    )
+  }
+
+  /**
+   * 授权
+   */
+  async setting(ids: string, params: TenantSettingsDto) {
+    return this.httpRequest.post(
+      `${this.#API_PREFIX}/setting`,
+      {},
+      {
+        params: {
+          ids,
+          ...params
+        }
+      }
+    )
+  }
+
+  /**
+   * 下拉数据源
+   */
+  async select(params?: TenantSelectDto, signal?: AbortSignal) {
+    return this.httpRequest.get<TenantsVo>(
+      `${this.#API_PREFIX}/select`,
+      { ...params },
+      {
+        signal
       }
     )
   }

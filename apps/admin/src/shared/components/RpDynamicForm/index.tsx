@@ -57,16 +57,23 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
                       {type === 'tree-select' && (
                         <ATreeSelect
                           value={value}
+                          variant="borderless"
                           {...item.treeSelectProps}
                         />
                       )}
                       {type === 'select' && (
                         <ASelect
                           value={value}
+                          variant="borderless"
                           {...item.selectProps}
                         />
                       )}
-                      {type === 'switch' && <RpBoolean value={value} />}
+                      {type === 'switch' && (
+                        <RpBoolean
+                          value={value}
+                          variant="borderless"
+                        />
+                      )}
                       {type === 'radio-group' && (
                         <ARadio.Group
                           value={value}
@@ -77,6 +84,13 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
                         <RpUpload
                           disabled
                           {...item.uploadProps}
+                        />
+                      )}
+                      {type === 'date-picker' && (
+                        <ADatePicker
+                          value={value}
+                          variant="borderless"
+                          {...item.datePickerProps}
                         />
                       )}
                       {type === 'form-item' && (item.render ? item.render(value, record) : null)}

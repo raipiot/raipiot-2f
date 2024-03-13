@@ -1,4 +1,4 @@
-import type { TenantSubmitDto } from '@raipiot-2f/api'
+import type { TenantSettingsDto, TenantSubmitDto } from '@raipiot-2f/api'
 
 import { invalidateTenantQuery, invalidateTenantsQuery } from './invalidates'
 
@@ -24,6 +24,20 @@ export const useTenantSubmitMutation = () => {
       if (variables.id) {
         invalidateTenantQuery(variables.id)
       }
+      invalidateTenantsQuery()
+    }
+  })
+}
+
+export const useTanantSettingMutation = () => {
+  const { t } = useTranslation()
+  const { message } = AApp.useApp()
+  return useMutation({
+    mutationFn: ({ ids, data }: { ids: string; data: TenantSettingsDto }) =>
+      tenantsAPI.setting(ids, data),
+    onSuccess: (_, variables) => {
+      message.success(t('OPERATION.SUCCESS'))
+      variables.ids.split(',').forEach(invalidateTenantQuery)
       invalidateTenantsQuery()
     }
   })

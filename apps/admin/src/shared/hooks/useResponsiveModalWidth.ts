@@ -5,17 +5,17 @@ interface ResponsiveModalTypeOptions {
    * 创建弹窗宽度
    * @default '80%'
    */
-  create: string
+  create?: string
   /**
    * 编辑弹窗宽度
    * @default '80%'
    */
-  edit: string
+  edit?: string
   /**
    * 查看弹窗宽度
    * @default '70%'
    */
-  read: string
+  read?: string
 }
 
 /**

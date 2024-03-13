@@ -12,6 +12,8 @@ type RpButtonType =
   | 'reset'
   | 'search'
   | 'create-child'
+  | 'cancel'
+  | 'confirm'
 
 interface RpButtonProps extends ButtonProps {
   variant?: RpButtonType
@@ -77,6 +79,16 @@ function RpButton(props: RpButtonProps) {
         case 'create-child':
           return {
             children: t('CREATE.CHILD')
+          }
+        // 取消
+        case 'cancel':
+          return {
+            children: t('CANCEL')
+          }
+        case 'confirm':
+          return {
+            type: 'primary',
+            children: t('CONFIRM')
           }
         default:
           return {}
