@@ -2,12 +2,12 @@ import type { TenantSearchFormModel } from '../types'
 
 export const useTenantsSearchForm = () => {
   const { t } = useTranslation('SYSTEM/TENANTS')
-  const { createResponsiveFormItems } = useFormCreator<TenantSearchFormModel>()
+  const { createSearchForm } = useFormCreator<TenantSearchFormModel>()
   const [searchForm] = AForm.useForm()
 
   return {
     searchForm,
-    searchFormItems: createResponsiveFormItems([
+    searchFormItems: createSearchForm([
       {
         type: 'input',
         formItemProps: {

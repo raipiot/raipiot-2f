@@ -11,12 +11,12 @@ export const useTenantsModalForm = (props: UseTenantsModalFormProps) => {
   const { modal } = props ?? {}
 
   const { t } = useTranslation(['SYSTEM/TENANTS', 'COMMON'])
-  const { createResponsiveFormItems } = useFormCreator<TenantSubmitFormModel>()
+  const { createModalForm } = useFormCreator<TenantSubmitFormModel>()
   const [modalForm] = AForm.useForm<TenantSubmitFormModel>()
 
   return {
     modalForm,
-    modalFormItems: createResponsiveFormItems([
+    modalFormItems: createModalForm([
       {
         type: 'input',
         formItemProps: {
@@ -74,6 +74,13 @@ export const useTenantsModalForm = (props: UseTenantsModalFormProps) => {
         formItemProps: {
           name: 'domainUrl',
           label: t('DOMAIN')
+        }
+      },
+      {
+        type: 'upload',
+        formItemProps: {
+          name: 'backgroundUrl',
+          label: t('SYSTEM.BACKGROUND.IMAGE')
         }
       }
     ])

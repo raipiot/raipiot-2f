@@ -14,6 +14,8 @@ import type {
 import type { TextAreaProps } from 'antd/es/input'
 import type { ReactNode } from 'react'
 
+import type { RpUploadProps } from '../RpUpload'
+
 type RpInput = { type: 'input' } & { inputProps?: InputProps }
 type RpTextArea = { type: 'text-area' } & { textAreaProps?: TextAreaProps }
 type RpRadioGroup = { type: 'radio-group' } & { radioGroupProps?: RadioGroupProps }
@@ -23,6 +25,7 @@ type RpCascader = { type: 'cascader' } & { cascaderProps?: CascaderProps }
 type RpDatePicker = { type: 'date-picker' } & { datePickerProps?: DatePickerProps }
 type RpInputNumber = { type: 'input-number' } & { inputNumberProps?: InputNumberProps }
 type RpSwitch = { type: 'switch' } & { switchProps?: SwitchProps }
+type RpUpload = { type: 'upload' } & { uploadProps?: RpUploadProps }
 type RpButton = { type: 'button' } & { buttonProps?: ButtonProps }
 type RpCustomFormItem<T> = {
   type: 'form-item'
@@ -56,14 +59,11 @@ export type RpSearchFormItem<T> =
   | ((RpBaseFormItem<T> & RpSearchOnly) &
       (
         | RpInput
-        | RpTextArea
         | RpRadioGroup
         | RpSelect
         | RpTreeSelect
         | RpCascader
         | RpDatePicker
-        | RpInputNumber
-        | RpSwitch
         | RpButton
         | RpCustomFormItem<T>
       ))
@@ -81,6 +81,7 @@ export type RpBasicFormItem<T> =
         | RpDatePicker
         | RpInputNumber
         | RpSwitch
+        | RpUpload
         | RpButton
         | RpCustomFormItem<T>
       ))

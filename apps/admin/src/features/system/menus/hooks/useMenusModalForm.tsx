@@ -4,14 +4,14 @@ import type { MenuSubmitFormModel } from '../types'
 
 export const useMenusModalForm = () => {
   const { t } = useTranslation(['SYSTEM/MENUS', 'COMMON'])
-  const { createResponsiveFormItems } = useFormCreator<MenuSubmitFormModel>()
+  const { createModalForm } = useFormCreator<MenuSubmitFormModel>()
   const [modalForm] = AForm.useForm<MenuSubmitFormModel>()
 
   const { data } = useSuspenseQuery(menuTreeQueryOptions())
 
   return {
     modalForm,
-    modalFormItems: createResponsiveFormItems([
+    modalFormItems: createModalForm([
       {
         type: 'input',
         formItemProps: {

@@ -47,6 +47,7 @@
     "@tauri-apps/api": "^1.5.3",
     "@types/dom-view-transitions": "^1.0.4",
     "antd": "^5.15.2",
+    "antd-img-crop": "^4.21.0",
     "clsx": "^2.1.0",
     "dayjs": "^1.11.10",
     "framer-motion": "^11.0.12",

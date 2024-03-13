@@ -2,12 +2,12 @@ import type { BizDictSubmitFormModel } from '../types'
 
 export const useBizDictsModalForm = () => {
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
-  const { createResponsiveFormItems } = useFormCreator<BizDictSubmitFormModel>()
+  const { createModalForm } = useFormCreator<BizDictSubmitFormModel>()
   const [modalForm] = AForm.useForm<BizDictSubmitFormModel>()
 
   return {
     modalForm,
-    modalFormItems: createResponsiveFormItems([
+    modalFormItems: createModalForm([
       {
         type: 'input',
         formItemProps: {

@@ -19,6 +19,7 @@ export type RpDynamicFormProps<T extends Record<string, any>> = RpFormProps<T> &
 function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<T>) {
   const { items, mode, ...formProps } = props
   const { t } = useTranslation()
+  const span = useResponsiveSpan()
   return (
     <RpForm<T> {...formProps}>
       <RpRow>
@@ -39,6 +40,7 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
             return (
               <ACol
                 key={index}
+                span={span}
                 {...colProps}
               >
                 <AForm.Item
@@ -71,6 +73,12 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
                           {...item.radioGroupProps}
                         />
                       )}
+                      {type === 'upload' && (
+                        <RpUpload
+                          disabled
+                          {...item.uploadProps}
+                        />
+                      )}
                       {type === 'form-item' && (item.render ? item.render(value, record) : null)}
                     </>
                   ) : (
@@ -83,6 +91,7 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
                       {type === 'cascader' && <ACascader {...item.cascaderProps} />}
                       {type === 'date-picker' && <ADatePicker {...item.datePickerProps} />}
                       {type === 'input-number' && <AInputNumber {...item.inputNumberProps} />}
+                      {type === 'upload' && <RpUpload {...item.uploadProps} />}
                       {type === 'switch' && (
                         <ASwitch
                           checkedChildren={t('Y')}
