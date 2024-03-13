@@ -1,0 +1,8 @@
+{
+  "FULLNAME": "Full name of the dept",
+  "TENANT": "Owned tenant",
+  "NAME": "Dept Name",
+  "TYPE": "Dept Type",
+  "SORT": "Sort",
+  "PARENT": "Parent Dept"
+}

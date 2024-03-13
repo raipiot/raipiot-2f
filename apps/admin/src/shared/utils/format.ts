@@ -25,4 +25,35 @@ export class FormatUtils {
     }
     return 0
   }
+
+  static tree2Breadcrumb<T extends { value: string; title: string; children: T[] }>(
+    tree: T[],
+    value: string
+  ) {
+    const breadcrumb: string[] = []
+
+    const find = (_tree: T[], _value: string) => {
+      for (let i = 0; i < _tree.length; i += 1) {
+        const item = _tree[i]
+
+        if (item.value?.toString() === _value?.toString()) {
+          breadcrumb.push(item.title)
+          return true
+        }
+        if (item.children && item.children.length) {
+          if (find(item.children, _value)) {
+            breadcrumb.push(item.title)
+            return true
+          }
+        }
+      }
+      return false
+    }
+    find(tree, value?.toString())
+
+    const result = breadcrumb.reverse().map((i) => ({
+      title: i
+    }))
+    return result
+  }
 }
