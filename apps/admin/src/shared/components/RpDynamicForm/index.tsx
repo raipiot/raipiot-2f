@@ -61,12 +61,6 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
                           suffixIcon={null}
                           {...item.treeSelectProps}
                         />
-                        // <ABreadcrumb
-                        //   items={FormatUtils.tree2Breadcrumb(
-                        //     item.treeSelectProps?.treeData as any,
-                        //     value
-                        //   )}
-                        // />
                       )}
                       {type === 'select' && (
                         <ASelect

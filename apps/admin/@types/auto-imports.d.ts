@@ -173,7 +173,6 @@ declare global {
   const createRootRouteWithContext: typeof import('@tanstack/react-router')['createRootRouteWithContext']
   const createRouter: typeof import('@tanstack/react-router')['createRouter']
   const dashboardAPI: typeof import('../src/shared/api/index')['dashboardAPI']
-  const deptAPI: typeof import('../src/shared/api/index')['deptAPI']
   const deptsAPI: typeof import('../src/shared/api/index')['deptsAPI']
   const focusManager: typeof import('@tanstack/react-query')['focusManager']
   const forwardRef: typeof import('react')['forwardRef']

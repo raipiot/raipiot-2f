@@ -1,6 +1,6 @@
 import type { DeptsDto } from '@raipiot-2f/api'
 
-import { deptQK, deptsQK, deptsTreeQK } from './query-keys'
+import { deptQK, deptsQK, deptTreeQK } from './query-keys'
 
 export const deptQueryOptions = (id: string) =>
   queryOptions({
@@ -15,8 +15,9 @@ export const deptsQueryOptions = (params?: DeptsDto) =>
     placeholderData: keepPreviousData
   })
 
-export const deptsTreeQueryOptions = () =>
+export const deptTreeQueryOptions = () =>
   queryOptions({
-    queryKey: deptsTreeQK(),
-    queryFn: ({ signal }) => deptsAPI.tree(signal)
+    queryKey: deptTreeQK(),
+    queryFn: ({ signal }) => deptsAPI.tree(signal),
+    placeholderData: keepPreviousData
   })

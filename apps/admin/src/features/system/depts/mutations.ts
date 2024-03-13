@@ -1,7 +1,6 @@
 import type { DeptsSubmitDto } from '@raipiot-2f/api'
 
-import { invalidateDeptsQueries } from './invalidates'
-import { deptsTreeQK } from './query-keys'
+import { invalidateDeptsQuery, invalidateDeptTreeQuery } from './invalidates'
 
 export const useDeptsRemoveMutation = () => {
   const { t } = useTranslation()
@@ -10,7 +9,8 @@ export const useDeptsRemoveMutation = () => {
     mutationFn: (ids: string) => deptsAPI.remove(ids),
     onSuccess: () => {
       message.success(t('OPERATION.SUCCESS'))
-      invalidateDeptsQueries()
+      invalidateDeptTreeQuery()
+      invalidateDeptsQuery()
     }
   })
 }
@@ -22,10 +22,8 @@ export const useDeptsSubmitMutation = () => {
     mutationFn: (data: DeptsSubmitDto) => deptsAPI.submit(data),
     onSuccess: () => {
       message.success(t('OPERATION.SUCCESS'))
-      queryClient.invalidateQueries({
-        queryKey: deptsTreeQK()
-      })
-      invalidateDeptsQueries()
+      invalidateDeptTreeQuery()
+      invalidateDeptsQuery()
     }
   })
 }

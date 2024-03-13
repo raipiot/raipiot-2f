@@ -1,4 +1,4 @@
-import { deptsQueryOptions, deptsTreeQueryOptions } from '@/features/system/depts'
+import { deptsQueryOptions, deptTreeQueryOptions } from '@/features/system/depts'
 import { SystemDictCode, systemDictTreeQueryOptions } from '@/features/system/dicts'
 import { tenantsQueryOptions } from '@/features/system/tenants'
 
@@ -13,7 +13,7 @@ export const Route = createFileRoute('/_base/system/depts')({
     Promise.all([
       queryClient.ensureQueryData(deptsQueryOptions()),
       queryClient.ensureQueryData(tenantsQueryOptions({ current: 1, size: 1000 })),
-      queryClient.ensureQueryData(deptsTreeQueryOptions()),
+      queryClient.ensureQueryData(deptTreeQueryOptions()),
       queryClient.ensureQueryData(systemDictTreeQueryOptions(SystemDictCode.ORG_CATEGORY))
     ])
 })

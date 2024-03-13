@@ -1,5 +1,5 @@
 import { SystemDictCode, systemDictTreeQueryOptions } from '../../dicts'
-import { deptsTreeQueryOptions } from '../queries'
+import { deptTreeQueryOptions } from '../queries'
 import type { DeptsSubmitFormModel } from '../types'
 
 export const useDeptsModalForm = () => {
@@ -7,7 +7,7 @@ export const useDeptsModalForm = () => {
   const { createModalForm } = useFormCreator<DeptsSubmitFormModel>()
   const [modalForm] = AForm.useForm<DeptsSubmitFormModel>()
 
-  const { data } = useSuspenseQuery(deptsTreeQueryOptions())
+  const { data } = useSuspenseQuery(deptTreeQueryOptions())
   const { data: orgCategoryData } = useSuspenseQuery(
     systemDictTreeQueryOptions(SystemDictCode.ORG_CATEGORY)
   )
@@ -35,8 +35,7 @@ export const useDeptsModalForm = () => {
         type: 'tree-select',
         formItemProps: {
           name: 'parentId',
-          label: t('PARENT'),
-          rules: [{ required: false }]
+          label: t('PARENT')
         },
         treeSelectProps: {
           treeData: [{ title: t('COMMON:NONE'), value: '0', key: '0' }, ...data]
