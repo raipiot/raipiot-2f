@@ -24,7 +24,7 @@ function Tenants() {
   // 搜索表单
   const { searchForm, searchFormItems } = useTenantsSearchForm()
   // 弹窗表单
-  const { modalForm, modalFormItems } = useTenantsModalForm()
+  const { modalForm, modalFormItems } = useTenantsModalForm({ modal })
   // 表格列
   const { columns } = useTenantsColumns({ modal, form: modalForm })
 

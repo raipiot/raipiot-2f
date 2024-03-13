@@ -24,9 +24,12 @@ type RpDatePicker = { type: 'date-picker' } & { datePickerProps?: DatePickerProp
 type RpInputNumber = { type: 'input-number' } & { inputNumberProps?: InputNumberProps }
 type RpSwitch = { type: 'switch' } & { switchProps?: SwitchProps }
 type RpButton = { type: 'button' } & { buttonProps?: ButtonProps }
-type RpCustomFormItem = { type: 'form-item'; render?: () => ReactNode | ReactNode }
-type RpCustom = { type: 'custom' } & RpCommonFormItemProps & {
-    render?: () => ReactNode | ReactNode
+type RpCustomFormItem<T> = {
+  type: 'form-item'
+  render?: (value?: any, record?: keyof T, index?: number) => ReactNode
+}
+type RpCustom<T> = { type: 'custom' } & RpCommonFormItemProps & {
+    render?: (record?: keyof T, index?: number) => ReactNode
   }
 
 interface RpFormItemProps<T> extends Omit<FormItemProps, 'name'> {
@@ -62,9 +65,9 @@ export type RpSearchFormItem<T> =
         | RpInputNumber
         | RpSwitch
         | RpButton
-        | RpCustomFormItem
+        | RpCustomFormItem<T>
       ))
-  | (RpCustom & RpSearchOnly)
+  | (RpCustom<T> & RpSearchOnly)
 
 export type RpBasicFormItem<T> =
   | (RpBaseFormItem<T> &
@@ -79,6 +82,6 @@ export type RpBasicFormItem<T> =
         | RpInputNumber
         | RpSwitch
         | RpButton
-        | RpCustomFormItem
+        | RpCustomFormItem<T>
       ))
-  | RpCustom
+  | RpCustom<T>

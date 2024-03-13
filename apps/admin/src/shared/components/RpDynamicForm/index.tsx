@@ -29,12 +29,13 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
               return null
             }
             if (type === 'custom') {
-              return typeof item.render === 'function' ? item.render() : item.render
+              return item.render ? item.render(formProps.form?.getFieldsValue(true), index) : null
             }
             const { colProps, formItemProps } = item
             const value = formItemProps?.name
               ? formProps.form?.getFieldValue(formItemProps?.name)
               : undefined
+            const record = formProps.form?.getFieldsValue(true)
             return (
               <ACol
                 key={index}
@@ -70,6 +71,7 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
                           {...item.radioGroupProps}
                         />
                       )}
+                      {type === 'form-item' && (item.render ? item.render(value, record) : null)}
                     </>
                   ) : (
                     <>
@@ -92,7 +94,9 @@ function RpDynamicForm<T extends Record<string, any>>(props: RpDynamicFormProps<
                         <AButton {...item.buttonProps}>{item.buttonProps?.children}</AButton>
                       )}
                       {type === 'form-item' &&
-                        (typeof item.render === 'function' ? item.render() : item.render)}
+                        (typeof item.render === 'function'
+                          ? item.render(value, record, index)
+                          : item.render)}
                     </>
                   )}
                 </AForm.Item>

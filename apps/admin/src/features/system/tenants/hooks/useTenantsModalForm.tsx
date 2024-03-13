@@ -1,6 +1,15 @@
+import type { UseModal } from '@/shared/hooks/useModal'
+
+import { AccountLimit, ExpireTime } from '../components'
 import type { TenantSubmitFormModel } from '../types'
 
-export const useTenantsModalForm = () => {
+interface UseTenantsModalFormProps {
+  modal?: UseModal<string>
+}
+
+export const useTenantsModalForm = (props: UseTenantsModalFormProps) => {
+  const { modal } = props ?? {}
+
   const { t } = useTranslation(['SYSTEM/TENANTS', 'COMMON'])
   const { createResponsiveFormItems } = useFormCreator<TenantSubmitFormModel>()
   const [modalForm] = AForm.useForm<TenantSubmitFormModel>()
@@ -41,6 +50,24 @@ export const useTenantsModalForm = () => {
         textAreaProps: {
           rows: 3
         }
+      },
+      {
+        type: 'form-item',
+        formItemProps: {
+          name: 'accountNumber',
+          label: t('ACCOUNT.LIMIT')
+        },
+        render: (value) => <AccountLimit value={value} />,
+        hidden: modal?.isEdit
+      },
+      {
+        type: 'form-item',
+        formItemProps: {
+          name: 'expireTime',
+          label: t('EXPIRE.TIME')
+        },
+        render: (value) => <ExpireTime value={value} />,
+        hidden: modal?.isEdit
       },
       {
         type: 'input',

@@ -86,5 +86,6 @@
   "CLOSE.OTHER.TAGS": "Close other tags",
   "CONFIG": "Config",
   "DEV.WAITING": "Still in development, please wait ...",
-  "OPERATION.SUCCESS": "Operation success"
+  "OPERATION.SUCCESS": "Operation success",
+  "NOT.LIMITED": "Not limited"
 }
