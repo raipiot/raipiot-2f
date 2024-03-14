@@ -67,7 +67,7 @@ export function SettingModal() {
               ids: selectedRowKeys ? selectedRowKeys.join() : '',
               data: {
                 ...values,
-                expireTime: DateUtils.formatTime(values.expireTime)
+                expireTime: values.expireTime ? DateUtils.formatTime(values.expireTime) : ''
               }
             },
             {
