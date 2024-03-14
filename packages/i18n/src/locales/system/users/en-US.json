@@ -20,5 +20,6 @@
   "BIRTHDAY": "Birthday",
   "CODE": "User code",
   "CONFIRM.UNLOCK": "Are you sure you want to unlock the account?",
-  "CONFIRM.RESET.PASSWORD": "Are you sure you want to reset the password to 123456?"
+  "CONFIRM.RESET.PASSWORD": "Are you sure you want to reset the password to 123456?",
+  "EXT": "Extension"
 }

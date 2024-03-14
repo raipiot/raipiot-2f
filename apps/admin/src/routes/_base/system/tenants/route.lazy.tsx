@@ -1,6 +1,8 @@
 import type { TenantPageDto, TenantVo } from '@raipiot-2f/api'
 
 import {
+  SettingModal,
+  SettingModalContext,
   tenantQueryOptions,
   tenantsQueryOptions,
   useTenantRemoveMutation,
@@ -10,8 +12,6 @@ import {
   useTenantsSettingForm,
   useTenantSubmitMutation
 } from '@/features/system/tenants'
-import { SettingModal } from '@/features/system/tenants/components'
-import { SettingModalContext } from '@/features/system/tenants/context'
 
 export const Route = createLazyFileRoute('/_base/system/tenants')({
   component: Tenants

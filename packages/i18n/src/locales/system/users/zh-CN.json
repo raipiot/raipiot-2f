@@ -20,5 +20,6 @@
   "BIRTHDAY": "出生日期",
   "CODE": "用户编号",
   "CONFIRM.UNLOCK": "确定将账号解锁？",
-  "CONFIRM.RESET.PASSWORD": "确定将密码重置为 123456 ?"
+  "CONFIRM.RESET.PASSWORD": "确定将密码重置为 123456 ?",
+  "EXT": "用户扩展"
 }

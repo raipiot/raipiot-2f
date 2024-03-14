@@ -2,32 +2,38 @@ import type { UserPageDto, UserVo } from '@raipiot-2f/api'
 
 import { DeptTree } from '@/features/system/depts'
 import {
+  BaseModal,
+  PlatformModal,
+  useBaseModalContext,
+  UsersProvider,
   usersQueryOptions,
   useUserRemoveMutation,
   useUsersColumns,
-  useUsersModalForm,
-  useUsersSearchForm,
-  useUserSubmitMutation
+  useUsersSearchForm
 } from '@/features/system/users'
 
 export const Route = createLazyFileRoute('/_base/system/users')({
-  component: Users
+  component: () => (
+    <UsersProvider>
+      <Users />
+      <BaseModal />
+      <PlatformModal />
+    </UsersProvider>
+  )
 })
 
-function Users() {
+export function Users() {
   // 分页器
   const { pageParams, setPageParams, pagination, isPending, startTransition } =
     usePagination<UserPageDto>()
   // 多选器：范型为列表行数据类型
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<UserVo>()
-  // 弹窗
-  const modal = useModal()
   // 搜索表单
   const { searchForm, searchFormItems } = useUsersSearchForm()
-  // 弹窗表单
-  const { modalForm, modalFormItems } = useUsersModalForm()
   // 表格列
-  const { columns } = useUsersColumns({ modal, form: modalForm })
+  const { columns } = useUsersColumns()
+
+  const { modal, form } = useBaseModalContext()
 
   // 异步查询：列表数据
   const {
@@ -36,11 +42,6 @@ function Users() {
   } = useSuspenseQuery(usersQueryOptions(PageUtils.mergeParams(pageParams)))
   // 异步删除
   const { mutateAsync: removeMutateAsync, isPending: isRemovePending } = useUserRemoveMutation()
-  // 异步提交
-  const { mutateAsync: submitMutateAsync, isPending: isSubmitPending } = useUserSubmitMutation()
-
-  // 清空选中行
-  useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
 
   return (
     // 页面容器
@@ -51,8 +52,8 @@ function Users() {
           <RpButton
             variant="create"
             onClick={() => {
-              modalForm.resetFields()
-              modal.openCreate()
+              form?.resetFields()
+              modal?.openCreate()
             }}
           />
         )
@@ -118,49 +119,10 @@ function Users() {
                 onSuccess: clearSelectedRowKeys
               })
             }
+            scroll={{ x: 1800 }}
           />
         </div>
       </div>
-      {/* 模态框 */}
-      <RpModal
-        // 模态框类型
-        type={modal.type}
-        // 打开状态
-        open={modal.open}
-        // 标题
-        title={modal.getTitle()}
-        // 确认按钮加载
-        confirmLoading={isSubmitPending}
-        // 事件：确认
-        onOk={modalForm.submit}
-        // 事件：取消
-        onCancel={modal.close}
-        // 底部区域
-        footer={modal.isRead ? null : undefined}
-      >
-        <RpDynamicForm
-          name="modal"
-          // 表单
-          form={modalForm}
-          // 表单配置项
-          items={modalFormItems}
-          // 表单模式
-          mode={modal.type}
-          // 表单初始值
-          initialValues={{}}
-          // 表单提交
-          onFinish={async () => {
-            const values = modalForm.getFieldsValue(true)
-            await submitMutateAsync(
-              {
-                ...values,
-                isSealed: FormatUtils.toDbNum(values.isSealed)
-              },
-              { onSuccess: modal.close }
-            )
-          }}
-        />
-      </RpModal>
     </RpPageContainer>
   )
 }

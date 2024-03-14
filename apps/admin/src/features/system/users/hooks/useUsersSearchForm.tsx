@@ -1,9 +1,13 @@
+import { SystemDictCode, systemDictTreeQueryOptions } from '@/features/system/dicts'
+
 import type { UserSearchFormModel } from '../types'
 
 export const useUsersSearchForm = () => {
   const { t } = useTranslation('SYSTEM/USERS')
   const { createSearchForm } = useFormCreator<UserSearchFormModel>()
   const [searchForm] = AForm.useForm()
+
+  const { data } = useSuspenseQuery(systemDictTreeQueryOptions(SystemDictCode.USER_TYPE))
 
   return {
     searchForm,
@@ -29,7 +33,8 @@ export const useUsersSearchForm = () => {
           label: t('PLATFORM')
         },
         selectProps: {
-          options: []
+          allowClear: true,
+          options: data
         }
       }
     ])
