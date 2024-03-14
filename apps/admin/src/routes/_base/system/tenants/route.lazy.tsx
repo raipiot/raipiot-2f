@@ -1,6 +1,7 @@
 import type { TenantPageDto, TenantVo } from '@raipiot-2f/api'
 
 import {
+  tenantQueryOptions,
   tenantsQueryOptions,
   useTenantRemoveMutation,
   useTenantsColumns,
@@ -131,8 +132,19 @@ function Tenants() {
         renderTableBatchOpeate={
           <ATooltip title={t('AUTH.CONFIG.TOOLTIP')}>
             <AButton
-              onClick={() => {
+              onClick={async () => {
                 settingForm.resetFields()
+                if (selectedRowKeys.length === 1) {
+                  const { accountNumber, expireTime } = await queryClient.ensureQueryData(
+                    tenantQueryOptions(selectedRowKeys.at(0)!.toString())
+                  )
+                  settingForm.setFieldsValue({
+                    accountNumber,
+                    expireTime: DateUtils.dayjs(expireTime).isValid()
+                      ? DateUtils.dayjs(expireTime)
+                      : undefined
+                  })
+                }
                 settingModal.openEdit()
               }}
             >
@@ -171,12 +183,9 @@ function Tenants() {
           // 表单提交
           onFinish={async () => {
             const values = modalForm.getFieldsValue(true)
-            await submitMutateAsync(
-              { ...values },
-              {
-                onSuccess: modal.close
-              }
-            )
+            await submitMutateAsync(values, {
+              onSuccess: modal.close
+            })
           }}
         />
       </RpModal>

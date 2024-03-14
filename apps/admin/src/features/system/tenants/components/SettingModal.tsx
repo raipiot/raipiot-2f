@@ -56,8 +56,7 @@ export function SettingModal() {
         mode={modal?.type}
         // 表单初始值
         initialValues={{
-          accountNumber: 0,
-          expireTime: ''
+          accountNumber: 0
         }}
         // 表单提交
         onFinish={async () => {
