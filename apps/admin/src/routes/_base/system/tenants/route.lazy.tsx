@@ -10,6 +10,7 @@ import {
   useTenantSubmitMutation
 } from '@/features/system/tenants'
 import { SettingModal } from '@/features/system/tenants/components'
+import { SettingModalContext } from '@/features/system/tenants/context'
 
 export const Route = createLazyFileRoute('/_base/system/tenants')({
   component: Tenants
@@ -47,6 +48,17 @@ function Tenants() {
 
   // 清空选中行
   useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
+
+  const settingModalContextValue = useMemo(
+    () => ({
+      modal: settingModal,
+      form: settingForm,
+      formItems: settingFormItems,
+      selectedRowKeys,
+      clearSelectedRowKeys
+    }),
+    [settingModal, settingForm, settingFormItems, selectedRowKeys, clearSelectedRowKeys]
+  )
 
   return (
     // 页面容器
@@ -169,13 +181,9 @@ function Tenants() {
         />
       </RpModal>
       {/* 授权配置 */}
-      <SettingModal
-        modal={settingModal}
-        form={settingForm}
-        formItems={settingFormItems}
-        selectedRowKeys={selectedRowKeys}
-        clearSelectedRowKeys={clearSelectedRowKeys}
-      />
+      <SettingModalContext.Provider value={settingModalContextValue}>
+        <SettingModal />
+      </SettingModalContext.Provider>
     </RpPageContainer>
   )
 }
