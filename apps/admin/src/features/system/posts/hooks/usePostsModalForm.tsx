@@ -7,7 +7,7 @@ export const usePostsModalForm = () => {
   const { t } = useTranslation(['SYSTEM/POSTS', 'COMMON'])
   const { createModalForm } = useFormCreator<PostSubmitDto>()
   const [modalForm] = AForm.useForm<PostSubmitDto>()
-  const { data } = useSuspenseQuery(systemDictTreeQueryOptions(SystemDictCode.SYSTEM_POST))
+  const { data } = useSuspenseQuery(systemDictTreeQueryOptions(SystemDictCode.POST_CATEGORY))
 
   return {
     modalForm,

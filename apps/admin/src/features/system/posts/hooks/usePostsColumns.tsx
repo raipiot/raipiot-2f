@@ -21,7 +21,7 @@ export const usePostsColumns = (props?: UsePostsColumnsProps) => {
   const { createActions, createColumns } = useTableCreator<PostVo>()
 
   const { mutateAsync, isPending } = usePostRemoveMutation()
-  const { data } = useSuspenseQuery(systemDictTreeQueryOptions(SystemDictCode.SYSTEM_POST))
+  const { data } = useSuspenseQuery(systemDictTreeQueryOptions(SystemDictCode.POST_CATEGORY))
 
   return {
     columns: createColumns<PostVo>([
