@@ -22,7 +22,11 @@ interface ResponsiveModalTypeOptions {
  * 响应式弹窗宽度
  */
 export const useResponsiveModalWidth = (type?: ModalType, options?: ResponsiveModalTypeOptions) => {
-  const { create = '80%', edit = '80%', read = '70%' } = options ?? {}
+  const {
+    create = 'min(1440px, 80%)',
+    edit = 'min(1440px, 80%)',
+    read = 'min(1440px, 70%)'
+  } = options ?? {}
 
   const responsive = useResponsive()
 
