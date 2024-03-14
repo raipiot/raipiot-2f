@@ -1,5 +1,6 @@
 import type { UserPageDto, UserVo } from '@raipiot-2f/api'
 
+import { DeptTree } from '@/features/system/depts'
 import {
   usersQueryOptions,
   useUserRemoveMutation,
@@ -57,53 +58,69 @@ function Users() {
         )
       }}
     >
-      {/* 搜索区域 */}
-      <RpSearchBar
-        // 搜索表单
-        formProps={{ form: searchForm }}
-        // 表单配置项
-        formItems={searchFormItems}
-        // 事件：搜索
-        onSearch={(values) =>
-          startTransition(() => setPageParams(PageUtils.mergeParams(pageParams, values)))
-        }
-        // 事件：预渲染
-        onPrefetch={(values) =>
-          queryClient.prefetchQuery(usersQueryOptions(PageUtils.mergeParams(pageParams, values)))
-        }
-      />
-      {/* 表格 */}
-      <RpBasicTable<UserVo>
-        rowKey={(record) => record.id!}
-        // 批量选择选项
-        rowSelection={rowSelection}
-        // 表格列
-        columns={columns}
-        // 表格数据
-        dataSource={records}
-        // 分页器
-        pagination={pagination({
-          total,
-          // 事件：分页预渲染
-          onPrefetch: (values) => queryClient.prefetchQuery(usersQueryOptions(values))
-        })}
-        // 刷新加载
-        refreshLoading={isPending}
-        // 事件：刷新
-        onRefresh={() =>
-          startTransition(() => {
-            refetch()
-          })
-        }
-        // 批量删除加载
-        batchDeleteLoading={isRemovePending}
-        // 事件：批量删除
-        onBatchDelete={(ids) =>
-          removeMutateAsync(ids.join(), {
-            onSuccess: clearSelectedRowKeys
-          })
-        }
-      />
+      <div className="flex flex-col space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0">
+        <div className="w-full shrink-0 sm:w-[250px]">
+          <DeptTree
+            deptId={pageParams.deptId}
+            onSelectDeptId={(id) =>
+              startTransition(() =>
+                setPageParams(PageUtils.mergeParams(pageParams, { deptId: id }))
+              )
+            }
+          />
+        </div>
+        {/* 搜索区域 */}
+        <div className="flex flex-col space-y-2 sm:w-[calc(100%-256px)] sm:space-y-4">
+          <RpSearchBar
+            // 搜索表单
+            formProps={{ form: searchForm }}
+            // 表单配置项
+            formItems={searchFormItems}
+            // 事件：搜索
+            onSearch={(values) =>
+              startTransition(() => setPageParams(PageUtils.mergeParams(pageParams, values)))
+            }
+            // 事件：预渲染
+            onPrefetch={(values) =>
+              queryClient.prefetchQuery(
+                usersQueryOptions(PageUtils.mergeParams(pageParams, values))
+              )
+            }
+          />
+          {/* 表格 */}
+          <RpBasicTable<UserVo>
+            rowKey={(record) => record.id!}
+            // 批量选择选项
+            rowSelection={rowSelection}
+            // 表格列
+            columns={columns}
+            // 表格数据
+            dataSource={records}
+            // 分页器
+            pagination={pagination({
+              total,
+              // 事件：分页预渲染
+              onPrefetch: (values) => queryClient.prefetchQuery(usersQueryOptions(values))
+            })}
+            // 刷新加载
+            refreshLoading={isPending}
+            // 事件：刷新
+            onRefresh={() =>
+              startTransition(() => {
+                refetch()
+              })
+            }
+            // 批量删除加载
+            batchDeleteLoading={isRemovePending}
+            // 事件：批量删除
+            onBatchDelete={(ids) =>
+              removeMutateAsync(ids.join(), {
+                onSuccess: clearSelectedRowKeys
+              })
+            }
+          />
+        </div>
+      </div>
       {/* 模态框 */}
       <RpModal
         // 模态框类型

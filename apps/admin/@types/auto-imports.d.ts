@@ -45,6 +45,7 @@ declare global {
   const ATag: typeof import('antd')['Tag']
   const ATheme: typeof import('antd')['theme']
   const ATooltip: typeof import('antd')['Tooltip']
+  const ATree: typeof import('antd')['Tree']
   const ATreeSelect: typeof import('antd')['TreeSelect']
   const AUpload: typeof import('antd')['Upload']
   const AnimatePresence: typeof import('framer-motion')['AnimatePresence']
