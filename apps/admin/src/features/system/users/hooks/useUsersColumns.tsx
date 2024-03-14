@@ -3,13 +3,13 @@ import { isMobile } from 'react-device-detect'
 
 import { useBaseModalContext, usePlatformModalContext } from '../context'
 import { useUserRemoveMutation } from '../mutations'
-import { userQueryOptions } from '../queries'
+import { userPlatformQueryOptions, userQueryOptions } from '../queries'
 
 export const useUsersColumns = () => {
   const { modal, form } = useBaseModalContext()
   const { modal: platformModal, form: platformForm } = usePlatformModalContext()
 
-  const { t } = useTranslation(['SYSTEM/USERS'])
+  const { t } = useTranslation('SYSTEM/USERS')
   const { createActions, createColumns } = useTableCreator<UserVo>()
 
   const { mutateAsync, isPending } = useUserRemoveMutation()
@@ -94,13 +94,18 @@ export const useUsersColumns = () => {
             <RpButton
               variant="config"
               size="small"
-              onMouseEnter={() => queryClient.prefetchQuery(userQueryOptions(record.id!))}
+              onMouseEnter={() => queryClient.prefetchQuery(userPlatformQueryOptions(record.id!))}
               onClick={async () => {
                 platformModal?.openEdit()
                 platformModal?.setMeta(record.id)
-                platformForm?.setFieldsValue(
-                  await queryClient.ensureQueryData(userQueryOptions(record.id!))
+                const { userType, userExt } = await queryClient.ensureQueryData(
+                  userPlatformQueryOptions(record.id!)
                 )
+                platformForm?.setFieldsValue({
+                  userId: record.id!,
+                  userType,
+                  userExt
+                })
               }}
             />
             <RpDeletePopconfirm

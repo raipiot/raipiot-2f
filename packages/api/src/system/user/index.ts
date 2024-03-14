@@ -62,8 +62,8 @@ export class UsersAPI extends BaseAPI {
   /**
    * 平台详情
    */
-  async platformDetail(id: string) {
-    return this.httpRequest.get<UserVo>(`${this.#API_PREFIX}/platform-detail`, { id })
+  async platformDetail(id: string, signal?: AbortSignal) {
+    return this.httpRequest.get<UserVo>(`${this.#API_PREFIX}/platform-detail`, { id }, { signal })
   }
 
   /**

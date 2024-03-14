@@ -1,4 +1,4 @@
-import { userQK, USERS_QK } from './query-keys'
+import { userPlatformQK, userQK, USERS_QK } from './query-keys'
 
 export const invalidateUsersQuery = () =>
   queryClient.invalidateQueries({
@@ -8,5 +8,11 @@ export const invalidateUsersQuery = () =>
 export const invalidateUserQuery = (id: string) =>
   queryClient.invalidateQueries({
     queryKey: userQK(id),
+    refetchType: 'all'
+  })
+
+export const invalidateUserPlatformQuery = (id: string) =>
+  queryClient.invalidateQueries({
+    queryKey: userPlatformQK(id),
     refetchType: 'all'
   })

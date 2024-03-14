@@ -1,6 +1,6 @@
 import type { UserPageDto } from '@raipiot-2f/api'
 
-import { userInfoQK, userQK, usersQK } from './query-keys'
+import { userInfoQK, userPlatformQK, userQK, usersQK } from './query-keys'
 
 export const userInfoQueryOptions = () =>
   queryOptions({
@@ -19,4 +19,10 @@ export const usersQueryOptions = (params: UserPageDto) =>
     queryKey: usersQK(params),
     queryFn: ({ signal }) => usersAPI.page(params, signal),
     placeholderData: keepPreviousData
+  })
+
+export const userPlatformQueryOptions = (id: string) =>
+  queryOptions({
+    queryKey: userPlatformQK(id),
+    queryFn: ({ signal }) => usersAPI.platformDetail(id, signal)
   })
