@@ -1,20 +1,22 @@
+import type { Page } from '../..'
+
 export interface UserVo {
   account?: string
   avatar?: string
-  birthday?: Date
+  birthday?: string
   code?: string
   /**
    * 创建部门
    */
-  createDept?: number
+  createDept?: string
   /**
    * 创建时间
    */
-  createTime?: Date
+  createTime?: string
   /**
    * 创建人
    */
-  createUser?: number
+  createUser?: string
   deptId?: string
   deptName?: string
   email?: string
@@ -44,12 +46,20 @@ export interface UserVo {
   /**
    * 更新时间
    */
-  updateTime?: Date
+  updateTime?: string
   /**
    * 更新人
    */
-  updateUser?: number
+  updateUser?: string
   userExt?: string
   userType?: number
   userTypeName?: string
+}
+
+export type UsersVo = Page<UserVo>
+
+export interface UserBriefVo {
+  account?: string
+  userId?: string
+  userName?: string
 }
