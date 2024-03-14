@@ -11,6 +11,6 @@ export const Route = createFileRoute('/_base/system/posts')({
   loader: () =>
     Promise.allSettled([
       queryClient.ensureQueryData(postsQueryOptions(PageUtils.initParams())),
-      queryClient.ensureQueryData(systemDictTreeQueryOptions(SystemDictCode.SYSTEM_POST))
+      queryClient.ensureQueryData(systemDictTreeQueryOptions(SystemDictCode.POST_CATEGORY))
     ])
 })

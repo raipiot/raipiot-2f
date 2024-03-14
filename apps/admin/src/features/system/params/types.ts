@@ -1,5 +1,5 @@
 import type { ParamPageDto, ParamSubmitDto } from '@raipiot-2f/api'
 
-export interface ParamSearchFormModel extends Pick<ParamPageDto, 'paramName' | 'paramKey'> {}
+export interface ParamSearchFormModel extends Omit<ParamPageDto, 'size' | 'current'> {}
 
 export interface ParamSubmitFormModel extends ParamSubmitDto {}

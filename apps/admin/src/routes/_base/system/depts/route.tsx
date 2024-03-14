@@ -12,8 +12,8 @@ export const Route = createFileRoute('/_base/system/depts')({
   loader: () =>
     Promise.all([
       queryClient.ensureQueryData(deptsQueryOptions()),
-      queryClient.ensureQueryData(tenantsQueryOptions({ current: 1, size: 1000 })),
       queryClient.ensureQueryData(deptTreeQueryOptions()),
+      queryClient.ensureQueryData(tenantsQueryOptions({ current: 1, size: 1000 })),
       queryClient.ensureQueryData(systemDictTreeQueryOptions(SystemDictCode.ORG_CATEGORY))
     ])
 })

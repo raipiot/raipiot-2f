@@ -9,7 +9,7 @@ import {
   useSystemDictSubmitMutation
 } from '@/features/system/dicts'
 
-export const Route = createLazyFileRoute('/_base/system/dicts/')({
+export const Route = createLazyFileRoute('/_base/system/dicts')({
   component: SystemDicts
 })
 

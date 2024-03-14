@@ -1,9 +1,9 @@
-import type { TenantSettingsDto } from '@raipiot-2f/api'
+import type { TenantSettingFormModel } from '../types'
 
 export const useTenantsSettingForm = () => {
   const { t } = useTranslation(['SYSTEM/TENANTS', 'COMMON'])
-  const { createModalForm } = useFormCreator<TenantSettingsDto>()
-  const [settingForm] = AForm.useForm<TenantSettingsDto>()
+  const { createModalForm } = useFormCreator<TenantSettingFormModel>()
+  const [settingForm] = AForm.useForm<TenantSettingFormModel>()
 
   return {
     settingForm,

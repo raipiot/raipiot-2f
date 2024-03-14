@@ -1,6 +1,9 @@
 import type { TenantPageDto, TenantVo } from '@raipiot-2f/api'
 
 import {
+  SettingModal,
+  SettingModalContext,
+  tenantQueryOptions,
   tenantsQueryOptions,
   useTenantRemoveMutation,
   useTenantsColumns,
@@ -9,7 +12,6 @@ import {
   useTenantsSettingForm,
   useTenantSubmitMutation
 } from '@/features/system/tenants'
-import { SettingModal } from '@/features/system/tenants/components'
 
 export const Route = createLazyFileRoute('/_base/system/tenants')({
   component: Tenants
@@ -47,6 +49,17 @@ function Tenants() {
 
   // 清空选中行
   useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
+
+  const settingModalContextValue = useMemo(
+    () => ({
+      modal: settingModal,
+      form: settingForm,
+      formItems: settingFormItems,
+      selectedRowKeys,
+      clearSelectedRowKeys
+    }),
+    [settingModal, settingForm, settingFormItems, selectedRowKeys, clearSelectedRowKeys]
+  )
 
   return (
     // 页面容器
@@ -119,8 +132,19 @@ function Tenants() {
         renderTableBatchOpeate={
           <ATooltip title={t('AUTH.CONFIG.TOOLTIP')}>
             <AButton
-              onClick={() => {
+              onClick={async () => {
                 settingForm.resetFields()
+                if (selectedRowKeys.length === 1) {
+                  const { accountNumber, expireTime } = await queryClient.ensureQueryData(
+                    tenantQueryOptions(selectedRowKeys.at(0)!.toString())
+                  )
+                  settingForm.setFieldsValue({
+                    accountNumber,
+                    expireTime: DateUtils.dayjs(expireTime).isValid()
+                      ? DateUtils.dayjs(expireTime)
+                      : undefined
+                  })
+                }
                 settingModal.openEdit()
               }}
             >
@@ -159,23 +183,16 @@ function Tenants() {
           // 表单提交
           onFinish={async () => {
             const values = modalForm.getFieldsValue(true)
-            await submitMutateAsync(
-              { ...values },
-              {
-                onSuccess: modal.close
-              }
-            )
+            await submitMutateAsync(values, {
+              onSuccess: modal.close
+            })
           }}
         />
       </RpModal>
       {/* 授权配置 */}
-      <SettingModal
-        modal={settingModal}
-        form={settingForm}
-        formItems={settingFormItems}
-        selectedRowKeys={selectedRowKeys}
-        clearSelectedRowKeys={clearSelectedRowKeys}
-      />
+      <SettingModalContext.Provider value={settingModalContextValue}>
+        <SettingModal />
+      </SettingModalContext.Provider>
     </RpPageContainer>
   )
 }
