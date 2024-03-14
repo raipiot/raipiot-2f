@@ -130,9 +130,7 @@ function Posts() {
           // 表单模式
           mode={modal.type}
           // 表单初始值
-          initialValues={{
-            sort: 1
-          }}
+          initialValues={{}}
           // 表单提交
           onFinish={async () => {
             const values = modalForm.getFieldsValue(true)

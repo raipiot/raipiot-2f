@@ -59,6 +59,8 @@ export type RpSearchFormItem<T> =
   | ((RpBaseFormItem<T> & RpSearchOnly) &
       (
         | RpInput
+        | RpSwitch
+        | RpInputNumber
         | RpRadioGroup
         | RpSelect
         | RpTreeSelect
