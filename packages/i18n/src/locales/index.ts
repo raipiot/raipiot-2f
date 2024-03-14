@@ -8,6 +8,7 @@ import SYSTEM_MENUS from './system/menus/zh-CN.json'
 import SYSTEM_PARAMS from './system/params/zh-CN.json'
 import SYSTEM_POSTS from './system/posts/zh-CN.json'
 import SYSTEM_TENANTS from './system/tenants/zh-CN.json'
+import SYSTEM_USERS from './system/users/zh-CN.json'
 import VALIDATION from './validation/zh-CN.json'
 
 /**
@@ -19,6 +20,7 @@ const resources = {
   COMMON,
   ROUTER,
   VALIDATION,
+  'SYSTEM/USERS': SYSTEM_USERS,
   'SYSTEM/MENUS': SYSTEM_MENUS,
   'SYSTEM/POSTS': SYSTEM_POSTS,
   'SYSTEM/DICTS': SYSTEM_DICTS,

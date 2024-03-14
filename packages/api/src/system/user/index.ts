@@ -6,7 +6,8 @@ import type {
   UserBriefListDto,
   UserListDto,
   UserPageDto,
-  UserPlatformSubmitDto
+  UserPlatformSubmitDto,
+  UserSubmitDto
 } from './dto'
 import type { UserBriefVo, UsersVo, UserVo } from './vo'
 
@@ -24,8 +25,10 @@ export class UsersAPI extends BaseAPI {
   /**
    * 分页列表
    */
-  async page(params: UserPageDto) {
-    return this.httpRequest.get<UsersVo>(`${this.#API_PREFIX}/page`, params)
+  async page(params: UserPageDto, signal?: AbortSignal) {
+    return this.httpRequest.get<UsersVo>(`${this.#API_PREFIX}/page`, params, {
+      signal
+    })
   }
 
   /**
@@ -52,8 +55,8 @@ export class UsersAPI extends BaseAPI {
   /**
    * 当前用户信息
    */
-  async info() {
-    return this.httpRequest.get<UserVo>(`${this.#API_PREFIX}/info`)
+  async info(signal?: AbortSignal) {
+    return this.httpRequest.get<UserVo>(`${this.#API_PREFIX}/info`, {}, { signal })
   }
 
   /**
@@ -79,21 +82,21 @@ export class UsersAPI extends BaseAPI {
   /**
    * 修改基本信息
    */
-  async updateInfo(data: UserVo) {
+  async updateInfo(data: UserSubmitDto) {
     return this.httpRequest.post(`${this.#API_PREFIX}/update-info`, data)
   }
 
   /**
    * 修改
    */
-  async update(data: UserVo) {
+  async update(data: UserSubmitDto) {
     return this.httpRequest.post(`${this.#API_PREFIX}/update`, data)
   }
 
   /**
    * 提交
    */
-  async submit(data: UserVo) {
+  async submit(data: UserSubmitDto) {
     return this.httpRequest.post(`${this.#API_PREFIX}/submit`, data)
   }
 
