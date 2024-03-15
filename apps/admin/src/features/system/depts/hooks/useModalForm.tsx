@@ -1,12 +1,12 @@
-import { deptTreeQueryOptions } from '../queries'
-import type { DeptsSubmitFormModel } from '../types'
+import { treeQueryOptions } from '../queries'
+import type { SubmitFormModal } from '../types'
 
-export const useDeptsModalForm = () => {
+export const useModalForm = () => {
   const { t } = useTranslation(['SYSTEM/DEPTS', 'COMMON'])
-  const { createModalForm } = useFormCreator<DeptsSubmitFormModel>()
-  const [modalForm] = AForm.useForm<DeptsSubmitFormModel>()
+  const { createModalForm } = useFormCreator<SubmitFormModal>()
+  const [modalForm] = AForm.useForm<SubmitFormModal>()
 
-  const { data } = useSuspenseQuery(deptTreeQueryOptions())
+  const { data } = useSuspenseQuery(treeQueryOptions())
   const { data: treeData } = useSuspenseQuery(Dicts.treeQueryOptions('org_category'))
 
   return {
