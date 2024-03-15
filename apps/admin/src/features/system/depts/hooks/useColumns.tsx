@@ -1,21 +1,13 @@
 import type { DeptVo } from '@raipiot-2f/api'
-import type { FormInstance } from 'antd'
 import { isMobile } from 'react-device-detect'
 
-import type { UseModal } from '@/shared/hooks/useModal'
-
 import { tenantsQueryOptions } from '../../tenants'
+import { useBaseModalContext } from '../context'
 import { useRemoveMutation } from '../mutations'
 import { detailQueryOptions } from '../queries'
 
-interface UseDeptsColumnsProps {
-  modal?: UseModal<string>
-  form?: FormInstance
-}
-
-export const useTableColumns = (props?: UseDeptsColumnsProps) => {
-  const { modal, form } = props ?? {}
-
+export const useBaseColumns = () => {
+  const { modal, form } = useBaseModalContext()
   const { t } = useTranslation(['SYSTEM/DEPTS', 'COMMON'])
   const { createActions, createColumns } = useTableCreator<DeptVo>()
 
