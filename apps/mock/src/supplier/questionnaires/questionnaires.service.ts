@@ -1,11 +1,9 @@
 import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
-import { plainToClass } from 'class-transformer'
 import { Model } from 'mongoose'
 
 import { PageQuestionnaireDto, SubmitQuestionnaireDto } from './dto'
 import { Questionnaire } from './schemas'
-import { PageQuestionnaireVo, QuestionnaireVo } from './vo'
 
 @Injectable()
 export class QuestionnairesService {

@@ -10,8 +10,11 @@ export type QuestionnaireDocument = HydratedDocument<Questionnaire>
   collection: 'supplier_questionnaires',
   toJSON: {
     transform(doc, ret) {
+      // eslint-disable-next-line no-underscore-dangle
       ret.id = ret._id
+      // eslint-disable-next-line no-underscore-dangle
       delete ret._id
+      // eslint-disable-next-line no-underscore-dangle
       delete ret.__v
     }
   }
