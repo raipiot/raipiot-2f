@@ -1,17 +1,17 @@
 import { DEPT_TREE_QK, deptQK, DEPTS_QK } from './query-keys'
 
-export const invalidateDeptsQuery = () =>
+export const invalidateListQuery = () =>
   queryClient.invalidateQueries({
     queryKey: [DEPTS_QK]
   })
 
-export const invalidateDeptQuery = (id?: string) =>
+export const invalidateDetailQuery = (id?: string) =>
   queryClient.invalidateQueries({
     queryKey: deptQK(id),
     refetchType: 'all'
   })
 
-export const invalidateDeptTreeQuery = () =>
+export const invalidateTreeQuery = () =>
   queryClient.invalidateQueries({
     queryKey: [DEPT_TREE_QK]
   })

@@ -1,3 +1,3 @@
-export * from './useDeptsColumns'
-export * from './useDeptsModalForm'
-export * from './useDeptsSearchForm'
+export * from './useColumns'
+export * from './useModalForm'
+export * from './useSearchForm'

@@ -1,38 +1,38 @@
 import { type DeptsDto, type DeptVo } from '@raipiot-2f/api'
 
-import {
-  deptsQueryOptions,
-  useDeptsColumns,
-  useDeptsModalForm,
-  useDeptsRemoveMutation,
-  useDeptsSearchForm,
-  useDeptsSubmitMutation
-} from '@/features/system/depts'
+import { Depts } from '@/features/system/depts'
 
-function DeptsTable() {
-  // 分页器
+export const Route = createLazyFileRoute('/_base/system/depts')({
+  component: () => (
+    <Depts.DeptsProvider>
+      <Component />
+      <Depts.BaseModal />
+    </Depts.DeptsProvider>
+  )
+})
+
+function Component() {
   // 多选器：范型为列表行数据类型
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DeptVo>()
   // 弹窗
-  const modal = useModal()
+  const { modal, form } = Depts.useBaseModalContext()
   // 搜索表单
-  const { searchForm, searchFormItems } = useDeptsSearchForm()
-  // 弹窗表单
-  const { modalForm, modalFormItems } = useDeptsModalForm()
+  const { searchForm, searchFormItems } = Depts.useSearchForm()
+  // 数据更新
+  const [isPending, startTransition] = useTransition()
   // 表格列
-  const { columns } = useDeptsColumns({ modal, form: modalForm })
+  const { columns } = Depts.useBaseColumns()
   // 查询参数
   const [filter, setFilter] = useState<DeptsDto>()
 
   // 异步查询：列表数据
-  const { data, isPending, refetch } = useSuspenseQuery(deptsQueryOptions(filter))
+  const { data, refetch } = useSuspenseQuery(Depts.listQueryOptions(filter))
+
   // 异步删除
-  const { mutateAsync: removeMutateAsync, isPending: isRemovePending } = useDeptsRemoveMutation()
-  // 异步提交
-  const { mutateAsync: submitMutateAsync, isPending: isSubmitPending } = useDeptsSubmitMutation()
+  const { mutateAsync: removeMutateAsync, isPending: isRemovePending } = Depts.useRemoveMutation()
 
   // 清空选中行
-  useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
+  useEffect(() => clearSelectedRowKeys(), [clearSelectedRowKeys])
 
   return (
     // 页面容器
@@ -43,7 +43,7 @@ function DeptsTable() {
           <RpButton
             variant="create"
             onClick={() => {
-              modalForm.resetFields()
+              form.resetFields()
               modal.openCreate()
             }}
           />
@@ -63,7 +63,7 @@ function DeptsTable() {
           })
         }
         // 事件：预渲染
-        onPrefetch={(values) => queryClient.prefetchQuery(deptsQueryOptions(values))}
+        onPrefetch={(values) => queryClient.prefetchQuery(Depts.listQueryOptions(values))}
       />
       {/* 表格 */}
       <RpBasicTable<DeptVo>
@@ -92,44 +92,6 @@ function DeptsTable() {
         }
         scroll={{ x: 1600 }}
       />
-      {/* 模态框 */}
-      <RpModal
-        // 模态框类型
-        type={modal.type}
-        // 打开状态
-        open={modal.open}
-        // 标题
-        title={modal.getTitle()}
-        // 确认按钮加载
-        confirmLoading={isSubmitPending}
-        // 事件：确认
-        onOk={modalForm.submit}
-        // 事件：取消
-        onCancel={modal.close}
-        // 底部区域
-        footer={modal.isRead ? null : undefined}
-      >
-        <RpDynamicForm
-          name="modal"
-          // 表单
-          form={modalForm}
-          // 表单配置项
-          items={modalFormItems}
-          // 表单模式
-          mode={modal.type}
-          // 表单提交
-          onFinish={async () => {
-            const values = modalForm.getFieldsValue(true)
-            submitMutateAsync(values, {
-              onSuccess: modal.close
-            })
-          }}
-        />
-      </RpModal>
     </RpPageContainer>
   )
 }
-
-export const Route = createLazyFileRoute('/_base/system/depts')({
-  component: DeptsTable
-})

@@ -1,9 +1,14 @@
-import { tenantsQueryOptions } from '../../tenants'
-import type { DeptsSearchFormModel } from '../types'
+import type { DeptsSubmitDto } from '@raipiot-2f/api'
 
-export const useDeptsSearchForm = () => {
+import { tenantsQueryOptions } from '../../tenants'
+
+/**
+ * 构建搜索表单
+ * @returns
+ */
+export const useSearchForm = () => {
   const { t } = useTranslation('SYSTEM/DEPTS')
-  const { createSearchForm } = useFormCreator<DeptsSearchFormModel>()
+  const { createSearchForm } = useFormCreator<DeptsSubmitDto>()
   const [searchForm] = AForm.useForm()
   const {
     data: { records }
