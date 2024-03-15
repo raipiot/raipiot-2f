@@ -1,0 +1,7 @@
+{
+  "SORT": "角色排序",
+  "ALIAS": "角色别名",
+  "NAME": "角色名称",
+  "TENANT": "所属租户",
+  "PARENT.ROLE.NAME": "上级角色"
+}

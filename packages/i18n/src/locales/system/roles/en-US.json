@@ -1,0 +1,7 @@
+{
+  "SORT": "Sort",
+  "ALIAS": "Name alias",
+  "NAME": "Role name",
+  "TENANT": "Tenant",
+  "PARENT.ROLE.NAME": "Parent role"
+}
