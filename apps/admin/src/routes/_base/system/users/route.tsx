@@ -1,5 +1,3 @@
-import { Depts } from '@/features/system/depts'
-
 const t = i18n.getFixedT(null, 'ROUTER')
 
 export const Route = createFileRoute('/_base/system/users')({

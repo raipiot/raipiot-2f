@@ -1,7 +1,5 @@
 import type { UserPageDto, UserVo } from '@raipiot-2f/api'
 
-import { Depts } from '@/features/system/depts'
-
 export const Route = createLazyFileRoute('/_base/system/users')({
   component: () => (
     <Users.ModuleProvider>

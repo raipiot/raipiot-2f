@@ -60,6 +60,7 @@ declare global {
   const BrowserUtils: typeof import('@raipiot-infra/utils')['BrowserUtils']
   const DashboardAPI: typeof import('@raipiot-2f/api')['DashboardAPI']
   const DateUtils: typeof import('@raipiot-infra/utils')['DateUtils']
+  const Depts: typeof import('../src/features/system/index')['Depts']
   const DeptsAPI: typeof import('@raipiot-2f/api')['DeptsAPI']
   const DictConfigs: typeof import('../src/features/system/index')['DictConfigs']
   const Dicts: typeof import('../src/features/system/index')['Dicts']

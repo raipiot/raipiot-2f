@@ -1,4 +1,3 @@
-import { Depts } from '@/features/system/depts'
 import { tenantsQueryOptions } from '@/features/system/tenants'
 
 const t = i18n.getFixedT(null, 'ROUTER')
