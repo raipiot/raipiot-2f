@@ -1,4 +1,3 @@
-import { SystemDictCode, systemDictTreeQueryOptions } from '@/features/system/dicts'
 import { postsQueryOptions } from '@/features/system/posts'
 
 const t = i18n.getFixedT(null, 'ROUTER')
@@ -11,6 +10,6 @@ export const Route = createFileRoute('/_base/system/posts')({
   loader: () =>
     Promise.allSettled([
       queryClient.ensureQueryData(postsQueryOptions(PageUtils.initParams())),
-      queryClient.ensureQueryData(systemDictTreeQueryOptions(SystemDictCode.POST_CATEGORY))
+      queryClient.ensureQueryData(Dicts.treeQueryOptions('post_category'))
     ])
 })

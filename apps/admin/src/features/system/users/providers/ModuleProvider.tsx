@@ -3,7 +3,7 @@ import type { PropsWithChildren } from 'react'
 import { BaseModalProvider } from './BaseModalProvider'
 import { PlatformModalProvider } from './PlatformModalProvider'
 
-export function UsersProvider(props: PropsWithChildren) {
+export function ModuleProvider(props: PropsWithChildren) {
   return (
     <BaseModalProvider>
       <PlatformModalProvider>{props.children}</PlatformModalProvider>

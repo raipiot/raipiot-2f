@@ -31,10 +31,11 @@ export const useLogoutMutation = () => {
   const { t } = useTranslation(['AUTH'])
   return useMutation({
     mutationFn: () => authAPI.logout(),
-    onSuccess: () => {
+    onSuccess: async () => {
       AuthUtils.clearAccessToken()
       AuthUtils.clearRefreshToken()
       message.success(t('LOG.OUT.SUCCESS'))
+      queryClient.removeQueries(Users.infoQueryOptions())
     }
   })
 }

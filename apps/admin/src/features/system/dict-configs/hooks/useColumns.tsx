@@ -4,21 +4,21 @@ import { isMobile } from 'react-device-detect'
 
 import type { UseModal } from '@/shared/hooks/useModal'
 
-import { useSystemDictRemoveMutation } from '../mutations'
-import { systemDictQueryOptions } from '../queries'
+import { useRemoveMutation } from '../../dicts/mutations'
+import { detailQueryOptions } from '../../dicts/queries'
 
-interface UseDictValuesColumnsProps {
+interface UseColumnsProps {
   modal?: UseModal<string>
   form?: FormInstance
 }
 
-export const useSystemDictValuesColumns = (props?: UseDictValuesColumnsProps) => {
+export const useColumns = (props?: UseColumnsProps) => {
   const { modal, form } = props ?? {}
 
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
   const { createActions, createColumns } = useTableCreator<SystemDictVo>()
 
-  const { mutateAsync, isPending } = useSystemDictRemoveMutation()
+  const { mutateAsync, isPending } = useRemoveMutation()
 
   return {
     columns: createColumns<SystemDictVo>([
@@ -64,24 +64,24 @@ export const useSystemDictValuesColumns = (props?: UseDictValuesColumnsProps) =>
             <RpButton
               variant="view"
               size="small"
-              onMouseEnter={() => queryClient.prefetchQuery(systemDictQueryOptions(record.id!))}
+              onMouseEnter={() => queryClient.prefetchQuery(detailQueryOptions(record.id!))}
               onClick={async () => {
                 modal?.openRead()
                 modal?.setMeta(record.id)
                 form?.setFieldsValue(
-                  await queryClient.ensureQueryData(systemDictQueryOptions(record.id!))
+                  await queryClient.ensureQueryData(detailQueryOptions(record.id!))
                 )
               }}
             />
             <RpButton
               variant="edit"
               size="small"
-              onMouseEnter={() => queryClient.prefetchQuery(systemDictQueryOptions(record.id!))}
+              onMouseEnter={() => queryClient.prefetchQuery(detailQueryOptions(record.id!))}
               onClick={async () => {
                 modal?.openEdit()
                 modal?.setMeta(record.id)
                 form?.setFieldsValue(
-                  await queryClient.ensureQueryData(systemDictQueryOptions(record.id!))
+                  await queryClient.ensureQueryData(detailQueryOptions(record.id!))
                 )
               }}
             />

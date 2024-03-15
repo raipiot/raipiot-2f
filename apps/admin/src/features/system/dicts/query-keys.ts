@@ -1,19 +1,15 @@
 import type { SystemDictPageDto } from '@raipiot-2f/api'
 
-import type { SystemDictCode } from './enums'
+import type { SystemDictCode } from './types'
 
-export const SYSTEM_DICTS_QK = 'system:dicts'
+export const LIST_QK = 'system:dicts'
 
-export const SYSTEM_DICT_QK = 'system:dict'
+export const DETAIL_QK = 'system:dict'
 
-export const SYSTEM_DICT_VALUES_QK = 'system:dict-values'
+export const TREE_QK = 'system:dict-tree'
 
-export const SYSTEM_DICT_TREE_QK = 'system:dict-tree'
+export const listQK = (params?: SystemDictPageDto) => [LIST_QK, params]
 
-export const systemDictsQK = (params?: SystemDictPageDto) => [SYSTEM_DICTS_QK, params]
+export const detailQK = (id?: string) => [DETAIL_QK, { id }]
 
-export const systemDictQK = (id?: string) => [SYSTEM_DICT_QK, { id }]
-
-export const systemDictValuesQK = (params?: SystemDictPageDto) => [SYSTEM_DICT_VALUES_QK, params]
-
-export const systemDictTreeQK = (code?: SystemDictCode) => [SYSTEM_DICT_TREE_QK, code]
+export const treeQK = (code?: SystemDictCode) => [TREE_QK, code]

@@ -1,31 +1,24 @@
-import type { SystemDictPageDto, SystemDictValuePageDto } from '@raipiot-2f/api'
+import type { SystemDictPageDto } from '@raipiot-2f/api'
 
-import type { SystemDictCode } from './enums'
-import { systemDictQK, systemDictsQK, systemDictTreeQK, systemDictValuesQK } from './query-keys'
+import { detailQK, listQK, treeQK } from './query-keys'
+import type { SystemDictCode } from './types'
 
-export const systemDictQueryOptions = (id: string) =>
+export const detailQueryOptions = (id: string) =>
   queryOptions({
-    queryKey: systemDictQK(id),
+    queryKey: detailQK(id),
     queryFn: ({ signal }) => systemDictsAPI.detail(id, signal)
   })
 
-export const systemDictsQueryOptions = (params: SystemDictPageDto) =>
+export const listQueryOptions = (params: SystemDictPageDto) =>
   queryOptions({
-    queryKey: systemDictsQK(params),
+    queryKey: listQK(params),
     queryFn: ({ signal }) => systemDictsAPI.parentList(params, signal),
     placeholderData: keepPreviousData
   })
 
-export const systemDictValuesQueryOptions = (params: SystemDictValuePageDto) =>
+export const treeQueryOptions = (code: SystemDictCode) =>
   queryOptions({
-    queryKey: systemDictValuesQK(params),
-    queryFn: ({ signal }) => systemDictsAPI.childList(params, signal),
-    placeholderData: keepPreviousData
-  })
-
-export const systemDictTreeQueryOptions = (code: SystemDictCode) =>
-  queryOptions({
-    queryKey: systemDictTreeQK(code),
+    queryKey: treeQK(code),
     queryFn: ({ signal }) => systemDictsAPI.dictionaryTree(code, signal),
     placeholderData: keepPreviousData
   })

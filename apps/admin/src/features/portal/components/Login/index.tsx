@@ -3,7 +3,6 @@ import { omit } from 'lodash-es'
 import type { ComponentPropsWithoutRef } from 'react'
 
 import { useLoginMutation, useSMSLoginMutation } from '@/features/auth/login'
-import { userInfoQueryOptions } from '@/features/system/users'
 
 import AccountFormItems from './AccountFormItems'
 import PhoneNumberFormItems from './PhoneNumberFormItems'
@@ -38,7 +37,7 @@ export function Login(props: LoginProps) {
     const values = await form.validateFields()
     const options = {
       onSuccess: async () => {
-        await queryClient.ensureQueryData(userInfoQueryOptions())
+        await queryClient.ensureQueryData(Users.infoQueryOptions())
         props.onLoginSuccess?.()
       }
     }

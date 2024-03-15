@@ -2,17 +2,17 @@ import type { UserVo } from '@raipiot-2f/api'
 import { isMobile } from 'react-device-detect'
 
 import { useBaseModalContext, usePlatformModalContext } from '../context'
-import { useUserRemoveMutation } from '../mutations'
-import { userPlatformQueryOptions, userQueryOptions } from '../queries'
+import { useRemoveMutation } from '../mutations'
+import { detailQueryOptions, platformDetailQueryOptions } from '../queries'
 
-export const useUsersColumns = () => {
-  const { modal, form } = useBaseModalContext()
-  const { modal: platformModal, form: platformForm } = usePlatformModalContext()
+export const useColumns = () => {
+  const baseModalContext = useBaseModalContext()
+  const platformModalContext = usePlatformModalContext()
 
   const { t } = useTranslation('SYSTEM/USERS')
   const { createActions, createColumns } = useTableCreator<UserVo>()
 
-  const { mutateAsync, isPending } = useUserRemoveMutation()
+  const { mutateAsync, isPending } = useRemoveMutation()
 
   return {
     columns: createColumns<UserVo>([
@@ -70,38 +70,41 @@ export const useUsersColumns = () => {
             <RpButton
               variant="view"
               size="small"
-              onMouseEnter={() => queryClient.prefetchQuery(userQueryOptions(record.id!))}
+              onMouseEnter={() => queryClient.prefetchQuery(detailQueryOptions(record.id!))}
               onClick={async () => {
-                modal?.openRead()
-                modal?.setMeta(record.id)
-                form?.setFieldsValue(
-                  await queryClient.ensureQueryData(userQueryOptions(record.id!))
+                const { modal, form } = baseModalContext
+                modal.openRead()
+                modal.setMeta(record.id)
+                form.setFieldsValue(
+                  await queryClient.ensureQueryData(detailQueryOptions(record.id!))
                 )
               }}
             />
             <RpButton
               variant="edit"
               size="small"
-              onMouseEnter={() => queryClient.prefetchQuery(userQueryOptions(record.id!))}
+              onMouseEnter={() => queryClient.prefetchQuery(detailQueryOptions(record.id!))}
               onClick={async () => {
-                modal?.openEdit()
-                modal?.setMeta(record.id)
-                form?.setFieldsValue(
-                  await queryClient.ensureQueryData(userQueryOptions(record.id!))
+                const { modal, form } = baseModalContext
+                modal.openEdit()
+                modal.setMeta(record.id)
+                form.setFieldsValue(
+                  await queryClient.ensureQueryData(detailQueryOptions(record.id!))
                 )
               }}
             />
             <RpButton
               variant="config"
               size="small"
-              onMouseEnter={() => queryClient.prefetchQuery(userPlatformQueryOptions(record.id!))}
+              onMouseEnter={() => queryClient.prefetchQuery(platformDetailQueryOptions(record.id!))}
               onClick={async () => {
-                platformModal?.openEdit()
-                platformModal?.setMeta(record.id)
+                const { modal, form } = platformModalContext
+                modal.openEdit()
+                modal.setMeta(record.id)
                 const { userType, userExt } = await queryClient.ensureQueryData(
-                  userPlatformQueryOptions(record.id!)
+                  platformDetailQueryOptions(record.id!)
                 )
-                platformForm?.setFieldsValue({
+                form.setFieldsValue({
                   userId: record.id!,
                   userType,
                   userExt

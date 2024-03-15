@@ -1,13 +1,11 @@
-import { SystemDictCode, systemDictTreeQueryOptions } from '@/features/system/dicts'
-
 import type { UserPlatformFormModel } from '../types'
 
-export const useUsersPlatformForm = () => {
+export const usePlatformForm = () => {
   const { t } = useTranslation(['SYSTEM/USERS', 'COMMON'])
   const { createModalForm } = useFormCreator<UserPlatformFormModel>()
   const [form] = AForm.useForm<UserPlatformFormModel>()
 
-  const { data } = useSuspenseQuery(systemDictTreeQueryOptions(SystemDictCode.USER_TYPE))
+  const { data } = useSuspenseQuery(Dicts.treeQueryOptions('user_type'))
 
   return {
     form,

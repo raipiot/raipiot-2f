@@ -1,5 +1,4 @@
 import { useLogoutMutation } from '@/features/auth/login'
-import { userInfoQueryOptions } from '@/features/system/users'
 
 enum UserAction {
   'USER.INFO' = '1',
@@ -11,7 +10,7 @@ export default function UserAvatar() {
   const { t } = useTranslation(['COMMON', 'AUTH'])
   const navigate = useNavigate()
 
-  const { data: userInfo } = useSuspenseQuery(userInfoQueryOptions())
+  const { data: userInfo } = useSuspenseQuery(Users.infoQueryOptions())
   const logoutMutation = useLogoutMutation()
 
   const menuItems = [

@@ -1,47 +1,40 @@
 import type { UserPageDto, UserVo } from '@raipiot-2f/api'
 
 import { DeptTree } from '@/features/system/depts'
-import {
-  BaseModal,
-  PlatformModal,
-  useBaseModalContext,
-  UsersProvider,
-  usersQueryOptions,
-  useUserRemoveMutation,
-  useUsersColumns,
-  useUsersSearchForm
-} from '@/features/system/users'
 
 export const Route = createLazyFileRoute('/_base/system/users')({
   component: () => (
-    <UsersProvider>
-      <Users />
-      <BaseModal />
-      <PlatformModal />
-    </UsersProvider>
+    <Users.ModuleProvider>
+      <Component />
+      <Users.BaseModal />
+      <Users.PlatformModal />
+    </Users.ModuleProvider>
   )
 })
 
-export function Users() {
+export function Component() {
   // 分页器
   const { pageParams, setPageParams, pagination, isPending, startTransition } =
     usePagination<UserPageDto>()
   // 多选器：范型为列表行数据类型
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<UserVo>()
   // 搜索表单
-  const { searchForm, searchFormItems } = useUsersSearchForm()
+  const { searchForm, searchFormItems } = Users.useSearchForm()
   // 表格列
-  const { columns } = useUsersColumns()
+  const { columns } = Users.useColumns()
 
-  const { modal, form } = useBaseModalContext()
+  const { modal, form } = Users.useBaseModalContext()
 
   // 异步查询：列表数据
   const {
     data: { records, total },
     refetch
-  } = useSuspenseQuery(usersQueryOptions(PageUtils.mergeParams(pageParams)))
+  } = useSuspenseQuery(Users.listQueryOptions(PageUtils.mergeParams(pageParams)))
   // 异步删除
-  const { mutateAsync: removeMutateAsync, isPending: isRemovePending } = useUserRemoveMutation()
+  const { mutateAsync: removeMutateAsync, isPending: isRemovePending } = Users.useRemoveMutation()
+
+  // 清空选中行
+  useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
 
   return (
     // 页面容器
@@ -52,8 +45,8 @@ export function Users() {
           <RpButton
             variant="create"
             onClick={() => {
-              form?.resetFields()
-              modal?.openCreate()
+              form.resetFields()
+              modal.openCreate()
             }}
           />
         )
@@ -65,7 +58,11 @@ export function Users() {
             deptId={pageParams.deptId}
             onSelectDeptId={(id) =>
               startTransition(() =>
-                setPageParams(PageUtils.mergeParams(pageParams, { deptId: id }))
+                setPageParams(
+                  PageUtils.mergeParams(pageParams, {
+                    deptId: id
+                  })
+                )
               )
             }
           />
@@ -84,7 +81,7 @@ export function Users() {
             // 事件：预渲染
             onPrefetch={(values) =>
               queryClient.prefetchQuery(
-                usersQueryOptions(PageUtils.mergeParams(pageParams, values))
+                Users.listQueryOptions(PageUtils.mergeParams(pageParams, values))
               )
             }
           />
@@ -101,7 +98,7 @@ export function Users() {
             pagination={pagination({
               total,
               // 事件：分页预渲染
-              onPrefetch: (values) => queryClient.prefetchQuery(usersQueryOptions(values))
+              onPrefetch: (values) => queryClient.prefetchQuery(Users.listQueryOptions(values))
             })}
             // 刷新加载
             refreshLoading={isPending}

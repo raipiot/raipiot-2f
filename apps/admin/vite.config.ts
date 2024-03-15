@@ -104,7 +104,8 @@ export default defineConfig(({ mode }) => {
           'src/shared/hooks/*',
           'src/shared/providers/*',
           'src/shared/store/*',
-          'src/shared/utils/*'
+          'src/shared/utils/*',
+          'src/features'
         ]
       }),
       BootstrapAnimation({

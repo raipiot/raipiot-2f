@@ -1,5 +1,5 @@
 import { usePlatformModalContext } from '../context'
-import { useUserPlatformSubmitMutation } from '../mutations'
+import { usePlatformSubmitMutation } from '../mutations'
 import type { UserPlatformFormModel } from '../types'
 
 export function PlatformModal() {
@@ -11,7 +11,7 @@ export function PlatformModal() {
     edit: '600px'
   })
 
-  const { mutateAsync, isPending } = useUserPlatformSubmitMutation()
+  const { mutateAsync, isPending } = usePlatformSubmitMutation()
 
   return (
     <RpModal // 模态框类型

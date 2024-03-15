@@ -57,11 +57,14 @@ export const moduleMenus: ModuleMenuItem[] = [
   }
 ]
 
+export const removeTrailingSlash = (url: string) =>
+  url.endsWith('/') ? url.substring(0, url.length - 1) : url
+
 export const getModuleMenuCodeByPath = (path: string): ModuleMenuCode | undefined => {
   const moduleMenu = Array.from(routerMenuMap.entries()).find(([_, menuItems]) =>
     menuItems()
       .flatMap((item) => [item, ...(hasChildren(item) ? item.children : [])])
-      .find((item) => item?.key === path)
+      .find((item) => item?.key === removeTrailingSlash(path))
   )
   return moduleMenu ? moduleMenu[0] : undefined
 }

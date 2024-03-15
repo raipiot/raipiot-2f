@@ -33,13 +33,13 @@ import { Route as BaseSystemPostsRouteImport } from './../../routes/_base/system
 import { Route as BaseSystemPermissionsRouteImport } from './../../routes/_base/system/permissions/route'
 import { Route as BaseSystemParamsRouteImport } from './../../routes/_base/system/params/route'
 import { Route as BaseSystemMenusRouteImport } from './../../routes/_base/system/menus/route'
-import { Route as BaseSystemDictsRouteImport } from './../../routes/_base/system/dicts/route'
 import { Route as BaseSystemDeptsRouteImport } from './../../routes/_base/system/depts/route'
 import { Route as BaseDevStorybookRouteImport } from './../../routes/_base/dev/storybook/route'
 import { Route as BaseSystemDictsIdRouteImport } from './../../routes/_base/system/dicts/$id/route'
 import { Route as BaseSystemBizDictsIdRouteImport } from './../../routes/_base/system/biz-dicts/$id/route'
 import { Route as BaseDevTemplatesBasicTableRouteImport } from './../../routes/_base/dev/templates/basic-table/route'
 import { Route as BaseDevTemplatesAdvancedTableRouteImport } from './../../routes/_base/dev/templates/advanced-table/route'
+import { Route as BaseSystemDictsIndexRouteImport } from './../../routes/_base/system/dicts/index/route'
 import { Route as BaseSystemBizDictsIndexRouteImport } from './../../routes/_base/system/biz-dicts/index/route'
 
 // Create/Update Routes
@@ -202,13 +202,6 @@ const BaseSystemMenusRouteRoute = BaseSystemMenusRouteImport.update({
   import('./../../routes/_base/system/menus/route.lazy').then((d) => d.Route),
 )
 
-const BaseSystemDictsRouteRoute = BaseSystemDictsRouteImport.update({
-  path: '/system/dicts',
-  getParentRoute: () => BaseRouteRoute,
-} as any).lazy(() =>
-  import('./../../routes/_base/system/dicts/route.lazy').then((d) => d.Route),
-)
-
 const BaseSystemDeptsRouteRoute = BaseSystemDeptsRouteImport.update({
   path: '/system/depts',
   getParentRoute: () => BaseRouteRoute,
@@ -224,8 +217,8 @@ const BaseDevStorybookRouteRoute = BaseDevStorybookRouteImport.update({
 )
 
 const BaseSystemDictsIdRouteRoute = BaseSystemDictsIdRouteImport.update({
-  path: '/$id',
-  getParentRoute: () => BaseSystemDictsRouteRoute,
+  path: '/system/dicts/$id',
+  getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
   import('./../../routes/_base/system/dicts/$id/route.lazy').then(
     (d) => d.Route,
@@ -260,6 +253,15 @@ const BaseDevTemplatesAdvancedTableRouteRoute =
       (d) => d.Route,
     ),
   )
+
+const BaseSystemDictsIndexRouteRoute = BaseSystemDictsIndexRouteImport.update({
+  path: '/system/dicts/',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base/system/dicts/index/route.lazy').then(
+    (d) => d.Route,
+  ),
+)
 
 const BaseSystemBizDictsIndexRouteRoute =
   BaseSystemBizDictsIndexRouteImport.update({
@@ -343,10 +345,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSystemDeptsRouteImport
       parentRoute: typeof BaseRouteImport
     }
-    '/_base/system/dicts': {
-      preLoaderRoute: typeof BaseSystemDictsRouteImport
-      parentRoute: typeof BaseRouteImport
-    }
     '/_base/system/menus': {
       preLoaderRoute: typeof BaseSystemMenusRouteImport
       parentRoute: typeof BaseRouteImport
@@ -379,6 +377,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSystemBizDictsIndexRouteImport
       parentRoute: typeof BaseRouteImport
     }
+    '/_base/system/dicts/': {
+      preLoaderRoute: typeof BaseSystemDictsIndexRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
     '/_base/dev/templates/advanced-table': {
       preLoaderRoute: typeof BaseDevTemplatesAdvancedTableRouteImport
       parentRoute: typeof BaseDevRouteImport
@@ -393,7 +395,7 @@ declare module '@tanstack/react-router' {
     }
     '/_base/system/dicts/$id': {
       preLoaderRoute: typeof BaseSystemDictsIdRouteImport
-      parentRoute: typeof BaseSystemDictsRouteImport
+      parentRoute: typeof BaseRouteImport
     }
   }
 }
@@ -415,7 +417,6 @@ export const routeTree = rootRoute.addChildren([
     ]),
     BaseUserInfoRouteRoute,
     BaseSystemDeptsRouteRoute,
-    BaseSystemDictsRouteRoute.addChildren([BaseSystemDictsIdRouteRoute]),
     BaseSystemMenusRouteRoute,
     BaseSystemParamsRouteRoute,
     BaseSystemPermissionsRouteRoute,
@@ -424,7 +425,9 @@ export const routeTree = rootRoute.addChildren([
     BaseSystemTenantsRouteRoute,
     BaseSystemUsersRouteRoute,
     BaseSystemBizDictsIndexRouteRoute,
+    BaseSystemDictsIndexRouteRoute,
     BaseSystemBizDictsIdRouteRoute,
+    BaseSystemDictsIdRouteRoute,
   ]),
   PortalRouteRoute.addChildren([
     PortalIndexRouteRoute,

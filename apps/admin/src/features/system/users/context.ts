@@ -1,4 +1,21 @@
-import type { BaseModalContextProps, PlatformModalContextProps } from './types'
+import type { FormInstance } from 'antd'
+
+import type { RpBasicFormItem } from '@/shared/components/RpDynamicForm/types'
+import type { UseModal } from '@/shared/hooks/useModal'
+
+import type { UserPlatformFormModel, UserSubmitFormModel } from './types'
+
+interface BaseModalContextProps {
+  modal: UseModal<string>
+  form: FormInstance
+  formItems: RpBasicFormItem<UserSubmitFormModel>[]
+}
+
+interface PlatformModalContextProps {
+  modal: UseModal<string>
+  form: FormInstance
+  formItems: RpBasicFormItem<UserPlatformFormModel>[]
+}
 
 export const BaseModalContext = createContext<BaseModalContextProps | undefined>(undefined)
 
@@ -7,7 +24,7 @@ export const PlatformModalContext = createContext<PlatformModalContextProps | un
 export const useBaseModalContext = () => {
   const context = useContext(BaseModalContext)
   if (context === undefined) {
-    throw new Error('useBaseModalContext must be used within a BaseModalProvider')
+    throw new Error('useBaseModalContext must be used within a ModalBaseProvider')
   }
   return context
 }

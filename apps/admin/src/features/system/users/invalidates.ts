@@ -1,18 +1,18 @@
-import { userPlatformQK, userQK, USERS_QK } from './query-keys'
+import { detailQK, LIST_QK, platformDetailQK } from './query-keys'
 
-export const invalidateUsersQuery = () =>
+export const invalidateListQuery = () =>
   queryClient.invalidateQueries({
-    queryKey: [USERS_QK]
+    queryKey: [LIST_QK]
   })
 
-export const invalidateUserQuery = (id: string) =>
+export const invalidateDetailQuery = (id: string) =>
   queryClient.invalidateQueries({
-    queryKey: userQK(id),
+    queryKey: detailQK(id),
     refetchType: 'all'
   })
 
-export const invalidateUserPlatformQuery = (id: string) =>
+export const invalidatePlatformDetailQuery = (id: string) =>
   queryClient.invalidateQueries({
-    queryKey: userPlatformQK(id),
+    queryKey: platformDetailQK(id),
     refetchType: 'all'
   })

@@ -1,24 +1,24 @@
 import type { UserPlatformSubmitDto, UserSubmitDto } from '@raipiot-2f/api'
 
 import {
-  invalidateUserPlatformQuery,
-  invalidateUserQuery,
-  invalidateUsersQuery
+  invalidateDetailQuery,
+  invalidateListQuery,
+  invalidatePlatformDetailQuery
 } from './invalidates'
 
-export const useUserRemoveMutation = () => {
+export const useRemoveMutation = () => {
   const { t } = useTranslation()
   const { message } = AApp.useApp()
   return useMutation({
     mutationFn: (ids: string) => usersAPI.remove(ids),
     onSuccess: () => {
       message.success(t('OPERATION.SUCCESS'))
-      invalidateUsersQuery()
+      invalidateListQuery()
     }
   })
 }
 
-export const useUserSubmitMutation = () => {
+export const useSubmitMutation = () => {
   const { t } = useTranslation()
   const { message } = AApp.useApp()
   return useMutation({
@@ -26,25 +26,24 @@ export const useUserSubmitMutation = () => {
     onSuccess: (_, variables) => {
       message.success(t('OPERATION.SUCCESS'))
       if (variables.id) {
-        invalidateUserQuery(variables.id)
-        invalidateUserPlatformQuery(variables.id)
+        invalidateDetailQuery(variables.id)
+        invalidatePlatformDetailQuery(variables.id)
       }
-      invalidateUsersQuery()
+      invalidateListQuery()
     }
   })
 }
 
-export const useUserPlatformSubmitMutation = () => {
+export const usePlatformSubmitMutation = () => {
   const { t } = useTranslation()
   const { message } = AApp.useApp()
   return useMutation({
     mutationFn: (data: UserPlatformSubmitDto) => usersAPI.updatePlatform(data),
     onSuccess: (_, variables) => {
       message.success(t('OPERATION.SUCCESS'))
-      console.log(variables)
       if (variables.userId) {
-        invalidateUserQuery(variables.userId)
-        invalidateUserPlatformQuery(variables.userId)
+        invalidateDetailQuery(variables.userId)
+        invalidatePlatformDetailQuery(variables.userId)
       }
     }
   })

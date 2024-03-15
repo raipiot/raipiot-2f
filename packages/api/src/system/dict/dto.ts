@@ -5,7 +5,7 @@ export interface SystemDictPageDto extends PageDto {
   dictValue?: string
 }
 
-export interface SystemDictValuePageDto extends SystemDictPageDto {
+export interface SystemDictConfigPageDto extends SystemDictPageDto {
   parentId: string
 }
 

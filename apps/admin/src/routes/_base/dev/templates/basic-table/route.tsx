@@ -1,5 +1,3 @@
-import { systemDictsQueryOptions } from '@/features/system/dicts'
-
 const t = i18n.getFixedT(null, 'ROUTER')
 
 export const Route = createFileRoute('/_base/dev/templates/basic-table')({
@@ -7,5 +5,5 @@ export const Route = createFileRoute('/_base/dev/templates/basic-table')({
     title: () => t('DEVELOPER.TEMPLATES.BASIC'),
     icon: <MaterialSymbolsBook2Rounded />
   },
-  loader: () => queryClient.ensureQueryData(systemDictsQueryOptions(PageUtils.initParams()))
+  loader: () => queryClient.ensureQueryData(Dicts.listQueryOptions(PageUtils.initParams()))
 })

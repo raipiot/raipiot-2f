@@ -1,13 +1,11 @@
-import { SystemDictCode, systemDictTreeQueryOptions } from '@/features/system/dicts'
-
 import type { UserSearchFormModel } from '../types'
 
-export const useUsersSearchForm = () => {
+export const useSearchForm = () => {
   const { t } = useTranslation('SYSTEM/USERS')
   const { createSearchForm } = useFormCreator<UserSearchFormModel>()
   const [searchForm] = AForm.useForm()
 
-  const { data } = useSuspenseQuery(systemDictTreeQueryOptions(SystemDictCode.USER_TYPE))
+  const { data } = useSuspenseQuery(Dicts.treeQueryOptions('user_type'))
 
   return {
     searchForm,

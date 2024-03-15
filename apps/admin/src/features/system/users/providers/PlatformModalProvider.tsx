@@ -1,15 +1,15 @@
 import type { PropsWithChildren } from 'react'
 
 import { PlatformModalContext } from '../context'
-import { useUsersPlatformForm } from '../hooks'
+import { usePlatformForm } from '../hooks'
 
 export function PlatformModalProvider(props: PropsWithChildren) {
   // 弹窗
   const modal = useModal()
   // 弹窗表单
-  const { form, formItems } = useUsersPlatformForm()
+  const { form, formItems } = usePlatformForm()
 
-  const contentValue = useMemo(
+  const contextValue = useMemo(
     () => ({
       modal,
       form,
@@ -19,7 +19,7 @@ export function PlatformModalProvider(props: PropsWithChildren) {
   )
 
   return (
-    <PlatformModalContext.Provider value={contentValue}>
+    <PlatformModalContext.Provider value={contextValue}>
       {props.children}
     </PlatformModalContext.Provider>
   )

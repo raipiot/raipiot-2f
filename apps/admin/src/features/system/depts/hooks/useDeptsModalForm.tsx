@@ -1,4 +1,3 @@
-import { SystemDictCode, systemDictTreeQueryOptions } from '../../dicts'
 import { deptTreeQueryOptions } from '../queries'
 import type { DeptsSubmitFormModel } from '../types'
 
@@ -8,9 +7,7 @@ export const useDeptsModalForm = () => {
   const [modalForm] = AForm.useForm<DeptsSubmitFormModel>()
 
   const { data } = useSuspenseQuery(deptTreeQueryOptions())
-  const { data: orgCategoryData } = useSuspenseQuery(
-    systemDictTreeQueryOptions(SystemDictCode.ORG_CATEGORY)
-  )
+  const { data: treeData } = useSuspenseQuery(Dicts.treeQueryOptions('org_category'))
 
   return {
     modalForm,
@@ -60,7 +57,7 @@ export const useDeptsModalForm = () => {
           rules: [{ required: true }]
         },
         treeSelectProps: {
-          treeData: orgCategoryData
+          treeData
         }
       },
       {
