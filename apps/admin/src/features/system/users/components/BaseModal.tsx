@@ -1,12 +1,12 @@
 import { useBaseModalContext } from '../context'
-import { useUserSubmitMutation } from '../mutations'
+import { useSubmitMutation } from '../mutations'
 import type { UserSubmitFormModel } from '../types'
 
 export function BaseModal() {
   const { modal, form, formItems } = useBaseModalContext()
 
   // 异步提交
-  const { mutateAsync, isPending: isSubmitPending } = useUserSubmitMutation()
+  const { mutateAsync, isPending: isSubmitPending } = useSubmitMutation()
 
   return (
     <RpModal

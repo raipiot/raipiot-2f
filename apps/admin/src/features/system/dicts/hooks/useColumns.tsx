@@ -1,24 +1,17 @@
 import type { SystemDictVo } from '@raipiot-2f/api'
-import type { FormInstance } from 'antd'
 import { isMobile } from 'react-device-detect'
 
-import type { UseModal } from '@/shared/hooks/useModal'
+import { useBaseModalContext } from '../context'
+import { useRemoveMutation } from '../mutations'
+import { detailQueryOptions } from '../queries'
 
-import { useSystemDictRemoveMutation } from '../mutations'
-import { systemDictQueryOptions } from '../queries'
-
-interface UseSystemDictsColumnsProps {
-  modal?: UseModal<string>
-  form?: FormInstance
-}
-
-export const useSystemDictsColumns = (props?: UseSystemDictsColumnsProps) => {
-  const { modal, form } = props ?? {}
+export const useColumns = () => {
+  const { modal, form } = useBaseModalContext()
 
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
   const { createActions, createColumns } = useTableCreator<SystemDictVo>()
 
-  const { mutateAsync, isPending } = useSystemDictRemoveMutation()
+  const { mutateAsync, isPending } = useRemoveMutation()
 
   return {
     columns: createColumns<SystemDictVo>([
@@ -61,24 +54,24 @@ export const useSystemDictsColumns = (props?: UseSystemDictsColumnsProps) => {
             <RpButton
               variant="view"
               size="small"
-              onMouseEnter={() => queryClient.prefetchQuery(systemDictQueryOptions(record.id!))}
+              onMouseEnter={() => queryClient.prefetchQuery(detailQueryOptions(record.id!))}
               onClick={async () => {
-                modal?.openRead()
-                modal?.setMeta(record.id)
-                form?.setFieldsValue(
-                  await queryClient.ensureQueryData(systemDictQueryOptions(record.id!))
+                modal.openRead()
+                modal.setMeta(record.id)
+                form.setFieldsValue(
+                  await queryClient.ensureQueryData(detailQueryOptions(record.id!))
                 )
               }}
             />
             <RpButton
               variant="edit"
               size="small"
-              onMouseEnter={() => queryClient.prefetchQuery(systemDictQueryOptions(record.id!))}
+              onMouseEnter={() => queryClient.prefetchQuery(detailQueryOptions(record.id!))}
               onClick={async () => {
-                modal?.openEdit()
-                modal?.setMeta(record.id)
-                form?.setFieldsValue(
-                  await queryClient.ensureQueryData(systemDictQueryOptions(record.id!))
+                modal.openEdit()
+                modal.setMeta(record.id)
+                form.setFieldsValue(
+                  await queryClient.ensureQueryData(detailQueryOptions(record.id!))
                 )
               }}
             />

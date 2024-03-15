@@ -1,6 +1,4 @@
-import type { SystemDictValuePageDto } from '@raipiot-2f/api'
-
-import { systemDictQueryOptions, systemDictValuesQueryOptions } from '@/features/system/dicts'
+import type { SystemDictConfigPageDto } from '@raipiot-2f/api'
 
 const t = i18n.getFixedT(null, 'ROUTER')
 
@@ -14,13 +12,15 @@ export const Route = createFileRoute('/_base/system/dicts/$id')({
     if (!id) {
       throw redirect({ to: '/404' })
     }
-    await queryClient.ensureQueryData(
-      systemDictValuesQueryOptions(
-        PageUtils.initParams<SystemDictValuePageDto>({
-          parentId: id
-        })
-      )
-    )
-    await queryClient.ensureQueryData(systemDictQueryOptions(id))
+    await Promise.all([
+      queryClient.ensureQueryData(
+        DictConfigs.listQueryOptions(
+          PageUtils.initParams<SystemDictConfigPageDto>({
+            parentId: id
+          })
+        )
+      ),
+      queryClient.ensureQueryData(Dicts.detailQueryOptions(id))
+    ])
   }
 })

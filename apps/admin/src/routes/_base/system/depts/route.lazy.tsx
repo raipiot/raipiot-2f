@@ -1,6 +1,4 @@
-import { type DeptsDto, type DeptVo } from '@raipiot-2f/api'
-
-import { Depts } from '@/features/system/depts'
+import type { DeptsDto, DeptVo } from '@raipiot-2f/api'
 
 export const Route = createLazyFileRoute('/_base/system/depts')({
   component: () => (

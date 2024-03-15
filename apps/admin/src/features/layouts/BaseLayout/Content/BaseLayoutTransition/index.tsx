@@ -11,23 +11,18 @@ export function BaseLayoutTransition(props: BaseLayoutTransitionProps) {
     <AnimatePresence mode="wait">
       <motion.div
         key={location.pathname}
-        initial="initialState"
-        animate="animateState"
-        exit="exitState"
+        initial={{
+          opacity: 0
+        }}
+        animate={{
+          opacity: 1
+        }}
+        exit={{
+          opacity: 1
+        }}
         transition={{
           type: 'tween',
           duration: 0.5
-        }}
-        variants={{
-          initialState: {
-            opacity: 0
-          },
-          animateState: {
-            opacity: 1
-          },
-          exitState: {
-            opacity: 1
-          }
         }}
         className={props.className}
       >

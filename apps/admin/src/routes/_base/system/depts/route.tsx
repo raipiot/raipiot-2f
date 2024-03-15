@@ -1,5 +1,3 @@
-import { Depts } from '@/features/system/depts'
-import { SystemDictCode, systemDictTreeQueryOptions } from '@/features/system/dicts'
 import { tenantsQueryOptions } from '@/features/system/tenants'
 
 const t = i18n.getFixedT(null, 'ROUTER')
@@ -14,6 +12,6 @@ export const Route = createFileRoute('/_base/system/depts')({
       queryClient.ensureQueryData(Depts.listQueryOptions()),
       queryClient.ensureQueryData(Depts.treeQueryOptions()),
       queryClient.ensureQueryData(tenantsQueryOptions({ current: 1, size: 1000 })),
-      queryClient.ensureQueryData(systemDictTreeQueryOptions(SystemDictCode.ORG_CATEGORY))
+      queryClient.ensureQueryData(Dicts.treeQueryOptions('org_category'))
     ])
 })

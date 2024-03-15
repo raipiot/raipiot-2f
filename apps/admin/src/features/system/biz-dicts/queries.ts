@@ -1,4 +1,4 @@
-import type { SystemDictPageDto, SystemDictValuePageDto } from '@raipiot-2f/api'
+import type { SystemDictConfigPageDto, SystemDictPageDto } from '@raipiot-2f/api'
 
 import type { BizDictCode } from './enums'
 import { bizDictQK, bizDictsQK, bizDictTreeQK, bizDictValuesQK } from './query-keys'
@@ -16,7 +16,7 @@ export const bizDictsQueryOptions = (params: SystemDictPageDto) =>
     placeholderData: keepPreviousData
   })
 
-export const bizDictValuesQueryOptions = (params: SystemDictValuePageDto) =>
+export const bizDictValuesQueryOptions = (params: SystemDictConfigPageDto) =>
   queryOptions({
     queryKey: bizDictValuesQK(params),
     queryFn: ({ signal }) => bizDictsAPI.childList(params, signal),

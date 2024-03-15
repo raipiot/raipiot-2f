@@ -1,13 +1,11 @@
 import type { PostSubmitDto } from '@raipiot-2f/api'
 
-import { systemDictTreeQueryOptions } from '../../dicts'
-import { SystemDictCode } from '../../dicts/enums'
-
 export const usePostsModalForm = () => {
   const { t } = useTranslation(['SYSTEM/POSTS', 'COMMON'])
   const { createModalForm } = useFormCreator<PostSubmitDto>()
   const [modalForm] = AForm.useForm<PostSubmitDto>()
-  const { data } = useSuspenseQuery(systemDictTreeQueryOptions(SystemDictCode.POST_CATEGORY))
+
+  const { data } = useSuspenseQuery(Dicts.treeQueryOptions('post_category'))
 
   return {
     modalForm,

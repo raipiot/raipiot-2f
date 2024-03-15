@@ -2,7 +2,6 @@ import type { MenuProps } from 'antd'
 
 import LanguageButton from '@/features/layouts/BaseLayout/Header/LanguageButton'
 import ThemeToggle from '@/features/layouts/BaseLayout/Header/ThemeToggle'
-import { userInfoQK } from '@/features/system/users'
 
 import { Login } from '../Login'
 import UserCard from './UserCard'
@@ -13,7 +12,7 @@ export function PortalHeader() {
   const [showMiniMenu, setShowMiniMenu] = useState(false)
   const { open, toggle } = useModal()
 
-  const isLogin = () => !!queryClient.getQueryData(userInfoQK())
+  const isLogin = () => !!queryClient.getQueryData(Users.infoQK())
 
   const accountItems: MenuProps['items'] = [
     {

@@ -1,28 +1,28 @@
 import type { UserPageDto } from '@raipiot-2f/api'
 
-import { userInfoQK, userPlatformQK, userQK, usersQK } from './query-keys'
+import { detailQK, infoQK, listQK, platformDetailQK } from './query-keys'
 
-export const userInfoQueryOptions = () =>
+export const infoQueryOptions = () =>
   queryOptions({
-    queryKey: userInfoQK(),
+    queryKey: infoQK(),
     queryFn: ({ signal }) => usersAPI.info(signal)
   })
 
-export const userQueryOptions = (id: string) =>
+export const detailQueryOptions = (id: string) =>
   queryOptions({
-    queryKey: userQK(id),
+    queryKey: detailQK(id),
     queryFn: ({ signal }) => usersAPI.detail(id, signal)
   })
 
-export const usersQueryOptions = (params: UserPageDto) =>
+export const listQueryOptions = (params: UserPageDto) =>
   queryOptions({
-    queryKey: usersQK(params),
+    queryKey: listQK(params),
     queryFn: ({ signal }) => usersAPI.page(params, signal),
     placeholderData: keepPreviousData
   })
 
-export const userPlatformQueryOptions = (id: string) =>
+export const platformDetailQueryOptions = (id: string) =>
   queryOptions({
-    queryKey: userPlatformQK(id),
+    queryKey: platformDetailQK(id),
     queryFn: ({ signal }) => usersAPI.platformDetail(id, signal)
   })

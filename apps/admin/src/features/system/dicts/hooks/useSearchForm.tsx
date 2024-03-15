@@ -1,7 +1,7 @@
 import type { SystemDictSearchFormModel } from '@/features/system/dicts'
 
 // 在系统字典、系统字典配置中通用
-export const useSystemDictsSearchForm = () => {
+export const useSearchForm = () => {
   const { t } = useTranslation('SYSTEM/DICTS')
   const { createSearchForm } = useFormCreator<SystemDictSearchFormModel>()
   const [searchForm] = AForm.useForm()

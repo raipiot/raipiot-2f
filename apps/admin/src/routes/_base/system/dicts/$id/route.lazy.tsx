@@ -1,49 +1,38 @@
-import type { SystemDictSubmitDto, SystemDictValuePageDto, SystemDictVo } from '@raipiot-2f/api'
-
-import {
-  systemDictQueryOptions,
-  systemDictValuesQueryOptions,
-  useSystemDictRemoveMutation,
-  useSystemDictsSearchForm,
-  useSystemDictSubmitMutation,
-  useSystemDictValuesColumns,
-  useSystemDictValuesModalForm
-} from '@/features/system/dicts'
+import type { SystemDictConfigPageDto, SystemDictVo } from '@raipiot-2f/api'
 
 export const Route = createLazyFileRoute('/_base/system/dicts/$id')({
-  component: SystemDictItem
+  component: () => (
+    <Dicts.ModuleProvider>
+      <Component />
+      <Dicts.BaseModal />
+    </Dicts.ModuleProvider>
+  )
 })
 
-function SystemDictItem() {
+function Component() {
   const { id } = useParams({ from: '/_base/system/dicts/$id' })
   const staticData = useRouteStaticData()
   const { pageParams, setPageParams, isPending, startTransition } =
-    usePagination<SystemDictValuePageDto>({
+    usePagination<SystemDictConfigPageDto>({
       parentId: id
     })
   // 多选器：范型为列表行数据类型
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<SystemDictVo>()
-  // 弹窗
-  const modal = useModal()
   // 搜索表单
-  const { searchForm, searchFormItems } = useSystemDictsSearchForm()
-  // 弹窗表单
-  const { modalForm, modalFormItems } = useSystemDictValuesModalForm()
+  const { searchForm, searchFormItems } = Dicts.useSearchForm()
   // 表格列
-  const { columns } = useSystemDictValuesColumns({ modal, form: modalForm })
+  const { columns } = DictConfigs.useColumns()
+
+  const { modal, form } = Dicts.useBaseModalContext()
 
   // 异步查询：列表数据
   const { data, refetch } = useSuspenseQuery(
-    systemDictValuesQueryOptions(PageUtils.mergeParams(pageParams))
+    DictConfigs.listQueryOptions(PageUtils.mergeParams(pageParams))
   )
   // 异步查询：父级字典详情
-  const { data: parentDictData } = useSuspenseQuery(systemDictQueryOptions(id))
+  const { data: parentDictData } = useSuspenseQuery(Dicts.detailQueryOptions(id))
   // 异步删除
-  const { mutateAsync: removeMutateAsync, isPending: isRemovePending } =
-    useSystemDictRemoveMutation()
-  // 异步提交
-  const { mutateAsync: submitMutateAsync, isPending: isSubmitPending } =
-    useSystemDictSubmitMutation()
+  const { mutateAsync: removeMutateAsync, isPending: isRemovePending } = Dicts.useRemoveMutation()
 
   // 清空选中行
   useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
@@ -58,8 +47,8 @@ function SystemDictItem() {
           <RpButton
             variant="create"
             onClick={() => {
-              modalForm.resetFields()
-              modalForm.setFieldsValue({
+              form.resetFields()
+              form.setFieldsValue({
                 parentId: id,
                 code: parentDictData.code,
                 parentName: parentDictData.dictValue
@@ -82,7 +71,7 @@ function SystemDictItem() {
         // 事件：预渲染
         onPrefetch={(values) =>
           queryClient.prefetchQuery(
-            systemDictValuesQueryOptions(PageUtils.mergeParams(pageParams, values))
+            DictConfigs.listQueryOptions(PageUtils.mergeParams(pageParams, values))
           )
         }
       />
@@ -118,49 +107,6 @@ function SystemDictItem() {
           </Link>
         }
       />
-      {/* 模态框 */}
-      <RpModal
-        // 模态框类型
-        type={modal.type}
-        // 打开状态
-        open={modal.open}
-        // 标题
-        title={modal.getTitle()}
-        // 确认按钮加载
-        confirmLoading={isSubmitPending}
-        // 事件：确认
-        onOk={modalForm.submit}
-        // 事件：取消
-        onCancel={modal.close}
-        // 底部区域
-        footer={modal.isRead ? null : undefined}
-      >
-        <RpDynamicForm
-          name="modal"
-          // 表单
-          form={modalForm}
-          // 表单配置项
-          items={modalFormItems}
-          // 表单模式
-          mode={modal.type}
-          // 表单初始值
-          initialValues={{
-            sort: 1,
-            isSealed: false
-          }}
-          // 表单提交
-          onFinish={async () => {
-            const values = modalForm.getFieldsValue(true) as SystemDictSubmitDto
-            await submitMutateAsync(
-              {
-                ...values,
-                isSealed: FormatUtils.toDbNum(values.isSealed)
-              },
-              { onSuccess: modal.close }
-            )
-          }}
-        />
-      </RpModal>
     </RpPageContainer>
   )
 }

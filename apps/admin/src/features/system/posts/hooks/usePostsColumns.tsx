@@ -4,8 +4,6 @@ import { isMobile } from 'react-device-detect'
 
 import type { UseModal } from '@/shared/hooks/useModal'
 
-import { systemDictTreeQueryOptions } from '../../dicts'
-import { SystemDictCode } from '../../dicts/enums'
 import { usePostRemoveMutation } from '../mutations'
 import { postQueryOptions } from '../queries'
 
@@ -21,7 +19,7 @@ export const usePostsColumns = (props?: UsePostsColumnsProps) => {
   const { createActions, createColumns } = useTableCreator<PostVo>()
 
   const { mutateAsync, isPending } = usePostRemoveMutation()
-  const { data } = useSuspenseQuery(systemDictTreeQueryOptions(SystemDictCode.POST_CATEGORY))
+  const { data } = useSuspenseQuery(Dicts.treeQueryOptions('post_category'))
 
   return {
     columns: createColumns<PostVo>([

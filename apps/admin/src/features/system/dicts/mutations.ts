@@ -1,25 +1,21 @@
 import type { SystemDictSubmitDto } from '@raipiot-2f/api'
 
-import {
-  invalidateSystemDictQuery,
-  invalidateSystemDictsQueries,
-  invalidateSystemDictValuesQueries
-} from './invalidates'
+import { invalidateDetailQuery, invalidateListQuery } from './invalidates'
 
-export const useSystemDictRemoveMutation = () => {
+export const useRemoveMutation = () => {
   const { t } = useTranslation()
   const { message } = AApp.useApp()
   return useMutation({
     mutationFn: (ids: string) => systemDictsAPI.remove(ids),
     onSuccess: () => {
       message.success(t('OPERATION.SUCCESS'))
-      invalidateSystemDictsQueries()
-      invalidateSystemDictValuesQueries()
+      invalidateListQuery()
+      DictConfigs.invalidateListQuery()
     }
   })
 }
 
-export const useSystemDictSubmitMutation = () => {
+export const useSubmitMutation = () => {
   const { t } = useTranslation()
   const { message } = AApp.useApp()
   return useMutation({
@@ -27,10 +23,10 @@ export const useSystemDictSubmitMutation = () => {
     onSuccess: (_, variables) => {
       message.success(t('OPERATION.SUCCESS'))
       if (variables.id) {
-        invalidateSystemDictQuery(variables.id)
+        invalidateDetailQuery(variables.id)
       }
-      invalidateSystemDictsQueries()
-      invalidateSystemDictValuesQueries()
+      invalidateListQuery()
+      DictConfigs.invalidateListQuery()
     }
   })
 }

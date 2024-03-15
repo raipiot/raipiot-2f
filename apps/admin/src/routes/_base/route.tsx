@@ -1,5 +1,3 @@
-import { userInfoQueryOptions } from '@/features/system/users'
-
 export const Route = createFileRoute('/_base')({
   beforeLoad: async (params) => {
     const { location } = params
@@ -12,5 +10,5 @@ export const Route = createFileRoute('/_base')({
       })
     }
   },
-  loader: () => queryClient.ensureQueryData(userInfoQueryOptions())
+  loader: () => queryClient.ensureQueryData(Users.infoQueryOptions())
 })

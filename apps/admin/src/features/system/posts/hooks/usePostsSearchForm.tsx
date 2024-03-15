@@ -1,12 +1,11 @@
-import { systemDictTreeQueryOptions } from '../../dicts'
-import { SystemDictCode } from '../../dicts/enums'
 import type { PostSearchFormModel } from '../types'
 
 export const usePostsSearchForm = () => {
   const { t } = useTranslation('SYSTEM/POSTS')
-  const { data } = useSuspenseQuery(systemDictTreeQueryOptions(SystemDictCode.POST_CATEGORY))
   const { createSearchForm } = useFormCreator<PostSearchFormModel>()
   const [searchForm] = AForm.useForm()
+
+  const { data } = useSuspenseQuery(Dicts.treeQueryOptions('post_category'))
 
   return {
     searchForm,

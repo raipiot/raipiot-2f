@@ -1,6 +1,6 @@
-import type { SystemDictSubmitFormModel } from '../types'
+import type { SystemDictSubmitFormModel } from '../../dicts/types'
 
-export const useSystemDictsModalForm = () => {
+export const useBaseModalForm = () => {
   const { t } = useTranslation(['SYSTEM/DICTS', 'COMMON'])
   const { createModalForm } = useFormCreator<SystemDictSubmitFormModel>()
   const [modalForm] = AForm.useForm<SystemDictSubmitFormModel>()
@@ -10,10 +10,16 @@ export const useSystemDictsModalForm = () => {
     modalFormItems: createModalForm([
       {
         type: 'input',
+        colProps: {
+          span: 24
+        },
         formItemProps: {
           name: 'code',
           label: t('CODE'),
           rules: [{ required: true }]
+        },
+        inputProps: {
+          disabled: true
         }
       },
       {
@@ -22,6 +28,24 @@ export const useSystemDictsModalForm = () => {
           name: 'dictValue',
           label: t('DICT.VALUE'),
           rules: [{ required: true }]
+        }
+      },
+      {
+        type: 'input',
+        formItemProps: {
+          name: 'dictKey',
+          label: t('DICT.KEY'),
+          rules: [{ required: true }]
+        }
+      },
+      {
+        type: 'input',
+        formItemProps: {
+          name: 'parentName',
+          label: t('PARENT.DICT')
+        },
+        inputProps: {
+          disabled: true
         }
       },
       {

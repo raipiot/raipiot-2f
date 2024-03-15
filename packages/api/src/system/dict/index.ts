@@ -1,7 +1,7 @@
 import type HttpRequest from '@raipiot-2f/axios'
 
 import { BaseAPI } from '../../base'
-import type { SystemDictPageDto, SystemDictSubmitDto, SystemDictValuePageDto } from './dto'
+import type { SystemDictConfigPageDto, SystemDictPageDto, SystemDictSubmitDto } from './dto'
 import type { SystemDictsVo, SystemDictVo } from './vo'
 
 export * from './dto'
@@ -47,7 +47,7 @@ export class SystemDictsAPI extends BaseAPI {
   /**
    * 子列表
    */
-  async childList(params: SystemDictValuePageDto, signal?: AbortSignal) {
+  async childList(params: SystemDictConfigPageDto, signal?: AbortSignal) {
     return this.httpRequest.get<SystemDictVo[]>(`${this.#API_PREFIX}/child-list`, params, {
       signal
     })

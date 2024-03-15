@@ -1,4 +1,4 @@
-import { getRouterMenu, type MenuItem } from '@/features/menus'
+import { getRouterMenu, type MenuItem, removeTrailingSlash } from '@/features/menus'
 
 import SearchBar from './SearchBar'
 
@@ -17,7 +17,7 @@ export default function RouterMenu() {
   useEffect(() => {
     setSelectedKeys([routerState.location.pathname])
     setOpenKeys((value) => [
-      ...routerState.location.pathname
+      ...removeTrailingSlash(routerState.location.pathname)
         .split('/')
         .filter(Boolean)
         .reduce<string[]>((acc, cur) => {
@@ -47,7 +47,6 @@ export default function RouterMenu() {
           width: '100%',
           overflowY: 'auto'
         }}
-        key={i18n.language}
         items={getRouterMenu(menuStore.activeModuleMenuCode)}
         selectedKeys={selectedKeys}
         openKeys={openKeys}

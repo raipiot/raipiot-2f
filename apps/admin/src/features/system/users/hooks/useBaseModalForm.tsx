@@ -1,6 +1,6 @@
 import type { UserSubmitFormModel } from '../types'
 
-export const useUsersModalForm = () => {
+export const useBaseModalForm = () => {
   const { t } = useTranslation(['SYSTEM/USERS', 'COMMON'])
   const { createModalForm } = useFormCreator<UserSubmitFormModel>()
   const [modalForm] = AForm.useForm<UserSubmitFormModel>()

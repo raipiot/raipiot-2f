@@ -1,14 +1,5 @@
 import type { SystemDictPageDto, SystemDictSubmitDto, SystemDictVo } from '@raipiot-2f/api'
 
-import {
-  systemDictsQueryOptions,
-  useSystemDictRemoveMutation,
-  useSystemDictsColumns,
-  useSystemDictsModalForm,
-  useSystemDictsSearchForm,
-  useSystemDictSubmitMutation
-} from '@/features/system/dicts'
-
 export const Route = createLazyFileRoute('/_base/dev/templates/basic-table')({
   component: BasicTable
 })
@@ -22,23 +13,21 @@ function BasicTable() {
   // 弹窗
   const modal = useModal()
   // 搜索表单
-  const { searchForm, searchFormItems } = useSystemDictsSearchForm()
+  const { searchForm, searchFormItems } = Dicts.useSearchForm()
   // 弹窗表单
-  const { modalForm, modalFormItems } = useSystemDictsModalForm()
+  const { modalForm, modalFormItems } = Dicts.useBaseModalForm()
   // 表格列
-  const { columns } = useSystemDictsColumns({ modal, form: modalForm })
+  const { columns } = Dicts.useColumns()
 
   // 异步查询：列表数据
   const {
     data: { records, total },
     refetch
-  } = useSuspenseQuery(systemDictsQueryOptions(PageUtils.mergeParams(pageParams)))
+  } = useSuspenseQuery(Dicts.listQueryOptions(PageUtils.mergeParams(pageParams)))
   // 异步删除
-  const { mutateAsync: removeMutateAsync, isPending: isRemovePending } =
-    useSystemDictRemoveMutation()
+  const { mutateAsync: removeMutateAsync, isPending: isRemovePending } = Dicts.useRemoveMutation()
   // 异步提交
-  const { mutateAsync: submitMutateAsync, isPending: isSubmitPending } =
-    useSystemDictSubmitMutation()
+  const { mutateAsync: submitMutateAsync, isPending: isSubmitPending } = Dicts.useSubmitMutation()
 
   // 清空选中行
   useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
@@ -72,7 +61,7 @@ function BasicTable() {
         // 事件：预渲染
         onPrefetch={(values) =>
           queryClient.prefetchQuery(
-            systemDictsQueryOptions(PageUtils.mergeParams(pageParams, values))
+            Dicts.listQueryOptions(PageUtils.mergeParams(pageParams, values))
           )
         }
       />
@@ -89,7 +78,7 @@ function BasicTable() {
         pagination={pagination({
           total,
           // 事件：分页预渲染
-          onPrefetch: (values) => queryClient.prefetchQuery(systemDictsQueryOptions(values))
+          onPrefetch: (values) => queryClient.prefetchQuery(Dicts.listQueryOptions(values))
         })}
         // 刷新加载
         refreshLoading={isPending}
