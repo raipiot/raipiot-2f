@@ -1,7 +1,7 @@
 import type HttpRequest from '@raipiot-2f/axios'
 
 import { BaseAPI } from '../../base'
-import type { SystemDictPageDto, SystemDictSubmitDto, SystemDictConfigPageDto } from './dto'
+import type { SystemDictConfigPageDto, SystemDictPageDto, SystemDictSubmitDto } from './dto'
 import type { SystemDictsVo, SystemDictVo } from './vo'
 
 export * from './dto'

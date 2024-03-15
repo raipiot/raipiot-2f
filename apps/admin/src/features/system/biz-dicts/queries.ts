@@ -1,4 +1,4 @@
-import type { SystemDictPageDto, SystemDictConfigPageDto } from '@raipiot-2f/api'
+import type { SystemDictConfigPageDto, SystemDictPageDto } from '@raipiot-2f/api'
 
 import type { BizDictCode } from './enums'
 import { bizDictQK, bizDictsQK, bizDictTreeQK, bizDictValuesQK } from './query-keys'
