@@ -1,6 +1,6 @@
 import type { UserPageDto, UserVo } from '@raipiot-2f/api'
 
-import { DeptTree } from '@/features/system/depts'
+import { Depts } from '@/features/system/depts'
 import {
   BaseModal,
   PlatformModal,
@@ -61,7 +61,7 @@ export function Users() {
     >
       <div className="flex flex-col space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0">
         <div className="w-full shrink-0 sm:w-[250px]">
-          <DeptTree
+          <Depts.Tree
             deptId={pageParams.deptId}
             onSelectDeptId={(id) =>
               startTransition(() =>

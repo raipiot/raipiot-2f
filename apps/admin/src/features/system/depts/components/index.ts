@@ -1,1 +1,1 @@
-export * from './DeptTree'
+export * from './Tree'

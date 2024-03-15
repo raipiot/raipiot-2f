@@ -1,7 +1,7 @@
 import type { DeptTreeVo } from '@raipiot-2f/api'
 import type { CardProps, TreeDataNode, TreeProps } from 'antd'
 
-import { deptTreeQueryOptions } from '../queries'
+import { treeQueryOptions } from '../queries'
 
 interface DeptTreeProps {
   cardProps?: CardProps
@@ -10,13 +10,13 @@ interface DeptTreeProps {
   onSelectDeptId?: (id: string) => void
 }
 
-export function DeptTree(props: DeptTreeProps) {
+export function Tree(props: DeptTreeProps) {
   const { cardProps, treeProps, deptId } = props
 
   const { t } = useTranslation()
   const [searchText, setSearchText] = useState('')
 
-  const { data } = useSuspenseQuery(deptTreeQueryOptions())
+  const { data } = useSuspenseQuery(treeQueryOptions())
 
   const treeData = useMemo(() => {
     const loop = (list: DeptTreeVo[]): TreeDataNode[] =>

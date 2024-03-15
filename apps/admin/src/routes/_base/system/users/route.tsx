@@ -1,4 +1,4 @@
-import { deptTreeQueryOptions } from '@/features/system/depts'
+import { Depts } from '@/features/system/depts'
 import { SystemDictCode, systemDictTreeQueryOptions } from '@/features/system/dicts'
 import { usersQueryOptions } from '@/features/system/users'
 
@@ -12,7 +12,7 @@ export const Route = createFileRoute('/_base/system/users')({
   loader: async () => {
     await Promise.all([
       queryClient.ensureQueryData(usersQueryOptions(PageUtils.initParams())),
-      queryClient.ensureQueryData(deptTreeQueryOptions())
+      queryClient.ensureQueryData(Depts.treeQueryOptions())
     ])
     queryClient.ensureQueryData(systemDictTreeQueryOptions(SystemDictCode.USER_TYPE))
   }

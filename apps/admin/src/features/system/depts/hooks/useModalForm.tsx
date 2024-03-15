@@ -1,13 +1,14 @@
+import type { DeptsSubmitDto } from '@raipiot-2f/api'
+
 import { SystemDictCode, systemDictTreeQueryOptions } from '../../dicts'
-import { deptTreeQueryOptions } from '../queries'
-import type { DeptsSubmitFormModel } from '../types'
+import { treeQueryOptions } from '../queries'
 
-export const useDeptsModalForm = () => {
+export const useModalForm = () => {
   const { t } = useTranslation(['SYSTEM/DEPTS', 'COMMON'])
-  const { createModalForm } = useFormCreator<DeptsSubmitFormModel>()
-  const [modalForm] = AForm.useForm<DeptsSubmitFormModel>()
+  const { createModalForm } = useFormCreator<DeptsSubmitDto>()
+  const [modalForm] = AForm.useForm<DeptsSubmitDto>()
 
-  const { data } = useSuspenseQuery(deptTreeQueryOptions())
+  const { data } = useSuspenseQuery(treeQueryOptions())
   const { data: orgCategoryData } = useSuspenseQuery(
     systemDictTreeQueryOptions(SystemDictCode.ORG_CATEGORY)
   )

@@ -1,13 +1,6 @@
 import { type DeptsDto, type DeptVo } from '@raipiot-2f/api'
 
-import {
-  deptsQueryOptions,
-  useDeptsColumns,
-  useDeptsModalForm,
-  useDeptsRemoveMutation,
-  useDeptsSearchForm,
-  useDeptsSubmitMutation
-} from '@/features/system/depts'
+import { Depts } from '@/features/system/depts'
 
 function DeptsTable() {
   // 分页器
@@ -16,20 +9,20 @@ function DeptsTable() {
   // 弹窗
   const modal = useModal()
   // 搜索表单
-  const { searchForm, searchFormItems } = useDeptsSearchForm()
+  const { searchForm, searchFormItems } = Depts.useSearchForm()
   // 弹窗表单
-  const { modalForm, modalFormItems } = useDeptsModalForm()
+  const { modalForm, modalFormItems } = Depts.useModalForm()
   // 表格列
-  const { columns } = useDeptsColumns({ modal, form: modalForm })
+  const { columns } = Depts.useTableColumns({ modal, form: modalForm })
   // 查询参数
   const [filter, setFilter] = useState<DeptsDto>()
 
   // 异步查询：列表数据
-  const { data, isPending, refetch } = useSuspenseQuery(deptsQueryOptions(filter))
+  const { data, isPending, refetch } = useSuspenseQuery(Depts.listQueryOptions(filter))
   // 异步删除
-  const { mutateAsync: removeMutateAsync, isPending: isRemovePending } = useDeptsRemoveMutation()
+  const { mutateAsync: removeMutateAsync, isPending: isRemovePending } = Depts.useRemoveMutation()
   // 异步提交
-  const { mutateAsync: submitMutateAsync, isPending: isSubmitPending } = useDeptsSubmitMutation()
+  const { mutateAsync: submitMutateAsync, isPending: isSubmitPending } = Depts.useSubmitMutation()
 
   // 清空选中行
   useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
@@ -63,7 +56,7 @@ function DeptsTable() {
           })
         }
         // 事件：预渲染
-        onPrefetch={(values) => queryClient.prefetchQuery(deptsQueryOptions(values))}
+        onPrefetch={(values) => queryClient.prefetchQuery(Depts.listQueryOptions(values))}
       />
       {/* 表格 */}
       <RpBasicTable<DeptVo>
