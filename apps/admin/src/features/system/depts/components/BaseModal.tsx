@@ -6,7 +6,7 @@ export function BaseModal() {
   const { modal, form, formItems } = useBaseModalContext()
 
   // 异步提交
-  const { mutateAsync, isPending: isSubmitPending } = useSubmitMutation()
+  const { mutateAsync, isPending } = useSubmitMutation()
 
   return (
     <RpModal
@@ -17,7 +17,7 @@ export function BaseModal() {
       // 标题
       title={modal.getTitle()}
       // 确认按钮加载
-      confirmLoading={isSubmitPending}
+      confirmLoading={isPending}
       // 事件：确认
       onOk={form.submit}
       // 事件：取消
@@ -32,19 +32,13 @@ export function BaseModal() {
         // 表单配置项
         items={formItems}
         // 表单模式
-        mode={modal?.type}
+        mode={modal.type}
         // 表单初始值
         initialValues={{}}
         // 表单提交
         onFinish={async () => {
           const values = form.getFieldsValue(true)
-          await mutateAsync(
-            {
-              ...values,
-              isSealed: FormatUtils.toDbNum(values.isSealed)
-            },
-            { onSuccess: modal?.close }
-          )
+          await mutateAsync(values, { onSuccess: modal.close })
         }}
       />
     </RpModal>

@@ -12,27 +12,27 @@ export const Route = createLazyFileRoute('/_base/system/depts')({
 })
 
 function Component() {
-  // 分页器
   // 多选器：范型为列表行数据类型
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DeptVo>()
   // 弹窗
   const { modal, form } = Depts.useBaseModalContext()
   // 搜索表单
   const { searchForm, searchFormItems } = Depts.useSearchForm()
-
+  // 数据更新
+  const [isPending, startTransition] = useTransition()
   // 表格列
   const { columns } = Depts.useBaseColumns()
   // 查询参数
   const [filter, setFilter] = useState<DeptsDto>()
 
   // 异步查询：列表数据
-  const { data, isPending, refetch } = useSuspenseQuery(Depts.listQueryOptions(filter))
+  const { data, refetch } = useSuspenseQuery(Depts.listQueryOptions(filter))
 
   // 异步删除
   const { mutateAsync: removeMutateAsync, isPending: isRemovePending } = Depts.useRemoveMutation()
 
   // 清空选中行
-  useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
+  useEffect(() => clearSelectedRowKeys(), [clearSelectedRowKeys])
 
   return (
     // 页面容器
