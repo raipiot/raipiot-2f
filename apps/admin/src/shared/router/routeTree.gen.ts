@@ -41,6 +41,7 @@ import { Route as BaseDevTemplatesBasicTableRouteImport } from './../../routes/_
 import { Route as BaseDevTemplatesAdvancedTableRouteImport } from './../../routes/_base/dev/templates/advanced-table/route'
 import { Route as BaseSystemDictsIndexRouteImport } from './../../routes/_base/system/dicts/index/route'
 import { Route as BaseSystemBizDictsIndexRouteImport } from './../../routes/_base/system/biz-dicts/index/route'
+import { Route as BaseSupplierQuestionnairesIndexRouteImport } from './../../routes/_base/supplier/questionnaires/index/route'
 
 // Create/Update Routes
 
@@ -273,6 +274,16 @@ const BaseSystemBizDictsIndexRouteRoute =
     ),
   )
 
+const BaseSupplierQuestionnairesIndexRouteRoute =
+  BaseSupplierQuestionnairesIndexRouteImport.update({
+    path: '/supplier/questionnaires/',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import(
+      './../../routes/_base/supplier/questionnaires/index/route.lazy'
+    ).then((d) => d.Route),
+  )
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -373,6 +384,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSystemUsersRouteImport
       parentRoute: typeof BaseRouteImport
     }
+    '/_base/supplier/questionnaires/': {
+      preLoaderRoute: typeof BaseSupplierQuestionnairesIndexRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
     '/_base/system/biz-dicts/': {
       preLoaderRoute: typeof BaseSystemBizDictsIndexRouteImport
       parentRoute: typeof BaseRouteImport
@@ -424,6 +439,7 @@ export const routeTree = rootRoute.addChildren([
     BaseSystemRolesRouteRoute,
     BaseSystemTenantsRouteRoute,
     BaseSystemUsersRouteRoute,
+    BaseSupplierQuestionnairesIndexRouteRoute,
     BaseSystemBizDictsIndexRouteRoute,
     BaseSystemDictsIndexRouteRoute,
     BaseSystemBizDictsIdRouteRoute,
