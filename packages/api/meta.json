@@ -1,4 +1,5 @@
 [
+  "QuestionnairesAPI",
   "AuthAPI",
   "UsersAPI",
   "PostsAPI",

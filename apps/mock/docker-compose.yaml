@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  mongodb:
+    container_name: raipiot-2f-mongo
+    image: mongo
+    # command: [ "mongod", "--auth" ]
+    volumes:
+      - mongo_data:/data/db
+    restart: always
+    ports:
+      - 27017:27017
+    env_file:
+      - .env
+
+volumes:
+  mongo_data:
