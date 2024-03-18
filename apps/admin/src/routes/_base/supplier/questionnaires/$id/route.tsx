@@ -9,5 +9,6 @@ export const Route = createFileRoute('/_base/supplier/questionnaires/$id')({
     if (isEmpty(id)) {
       throw redirect({ to: '/404' })
     }
+    await queryClient.ensureQueryData(Questionnaires.detailQueryOptions(id))
   }
 })

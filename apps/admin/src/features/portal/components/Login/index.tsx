@@ -18,7 +18,7 @@ export function Login(props: LoginProps) {
 
   const [form] = AForm.useForm<LoginDto & SMSLoginDto>()
   const initFormValue = {
-    tenantId: '000000',
+    tenant_id: '000000',
     username: 'admin',
     password: 'admin'
   }
@@ -76,7 +76,7 @@ export function Login(props: LoginProps) {
         onFinish={onFinish}
       >
         <AForm.Item
-          name="tenantId"
+          name="tenant_id"
           label={t('TENANT.ID')}
           rootClassName="!mb-4 !hidden"
         >

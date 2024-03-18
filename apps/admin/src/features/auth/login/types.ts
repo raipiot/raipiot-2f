@@ -1,5 +1,5 @@
 export interface LoginInfo {
-  tenantId: string
+  tenant_id: string
   username: string
   password: string
   rememberPassword: boolean

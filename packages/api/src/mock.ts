@@ -9,3 +9,10 @@ export const mockList = <T>(...data: T[]): Page<T> => ({
   total: 1,
   pages: 1
 })
+
+export const timeoutResolve = (second: number = 1) =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(1)
+    }, second * 1000)
+  })

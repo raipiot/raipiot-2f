@@ -3,7 +3,6 @@ import { isMobile } from 'react-device-detect'
 
 import { useBaseModalContext } from '../context'
 import { useRemoveMutation } from '../mutations'
-import { detailQueryOptions } from '../queries'
 
 export const useColumns = () => {
   const { modal, form } = useBaseModalContext()
@@ -45,40 +44,21 @@ export const useColumns = () => {
         render: (_, record) => (
           // rp-table-action 用于非 Hover 表格行上隐藏操作按钮
           <ASpace className={clsx(!isMobile && 'rp-table-action', 'transition-all ease-out')}>
-            <RpButton
-              variant="view"
-              size="small"
-              onMouseEnter={() =>
-                queryClient.prefetchQuery(detailQueryOptions(record.questionnaireId!))
-              }
-              onClick={async () => {
-                modal.openRead()
-                modal.setMeta(record.questionnaireId!)
-                form.setFieldsValue(
-                  await queryClient.ensureQueryData(detailQueryOptions(record.questionnaireId!))
-                )
-              }}
-            />
-            <RpButton
-              variant="edit"
-              size="small"
-              onMouseEnter={() =>
-                queryClient.prefetchQuery(detailQueryOptions(record.questionnaireId!))
-              }
-              onClick={async () => {
-                modal.openEdit()
-                modal.setMeta(record.questionnaireId!)
-                form.setFieldsValue(
-                  await queryClient.ensureQueryData(detailQueryOptions(record.questionnaireId!))
-                )
-              }}
-            />
             <Link
-              to="/system/dicts/$id"
+              to="/supplier/questionnaires/$id"
               params={{ id: record.questionnaireId! }}
             >
               <RpButton
-                variant="config"
+                variant="view"
+                size="small"
+              />
+            </Link>
+            <Link
+              to="/supplier/questionnaires/$id"
+              params={{ id: record.questionnaireId! }}
+            >
+              <RpButton
+                variant="edit"
                 size="small"
               />
             </Link>
