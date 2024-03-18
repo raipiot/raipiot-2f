@@ -69,14 +69,14 @@ function Login() {
         name="login"
         form={form}
         initialValues={{
-          tenantId: '000000' // TODO: 移除 Hard Code
+          tenant_id: '000000' // TODO: 移除 Hard Code
         }}
         onFinish={handleLogin}
         autoComplete="off"
         disabled={loginMutation.isPending}
       >
         <AForm.Item
-          name="tenantId"
+          name="tenant_id"
           rules={[{ required: true, message: t('VALIDATION:TENANT.CODE') }]}
           rootClassName="!mb-4"
         >

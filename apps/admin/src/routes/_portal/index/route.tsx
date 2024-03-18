@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { portalInfoQueryOptions } from '@/features/portal/queries'
+import { portalInfoQueryOptions } from '@/features/portal'
 
 export const Route = createFileRoute('/_portal/')({
   loader: async () => {

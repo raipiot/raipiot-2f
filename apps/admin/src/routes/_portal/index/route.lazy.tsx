@@ -70,9 +70,7 @@ function Portal() {
                 listStyle: 'inside'
               }}
             >
-              {data.platformNoticeList.map((i) => (
-                <li key={i}>{i}</li>
-              ))}
+              {data?.platformNoticeList.map((i) => <li key={i}>{i}</li>)}
             </ul>
           </div>
         </Container>
