@@ -16,6 +16,12 @@ export const menusAPI = new MenusAPI(httpRequest)
 export const paramsAPI = new ParamsAPI(httpRequest)
 export const tenantsAPI = new TenantsAPI(httpRequest)
 export const deptsAPI = new DeptsAPI(httpRequest)
+export const rolesAPI = new RolesAPI(httpRequest)
 
 export const portalAPI = new PortalAPI(httpRequest)
 export const dashboardAPI = new DashboardAPI(httpRequest)
+
+
+
+
+

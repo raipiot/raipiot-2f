@@ -30,7 +30,7 @@ function Component() {
   const { mutateAsync: removeMutateAsync, isPending: isRemovePending } = Depts.useRemoveMutation()
 
   // 清空选中行
-  useEffect(() => clearSelectedRowKeys(), [clearSelectedRowKeys])
+  useEffect(clearSelectedRowKeys, [clearSelectedRowKeys, isPending])
 
   return (
     // 页面容器

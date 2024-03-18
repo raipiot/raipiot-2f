@@ -10,5 +10,6 @@
   "TenantsAPI",
   "PortalAPI",
   "DashboardAPI",
-  "DeptsAPI"
+  "DeptsAPI",
+  "RolesAPI"
 ]

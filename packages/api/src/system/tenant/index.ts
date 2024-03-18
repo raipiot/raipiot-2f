@@ -73,7 +73,7 @@ export class TenantsAPI extends BaseAPI {
    * 下拉数据源
    */
   async select(params?: TenantSelectDto, signal?: AbortSignal) {
-    return this.httpRequest.get<TenantsVo>(
+    return this.httpRequest.get<TenantVo[]>(
       `${this.#API_PREFIX}/select`,
       { ...params },
       {
