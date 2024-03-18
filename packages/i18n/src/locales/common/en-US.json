@@ -88,5 +88,6 @@
   "DEV.WAITING": "Still in development, please wait ...",
   "OPERATION.SUCCESS": "Operation success",
   "NOT.LIMITED": "Not limited",
-  "NONE": "None"
+  "NONE": "None",
+  "SUBMIT": "Submit"
 }

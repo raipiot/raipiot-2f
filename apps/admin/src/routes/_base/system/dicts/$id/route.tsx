@@ -1,4 +1,5 @@
 import type { SystemDictConfigPageDto } from '@raipiot-2f/api'
+import { isEmpty } from 'lodash-es'
 
 const t = i18n.getFixedT(null, 'ROUTER')
 
@@ -9,7 +10,7 @@ export const Route = createFileRoute('/_base/system/dicts/$id')({
   },
   loader: async ({ params }) => {
     const { id } = params
-    if (!id) {
+    if (isEmpty(id)) {
       throw redirect({ to: '/404' })
     }
     await Promise.all([

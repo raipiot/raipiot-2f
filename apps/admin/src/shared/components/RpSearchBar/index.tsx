@@ -100,6 +100,9 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
                     {type === 'tree-select' && <ATreeSelect {...item.treeSelectProps} />}
                     {type === 'cascader' && <ACascader {...item.cascaderProps} />}
                     {type === 'date-picker' && <ADatePicker {...item.datePickerProps} />}
+                    {type === 'range-picker' && (
+                      <ADatePicker.RangePicker {...item.rangePickerProps} />
+                    )}
                     {type === 'form-item' &&
                       (typeof item.render === 'function' ? item.render() : item.render)}
                   </AForm.Item>

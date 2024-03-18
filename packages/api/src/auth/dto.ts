@@ -1,5 +1,5 @@
 export interface BaseLoginDto {
-  tenantId: string
+  tenant_id: string
 }
 
 export interface LoginDto extends BaseLoginDto {

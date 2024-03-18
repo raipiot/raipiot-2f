@@ -56,7 +56,8 @@ function Component() {
               modal.openCreate()
             }}
           />
-        )
+        ),
+        backBtn: true
       }}
     >
       {/* 搜索区域 */}
@@ -101,11 +102,6 @@ function Component() {
           })
         }
         scroll={{ x: 1500 }}
-        renderTableOpeate={
-          <Link to="/system/dicts">
-            <RpButton variant="back" />
-          </Link>
-        }
       />
     </RpPageContainer>
   )

@@ -37,3 +37,25 @@ export interface PageDto {
    */
   size: number
 }
+
+export interface PageDateDto extends PageDto {
+  /**
+   * 创建开始时间
+   */
+  createdStartTime?: string
+
+  /**
+   * 创建结束时间
+   */
+  createdEndTime?: string
+
+  /**
+   * 更新开始时间
+   */
+  updateStartTime?: string
+
+  /**
+   * 更新结束时间
+   */
+  updatedEndTime?: string
+}

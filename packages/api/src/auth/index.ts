@@ -27,7 +27,8 @@ export class AuthAPI extends BaseAPI {
       {
         params: {
           ...params,
-          password: await md5(params.password)
+          password: await md5(params.password),
+          grant_type: 'password'
         }
       }
     )

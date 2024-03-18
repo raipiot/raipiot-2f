@@ -1,6 +1,7 @@
 import FullScreenButton from './FullScreenButton'
 import LanguageButton from './LanguageButton'
 import MenuVisibilityToggle from './MenuVisibilityToggle'
+import RoleSwitcher from './RoleSwitcher'
 import ThemeToggle from './ThemeToggle'
 import UserAvatar from './UserAvatar'
 
@@ -18,6 +19,7 @@ export default function Header() {
       </div>
 
       <div className="flex items-center justify-start !space-x-4">
+        <RoleSwitcher />
         <FullScreenButton />
         <LanguageButton />
         <ThemeToggle />

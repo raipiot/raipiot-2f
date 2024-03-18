@@ -3,7 +3,6 @@ import { isMobile } from 'react-device-detect'
 
 import { useBaseModalContext } from '../context'
 import { useRemoveMutation } from '../mutations'
-import { detailQueryOptions } from '../queries'
 
 export const useColumns = () => {
   const { modal, form } = useBaseModalContext()
@@ -14,76 +13,52 @@ export const useColumns = () => {
 
   return {
     columns: createColumns<QuestionnaireVo>([
-      // {
-      //   title: t('CODE'),
-      //   dataIndex: 'code',
-      //   custom: {
-      //     type: 'tagString',
-      //     tagStringProps: { copyable: true }
-      //   }
-      // },
-      // {
-      //   title: t('DICT.VALUE'),
-      //   dataIndex: 'dictValue'
-      // },
-      // {
-      //   title: t('COMMON:SORT'),
-      //   dataIndex: 'sort',
-      //   width: 80,
-      //   custom: { type: 'tagString' }
-      // },
-      // {
-      //   title: t('COMMON:IS.SEALED'),
-      //   dataIndex: 'isSealed',
-      //   width: 80,
-      //   custom: { type: 'boolean' }
-      // },
-      // {
-      //   title: t('COMMON:REMARK'),
-      //   dataIndex: 'remark',
-      //   width: 200,
-      //   ellipsis: { showTitle: false },
-      //   render: (value) => <ATooltip title={value}>{value}</ATooltip>
-      // },
+      {
+        title: '调查表编号',
+        dataIndex: 'questionnaireId',
+        render: (value, record) => (
+          <Link
+            to="/supplier/questionnaires/$id"
+            params={{ id: record.questionnaireId! }}
+          >
+            {value}
+          </Link>
+        )
+      },
+      { title: '调查表状态', dataIndex: 'state', custom: { type: 'string' } },
+      { title: '供应商编码', dataIndex: 'supplierCode', custom: { type: 'string' } },
+      { title: '供应商名称', dataIndex: 'supplierName', custom: { type: 'tooltipString' } },
+      { title: '公司编码', dataIndex: 'companyCode', custom: { type: 'string' } },
+      { title: '公司名称', dataIndex: 'companyName', custom: { type: 'tooltipString' } },
+      { title: '调查表类型', dataIndex: 'type', custom: { type: 'string' } },
+      { title: '调查表管控维度', dataIndex: 'controlDimension', custom: { type: 'string' } },
+      { title: '调查表模版名称', dataIndex: 'templateName', custom: { type: 'string' } },
+      { title: '创建人', dataIndex: 'createBy', custom: { type: 'string' } },
+      { title: '创建人部门', dataIndex: 'createDepartment', custom: { type: 'string' } },
+      { title: '审批日期', dataIndex: 'approvalDate', custom: { type: 'dateString' } },
+      { title: '发布日期', dataIndex: 'releaseDate', custom: { type: 'dateString' } },
+      { title: '创建日期', dataIndex: 'createTime', custom: { type: 'dateString' } },
+      { title: '邀约调查表', dataIndex: 'isInvitation', custom: { type: 'boolean' } },
       createActions({
         width: 250,
         render: (_, record) => (
           // rp-table-action 用于非 Hover 表格行上隐藏操作按钮
           <ASpace className={clsx(!isMobile && 'rp-table-action', 'transition-all ease-out')}>
-            <RpButton
-              variant="view"
-              size="small"
-              onMouseEnter={() =>
-                queryClient.prefetchQuery(detailQueryOptions(record.questionnaireId!))
-              }
-              onClick={async () => {
-                modal.openRead()
-                modal.setMeta(record.questionnaireId!)
-                form.setFieldsValue(
-                  await queryClient.ensureQueryData(detailQueryOptions(record.questionnaireId!))
-                )
-              }}
-            />
-            <RpButton
-              variant="edit"
-              size="small"
-              onMouseEnter={() =>
-                queryClient.prefetchQuery(detailQueryOptions(record.questionnaireId!))
-              }
-              onClick={async () => {
-                modal.openEdit()
-                modal.setMeta(record.questionnaireId!)
-                form.setFieldsValue(
-                  await queryClient.ensureQueryData(detailQueryOptions(record.questionnaireId!))
-                )
-              }}
-            />
             <Link
-              to="/system/dicts/$id"
+              to="/supplier/questionnaires/$id"
               params={{ id: record.questionnaireId! }}
             >
               <RpButton
-                variant="config"
+                variant="view"
+                size="small"
+              />
+            </Link>
+            <Link
+              to="/supplier/questionnaires/$id"
+              params={{ id: record.questionnaireId! }}
+            >
+              <RpButton
+                variant="edit"
                 size="small"
               />
             </Link>

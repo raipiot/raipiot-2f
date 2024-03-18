@@ -14,6 +14,8 @@ type RpButtonType =
   | 'create-child'
   | 'cancel'
   | 'confirm'
+  | 'save'
+  | 'submit'
 
 interface RpButtonProps extends ButtonProps {
   variant?: RpButtonType
@@ -85,10 +87,22 @@ function RpButton(props: RpButtonProps) {
           return {
             children: t('CANCEL')
           }
+        // 确认
         case 'confirm':
           return {
             type: 'primary',
             children: t('CONFIRM')
+          }
+        // 保存
+        case 'save':
+          return {
+            children: t('SAVE')
+          }
+        // 提交
+        case 'submit':
+          return {
+            type: 'primary',
+            children: t('SUBMIT')
           }
         default:
           return {}

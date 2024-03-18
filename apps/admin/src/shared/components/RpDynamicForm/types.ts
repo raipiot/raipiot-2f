@@ -9,8 +9,10 @@ import type {
   RadioGroupProps,
   SelectProps,
   SwitchProps,
+  TimeRangePickerProps,
   TreeSelectProps
 } from 'antd'
+import type { RangePickerProps } from 'antd/es/date-picker'
 import type { TextAreaProps } from 'antd/es/input'
 import type { ReactNode } from 'react'
 
@@ -23,6 +25,9 @@ type RpSelect = { type: 'select' } & { selectProps?: SelectProps }
 type RpTreeSelect = { type: 'tree-select' } & { treeSelectProps?: TreeSelectProps }
 type RpCascader = { type: 'cascader' } & { cascaderProps?: CascaderProps }
 type RpDatePicker = { type: 'date-picker' } & { datePickerProps?: DatePickerProps }
+type RpRangePicker = { type: 'range-picker' } & {
+  rangePickerProps?: TimeRangePickerProps | RangePickerProps
+}
 type RpInputNumber = { type: 'input-number' } & { inputNumberProps?: InputNumberProps }
 type RpSwitch = { type: 'switch' } & { switchProps?: SwitchProps }
 type RpUpload = { type: 'upload' } & { uploadProps?: RpUploadProps }
@@ -64,6 +69,7 @@ export type RpSearchFormItem<T> =
         | RpTreeSelect
         | RpCascader
         | RpDatePicker
+        | RpRangePicker
         | RpButton
         | RpCustomFormItem<T>
       ))
@@ -79,6 +85,7 @@ export type RpBasicFormItem<T> =
         | RpTreeSelect
         | RpCascader
         | RpDatePicker
+        | RpRangePicker
         | RpInputNumber
         | RpSwitch
         | RpUpload

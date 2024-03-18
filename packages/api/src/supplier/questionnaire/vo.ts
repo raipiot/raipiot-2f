@@ -4,67 +4,67 @@ export interface QuestionnaireVo {
   /**
    * 审批日期
    */
-  approvalDate?: null | string
+  approvalDate?: string
   /**
    * 公司编码
    */
-  companyCode?: null | string
+  companyCode?: string
   /**
    * 公司名称
    */
-  companyName?: null | string
+  companyName?: string
   /**
    * 调查表管控维度
    */
-  controlDimension?: null | string
+  controlDimension?: string
   /**
    * 创建人
    */
-  createBy?: null | string
+  createBy?: string
   /**
    * 创建部门
    */
-  createDepartment?: null | string
+  createDepartment?: string
   /**
    * 创建日期
    */
-  createTime?: null | string
+  createTime?: string
   /**
    * 邀约调查表
    */
-  isInvitation?: boolean | null
+  isInvitation?: boolean
   /**
    * 调查表编码
    */
-  questionnaireCode?: null | string
+  questionnaireCode?: string
   /**
    * 调查表id
    */
-  questionnaireId?: null | string
+  questionnaireId?: string
   /**
    * 发布日期
    */
-  releaseDate?: null | string
+  releaseDate?: string
   /**
    * 调查表状态
    */
-  state?: null | string
+  state?: string
   /**
    * 供应商编码
    */
-  supplierCode?: null | string
+  supplierCode?: string
   /**
    * 供应商名称
    */
-  supplierName?: null | string
+  supplierName?: string
   /**
    * 调查表模板名称
    */
-  templateName?: null | string
+  templateName?: string
   /**
    * 调查表类型
    */
-  type?: null | string
+  type?: string
 }
 
 export type QuestionnairesVo = Page<QuestionnaireVo>
