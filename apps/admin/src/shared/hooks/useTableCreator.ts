@@ -5,7 +5,7 @@ import type { RpBooleanProps } from '@/shared/components/RpBoolean'
 import type { RpTagStringProps } from '@/shared/components/RpTagString'
 
 interface CustomOptions {
-  type?: 'string' | 'tagString' | 'dateString' | 'boolean' | 'link'
+  type?: 'string' | 'tagString' | 'dateString' | 'boolean' | 'tooltipString'
   skeleton?: boolean
   ellipsis?: boolean
   tagStringProps?: Pick<RpTagStringProps, 'copyable'>
@@ -39,6 +39,8 @@ const createColumns = <T>(columns: RpColumnsType<T>) => {
         return (value: any) => RpDateString({ value })
       case 'boolean':
         return (value: any) => RpBoolean({ value, type: booleanProps?.type })
+      case 'tooltipString':
+        return (value: any) => createElement(ATooltip, { title: value, placement: 'bottom' }, value)
       default:
         return undefined
     }
@@ -50,6 +52,7 @@ const createColumns = <T>(columns: RpColumnsType<T>) => {
         width: 150,
         align: 'center',
         render: getRender(column),
+        ellipsis: column.custom?.type === 'tooltipString' ? { showTitle: false } : undefined,
         ...column
       }) as ColumnType<T>
   )

@@ -122,7 +122,7 @@ function Component() {
             onSuccess: clearSelectedRowKeys
           })
         }
-        scroll={{ x: 1200 }}
+        scroll={{ x: 3500 }}
       />
     </RpPageContainer>
   )

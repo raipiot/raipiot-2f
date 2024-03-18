@@ -1,4 +1,5 @@
 import type { BizDictValuePageDto } from '@raipiot-2f/api'
+import { isEmpty } from 'lodash-es'
 
 import { bizDictQueryOptions, bizDictValuesQueryOptions } from '@/features/system/biz-dicts'
 
@@ -11,7 +12,7 @@ export const Route = createFileRoute('/_base/system/biz-dicts/$id')({
   },
   loader: async ({ params }) => {
     const { id } = params
-    if (!id) {
+    if (isEmpty(id)) {
       throw redirect({ to: '/404' })
     }
     await queryClient.ensureQueryData(

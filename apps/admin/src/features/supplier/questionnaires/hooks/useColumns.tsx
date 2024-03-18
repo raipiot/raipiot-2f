@@ -16,35 +16,30 @@ export const useColumns = () => {
     columns: createColumns<QuestionnaireVo>([
       {
         title: '调查表编号',
-        dataIndex: 'questionnaireCode',
-        render: (value) => <Link>{value}</Link>
+        dataIndex: 'questionnaireId',
+        render: (value, record) => (
+          <Link
+            to="/supplier/questionnaires/$id"
+            params={{ id: record.questionnaireId! }}
+          >
+            {value}
+          </Link>
+        )
       },
-      {
-        title: '调查表状态'
-      },
-      {
-        title: '供应商编码'
-      },
-      {
-        title: '供应商名称'
-      },
-      {
-        title: '公司编码'
-      },
-      {
-        title: '公司名称'
-      },
-      {
-        title: '调查表类型'
-      },
-      { title: '调查表管控维度' },
-      { title: '调查表模版名称' },
-      { title: '创建人' },
-      { title: '创建人部门' },
-      { title: '审批日期' },
-      { title: '发布日期' },
-      { title: '创建日期' },
-      { title: '邀约调查表' },
+      { title: '调查表状态', dataIndex: 'state', custom: { type: 'string' } },
+      { title: '供应商编码', dataIndex: 'supplierCode', custom: { type: 'string' } },
+      { title: '供应商名称', dataIndex: 'supplierName', custom: { type: 'tooltipString' } },
+      { title: '公司编码', dataIndex: 'companyCode', custom: { type: 'string' } },
+      { title: '公司名称', dataIndex: 'companyName', custom: { type: 'tooltipString' } },
+      { title: '调查表类型', dataIndex: 'type', custom: { type: 'string' } },
+      { title: '调查表管控维度', dataIndex: 'controlDimension', custom: { type: 'string' } },
+      { title: '调查表模版名称', dataIndex: 'templateName', custom: { type: 'string' } },
+      { title: '创建人', dataIndex: 'createBy', custom: { type: 'string' } },
+      { title: '创建人部门', dataIndex: 'createDepartment', custom: { type: 'string' } },
+      { title: '审批日期', dataIndex: 'approvalDate', custom: { type: 'dateString' } },
+      { title: '发布日期', dataIndex: 'releaseDate', custom: { type: 'dateString' } },
+      { title: '创建日期', dataIndex: 'createTime', custom: { type: 'dateString' } },
+      { title: '邀约调查表', dataIndex: 'isInvitation', custom: { type: 'boolean' } },
       createActions({
         width: 250,
         render: (_, record) => (

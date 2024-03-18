@@ -65,7 +65,8 @@ function BizDictItem() {
               modal.openCreate()
             }}
           />
-        )
+        ),
+        backBtn: true
       }}
     >
       {/* 搜索区域 */}
@@ -110,11 +111,6 @@ function BizDictItem() {
           })
         }
         scroll={{ x: 1500 }}
-        renderTableOpeate={
-          <Link to="/system/biz-dicts">
-            <RpButton variant="back" />
-          </Link>
-        }
       />
       {/* 模态框 */}
       <RpModal

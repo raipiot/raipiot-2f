@@ -13,8 +13,8 @@ const RpDateString = rpWithSkeleton((props: RpDateStringProps) => {
   if (!isNil(value)) {
     fullLabel = DateUtils.formatTime(value)
     label = DateUtils.isCurrentYear(value)
-      ? DateUtils.formatTime(value, 'MM-DD HH:mm:ss')
-      : fullLabel
+      ? DateUtils.formatTime(value, 'MM-DD HH:mm')
+      : DateUtils.formatTime(value, 'YYYY-MM-DD HH:mm')
   }
   return (
     <ATooltip
