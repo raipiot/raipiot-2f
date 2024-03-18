@@ -5,7 +5,7 @@ import type { RpBooleanProps } from '@/shared/components/RpBoolean'
 import type { RpTagStringProps } from '@/shared/components/RpTagString'
 
 interface CustomOptions {
-  type?: 'string' | 'tagString' | 'dateString' | 'boolean'
+  type?: 'string' | 'tagString' | 'dateString' | 'boolean' | 'link'
   skeleton?: boolean
   ellipsis?: boolean
   tagStringProps?: Pick<RpTagStringProps, 'copyable'>

@@ -1,39 +1,52 @@
-import type { PageDto } from '../../types'
+import type { PageDateDto } from '../../types'
 
-export interface QuestionnairePageDto extends PageDto {}
+export interface QuestionnairePageDto extends PageDateDto {
+  /**
+   * 调查表类型
+   */
+  questionnaireType?: string
+  /**
+   * 多选
+   */
+  lifecycle?: string[]
+  /**
+   * 单选
+   */
+  radio?: string
+}
 
 export interface QuestionnaireSubmitDto {
   id?: string
   /**
    * 调查说明
    */
-  application?: null | string
+  application?: string
   /**
    * 公司
    */
-  company?: null | string
+  company?: string
   /**
    * 调查表管控维度
    */
-  controlDimension?: null | string
+  controlDimension?: string
   /**
    * 创建部门
    */
-  createDepartment?: null | string
+  createDepartment?: string
   /**
    * 创建人
    */
-  createUser?: number | null
+  createUser?: number
   /**
    * 调查表模板 ID
    */
-  questionnaireTemplateId?: null | string
+  questionnaireTemplateId?: string
   /**
    * 调查表类型
    */
-  questionnaireType?: null | string
+  questionnaireType?: string
   /**
    * 供应商
    */
-  supplierIds?: string[] | null
+  supplierIds?: string[]
 }

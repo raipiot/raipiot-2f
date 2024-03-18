@@ -24,7 +24,7 @@ export class PageUtils {
   static mergeParams<T extends PageDto, D extends Record<string, any> = object>(
     params: T,
     searchParams?: D,
-    formatter?: (draft: D) => T
+    formatter?: (draft: D) => D
   ): T {
     if (!searchParams) {
       return params

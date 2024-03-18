@@ -14,37 +14,37 @@ export const useColumns = () => {
 
   return {
     columns: createColumns<QuestionnaireVo>([
-      // {
-      //   title: t('CODE'),
-      //   dataIndex: 'code',
-      //   custom: {
-      //     type: 'tagString',
-      //     tagStringProps: { copyable: true }
-      //   }
-      // },
-      // {
-      //   title: t('DICT.VALUE'),
-      //   dataIndex: 'dictValue'
-      // },
-      // {
-      //   title: t('COMMON:SORT'),
-      //   dataIndex: 'sort',
-      //   width: 80,
-      //   custom: { type: 'tagString' }
-      // },
-      // {
-      //   title: t('COMMON:IS.SEALED'),
-      //   dataIndex: 'isSealed',
-      //   width: 80,
-      //   custom: { type: 'boolean' }
-      // },
-      // {
-      //   title: t('COMMON:REMARK'),
-      //   dataIndex: 'remark',
-      //   width: 200,
-      //   ellipsis: { showTitle: false },
-      //   render: (value) => <ATooltip title={value}>{value}</ATooltip>
-      // },
+      {
+        title: '调查表编号',
+        dataIndex: 'questionnaireCode',
+        render: (value) => <Link>{value}</Link>
+      },
+      {
+        title: '调查表状态'
+      },
+      {
+        title: '供应商编码'
+      },
+      {
+        title: '供应商名称'
+      },
+      {
+        title: '公司编码'
+      },
+      {
+        title: '公司名称'
+      },
+      {
+        title: '调查表类型'
+      },
+      { title: '调查表管控维度' },
+      { title: '调查表模版名称' },
+      { title: '创建人' },
+      { title: '创建人部门' },
+      { title: '审批日期' },
+      { title: '发布日期' },
+      { title: '创建日期' },
+      { title: '邀约调查表' },
       createActions({
         width: 250,
         render: (_, record) => (

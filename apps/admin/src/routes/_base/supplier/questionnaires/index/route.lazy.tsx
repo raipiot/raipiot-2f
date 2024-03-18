@@ -50,6 +50,21 @@ function Component() {
         )
       }}
     >
+      <PurchaserProvider>
+        <ATabs
+          activeKey={pageParams.questionnaireType}
+          onChange={(activeKey) =>
+            startTransition(() =>
+              setPageParams({
+                ...pageParams,
+                questionnaireType: activeKey
+              })
+            )
+          }
+          tabBarStyle={{ marginBottom: 0 }}
+          items={Questionnaires.tabOptions}
+        />
+      </PurchaserProvider>
       {/* 搜索区域 */}
       <RpSearchBar
         // 搜索表单
@@ -58,7 +73,16 @@ function Component() {
         formItems={searchFormItems}
         // 事件：搜索
         onSearch={(values) =>
-          startTransition(() => setPageParams(PageUtils.mergeParams(pageParams, values)))
+          startTransition(() =>
+            setPageParams(
+              PageUtils.mergeParams(pageParams, values, (draft) => {
+                const { createdTime, ...rest } = draft
+                rest.createdStartTime = DateUtils.formatTime(createdTime?.[0])
+                rest.createdEndTime = DateUtils.formatTime(createdTime?.[1])
+                return rest
+              })
+            )
+          )
         }
         // 事件：预渲染
         onPrefetch={(values) =>
