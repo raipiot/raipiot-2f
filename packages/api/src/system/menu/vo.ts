@@ -56,3 +56,24 @@ export interface MenuVo {
 }
 
 export type MenusVo = Page<MenuVo>
+
+// grant tree: 权限分配树形结构
+export interface GrantTreeVO {
+  apiScope: TreeNode[]
+  dataScope: TreeNode[]
+  menu: TreeNode[]
+}
+
+/**
+ * TreeNode
+ * com.raipiot.core.tool.node.TreeNode
+ */
+export interface TreeNode {
+  children: TreeNode[]
+  hasChildren: boolean
+  id: number
+  key: number
+  parentId: number
+  title: string
+  value: number
+}

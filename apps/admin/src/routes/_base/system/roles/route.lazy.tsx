@@ -1,19 +1,24 @@
 import type { RolesDto, RoleVo } from '@raipiot-2f/api'
 
+import { SPermitions } from '@/features'
+
 export const Route = createLazyFileRoute('/_base/system/roles')({
   component: () => (
     <Roles.RolesProvider>
       <Component />
       <Roles.BaseModal />
+      <Roles.PermissionsModal />
     </Roles.RolesProvider>
   )
 })
 
 function Component() {
+  const { t } = useTranslation('SYSTEM/ROLES')
   // 多选器：范型为列表行数据类型
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<RoleVo>()
   // 弹窗
   const { modal, form } = Roles.useBaseModalContext()
+  const { permissionsForm, permissionsModal } = Roles.usePermissionsModalContext()
   // 搜索表单
   const { searchForm, searchFormItems } = Roles.useSearchForm()
   // 数据更新
@@ -28,6 +33,31 @@ function Component() {
 
   // 异步删除
   const { mutateAsync: removeMutateAsync, isPending: isRemovePending } = Roles.useRemoveMutation()
+
+  const { message } = AApp.useApp()
+
+  // 监听选中列之后，点击权限配置按钮
+  const onSetPermissions = async () => {
+    if (rowSelection.selectedRowKeys.length !== 1) {
+      message.warning(t('PERMISSIONS.ONLY.ONE.ROLE'))
+    } else {
+      // 请求数据，初始化弹窗的表单树的数据
+      const roleId = rowSelection.selectedRowKeys[0].toString()
+
+      const [grantTreeData, roleTreeKeys] = await Promise.all([
+        queryClient.ensureQueryData(SPermitions.permissionsQueryOptions()),
+        queryClient.ensureQueryData(SPermitions.permissionsRoleQueryOptions(roleId))
+      ])
+      permissionsModal.setMeta({ tabsData: grantTreeData, roleIds: [roleId] })
+      // 设置弹窗表单的初始值，打开弹窗
+      permissionsForm.setFieldsValue({
+        ...roleTreeKeys,
+        roleIds: [roleId]
+      })
+      permissionsModal.openEdit()
+      clearSelectedRowKeys()
+    }
+  }
 
   // 清空选中行
   useEffect(() => clearSelectedRowKeys(), [clearSelectedRowKeys])
@@ -89,6 +119,19 @@ function Component() {
           })
         }
         scroll={{ x: 1400 }}
+        renderTableBatchOpeate={
+          <RpButton
+            onMouseEnter={() => {
+              queryClient.prefetchQuery(SPermitions.permissionsQueryOptions())
+              queryClient.prefetchQuery(
+                SPermitions.permissionsRoleQueryOptions(rowSelection.selectedRowKeys[0].toString())
+              )
+            }}
+            onClick={onSetPermissions}
+          >
+            {t('PERMISSIONS.CONFIG')}
+          </RpButton>
+        }
       />
     </RpPageContainer>
   )

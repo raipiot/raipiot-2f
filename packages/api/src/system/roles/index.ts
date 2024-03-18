@@ -1,7 +1,7 @@
 import type HttpRequest from '@raipiot-2f/axios'
 
 import { BaseAPI } from '../../base'
-import type { RolesDto, RolesSubmitDto } from './dto'
+import type { PermissionsSubmitDto, RolesDto, RolesSubmitDto } from './dto'
 import type { RoleVo } from './vo'
 
 export * from './dto'
@@ -63,5 +63,12 @@ export class RolesAPI extends BaseAPI {
     return this.httpRequest.get<RoleVo[]>(`${this.#API_PREFIX}/tree`, undefined, {
       signal
     })
+  }
+
+  /**
+   * 更新角色权限
+   */
+  async grant(data: PermissionsSubmitDto) {
+    return this.httpRequest.post(`${this.#API_PREFIX}/grant`, data)
   }
 }

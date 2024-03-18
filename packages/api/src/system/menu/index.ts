@@ -2,7 +2,7 @@ import type HttpRequest from '@raipiot-2f/axios'
 
 import { BaseAPI } from '../../base'
 import type { LazyMenuPageDto, MenuSubmitDto } from './dto'
-import type { MenuVo } from './vo'
+import type { GrantTreeVO, MenuVo } from './vo'
 
 export * from './dto'
 export * from './vo'
@@ -64,6 +64,30 @@ export class MenusAPI extends BaseAPI {
           ids
         }
       }
+    )
+  }
+
+  /**
+   * 获取角色权限树
+   * @param roleIds 目前支持单个角色 id
+   * @param signal 信号用于取消请求
+   * @returns
+   */
+  async grantTree(signal?: AbortSignal) {
+    return this.httpRequest.get<GrantTreeVO>(`${this.#API_PREFIX}/grant-tree`, {}, { signal })
+  }
+
+  /**
+   * 获取角色权限配置
+   * @param roleIds
+   * @param signal
+   * @returns
+   */
+  async getRoleTreeKeys(roleIds: string, signal?: AbortSignal) {
+    return this.httpRequest.get<string[]>(
+      `${this.#API_PREFIX}/role-tree-keys`,
+      { roleIds },
+      { signal }
     )
   }
 }

@@ -19,3 +19,9 @@ export interface RoleVo {
 
 // 分页数据 Vo
 export type RolesVo = Page<RoleVo>
+
+export interface PermissionsGrantVo {
+  apiScope: string[]
+  dataScope: string[]
+  menu: string[]
+}

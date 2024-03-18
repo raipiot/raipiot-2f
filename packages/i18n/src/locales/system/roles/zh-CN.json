@@ -3,5 +3,10 @@
   "ALIAS": "角色别名",
   "NAME": "角色名称",
   "TENANT": "所属租户",
-  "PARENT.ROLE.NAME": "上级角色"
+  "PARENT.ROLE.NAME": "上级角色",
+  "PERMISSIONS.CONFIG": "权限配置",
+  "PERMISSIONS.ONLY.ONE.ROLE": "只能选择一个角色",
+  "PERMISSIONS.MENU": "菜单权限",
+  "PERMISSIONS.DATA": "数据权限",
+  "PERMISSIONS.API": "接口权限"
 }

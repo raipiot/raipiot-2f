@@ -3,5 +3,10 @@
   "ALIAS": "Name alias",
   "NAME": "Role name",
   "TENANT": "Tenant",
-  "PARENT.ROLE.NAME": "Parent role"
+  "PARENT.ROLE.NAME": "Parent role",
+  "PERMISSIONS.CONFIG": "Permission configuration",
+  "PERMISSIONS.ONLY.ONE.ROLE": "Only one role can be selected",
+  "PERMISSIONS.MENU": "Menu permission",
+  "PERMISSIONS.DATA": "Data permission",
+  "PERMISSIONS.API": "API permission"
 }

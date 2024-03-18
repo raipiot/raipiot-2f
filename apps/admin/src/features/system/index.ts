@@ -1,5 +1,6 @@
 export { Depts } from './depts'
 export { DictConfigs } from './dict-configs'
 export { Dicts } from './dicts'
+export { SPermitions } from './permissions'
 export { Roles } from './roles'
 export { Users } from './users'

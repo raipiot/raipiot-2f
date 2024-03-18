@@ -1,2 +1,3 @@
 export * from './BaseModalProvider'
-export * from './DeptsProvider'
+export * from './PermissionsProvider'
+export * from './RolesProvider'

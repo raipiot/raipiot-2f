@@ -1,4 +1,4 @@
-import type { RoleVo } from '.'
+import type { PermissionsGrantVo, RoleVo } from '.'
 
 // 这个是分页的 upload dto
 export interface RolesDto {
@@ -8,3 +8,7 @@ export interface RolesDto {
 }
 
 export interface RolesSubmitDto extends RoleVo {}
+
+export interface PermissionsSubmitDto extends PermissionsGrantVo {
+  roleIds: string[]
+}
