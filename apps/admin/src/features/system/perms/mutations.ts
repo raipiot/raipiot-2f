@@ -1,7 +1,7 @@
 import type { PermissionsSubmitDto } from '@raipiot-2f/api'
 
 export const useSubmitMutation = () => {
-  const { t } = useTranslation('COMMON')
+  const { t } = useTranslation()
   const { message } = AApp.useApp()
   return useMutation({
     mutationFn: (params: PermissionsSubmitDto) => rolesAPI.grant(params),

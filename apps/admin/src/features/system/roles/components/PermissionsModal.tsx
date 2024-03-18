@@ -1,7 +1,7 @@
 import type { PermissionsSubmitDto } from '@raipiot-2f/api'
 import type { TabsProps } from 'antd'
 
-import { SPermitions } from '../../permissions'
+import { Perms } from '../../perms'
 import { usePermissionsModalContext } from '../context'
 
 export function PermissionsModal() {
@@ -70,7 +70,7 @@ export function PermissionsModal() {
     }
   ]
 
-  const { isPending, mutate } = SPermitions.useSubmitMutation()
+  const { isPending, mutate } = Perms.useSubmitMutation()
 
   const afterClose = () => {
     permissionsForm.resetFields()

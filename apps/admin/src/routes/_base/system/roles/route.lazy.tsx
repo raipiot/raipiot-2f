@@ -1,7 +1,5 @@
 import type { RolesDto, RoleVo } from '@raipiot-2f/api'
 
-import { SPermitions } from '@/features'
-
 export const Route = createLazyFileRoute('/_base/system/roles')({
   component: () => (
     <Roles.RolesProvider>
@@ -45,8 +43,8 @@ function Component() {
       const roleId = rowSelection.selectedRowKeys[0].toString()
 
       const [grantTreeData, roleTreeKeys] = await Promise.all([
-        queryClient.ensureQueryData(SPermitions.permissionsQueryOptions()),
-        queryClient.ensureQueryData(SPermitions.permissionsRoleQueryOptions(roleId))
+        queryClient.ensureQueryData(Perms.permissionsQueryOptions()),
+        queryClient.ensureQueryData(Perms.permissionsRoleQueryOptions(roleId))
       ])
       permissionsModal.setMeta({ tabsData: grantTreeData, roleIds: [roleId] })
       // 设置弹窗表单的初始值，打开弹窗
@@ -60,7 +58,7 @@ function Component() {
   }
 
   // 清空选中行
-  useEffect(() => clearSelectedRowKeys(), [clearSelectedRowKeys])
+  useEffect(clearSelectedRowKeys, [clearSelectedRowKeys, isPending])
 
   return (
     // 页面容器
@@ -122,9 +120,9 @@ function Component() {
         renderTableBatchOpeate={
           <RpButton
             onMouseEnter={() => {
-              queryClient.prefetchQuery(SPermitions.permissionsQueryOptions())
+              queryClient.prefetchQuery(Perms.permissionsQueryOptions())
               queryClient.prefetchQuery(
-                SPermitions.permissionsRoleQueryOptions(rowSelection.selectedRowKeys[0].toString())
+                Perms.permissionsRoleQueryOptions(rowSelection.selectedRowKeys[0].toString())
               )
             }}
             onClick={onSetPermissions}
