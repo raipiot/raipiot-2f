@@ -1,6 +1,6 @@
 import type { TableProps } from 'antd'
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { devtools, persist } from 'zustand/middleware'
 
 interface State {
   tableSize: TableProps['size']
@@ -18,13 +18,15 @@ const initialState: State = {
 }
 
 export const usePreferenceStore = create<State & Actions>()(
-  persist(
-    (set) => ({
-      ...initialState,
-      setTableSize: (size) => set({ tableSize: size })
-    }),
-    {
-      name: 'preference_store'
-    }
+  devtools(
+    persist(
+      (set) => ({
+        ...initialState,
+        setTableSize: (size) => set({ tableSize: size })
+      }),
+      {
+        name: 'preference_store'
+      }
+    )
   )
 )

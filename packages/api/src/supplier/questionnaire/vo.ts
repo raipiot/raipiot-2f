@@ -1,4 +1,5 @@
 import type { Page } from '../../types'
+import type { QuestionnaireState } from '.'
 
 export interface QuestionnaireVo {
   /**
@@ -48,7 +49,7 @@ export interface QuestionnaireVo {
   /**
    * 调查表状态
    */
-  state?: string
+  state?: QuestionnaireState
   /**
    * 供应商编码
    */

@@ -10,6 +10,7 @@ interface CustomOptions {
   ellipsis?: boolean
   tagStringProps?: Pick<RpTagStringProps, 'copyable'>
   booleanProps?: Pick<RpBooleanProps, 'type'>
+  formatter?: (value: any) => any
 }
 
 export interface RpColumnType<T> extends Omit<ColumnType<T>, 'dataIndex'> {
@@ -29,18 +30,31 @@ type RpColumnsType<T> = (RpColumnGroupType<T> | RpColumnType<T>)[]
 const createColumns = <T>(columns: RpColumnsType<T>) => {
   const getRender = (column: RpColumnType<T>) => {
     const { custom } = column
-    const { type, tagStringProps, booleanProps } = custom ?? {}
+    const { type, tagStringProps, booleanProps, formatter } = custom ?? {}
     switch (type) {
       case 'string':
-        return (value: any) => RpString({ value })
+        return (value: any) =>
+          RpString({
+            value: formatter?.(value) ?? value
+          })
       case 'tagString':
-        return (value: any) => RpTagString({ value, copyable: tagStringProps?.copyable })
+        return (value: any) =>
+          RpTagString({
+            value: formatter?.(value) ?? value,
+            copyable: tagStringProps?.copyable
+          })
       case 'dateString':
-        return (value: any) => RpDateString({ value })
+        return (value: any) => RpDateString({ value: formatter?.(value) ?? value })
       case 'boolean':
-        return (value: any) => RpBoolean({ value, type: booleanProps?.type })
+        return (value: any) =>
+          RpBoolean({ value: formatter?.(value) ?? value, type: booleanProps?.type })
       case 'tooltipString':
-        return (value: any) => createElement(ATooltip, { title: value, placement: 'bottom' }, value)
+        return (value: any) =>
+          createElement(
+            ATooltip,
+            { title: formatter?.(value) ?? value, placement: 'bottom' },
+            formatter?.(value) ?? value
+          )
       default:
         return undefined
     }

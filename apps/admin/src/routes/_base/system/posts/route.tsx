@@ -8,7 +8,7 @@ export const Route = createFileRoute('/_base/system/posts')({
     icon: <MaterialSymbolsWork />
   },
   loader: () =>
-    Promise.allSettled([
+    Promise.all([
       queryClient.ensureQueryData(postsQueryOptions(PageUtils.initParams())),
       queryClient.ensureQueryData(Dicts.treeQueryOptions('post_category'))
     ])

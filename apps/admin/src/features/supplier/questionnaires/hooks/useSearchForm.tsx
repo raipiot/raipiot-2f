@@ -40,7 +40,8 @@ export const useSearchForm = () => {
         },
         selectProps: {
           mode: 'multiple',
-          options: multiOptions
+          options: multiOptions,
+          placeholder: '请选择'
         }
       },
       {
@@ -50,7 +51,8 @@ export const useSearchForm = () => {
           label: '单选字段'
         },
         selectProps: {
-          options: radioOptions
+          options: radioOptions,
+          placeholder: '请选择'
         }
       }
     ])
