@@ -69,14 +69,8 @@ export class UsersAPI extends BaseAPI {
   /**
    * 配置平台信息
    */
-  async updatePlatform(params: UserPlatformSubmitDto) {
-    return this.httpRequest.post(
-      `${this.#API_PREFIX}/update-platform`,
-      {},
-      {
-        params
-      }
-    )
+  async updatePlatform(data: UserPlatformSubmitDto) {
+    return this.httpRequest.post(`${this.#API_PREFIX}/update-platform`, data)
   }
 
   /**
