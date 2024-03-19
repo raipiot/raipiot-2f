@@ -11,14 +11,14 @@ export const useColumns = () => {
       {
         title: '调查表编号',
         dataIndex: 'questionnaireId',
-        render: (value, record) => (
-          <Link
-            to="/supplier/questionnaires/$id"
-            params={{ id: record.questionnaireId! }}
-          >
-            {value}
-          </Link>
-        )
+        custom: {
+          type: 'link',
+          linkProps: (_, record) =>
+            ({
+              to: '/supplier/questionnaires/$id',
+              params: { id: record.questionnaireId! }
+            }) as any // TODO: 修复类型
+        }
       },
       {
         title: '调查表状态',
