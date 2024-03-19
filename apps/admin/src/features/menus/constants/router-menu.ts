@@ -33,7 +33,8 @@ export const routerMenuMap = new Map<ModuleMenuCode, () => MenuItem[]>([
       getRouteMeta('/system/dicts'),
       getRouteMeta('/system/biz-dicts'),
       getRouteMeta('/system/params'),
-      getRouteMeta('/system/tenants')
+      getRouteMeta('/system/tenants'),
+      getRouteMeta('/system/perms')
     ]
   ],
   [

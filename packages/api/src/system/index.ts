@@ -1,3 +1,4 @@
+export * from './api-data-scope'
 export * from './dept'
 export * from './dict'
 export * from './dict-biz'

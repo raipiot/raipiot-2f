@@ -30,16 +30,17 @@ import { Route as BaseSystemUsersRouteImport } from './../../routes/_base/system
 import { Route as BaseSystemTenantsRouteImport } from './../../routes/_base/system/tenants/route'
 import { Route as BaseSystemRolesRouteImport } from './../../routes/_base/system/roles/route'
 import { Route as BaseSystemPostsRouteImport } from './../../routes/_base/system/posts/route'
-import { Route as BaseSystemPermissionsRouteImport } from './../../routes/_base/system/permissions/route'
 import { Route as BaseSystemParamsRouteImport } from './../../routes/_base/system/params/route'
 import { Route as BaseSystemMenusRouteImport } from './../../routes/_base/system/menus/route'
 import { Route as BaseSystemDeptsRouteImport } from './../../routes/_base/system/depts/route'
 import { Route as BaseDevStorybookRouteImport } from './../../routes/_base/dev/storybook/route'
+import { Route as BaseSystemPermsIdRouteImport } from './../../routes/_base/system/perms/$id/route'
 import { Route as BaseSystemDictsIdRouteImport } from './../../routes/_base/system/dicts/$id/route'
 import { Route as BaseSystemBizDictsIdRouteImport } from './../../routes/_base/system/biz-dicts/$id/route'
 import { Route as BaseSupplierQuestionnairesIdRouteImport } from './../../routes/_base/supplier/questionnaires/$id/route'
 import { Route as BaseDevTemplatesBasicTableRouteImport } from './../../routes/_base/dev/templates/basic-table/route'
 import { Route as BaseDevTemplatesAdvancedTableRouteImport } from './../../routes/_base/dev/templates/advanced-table/route'
+import { Route as BaseSystemPermsIndexRouteImport } from './../../routes/_base/system/perms/index/route'
 import { Route as BaseSystemDictsIndexRouteImport } from './../../routes/_base/system/dicts/index/route'
 import { Route as BaseSystemBizDictsIndexRouteImport } from './../../routes/_base/system/biz-dicts/index/route'
 import { Route as BaseSupplierQuestionnairesIndexRouteImport } from './../../routes/_base/supplier/questionnaires/index/route'
@@ -179,17 +180,6 @@ const BaseSystemPostsRouteRoute = BaseSystemPostsRouteImport.update({
   import('./../../routes/_base/system/posts/route.lazy').then((d) => d.Route),
 )
 
-const BaseSystemPermissionsRouteRoute = BaseSystemPermissionsRouteImport.update(
-  {
-    path: '/system/permissions',
-    getParentRoute: () => BaseRouteRoute,
-  } as any,
-).lazy(() =>
-  import('./../../routes/_base/system/permissions/route.lazy').then(
-    (d) => d.Route,
-  ),
-)
-
 const BaseSystemParamsRouteRoute = BaseSystemParamsRouteImport.update({
   path: '/system/params',
   getParentRoute: () => BaseRouteRoute,
@@ -216,6 +206,15 @@ const BaseDevStorybookRouteRoute = BaseDevStorybookRouteImport.update({
   getParentRoute: () => BaseDevRouteRoute,
 } as any).lazy(() =>
   import('./../../routes/_base/dev/storybook/route.lazy').then((d) => d.Route),
+)
+
+const BaseSystemPermsIdRouteRoute = BaseSystemPermsIdRouteImport.update({
+  path: '/system/perms/$id',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base/system/perms/$id/route.lazy').then(
+    (d) => d.Route,
+  ),
 )
 
 const BaseSystemDictsIdRouteRoute = BaseSystemDictsIdRouteImport.update({
@@ -265,6 +264,15 @@ const BaseDevTemplatesAdvancedTableRouteRoute =
       (d) => d.Route,
     ),
   )
+
+const BaseSystemPermsIndexRouteRoute = BaseSystemPermsIndexRouteImport.update({
+  path: '/system/perms/',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base/system/perms/index/route.lazy').then(
+    (d) => d.Route,
+  ),
+)
 
 const BaseSystemDictsIndexRouteRoute = BaseSystemDictsIndexRouteImport.update({
   path: '/system/dicts/',
@@ -375,10 +383,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSystemParamsRouteImport
       parentRoute: typeof BaseRouteImport
     }
-    '/_base/system/permissions': {
-      preLoaderRoute: typeof BaseSystemPermissionsRouteImport
-      parentRoute: typeof BaseRouteImport
-    }
     '/_base/system/posts': {
       preLoaderRoute: typeof BaseSystemPostsRouteImport
       parentRoute: typeof BaseRouteImport
@@ -407,6 +411,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSystemDictsIndexRouteImport
       parentRoute: typeof BaseRouteImport
     }
+    '/_base/system/perms/': {
+      preLoaderRoute: typeof BaseSystemPermsIndexRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
     '/_base/dev/templates/advanced-table': {
       preLoaderRoute: typeof BaseDevTemplatesAdvancedTableRouteImport
       parentRoute: typeof BaseDevRouteImport
@@ -425,6 +433,10 @@ declare module '@tanstack/react-router' {
     }
     '/_base/system/dicts/$id': {
       preLoaderRoute: typeof BaseSystemDictsIdRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/system/perms/$id': {
+      preLoaderRoute: typeof BaseSystemPermsIdRouteImport
       parentRoute: typeof BaseRouteImport
     }
   }
@@ -449,7 +461,6 @@ export const routeTree = rootRoute.addChildren([
     BaseSystemDeptsRouteRoute,
     BaseSystemMenusRouteRoute,
     BaseSystemParamsRouteRoute,
-    BaseSystemPermissionsRouteRoute,
     BaseSystemPostsRouteRoute,
     BaseSystemRolesRouteRoute,
     BaseSystemTenantsRouteRoute,
@@ -457,9 +468,11 @@ export const routeTree = rootRoute.addChildren([
     BaseSupplierQuestionnairesIndexRouteRoute,
     BaseSystemBizDictsIndexRouteRoute,
     BaseSystemDictsIndexRouteRoute,
+    BaseSystemPermsIndexRouteRoute,
     BaseSupplierQuestionnairesIdRouteRoute,
     BaseSystemBizDictsIdRouteRoute,
     BaseSystemDictsIdRouteRoute,
+    BaseSystemPermsIdRouteRoute,
   ]),
   PortalRouteRoute.addChildren([
     PortalIndexRouteRoute,

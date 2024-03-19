@@ -11,6 +11,7 @@ import SYSTEM_TENANTS from './system/tenants/zh-CN.json'
 import SYSTEM_USERS from './system/users/zh-CN.json'
 import VALIDATION from './validation/zh-CN.json'
 import SYSTEM_ROLES from './system/roles/zh-CN.json'
+import SYSTEM_PERMS from './system/perms/zh-CN.json'
 
 /**
  * 用于给 `@types/i18next.d.ts` 提供类型定义
@@ -29,6 +30,7 @@ const resources = {
   'SYSTEM/TENANTS': SYSTEM_TENANTS,
   'SYSTEM/DEPTS': SYSTEM_DEPTS,
   'SYSTEM/ROLES': SYSTEM_ROLES,
+  'SYSTEM/PERMS': SYSTEM_PERMS,
   PORTAL
 }
 

@@ -17,7 +17,7 @@ const RpTagString = rpWithSkeleton((props: RpTagStringProps) => {
 
   return (
     <ATag
-      className={clsx(copyable && 'cursor-pointer')}
+      className={clsx(copyable && 'cursor-pointer', '!w-max max-w-full !text-wrap')}
       style={{
         // NOTE: 消除默认内联边距
         marginInlineEnd: 0

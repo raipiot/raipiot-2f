@@ -1,0 +1,18 @@
+{
+  "NAME": "Menu name",
+  "NUM": "Menu number",
+  "ROUTE.ADDRESS": "Route address",
+  "MENU.ICON": "Menu icon",
+  "ALIAS": "Menu alias",
+  "SORT": "Menu sort",
+  "PERMS": {
+    "CONFIG": "Permission configuration",
+    "RESOURCE.CODE": "Permission code",
+    "PATH": "Permission path",
+    "NAME": "Permission name",
+    "FIELD": "Permission field"
+  },
+  "RULE.NAME": "Rule name",
+  "INTERFACE.TYPE": "Interface type",
+  "REMARK": "Remark"
+}

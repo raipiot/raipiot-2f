@@ -1,5 +1,8 @@
+import * as components from './components'
+import * as hooks from './hooks'
 import * as invalidates from './invalidates'
 import * as mutations from './mutations'
+import * as providers from './providers'
 import * as queries from './queries'
 import * as queryKeys from './query-keys'
 
@@ -7,5 +10,8 @@ export const Perms = {
   ...mutations,
   ...queries,
   ...queryKeys,
-  ...invalidates
+  ...invalidates,
+  ...hooks,
+  ...providers,
+  ...components
 }
