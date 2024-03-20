@@ -1,8 +1,8 @@
-import { QuestionnaireState } from '@raipiot-2f/api'
+import { QuestionnaireStatus } from '@raipiot-2f/api'
 
 import { tabStateMap } from '../maps'
 
-export const useTabStateOptions = () => {
+export const useTabStatusOptions = () => {
   const canCreate = usePermCode('supplier:questionnaires:create')
   const canWrite = usePermCode('supplier:questionnaires:write')
 
@@ -13,7 +13,7 @@ export const useTabStateOptions = () => {
       key
     }))
     if (canWrite) {
-      return list.filter((item) => item.key !== QuestionnaireState.NEW)
+      return list.filter((item) => item.key !== QuestionnaireStatus.NEW)
     }
     if (canCreate) {
       return list
@@ -24,12 +24,12 @@ export const useTabStateOptions = () => {
   // 默认选项卡状态
   const defaultTabState = useMemo(() => {
     if (canWrite) {
-      return QuestionnaireState.TO_FILL
+      return QuestionnaireStatus.TO_FILL
     }
     if (canCreate) {
-      return QuestionnaireState.NEW
+      return QuestionnaireStatus.NEW
     }
-    return QuestionnaireState.NEW
+    return QuestionnaireStatus.NEW
   }, [canCreate, canWrite])
 
   return { tabStateOptions, defaultTabState }

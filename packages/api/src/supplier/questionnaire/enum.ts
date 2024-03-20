@@ -1,4 +1,4 @@
-export enum QuestionnaireState {
+export enum QuestionnaireStatus {
   /**
    * 新建
    */

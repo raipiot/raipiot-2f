@@ -1,4 +1,4 @@
-import type { QuestionnairePageDto, QuestionnaireState, QuestionnaireVo } from '@raipiot-2f/api'
+import type { QuestionnairePageDto, QuestionnaireStatus, QuestionnaireVo } from '@raipiot-2f/api'
 
 export const Route = createLazyFileRoute('/_base/supplier/questionnaires/')({
   component: () => (
@@ -11,12 +11,12 @@ export const Route = createLazyFileRoute('/_base/supplier/questionnaires/')({
 
 function Component() {
   // 选项卡状态
-  const { tabStateOptions, defaultTabState } = Questionnaires.useTabStateOptions()
+  const { tabStateOptions, defaultTabState } = Questionnaires.useTabStatusOptions()
 
   // 分页器
   const { pageParams, setPageParams, pagination, isPending, startTransition } =
     usePagination<QuestionnairePageDto>({
-      state: defaultTabState
+      status: defaultTabState
     })
   // 多选器：范型为列表行数据类型
   const { rowSelection, selectedRowKeys, clearSelectedRowKeys } = useRowSelection<QuestionnaireVo>()
@@ -56,10 +56,10 @@ function Component() {
       }}
     >
       <ATabs
-        activeKey={pageParams.state}
+        activeKey={pageParams.status}
         onChange={(activeKey) =>
           startTransition(() =>
-            setPageParams({ ...pageParams, state: activeKey as QuestionnaireState })
+            setPageParams({ ...pageParams, status: activeKey as QuestionnaireStatus })
           )
         }
         tabBarStyle={{ marginBottom: 0 }}
