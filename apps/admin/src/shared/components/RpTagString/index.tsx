@@ -17,12 +17,13 @@ const RpTagString = rpWithSkeleton((props: RpTagStringProps) => {
 
   return (
     <ATag
-      className={clsx(copyable && 'cursor-pointer', '!w-max max-w-full !text-wrap')}
+      className={clsx(copyable && 'cursor-pointer')}
       style={{
         // NOTE: 消除默认内联边距
         marginInlineEnd: 0
       }}
       bordered
+      title={value}
       {...(copyable && { onClick: () => handleCopy(value) })}
     >
       {value}

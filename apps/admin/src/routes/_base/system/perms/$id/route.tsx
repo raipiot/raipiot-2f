@@ -1,9 +1,12 @@
 import type { ScopePageDto } from '@raipiot-2f/api'
 import { createFileRoute } from '@tanstack/react-router'
-
-import { scopePermissionsQueryOptions } from '@/features/system/perms/queries'
+import { z } from 'zod'
 
 const t = i18n.getFixedT(null, 'ROUTER')
+
+const validateSearch = z.object({
+  type: z.enum(['api', 'data'])
+})
 
 export const Route = createFileRoute('/_base/system/perms/$id')({
   staticData: {
@@ -16,7 +19,7 @@ export const Route = createFileRoute('/_base/system/perms/$id')({
 
     return Promise.all([
       queryClient.ensureQueryData(
-        scopePermissionsQueryOptions(
+        Perms.scopePermissionsQueryOptions(
           PageUtils.initParams<ScopePageDto>({
             menuId: id
           }),
@@ -27,5 +30,6 @@ export const Route = createFileRoute('/_base/system/perms/$id')({
         Dicts.directoryQueryOptions(type === 'api' ? 'api_scope_type' : 'data_scope_type')
       )
     ])
-  }
+  },
+  validateSearch
 })

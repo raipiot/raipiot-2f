@@ -13,4 +13,3 @@ export type SystemDictCode =
   | 'user_type' // 用户平台
   | 'api_scope_type' // API权限接口类型
   | 'data_scope_type' // Data 规则列表选项
-  | 'flow' // 请假或报销流程

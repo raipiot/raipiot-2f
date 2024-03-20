@@ -30,17 +30,16 @@ export const useParamsColumns = (props?: UseParamsColumnsProps) => {
       {
         title: t('PARAMS.KEY'),
         dataIndex: 'paramKey',
-        width: 80,
+        width: 200,
         custom: {
-          type: 'tagString',
-          tagStringProps: { copyable: true }
+          type: 'tooltipString'
         }
       },
       {
         title: t('PARAMS.VALUE'),
         dataIndex: 'paramValue',
         width: 200,
-        custom: { type: 'string' }
+        custom: { type: 'tooltipString' }
       },
       {
         title: t('COMMON:REMARK'),
@@ -50,7 +49,7 @@ export const useParamsColumns = (props?: UseParamsColumnsProps) => {
         render: (value) => <ATooltip title={value}>{value}</ATooltip>
       },
       createActions({
-        width: 200,
+        width: 120,
         render: (_, record) => (
           // rp-table-action 用于非 Hover 表格行上隐藏操作按钮
           <ASpace className={clsx(!isMobile && 'rp-table-action', 'transition-all ease-out')}>

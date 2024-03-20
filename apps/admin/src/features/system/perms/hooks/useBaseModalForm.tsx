@@ -6,7 +6,8 @@ export const useBaseModalForm = () => {
   const { t } = useTranslation(['SYSTEM/PERMS', 'COMMON'])
   const { createModalForm } = useFormCreator<Partial<ScopeSubmitDto>>()
   const [modalForm] = AForm.useForm<Partial<ScopeSubmitDto>>()
-  const id = useId()
+  const scopeTypeValue = AForm.useWatch('scopeType', modalForm)
+
   const searchSelect = useSearch({
     from: '/_base/system/perms/$id'
   }) as { type: ScopeTypeString }
@@ -53,32 +54,14 @@ export const useBaseModalForm = () => {
             }
           },
           {
-            type: 'custom',
-            render: () => (
-              <AForm.Item
-                noStyle
-                key={id}
-                shouldUpdate={(prev, cur) => {
-                  if (prev.scopeType !== cur.scopeType) {
-                    modalForm.setFieldsValue({ scopeValue: '' })
-                  }
-                  return prev.scopeType !== cur.scopeType
-                }}
-              >
-                {({ getFieldValue }) =>
-                  getFieldValue('scopeType') === data[data.length - 1].value ? (
-                    <AForm.Item
-                      label={t('RULE.VALUE')}
-                      name="scopeValue"
-                      rules={[{ required: true }]}
-                      rootClassName="!px-[12px] !w-full"
-                    >
-                      <AInput.TextArea rows={3} />
-                    </AForm.Item>
-                  ) : null
-                }
-              </AForm.Item>
-            )
+            type: 'text-area',
+            colProps: { span: 24 },
+            formItemProps: {
+              name: 'scopeValue',
+              rules: [{ required: true }],
+              label: t('RULE.VALUE')
+            },
+            hidden: scopeTypeValue !== data[data.length - 1].value
           }
         ]
       : [

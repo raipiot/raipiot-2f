@@ -1,7 +1,5 @@
-import type { ScopePageDto, ScopeTypeString, ScopeVo } from '@raipiot-2f/api'
+import type { ScopePageDto, ScopeVo } from '@raipiot-2f/api'
 import { createLazyFileRoute } from '@tanstack/react-router'
-
-import { scopePermissionsQueryOptions } from '@/features/system/perms/queries'
 
 export const Route = createLazyFileRoute('/_base/system/perms/$id')({
   component: function Page() {
@@ -32,13 +30,13 @@ function Component() {
   const { modal, form } = Perms.useScopeConfigContext()
   const { isPending: removePending, mutate } = Perms.useScopeRemoveMutation()
 
-  const search = useSearch({ from: '/_base/system/perms/$id' }) as { type: ScopeTypeString }
+  const search = useSearch({ from: '/_base/system/perms/$id' })
   const { columns } = Perms.useScopeColumns(search)
 
   const {
     data: { records, total }
   } = useSuspenseQuery(
-    scopePermissionsQueryOptions(
+    Perms.scopePermissionsQueryOptions(
       PageUtils.mergeParams(pageParams, {
         menuId: id
       }),

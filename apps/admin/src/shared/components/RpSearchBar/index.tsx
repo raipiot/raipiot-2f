@@ -54,7 +54,7 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
       props ?? {}
     const { form, initialValues } = formProps ?? {}
     const { t } = useTranslation()
-    const span = useResponsiveSpan({ xs: 24, sm: 12, md: 10, lg: 8, xl: 6 })
+    const span = useResponsiveSpan()
     const [expand, setExpand] = useState(false)
 
     // 预渲染

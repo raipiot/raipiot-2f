@@ -1,4 +1,4 @@
-import type { ScopeSubmitDto, ScopeTypeString } from '@raipiot-2f/api'
+import type { ScopeSubmitDto } from '@raipiot-2f/api'
 
 import { useScopeConfigContext } from '../contexts'
 import { useScopeSubmitMutation } from '../mutations'
@@ -12,7 +12,7 @@ export function BaseModal({ menuId }: BaseModalProps) {
   const { isPending, mutate } = useScopeSubmitMutation()
   const { type = 'api' } = useSearch({
     from: '/_base/system/perms/$id'
-  }) as { type: ScopeTypeString }
+  })
   return (
     <RpModal
       // 模态框类型

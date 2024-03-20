@@ -26,9 +26,12 @@ export const useBaseColumns = () => {
       {
         title: t('SYSTEM/DEPTS:TENANT'),
         dataIndex: 'tenantId',
-        render: (value) => (
-          <RpTagString value={records.find((i) => i.tenantId === value)?.tenantName ?? '-'} />
-        )
+        custom: {
+          type: 'tooltipString',
+          formatter(value) {
+            return records.find((i) => i.tenantId === value)?.tenantName ?? '-'
+          }
+        }
       },
       {
         title: t('ALIAS'),
