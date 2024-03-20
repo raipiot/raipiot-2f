@@ -90,4 +90,8 @@ export class MenusAPI extends BaseAPI {
       { signal }
     )
   }
+
+  async lazyMenuList(params?: LazyMenuPageDto, signal?: AbortSignal) {
+    return this.httpRequest.get<MenuVo[]>(`${this.#API_PREFIX}/lazy-menu-list`, params, { signal })
+  }
 }

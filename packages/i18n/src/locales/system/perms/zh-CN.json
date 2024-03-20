@@ -1,0 +1,23 @@
+{
+  "NAME": "菜单名称",
+  "NUM": "菜单编号",
+  "ROUTE.ADDRESS": "路由地址",
+  "MENU.ICON": "菜单图标",
+  "ALIAS": "菜单别名",
+  "SORT": "菜单排序",
+  "PERMS": {
+    "CONFIG": "权限配置",
+    "RESOURCE.CODE": "权限编号",
+    "PATH": "权限路径",
+    "NAME": "权限名称",
+    "FIELD": "权限字段",
+    "CLASSNAME": "权限类名"
+  },
+  "RULE.NAME": "规则类型",
+  "RULE.VALUE": "规则值",
+  "INTERFACE.TYPE": "接口类型",
+  "REMARK": "备注",
+  "VISIBLE.FIELD": "可见字段",
+  "DATA.PERMISSION": "数据权限",
+  "API.PERMISSION": "接口权限"
+}

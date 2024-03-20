@@ -19,6 +19,7 @@
     "BUSINESS.DICTS.CONFIG": "Business Dict Config",
     "ROLES": "Role Management",
     "PERMISSIONS": "Permission Management",
+    "PERMISSIONS.CONFIG": "Permission Config",
     "PARAMS": "Parameter Management",
     "TENANTS": "Tenant Management",
     "PRODUCT.PACKAGES": "Product Packages Management"

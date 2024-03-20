@@ -1,6 +1,6 @@
 import type { SystemDictPageDto } from '@raipiot-2f/api'
 
-import { detailQK, listQK, treeQK } from './query-keys'
+import { detailQK, listQK, selectQK, treeQK } from './query-keys'
 import type { SystemDictCode } from './types'
 
 export const detailQueryOptions = (id: string) =>
@@ -20,5 +20,12 @@ export const treeQueryOptions = (code: SystemDictCode) =>
   queryOptions({
     queryKey: treeQK(code),
     queryFn: ({ signal }) => systemDictsAPI.dictionaryTree(code, signal),
+    placeholderData: keepPreviousData
+  })
+
+export const directoryQueryOptions = (code: SystemDictCode) =>
+  queryOptions({
+    queryKey: selectQK(code),
+    queryFn: ({ signal }) => systemDictsAPI.dictionary(code, signal),
     placeholderData: keepPreviousData
   })

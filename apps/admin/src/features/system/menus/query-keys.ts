@@ -10,6 +10,8 @@ export const MENU_GRANT_TREE_QK = 'system:menu:grant-tree'
 
 export const MENU_ROLE_TREE_KEYS_QK = 'system:menu:role-tree-keys'
 
+export const LAZY_MENU_LIST_QO = 'system:menus:lazy-list'
+
 export const menusQK = (params?: LazyMenuPageDto) => [MENUS_QK, params]
 
 export const menuQK = (id?: string) => [MENU_QK, { id }]
@@ -19,3 +21,5 @@ export const menuTreeQK = () => [MENU_TREE_QK]
 export const menuGrantTreeQK = () => [MENU_GRANT_TREE_QK]
 
 export const menuRoleGrantTreeQK = (roleIds: string) => [MENU_ROLE_TREE_KEYS_QK, { roleIds }]
+
+export const lazyMenuListQK = (params?: LazyMenuPageDto) => [LAZY_MENU_LIST_QO, params]

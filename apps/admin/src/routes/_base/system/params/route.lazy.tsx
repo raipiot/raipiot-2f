@@ -103,6 +103,9 @@ function Params() {
             onSuccess: clearSelectedRowKeys
           })
         }
+        scroll={{
+          x: 1600
+        }}
       />
       {/* 模态框 */}
       <RpModal

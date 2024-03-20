@@ -1,6 +1,6 @@
 import type { LazyMenuPageDto } from '@raipiot-2f/api'
 
-import { menuQK, menusQK, menuTreeQK } from './query-keys'
+import { lazyMenuListQK, menuQK, menusQK, menuTreeQK } from './query-keys'
 
 export const menuQueryOptions = (id: string) =>
   queryOptions({
@@ -19,4 +19,11 @@ export const menuTreeQueryOptions = () =>
   queryOptions({
     queryKey: menuTreeQK(),
     queryFn: ({ signal }) => menusAPI.tree(signal)
+  })
+
+export const lazyMenuListQO = (params?: LazyMenuPageDto) =>
+  queryOptions({
+    queryKey: lazyMenuListQK(params),
+    queryFn: ({ signal }) => menusAPI.lazyMenuList(params, signal),
+    placeholderData: keepPreviousData
   })

@@ -19,6 +19,7 @@
     "BUSINESS.DICTS.CONFIG": "业务字典配置",
     "ROLES": "角色管理",
     "PERMISSIONS": "权限管理",
+    "PERMISSIONS.CONFIG": "权限配置",
     "PARAMS": "参数管理",
     "TENANTS": "租户管理",
     "PRODUCT.PACKAGES": "产品包管理"

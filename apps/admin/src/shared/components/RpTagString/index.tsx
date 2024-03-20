@@ -23,6 +23,7 @@ const RpTagString = rpWithSkeleton((props: RpTagStringProps) => {
         marginInlineEnd: 0
       }}
       bordered
+      title={value}
       {...(copyable && { onClick: () => handleCopy(value) })}
     >
       {value}
