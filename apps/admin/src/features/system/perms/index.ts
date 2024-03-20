@@ -16,6 +16,6 @@ export const Perms = {
   ...hooks,
   ...providers,
   ...components,
-  ...contexts
+  ...contexts,
   ...utils
 }
