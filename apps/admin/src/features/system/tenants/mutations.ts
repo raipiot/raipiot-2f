@@ -9,7 +9,7 @@ export const useTenantRemoveMutation = () => {
     mutationFn: (ids: string) => tenantsAPI.remove(ids),
     onSuccess: () => {
       message.success(t('OPERATION.SUCCESS'))
-      invalidateTenantsQuery()
+      queryClient.invalidateQueries()
     }
   })
 }

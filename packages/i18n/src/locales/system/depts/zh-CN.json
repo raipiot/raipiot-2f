@@ -1,8 +1,9 @@
 {
-  "FULLNAME": "机构全称",
+  "FULLNAME": "组织全称",
   "TENANT": "所属租户",
-  "NAME": "机构名称",
-  "TYPE": "机构类型",
+  "NAME": "组织名称",
+  "TYPE": "组织类型",
   "SORT": "排序",
-  "PARENT": "上级机构"
+  "PARENT": "上级组织",
+  "ADD.CHILDREN": "添加子项"
 }

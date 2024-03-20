@@ -14,6 +14,8 @@ function Component() {
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<DeptVo>()
   // 弹窗
   const { modal, form } = Depts.useBaseModalContext()
+  // 禁用父级机构选择
+  const { setDisabledParentId } = Depts.useBaseContext()
   // 搜索表单
   const { searchForm, searchFormItems } = Depts.useSearchForm()
   // 数据更新
@@ -41,6 +43,7 @@ function Component() {
           <RpButton
             variant="create"
             onClick={() => {
+              setDisabledParentId?.(false)
               form.resetFields()
               modal.openCreate()
             }}

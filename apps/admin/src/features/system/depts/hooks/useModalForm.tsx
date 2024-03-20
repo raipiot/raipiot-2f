@@ -1,9 +1,11 @@
+import { useBaseContext } from '../context'
 import { treeQueryOptions } from '../queries'
 import type { SubmitFormModal } from '../types'
 
 export const useModalForm = () => {
   const { t } = useTranslation(['SYSTEM/DEPTS', 'COMMON'])
   const { createModalForm } = useFormCreator<SubmitFormModal>()
+  const { disabledParentId } = useBaseContext()
   const [modalForm] = AForm.useForm<SubmitFormModal>()
 
   const { data } = useSuspenseQuery(treeQueryOptions())
@@ -35,7 +37,10 @@ export const useModalForm = () => {
           label: t('PARENT')
         },
         treeSelectProps: {
-          treeData: [{ title: t('COMMON:NONE'), value: '0', key: '0' }, ...data]
+          treeData: [{ title: t('COMMON:NONE'), value: '0', key: '0' }, ...data],
+          disabled: disabledParentId,
+          showSearch: !disabledParentId,
+          allowClear: !disabledParentId
         }
       },
       {

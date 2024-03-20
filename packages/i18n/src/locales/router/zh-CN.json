@@ -10,7 +10,7 @@
   "500": "服务器错误",
   "SYSTEM": {
     "USERS": "用户管理",
-    "DEPTS": "部门管理",
+    "DEPTS": "组织管理",
     "POSTS": "岗位管理",
     "MENUS": "菜单管理",
     "SYSTEM.DICTS": "系统字典",
