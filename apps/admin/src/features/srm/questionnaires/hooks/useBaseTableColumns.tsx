@@ -3,11 +3,11 @@ import { isMobile } from 'react-device-detect'
 
 import { tabStateMap } from '../maps'
 
-export const useColumns = () => {
+export const useBaseTableColumns = () => {
   const { createActions, createColumns } = useTableCreator<QuestionnaireVo>()
 
   return {
-    columns: createColumns<QuestionnaireVo>([
+    columns: createColumns([
       {
         title: '调查表编号',
         dataIndex: 'questionnaireId',

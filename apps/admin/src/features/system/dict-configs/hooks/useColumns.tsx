@@ -21,7 +21,7 @@ export const useColumns = (props?: UseColumnsProps) => {
   const { mutateAsync, isPending } = useRemoveMutation()
 
   return {
-    columns: createColumns<SystemDictVo>([
+    columns: createColumns([
       {
         title: t('CODE'),
         dataIndex: 'code',
@@ -86,7 +86,7 @@ export const useColumns = (props?: UseColumnsProps) => {
               }}
             />
             <RpButton
-              variant="create-child"
+              variant="add-child"
               size="small"
               onClick={async () => {
                 modal?.openCreate()

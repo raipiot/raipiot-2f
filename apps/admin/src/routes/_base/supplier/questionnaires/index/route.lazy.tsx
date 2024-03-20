@@ -11,7 +11,7 @@ export const Route = createLazyFileRoute('/_base/supplier/questionnaires/')({
 
 function Component() {
   // 选项卡状态
-  const { tabStateOptions, defaultTabState } = Questionnaires.useTabStatusOptions()
+  const { tabStateOptions, defaultTabState } = Questionnaires.useStatusTabOptions()
 
   // 分页器
   const { pageParams, setPageParams, pagination, isPending, startTransition } =
@@ -23,7 +23,7 @@ function Component() {
   // 搜索表单
   const { searchForm, searchFormItems } = Questionnaires.useSearchForm()
   // 表格列
-  const { columns } = Questionnaires.useColumns()
+  const { columns } = Questionnaires.useBaseTableColumns()
 
   const { modal, form } = Questionnaires.useBaseModalContext()
 
@@ -45,13 +45,9 @@ function Component() {
       pageHeaderProps={{
         // 操作区
         operate: (
-          <RpButton
-            variant="create"
-            onClick={() => {
-              form.resetFields()
-              modal.openCreate()
-            }}
-          />
+          <Link to="/supplier/questionnaires/create">
+            <RpButton variant="create" />
+          </Link>
         )
       }}
     >

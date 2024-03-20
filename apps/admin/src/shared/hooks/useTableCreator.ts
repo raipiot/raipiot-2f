@@ -26,61 +26,6 @@ export interface RpColumnGroupType<T> extends Omit<RpColumnType<T>, 'dataIndex'>
 
 type RpColumnsType<T> = (RpColumnGroupType<T> | RpColumnType<T>)[]
 
-/**
- * 生成表格列
- */
-const createColumns = <T>(columns: RpColumnsType<T>) => {
-  const getRender = (column: RpColumnType<T>) => {
-    const { custom } = column
-    const { type, tagStringProps, booleanProps, linkProps, formatter } = custom ?? {}
-    switch (type) {
-      case 'string':
-        return (value: any) =>
-          RpString({
-            value: formatter?.(value) ?? value
-          })
-      case 'tagString':
-        return (value: any) =>
-          RpTagString({
-            value: formatter?.(value) ?? value,
-            copyable: tagStringProps?.copyable
-          })
-      case 'dateString':
-        return (value: any) => RpDateString({ value: formatter?.(value) ?? value })
-      case 'boolean':
-        return (value: any) =>
-          RpBoolean({ value: formatter?.(value) ?? value, type: booleanProps?.type })
-      case 'tooltipString':
-        return (value: any) =>
-          createElement(
-            ATooltip,
-            { title: formatter?.(value) ?? value, placement: 'bottom' },
-            formatter?.(value) ?? value
-          )
-      case 'link':
-        return (value: any, record: T, index: number) =>
-          createElement(
-            Link,
-            typeof linkProps === 'function' ? linkProps(value, record, index) : linkProps,
-            formatter?.(value) ?? value
-          )
-      default:
-        return undefined
-    }
-  }
-
-  return columns.map(
-    (column) =>
-      ({
-        width: 150,
-        align: 'center',
-        render: getRender(column),
-        ellipsis: column.custom?.type === 'tooltipString' ? { showTitle: false } : undefined,
-        ...column
-      }) as ColumnType<T>
-  )
-}
-
 export const useTableCreator = <T>() => {
   const { t } = useTranslation()
   const response = useResponsive()
@@ -94,6 +39,61 @@ export const useTableCreator = <T>() => {
     fixed: response.sm && 'right',
     ...config
   })
+
+  /**
+   * 生成表格列
+   */
+  const createColumns = (columns: RpColumnsType<T>) => {
+    const getRender = (column: RpColumnType<T>) => {
+      const { custom } = column
+      const { type, tagStringProps, booleanProps, linkProps, formatter } = custom ?? {}
+      switch (type) {
+        case 'string':
+          return (value: any) =>
+            RpString({
+              value: formatter?.(value) ?? value
+            })
+        case 'tagString':
+          return (value: any) =>
+            RpTagString({
+              value: formatter?.(value) ?? value,
+              copyable: tagStringProps?.copyable
+            })
+        case 'dateString':
+          return (value: any) => RpDateString({ value: formatter?.(value) ?? value })
+        case 'boolean':
+          return (value: any) =>
+            RpBoolean({ value: formatter?.(value) ?? value, type: booleanProps?.type })
+        case 'tooltipString':
+          return (value: any) =>
+            createElement(
+              ATooltip,
+              { title: formatter?.(value) ?? value, placement: 'bottom' },
+              formatter?.(value) ?? value
+            )
+        case 'link':
+          return (value: any, record: T, index: number) =>
+            createElement(
+              Link,
+              typeof linkProps === 'function' ? linkProps(value, record, index) : linkProps,
+              formatter?.(value) ?? value
+            )
+        default:
+          return undefined
+      }
+    }
+
+    return columns.map(
+      (column) =>
+        ({
+          width: 150,
+          align: 'center',
+          render: getRender(column),
+          ellipsis: column.custom?.type === 'tooltipString' ? { showTitle: false } : undefined,
+          ...column
+        }) as ColumnType<T>
+    )
+  }
 
   return {
     createActions,

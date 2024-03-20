@@ -2,7 +2,7 @@ import { QuestionnaireStatus } from '@raipiot-2f/api'
 
 import { tabStateMap } from '../maps'
 
-export const useTabStatusOptions = () => {
+export const useStatusTabOptions = () => {
   const canCreate = usePermCode('supplier:questionnaires:create')
   const canWrite = usePermCode('supplier:questionnaires:write')
 

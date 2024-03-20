@@ -1,4 +1,4 @@
-import type { SystemDictSearchFormModel } from '@/features/system/dicts'
+import type { SystemDictSearchFormModel } from '../types'
 
 // 在系统字典、系统字典配置中通用
 export const useSearchForm = () => {

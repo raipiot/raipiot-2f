@@ -17,7 +17,7 @@ export const useBaseColumns = () => {
   } = useSuspenseQuery(tenantsQueryOptions({ current: 1, size: 1000 }))
 
   return {
-    columns: createColumns<DeptVo>([
+    columns: createColumns([
       {
         title: t('NAME'),
         dataIndex: 'deptName'

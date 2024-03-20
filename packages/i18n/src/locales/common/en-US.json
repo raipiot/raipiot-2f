@@ -81,7 +81,7 @@
   "ALREADY.SELECTED_other": "Already selected {{count}} items",
   "EXPAND": "Expand",
   "COLLAPSE": "Collapse",
-  "CREATE.CHILD": "Create child",
+  "ADD.CHILD": "Add child",
   "CLOSE.ALL.TAGS": "Close all tags",
   "CLOSE.OTHER.TAGS": "Close other tags",
   "CONFIG": "Config",
@@ -89,5 +89,7 @@
   "OPERATION.SUCCESS": "Operation success",
   "NOT.LIMITED": "Not limited",
   "NONE": "None",
-  "SUBMIT": "Submit"
+  "SUBMIT": "Submit",
+  "ADD": "Add",
+  "CANCEL.EDIT": "Cancel edit"
 }

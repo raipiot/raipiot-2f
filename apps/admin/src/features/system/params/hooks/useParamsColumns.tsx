@@ -21,7 +21,7 @@ export const useParamsColumns = (props?: UseParamsColumnsProps) => {
   const { mutateAsync, isPending } = useParamRemoveMutation()
 
   return {
-    columns: createColumns<ParamVo>([
+    columns: createColumns([
       {
         title: t('PARAMS.NAME'),
         dataIndex: 'paramName',

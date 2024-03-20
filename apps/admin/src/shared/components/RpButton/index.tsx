@@ -11,11 +11,13 @@ type RpButtonType =
   | 'config'
   | 'reset'
   | 'search'
-  | 'create-child'
   | 'cancel'
   | 'confirm'
   | 'save'
   | 'submit'
+  | 'add'
+  | 'add-child'
+  | 'cancel-edit'
 
 interface RpButtonProps extends ButtonProps {
   variant?: RpButtonType
@@ -77,11 +79,6 @@ function RpButton(props: RpButtonProps) {
             type: 'primary',
             children: t('SEARCH')
           }
-        // 新增子项
-        case 'create-child':
-          return {
-            children: t('CREATE.CHILD')
-          }
         // 取消
         case 'cancel':
           return {
@@ -103,6 +100,22 @@ function RpButton(props: RpButtonProps) {
           return {
             type: 'primary',
             children: t('SUBMIT')
+          }
+        // 新增
+        case 'add':
+          return {
+            type: 'primary',
+            children: t('ADD')
+          }
+        // 新增子项
+        case 'add-child':
+          return {
+            children: t('ADD.CHILD')
+          }
+        // 取消编辑
+        case 'cancel-edit':
+          return {
+            children: t('CANCEL.EDIT')
           }
         default:
           return {}

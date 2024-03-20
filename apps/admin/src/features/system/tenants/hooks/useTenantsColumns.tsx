@@ -22,7 +22,7 @@ export const useTenantsColumns = (props?: UseTenantsColumnsProps) => {
   const { mutateAsync, isPending } = useTenantRemoveMutation()
 
   return {
-    columns: createColumns<TenantVo>([
+    columns: createColumns([
       {
         title: t('ID'),
         dataIndex: 'tenantId',
