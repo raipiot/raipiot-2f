@@ -37,6 +37,7 @@ import { Route as BaseSystemDeptsRouteImport } from './../../routes/_base/system
 import { Route as BaseDevStorybookRouteImport } from './../../routes/_base/dev/storybook/route'
 import { Route as BaseSystemDictsIdRouteImport } from './../../routes/_base/system/dicts/$id/route'
 import { Route as BaseSystemBizDictsIdRouteImport } from './../../routes/_base/system/biz-dicts/$id/route'
+import { Route as BaseSupplierQuestionnairesCreateRouteImport } from './../../routes/_base/supplier/questionnaires/create/route'
 import { Route as BaseSupplierQuestionnairesIdRouteImport } from './../../routes/_base/supplier/questionnaires/$id/route'
 import { Route as BaseDevTemplatesBasicTableRouteImport } from './../../routes/_base/dev/templates/basic-table/route'
 import { Route as BaseDevTemplatesAdvancedTableRouteImport } from './../../routes/_base/dev/templates/advanced-table/route'
@@ -236,6 +237,16 @@ const BaseSystemBizDictsIdRouteRoute = BaseSystemBizDictsIdRouteImport.update({
   ),
 )
 
+const BaseSupplierQuestionnairesCreateRouteRoute =
+  BaseSupplierQuestionnairesCreateRouteImport.update({
+    path: '/supplier/questionnaires/create',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import(
+      './../../routes/_base/supplier/questionnaires/create/route.lazy'
+    ).then((d) => d.Route),
+  )
+
 const BaseSupplierQuestionnairesIdRouteRoute =
   BaseSupplierQuestionnairesIdRouteImport.update({
     path: '/supplier/questionnaires/$id',
@@ -419,6 +430,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSupplierQuestionnairesIdRouteImport
       parentRoute: typeof BaseRouteImport
     }
+    '/_base/supplier/questionnaires/create': {
+      preLoaderRoute: typeof BaseSupplierQuestionnairesCreateRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
     '/_base/system/biz-dicts/$id': {
       preLoaderRoute: typeof BaseSystemBizDictsIdRouteImport
       parentRoute: typeof BaseRouteImport
@@ -458,6 +473,7 @@ export const routeTree = rootRoute.addChildren([
     BaseSystemBizDictsIndexRouteRoute,
     BaseSystemDictsIndexRouteRoute,
     BaseSupplierQuestionnairesIdRouteRoute,
+    BaseSupplierQuestionnairesCreateRouteRoute,
     BaseSystemBizDictsIdRouteRoute,
     BaseSystemDictsIdRouteRoute,
   ]),

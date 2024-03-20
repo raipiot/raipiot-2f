@@ -3,7 +3,7 @@ import type HttpRequest from '@raipiot-2f/axios'
 import { BaseAPI } from '../../base'
 import { mockEntity, mockList, timeoutResolve } from '../../mock'
 import type { QuestionnairePageDto, QuestionnaireSubmitDto } from './dto'
-import { QuestionnaireState } from './enum'
+import { QuestionnaireStatus } from './enum'
 import type { QuestionnairesVo, QuestionnaireVo } from './vo'
 
 export * from './dto'
@@ -24,7 +24,7 @@ export class QuestionnairesAPI extends BaseAPI {
   #list: QuestionnairesVo = mockList(
     {
       questionnaireId: '1',
-      state: QuestionnaireState.NEW,
+      state: QuestionnaireStatus.NEW,
       supplierCode: 'CI00015131',
       supplierName: '常州三源光伏材料有限公司常州三源光伏材料有限公司	',
       companyCode: 'CO00014938',
@@ -41,7 +41,7 @@ export class QuestionnairesAPI extends BaseAPI {
     },
     {
       questionnaireId: '2',
-      state: QuestionnaireState.NOT_APPROVED,
+      state: QuestionnaireStatus.NOT_APPROVED,
       supplierCode: 'CI00015131',
       supplierName: '常州三源光伏材料有限公司',
       companyCode: 'CO00014938',
@@ -60,7 +60,7 @@ export class QuestionnairesAPI extends BaseAPI {
 
   #detail: QuestionnaireVo = mockEntity({
     questionnaireId: '1',
-    state: QuestionnaireState.NOT_APPROVED,
+    state: QuestionnaireStatus.NOT_APPROVED,
     supplierCode: 'CI00015131',
     supplierName: '常州三源光伏材料有限公司常州三源光伏材料有限公司	',
     companyCode: 'CO00014938',

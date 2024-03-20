@@ -1,11 +1,15 @@
 import type { PageDateDto } from '../../types'
-import type { QuestionnaireState } from './enum'
+import type { QuestionnaireStatus } from './enum'
 
 export interface QuestionnairePageDto extends PageDateDto {
   /**
    * 调查表类型
    */
   questionnaireType?: string
+  /**
+   * 状态
+   */
+  status?: QuestionnaireStatus
   /**
    * 多选
    */
@@ -14,10 +18,6 @@ export interface QuestionnairePageDto extends PageDateDto {
    * 单选
    */
   radio?: string
-  /**
-   * 状态
-   */
-  state?: QuestionnaireState
 }
 
 export interface QuestionnaireSubmitDto {

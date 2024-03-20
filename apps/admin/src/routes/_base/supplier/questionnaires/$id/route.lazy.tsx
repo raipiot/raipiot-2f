@@ -31,7 +31,7 @@ function Component() {
         backBtn: true
       }}
     >
-      <Questionnaires.BasicDetail />
+      <Questionnaires.BasicInfoForm />
       <Questionnaires.CheckList />
     </RpPageContainer>
   )

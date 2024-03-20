@@ -21,7 +21,7 @@ export const useMenusColumns = (props?: UseMenusColumnsProps) => {
   const { mutateAsync, isPending } = useMenuRemoveMutation()
 
   return {
-    columns: createColumns<MenuVo>([
+    columns: createColumns([
       {
         title: t('NAME'),
         dataIndex: 'name',
@@ -97,7 +97,7 @@ export const useMenusColumns = (props?: UseMenusColumnsProps) => {
               }}
             />
             <RpButton
-              variant="create-child"
+              variant="add-child"
               size="small"
               onClick={async () => {
                 modal?.openCreate()

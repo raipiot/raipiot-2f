@@ -21,7 +21,7 @@ export const useBizDictsColumns = (props?: UseDictsColumnsProps) => {
   const { mutateAsync, isPending } = useBizDictRemoveMutation()
 
   return {
-    columns: createColumns<SystemDictVo>([
+    columns: createColumns([
       {
         title: t('CODE'),
         dataIndex: 'code',

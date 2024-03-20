@@ -22,7 +22,7 @@ export const usePostsColumns = (props?: UsePostsColumnsProps) => {
   const { data } = useSuspenseQuery(Dicts.treeQueryOptions('post_category'))
 
   return {
-    columns: createColumns<PostVo>([
+    columns: createColumns([
       {
         dataIndex: 'category',
         title: t('CATEGORY'),
