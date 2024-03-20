@@ -14,7 +14,7 @@ export const useColumns = () => {
   const { mutateAsync, isPending } = useRemoveMutation()
 
   return {
-    columns: createColumns<SystemDictVo>([
+    columns: createColumns([
       {
         title: t('CODE'),
         dataIndex: 'code',

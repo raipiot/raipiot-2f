@@ -15,7 +15,7 @@ export const useColumns = () => {
   const { mutateAsync, isPending } = useRemoveMutation()
 
   return {
-    columns: createColumns<UserVo>([
+    columns: createColumns([
       {
         title: t('LOGIN.ACCOUNT'),
         dataIndex: 'account',

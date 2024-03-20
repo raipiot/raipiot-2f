@@ -1,3 +1,3 @@
 export * from './dev'
-export * from './supplier'
+export * from './srm'
 export * from './system'
