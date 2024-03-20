@@ -10,7 +10,7 @@ export const useColumns = ({ type }: UseColumns) => {
   const { t } = useTranslation(['SYSTEM/MENUS', 'SYSTEM/PERMS'])
 
   return {
-    columns: createColumns<MenuVo>([
+    columns: createColumns([
       {
         title: t('NAME'),
         dataIndex: 'name'

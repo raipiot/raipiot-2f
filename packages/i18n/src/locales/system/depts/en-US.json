@@ -4,5 +4,6 @@
   "NAME": "Dept name",
   "TYPE": "Dept type",
   "SORT": "Sort",
-  "PARENT": "Parent dept"
+  "PARENT": "Parent dept",
+  "ADD.CHILDREN": "Add children dept"
 }
