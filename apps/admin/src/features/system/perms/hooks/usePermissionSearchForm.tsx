@@ -3,11 +3,11 @@ import type { ScopeSubmitDto } from '@raipiot-2f/api'
 export const usePermissionSearchForm = () => {
   const { t } = useTranslation('SYSTEM/PERMS')
   const { createSearchForm } = useFormCreator<ScopeSubmitDto>()
-  const [form] = AForm.useForm()
+  const [searchForm] = AForm.useForm()
 
   return {
-    form,
-    formItems: createSearchForm([
+    searchForm,
+    searchFormItems: createSearchForm([
       {
         type: 'input',
         formItemProps: {

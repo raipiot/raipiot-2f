@@ -4,12 +4,17 @@ import { createLazyFileRoute } from '@tanstack/react-router'
 import { scopePermissionsQueryOptions } from '@/features/system/perms/queries'
 
 export const Route = createLazyFileRoute('/_base/system/perms/$id')({
-  component: () => (
-    <Perms.ModalProvider>
-      <Component />
-      <Perms.BaseModal />
-    </Perms.ModalProvider>
-  )
+  component: function Page() {
+    const { id } = useParams({
+      from: '/_base/system/perms/$id'
+    })
+    return (
+      <Perms.ModalProvider>
+        <Component />
+        <Perms.BaseModal menuId={id} />
+      </Perms.ModalProvider>
+    )
+  }
 })
 
 function Component() {
@@ -23,7 +28,9 @@ function Component() {
   // 多选器：范型为列表行数据类型
   const { rowSelection, clearSelectedRowKeys } = useRowSelection<ScopeVo>()
 
-  const { form, formItems } = Perms.usePermissionSearchForm()
+  const { searchForm, searchFormItems } = Perms.usePermissionSearchForm()
+  const { modal, form } = Perms.useScopeConfigContext()
+  const { isPending: removePending, mutate } = Perms.useScopeRemoveMutation()
 
   const search = useSearch({ from: '/_base/system/perms/$id' }) as { type: ScopeTypeString }
   const { columns } = Perms.useScopeColumns(search)
@@ -33,11 +40,14 @@ function Component() {
   } = useSuspenseQuery(
     scopePermissionsQueryOptions(
       PageUtils.mergeParams(pageParams, {
-        id
+        menuId: id
       }),
-      'data'
+      search.type ?? 'api'
     )
   )
+  useEffect(() => {
+    clearSelectedRowKeys()
+  }, [isPending, removePending, clearSelectedRowKeys])
 
   return (
     <RpPageContainer
@@ -46,20 +56,26 @@ function Component() {
         operate: (
           <RpButton
             variant="create"
-            onClick={() => {}}
+            onClick={() => {
+              form.resetFields()
+              modal.openCreate()
+            }}
           />
-        )
+        ),
+        backBtn: true
       }}
     >
       {/* 搜索区域 */}
       <RpSearchBar
         // 搜索表单
-        formProps={{ form }}
+        formProps={{ form: searchForm }}
         // 表单配置项
-        formItems={formItems}
+        formItems={searchFormItems}
         // 事件：搜索
         onSearch={(values) =>
-          startTransition(() => setPageParams(PageUtils.mergeParams(pageParams, values)))
+          startTransition(() =>
+            setPageParams(PageUtils.mergeParams(pageParams, { ...values, current: 1 }))
+          )
         }
       />
       {/* 表格 */}
@@ -80,9 +96,17 @@ function Component() {
         // 事件：刷新
         onRefresh={() => startTransition(() => {})}
         // 批量删除加载
-        // batchDeleteLoading={() => {}}
+        batchDeleteLoading={removePending}
         // 事件：批量删除
-        onBatchDelete={(ids) => {}}
+        onBatchDelete={(idArr) => {
+          const ids = idArr.join(',')
+          mutate(
+            { ids, type: search.type },
+            {
+              onSuccess: clearSelectedRowKeys
+            }
+          )
+        }}
       />
     </RpPageContainer>
   )

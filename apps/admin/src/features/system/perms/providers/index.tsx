@@ -1,3 +1,4 @@
+import type { ScopeSubmitDto } from '@raipiot-2f/api'
 import type { PropsWithChildren } from 'react'
 
 import { ScopeConfigContext } from '../contexts'
@@ -5,7 +6,7 @@ import { useBaseModalForm } from '../hooks'
 
 export function ModalProvider({ children }: PropsWithChildren) {
   // 弹窗
-  const modal = useModal()
+  const modal = useModal<Partial<ScopeSubmitDto>>()
   // 弹窗表单
   const { modalForm, modalFormItems } = useBaseModalForm()
 

@@ -22,7 +22,7 @@ export class ScopesAPI extends BaseAPI {
    */
   async detail(id: string, apiPrefix: Scope = 'api', signal?: AbortSignal) {
     return this.httpRequest.get<ScopeVo>(
-      `${this.#API_PREFIX}/${apiPrefix}/detail`,
+      `${this.#API_PREFIX}/${apiPrefix}-scope/detail`,
       { id },
       {
         signal
@@ -43,7 +43,7 @@ export class ScopesAPI extends BaseAPI {
    * 提交
    */
   async submit(data: ScopeSubmitDto, apiPrefix: Scope = 'api') {
-    return this.httpRequest.post(`${this.#API_PREFIX}/${apiPrefix}/submit`, data)
+    return this.httpRequest.post(`${this.#API_PREFIX}/${apiPrefix}-scope/submit`, data)
   }
 
   /**
@@ -51,7 +51,7 @@ export class ScopesAPI extends BaseAPI {
    */
   async remove(ids: string, apiPrefix: Scope = 'api') {
     return this.httpRequest.post(
-      `${this.#API_PREFIX}/${apiPrefix}/remove`,
+      `${this.#API_PREFIX}/${apiPrefix}-scope/remove`,
       {},
       {
         params: {

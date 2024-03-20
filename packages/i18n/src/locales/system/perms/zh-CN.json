@@ -10,9 +10,14 @@
     "RESOURCE.CODE": "权限编号",
     "PATH": "权限路径",
     "NAME": "权限名称",
-    "FIELD": "权限字段"
+    "FIELD": "权限字段",
+    "CLASSNAME": "权限类名"
   },
   "RULE.NAME": "规则类型",
+  "RULE.VALUE": "规则值",
   "INTERFACE.TYPE": "接口类型",
-  "REMARK": "备注"
+  "REMARK": "备注",
+  "VISIBLE.FIELD": "可见字段",
+  "DATA.PERMISSION": "数据权限",
+  "API.PERMISSION": "接口权限"
 }

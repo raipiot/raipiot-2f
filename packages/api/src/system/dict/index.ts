@@ -85,13 +85,14 @@ export class SystemDictsAPI extends BaseAPI {
    * 字典数据
    */
   async dictionary(code: string, signal?: AbortSignal) {
-    return this.httpRequest.get<SystemDictVo[]>(
+    const res = await this.httpRequest.get<SystemDictVo[]>(
       `${this.#API_PREFIX}/dictionary`,
       { code },
       {
         signal
       }
     )
+    return this.#rawOptionsTransfer(res, 'dictValue', 'dictKey')
   }
 
   /**

@@ -21,16 +21,18 @@ export const useScopeColumns = (props: { type: ScopeTypeString }) => {
       },
       {
         title: t('PERMS.RESOURCE.CODE'),
-        dataIndex: 'resourceCode'
+        dataIndex: 'resourceCode',
+        width: 80
       },
       {
         title: t('PERMS.FIELD'),
         dataIndex: 'scopeField'
       },
       {
-        title: t('RULE.NAME'),
+        title: props.type === 'api' ? t('RULE.NAME') : t('INTERFACE.TYPE'),
         dataIndex: 'scopeTypeName',
-        width: 100
+        width: 100,
+        render: (v) => <RpTagString value={v} />
       },
       createActions({
         width: 150,
@@ -47,7 +49,7 @@ export const useScopeColumns = (props: { type: ScopeTypeString }) => {
               }
               onClick={async () => {
                 modal?.openRead()
-                modal?.setMeta(record.id)
+                modal?.setMeta({ menuId: record.menuId })
                 form?.setFieldsValue(
                   await queryClient.ensureQueryData(
                     scopePermissionQueryOptions(record.id, props.type ?? 'api')
@@ -65,7 +67,7 @@ export const useScopeColumns = (props: { type: ScopeTypeString }) => {
               }
               onClick={async () => {
                 modal?.openEdit()
-                modal?.setMeta(record.id)
+                modal?.setMeta({ menuId: record.menuId })
                 form?.setFieldsValue(
                   await queryClient.ensureQueryData(
                     scopePermissionQueryOptions(record.id, props.type ?? 'api')
@@ -77,7 +79,7 @@ export const useScopeColumns = (props: { type: ScopeTypeString }) => {
               okBtnLoading={isPending}
               onConfirm={() =>
                 mutateAsync({
-                  id: record.id,
+                  ids: record.id,
                   type: props.type ?? 'api'
                 })
               }

@@ -13,7 +13,11 @@ export interface ScopeSubmitDto {
   resourceCode: string
   scopeName: string
   scopePath: string
-  scopeType: number // 暂无文档
+  scopeType: number // 规则和接口类型
+  scopeField: string // 可见字段
+  scopeColumn: string // 权限字段
+  scopeClass: string // 权限类名
+  scopeValue: string // 规则值
 }
 
 export type ScopeTypeString = 'api' | 'data'

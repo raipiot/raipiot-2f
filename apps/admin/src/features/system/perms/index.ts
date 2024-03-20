@@ -1,4 +1,5 @@
 import * as components from './components'
+import * as contexts from './contexts'
 import * as hooks from './hooks'
 import * as invalidates from './invalidates'
 import * as mutations from './mutations'
@@ -13,5 +14,6 @@ export const Perms = {
   ...invalidates,
   ...hooks,
   ...providers,
-  ...components
+  ...components,
+  ...contexts
 }

@@ -5,9 +5,9 @@ import type { RpBasicFormItem } from '@/shared/components/RpDynamicForm/types'
 import type { UseModal } from '@/shared/hooks/useModal'
 
 export interface ScopeContextProps {
-  modal: UseModal<string>
+  modal: UseModal<Partial<ScopeSubmitDto>>
   form: FormInstance
-  formItems: RpBasicFormItem<ScopeSubmitDto>[]
+  formItems: RpBasicFormItem<Partial<ScopeSubmitDto>>[]
 }
 
 export const ScopeConfigContext = createContext<undefined | ScopeContextProps>(undefined)

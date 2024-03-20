@@ -1,6 +1,6 @@
 import type { PermissionsSubmitDto, ScopeSubmitDto, ScopeTypeString } from '@raipiot-2f/api'
 
-import { SCOPE_PERMISSIONS_QK } from './query-keys'
+import { SCOPE_PERMISSION_QK, SCOPE_PERMISSIONS_QK } from './query-keys'
 
 export const useSubmitMutation = () => {
   const { t } = useTranslation()
@@ -28,6 +28,10 @@ export const useScopeSubmitMutation = () => {
         queryKey: [SCOPE_PERMISSIONS_QK],
         refetchType: 'all'
       })
+      queryClient.invalidateQueries({
+        queryKey: [SCOPE_PERMISSION_QK],
+        refetchType: 'all'
+      })
       message.success(t('OPERATION.SUCCESS'))
     }
   })
@@ -40,7 +44,8 @@ export const useScopeRemoveMutation = () => {
   const { t } = useTranslation()
   const { message } = AApp.useApp()
   return useMutation({
-    mutationFn: ({ id, type }: { id: string; type: ScopeTypeString }) => scopesAPI.remove(id, type),
+    mutationFn: ({ ids, type }: { ids: string; type: ScopeTypeString }) =>
+      scopesAPI.remove(ids, type),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [SCOPE_PERMISSIONS_QK],

@@ -8,7 +8,8 @@ export const Route = createLazyFileRoute('/_base/system/perms/')({
 
 function Component() {
   const [isPending, startTransition] = useTransition()
-  const [type, setType] = useState<ScopeTypeString>('api')
+  const { t } = useTranslation('SYSTEM/PERMS')
+  const [type, setType] = useState<ScopeTypeString>('data')
   // 搜索表单
   const { searchForm, searchFormItems } = Perms.useSearchForm()
   // 表格列
@@ -35,8 +36,8 @@ function Component() {
               refetch()
             }}
           >
-            <ARadio.Button value="api">数据</ARadio.Button>
-            <ARadio.Button value="data">接口</ARadio.Button>
+            <ARadio.Button value="data">{t('DATA.PERMISSION')}</ARadio.Button>
+            <ARadio.Button value="api">{t('API.PERMISSION')}</ARadio.Button>
           </ARadio.Group>
         )
       }}
