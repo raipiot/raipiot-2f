@@ -1,8 +1,11 @@
 import { px2remTransformer, StyleProvider } from '@ant-design/cssinjs'
 import { HappyProvider } from '@ant-design/happy-work-theme'
 import { messageConfig, themeBaseToken } from '@raipiot-infra/theme'
+import { enableMapSet } from 'immer'
 
 import { getModuleMenuCodeByPath } from '@/features/menus'
+
+enableMapSet()
 
 BrowserUtils.loadFavicon() // 动态加载 favicon
 BrowserUtils.disableGestureScale() // 禁用移动端手势缩放

@@ -1,4 +1,5 @@
 import type { PageDateDto } from '../../types'
+import type { QuestionnaireState } from './enum'
 
 export interface QuestionnairePageDto extends PageDateDto {
   /**
@@ -13,6 +14,10 @@ export interface QuestionnairePageDto extends PageDateDto {
    * 单选
    */
   radio?: string
+  /**
+   * 状态
+   */
+  state?: QuestionnaireState
 }
 
 export interface QuestionnaireSubmitDto {

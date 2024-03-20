@@ -3,6 +3,7 @@ import * as constants from './constants'
 import * as context from './context'
 import * as hooks from './hooks'
 import * as invalidates from './invalidates'
+import * as maps from './maps'
 import * as mutations from './mutations'
 import * as providers from './providers'
 import * as queries from './queries'
@@ -15,6 +16,7 @@ export const Questionnaires = {
   ...hooks,
   ...providers,
   ...constants,
+  ...maps,
   ...context,
   ...queries,
   ...mutations,

@@ -1,31 +1,30 @@
 import type { QuestionnaireVo } from '@raipiot-2f/api'
 import { isMobile } from 'react-device-detect'
 
-import { useBaseModalContext } from '../context'
-import { useRemoveMutation } from '../mutations'
+import { tabStateMap } from '../maps'
 
 export const useColumns = () => {
-  const { modal, form } = useBaseModalContext()
-
   const { createActions, createColumns } = useTableCreator<QuestionnaireVo>()
-
-  const { mutateAsync, isPending } = useRemoveMutation()
 
   return {
     columns: createColumns<QuestionnaireVo>([
       {
         title: '调查表编号',
         dataIndex: 'questionnaireId',
-        render: (value, record) => (
-          <Link
-            to="/supplier/questionnaires/$id"
-            params={{ id: record.questionnaireId! }}
-          >
-            {value}
-          </Link>
-        )
+        custom: {
+          type: 'link',
+          linkProps: (_, record) =>
+            ({
+              to: '/supplier/questionnaires/$id',
+              params: { id: record.questionnaireId! }
+            }) as any // TODO: 修复类型
+        }
       },
-      { title: '调查表状态', dataIndex: 'state', custom: { type: 'string' } },
+      {
+        title: '调查表状态',
+        dataIndex: 'state',
+        custom: { type: 'tagString', formatter: (value) => tabStateMap.get(value) }
+      },
       { title: '供应商编码', dataIndex: 'supplierCode', custom: { type: 'string' } },
       { title: '供应商名称', dataIndex: 'supplierName', custom: { type: 'tooltipString' } },
       { title: '公司编码', dataIndex: 'companyCode', custom: { type: 'string' } },
@@ -40,7 +39,7 @@ export const useColumns = () => {
       { title: '创建日期', dataIndex: 'createTime', custom: { type: 'dateString' } },
       { title: '邀约调查表', dataIndex: 'isInvitation', custom: { type: 'boolean' } },
       createActions({
-        width: 250,
+        width: 150,
         render: (_, record) => (
           // rp-table-action 用于非 Hover 表格行上隐藏操作按钮
           <ASpace className={clsx(!isMobile && 'rp-table-action', 'transition-all ease-out')}>
@@ -53,24 +52,14 @@ export const useColumns = () => {
                 size="small"
               />
             </Link>
-            <Link
-              to="/supplier/questionnaires/$id"
-              params={{ id: record.questionnaireId! }}
-            >
-              <RpButton
-                variant="edit"
-                size="small"
-              />
-            </Link>
-            <RpDeletePopconfirm
-              okBtnLoading={isPending}
-              onConfirm={() => mutateAsync(record.questionnaireId!)}
-            >
-              <RpButton
-                variant="delete"
-                size="small"
-              />
-            </RpDeletePopconfirm>
+            <PermCodeProvider code="supplier:questionnaires:review">
+              <Link
+                to="/supplier/questionnaires/$id"
+                params={{ id: record.questionnaireId! }}
+              >
+                <AButton size="small">填写</AButton>
+              </Link>
+            </PermCodeProvider>
           </ASpace>
         )
       })

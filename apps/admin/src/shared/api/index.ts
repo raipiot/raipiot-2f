@@ -20,8 +20,3 @@ export const rolesAPI = new RolesAPI(httpRequest)
 
 export const portalAPI = new PortalAPI(httpRequest)
 export const dashboardAPI = new DashboardAPI(httpRequest)
-
-
-
-
-

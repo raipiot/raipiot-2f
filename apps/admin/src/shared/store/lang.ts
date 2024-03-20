@@ -4,7 +4,7 @@ import type { Locale } from 'antd/lib/locale'
 import enUS from 'antd/locale/en_US'
 import zhCN from 'antd/locale/zh_CN'
 import { create } from 'zustand'
-import { subscribeWithSelector } from 'zustand/middleware'
+import { devtools, subscribeWithSelector } from 'zustand/middleware'
 
 interface State {
   lang: string
@@ -12,13 +12,16 @@ interface State {
 }
 
 interface Actions {
+  /**
+   * 设置语言
+   * @param lang 选择的语言
+   */
   setLang: (lang: string) => void
   setLocale: (locale: Locale) => void
 }
 
 const initialState: State = {
   lang: LangUtils.getDefaultLang(Lang['en-US']),
-
   /**
    * antd 国际化配置
    */
@@ -26,15 +29,13 @@ const initialState: State = {
 }
 
 export const useLangStore = create<State & Actions>()(
-  subscribeWithSelector((set) => ({
-    ...initialState,
-    /**
-     * 设置语言
-     * @param lang 选择的语言
-     */
-    setLang: (lang: string) => set({ lang }),
-    setLocale: (locale: Locale) => set({ locale })
-  }))
+  devtools(
+    subscribeWithSelector((set) => ({
+      ...initialState,
+      setLang: (lang: string) => set({ lang }),
+      setLocale: (locale: Locale) => set({ locale })
+    }))
+  )
 )
 
 /**
