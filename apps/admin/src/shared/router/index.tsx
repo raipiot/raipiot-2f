@@ -2,6 +2,8 @@ import type { MaybeI18nString } from '@raipiot-infra/utils'
 import nprogress from 'nprogress'
 import type { JSXElementConstructor } from 'react'
 
+import type { PermCode } from '@/shared/store/perm'
+
 import { routeTree } from './routeTree.gen'
 
 export const router = createRouter({
@@ -30,5 +32,6 @@ declare module '@tanstack/react-router' {
   interface StaticDataRouteOption {
     title?: MaybeI18nString
     icon?: React.ReactElement<any, string | JSXElementConstructor<any>>
+    permCode?: PermCode | PermCode[]
   }
 }

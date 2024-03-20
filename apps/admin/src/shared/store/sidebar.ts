@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { devtools } from 'zustand/middleware'
 
 interface State {
   isCollapse: boolean
@@ -6,9 +7,21 @@ interface State {
 }
 
 interface Actions {
+  /**
+   * 修改折叠状态
+   */
   setIsCollapse: (isCollapse: boolean) => void
+  /**
+   * 切换折叠状态
+   */
   toggleCollapse: () => void
+  /**
+   * 修改显示状态
+   */
   setIsDisplay: (isDisplay: boolean) => void
+  /**
+   * 切换显示状态
+   */
   toggleDisplay: () => void
 }
 
@@ -24,25 +37,12 @@ const initialState: State = {
   isDisplay: !BrowserUtils.isMobile()
 }
 
-export const useSidebarStore = create<State & Actions>()((set) => ({
-  ...initialState,
-  /**
-   * 修改折叠状态
-   */
-  setIsCollapse: (isCollapse) => set(() => ({ isCollapse })),
-
-  /**
-   * 切换折叠状态
-   */
-  toggleCollapse: () => set((state) => ({ isCollapse: !state.isCollapse })),
-
-  /**
-   * 修改显示状态
-   */
-  setIsDisplay: (isDisplay) => set(() => ({ isDisplay })),
-
-  /**
-   * 切换显示状态
-   */
-  toggleDisplay: () => set((state) => ({ isDisplay: !state.isDisplay }))
-}))
+export const useSidebarStore = create<State & Actions>()(
+  devtools((set) => ({
+    ...initialState,
+    setIsCollapse: (isCollapse) => set(() => ({ isCollapse })),
+    toggleCollapse: () => set((state) => ({ isCollapse: !state.isCollapse })),
+    setIsDisplay: (isDisplay) => set(() => ({ isDisplay })),
+    toggleDisplay: () => set((state) => ({ isDisplay: !state.isDisplay }))
+  }))
+)

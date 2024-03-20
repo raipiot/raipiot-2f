@@ -1,4 +1,4 @@
-import type { QuestionnairePageDto, QuestionnaireVo } from '@raipiot-2f/api'
+import type { QuestionnairePageDto, QuestionnaireState, QuestionnaireVo } from '@raipiot-2f/api'
 
 export const Route = createLazyFileRoute('/_base/supplier/questionnaires/')({
   component: () => (
@@ -10,11 +10,16 @@ export const Route = createLazyFileRoute('/_base/supplier/questionnaires/')({
 })
 
 function Component() {
+  // 选项卡状态
+  const { tabStateOptions, defaultTabState } = Questionnaires.useTabStateOptions()
+
   // 分页器
   const { pageParams, setPageParams, pagination, isPending, startTransition } =
-    usePagination<QuestionnairePageDto>()
+    usePagination<QuestionnairePageDto>({
+      state: defaultTabState
+    })
   // 多选器：范型为列表行数据类型
-  const { rowSelection, clearSelectedRowKeys } = useRowSelection<QuestionnaireVo>()
+  const { rowSelection, selectedRowKeys, clearSelectedRowKeys } = useRowSelection<QuestionnaireVo>()
   // 搜索表单
   const { searchForm, searchFormItems } = Questionnaires.useSearchForm()
   // 表格列
@@ -50,21 +55,16 @@ function Component() {
         )
       }}
     >
-      <PurchaserProvider>
-        <ATabs
-          activeKey={pageParams.questionnaireType}
-          onChange={(activeKey) =>
-            startTransition(() =>
-              setPageParams({
-                ...pageParams,
-                questionnaireType: activeKey
-              })
-            )
-          }
-          tabBarStyle={{ marginBottom: 0 }}
-          items={Questionnaires.tabOptions}
-        />
-      </PurchaserProvider>
+      <ATabs
+        activeKey={pageParams.state}
+        onChange={(activeKey) =>
+          startTransition(() =>
+            setPageParams({ ...pageParams, state: activeKey as QuestionnaireState })
+          )
+        }
+        tabBarStyle={{ marginBottom: 0 }}
+        items={tabStateOptions}
+      />
       {/* 搜索区域 */}
       <RpSearchBar
         // 搜索表单
@@ -123,6 +123,22 @@ function Component() {
           })
         }
         scroll={{ x: 3500 }}
+        renderTableOpeate={
+          <PermCodeProvider code="supplier:questionnaires:create">
+            <AButton disabled>批量发布</AButton>
+          </PermCodeProvider>
+        }
+        renderTableBatchOpeate={
+          <PermCodeProvider code="supplier:questionnaires:create">
+            <AButton
+              onClick={() => {
+                console.log(selectedRowKeys)
+              }}
+            >
+              批量发布
+            </AButton>
+          </PermCodeProvider>
+        }
       />
     </RpPageContainer>
   )
