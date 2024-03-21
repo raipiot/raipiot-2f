@@ -45,7 +45,7 @@ export const usePostsColumns = (props?: UsePostsColumnsProps) => {
         title: t('COMMON:SORT'),
         dataIndex: 'sort',
         width: 80,
-        custom: { type: 'tagString' }
+        custom: { tag: true }
       },
       {
         title: t('SYSTEM/TENANTS:ID'),

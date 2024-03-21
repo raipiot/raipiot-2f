@@ -24,22 +24,21 @@ export const useParamsColumns = (props?: UseParamsColumnsProps) => {
     columns: createColumns([
       {
         title: t('PARAMS.NAME'),
-        dataIndex: 'paramName',
-        custom: { type: 'string' }
+        dataIndex: 'paramName'
       },
       {
         title: t('PARAMS.KEY'),
         dataIndex: 'paramKey',
         width: 200,
         custom: {
-          type: 'tooltipString'
+          tooltip: true
         }
       },
       {
         title: t('PARAMS.VALUE'),
         dataIndex: 'paramValue',
         width: 200,
-        custom: { type: 'tooltipString' }
+        custom: { tooltip: true }
       },
       {
         title: t('COMMON:REMARK'),

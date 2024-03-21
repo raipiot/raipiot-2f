@@ -18,26 +18,23 @@ export const useColumns = () => {
     columns: createColumns([
       {
         title: t('LOGIN.ACCOUNT'),
-        dataIndex: 'account',
-        custom: { type: 'string' }
+        dataIndex: 'account'
       },
       {
         title: t('TENANT'),
         dataIndex: 'tenantName',
         width: 150,
-        custom: { type: 'tagString' }
+        custom: { tag: true }
       },
       {
         title: t('NAME'),
         dataIndex: 'realName',
-        width: 150,
-        custom: { type: 'string' }
+        width: 150
       },
       {
         title: t('ROLE'),
         dataIndex: 'roleName',
         width: 200,
-        custom: { type: 'string' },
         ellipsis: { showTitle: false },
         render: (value) => <ATooltip title={value}>{value}</ATooltip>
       },
@@ -45,7 +42,6 @@ export const useColumns = () => {
         title: t('DEPT'),
         dataIndex: 'deptName',
         width: 200,
-        custom: { type: 'string' },
         ellipsis: { showTitle: false },
         render: (value) => <ATooltip title={value}>{value}</ATooltip>
       },
@@ -53,14 +49,13 @@ export const useColumns = () => {
         title: t('POSITION'),
         dataIndex: 'postName',
         width: 200,
-        custom: { type: 'string' },
         ellipsis: { showTitle: false },
         render: (value) => <ATooltip title={value}>{value}</ATooltip>
       },
       {
         title: t('PLATFORM'),
         dataIndex: 'userTypeName',
-        custom: { type: 'tagString' }
+        custom: { tag: true }
       },
       createActions({
         width: 250,

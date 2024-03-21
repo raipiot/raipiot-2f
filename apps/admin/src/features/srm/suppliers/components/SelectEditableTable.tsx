@@ -1,5 +1,4 @@
 import type { SupplierVo } from '@raipiot-2f/api'
-import React from 'react'
 
 import { SelectTable } from './SelectTable'
 
