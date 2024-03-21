@@ -1,2 +1,5 @@
+export * from './category'
 export * from './questionnaire'
+export * from './resource-pool-plan'
+export * from './resource-pool-scope'
 export * from './supplier'

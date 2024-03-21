@@ -1,10 +1,10 @@
 import type { SelectProps } from 'antd'
 
 const codes: SelectProps['options'] = [
-  { label: '调查表：管理', value: 'supplier:questionnaires' },
-  { label: '调查表：创建', value: 'supplier:questionnaires:create' },
-  { label: '调查表：填写', value: 'supplier:questionnaires:write' },
-  { label: '调查表：审核', value: 'supplier:questionnaires:review' }
+  { label: '调查表：管理', value: 'srm:questionnaires' },
+  { label: '调查表：创建', value: 'srm:questionnaires:create' },
+  { label: '调查表：填写', value: 'srm:questionnaires:write' },
+  { label: '调查表：审核', value: 'srm:questionnaires:review' }
 ]
 
 export function PermConfig() {

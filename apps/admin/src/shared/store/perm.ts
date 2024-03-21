@@ -3,10 +3,14 @@ import { devtools, persist } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
 
 export type PermCode =
-  | 'supplier:questionnaires' // 调查表管理
-  | 'supplier:questionnaires:create' // 调查表创建
-  | 'supplier:questionnaires:write' // 调查表填写
-  | 'supplier:questionnaires:review' // 调查表审核
+  | 'srm:resource-pool-scopes' // 资源池范围配置
+  | 'srm:resource-pool-scopes:create' // 资源池范围配置创建
+  | 'srm:resource-pool-scopes:edit' // 资源池范围配置编辑
+  | 'srm:resource-pool-scopes:remove' // 资源池范围配置删除
+  | 'srm:questionnaires' // 调查表管理
+  | 'srm:questionnaires:create' // 调查表创建
+  | 'srm:questionnaires:write' // 调查表填写
+  | 'srm:questionnaires:review' // 调查表审核
 
 interface State {
   codes: Set<string>

@@ -13,12 +13,9 @@ export * from './vo'
 export class QuestionnairesAPI extends BaseAPI {
   #API_PREFIX: string
 
-  #API_MOCK_PREFIX: string
-
   constructor(httpRequest: HttpRequest) {
     super(httpRequest)
     this.#API_PREFIX = `${this.BASE_API_PREFIX}/raipiot-system/questionnaires`
-    this.#API_MOCK_PREFIX = `${this.MOCK_API_PREFIX}/questionnaires`
   }
 
   #list: QuestionnairesVo = mockList(
@@ -82,13 +79,9 @@ export class QuestionnairesAPI extends BaseAPI {
   async list(params: QuestionnairePageDto, signal?: AbortSignal): Promise<QuestionnairesVo> {
     console.log('list', params)
     return this.#list
-    const data = await this.httpRequest.post<QuestionnairesVo>(
-      `${this.#API_MOCK_PREFIX}/list`,
-      params,
-      {
-        signal
-      }
-    )
+    const data = await this.httpRequest.post<QuestionnairesVo>(`${this.#API_PREFIX}/list`, params, {
+      signal
+    })
     return data
   }
 
@@ -98,11 +91,7 @@ export class QuestionnairesAPI extends BaseAPI {
   async detail(id: string, signal?: AbortSignal) {
     console.log('detail', id)
     return this.#detail
-    return this.httpRequest.post<QuestionnaireVo>(
-      `${this.#API_MOCK_PREFIX}/detail`,
-      { id },
-      { signal }
-    )
+    return this.httpRequest.post<QuestionnaireVo>(`${this.#API_PREFIX}/detail`, { id }, { signal })
   }
 
   /**
@@ -111,7 +100,7 @@ export class QuestionnairesAPI extends BaseAPI {
   async submit(data: QuestionnaireSubmitDto) {
     console.log('submit', data)
     return timeoutResolve()
-    return this.httpRequest.post(`${this.#API_MOCK_PREFIX}/submit`, data)
+    return this.httpRequest.post(`${this.#API_PREFIX}/submit`, data)
   }
 
   /**
@@ -121,7 +110,7 @@ export class QuestionnairesAPI extends BaseAPI {
     console.log('remove', ids)
     return timeoutResolve()
     return this.httpRequest.post(
-      `${this.#API_MOCK_PREFIX}/remove`,
+      `${this.#API_PREFIX}/remove`,
       {},
       {
         params: {

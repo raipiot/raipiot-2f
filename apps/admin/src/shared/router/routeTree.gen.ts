@@ -37,14 +37,15 @@ import { Route as BaseDevStorybookRouteImport } from './../../routes/_base/dev/s
 import { Route as BaseSystemPermsIdRouteImport } from './../../routes/_base/system/perms/$id/route'
 import { Route as BaseSystemDictsIdRouteImport } from './../../routes/_base/system/dicts/$id/route'
 import { Route as BaseSystemBizDictsIdRouteImport } from './../../routes/_base/system/biz-dicts/$id/route'
-import { Route as BaseSupplierQuestionnairesCreateRouteImport } from './../../routes/_base/supplier/questionnaires/create/route'
-import { Route as BaseSupplierQuestionnairesIdRouteImport } from './../../routes/_base/supplier/questionnaires/$id/route'
+import { Route as BaseSrmQuestionnairesCreateRouteImport } from './../../routes/_base/srm/questionnaires/create/route'
+import { Route as BaseSrmQuestionnairesIdRouteImport } from './../../routes/_base/srm/questionnaires/$id/route'
 import { Route as BaseDevTemplatesBasicTableRouteImport } from './../../routes/_base/dev/templates/basic-table/route'
 import { Route as BaseDevTemplatesAdvancedTableRouteImport } from './../../routes/_base/dev/templates/advanced-table/route'
 import { Route as BaseSystemPermsIndexRouteImport } from './../../routes/_base/system/perms/index/route'
 import { Route as BaseSystemDictsIndexRouteImport } from './../../routes/_base/system/dicts/index/route'
 import { Route as BaseSystemBizDictsIndexRouteImport } from './../../routes/_base/system/biz-dicts/index/route'
-import { Route as BaseSupplierQuestionnairesIndexRouteImport } from './../../routes/_base/supplier/questionnaires/index/route'
+import { Route as BaseSrmResourcePoolScopesIndexRouteImport } from './../../routes/_base/srm/resource-pool-scopes/index/route'
+import { Route as BaseSrmQuestionnairesIndexRouteImport } from './../../routes/_base/srm/questionnaires/index/route'
 
 // Create/Update Routes
 
@@ -236,22 +237,22 @@ const BaseSystemBizDictsIdRouteRoute = BaseSystemBizDictsIdRouteImport.update({
   ),
 )
 
-const BaseSupplierQuestionnairesCreateRouteRoute =
-  BaseSupplierQuestionnairesCreateRouteImport.update({
-    path: '/supplier/questionnaires/create',
+const BaseSrmQuestionnairesCreateRouteRoute =
+  BaseSrmQuestionnairesCreateRouteImport.update({
+    path: '/srm/questionnaires/create',
     getParentRoute: () => BaseRouteRoute,
   } as any).lazy(() =>
-    import(
-      './../../routes/_base/supplier/questionnaires/create/route.lazy'
-    ).then((d) => d.Route),
+    import('./../../routes/_base/srm/questionnaires/create/route.lazy').then(
+      (d) => d.Route,
+    ),
   )
 
-const BaseSupplierQuestionnairesIdRouteRoute =
-  BaseSupplierQuestionnairesIdRouteImport.update({
-    path: '/supplier/questionnaires/$id',
+const BaseSrmQuestionnairesIdRouteRoute =
+  BaseSrmQuestionnairesIdRouteImport.update({
+    path: '/srm/questionnaires/$id',
     getParentRoute: () => BaseRouteRoute,
   } as any).lazy(() =>
-    import('./../../routes/_base/supplier/questionnaires/$id/route.lazy').then(
+    import('./../../routes/_base/srm/questionnaires/$id/route.lazy').then(
       (d) => d.Route,
     ),
   )
@@ -304,14 +305,24 @@ const BaseSystemBizDictsIndexRouteRoute =
     ),
   )
 
-const BaseSupplierQuestionnairesIndexRouteRoute =
-  BaseSupplierQuestionnairesIndexRouteImport.update({
-    path: '/supplier/questionnaires/',
+const BaseSrmResourcePoolScopesIndexRouteRoute =
+  BaseSrmResourcePoolScopesIndexRouteImport.update({
+    path: '/srm/resource-pool-scopes/',
     getParentRoute: () => BaseRouteRoute,
   } as any).lazy(() =>
     import(
-      './../../routes/_base/supplier/questionnaires/index/route.lazy'
+      './../../routes/_base/srm/resource-pool-scopes/index/route.lazy'
     ).then((d) => d.Route),
+  )
+
+const BaseSrmQuestionnairesIndexRouteRoute =
+  BaseSrmQuestionnairesIndexRouteImport.update({
+    path: '/srm/questionnaires/',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base/srm/questionnaires/index/route.lazy').then(
+      (d) => d.Route,
+    ),
   )
 
 // Populate the FileRoutesByPath interface
@@ -410,8 +421,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSystemUsersRouteImport
       parentRoute: typeof BaseRouteImport
     }
-    '/_base/supplier/questionnaires/': {
-      preLoaderRoute: typeof BaseSupplierQuestionnairesIndexRouteImport
+    '/_base/srm/questionnaires/': {
+      preLoaderRoute: typeof BaseSrmQuestionnairesIndexRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/srm/resource-pool-scopes/': {
+      preLoaderRoute: typeof BaseSrmResourcePoolScopesIndexRouteImport
       parentRoute: typeof BaseRouteImport
     }
     '/_base/system/biz-dicts/': {
@@ -434,12 +449,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseDevTemplatesBasicTableRouteImport
       parentRoute: typeof BaseDevRouteImport
     }
-    '/_base/supplier/questionnaires/$id': {
-      preLoaderRoute: typeof BaseSupplierQuestionnairesIdRouteImport
+    '/_base/srm/questionnaires/$id': {
+      preLoaderRoute: typeof BaseSrmQuestionnairesIdRouteImport
       parentRoute: typeof BaseRouteImport
     }
-    '/_base/supplier/questionnaires/create': {
-      preLoaderRoute: typeof BaseSupplierQuestionnairesCreateRouteImport
+    '/_base/srm/questionnaires/create': {
+      preLoaderRoute: typeof BaseSrmQuestionnairesCreateRouteImport
       parentRoute: typeof BaseRouteImport
     }
     '/_base/system/biz-dicts/$id': {
@@ -480,12 +495,13 @@ export const routeTree = rootRoute.addChildren([
     BaseSystemRolesRouteRoute,
     BaseSystemTenantsRouteRoute,
     BaseSystemUsersRouteRoute,
-    BaseSupplierQuestionnairesIndexRouteRoute,
+    BaseSrmQuestionnairesIndexRouteRoute,
+    BaseSrmResourcePoolScopesIndexRouteRoute,
     BaseSystemBizDictsIndexRouteRoute,
     BaseSystemDictsIndexRouteRoute,
     BaseSystemPermsIndexRouteRoute,
-    BaseSupplierQuestionnairesIdRouteRoute,
-    BaseSupplierQuestionnairesCreateRouteRoute,
+    BaseSrmQuestionnairesIdRouteRoute,
+    BaseSrmQuestionnairesCreateRouteRoute,
     BaseSystemBizDictsIdRouteRoute,
     BaseSystemDictsIdRouteRoute,
     BaseSystemPermsIdRouteRoute,

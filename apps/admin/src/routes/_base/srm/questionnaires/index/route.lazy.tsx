@@ -1,6 +1,6 @@
 import type { QuestionnairePageDto, QuestionnaireStatus, QuestionnaireVo } from '@raipiot-2f/api'
 
-export const Route = createLazyFileRoute('/_base/supplier/questionnaires/')({
+export const Route = createLazyFileRoute('/_base/srm/questionnaires/')({
   component: () => (
     <Questionnaires.ModuleProvider>
       <Component />
@@ -31,7 +31,7 @@ function Component() {
   const {
     data: { records, total },
     refetch
-  } = useSuspenseQuery(Questionnaires.listQueryOptions(PageUtils.mergeParams(pageParams)))
+  } = useSuspenseQuery(Questionnaires.listQO(PageUtils.mergeParams(pageParams)))
   // 异步删除
   const { mutateAsync: removeMutateAsync, isPending: isRemovePending } =
     Questionnaires.useRemoveMutation()
@@ -45,7 +45,7 @@ function Component() {
       pageHeaderProps={{
         // 操作区
         operate: (
-          <Link to="/supplier/questionnaires/create">
+          <Link to="/srm/questionnaires/create">
             <RpButton variant="create" />
           </Link>
         )
@@ -83,7 +83,7 @@ function Component() {
         // 事件：预渲染
         onPrefetch={(values) =>
           queryClient.prefetchQuery(
-            Questionnaires.listQueryOptions(PageUtils.mergeParams(pageParams, values))
+            Questionnaires.listQO(PageUtils.mergeParams(pageParams, values))
           )
         }
       />
@@ -100,7 +100,7 @@ function Component() {
         pagination={pagination({
           total,
           // 事件：分页预渲染
-          onPrefetch: (values) => queryClient.prefetchQuery(Questionnaires.listQueryOptions(values))
+          onPrefetch: (values) => queryClient.prefetchQuery(Questionnaires.listQO(values))
         })}
         // 刷新加载
         refreshLoading={isPending}
@@ -120,12 +120,12 @@ function Component() {
         }
         scroll={{ x: 3500 }}
         renderTableOpeate={
-          <PermCodeProvider code="supplier:questionnaires:create">
+          <PermCodeProvider code="srm:questionnaires:create">
             <AButton disabled>批量发布</AButton>
           </PermCodeProvider>
         }
         renderTableBatchOpeate={
-          <PermCodeProvider code="supplier:questionnaires:create">
+          <PermCodeProvider code="srm:questionnaires:create">
             <AButton
               onClick={() => {
                 console.log(selectedRowKeys)
