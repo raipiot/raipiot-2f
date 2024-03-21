@@ -7,7 +7,7 @@ interface BaseModalProps {
   menuId: string
 }
 
-export function BaseModal({ menuId }: BaseModalProps) {
+export const BaseModal = memo(({ menuId }: BaseModalProps) => {
   const { modal, form, formItems } = useScopeConfigContext()
   const { isPending, mutate } = useScopeSubmitMutation()
   const { type = 'api' } = useSearch({
@@ -56,4 +56,4 @@ export function BaseModal({ menuId }: BaseModalProps) {
       />
     </RpModal>
   )
-}
+})

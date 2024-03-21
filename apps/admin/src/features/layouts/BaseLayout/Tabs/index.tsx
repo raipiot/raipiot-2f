@@ -87,7 +87,7 @@ export default function Tabs() {
       tabBarGutter={4}
       type="editable-card"
       hideAdd
-      activeKey={router.state.location.pathname}
+      activeKey={router.state.location.href}
       onEdit={onEdit}
       size="small"
       items={tabStore.records.map(({ path }) => {

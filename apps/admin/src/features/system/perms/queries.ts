@@ -22,7 +22,7 @@ export const permissionsRoleQueryOptions = (roleIds: string) =>
   })
 
 // 读取 scopes 的权限数据
-export const scopePermissionsQueryOptions = (params: ScopePageDto, type: 'api' | 'data') =>
+export const scopePermissionsQueryOptions = (params: ScopePageDto, type: ScopeTypeString) =>
   queryOptions({
     queryKey: scopePermissionsQK(params, type),
     queryFn: ({ signal }) => scopesAPI.list(params, type, signal)

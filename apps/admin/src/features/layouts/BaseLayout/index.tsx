@@ -10,9 +10,9 @@ export function BaseLayout() {
 
   useEffect(() => {
     // 监听路由变化，添加标签记录
-    tabStore.addRecordByPath(location.pathname)
+    tabStore.addRecordByPath(location.href)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname])
+  }, [location.href])
 
   return (
     // NOTE: 此处 rootClassName 不加 !flex-row 会导致加载布局闪屏

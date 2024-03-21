@@ -80,6 +80,16 @@ export const useBaseColumns = () => {
                 )
               }}
             />
+            <RpButton
+              size="small"
+              onClick={async () => {
+                modal.openCreate()
+                setDisabledParentId?.(true)
+                form.setFieldsValue({ parentId: record.id })
+              }}
+            >
+              {t('ADD.CHILDREN')}
+            </RpButton>
             <RpDeletePopconfirm
               okBtnLoading={isPending}
               onConfirm={() => mutateAsync(record.id)}
@@ -89,17 +99,6 @@ export const useBaseColumns = () => {
                 size="small"
               />
             </RpDeletePopconfirm>
-            <RpButton
-              size="small"
-              onClick={async () => {
-                modal.openCreate()
-                setDisabledParentId?.(true)
-                form.setFieldsValue({ parentId: record.id })
-              }}
-              type="primary"
-            >
-              {t('ADD.CHILDREN')}
-            </RpButton>
           </ASpace>
         )
       })

@@ -1,7 +1,7 @@
-import type { MenuVo } from '@raipiot-2f/api'
+import type { MenuVo, ScopeTypeString } from '@raipiot-2f/api'
 
 interface UseColumns {
-  type: 'api' | 'data'
+  type: ScopeTypeString
 }
 
 export const useColumns = ({ type }: UseColumns) => {
@@ -38,7 +38,7 @@ export const useColumns = ({ type }: UseColumns) => {
             <Link
               to="/system/perms/$id"
               params={{ id: record.id! }}
-              search={(prev) => ({ ...prev, type })}
+              search={(prev) => ({ ...prev, type, menuName: record.name })}
             >
               <AFlex
                 gap={4}
