@@ -27,7 +27,7 @@ export const useBaseColumns = () => {
         title: t('SYSTEM/DEPTS:TENANT'),
         dataIndex: 'tenantId',
         custom: {
-          type: 'tooltipString',
+          tooltip: true,
           formatter(value) {
             return records.find((i) => i.tenantId === value)?.tenantName ?? '-'
           }

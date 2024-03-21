@@ -26,8 +26,8 @@ export const useColumns = (props?: UseColumnsProps) => {
         title: t('CODE'),
         dataIndex: 'code',
         custom: {
-          type: 'tagString',
-          tagStringProps: { copyable: true }
+          tag: true,
+          copyable: true
         }
       },
       {
@@ -42,13 +42,13 @@ export const useColumns = (props?: UseColumnsProps) => {
         title: t('COMMON:SORT'),
         dataIndex: 'sort',
         width: 80,
-        custom: { type: 'tagString' }
+        custom: { tag: true }
       },
       {
         title: t('COMMON:IS.SEALED'),
         dataIndex: 'isSealed',
         width: 80,
-        custom: { type: 'boolean' }
+        custom: { booleanValue: true }
       },
       {
         title: t('COMMON:REMARK'),
