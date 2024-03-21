@@ -12,7 +12,7 @@ export default function rpWithLink<T extends object = any>(
     const { link, ...restProps } = props
     if (link) {
       const defaultProps: Partial<LinkProps> = {}
-      const prop = merge(defaultProps, link) as LinkProps
+      const prop = merge(defaultProps, link) as any
       return (
         <Link {...prop}>
           <WrappedComponent {...restProps} />
