@@ -13,7 +13,7 @@ export const useBaseTableColumns = () => {
         dataIndex: 'questionnaireId',
         custom: (_, record) => ({
           link: {
-            to: '/supplier/questionnaires/$id',
+            to: '/srm/questionnaires/$id',
             params: { id: record?.questionnaireId } as any
           }
         })
