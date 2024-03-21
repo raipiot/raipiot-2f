@@ -25,23 +25,19 @@ export const useTenantsColumns = (props?: UseTenantsColumnsProps) => {
     columns: createColumns([
       {
         title: t('ID'),
-        dataIndex: 'tenantId',
-        custom: { type: 'string' }
+        dataIndex: 'tenantId'
       },
       {
         title: t('NAME'),
-        dataIndex: 'tenantName',
-        custom: { type: 'string' }
+        dataIndex: 'tenantName'
       },
       {
         title: t('CONTACT'),
-        dataIndex: 'linkman',
-        custom: { type: 'string' }
+        dataIndex: 'linkman'
       },
       {
         title: t('PHONE'),
-        dataIndex: 'contactNumber',
-        custom: { type: 'string' }
+        dataIndex: 'contactNumber'
       },
       {
         title: t('ACCOUNT.LIMIT'),
@@ -55,8 +51,7 @@ export const useTenantsColumns = (props?: UseTenantsColumnsProps) => {
       },
       {
         title: t('DOMAIN'),
-        dataIndex: 'domainUrl',
-        custom: { type: 'string' }
+        dataIndex: 'domainUrl'
       },
       createActions({
         width: 200,

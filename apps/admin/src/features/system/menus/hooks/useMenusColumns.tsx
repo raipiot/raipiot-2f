@@ -24,18 +24,15 @@ export const useMenusColumns = (props?: UseMenusColumnsProps) => {
     columns: createColumns([
       {
         title: t('NAME'),
-        dataIndex: 'name',
-        custom: { type: 'string' }
+        dataIndex: 'name'
       },
       {
         title: t('CODE'),
-        dataIndex: 'code',
-        custom: { type: 'string' }
+        dataIndex: 'code'
       },
       {
         title: t('ROUTER.URL'),
-        dataIndex: 'path',
-        custom: { type: 'string' }
+        dataIndex: 'path'
       },
       {
         title: t('ICON'),
@@ -45,20 +42,19 @@ export const useMenusColumns = (props?: UseMenusColumnsProps) => {
       },
       {
         title: t('ALIAS'),
-        dataIndex: 'alias',
-        custom: { type: 'string' }
+        dataIndex: 'alias'
       },
       {
         title: t('IS.OUTER.LINK'),
         dataIndex: 'isOpen',
         width: 80,
-        custom: { type: 'boolean' }
+        custom: { booleanValue: true }
       },
       {
         title: t('COMMON:SORT'),
         dataIndex: 'sort',
         width: 80,
-        custom: { type: 'tagString' }
+        custom: { tag: true }
       },
       {
         title: t('COMMON:REMARK'),

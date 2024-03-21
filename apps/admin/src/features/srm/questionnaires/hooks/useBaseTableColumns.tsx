@@ -11,33 +11,31 @@ export const useBaseTableColumns = () => {
       {
         title: '调查表编号',
         dataIndex: 'questionnaireId',
-        custom: {
-          type: 'link',
-          linkProps: (_, record) =>
-            ({
-              to: '/srm/questionnaires/$id',
-              params: { id: record.questionnaireId! }
-            }) as any // TODO: 修复类型
-        }
+        custom: (_, record) => ({
+          link: {
+            to: '/supplier/questionnaires/$id',
+            params: { id: record?.questionnaireId } as any
+          }
+        })
       },
       {
         title: '调查表状态',
         dataIndex: 'state',
-        custom: { type: 'tagString', formatter: (value) => tabStateMap.get(value) }
+        custom: { tag: true, formatter: (value) => tabStateMap.get(value) }
       },
-      { title: '供应商编码', dataIndex: 'supplierCode', custom: { type: 'string' } },
-      { title: '供应商名称', dataIndex: 'supplierName', custom: { type: 'tooltipString' } },
-      { title: '公司编码', dataIndex: 'companyCode', custom: { type: 'string' } },
-      { title: '公司名称', dataIndex: 'companyName', custom: { type: 'tooltipString' } },
-      { title: '调查表类型', dataIndex: 'type', custom: { type: 'string' } },
-      { title: '调查表管控维度', dataIndex: 'controlDimension', custom: { type: 'string' } },
-      { title: '调查表模版名称', dataIndex: 'templateName', custom: { type: 'string' } },
-      { title: '创建人', dataIndex: 'createBy', custom: { type: 'string' } },
-      { title: '创建人部门', dataIndex: 'createDepartment', custom: { type: 'string' } },
-      { title: '审批日期', dataIndex: 'approvalDate', custom: { type: 'dateString' } },
-      { title: '发布日期', dataIndex: 'releaseDate', custom: { type: 'dateString' } },
-      { title: '创建日期', dataIndex: 'createTime', custom: { type: 'dateString' } },
-      { title: '邀约调查表', dataIndex: 'isInvitation', custom: { type: 'boolean' } },
+      { title: '供应商编码', dataIndex: 'supplierCode' },
+      { title: '供应商名称', dataIndex: 'supplierName', custom: { tooltip: true } },
+      { title: '公司编码', dataIndex: 'companyCode' },
+      { title: '公司名称', dataIndex: 'companyName', custom: { tooltip: true } },
+      { title: '调查表类型', dataIndex: 'type' },
+      { title: '调查表管控维度', dataIndex: 'controlDimension' },
+      { title: '调查表模版名称', dataIndex: 'templateName' },
+      { title: '创建人', dataIndex: 'createBy' },
+      { title: '创建人部门', dataIndex: 'createDepartment' },
+      { title: '审批日期', dataIndex: 'approvalDate', custom: { dateString: true } },
+      { title: '发布日期', dataIndex: 'releaseDate', custom: { dateString: true } },
+      { title: '创建日期', dataIndex: 'createTime', custom: { dateString: true } },
+      { title: '邀约调查表', dataIndex: 'isInvitation', custom: { booleanValue: true } },
       createActions({
         width: 150,
         render: (_, record) => (
