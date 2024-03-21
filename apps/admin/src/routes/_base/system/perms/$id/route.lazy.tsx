@@ -40,7 +40,7 @@ function Component() {
       PageUtils.mergeParams(pageParams, {
         menuId: id
       }),
-      search?.type ?? 'data'
+      search.type
     )
   )
   useEffect(() => {

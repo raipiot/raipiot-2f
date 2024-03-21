@@ -1,6 +1,5 @@
-import type { ScopePageDto } from '@raipiot-2f/api'
+import type { ScopePageDto, ScopeTypeString } from '@raipiot-2f/api'
 import { createFileRoute } from '@tanstack/react-router'
-import { merge } from 'lodash-es'
 import { z } from 'zod'
 
 const t = i18n.getFixedT(null, 'ROUTER')
@@ -15,10 +14,10 @@ export const Route = createFileRoute('/_base/system/perms/$id')({
     title: () => t('SYSTEM.PERMISSIONS.CONFIG'),
     icon: <MaterialSymbolsPersonPinRounded />
   },
-  loader: ({ params, location }) => {
+  loader: (rawParams) => {
+    const { params, location } = rawParams
     const { id } = params
-    const { type } = merge(location.search, { type: 'data' }) as { type: 'api' | 'data' }
-
+    const { type } = location.search as { type: ScopeTypeString }
     return Promise.all([
       queryClient.ensureQueryData(
         Perms.scopePermissionsQueryOptions(
@@ -33,5 +32,18 @@ export const Route = createFileRoute('/_base/system/perms/$id')({
       )
     ])
   },
-  validateSearch
+  validateSearch,
+  beforeLoad: (params) => {
+    if (!['api', 'data'].includes(params.search.type)) {
+      throw redirect({
+        to: '/system/perms/$id',
+        search: {
+          type: 'api'
+        },
+        params: {
+          id: params.params.id
+        }
+      })
+    }
+  }
 })

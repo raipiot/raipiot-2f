@@ -1,7 +1,7 @@
-import type { MenuVo } from '@raipiot-2f/api'
+import type { MenuVo, ScopeTypeString } from '@raipiot-2f/api'
 
 interface UseColumns {
-  type: 'api' | 'data'
+  type: ScopeTypeString
 }
 
 export const useColumns = ({ type }: UseColumns) => {
