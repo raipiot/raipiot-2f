@@ -1,5 +1,4 @@
-import { Lang } from '@raipiot-infra/enums'
-import { LangUtils } from '@raipiot-infra/utils'
+import { Lang, LangUtils } from '@raipiot-infra/utils'
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 

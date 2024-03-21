@@ -1,5 +1,5 @@
 import { getDefaultLocale } from '@raipiot-infra/antd'
-import { Lang } from '@raipiot-infra/enums'
+import { Lang } from '@raipiot-infra/utils'
 import type { Locale } from 'antd/lib/locale'
 import enUS from 'antd/locale/en_US'
 import zhCN from 'antd/locale/zh_CN'

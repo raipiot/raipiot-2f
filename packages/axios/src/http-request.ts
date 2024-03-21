@@ -1,6 +1,5 @@
 import { GlobalEnvConfig } from '@raipiot-2f/config'
-import { StatusCode } from '@raipiot-infra/enums'
-import { AuthUtils, LangUtils } from '@raipiot-infra/utils'
+import { AuthUtils, LangUtils, StatusCode } from '@raipiot-infra/utils'
 import type { Router } from '@tanstack/react-router'
 import type {
   AxiosError,

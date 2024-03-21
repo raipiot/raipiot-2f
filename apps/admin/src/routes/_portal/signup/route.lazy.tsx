@@ -1,5 +1,5 @@
 import type { SignupDto } from '@raipiot-2f/api'
-import { Lang } from '@raipiot-infra/enums'
+import { Lang } from '@raipiot-infra/utils'
 
 import loginBg from '@/assets/images/login_bg.jpg'
 import {

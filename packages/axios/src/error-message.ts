@@ -1,4 +1,4 @@
-import { StatusCode } from '@raipiot-infra/enums'
+import { StatusCode } from '@raipiot-infra/utils'
 
 /**
  * 响应状态码 Map
