@@ -38,7 +38,7 @@ export const useColumns = ({ type }: UseColumns) => {
             <Link
               to="/system/perms/$id"
               params={{ id: record.id! }}
-              search={(prev) => ({ ...prev, type })}
+              search={(prev) => ({ ...prev, type, menuName: record.name })}
             >
               <AFlex
                 gap={4}

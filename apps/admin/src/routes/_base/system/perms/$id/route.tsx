@@ -1,11 +1,13 @@
 import type { ScopePageDto } from '@raipiot-2f/api'
 import { createFileRoute } from '@tanstack/react-router'
+import { merge } from 'lodash-es'
 import { z } from 'zod'
 
 const t = i18n.getFixedT(null, 'ROUTER')
 
 const validateSearch = z.object({
-  type: z.enum(['api', 'data'])
+  type: z.enum(['api', 'data']),
+  menuName: z.string()
 })
 
 export const Route = createFileRoute('/_base/system/perms/$id')({
@@ -15,7 +17,7 @@ export const Route = createFileRoute('/_base/system/perms/$id')({
   },
   loader: ({ params, location }) => {
     const { id } = params
-    const { type } = location.search as { type: 'api' | 'data' }
+    const { type } = merge(location.search, { type: 'data' }) as { type: 'api' | 'data' }
 
     return Promise.all([
       queryClient.ensureQueryData(

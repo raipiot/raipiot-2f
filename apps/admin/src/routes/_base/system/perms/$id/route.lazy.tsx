@@ -19,7 +19,7 @@ function Component() {
   const { id } = useParams({
     from: '/_base/system/perms/$id'
   })
-
+  const { t } = useTranslation('SYSTEM/PERMS')
   // 分页器
   const { pageParams, setPageParams, pagination, isPending, startTransition } =
     usePagination<ScopePageDto>()
@@ -40,7 +40,7 @@ function Component() {
       PageUtils.mergeParams(pageParams, {
         menuId: id
       }),
-      search.type ?? 'api'
+      search?.type ?? 'data'
     )
   )
   useEffect(() => {
@@ -60,7 +60,19 @@ function Component() {
             }}
           />
         ),
-        backBtn: true
+        backBtn: true,
+        title: (
+          <ABreadcrumb
+            items={[
+              {
+                title: t('PERMS.CONFIG')
+              },
+              {
+                title: search.menuName
+              }
+            ]}
+          />
+        )
       }}
     >
       {/* 搜索区域 */}

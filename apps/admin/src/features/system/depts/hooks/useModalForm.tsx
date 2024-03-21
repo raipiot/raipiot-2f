@@ -10,7 +10,7 @@ export const useModalForm = () => {
 
   const { data } = useSuspenseQuery(treeQueryOptions())
   const { data: treeData } = useSuspenseQuery(Dicts.treeQueryOptions('org_category'))
-
+  console.log(data)
   return {
     modalForm,
     modalFormItems: createModalForm([
@@ -37,10 +37,11 @@ export const useModalForm = () => {
           label: t('PARENT')
         },
         treeSelectProps: {
-          treeData: [{ title: t('COMMON:NONE'), value: '0', key: '0' }, ...data],
+          treeData: data,
           disabled: disabledParentId,
           showSearch: !disabledParentId,
-          allowClear: !disabledParentId
+          allowClear: !disabledParentId,
+          treeNodeFilterProp: 'title'
         }
       },
       {

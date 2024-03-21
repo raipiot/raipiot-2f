@@ -8,7 +8,7 @@ declare global {
   const AApp: typeof import('antd')['App']
   const AAutoComplete: typeof import('antd')['AutoComplete']
   const AAvatar: typeof import('antd')['Avatar']
-  const ABreadcrumb: (typeof import('antd'))['Breadcrumb']
+  const ABreadcrumb: typeof import('antd')['Breadcrumb']
   const AButton: typeof import('antd')['Button']
   const ACard: typeof import('antd')['Card']
   const ACarousel: typeof import('antd')['Carousel']
