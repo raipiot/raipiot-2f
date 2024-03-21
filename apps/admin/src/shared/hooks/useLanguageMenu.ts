@@ -1,4 +1,4 @@
-import { Lang } from '@raipiot-infra/enums'
+import { Lang } from '@raipiot-infra/utils'
 import type { MenuProps } from 'antd'
 
 /**

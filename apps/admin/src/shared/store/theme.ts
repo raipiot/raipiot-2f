@@ -1,5 +1,5 @@
-import { Theme } from '@raipiot-infra/enums'
 import { darkThemeConfigPresets, lightThemeConfigPresets } from '@raipiot-infra/theme'
+import { Theme } from '@raipiot-infra/utils'
 import type { ThemeConfig } from 'antd'
 import { create } from 'zustand'
 import { devtools, subscribeWithSelector } from 'zustand/middleware'
