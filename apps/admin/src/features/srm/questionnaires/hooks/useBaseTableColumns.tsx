@@ -11,12 +11,11 @@ export const useBaseTableColumns = () => {
       {
         title: '调查表编号',
         dataIndex: 'questionnaireId',
-        custom: (value, record, _) => ({
+        custom: (_, record) => ({
           link: {
             to: '/supplier/questionnaires/$id',
             params: { id: record?.questionnaireId } as any
-          },
-          value
+          }
         })
       },
       {
@@ -43,7 +42,7 @@ export const useBaseTableColumns = () => {
           // rp-table-action 用于非 Hover 表格行上隐藏操作按钮
           <ASpace className={clsx(!isMobile && 'rp-table-action', 'transition-all ease-out')}>
             <Link
-              to="/supplier/questionnaires/$id"
+              to="/srm/questionnaires/$id"
               params={{ id: record.questionnaireId! }}
             >
               <RpButton
@@ -51,9 +50,9 @@ export const useBaseTableColumns = () => {
                 size="small"
               />
             </Link>
-            <PermCodeProvider code="supplier:questionnaires:review">
+            <PermCodeProvider code="srm:questionnaires:review">
               <Link
-                to="/supplier/questionnaires/$id"
+                to="/srm/questionnaires/$id"
                 params={{ id: record.questionnaireId! }}
               >
                 <AButton size="small">填写</AButton>

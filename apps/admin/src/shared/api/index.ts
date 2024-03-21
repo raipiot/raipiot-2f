@@ -5,7 +5,11 @@ import HttpRequest from '@raipiot-2f/axios'
 export const httpRequest = new HttpRequest()
 
 // 供应商
+export const suppliersAPI = new SuppliersAPI(httpRequest)
+export const resourcePoolPlansAPI = new ResourcePoolPlansAPI(httpRequest)
+export const resourcePoolScopesAPI = new ResourcePoolScopesAPI(httpRequest)
 export const questionnairesAPI = new QuestionnairesAPI(httpRequest)
+export const categoriesAPI = new CategoriesAPI(httpRequest)
 
 // 系统
 export const authAPI = new AuthAPI(httpRequest)

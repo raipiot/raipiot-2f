@@ -3,8 +3,8 @@ import { QuestionnaireStatus } from '@raipiot-2f/api'
 import { tabStateMap } from '../maps'
 
 export const useStatusTabOptions = () => {
-  const canCreate = usePermCode('supplier:questionnaires:create')
-  const canWrite = usePermCode('supplier:questionnaires:write')
+  const canCreate = usePermCode('srm:questionnaires:create')
+  const canWrite = usePermCode('srm:questionnaires:write')
 
   // 选项卡状态
   const tabStateOptions = useMemo(() => {

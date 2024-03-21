@@ -1,5 +1,9 @@
 [
+  "SuppliersAPI",
+  "ResourcePoolScopesAPI",
+  "ResourcePoolPlansAPI",
   "QuestionnairesAPI",
+  "CategoriesAPI",
   "AuthAPI",
   "UsersAPI",
   "PostsAPI",

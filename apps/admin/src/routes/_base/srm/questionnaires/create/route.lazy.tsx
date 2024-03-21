@@ -1,4 +1,4 @@
-export const Route = createLazyFileRoute('/_base/supplier/questionnaires/create')({
+export const Route = createLazyFileRoute('/_base/srm/questionnaires/create')({
   component: () => (
     <Questionnaires.ModuleProvider>
       <Component />

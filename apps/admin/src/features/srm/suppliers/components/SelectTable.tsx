@@ -16,7 +16,7 @@ export function SelectTable() {
     //   pagination={pagination({
     //     total,
     //     // 事件：分页预渲染
-    //     onPrefetch: (values) => queryClient.prefetchQuery(Questionnaires.listQueryOptions(values))
+    //     onPrefetch: (values) => queryClient.prefetchQuery(Questionnaires.listQO(values))
     //   })}
     //   // 刷新加载
     //   refreshLoading={isPending}

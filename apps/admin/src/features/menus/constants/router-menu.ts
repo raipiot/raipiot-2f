@@ -3,19 +3,33 @@ import type { MenuItem } from '../types'
 
 const t = i18n.getFixedT(null, 'ROUTER')
 
-const getRouteMeta = (key: string) => {
+const getRouteMeta = (key: string, children?: MenuItem[]) => {
   const { title, icon } = router.matchRoutes(key, {}).at(-1)?.staticData ?? {}
   return {
     label: I18nUtils.getText(title),
     key,
-    icon: icon ?? createElement(MaterialSymbolsGridViewOutlineRounded)
+    icon: icon ?? createElement(MaterialSymbolsGridViewOutlineRounded),
+    children
   }
 }
 
 // 兼容 i18n 所以要使用函数
 export const routerMenuMap = new Map<ModuleMenuCode, () => MenuItem[]>([
   [ModuleMenuCode.DASHBOARD, () => [getRouteMeta('/dashboard')]],
-  [ModuleMenuCode.SUPPLIER, () => [getRouteMeta('/supplier/questionnaires')]],
+  [
+    ModuleMenuCode.SUPPLIER,
+    () => [
+      {
+        label: '资源池管理',
+        key: '/srm/resource-pool',
+        children: [
+          getRouteMeta('/srm/resource-pool-scopes'),
+          getRouteMeta('/srm/resource-pool-plans')
+        ]
+      },
+      getRouteMeta('/srm/questionnaires')
+    ]
+  ],
   [ModuleMenuCode.SOURCE, () => []],
   [ModuleMenuCode.CONTRACT, () => []],
   [ModuleMenuCode.PURCHASE, () => []],
