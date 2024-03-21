@@ -7,7 +7,7 @@ const t = i18n.getFixedT(null, 'ROUTER')
 
 const validateSearch = z.object({
   type: z.enum(['api', 'data']),
-  menuName: z.string()
+  menuName: z.string().optional()
 })
 
 export const Route = createFileRoute('/_base/system/perms/$id')({
