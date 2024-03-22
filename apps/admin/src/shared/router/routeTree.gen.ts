@@ -37,6 +37,8 @@ import { Route as BaseDevStorybookRouteImport } from './../../routes/_base/dev/s
 import { Route as BaseSystemPermsIdRouteImport } from './../../routes/_base/system/perms/$id/route'
 import { Route as BaseSystemDictsIdRouteImport } from './../../routes/_base/system/dicts/$id/route'
 import { Route as BaseSystemBizDictsIdRouteImport } from './../../routes/_base/system/biz-dicts/$id/route'
+import { Route as BaseSrmResourcePoolScopesCreateRouteImport } from './../../routes/_base/srm/resource-pool-scopes/create/route'
+import { Route as BaseSrmResourcePoolScopesIdRouteImport } from './../../routes/_base/srm/resource-pool-scopes/$id/route'
 import { Route as BaseSrmQuestionnairesCreateRouteImport } from './../../routes/_base/srm/questionnaires/create/route'
 import { Route as BaseSrmQuestionnairesIdRouteImport } from './../../routes/_base/srm/questionnaires/$id/route'
 import { Route as BaseDevTemplatesBasicTableRouteImport } from './../../routes/_base/dev/templates/basic-table/route'
@@ -47,6 +49,7 @@ import { Route as BaseSystemBizDictsIndexRouteImport } from './../../routes/_bas
 import { Route as BaseSrmResourcePoolScopesIndexRouteImport } from './../../routes/_base/srm/resource-pool-scopes/index/route'
 import { Route as BaseSrmResourcePoolPlansIndexRouteImport } from './../../routes/_base/srm/resource-pool-plans/index/route'
 import { Route as BaseSrmQuestionnairesIndexRouteImport } from './../../routes/_base/srm/questionnaires/index/route'
+import { Route as BaseSrmResourcePoolScopesIdEditRouteImport } from './../../routes/_base/srm/resource-pool-scopes/$id/edit/route'
 
 // Create/Update Routes
 
@@ -238,6 +241,26 @@ const BaseSystemBizDictsIdRouteRoute = BaseSystemBizDictsIdRouteImport.update({
   ),
 )
 
+const BaseSrmResourcePoolScopesCreateRouteRoute =
+  BaseSrmResourcePoolScopesCreateRouteImport.update({
+    path: '/srm/resource-pool-scopes/create',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import(
+      './../../routes/_base/srm/resource-pool-scopes/create/route.lazy'
+    ).then((d) => d.Route),
+  )
+
+const BaseSrmResourcePoolScopesIdRouteRoute =
+  BaseSrmResourcePoolScopesIdRouteImport.update({
+    path: '/srm/resource-pool-scopes/$id',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base/srm/resource-pool-scopes/$id/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
 const BaseSrmQuestionnairesCreateRouteRoute =
   BaseSrmQuestionnairesCreateRouteImport.update({
     path: '/srm/questionnaires/create',
@@ -334,6 +357,16 @@ const BaseSrmQuestionnairesIndexRouteRoute =
     import('./../../routes/_base/srm/questionnaires/index/route.lazy').then(
       (d) => d.Route,
     ),
+  )
+
+const BaseSrmResourcePoolScopesIdEditRouteRoute =
+  BaseSrmResourcePoolScopesIdEditRouteImport.update({
+    path: '/edit',
+    getParentRoute: () => BaseSrmResourcePoolScopesIdRouteRoute,
+  } as any).lazy(() =>
+    import(
+      './../../routes/_base/srm/resource-pool-scopes/$id/edit/route.lazy'
+    ).then((d) => d.Route),
   )
 
 // Populate the FileRoutesByPath interface
@@ -472,6 +505,14 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSrmQuestionnairesCreateRouteImport
       parentRoute: typeof BaseRouteImport
     }
+    '/_base/srm/resource-pool-scopes/$id': {
+      preLoaderRoute: typeof BaseSrmResourcePoolScopesIdRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/srm/resource-pool-scopes/create': {
+      preLoaderRoute: typeof BaseSrmResourcePoolScopesCreateRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
     '/_base/system/biz-dicts/$id': {
       preLoaderRoute: typeof BaseSystemBizDictsIdRouteImport
       parentRoute: typeof BaseRouteImport
@@ -483,6 +524,10 @@ declare module '@tanstack/react-router' {
     '/_base/system/perms/$id': {
       preLoaderRoute: typeof BaseSystemPermsIdRouteImport
       parentRoute: typeof BaseRouteImport
+    }
+    '/_base/srm/resource-pool-scopes/$id/edit': {
+      preLoaderRoute: typeof BaseSrmResourcePoolScopesIdEditRouteImport
+      parentRoute: typeof BaseSrmResourcePoolScopesIdRouteImport
     }
   }
 }
@@ -518,6 +563,10 @@ export const routeTree = rootRoute.addChildren([
     BaseSystemPermsIndexRouteRoute,
     BaseSrmQuestionnairesIdRouteRoute,
     BaseSrmQuestionnairesCreateRouteRoute,
+    BaseSrmResourcePoolScopesIdRouteRoute.addChildren([
+      BaseSrmResourcePoolScopesIdEditRouteRoute,
+    ]),
+    BaseSrmResourcePoolScopesCreateRouteRoute,
     BaseSystemBizDictsIdRouteRoute,
     BaseSystemDictsIdRouteRoute,
     BaseSystemPermsIdRouteRoute,

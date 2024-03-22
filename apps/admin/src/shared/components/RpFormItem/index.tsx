@@ -89,6 +89,7 @@ function RpFormItem<T>(props: RpBasicFormItemProps<T>): React.ReactNode {
             {type === 'tree-select' && <ATreeSelect {...props.treeSelectProps} />}
             {type === 'cascader' && <ACascader {...props.cascaderProps} />}
             {type === 'date-picker' && <ADatePicker {...props.datePickerProps} />}
+            {type === 'range-picker' && <ADatePicker.RangePicker {...props.rangePickerProps} />}
             {type === 'input-number' && <AInputNumber {...props.inputNumberProps} />}
             {type === 'upload' && <RpUpload {...props.uploadProps} />}
             {type === 'switch' && (

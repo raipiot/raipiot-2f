@@ -1,17 +1,17 @@
-import type { PageDateDto } from '../..'
+import type { PageDateDto, PageDto } from '../..'
 
 export interface ResourcePoolScopePageDto extends PageDateDto {
   /**
    * 资源池类型
    */
-  resourcePoolTypeId: string
+  resourcePoolTypeId?: string
 }
 
 export interface ResourcePoolScopeCreateDto {
   /**
    * 基地 ID 集合
    */
-  baseIds: string[]
+  baseIds?: string[]
   /**
    * 品类 ID 集合
    */
@@ -19,18 +19,18 @@ export interface ResourcePoolScopeCreateDto {
   /**
    * 资源池类型(1 - 按基地隔离 2 - 按品类隔离)
    */
-  isolationTypeId: string
+  isolationTypeId?: string
   /**
    * 资源池名称
    */
-  name: string
+  name?: string
 }
 
 export interface ResourcePoolScopeUpdateDto {
   /**
    * 主键 ID
    */
-  id: string
+  id?: string
   /**
    * 新增基地 ID 集合
    */
@@ -51,4 +51,18 @@ export interface ResourcePoolScopeUpdateDto {
    * 资源池名称
    */
   name?: string
+}
+
+export interface ResourcePoolScopeCompanyPageDto extends PageDto {
+  name?: string
+  code?: string
+}
+
+export interface ResourcePoolScopeCategoryPageDto extends PageDto {
+  bgCode?: string
+  mdCode?: string
+  smCode?: string
+  bgName?: string
+  mdName?: string
+  smName?: string
 }

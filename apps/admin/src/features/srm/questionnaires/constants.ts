@@ -23,5 +23,8 @@ export const createTabOptions: TabsProps['items'] = [
     key: CreateTabOption.SELECT_SUPPLIER,
     children: createElement(Suppliers.SelectEditableTable)
   },
-  { label: '预览调查表内容', key: CreateTabOption.PREVIEW_QUESTIONNAIRE }
+  {
+    label: '预览调查表内容',
+    key: CreateTabOption.PREVIEW_QUESTIONNAIRE
+  }
 ]
