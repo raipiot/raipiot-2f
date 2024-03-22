@@ -34,7 +34,7 @@ export function BaseModal() {
         // 表单模式
         mode={modal?.type}
         // 表单初始值
-        initialValues={{}}
+        // initialValues={{}}
         // 表单提交
         onFinish={async () => {
           const values = form.getFieldsValue(true)

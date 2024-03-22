@@ -60,4 +60,16 @@ export class PostsAPI extends BaseAPI {
       }
     )
   }
+
+  async select(tenantId: string, signal: AbortSignal) {
+    return this.httpRequest.get<PostVo[]>(
+      `${this.#API_PREFIX}/select`,
+      {
+        tenantId
+      },
+      {
+        signal
+      }
+    )
+  }
 }

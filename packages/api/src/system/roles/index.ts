@@ -59,10 +59,14 @@ export class RolesAPI extends BaseAPI {
     )
   }
 
-  async tree(signal?: AbortSignal) {
-    return this.httpRequest.get<RoleVo[]>(`${this.#API_PREFIX}/tree`, undefined, {
-      signal
-    })
+  async tree(tenantId?: string, signal?: AbortSignal) {
+    return this.httpRequest.get<RoleVo[]>(
+      `${this.#API_PREFIX}/tree`,
+      { tenantId },
+      {
+        signal
+      }
+    )
   }
 
   /**

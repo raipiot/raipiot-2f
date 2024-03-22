@@ -113,9 +113,10 @@ function RpFormItem<T>(props: RpBasicFormItemProps<T>): React.ReactNode {
                   mode={mode}
                 />
               ))}
-            {type === 'collapse' && <ACollapse {...props.collapseProps} />}
+            {type === 'collapse' && <RpFormCollapseItem {...props.collapseProps} />}
             {type === 'collapse-item' && (
               <ACollapse
+                {...props.collapseItemProps}
                 items={[
                   {
                     label: props.collapseItemProps?.label,

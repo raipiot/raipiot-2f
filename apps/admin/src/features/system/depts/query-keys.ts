@@ -10,4 +10,4 @@ export const deptsQK = (params?: DeptsDto) => [DEPTS_QK, params]
 
 export const deptQK = (id?: string) => [DEPT_QK, { id }]
 
-export const deptTreeQK = () => [DEPT_TREE_QK]
+export const deptTreeQK = (tenantId?: string) => [DEPT_TREE_QK, { tenantId }]

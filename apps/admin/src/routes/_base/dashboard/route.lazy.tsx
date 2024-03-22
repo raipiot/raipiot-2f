@@ -29,13 +29,22 @@ function Dashboard() {
           aside={<MaterialSymbolsSettingsOutlineRounded className="cursor-pointer text-sky-600" />}
         >
           <div className="flex flex-wrap gap-4 p-4">
-            <Link to="/system/users">
+            <Link
+              to="/system/users"
+              search={{ deptId: undefined } as any}
+            >
               <AButton>供应商管理</AButton>
             </Link>
-            <Link to="/system/users">
+            <Link
+              to="/system/users"
+              search={{ deptId: undefined } as any}
+            >
               <AButton>生命周期管理</AButton>
             </Link>
-            <Link to="/system/users">
+            <Link
+              to="/system/users"
+              search={{ deptId: undefined } as any}
+            >
               <AButton>供应商查询</AButton>
             </Link>
           </div>

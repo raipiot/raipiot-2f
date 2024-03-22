@@ -91,5 +91,8 @@
   "NONE": "None",
   "SUBMIT": "Submit",
   "ADD": "Add",
-  "CANCEL.EDIT": "Cancel edit"
+  "CANCEL.EDIT": "Cancel edit",
+  "MAN": "Man",
+  "FAMALE": "Famale",
+  "UNKNOWN": "Unknown"
 }

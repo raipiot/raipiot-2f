@@ -89,5 +89,8 @@
   "NONE": "无",
   "SUBMIT": "提交",
   "ADD": "新增",
-  "CANCEL.EDIT": "取消编辑"
+  "CANCEL.EDIT": "取消编辑",
+  "MAN": "男",
+  "FAMALE": "女",
+  "UNKNOWN": "未知"
 }
