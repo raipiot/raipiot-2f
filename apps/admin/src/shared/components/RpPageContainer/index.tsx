@@ -25,7 +25,7 @@ function RpPageContainer(props: RpPageContainerProps) {
       className={clsx('min-h-[calc(100vh-168px)]', rootProps?.className)}
     >
       {renderHeader ?? <RpPageHeader {...pageHeaderProps} />}
-      <div className="space-y-2 sm:space-y-4">{children}</div>
+      <div className="space-y-2 overflow-x-hidden sm:space-y-4">{children}</div>
     </div>
   )
 }

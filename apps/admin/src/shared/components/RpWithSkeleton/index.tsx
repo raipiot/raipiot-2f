@@ -11,10 +11,13 @@ export default function rpWithSkeleton<T extends object = any>(
   return function RpWithSkeleton(props: T & RpSkeletonProps) {
     const { skeleton, ...restProps } = props
     if (skeleton) {
-      const defaultSkeletonProps: SkeletonProps = { loading: true, active: true, paragraph: false }
-      const prop = merge(defaultSkeletonProps, skeleton)
+      const defaultProps: SkeletonProps = {
+        loading: true,
+        active: true,
+        paragraph: false
+      }
       return (
-        <ASkeleton {...prop}>
+        <ASkeleton {...merge(defaultProps, skeleton)}>
           <WrappedComponent {...restProps} />
         </ASkeleton>
       )

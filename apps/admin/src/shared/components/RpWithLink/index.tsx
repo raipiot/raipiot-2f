@@ -1,8 +1,7 @@
 import type { LinkProps } from '@tanstack/react-router'
-import { merge } from 'lodash-es'
 
 export interface RpLinkProps {
-  link?: Partial<LinkProps>
+  link?: LinkProps
 }
 
 export default function rpWithLink<T extends object = any>(
@@ -11,10 +10,9 @@ export default function rpWithLink<T extends object = any>(
   return function RpWithLink(props: T & RpLinkProps) {
     const { link, ...restProps } = props
     if (link) {
-      const defaultProps: Partial<LinkProps> = {}
-      const prop = merge(defaultProps, link) as any
       return (
-        <Link {...prop}>
+        // TODO: 修复类型
+        <Link {...(link as any)}>
           <WrappedComponent {...restProps} />
         </Link>
       )

@@ -1,13 +1,13 @@
 import type { ScopeSubmitDto } from '@raipiot-2f/api'
 import type { FormInstance } from 'antd'
 
-import type { RpBasicFormItem } from '@/shared/components/RpDynamicForm/types'
+import type { RpBasicFormItemProps } from '@/shared/components/RpFormItem/types'
 import type { UseModal } from '@/shared/hooks/useModal'
 
 export interface ScopeContextProps {
   modal: UseModal<Partial<ScopeSubmitDto>>
   form: FormInstance
-  formItems: RpBasicFormItem<Partial<ScopeSubmitDto>>[]
+  formItems: RpBasicFormItemProps<Partial<ScopeSubmitDto>>[]
 }
 
 export const ScopeConfigContext = createContext<undefined | ScopeContextProps>(undefined)

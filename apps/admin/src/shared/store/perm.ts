@@ -1,3 +1,4 @@
+import type { SelectProps } from 'antd'
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
@@ -7,13 +8,33 @@ export type PermCode =
   | 'srm:resource-pool-scopes:create' // 资源池范围配置创建
   | 'srm:resource-pool-scopes:edit' // 资源池范围配置编辑
   | 'srm:resource-pool-scopes:remove' // 资源池范围配置删除
+  | 'srm:resource-pool-plans' // 资源池计划配置
+  | 'srm:resource-pool-plans:create' // 资源池计划配置创建
+  | 'srm:resource-pool-plans:edit' // 资源池计划配置编辑
+  | 'srm:resource-pool-plans:remove' // 资源池计划配置删除
   | 'srm:questionnaires' // 调查表管理
   | 'srm:questionnaires:create' // 调查表创建
   | 'srm:questionnaires:write' // 调查表填写
   | 'srm:questionnaires:review' // 调查表审核
 
+const selector: SelectProps['options'] = [
+  { label: '资源池范围：页面', value: 'srm:resource-pool-scopes' },
+  { label: '资源池范围：创建', value: 'srm:resource-pool-scopes:create' },
+  { label: '资源池范围：编辑', value: 'srm:resource-pool-scopes:edit' },
+  { label: '资源池范围：删除', value: 'srm:resource-pool-scopes:remove' },
+  { label: '资源池计划：页面', value: 'srm:resource-pool-plans' },
+  { label: '资源池计划：创建', value: 'srm:resource-pool-plans:create' },
+  { label: '资源池计划：编辑', value: 'srm:resource-pool-plans:edit' },
+  { label: '资源池计划：删除', value: 'srm:resource-pool-plans:remove' },
+  { label: '调查表：页面', value: 'srm:questionnaires' },
+  { label: '调查表：创建', value: 'srm:questionnaires:create' },
+  { label: '调查表：填写', value: 'srm:questionnaires:write' },
+  { label: '调查表：审核', value: 'srm:questionnaires:review' }
+]
+
 interface State {
   codes: Set<string>
+  selector: SelectProps['options']
 }
 
 interface Actions {
@@ -57,7 +78,8 @@ interface Actions {
 }
 
 const initialState: State = {
-  codes: new Set([])
+  codes: new Set([]),
+  selector
 }
 
 export const usePermStore = create<State & Actions>()(
@@ -86,7 +108,8 @@ export const usePermStore = create<State & Actions>()(
             return {
               state: {
                 ...JSON.parse(str ?? '').state,
-                codes: new Set(JSON.parse(str ?? '').state.codes)
+                codes: new Set(JSON.parse(str ?? '').state.codes),
+                selector
               }
             }
           },

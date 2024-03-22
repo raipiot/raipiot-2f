@@ -10,7 +10,7 @@ export const Route = createLazyFileRoute('/_base/system/users')({
   )
 })
 
-export function Component() {
+function Component() {
   // 分页器
   const { pageParams, setPageParams, pagination, isPending, startTransition } =
     usePagination<UserPageDto>()

@@ -32,7 +32,9 @@ export const useScopeColumns = (props: { type: ScopeTypeString }) => {
         title: props.type === 'api' ? t('RULE.NAME') : t('INTERFACE.TYPE'),
         dataIndex: 'scopeTypeName',
         width: 100,
-        render: (v) => <RpTagString value={v} />
+        custom: {
+          tag: true
+        }
       },
       createActions({
         width: 150,

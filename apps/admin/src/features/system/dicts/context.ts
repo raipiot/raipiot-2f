@@ -1,6 +1,6 @@
 import type { FormInstance } from 'antd'
 
-import type { RpBasicFormItem } from '@/shared/components/RpDynamicForm/types'
+import type { RpBasicFormItemProps } from '@/shared/components/RpFormItem/types'
 import type { UseModal } from '@/shared/hooks/useModal'
 
 import type { SystemDictSubmitFormModel } from './types'
@@ -8,7 +8,7 @@ import type { SystemDictSubmitFormModel } from './types'
 interface BaseModalContextProps {
   modal: UseModal<string>
   form: FormInstance
-  formItems: RpBasicFormItem<SystemDictSubmitFormModel>[]
+  formItems: RpBasicFormItemProps<SystemDictSubmitFormModel>[]
 }
 
 export const BaseModalContext = createContext<BaseModalContextProps | undefined>(undefined)

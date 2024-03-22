@@ -25,6 +25,11 @@ function RpForm<T extends Record<string, any>>(props: RpFormProps<T>) {
     []
   )
 
-  return <AForm<T> {...merge({}, defaultFormProps, formProps)}>{children}</AForm>
+  const mergedFormProps = useMemo(
+    () => merge({}, defaultFormProps, formProps),
+    [defaultFormProps, formProps]
+  )
+
+  return <AForm<T> {...mergedFormProps}>{children}</AForm>
 }
 export default RpForm

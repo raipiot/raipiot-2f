@@ -1,7 +1,5 @@
 import type { ScopeSubmitDto, ScopeTypeString } from '@raipiot-2f/api'
 
-import type { RpBasicFormItem } from '@/shared/components/RpDynamicForm/types'
-
 export const useBaseModalForm = () => {
   const { t } = useTranslation(['SYSTEM/PERMS', 'COMMON'])
   const { createModalForm } = useFormCreator<Partial<ScopeSubmitDto>>()
@@ -15,9 +13,9 @@ export const useBaseModalForm = () => {
     Dicts.directoryQueryOptions(searchSelect.type === 'api' ? 'api_scope_type' : 'data_scope_type')
   )
 
-  const items: RpBasicFormItem<Partial<ScopeSubmitDto>>[] =
+  const items =
     searchSelect.type === 'data'
-      ? [
+      ? createModalForm([
           {
             type: 'input',
             formItemProps: {
@@ -63,8 +61,8 @@ export const useBaseModalForm = () => {
             },
             hidden: scopeTypeValue !== data[data.length - 1].value
           }
-        ]
-      : [
+        ])
+      : createModalForm([
           {
             type: 'input',
             formItemProps: {
@@ -84,7 +82,7 @@ export const useBaseModalForm = () => {
               treeData: data
             }
           }
-        ]
+        ])
 
   return {
     modalForm,

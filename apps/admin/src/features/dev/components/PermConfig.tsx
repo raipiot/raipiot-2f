@@ -1,12 +1,3 @@
-import type { SelectProps } from 'antd'
-
-const codes: SelectProps['options'] = [
-  { label: '调查表：管理', value: 'srm:questionnaires' },
-  { label: '调查表：创建', value: 'srm:questionnaires:create' },
-  { label: '调查表：填写', value: 'srm:questionnaires:write' },
-  { label: '调查表：审核', value: 'srm:questionnaires:review' }
-]
-
 export function PermConfig() {
   const permStore = usePermStore()
   return (
@@ -16,7 +7,7 @@ export function PermConfig() {
       content={
         <ASelect
           value={permStore.getList()}
-          options={codes}
+          options={permStore.selector}
           style={{ width: 400 }}
           mode="multiple"
           onSelect={(value) => permStore.addCode(value)}

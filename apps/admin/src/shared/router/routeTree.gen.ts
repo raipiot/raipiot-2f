@@ -45,6 +45,7 @@ import { Route as BaseSystemPermsIndexRouteImport } from './../../routes/_base/s
 import { Route as BaseSystemDictsIndexRouteImport } from './../../routes/_base/system/dicts/index/route'
 import { Route as BaseSystemBizDictsIndexRouteImport } from './../../routes/_base/system/biz-dicts/index/route'
 import { Route as BaseSrmResourcePoolScopesIndexRouteImport } from './../../routes/_base/srm/resource-pool-scopes/index/route'
+import { Route as BaseSrmResourcePoolPlansIndexRouteImport } from './../../routes/_base/srm/resource-pool-plans/index/route'
 import { Route as BaseSrmQuestionnairesIndexRouteImport } from './../../routes/_base/srm/questionnaires/index/route'
 
 // Create/Update Routes
@@ -315,6 +316,16 @@ const BaseSrmResourcePoolScopesIndexRouteRoute =
     ).then((d) => d.Route),
   )
 
+const BaseSrmResourcePoolPlansIndexRouteRoute =
+  BaseSrmResourcePoolPlansIndexRouteImport.update({
+    path: '/srm/resource-pool-plans/',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import(
+      './../../routes/_base/srm/resource-pool-plans/index/route.lazy'
+    ).then((d) => d.Route),
+  )
+
 const BaseSrmQuestionnairesIndexRouteRoute =
   BaseSrmQuestionnairesIndexRouteImport.update({
     path: '/srm/questionnaires/',
@@ -425,6 +436,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSrmQuestionnairesIndexRouteImport
       parentRoute: typeof BaseRouteImport
     }
+    '/_base/srm/resource-pool-plans/': {
+      preLoaderRoute: typeof BaseSrmResourcePoolPlansIndexRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
     '/_base/srm/resource-pool-scopes/': {
       preLoaderRoute: typeof BaseSrmResourcePoolScopesIndexRouteImport
       parentRoute: typeof BaseRouteImport
@@ -496,6 +511,7 @@ export const routeTree = rootRoute.addChildren([
     BaseSystemTenantsRouteRoute,
     BaseSystemUsersRouteRoute,
     BaseSrmQuestionnairesIndexRouteRoute,
+    BaseSrmResourcePoolPlansIndexRouteRoute,
     BaseSrmResourcePoolScopesIndexRouteRoute,
     BaseSystemBizDictsIndexRouteRoute,
     BaseSystemDictsIndexRouteRoute,

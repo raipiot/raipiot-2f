@@ -56,7 +56,7 @@ export function InfoTabs() {
   ]
 
   return (
-    <div className="border border-transparent bg-white px-4 pb-4 shadow dark:border-[#37393e] dark:bg-transparent">
+    <div className="border border-transparent bg-white px-4 pb-4 shadow dark:border-dark dark:bg-transparent">
       <ATabs
         items={tabItems}
         defaultValue="systemInfo"

@@ -1,5 +1,4 @@
 import { InfoTabs, TodoTask, useDashboardSuspenseQuery, Wrapper } from '@/features/dashboard'
-import RpField from '@/shared/components/RpField'
 
 export const Route = createLazyFileRoute('/_base/dashboard')({
   component: Dashboard
@@ -7,28 +6,10 @@ export const Route = createLazyFileRoute('/_base/dashboard')({
 
 function Dashboard() {
   const { data } = useDashboardSuspenseQuery()
-  const [loading, setLoading] = useState(false)
 
   return (
     <div className="flex flex-col gap-2 bg-gray-50 dark:bg-dark">
       <Wrapper title="我的工作台" />
-      <div>
-        <AButton onClick={() => setLoading(!loading)}>{loading ? 'loading' : 'end'}</AButton>
-        <RpField
-          value={1711006043584}
-          link={{
-            to: '/user-info'
-          }}
-          copyable
-          tag={{
-            color: 'blue'
-          }}
-          tooltip={{
-            title: '123'
-          }}
-          booleanValue={loading}
-        />
-      </div>
       <Wrapper
         title="待办事项"
         className="grid grid-cols-2 flex-wrap justify-start gap-4 p-2 md:flex md:p-4"

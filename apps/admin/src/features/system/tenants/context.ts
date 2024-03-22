@@ -1,7 +1,7 @@
 import type { FormInstance } from 'antd'
 import type { Key } from 'react'
 
-import type { RpBasicFormItem } from '@/shared/components/RpDynamicForm/types'
+import type { RpBasicFormItemProps } from '@/shared/components/RpFormItem/types'
 import type { UseModal } from '@/shared/hooks/useModal'
 
 import type { TenantSettingFormModel } from './types'
@@ -9,7 +9,7 @@ import type { TenantSettingFormModel } from './types'
 interface SettingModalContextProps {
   modal?: UseModal<string>
   form?: FormInstance
-  formItems?: RpBasicFormItem<TenantSettingFormModel>[]
+  formItems?: RpBasicFormItemProps<TenantSettingFormModel>[]
   selectedRowKeys?: Key[]
   clearSelectedRowKeys?: () => void
 }

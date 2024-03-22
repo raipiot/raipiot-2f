@@ -26,9 +26,10 @@ export const useBaseColumns = () => {
       {
         title: t('TENANT'),
         dataIndex: 'tenantId',
-        render: (value) => (
-          <RpTagString value={records.find((i) => i.tenantId === value)?.tenantName ?? '-'} />
-        )
+        custom: {
+          tag: true,
+          formatter: (value) => records.find((i) => i.tenantId === value)?.tenantName ?? '-'
+        }
       },
       {
         title: t('FULLNAME'),
@@ -37,7 +38,9 @@ export const useBaseColumns = () => {
       {
         title: t('TYPE'),
         dataIndex: 'deptCategoryName',
-        render: (value) => <RpTagString value={value} />
+        custom: {
+          tag: true
+        }
       },
       {
         title: t('SORT'),

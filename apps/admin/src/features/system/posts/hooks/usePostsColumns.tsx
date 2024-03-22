@@ -27,11 +27,11 @@ export const usePostsColumns = (props?: UsePostsColumnsProps) => {
         dataIndex: 'category',
         title: t('CATEGORY'),
         width: 100,
-        render: (value) => (
-          <RpTagString
-            value={data.find((item) => item.value?.toString() === value.toString())?.label}
-          />
-        )
+        custom: {
+          tag: true,
+          formatter: (value) =>
+            data.find((item) => item.value?.toString() === value.toString())?.label
+        }
       },
       {
         title: t('CODE'),
