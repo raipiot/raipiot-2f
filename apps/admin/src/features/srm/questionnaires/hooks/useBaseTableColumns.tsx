@@ -32,9 +32,9 @@ export const useBaseTableColumns = () => {
       { title: '调查表模版名称', dataIndex: 'templateName' },
       { title: '创建人', dataIndex: 'createBy' },
       { title: '创建人部门', dataIndex: 'createDepartment' },
-      { title: '审批日期', dataIndex: 'approvalDate', custom: { dateString: true } },
-      { title: '发布日期', dataIndex: 'releaseDate', custom: { dateString: true } },
-      { title: '创建日期', dataIndex: 'createTime', custom: { dateString: true } },
+      { title: '审批日期', dataIndex: 'approvalDate', custom: { date: true } },
+      { title: '发布日期', dataIndex: 'releaseDate', custom: { date: true } },
+      { title: '创建日期', dataIndex: 'createTime', custom: { date: true } },
       { title: '邀约调查表', dataIndex: 'isInvitation', custom: { booleanValue: true } },
       createActions({
         width: 150,

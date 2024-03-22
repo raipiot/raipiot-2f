@@ -8,7 +8,7 @@ const getRouteMeta = (key: string, children?: MenuItem[]) => {
   return {
     label: I18nUtils.getText(title),
     key,
-    icon: icon ?? createElement(MaterialSymbolsGridViewOutlineRounded),
+    icon,
     children
   }
 }

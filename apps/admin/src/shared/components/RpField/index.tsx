@@ -1,5 +1,5 @@
-import type { RpDateStringProps } from '../RpWithDateString'
-import rpWithDateString from '../RpWithDateString'
+import type { RpDateProps } from '../RpWithDate'
+import rpWithDate from '../RpWithDate'
 import type { RpLinkProps } from '../RpWithLink'
 import rpWithLink from '../RpWithLink'
 import type { RpSkeletonProps } from '../RpWithSkeleton'
@@ -12,7 +12,7 @@ import rpWithTooltip from '../RpWithTooltip'
 export interface RpFieldProps
   extends RpTagProps,
     RpSkeletonProps,
-    RpDateStringProps,
+    RpDateProps,
     RpLinkProps,
     RpTooltipProps {
   value?: any
@@ -23,7 +23,7 @@ export interface RpFieldProps
   booleanValue?: boolean
 }
 const RpField = rpWithSkeleton<RpFieldProps>(
-  rpWithDateString(
+  rpWithDate(
     rpWithTooltip(
       rpWithTag(
         rpWithLink(

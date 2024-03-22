@@ -3,5 +3,7 @@ export const Route = createFileRoute('/_base/srm/resource-pool-scopes/')({
     title: '资源池范围配置',
     permCode: 'srm:resource-pool-scopes'
   },
-  loader: () => queryClient.ensureQueryData(ResourcePoolScopes.listQO(PageUtils.initParams()))
+  loader: async () => {
+    await queryClient.ensureQueryData(ResourcePoolScopes.listQO(PageUtils.initParams()))
+  }
 })

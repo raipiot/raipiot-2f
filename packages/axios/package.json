@@ -26,7 +26,7 @@
     "prettier:fix": "prettier --write --cache --ignore-unknown --ignore-path=../../.prettierignore ."
   },
   "peerDependencies": {
-    "@tanstack/react-router": "^1.21.0",
+    "@tanstack/react-router": "^1.22.0",
     "antd": "^5.15.3",
     "i18next": "^23.10.1"
   },

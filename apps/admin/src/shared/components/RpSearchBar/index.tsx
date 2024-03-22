@@ -1,6 +1,6 @@
-import type { CardProps, FormItemProps, FormProps } from 'antd'
+import type { CardProps, FormProps } from 'antd'
 
-import type { RpSearchFormItem } from '@/shared/components/RpDynamicForm/types'
+import type { RpSearchFormItemProps } from '@/shared/components/RpFormItem/types'
 
 import rpWithCard from '../RpWithCard'
 
@@ -8,7 +8,7 @@ export interface RpSearchBarProps<T> {
   /**
    * 搜索表单配置项
    */
-  formItems?: RpSearchFormItem<T>[]
+  formItems?: RpSearchFormItemProps<T>[]
   /**
    * 搜索加载状态
    */
@@ -76,39 +76,14 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
       >
         <RpRow>
           {formItems &&
-            formItems.map((item, index) => {
-              const { type, hidden } = item
-              if (hidden) {
-                return null
-              }
-              if (type === 'custom') {
-                return typeof item.render === 'function' ? item.render() : item.render
-              }
-              const { colProps, formItemProps } = item
-              return (
-                <ACol
-                  key={index}
-                  span={span}
-                  {...colProps}
-                >
-                  <AForm.Item
-                    name={formItemProps?.name as FormItemProps['name']}
-                    {...formItemProps}
-                  >
-                    {type === 'input' && <AInput {...item.inputProps} />}
-                    {type === 'select' && <ASelect {...item.selectProps} />}
-                    {type === 'tree-select' && <ATreeSelect {...item.treeSelectProps} />}
-                    {type === 'cascader' && <ACascader {...item.cascaderProps} />}
-                    {type === 'date-picker' && <ADatePicker {...item.datePickerProps} />}
-                    {type === 'range-picker' && (
-                      <ADatePicker.RangePicker {...item.rangePickerProps} />
-                    )}
-                    {type === 'form-item' &&
-                      (typeof item.render === 'function' ? item.render() : item.render)}
-                  </AForm.Item>
-                </ACol>
-              )
-            })}
+            formItems.map((item, index) => (
+              <RpFormItem
+                key={index}
+                form={form}
+                mode="edit"
+                {...item}
+              />
+            ))}
           <ACol span={span}>
             <div className="space-x-2 sm:space-x-4">
               <RpButton

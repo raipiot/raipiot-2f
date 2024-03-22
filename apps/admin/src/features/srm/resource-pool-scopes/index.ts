@@ -1,4 +1,4 @@
-// import * as mutations from './mutations'
+import * as mutations from './mutations'
 import * as queries from './queries'
 import * as queryKeys from './query-keys'
 
@@ -6,6 +6,6 @@ import * as queryKeys from './query-keys'
 
 export const ResourcePoolScopes = {
   ...queries,
-  ...queryKeys
-  // ...mutations
+  ...queryKeys,
+  ...mutations
 }

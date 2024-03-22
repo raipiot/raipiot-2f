@@ -69,8 +69,8 @@ importers:
         specifier: ^5.0.5
         version: 5.0.5
       turbo:
-        specifier: ^1.12.5
-        version: 1.12.5
+        specifier: ^1.13.0
+        version: 1.13.0
       typescript:
         specifier: ~5.3.3
         version: 5.3.3
@@ -129,11 +129,11 @@ importers:
         specifier: ^5.28.6
         version: 5.28.6(@tanstack/react-query@5.28.6)(react@18.2.0)
       '@tanstack/react-router':
-        specifier: ^1.21.0
-        version: 1.21.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.22.0
+        version: 1.22.0(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/router-devtools':
-        specifier: ^1.21.0
-        version: 1.21.0(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.22.0
+        version: 1.22.0(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0)
       '@tauri-apps/api':
         specifier: ^1.5.3
         version: 1.5.3
@@ -153,8 +153,8 @@ importers:
         specifier: ^1.11.10
         version: 1.11.10
       framer-motion:
-        specifier: ^11.0.18
-        version: 11.0.18(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^11.0.20
+        version: 11.0.20(react-dom@18.2.0)(react@18.2.0)
       immer:
         specifier: ^10.0.4
         version: 10.0.4
@@ -241,8 +241,8 @@ importers:
         specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.38)
       cypress:
-        specifier: ^13.7.0
-        version: 13.7.0
+        specifier: ^13.7.1
+        version: 13.7.1
       cypress-vite:
         specifier: ^1.5.0
         version: 1.5.0(vite@5.2.2)
@@ -274,8 +274,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0(vite@5.2.2)
       unplugin-turbo-console:
-        specifier: ^1.4.1
-        version: 1.4.1(vite@5.2.2)
+        specifier: ^1.5.0
+        version: 1.5.0(vite@5.2.2)
       vite:
         specifier: ^5.2.2
         version: 5.2.2(@types/node@20.11.25)(sass@1.72.0)
@@ -404,8 +404,8 @@ importers:
         specifier: ~0.0.1
         version: 0.0.1(dayjs@1.11.10)
       '@tanstack/react-router':
-        specifier: ^1.21.0
-        version: 1.21.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.22.0
+        version: 1.22.0(react-dom@18.2.0)(react@18.2.0)
       antd:
         specifier: ^5.15.3
         version: 5.15.3(react-dom@18.2.0)(react@18.2.0)
@@ -1206,27 +1206,6 @@ packages:
       '@commitlint/rules': 19.0.3
       '@commitlint/types': 19.0.3
     dev: true
-
-  /@commitlint/load@19.1.0(@types/node@20.11.25)(typescript@5.3.3):
-    resolution: {integrity: sha512-rWqnvNDpeshX8JfUC/qjpDkQB78qF+4uHcJmIRJMwvlj6zWce08SP/TPKN3GlNKgXhAawwcAPxXL9qOTTdiOBA==}
-    engines: {node: '>=v18'}
-    requiresBuild: true
-    dependencies:
-      '@commitlint/config-validator': 19.0.3
-      '@commitlint/execute-rule': 19.0.0
-      '@commitlint/resolve-extends': 19.1.0
-      '@commitlint/types': 19.0.3
-      chalk: 5.3.0
-      cosmiconfig: 8.3.6(typescript@5.3.3)
-      cosmiconfig-typescript-loader: 5.0.0(@types/node@20.11.25)(cosmiconfig@8.3.6)(typescript@5.3.3)
-      lodash.isplainobject: 4.0.6
-      lodash.merge: 4.6.2
-      lodash.uniq: 4.5.0
-    transitivePeerDependencies:
-      - '@types/node'
-      - typescript
-    dev: true
-    optional: true
 
   /@commitlint/load@19.2.0(@types/node@20.11.25)(typescript@5.3.3):
     resolution: {integrity: sha512-XvxxLJTKqZojCxaBQ7u92qQLFMMZc4+p9qrIq/9kJDy8DOrEa7P1yx7Tjdc2u2JxIalqT4KOGraVgCE7eCYJyQ==}
@@ -3733,8 +3712,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@tanstack/react-router@1.21.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-wCny0yYR8Cs+IF9LoBJwPpJkonrmfAaMm3yw9V9lAXEq7lMtYgRZbqWFExyomcR+RmDIavt82Ry+wzWGKu/qeQ==}
+  /@tanstack/react-router@1.22.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-D7OZHs3iicTGwg8f0J/qCwcKOPN9UWLRqKvaz3lISu28wkMLQhX+wspI+9/xYZg+tMlbUzUzxVhLD8yHI9rfNg==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16'
@@ -3760,14 +3739,14 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  /@tanstack/router-devtools@1.21.0(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-567GRgwYjQgqWR3LWOFEQ5unLcSRRm7z7n+b2SCW1SUR8vcJlpYUj4WP7n6zZJrcvLMZZGepSMSb7H/f3oPDCQ==}
+  /@tanstack/router-devtools@1.22.0(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-2E5yG1PQqJhbrRvXEnI4Em/9JBmNH1E89TKZ5hvyKASaEcw4T5hs3fHW9aeRKTsHLjlzmstY7PacJdIO4fbMEA==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@tanstack/react-router': 1.21.0(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/react-router': 1.22.0(react-dom@18.2.0)(react@18.2.0)
       clsx: 2.1.0
       date-fns: 2.30.0
       goober: 2.1.14(csstype@3.1.3)
@@ -6192,21 +6171,6 @@ packages:
       object-assign: 4.1.1
       vary: 1.1.2
 
-  /cosmiconfig-typescript-loader@5.0.0(@types/node@20.11.25)(cosmiconfig@8.3.6)(typescript@5.3.3):
-    resolution: {integrity: sha512-+8cK7jRAReYkMwMiG+bxhcNKiHJDM6bR9FD/nGBXOWdMLuYawjF5cGrtLilJ+LGd3ZjCXnJjR5DkfWPoIVlqJA==}
-    engines: {node: '>=v16'}
-    peerDependencies:
-      '@types/node': '*'
-      cosmiconfig: '>=8.2'
-      typescript: '>=4'
-    dependencies:
-      '@types/node': 20.11.25
-      cosmiconfig: 8.3.6(typescript@5.3.3)
-      jiti: 1.21.0
-      typescript: 5.3.3
-    dev: true
-    optional: true
-
   /cosmiconfig-typescript-loader@5.0.0(@types/node@20.11.25)(cosmiconfig@9.0.0)(typescript@5.3.3):
     resolution: {integrity: sha512-+8cK7jRAReYkMwMiG+bxhcNKiHJDM6bR9FD/nGBXOWdMLuYawjF5cGrtLilJ+LGd3ZjCXnJjR5DkfWPoIVlqJA==}
     engines: {node: '>=v16'}
@@ -6479,8 +6443,8 @@ packages:
       - supports-color
     dev: true
 
-  /cypress@13.7.0:
-    resolution: {integrity: sha512-UimjRSJJYdTlvkChcdcfywKJ6tUYuwYuk/n1uMMglrvi+ZthNhoRYcxnWgTqUtkl17fXrPAsD5XT2rcQYN1xKA==}
+  /cypress@13.7.1:
+    resolution: {integrity: sha512-4u/rpFNxOFCoFX/Z5h+uwlkBO4mWzAjveURi3vqdSu56HPvVdyGTxGw4XKGWt399Y1JwIn9E1L9uMXQpc0o55w==}
     engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
     requiresBuild: true
@@ -6540,7 +6504,7 @@ packages:
       longest: 2.0.1
       word-wrap: 1.2.5
     optionalDependencies:
-      '@commitlint/load': 19.1.0(@types/node@20.11.25)(typescript@5.3.3)
+      '@commitlint/load': 19.2.0(@types/node@20.11.25)(typescript@5.3.3)
     transitivePeerDependencies:
       - '@types/node'
       - typescript
@@ -8208,8 +8172,8 @@ packages:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
     dev: true
 
-  /framer-motion@11.0.18(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-TPKJ1KqQzTQ//cGFAb/jrpbbNY8UVh2q69vAcVRA8AxsKYkl5nrW1nsmrHRc5dLsRdwlXSV1kuo1Khylhph7kw==}
+  /framer-motion@11.0.20(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-YSDmWznt3hpdERosbE0UAPYWoYhTnmQ0J1qWPsgpCia9NgY8Xsz5IpOiUEGGj/nzCAW29fSrWugeLRkdp5de7g==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
       react: ^18.0.0
@@ -14074,64 +14038,64 @@ packages:
       safe-buffer: 5.2.1
     dev: true
 
-  /turbo-darwin-64@1.12.5:
-    resolution: {integrity: sha512-0GZ8reftwNQgIQLHkHjHEXTc/Z1NJm+YjsrBP+qhM/7yIZ3TEy9gJhuogDt2U0xIWwFgisTyzbtU7xNaQydtoA==}
+  /turbo-darwin-64@1.13.0:
+    resolution: {integrity: sha512-ctHeJXtQgBcgxnCXwrJTGiq57HtwF7zWz5NTuSv//5yeU01BtQIt62ArKfjudOhRefWJbX3Z5srn88XTb9hfww==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-darwin-arm64@1.12.5:
-    resolution: {integrity: sha512-8WpOLNNzvH6kohQOjihD+gaWL+ZFNfjvBwhOF0rjEzvW+YR3Pa7KjhulrjWyeN2yMFqAPubTbZIGOz1EVXLuQA==}
+  /turbo-darwin-arm64@1.13.0:
+    resolution: {integrity: sha512-/Q9/pNFkF9w83tNxwMpgapwLYdQ12p8mpty2YQRoUiS9ClWkcqe136jR0mtuMqzlNlpREOFZaoyIthjt6Sdo0g==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-64@1.12.5:
-    resolution: {integrity: sha512-INit73+bNUpwqGZCxgXCR3I+cQsdkQ3/LkfkgSOibkpg+oGqxJRzeXw3sp990d7SCoE8QOcs3iw+PtiFX/LDAA==}
+  /turbo-linux-64@1.13.0:
+    resolution: {integrity: sha512-hgbT7o020BGV4L7Sd8hhFTd5zVKPKxbsr0dPfel/9NkdTmptz2aGZ0Vb2MAa18SY3XaCQpDxmdYuOzvvRpo5ZA==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-arm64@1.12.5:
-    resolution: {integrity: sha512-6lkRBvxtI/GQdGtaAec9LvVQUoRw6nXFp0kM+Eu+5PbZqq7yn6cMkgDJLI08zdeui36yXhone8XGI8pHg8bpUQ==}
+  /turbo-linux-arm64@1.13.0:
+    resolution: {integrity: sha512-WK01i2wDZARrV+HEs495A3hNeGMwQR5suYk7G+ceqqW7b+dOTlQdvUjnI3sg7wAnZPgjafFs/hoBaZdJjVa/nw==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-64@1.12.5:
-    resolution: {integrity: sha512-gQYbOhZg5Ww0bQ/bC0w/4W6yQRwBumUUnkB+QPo15VznwxZe2a7bo6JM+9Xy9dKLa/kn+p7zTqme4OEp6M3/Yg==}
+  /turbo-windows-64@1.13.0:
+    resolution: {integrity: sha512-hJgSZJZwlWHNwLEthaqJqJWGm4NqF5X/I7vE0sPE4i/jeDl8f0n1hcOkgJkJiNXVxhj+qy/9+4dzbPLKT9imaQ==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-arm64@1.12.5:
-    resolution: {integrity: sha512-auvhZ9FrhnvQ4mgBlY9O68MT4dIfprYGvd2uPICba/mHUZZvVy5SGgbHJ0KbMwaJfnnFoPgLJO6M+3N2gDprKw==}
+  /turbo-windows-arm64@1.13.0:
+    resolution: {integrity: sha512-L/ErxYoXeq8tmjU/AIGicC9VyBN1zdYw8JlM4yPmMI0pJdY8E4GaYK1IiIazqq7M72lmQhU/WW7fV9FqEktwrw==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo@1.12.5:
-    resolution: {integrity: sha512-FATU5EnhrYG8RvQJYFJnDd18DpccDjyvd53hggw9T9JEg9BhWtIEoeaKtBjYbpXwOVrJQMDdXcIB4f2nD3QPPg==}
+  /turbo@1.13.0:
+    resolution: {integrity: sha512-r02GtNmkOPcQvUzVE6lg474QVLyU02r3yh3lUGqrFHf5h5ZEjgDGWILsAUqplVqjri1Y/oOkTssks4CObTAaiw==}
     hasBin: true
     optionalDependencies:
-      turbo-darwin-64: 1.12.5
-      turbo-darwin-arm64: 1.12.5
-      turbo-linux-64: 1.12.5
-      turbo-linux-arm64: 1.12.5
-      turbo-windows-64: 1.12.5
-      turbo-windows-arm64: 1.12.5
+      turbo-darwin-64: 1.13.0
+      turbo-darwin-arm64: 1.13.0
+      turbo-linux-64: 1.13.0
+      turbo-linux-arm64: 1.13.0
+      turbo-windows-64: 1.13.0
+      turbo-windows-arm64: 1.13.0
     dev: true
 
   /tv4@1.3.0:
@@ -14544,8 +14508,8 @@ packages:
       - supports-color
     dev: true
 
-  /unplugin-turbo-console@1.4.1(vite@5.2.2):
-    resolution: {integrity: sha512-DbOOvYH+MbohAm6FI3a78pyQ1ufgJszmaerDh5ScVoLMuK3UKWEbljBLPbUCrQvjvR5dezem4j+470rgnZjxKg==}
+  /unplugin-turbo-console@1.5.0(vite@5.2.2):
+    resolution: {integrity: sha512-rttisUy7dESDFUXJoffxD8IikrhTct09AJyfmTYfirTrEQqKWgZ7dOIC+iFj7O84KnkJF2qiyxM/fVqxlz1xKQ==}
     peerDependencies:
       '@nuxt/kit': '>=3'
       '@nuxt/schema': '>=3'
@@ -14581,7 +14545,7 @@ packages:
       magic-string: 0.30.6
       pathe: 1.1.2
       serve-static: 1.15.0
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
       unplugin: 1.7.1
       vite: 5.2.2(@types/node@20.11.25)(sass@1.72.0)
     transitivePeerDependencies:

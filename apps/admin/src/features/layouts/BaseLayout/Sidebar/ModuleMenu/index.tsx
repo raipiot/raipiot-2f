@@ -14,7 +14,7 @@ export default function ModuleMenu() {
         {moduleMenus.map((i) => (
           <ModuleMenuItem
             key={i.key}
-            label={I18nUtils.getText(i.label)}
+            label={i.label}
             onClick={() => menuStore.setActiveModuleMenuCode(i.key as ModuleMenuCode)}
             icon={i.icon}
             active={menuStore.activeModuleMenuCode === i.key}

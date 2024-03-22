@@ -1,3 +1,7 @@
 export const Route = createLazyFileRoute('/_base/srm/resource-pool-scopes/')({
-  component: () => <div>Hello /_base/srm/resource-pool-scopes/!</div>
+  component: () => <Component />
 })
+
+function Component() {
+  return <div>Hello /_base/srm/resource-pool-scopes/!</div>
+}
