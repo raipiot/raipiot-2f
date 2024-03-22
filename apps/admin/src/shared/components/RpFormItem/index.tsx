@@ -20,7 +20,7 @@ function RpFormItem<T>(props: RpBasicFormItemProps<T>): React.ReactNode {
   const value = formItemProps?.name ? form?.getFieldValue(formItemProps?.name) : undefined
   const record = form?.getFieldsValue(true)
 
-  const isContainer = ['collapse', 'row', 'group'].includes(type)
+  const isContainer = ['collapse-item', 'row', 'group'].includes(type)
 
   return (
     <ACol

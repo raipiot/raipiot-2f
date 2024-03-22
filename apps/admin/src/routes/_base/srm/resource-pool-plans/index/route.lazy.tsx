@@ -10,7 +10,6 @@ function Component() {
   const items = createModalForm([
     {
       type: 'collapse-item',
-      colProps: { span: 24 },
       collapseItemProps: {
         label: '测试'
       },
@@ -45,29 +44,47 @@ function Component() {
     },
     {
       type: 'collapse-item',
-      colProps: { span: 24 },
       collapseItemProps: { label: '测试' },
       items: [
         {
-          type: 'input',
-          formItemProps: {
-            label: '资源池名称',
-            name: 'resourcePoolName'
-          }
+          type: 'row',
+          items: [
+            {
+              type: 'input',
+              formItemProps: {
+                label: '资源池名称',
+                name: 'resourcePoolName'
+              }
+            },
+            {
+              type: 'input',
+              formItemProps: {
+                label: '资源池名称',
+                name: 'resourcePoolName'
+              }
+            },
+            {
+              type: 'input',
+              formItemProps: {
+                label: '资源池名称',
+                name: 'resourcePoolName'
+              }
+            }
+          ]
         },
         {
-          type: 'input',
-          formItemProps: {
-            label: '资源池名称',
-            name: 'resourcePoolName'
-          }
+          type: 'collapse-item',
+          items: [
+            {
+              type: 'input'
+            }
+          ]
         },
         {
-          type: 'input',
-          formItemProps: {
-            label: '资源池名称',
-            name: 'resourcePoolName'
-          }
+          type: 'input'
+        },
+        {
+          type: 'input'
         }
       ]
     }
