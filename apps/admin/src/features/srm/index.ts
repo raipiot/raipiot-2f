@@ -1,4 +1,5 @@
 export { Questionnaires } from './questionnaires'
 export { ResourcePoolPlans } from './resource-pool-plans'
 export { ResourcePoolScopes } from './resource-pool-scopes'
+export { SupplierBlackList } from './supplier-black-list'
 export { Suppliers } from './suppliers'

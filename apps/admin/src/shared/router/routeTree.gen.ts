@@ -33,6 +33,13 @@ import { Route as BaseSystemPostsRouteImport } from './../../routes/_base/system
 import { Route as BaseSystemParamsRouteImport } from './../../routes/_base/system/params/route'
 import { Route as BaseSystemMenusRouteImport } from './../../routes/_base/system/menus/route'
 import { Route as BaseSystemDeptsRouteImport } from './../../routes/_base/system/depts/route'
+import { Route as BaseSrmSuppliersRouteImport } from './../../routes/_base/srm/suppliers/route'
+import { Route as BaseSrmSupplierInvitationsRouteImport } from './../../routes/_base/srm/supplier-invitations/route'
+import { Route as BaseSrmSupplierIntroduceRouteImport } from './../../routes/_base/srm/supplier-introduce/route'
+import { Route as BaseSrmSupplierGreenChannelsRouteImport } from './../../routes/_base/srm/supplier-green-channels/route'
+import { Route as BaseSrmSupplierEntryRouteImport } from './../../routes/_base/srm/supplier-entry/route'
+import { Route as BaseSrmSupplierChangeRecordRouteImport } from './../../routes/_base/srm/supplier-change-record/route'
+import { Route as BaseSrmSupplierBlacklistRouteImport } from './../../routes/_base/srm/supplier-blacklist/route'
 import { Route as BaseDevStorybookRouteImport } from './../../routes/_base/dev/storybook/route'
 import { Route as BaseSystemPermsIdRouteImport } from './../../routes/_base/system/perms/$id/route'
 import { Route as BaseSystemDictsIdRouteImport } from './../../routes/_base/system/dicts/$id/route'
@@ -206,6 +213,72 @@ const BaseSystemDeptsRouteRoute = BaseSystemDeptsRouteImport.update({
 } as any).lazy(() =>
   import('./../../routes/_base/system/depts/route.lazy').then((d) => d.Route),
 )
+
+const BaseSrmSuppliersRouteRoute = BaseSrmSuppliersRouteImport.update({
+  path: '/srm/suppliers',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base/srm/suppliers/route.lazy').then((d) => d.Route),
+)
+
+const BaseSrmSupplierInvitationsRouteRoute =
+  BaseSrmSupplierInvitationsRouteImport.update({
+    path: '/srm/supplier-invitations',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base/srm/supplier-invitations/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const BaseSrmSupplierIntroduceRouteRoute =
+  BaseSrmSupplierIntroduceRouteImport.update({
+    path: '/srm/supplier-introduce',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base/srm/supplier-introduce/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const BaseSrmSupplierGreenChannelsRouteRoute =
+  BaseSrmSupplierGreenChannelsRouteImport.update({
+    path: '/srm/supplier-green-channels',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base/srm/supplier-green-channels/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const BaseSrmSupplierEntryRouteRoute = BaseSrmSupplierEntryRouteImport.update({
+  path: '/srm/supplier-entry',
+  getParentRoute: () => BaseRouteRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base/srm/supplier-entry/route.lazy').then(
+    (d) => d.Route,
+  ),
+)
+
+const BaseSrmSupplierChangeRecordRouteRoute =
+  BaseSrmSupplierChangeRecordRouteImport.update({
+    path: '/srm/supplier-change-record',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base/srm/supplier-change-record/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const BaseSrmSupplierBlacklistRouteRoute =
+  BaseSrmSupplierBlacklistRouteImport.update({
+    path: '/srm/supplier-blacklist',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base/srm/supplier-blacklist/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
 
 const BaseDevStorybookRouteRoute = BaseDevStorybookRouteImport.update({
   path: '/storybook',
@@ -437,6 +510,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseDevStorybookRouteImport
       parentRoute: typeof BaseDevRouteImport
     }
+    '/_base/srm/supplier-blacklist': {
+      preLoaderRoute: typeof BaseSrmSupplierBlacklistRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/srm/supplier-change-record': {
+      preLoaderRoute: typeof BaseSrmSupplierChangeRecordRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/srm/supplier-entry': {
+      preLoaderRoute: typeof BaseSrmSupplierEntryRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/srm/supplier-green-channels': {
+      preLoaderRoute: typeof BaseSrmSupplierGreenChannelsRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/srm/supplier-introduce': {
+      preLoaderRoute: typeof BaseSrmSupplierIntroduceRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/srm/supplier-invitations': {
+      preLoaderRoute: typeof BaseSrmSupplierInvitationsRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/srm/suppliers': {
+      preLoaderRoute: typeof BaseSrmSuppliersRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
     '/_base/system/depts': {
       preLoaderRoute: typeof BaseSystemDeptsRouteImport
       parentRoute: typeof BaseRouteImport
@@ -548,6 +649,13 @@ export const routeTree = rootRoute.addChildren([
       BaseDevTemplatesBasicTableRouteRoute,
     ]),
     BaseUserInfoRouteRoute,
+    BaseSrmSupplierBlacklistRouteRoute,
+    BaseSrmSupplierChangeRecordRouteRoute,
+    BaseSrmSupplierEntryRouteRoute,
+    BaseSrmSupplierGreenChannelsRouteRoute,
+    BaseSrmSupplierIntroduceRouteRoute,
+    BaseSrmSupplierInvitationsRouteRoute,
+    BaseSrmSuppliersRouteRoute,
     BaseSystemDeptsRouteRoute,
     BaseSystemMenusRouteRoute,
     BaseSystemParamsRouteRoute,
