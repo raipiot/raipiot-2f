@@ -60,8 +60,8 @@ export interface PageDateDto extends PageDto {
   updatedEndTime?: string
 }
 
-export enum Sex {
-  MAN = 1,
-  FEMALE = 2,
-  UNKNOWN = 3
+export const Sex = {
+  MAN: 1,
+  FEMALE: 2,
+  UNKNOWN: 3
 }

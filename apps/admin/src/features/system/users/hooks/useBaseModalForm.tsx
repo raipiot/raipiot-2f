@@ -1,3 +1,5 @@
+import type { DeptTreeVo, PostVo, RoleVo } from '@raipiot-2f/api'
+
 import { postSelectQueryOptions } from '../../posts'
 import { tenantsSelectQueryOptions } from '../../tenants'
 import type { UserSubmitFormModel } from '../types'
@@ -9,9 +11,10 @@ export const useBaseModalForm = () => {
   const { data: tenantData } = useSuspenseQuery(tenantsSelectQueryOptions())
   const { data: userPlatform } = useSuspenseQuery(Dicts.directoryQueryOptions('user_type'))
   const sexOptions = useSexSelectOptions()
-  const [deptData, setDeptData] = useState<any[]>([])
-  const [positionData, setPositionData] = useState<any[]>([])
-  const [roleData, setRoleData] = useState<any[]>([])
+  const [deptData, setDeptData] = useState<DeptTreeVo[]>([])
+  const [positionData, setPositionData] = useState<PostVo[]>([])
+  const [roleData, setRoleData] = useState<RoleVo[]>([])
+  const [loading, setLoading] = useState(false)
 
   // console.log('deptData data:', deptData)
 
@@ -41,20 +44,27 @@ export const useBaseModalForm = () => {
                   selectProps: {
                     options: tenantData,
                     onChange: async (value) => {
-                      // form.setFieldsValue({
-                      //   deptId: undefined,
-                      //   roleId: undefined,
-                      //   postId: undefined
-                      // })
-                      // query new dept data
-                      const result = await Promise.all([
-                        queryClient.ensureQueryData(Depts.treeQueryOptions(value)),
-                        queryClient.ensureQueryData(Roles.treeQueryOptions(value)),
-                        queryClient.ensureQueryData(postSelectQueryOptions(value))
-                      ])
-                      setDeptData(result[0])
-                      setRoleData(result[1])
-                      setPositionData(result[2])
+                      try {
+                        setLoading(true)
+                        modalForm.setFieldsValue({
+                          deptId: undefined,
+                          roleId: undefined,
+                          postId: undefined
+                        })
+                        // query new dept data
+                        const result = await Promise.all([
+                          queryClient.ensureQueryData(Depts.treeQueryOptions(value)),
+                          queryClient.ensureQueryData(Roles.treeQueryOptions(value)),
+                          queryClient.ensureQueryData(postSelectQueryOptions(value))
+                        ])
+                        setDeptData(result[0])
+                        setRoleData(result[1])
+                        setPositionData(result[2])
+                      } catch (error) {
+                        console.error(error)
+                      } finally {
+                        setLoading(false)
+                      }
                     },
                     fieldNames: { value: 'tenantId', label: 'tenantName' }
                   }
@@ -199,7 +209,8 @@ export const useBaseModalForm = () => {
                   },
                   treeSelectProps: {
                     treeData: roleData,
-                    multiple: true
+                    multiple: true,
+                    loading
                   }
                 },
                 {
@@ -211,7 +222,8 @@ export const useBaseModalForm = () => {
                   },
                   treeSelectProps: {
                     treeData: deptData,
-                    multiple: true
+                    multiple: true,
+                    loading
                   }
                 },
                 {
@@ -224,7 +236,8 @@ export const useBaseModalForm = () => {
                   treeSelectProps: {
                     treeData: positionData,
                     multiple: true,
-                    fieldNames: { value: 'id', label: 'postName' }
+                    fieldNames: { value: 'id', label: 'postName' },
+                    loading
                   }
                 }
               ]

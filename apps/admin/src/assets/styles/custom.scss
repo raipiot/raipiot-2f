@@ -56,3 +56,7 @@
 .ant-modal-footer {
   margin-top: 1rem !important;
 }
+
+button.ant-btn-primary {
+  @apply bg-blue-500;
+}

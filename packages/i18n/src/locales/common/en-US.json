@@ -87,6 +87,7 @@
   "CONFIG": "Config",
   "DEV.WAITING": "Still in development, please wait ...",
   "OPERATION.SUCCESS": "Operation success",
+  "OPERATION.FAIL": "Operation fail",
   "NOT.LIMITED": "Not limited",
   "NONE": "None",
   "SUBMIT": "Submit",

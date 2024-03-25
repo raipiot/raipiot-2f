@@ -5,13 +5,13 @@ import type { UseModal } from '@/shared/hooks/useModal'
 
 import type { UserPlatformFormModel, UserSubmitFormModel } from './types'
 
-interface BaseModalContextProps {
+export interface BaseModalContextProps {
   modal: UseModal<string>
   form: FormInstance
   formItems: RpBasicFormItemProps<UserSubmitFormModel>[]
 }
 
-interface PlatformModalContextProps {
+export interface PlatformModalContextProps {
   modal: UseModal<string>
   form: FormInstance
   formItems: RpBasicFormItemProps<UserPlatformFormModel>[]

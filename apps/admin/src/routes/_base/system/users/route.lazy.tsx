@@ -1,5 +1,7 @@
 import type { UserPageDto, UserVo } from '@raipiot-2f/api'
 
+import { useLogoutMutation } from '@/features/auth/login'
+
 export const Route = createLazyFileRoute('/_base/system/users')({
   component: () => (
     <Users.ModuleProvider>
@@ -15,13 +17,16 @@ function Component() {
   const { pageParams, setPageParams, pagination, isPending, startTransition } =
     usePagination<UserPageDto>()
   // 多选器：范型为列表行数据类型
-  const { rowSelection, clearSelectedRowKeys } = useRowSelection<UserVo>()
+  const { rowSelection, clearSelectedRowKeys, selectedRowKeys } = useRowSelection<UserVo>()
   // 搜索表单
   const { searchForm, searchFormItems } = Users.useSearchForm()
   // 表格列
   const { columns } = Users.useColumns()
 
   const { modal, form } = Users.useBaseModalContext()
+
+  const { operateSuccess } = useMessage()
+  const { t } = useTranslation(['SYSTEM/USERS', 'COMMON'])
 
   // 异步查询：列表数据
   const {
@@ -30,6 +35,15 @@ function Component() {
   } = useSuspenseQuery(Users.listQueryOptions(PageUtils.mergeParams(pageParams)))
   // 异步删除
   const { mutateAsync: removeMutateAsync, isPending: isRemovePending } = Users.useRemoveMutation()
+
+  const logoutMutation = useLogoutMutation()
+
+  const handleLogout = () =>
+    logoutMutation.mutate(undefined, {
+      onSuccess: () => {
+        console.log('logout,,')
+      }
+    })
 
   // 清空选中行
   useEffect(() => clearSelectedRowKeys(), [isPending, clearSelectedRowKeys])
@@ -40,13 +54,17 @@ function Component() {
       pageHeaderProps={{
         // 操作区
         operate: (
-          <RpButton
-            variant="create"
-            onClick={() => {
-              form.resetFields()
-              modal.openCreate()
-            }}
-          />
+          <AFlex gap={6}>
+            <RpButton
+              variant="create"
+              onClick={() => {
+                form.resetFields()
+                modal.openCreate()
+              }}
+            />
+            <Users.ImportDataModal />
+            <RpButton variant="export" />
+          </AFlex>
         )
       }}
     >
@@ -115,6 +133,49 @@ function Component() {
               })
             }
             scroll={{ x: 1800 }}
+            renderTableBatchOpeate={
+              <AFlex
+                gap={6}
+                align="center"
+              >
+                <RpButton
+                  onClick={async () => {
+                    AModal.confirm({
+                      title: t('RESET.PASSWORD'),
+                      content: t('CONFIRM.RESET.PASSWORD'),
+                      onOk: async () => {
+                        await usersAPI.resetPassword(selectedRowKeys.join(','))
+                        const userInfo = await queryClient.ensureQueryData(Users.infoQueryOptions())
+                        if (selectedRowKeys.includes(userInfo.id!)) {
+                          // 重置当前用户密码，退出登录
+                          handleLogout()
+                        } else {
+                          operateSuccess()
+                          clearSelectedRowKeys()
+                        }
+                      }
+                    })
+                  }}
+                >
+                  {t('RESET.PASSWORD')}
+                </RpButton>
+                <RpButton
+                  onClick={async () => {
+                    AModal.confirm({
+                      title: t('UNLOCK.ACCOUNT'),
+                      content: t('CONFIRM.UNLOCK'),
+                      onOk: async () => {
+                        await usersAPI.unlock(selectedRowKeys.join(','))
+                        operateSuccess()
+                        clearSelectedRowKeys()
+                      }
+                    })
+                  }}
+                >
+                  账号解封
+                </RpButton>
+              </AFlex>
+            }
           />
         </div>
       </div>

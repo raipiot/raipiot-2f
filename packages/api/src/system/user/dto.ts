@@ -1,4 +1,4 @@
-import type { PageDto, Sex } from '../../types'
+import type { PageDto } from '../../types'
 
 export interface UserPageDto extends PageDto {
   account?: string
@@ -41,7 +41,7 @@ export interface UserListDto {
   postId?: string
   realName?: string
   roleId?: string
-  sex?: Sex
+  sex?: number
   /**
    * 业务状态
    */
@@ -86,7 +86,7 @@ export interface UserSubmitDto {
   // options
   email?: string
   phone?: string
-  sex?: Sex
+  sex?: number
   birthday?: string
   id?: string
 }
@@ -95,6 +95,7 @@ export interface UserPlatformSubmitDto {
   userId?: string
   userExt?: string
   userType?: string
+  userTypeName?: string
 }
 
 export interface UpdatePasswordDto {

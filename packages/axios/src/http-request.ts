@@ -85,6 +85,9 @@ export class HttpRequest {
 
     this.#instance.interceptors.response.use(
       (res) => {
+        if (res.config.headers.skipResponseInterceptors) {
+          return res.data
+        }
         const {
           data,
           code,

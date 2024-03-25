@@ -21,7 +21,7 @@ export const usePlatformForm = () => {
         },
         selectProps: {
           allowClear: true,
-          options: data
+          options: data.map((i) => ({ ...i, value: Number(i.value) }))
         }
       },
       {

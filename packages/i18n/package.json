@@ -29,7 +29,7 @@
     "antd": "^5.15.3"
   },
   "dependencies": {
-    "@raipiot-infra/utils": "~0.0.1",
+    "@raipiot-infra/utils": "~0.0.4",
     "i18next": "^23.10.1",
     "react-i18next": "^14.1.0"
   },
