@@ -111,6 +111,7 @@ declare global {
   const MaterialSymbolsHomeWorkOutlineRounded: typeof import('~icons/material-symbols/home-work-outline-rounded.jsx')['default']
   const MaterialSymbolsKeyVerticalRounded: typeof import('~icons/material-symbols/key-vertical-rounded.jsx')['default']
   const MaterialSymbolsKeyboardArrowDownRounded: typeof import('~icons/material-symbols/keyboard-arrow-down-rounded.jsx')['default']
+  const MaterialSymbolsLineEndArrowRounded: typeof import('~icons/material-symbols/line-end-arrow-rounded.jsx')['default']
   const MaterialSymbolsListAltOutlineRounded: typeof import('~icons/material-symbols/list-alt-outline-rounded.jsx')['default']
   const MaterialSymbolsLocalShippingOutlineRounded: typeof import('~icons/material-symbols/local-shipping-outline-rounded.jsx')['default']
   const MaterialSymbolsLock: typeof import('~icons/material-symbols/lock.jsx')['default']

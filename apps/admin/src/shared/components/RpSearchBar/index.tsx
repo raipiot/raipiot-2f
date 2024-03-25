@@ -76,16 +76,18 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
       >
         <RpRow>
           {formItems &&
-            formItems.map((item, index) => (
-              <RpFormItem
-                key={index}
-                form={form}
-                mode="edit"
-                {...item}
-              />
-            ))}
+            formItems.map((item, index) =>
+              !item.showExpand || (expand && item.showExpand) ? (
+                <RpFormItem
+                  key={index}
+                  form={form}
+                  mode="edit"
+                  {...item}
+                />
+              ) : null
+            )}
           <ACol span={span}>
-            <div className="space-x-2 sm:space-x-4">
+            <div className="flex items-center space-x-2 sm:space-x-4">
               <RpButton
                 variant="search"
                 htmlType="submit"

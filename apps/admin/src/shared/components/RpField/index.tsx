@@ -29,12 +29,11 @@ const RpField = rpWithSkeleton<RpFieldProps>(
         rpWithLink(
           ({
             value,
-            as = 'div',
+            as = 'span',
             formatter = (v) => v,
             valueProps = {},
             copyable = false,
-            booleanValue,
-            ..._
+            booleanValue
           }: RpFieldProps) => {
             const { t } = useTranslation()
             const { message } = AApp.useApp()
