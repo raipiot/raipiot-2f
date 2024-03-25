@@ -1,4 +1,4 @@
-import type { Page } from '../..'
+import type { LifecycleStage, Page, RelegationStatus } from '../..'
 
 export interface SupplierVo {
   /**
@@ -44,7 +44,7 @@ export interface SupplierVo {
   /**
    * 主键 ID
    */
-  id?: number
+  id?: string
   /**
    * 主营品类
    */
@@ -84,7 +84,7 @@ export interface SupplierVo {
   /**
    * 生命周期阶段
    */
-  lifecycleStage?: string
+  lifecycleStage?: LifecycleStage
   /**
    * 公司logo文件id
    */
@@ -137,7 +137,25 @@ export interface SupplierVo {
    * 公司官网
    */
   webSite?: string
+  /**
+   * 默认联系人
+   */
+  realName?: string
+  /**
+   * 手机号
+   */
+  phone?: string
+  /**
+   * 目标生命周期状态
+   */
+  targetLifecycleStage?: LifecycleStage
+  /**
+   * 升降级状态
+   */
+  relegationStatus?: RelegationStatus
 }
+
+export type SuppliersVo = Page<SupplierVo>
 
 export interface SupplierInfoVo {
   /**

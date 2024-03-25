@@ -33,7 +33,6 @@ import { Route as BaseSystemPostsRouteImport } from './../../routes/_base/system
 import { Route as BaseSystemParamsRouteImport } from './../../routes/_base/system/params/route'
 import { Route as BaseSystemMenusRouteImport } from './../../routes/_base/system/menus/route'
 import { Route as BaseSystemDeptsRouteImport } from './../../routes/_base/system/depts/route'
-import { Route as BaseSrmSuppliersRouteImport } from './../../routes/_base/srm/suppliers/route'
 import { Route as BaseSrmSupplierInvitationsRouteImport } from './../../routes/_base/srm/supplier-invitations/route'
 import { Route as BaseSrmSupplierIntroduceRouteImport } from './../../routes/_base/srm/supplier-introduce/route'
 import { Route as BaseSrmSupplierGreenChannelsRouteImport } from './../../routes/_base/srm/supplier-green-channels/route'
@@ -53,9 +52,11 @@ import { Route as BaseDevTemplatesAdvancedTableRouteImport } from './../../route
 import { Route as BaseSystemPermsIndexRouteImport } from './../../routes/_base/system/perms/index/route'
 import { Route as BaseSystemDictsIndexRouteImport } from './../../routes/_base/system/dicts/index/route'
 import { Route as BaseSystemBizDictsIndexRouteImport } from './../../routes/_base/system/biz-dicts/index/route'
+import { Route as BaseSrmSuppliersIndexRouteImport } from './../../routes/_base/srm/suppliers/index/route'
 import { Route as BaseSrmResourcePoolScopesIndexRouteImport } from './../../routes/_base/srm/resource-pool-scopes/index/route'
 import { Route as BaseSrmResourcePoolPlansIndexRouteImport } from './../../routes/_base/srm/resource-pool-plans/index/route'
 import { Route as BaseSrmQuestionnairesIndexRouteImport } from './../../routes/_base/srm/questionnaires/index/route'
+import { Route as BaseSrmSuppliersIdRelatedRouteImport } from './../../routes/_base/srm/suppliers/$id/related/route'
 import { Route as BaseSrmResourcePoolScopesIdEditRouteImport } from './../../routes/_base/srm/resource-pool-scopes/$id/edit/route'
 
 // Create/Update Routes
@@ -212,13 +213,6 @@ const BaseSystemDeptsRouteRoute = BaseSystemDeptsRouteImport.update({
   getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
   import('./../../routes/_base/system/depts/route.lazy').then((d) => d.Route),
-)
-
-const BaseSrmSuppliersRouteRoute = BaseSrmSuppliersRouteImport.update({
-  path: '/srm/suppliers',
-  getParentRoute: () => BaseRouteRoute,
-} as any).lazy(() =>
-  import('./../../routes/_base/srm/suppliers/route.lazy').then((d) => d.Route),
 )
 
 const BaseSrmSupplierInvitationsRouteRoute =
@@ -402,6 +396,17 @@ const BaseSystemBizDictsIndexRouteRoute =
     ),
   )
 
+const BaseSrmSuppliersIndexRouteRoute = BaseSrmSuppliersIndexRouteImport.update(
+  {
+    path: '/srm/suppliers/',
+    getParentRoute: () => BaseRouteRoute,
+  } as any,
+).lazy(() =>
+  import('./../../routes/_base/srm/suppliers/index/route.lazy').then(
+    (d) => d.Route,
+  ),
+)
+
 const BaseSrmResourcePoolScopesIndexRouteRoute =
   BaseSrmResourcePoolScopesIndexRouteImport.update({
     path: '/srm/resource-pool-scopes/',
@@ -428,6 +433,16 @@ const BaseSrmQuestionnairesIndexRouteRoute =
     getParentRoute: () => BaseRouteRoute,
   } as any).lazy(() =>
     import('./../../routes/_base/srm/questionnaires/index/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const BaseSrmSuppliersIdRelatedRouteRoute =
+  BaseSrmSuppliersIdRelatedRouteImport.update({
+    path: '/srm/suppliers/$id/related',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base/srm/suppliers/$id/related/route.lazy').then(
       (d) => d.Route,
     ),
   )
@@ -534,10 +549,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSrmSupplierInvitationsRouteImport
       parentRoute: typeof BaseRouteImport
     }
-    '/_base/srm/suppliers': {
-      preLoaderRoute: typeof BaseSrmSuppliersRouteImport
-      parentRoute: typeof BaseRouteImport
-    }
     '/_base/system/depts': {
       preLoaderRoute: typeof BaseSystemDeptsRouteImport
       parentRoute: typeof BaseRouteImport
@@ -576,6 +587,10 @@ declare module '@tanstack/react-router' {
     }
     '/_base/srm/resource-pool-scopes/': {
       preLoaderRoute: typeof BaseSrmResourcePoolScopesIndexRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/srm/suppliers/': {
+      preLoaderRoute: typeof BaseSrmSuppliersIndexRouteImport
       parentRoute: typeof BaseRouteImport
     }
     '/_base/system/biz-dicts/': {
@@ -630,6 +645,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSrmResourcePoolScopesIdEditRouteImport
       parentRoute: typeof BaseSrmResourcePoolScopesIdRouteImport
     }
+    '/_base/srm/suppliers/$id/related': {
+      preLoaderRoute: typeof BaseSrmSuppliersIdRelatedRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
   }
 }
 
@@ -655,7 +674,6 @@ export const routeTree = rootRoute.addChildren([
     BaseSrmSupplierGreenChannelsRouteRoute,
     BaseSrmSupplierIntroduceRouteRoute,
     BaseSrmSupplierInvitationsRouteRoute,
-    BaseSrmSuppliersRouteRoute,
     BaseSystemDeptsRouteRoute,
     BaseSystemMenusRouteRoute,
     BaseSystemParamsRouteRoute,
@@ -666,6 +684,7 @@ export const routeTree = rootRoute.addChildren([
     BaseSrmQuestionnairesIndexRouteRoute,
     BaseSrmResourcePoolPlansIndexRouteRoute,
     BaseSrmResourcePoolScopesIndexRouteRoute,
+    BaseSrmSuppliersIndexRouteRoute,
     BaseSystemBizDictsIndexRouteRoute,
     BaseSystemDictsIndexRouteRoute,
     BaseSystemPermsIndexRouteRoute,
@@ -678,6 +697,7 @@ export const routeTree = rootRoute.addChildren([
     BaseSystemBizDictsIdRouteRoute,
     BaseSystemDictsIdRouteRoute,
     BaseSystemPermsIdRouteRoute,
+    BaseSrmSuppliersIdRelatedRouteRoute,
   ]),
   PortalRouteRoute.addChildren([
     PortalIndexRouteRoute,
