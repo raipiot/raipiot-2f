@@ -17,10 +17,23 @@ export interface PendingTask {
 
 // 拦截器初始化配置
 export interface InterceptorInitConfig {
+  /**
+   * Tanstack Router 实例
+   */
   router: Router
+  /**
+   * i18n 实例
+   */
   i18n: i18n
+  /**
+   * antd Message 实例
+   */
   message: MessageInstance
-  logoutRedirectUrl?: string // 登出后重定向地址.默认为 /login
+  /**
+   * 登出后重定向地址
+   * @default '/login'
+   */
+  logoutRedirectUrl?: string
 }
 
 // 通用响应数据

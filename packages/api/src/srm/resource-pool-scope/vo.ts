@@ -90,3 +90,20 @@ interface CategoryVO {
 }
 
 export type ResourcePoolScopesVo = Page<ResourcePoolScopeVo>
+
+export interface ResourcePoolScopeCompanyVo {
+  id?: string
+  name?: string
+  code?: string
+}
+
+export type ResourcePoolScopeCompaniesVo = Page<ResourcePoolScopeCompanyVo>
+
+export interface ResourcePoolScopeCategoryVo {
+  id?: string
+  category?: string
+  name?: string
+  description?: string
+}
+
+export type ResourcePoolScopeCategoriesVo = Page<ResourcePoolScopeCategoryVo>

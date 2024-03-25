@@ -3,13 +3,21 @@ import type HttpRequest from '@raipiot-2f/axios'
 import { BaseAPI } from '../../base'
 import { mockEntity, mockList } from '../../mock'
 import type {
+  ResourcePoolScopeCategoryPageDto,
+  ResourcePoolScopeCompanyPageDto,
   ResourcePoolScopeCreateDto,
   ResourcePoolScopePageDto,
   ResourcePoolScopeUpdateDto
 } from './dto'
-import type { ResourcePoolScopesVo, ResourcePoolScopeVo } from './vo'
+import type {
+  ResourcePoolScopeCategoryVo,
+  ResourcePoolScopeCompanyVo,
+  ResourcePoolScopesVo,
+  ResourcePoolScopeVo
+} from './vo'
 
 export * from './dto'
+export * from './enums'
 export * from './vo'
 
 export class ResourcePoolScopesAPI extends BaseAPI {
@@ -29,7 +37,11 @@ export class ResourcePoolScopesAPI extends BaseAPI {
     createdTime: '2021-08-25 00:00:00'
   })
 
-  #list = mockList<ResourcePoolScopeVo>(this.#detail)
+  #list = mockList<ResourcePoolScopeVo>(this.#detail, {
+    ...this.#detail,
+    id: '2',
+    resourcePoolTypeId: '2'
+  })
 
   async list(params: ResourcePoolScopePageDto, signal?: AbortSignal) {
     console.log('resource-pool-scope:list', params)
@@ -54,14 +66,32 @@ export class ResourcePoolScopesAPI extends BaseAPI {
 
   async create(data: ResourcePoolScopeCreateDto) {
     console.log('resource-pool-scope:create', data)
+    return {}
     return this.httpRequest.post(`${this.#API_PREFIX}/save-resource-pool-scope`, data)
   }
 
   async update(data: ResourcePoolScopeUpdateDto) {
+    console.log('resource-pool-scope:update', data)
+    return {}
     return this.httpRequest.post(`${this.#API_PREFIX}/update-resource-pool-scope`, data)
   }
 
   async remove(ids: string[]) {
+    console.log('resource-pool-scope:remove', ids)
+    return {}
     return this.httpRequest.post(`${this.#API_PREFIX}/delete-resource-pool-scope`, { ids })
+  }
+
+  async companyList(params: ResourcePoolScopeCompanyPageDto, signal?: AbortSignal) {
+    return mockList<ResourcePoolScopeCompanyVo>({ id: '1', name: '公司1', code: 'C1' })
+  }
+
+  async categoryList(params: ResourcePoolScopeCategoryPageDto, signal?: AbortSignal) {
+    return mockList<ResourcePoolScopeCategoryVo>({
+      id: '1',
+      name: '品类1',
+      category: 'C1',
+      description: '废旧资产&物资'
+    })
   }
 }

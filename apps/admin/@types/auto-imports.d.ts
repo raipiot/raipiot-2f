@@ -49,6 +49,7 @@ declare global {
   const ATooltip: typeof import('antd')['Tooltip']
   const ATree: typeof import('antd')['Tree']
   const ATreeSelect: typeof import('antd')['TreeSelect']
+  const ATypography: typeof import('antd')['Typography']
   const AUpload: typeof import('antd')['Upload']
   const AnimatePresence: typeof import('framer-motion')['AnimatePresence']
   const AppMetadata: typeof import('@raipiot-2f/config')['AppMetadata']
