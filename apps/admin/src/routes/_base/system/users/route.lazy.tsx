@@ -24,6 +24,7 @@ function Component() {
   const { columns } = Users.useColumns()
 
   const { modal, form, setMode } = Users.useBaseModalContext()
+  const { modal: AppModal } = AApp.useApp()
 
   const { operateSuccess } = useMessage()
   const { t } = useTranslation(['SYSTEM/USERS', 'COMMON'])
@@ -42,7 +43,7 @@ function Component() {
   const handleLogout = () => logoutMutation.mutate(undefined)
 
   const onExportData = () => {
-    AModal.confirm({
+    AppModal.confirm({
       title: t('COMMON:EXPORT'),
       content: t('CONFIRM.EXPORT'),
       onOk: async () => {
@@ -74,7 +75,7 @@ function Component() {
             <RpButton
               variant="export"
               onClick={onExportData}
-              disabled={isPending}
+              disabled={isExportPending}
             />
           </AFlex>
         )
