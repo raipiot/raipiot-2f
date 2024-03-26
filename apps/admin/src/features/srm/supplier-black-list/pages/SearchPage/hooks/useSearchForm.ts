@@ -1,4 +1,4 @@
-import type { SupplierBlackListSearchFormModel } from '../../../types'
+import type { SupplierBlackListSearchFormModel } from '@/features/srm/supplier-black-list'
 
 export const useSearchForm = () => {
   const { createSearchForm } = useFormCreator<SupplierBlackListSearchFormModel>()

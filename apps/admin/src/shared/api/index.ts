@@ -6,6 +6,7 @@ export const httpRequest = new HttpRequest()
 
 // 供应商
 export const suppliersAPI = new SuppliersAPI(httpRequest)
+export const invitationsAPI = new InvitationsAPI(httpRequest)
 export const resourcePoolPlansAPI = new ResourcePoolPlansAPI(httpRequest)
 export const resourcePoolScopesAPI = new ResourcePoolScopesAPI(httpRequest)
 export const questionnairesAPI = new QuestionnairesAPI(httpRequest)

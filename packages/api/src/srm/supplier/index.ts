@@ -2,8 +2,8 @@ import type HttpRequest from '@raipiot-2f/axios'
 
 import { BaseAPI } from '../../base'
 import { mockEntity, mockList } from '../../mock'
+import { LifecycleStage, RelegationStatus } from '../lifecycle'
 import type { SupplierBlackListPageDto, SupplierPageDto } from './dto'
-import { LifecycleStage, RelegationStatus } from './enums'
 import type { SupplierInfosVo, SupplierInfoVo, SuppliersVo, SupplierVo } from './vo'
 
 export * from './dto'

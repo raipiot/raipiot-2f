@@ -1,5 +1,6 @@
 [
   "SuppliersAPI",
+  "InvitationsAPI",
   "ResourcePoolScopesAPI",
   "ResourcePoolPlansAPI",
   "QuestionnairesAPI",

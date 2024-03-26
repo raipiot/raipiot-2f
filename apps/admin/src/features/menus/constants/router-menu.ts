@@ -24,7 +24,7 @@ export const routerMenuMap = new Map<ModuleMenuCode, () => MenuItem[]>([
         key: '/srm/supplier',
         children: [
           getRouteMeta('/srm/suppliers'),
-          getRouteMeta('/srm/supplier-invitations'),
+          getRouteMeta('/srm/invitations'),
           getRouteMeta('/srm/supplier-entry'),
           getRouteMeta('/srm/supplier-green-channels'),
           getRouteMeta('/srm/supplier-introduce'),
