@@ -3,5 +3,7 @@ export const Route = createFileRoute('/_base/srm/questionnaires/')({
     title: '调查表管理',
     permCode: 'srm:questionnaires'
   },
-  loader: () => queryClient.ensureQueryData(Questionnaires.listQO(PageUtils.initParams()))
+  beforeLoad: async () => {
+    await queryClient.ensureQueryData(Questionnaires.listQO(PageUtils.initParams()))
+  }
 })

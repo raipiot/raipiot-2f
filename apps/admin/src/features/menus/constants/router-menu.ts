@@ -20,6 +20,19 @@ export const routerMenuMap = new Map<ModuleMenuCode, () => MenuItem[]>([
     ModuleMenuCode.SUPPLIER,
     () => [
       {
+        label: '供应商管理',
+        key: '/srm/supplier',
+        children: [
+          getRouteMeta('/srm/suppliers'),
+          getRouteMeta('/srm/invitations'),
+          getRouteMeta('/srm/supplier-entry'),
+          getRouteMeta('/srm/supplier-green-channels'),
+          getRouteMeta('/srm/supplier-introduce'),
+          getRouteMeta('/srm/supplier-change-record'),
+          getRouteMeta('/srm/supplier-blacklist')
+        ]
+      },
+      {
         label: '资源池管理',
         key: '/srm/resource-pool',
         children: [

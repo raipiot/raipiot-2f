@@ -33,7 +33,7 @@ const RpField = rpWithSkeleton<RpFieldProps>(
         rpWithLink(
           ({
             value,
-            as = 'div',
+            as = 'span',
             formatter = (v) => v,
             valueProps = {},
             copyable = false,
@@ -78,5 +78,4 @@ const RpField = rpWithSkeleton<RpFieldProps>(
     )
   )
 )
-
 export default RpField
