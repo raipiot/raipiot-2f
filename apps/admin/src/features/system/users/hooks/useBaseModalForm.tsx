@@ -212,6 +212,9 @@ export const useBaseModalForm = () => {
                   formItemProps: {
                     label: t('BIRTHDAY'),
                     name: 'birthday'
+                  },
+                  datePickerProps: {
+                    maxDate: DateUtils.dayjs()
                   }
                 }
               ]

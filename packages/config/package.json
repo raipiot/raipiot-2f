@@ -28,7 +28,7 @@
     "prettier:fix": "prettier --write --cache --ignore-unknown --ignore-path=../../.prettierignore ."
   },
   "dependencies": {
-    "@raipiot-infra/config": "~0.0.5"
+    "@raipiot-infra/config": "~0.0.6"
   },
   "devDependencies": {
     "vite": "^5.2.6"
