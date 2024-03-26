@@ -19,7 +19,7 @@ export const useBaseModalForm = () => {
         type: 'input',
         formItemProps: {
           name: 'company',
-          label: '公司',
+          label: '业务实体',
           rules: [{ required: true }]
         }
       },

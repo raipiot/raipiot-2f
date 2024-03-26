@@ -85,6 +85,8 @@ function RpFormItem<T>(props: RpBasicFormItemProps<T>): React.ReactNode {
             {type === 'input' && <AInput {...props.inputProps} />}
             {type === 'text-area' && <AInput.TextArea {...props.textAreaProps} />}
             {type === 'radio-group' && <ARadio.Group {...props.radioGroupProps} />}
+            {type === 'checkbox' && <ACheckbox {...props.checkboxProps} />}
+            {type === 'checkbox-group' && <ACheckbox.Group {...props.checkboxGroupProps} />}
             {type === 'select' && <ASelect {...props.selectProps} />}
             {type === 'tree-select' && <ATreeSelect {...props.treeSelectProps} />}
             {type === 'cascader' && <ACascader {...props.cascaderProps} />}

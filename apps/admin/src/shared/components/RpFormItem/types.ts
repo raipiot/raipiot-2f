@@ -1,6 +1,7 @@
 import type {
   ButtonProps,
   CascaderProps,
+  CheckboxProps,
   CollapseProps,
   ColProps,
   DatePickerProps,
@@ -15,6 +16,7 @@ import type {
   TimeRangePickerProps,
   TreeSelectProps
 } from 'antd'
+import type { CheckboxGroupProps } from 'antd/es/checkbox'
 import type { RangePickerProps } from 'antd/es/date-picker'
 import type { TextAreaProps } from 'antd/es/input'
 import type { ReactNode } from 'react'
@@ -70,6 +72,8 @@ type RpInput = PropsWithType<'input', { inputProps?: InputProps }>
 type RpInputNumber = PropsWithType<'input-number', { inputNumberProps?: InputNumberProps }>
 type RpTextArea = PropsWithType<'text-area', { textAreaProps?: TextAreaProps }>
 type RpRadioGroup = PropsWithType<'radio-group', { radioGroupProps?: RadioGroupProps }>
+type RpCheckbox = PropsWithType<'checkbox', { checkboxProps?: CheckboxProps }>
+type RpCheckboxGroup = PropsWithType<'checkbox-group', { checkboxGroupProps?: CheckboxGroupProps }>
 type RpSwitch = PropsWithType<'switch', { switchProps?: SwitchProps }>
 type RpSelect = PropsWithType<'select', { selectProps?: SelectProps }>
 type RpTreeSelect = PropsWithType<'tree-select', { treeSelectProps?: TreeSelectProps }>
@@ -105,6 +109,8 @@ export type RpBasicFormItemProps<T> =
         | RpInputNumber
         | RpTextArea
         | RpRadioGroup
+        | RpCheckbox
+        | RpCheckboxGroup
         | RpSelect
         | RpTreeSelect
         | RpCascader
