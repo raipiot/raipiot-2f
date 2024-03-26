@@ -18,6 +18,8 @@ type RpButtonType =
   | 'add'
   | 'add-child'
   | 'cancel-edit'
+  | 'import' // 导入
+  | 'export' // 导出
 
 interface RpButtonProps extends ButtonProps {
   variant?: RpButtonType
@@ -116,6 +118,14 @@ function RpButton(props: RpButtonProps) {
         case 'cancel-edit':
           return {
             children: t('CANCEL.EDIT')
+          }
+        case 'import':
+          return {
+            children: t('IMPORT')
+          }
+        case 'export':
+          return {
+            children: t('EXPORT')
           }
         default:
           return {}

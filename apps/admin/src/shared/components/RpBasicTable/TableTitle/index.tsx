@@ -53,8 +53,8 @@ function TableTitle(props: TableTitleProps) {
   const hadSelected = (selectedRowKeys?.length ?? 0) > 0
 
   return (
-    <div className="flex justify-between">
-      <div className="flex items-center space-x-2 sm:space-x-4">
+    <div className="flex items-start justify-between">
+      <div className="flex flex-wrap items-center space-x-2 space-y-2 sm:space-x-4">
         {hadSelected ? (
           <>
             <RpDeletePopconfirm
@@ -64,7 +64,7 @@ function TableTitle(props: TableTitleProps) {
               <RpButton variant="batch-delete" />
             </RpDeletePopconfirm>
             {renderTableBatchOpeate && renderTableBatchOpeate}
-            <span className="text-xs sm:text-sm">
+            <span className="!mt-0 text-xs sm:text-sm">
               {t('ALREADY.SELECTED', { count: selectedRowKeys!.length })}
             </span>
           </>

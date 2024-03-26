@@ -17,11 +17,12 @@ export const usePlatformForm = () => {
         },
         formItemProps: {
           name: 'userType',
-          label: t('PLATFORM')
+          label: t('PLATFORM'),
+          rules: [{ required: true }]
         },
         selectProps: {
-          allowClear: true,
-          options: data
+          // allowClear: true,
+          options: data.map((i) => ({ ...i, value: Number(i.value) }))
         }
       },
       {

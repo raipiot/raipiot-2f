@@ -87,9 +87,13 @@
   "CONFIG": "Config",
   "DEV.WAITING": "Still in development, please wait ...",
   "OPERATION.SUCCESS": "Operation success",
+  "OPERATION.FAIL": "Operation fail",
   "NOT.LIMITED": "Not limited",
   "NONE": "None",
   "SUBMIT": "Submit",
   "ADD": "Add",
-  "CANCEL.EDIT": "Cancel edit"
+  "CANCEL.EDIT": "Cancel edit",
+  "MAN": "Man",
+  "FAMALE": "Famale",
+  "UNKNOWN": "Unknown"
 }

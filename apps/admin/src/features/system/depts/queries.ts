@@ -15,9 +15,9 @@ export const listQueryOptions = (params?: DeptsDto) =>
     placeholderData: keepPreviousData
   })
 
-export const treeQueryOptions = () =>
+export const treeQueryOptions = (tenantId?: string) =>
   queryOptions({
-    queryKey: deptTreeQK(),
-    queryFn: ({ signal }) => deptsAPI.tree(signal),
+    queryKey: deptTreeQK(tenantId),
+    queryFn: ({ signal }) => deptsAPI.tree(tenantId, signal),
     placeholderData: keepPreviousData
   })

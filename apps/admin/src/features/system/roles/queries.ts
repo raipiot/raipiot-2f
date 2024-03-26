@@ -16,9 +16,9 @@ export const listQueryOptions = (params?: RolesDto) =>
     placeholderData: keepPreviousData
   })
 
-export const treeQueryOptions = () =>
+export const treeQueryOptions = (tenantId?: string) =>
   queryOptions({
-    queryKey: roleTreeQK(),
-    queryFn: ({ signal }) => rolesAPI.tree(signal),
+    queryKey: roleTreeQK(tenantId),
+    queryFn: ({ signal }) => rolesAPI.tree(tenantId, signal),
     placeholderData: keepPreviousData
   })

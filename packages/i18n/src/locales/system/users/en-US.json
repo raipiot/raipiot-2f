@@ -21,5 +21,14 @@
   "CODE": "User code",
   "CONFIRM.UNLOCK": "Are you sure you want to unlock the account?",
   "CONFIRM.RESET.PASSWORD": "Are you sure you want to reset the password to 123456?",
-  "EXT": "Extension"
+  "EXT": "Extension",
+  "DUTY.INFO": "Duty info",
+  "TEMPLATE": {
+    "UPLOAD": "Upload template",
+    "DOWNLOAD": "Download template",
+    "FILE": "Template file"
+  },
+  "UPLOAD.TIP": "Please upload the file which ext is .xls or .xlsx",
+  "DATA.COVER": "Cover the old data",
+  "CONFIRM.EXPORT": "Are you sure you want to export the data?"
 }

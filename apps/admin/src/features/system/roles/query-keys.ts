@@ -10,4 +10,4 @@ export const rolesQK = (params?: RolesDto) => [ROLES_QK, params]
 
 export const roleQK = (id?: string) => [ROLE_QK, { id }]
 
-export const roleTreeQK = () => [ROLE_TREE_QK]
+export const roleTreeQK = (tenantId?: string) => [ROLE_TREE_QK, { tenantId }]

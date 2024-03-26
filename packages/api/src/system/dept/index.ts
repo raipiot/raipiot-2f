@@ -62,7 +62,7 @@ export class DeptsAPI extends BaseAPI {
   /**
    * 获取树
    */
-  tree(signal?: AbortSignal) {
-    return this.httpRequest.get<DeptTreeVo[]>(`${this.#API_PREFIX}/tree`, {}, { signal })
+  tree(tenantId?: string, signal?: AbortSignal) {
+    return this.httpRequest.get<DeptTreeVo[]>(`${this.#API_PREFIX}/tree`, { tenantId }, { signal })
   }
 }

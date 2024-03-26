@@ -85,9 +85,13 @@
   "CONFIG": "配置",
   "DEV.WAITING": "正在火速开发中，敬请期待...",
   "OPERATION.SUCCESS": "操作成功",
+  "OPERATION.FAIL": "操作失败",
   "NOT.LIMITED": "不限制",
   "NONE": "无",
   "SUBMIT": "提交",
   "ADD": "新增",
-  "CANCEL.EDIT": "取消编辑"
+  "CANCEL.EDIT": "取消编辑",
+  "MAN": "男",
+  "FAMALE": "女",
+  "UNKNOWN": "未知"
 }

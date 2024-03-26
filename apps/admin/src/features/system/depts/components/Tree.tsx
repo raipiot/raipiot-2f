@@ -63,7 +63,7 @@ export function Tree(props: DeptTreeProps) {
         selectedKeys={deptId ? [deptId] : []}
         onSelect={(keys) => {
           const id = keys[0]
-          props.onSelectDeptId?.(id.toString())
+          props.onSelectDeptId?.(id?.toString())
         }}
         defaultExpandAll
         {...treeProps}

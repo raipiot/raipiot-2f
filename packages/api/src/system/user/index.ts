@@ -1,4 +1,5 @@
 import type HttpRequest from '@raipiot-2f/axios'
+import { DateUtils, FormatUtils } from '@raipiot-infra/utils'
 
 import { BaseAPI } from '../../base'
 import type {
@@ -49,7 +50,15 @@ export class UsersAPI extends BaseAPI {
    * 详情
    */
   async detail(id: string, signal?: AbortSignal) {
-    return this.httpRequest.get<UserVo>(`${this.#API_PREFIX}/detail`, { id }, { signal })
+    const rawData = await this.httpRequest.get<UserVo>(
+      `${this.#API_PREFIX}/detail`,
+      { id },
+      { signal }
+    )
+    const result = FormatUtils.stringToArrayFieldByKeys(rawData, ['roleId', 'deptId', 'postId'], {
+      filter: (v) => v !== ''
+    })
+    return result
   }
 
   /**
@@ -84,14 +93,17 @@ export class UsersAPI extends BaseAPI {
    * 修改
    */
   async update(data: UserSubmitDto) {
-    return this.httpRequest.post(`${this.#API_PREFIX}/update`, data)
+    const newObject = FormatUtils.arrayFieldToString(data)
+    newObject.birthday = DateUtils.dayjs(data.birthday).format('YYYY-MM-DD HH:mm:ss')
+    return this.httpRequest.post(`${this.#API_PREFIX}/update`, newObject)
   }
 
   /**
    * 提交
    */
   async submit(data: UserSubmitDto) {
-    return this.httpRequest.post(`${this.#API_PREFIX}/submit`, data)
+    const newObject = FormatUtils.arrayFieldToString(data)
+    return this.httpRequest.post(`${this.#API_PREFIX}/submit`, newObject)
   }
 
   /**
@@ -130,12 +142,15 @@ export class UsersAPI extends BaseAPI {
   /**
    * 导入
    */
-  async importUser(data: File, isCovered: boolean) {
+  async importUser(file: File, isCovered: number) {
     const formData = new FormData()
-    formData.append('file', data)
+    formData.append('file', file)
     return this.httpRequest.post(`${this.#API_PREFIX}/import-user`, formData, {
       params: {
-        isCovered: isCovered ? 0 : 1
+        isCovered
+      },
+      headers: {
+        'Content-Type': 'multipart/form-data'
       }
     })
   }
@@ -150,8 +165,18 @@ export class UsersAPI extends BaseAPI {
   /**
    * 导出
    */
-  async exportUser(params: UserPageDto) {
-    return this.httpRequest.get(`${this.#API_PREFIX}/export-user`, params)
+  async exportUser() {
+    const response = await this.httpRequest.get<Blob>(
+      `${this.#API_PREFIX}/export-user`,
+      {},
+      {
+        headers: {
+          skipResponseInterceptors: true
+        },
+        responseType: 'blob'
+      }
+    )
+    return response
   }
 
   /**

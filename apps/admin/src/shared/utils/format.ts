@@ -56,4 +56,14 @@ export class FormatUtils {
     }))
     return result
   }
+
+  static translateSimpleObjectWithArray<T extends Record<string, any>>(obj: T) {
+    const newObject = structuredClone(obj)
+    Object.entries(obj).forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        Object.setPrototypeOf(newObject[key], Object.getPrototypeOf(value).join(','))
+      }
+    })
+    return newObject
+  }
 }

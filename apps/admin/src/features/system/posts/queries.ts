@@ -1,6 +1,6 @@
 import type { PostPageDto } from '@raipiot-2f/api'
 
-import { postQK, postsQK } from './query-keys'
+import { postQK, postSelectQK, postsQK } from './query-keys'
 
 export const postQueryOptions = (id: string) =>
   queryOptions({
@@ -13,4 +13,10 @@ export const postsQueryOptions = (params: PostPageDto) =>
     queryKey: postsQK(params),
     queryFn: ({ signal }) => postsAPI.list(params, signal),
     placeholderData: keepPreviousData
+  })
+
+export const postSelectQueryOptions = (tenantId: string) =>
+  queryOptions({
+    queryKey: postSelectQK(tenantId),
+    queryFn: ({ signal }) => postsAPI.select(tenantId, signal)
   })

@@ -21,5 +21,14 @@
   "CODE": "用户编号",
   "CONFIRM.UNLOCK": "确定将账号解锁？",
   "CONFIRM.RESET.PASSWORD": "确定将密码重置为 123456 ?",
-  "EXT": "用户扩展"
+  "EXT": "用户扩展",
+  "DUTY.INFO": "职责信息",
+  "TEMPLATE": {
+    "UPLOAD": "上传模板",
+    "DOWNLOAD": "下载模板",
+    "FILE": "用户导入模板"
+  },
+  "UPLOAD.TIP": "请上传 .xls,.xlsx 标准格式文件",
+  "DATA.COVER": "覆盖旧数据",
+  "CONFIRM.EXPORT": "确定导出用户数据？"
 }

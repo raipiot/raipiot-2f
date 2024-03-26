@@ -1,9 +1,29 @@
-import type { FormItemProps } from 'antd'
+import type { FormItemProps, TreeSelectProps } from 'antd'
+import { isEmpty } from 'lodash-es'
 
 import type { RpBasicFormItemProps } from './types'
 
+function findAllLabelInTreeData(
+  treeData: TreeSelectProps['treeData'] = [],
+  result: { label: string; value: string }[] = [],
+  fieldName?: TreeSelectProps['fieldNames']
+) {
+  treeData?.forEach((item) => {
+    result.push({
+      label: item[fieldName?.label || 'label'] as string,
+      value: item[fieldName?.value || 'value'] as string
+    })
+    if (item.children?.length) {
+      findAllLabelInTreeData(item.children, result, fieldName)
+    }
+  })
+  return result
+}
+
 function RpFormItem<T>(props: RpBasicFormItemProps<T>): React.ReactNode {
-  const { type, hidden, form, mode = 'edit' } = props
+  const { type, hidden, mode = 'edit' } = props
+  const form = AForm.useFormInstance()
+
   const { t } = useTranslation()
   const span = useResponsiveSpan()
 
@@ -29,7 +49,7 @@ function RpFormItem<T>(props: RpBasicFormItemProps<T>): React.ReactNode {
     >
       <AForm.Item
         {...formItemProps}
-        name={mode === 'read' ? undefined : (formItemProps?.name as FormItemProps['name'])}
+        name={formItemProps?.name as FormItemProps['name']}
       >
         {mode === 'read' ? (
           <>
@@ -45,12 +65,38 @@ function RpFormItem<T>(props: RpBasicFormItemProps<T>): React.ReactNode {
               />
             )}
             {type === 'tree-select' && (
-              <ATreeSelect
-                value={value}
-                variant="borderless"
-                suffixIcon={null}
-                {...props.treeSelectProps}
-              />
+              // <ATreeSelect
+              //   value={value}
+              //   variant="borderless"
+              //   suffixIcon={null}
+              //   {...props.treeSelectProps}
+              //   treeCheckable={false}
+              // />
+              <AFlex
+                wrap="wrap"
+                gap={2}
+              >
+                {[form.getFieldValue(props.formItemProps?.name)].flat().map((item) => {
+                  const allItem = findAllLabelInTreeData(
+                    props.treeSelectProps?.treeData,
+                    [],
+                    props.treeSelectProps?.fieldNames
+                  )
+                  return (
+                    <ATag
+                      key={item}
+                      onClick={() => {
+                        console.log(item, props.treeSelectProps?.treeData)
+                      }}
+                    >
+                      {
+                        // item 可能存在相同结构的 children，如果存在 children，则需要递归查找
+                        allItem.find((i) => item?.toString() === i.value?.toString())?.label ?? '-'
+                      }
+                    </ATag>
+                  )
+                })}
+              </AFlex>
             )}
             {type === 'switch' && (
               <RpField
@@ -71,14 +117,30 @@ function RpFormItem<T>(props: RpBasicFormItemProps<T>): React.ReactNode {
               />
             )}
             {type === 'date-picker' && (
-              <ADatePicker
+              // 阅读模式，将时间转为日期
+              <RpField
                 value={value}
-                variant="borderless"
-                readOnly
-                {...props.datePickerProps}
+                tooltip={{
+                  title: Array.isArray(value)
+                    ? value
+                        .map((item) => DateUtils.dayjs(item).format('YYYY-MM-DD HH:mm:ss'))
+                        .join(' ~ ')
+                    : DateUtils.dayjs(value).format('YYYY-MM-DD HH:mm:ss'),
+                  placement: 'topLeft'
+                }}
+                formatter={(v) => {
+                  // 可能是时间戳或时间范围
+                  if (Array.isArray(v)) {
+                    return v.map((item) => DateUtils.dayjs(item).format('YYYY-MM-DD'))
+                  }
+                  return !isEmpty(v) && DateUtils.dayjs(v)
+                    ? DateUtils.dayjs(v).format('YYYY-MM-DD')
+                    : '-'
+                }}
               />
             )}
             {type === 'form-item' && (props.render ? props.render(value, record) : null)}
+            {type === 'collapse' && <RpFormCollapseItem {...props.collapseProps} />}
           </>
         ) : (
           <>
@@ -114,9 +176,10 @@ function RpFormItem<T>(props: RpBasicFormItemProps<T>): React.ReactNode {
                   mode={mode}
                 />
               ))}
-            {type === 'collapse' && <ACollapse {...props.collapseProps} />}
+            {type === 'collapse' && <RpFormCollapseItem {...props.collapseProps} />}
             {type === 'collapse-item' && (
               <ACollapse
+                {...props.collapseItemProps}
                 items={[
                   {
                     label: props.collapseItemProps?.label,

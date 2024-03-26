@@ -28,10 +28,10 @@
     "prettier:fix": "prettier --write --cache --ignore-unknown --ignore-path=../../.prettierignore ."
   },
   "dependencies": {
-    "@raipiot-infra/config": "~0.0.1"
+    "@raipiot-infra/config": "~0.0.6"
   },
   "devDependencies": {
-    "vite": "^5.1.5"
+    "vite": "^5.2.6"
   },
   "private": true
 }

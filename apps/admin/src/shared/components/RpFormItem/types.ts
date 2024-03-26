@@ -22,6 +22,7 @@ import type { ReactNode } from 'react'
 import type { ModalType } from '@/shared/hooks/useModal'
 
 import type { RpUploadProps } from '../RpUpload'
+import type { RpFormCollapseItemProps } from './RpFormCollapseItem'
 
 interface RpFormItemProps<T> extends Omit<FormItemProps, 'name'> {
   name?: keyof T
@@ -60,8 +61,8 @@ interface RpBaseFormItem<T> extends RpBaseItem {
 
 interface RpSearchBaseFormItem<T> extends RpBaseFormItem<T>, RpSearchBaseItem {}
 
-interface RpCollapseItemProps extends Pick<CollapseProps, 'bordered'> {
-  label?: string
+interface RpCollapseItemProps extends CollapseProps {
+  label?: ReactNode
 }
 
 type PropsWithType<T extends string, D = object> = { type: T } & D
@@ -81,7 +82,7 @@ type RpRangePicker = PropsWithType<
 >
 type RpUpload = PropsWithType<'upload', { uploadProps?: RpUploadProps }>
 type RpButton = PropsWithType<'button', { buttonProps?: ButtonProps }>
-type RpCollapse = PropsWithType<'collapse', { collapseProps?: CollapseProps }>
+type RpCollapse<T> = PropsWithType<'collapse', { collapseProps?: RpFormCollapseItemProps<T> }>
 type RpGroup<T> = PropsWithType<'group', RpBaseContainerItem<T>>
 type RpCollapseItem<T> = PropsWithType<
   'collapse-item',
@@ -113,7 +114,7 @@ export type RpBasicFormItemProps<T> =
         | RpSwitch
         | RpUpload
         | RpButton
-        | RpCollapse
+        | RpCollapse<T>
         | RpCollapseItem<T>
         | RpGroup<T>
         | RpRow<T>
