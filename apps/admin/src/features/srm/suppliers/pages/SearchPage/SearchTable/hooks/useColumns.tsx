@@ -9,7 +9,7 @@ export const useColumns = () => {
 
   return createColumns([
     { title: '供应商名称', dataIndex: 'name' },
-    { title: '所属公司', dataIndex: 'companyTypeName', custom: { tooltip: true } },
+    { title: '业务实体', dataIndex: 'companyTypeName', custom: { tooltip: true } },
     { title: '默认联系人', dataIndex: 'realName' },
     { title: '手机号', dataIndex: 'phone' },
     { title: 'ERP 供应商编码', dataIndex: 'erpCode' },

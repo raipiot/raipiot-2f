@@ -1,10 +1,32 @@
 import type HttpRequest from '@raipiot-2f/axios'
 
 import { BaseAPI } from '../../base'
-import { mockEntity, mockList } from '../../mock'
+import { mockEntities, mockEntity, mockList } from '../../mock'
 import { LifecycleStage, RelegationStatus } from '../lifecycle'
-import type { SupplierBlackListPageDto, SupplierPageDto } from './dto'
-import type { SupplierInfosVo, SupplierInfoVo, SuppliersVo, SupplierVo } from './vo'
+import type {
+  SupplierBlackListPageDto,
+  SupplierEntryCheckSocialCodeDto,
+  SupplierEntryCooperateInfoSubmitDto,
+  SupplierEntryCreateDto,
+  SupplierEntryMainInfoSubmitDto,
+  SupplierEntryPageDto,
+  SupplierEntrySecondaryInfoSubmitDto,
+  SupplierPageDto
+} from './dto'
+import type {
+  SupplierAddressVo,
+  SupplierAttachmentVo,
+  SupplierBankVo,
+  SupplierContactVo,
+  SupplierEntriesVo,
+  SupplierEntryVo,
+  SupplierFinanceVo,
+  SupplierInfosVo,
+  SupplierInfoVo,
+  SupplierInvoiceVo,
+  SuppliersVo,
+  SupplierVo
+} from './vo'
 
 export * from './dto'
 export * from './enums'
@@ -49,60 +71,152 @@ export class SuppliersAPI extends BaseAPI {
     })
   }
 
-  async detail() {
-    return mockEntity({})
+  // 供应商详情
+  async detail(id: string, signal?: AbortSignal) {
+    console.log('detail', id)
+    return mockEntity<SupplierInfoVo>({})
+    return this.httpRequest.post<SupplierInfoVo>(
+      `${this.#API_PREFIX}/get-supplier-detail/${id}`,
+      {},
+      {
+        signal
+      }
+    )
   }
 
-  async contactDetail() {
-    return mockEntity({})
+  // 联系人详情
+  async contactDetail(id: string, signal?: AbortSignal) {
+    console.log('contact', id)
+    return mockEntities<SupplierContactVo>({})
+    return this.httpRequest.post<SupplierContactVo[]>(
+      `${this.#API_PREFIX}/get-supplier-contact-detail/${id}`,
+      {},
+      {
+        signal
+      }
+    )
   }
 
-  async addressDetail() {
-    return mockEntity({})
+  async addressDetail(id: string, signal?: AbortSignal) {
+    console.log('address', id)
+    return mockEntities<SupplierAddressVo>({})
+    return this.httpRequest.post<SupplierAddressVo[]>(
+      `${this.#API_PREFIX}/get-supplier-address-detail/${id}`,
+      {},
+      {
+        signal
+      }
+    )
   }
 
-  async bankDetail() {
-    return mockEntity({})
+  async bankDetail(id: string, signal?: AbortSignal) {
+    console.log('bank', id)
+    return mockEntities<SupplierBankVo>({})
+    return this.httpRequest.post<SupplierBankVo[]>(
+      `${this.#API_PREFIX}/get-supplier-bank-detail/${id}`,
+      {},
+      {
+        signal
+      }
+    )
   }
 
-  async invoiceDetail() {
-    return mockEntity({})
+  async invoiceDetail(id: string, signal?: AbortSignal) {
+    console.log('invoice', id)
+    return mockEntities<SupplierInvoiceVo>({})
+    return this.httpRequest.post<SupplierInvoiceVo[]>(
+      `${this.#API_PREFIX}/get-supplier-invoice-detail/${id}`,
+      {},
+      {
+        signal
+      }
+    )
   }
 
-  async financeDetail() {
-    return mockEntity({})
+  async financeDetail(id: string, signal?: AbortSignal) {
+    console.log('finance', id)
+    return mockEntities<SupplierFinanceVo>({})
+    return this.httpRequest.post<SupplierFinanceVo[]>(
+      `${this.#API_PREFIX}/get-supplier-finance-detail/${id}`,
+      {},
+      {
+        signal
+      }
+    )
   }
 
-  async attachmentDetail() {
-    return mockEntity({})
+  async attachmentDetail(id: string, signal?: AbortSignal) {
+    console.log('attachment', id)
+    return mockEntities<SupplierAttachmentVo>({})
+    return this.httpRequest.post<SupplierAttachmentVo[]>(
+      `${this.#API_PREFIX}/get-supplier-attachment-detail/${id}`,
+      {},
+      {
+        signal
+      }
+    )
   }
 
-  async entryList() {
-    return mockEntity({})
+  // 录入分页
+  async entryList(params: SupplierEntryPageDto, signal?: AbortSignal) {
+    console.log('list', params)
+    return mockList<SupplierEntryVo>({
+      id: '1',
+      entryNo: '123',
+      status: '待提交',
+      supplierCode: 'C20240',
+      supplierName: '供应商名称',
+      fromCompanyName: '所属基地',
+      creatorName: 'admin',
+      createdTime: '2021-09-01 00:00:00'
+    })
+    return this.httpRequest.post<SupplierEntriesVo>(
+      `${this.#API_PREFIX}/list-supplier-entry-record-by-page`,
+      params,
+      {
+        signal
+      }
+    )
   }
 
-  async createEntry() {
-    return mockEntity({})
+  // 新建录入记录
+  async createEntry(data: SupplierEntryCreateDto) {
+    console.log('create')
+    return {}
+    return this.httpRequest.post(`${this.#API_PREFIX}/save-supplier-change-record`, data)
   }
 
-  async saveEntryMainInfo() {
-    return mockEntity({})
+  // 保存录入主要信息
+  async saveEntryMainInfo(data: SupplierEntryMainInfoSubmitDto) {
+    console.log('save-main', data)
+    return {}
+    return this.httpRequest.post(`${this.#API_PREFIX}/save-supplier-main-info`, data)
   }
 
-  async saveEntrySecondaryInfo() {
-    return mockEntity({})
+  // 保存录入次要信息
+  async saveEntrySecondaryInfo(data: SupplierEntrySecondaryInfoSubmitDto) {
+    console.log('save-secondary', data)
+    return {}
+    return this.httpRequest.post(`${this.#API_PREFIX}/save-supplier-secondary-info`, data)
   }
 
-  async saveEntryCooperateInfo() {
-    return mockEntity({})
+  // 保存录入合作信息
+  async saveEntryCooperateInfo(data: SupplierEntryCooperateInfoSubmitDto) {
+    console.log('save-cooperate', data)
+    return {}
+    return this.httpRequest.post(`${this.#API_PREFIX}/save-supplier-cooperate-info`, data)
   }
 
-  async saveEntryChangeInfo() {
+  async saveEntryChangeInfo(data: SupplierEntryCreateDto) {
+    console.log('save-change', data)
     return mockEntity({})
+    return this.httpRequest.post(`${this.#API_PREFIX}/save-supplier-change-info`, data)
   }
 
-  async updateEntryStatus() {
-    return mockEntity({})
+  async updateEntryStatus(data: SupplierEntryCreateDto) {
+    console.log('update-status')
+    return {}
+    return this.httpRequest.post(`${this.#API_PREFIX}/update-supplier-entry-status`, data)
   }
 
   async introduceList() {
@@ -129,8 +243,14 @@ export class SuppliersAPI extends BaseAPI {
     return mockEntity({})
   }
 
-  async unifiedSocialCodeExist() {
-    return mockEntity({})
+  // 统一社会信用代码是否存在
+  async unifiedSocialCodeExist(data: SupplierEntryCheckSocialCodeDto) {
+    console.log('unified-social-code-exist', data)
+    return {}
+    return this.httpRequest.post(
+      `${this.#API_PREFIX}/validate-supplier-unified_social_code_exist`,
+      data
+    )
   }
 
   // 黑名单列表
