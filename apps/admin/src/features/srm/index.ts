@@ -1,3 +1,4 @@
+export { Invitations } from './invitations'
 export { Questionnaires } from './questionnaires'
 export { ResourcePoolPlans } from './resource-pool-plans'
 export { ResourcePoolScopes } from './resource-pool-scopes'
