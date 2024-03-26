@@ -41,13 +41,13 @@
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
     "@raipiot-2f/cspell": "workspace:^",
-    "@raipiot-infra/commitlint-config": "~0.0.4",
-    "@raipiot-infra/cspell": "~0.0.4",
-    "@raipiot-infra/eslint-config": "~0.0.4",
-    "@raipiot-infra/eslint-config-ts": "~0.0.4",
-    "@raipiot-infra/prettier": "~0.0.4",
-    "@raipiot-infra/rpx": "~0.0.4",
-    "@raipiot-infra/tsconfig": "~0.0.4",
+    "@raipiot-infra/commitlint-config": "~0.0.6",
+    "@raipiot-infra/cspell": "~0.0.6",
+    "@raipiot-infra/eslint-config": "~0.0.6",
+    "@raipiot-infra/eslint-config-ts": "~0.0.6",
+    "@raipiot-infra/prettier": "~0.0.6",
+    "@raipiot-infra/rpx": "~0.0.6",
+    "@raipiot-infra/tsconfig": "~0.0.6",
     "commitizen": "^4.3.0",
     "conventional-changelog-cli": "^4.1.0",
     "cspell": "^8.6.1",
@@ -60,7 +60,7 @@
     "rimraf": "^5.0.5",
     "turbo": "^1.13.0",
     "type-fest": "^4.14.0",
-    "typescript": "~5.3.3"
+    "typescript": "~5.4.3"
   },
   "config": {
     "commitizen": {

@@ -29,5 +29,6 @@
     "FILE": "用户导入模板"
   },
   "UPLOAD.TIP": "请上传 .xls,.xlsx 标准格式文件",
-  "DATA.COVER": "覆盖旧数据"
+  "DATA.COVER": "覆盖旧数据",
+  "CONFIRM.EXPORT": "确定导出用户数据？"
 }

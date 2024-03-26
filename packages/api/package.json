@@ -31,7 +31,7 @@
     "@raipiot-2f/axios": "workspace:^",
     "@raipiot-2f/config": "workspace:^",
     "hash-wasm": "^4.11.0",
-    "@raipiot-infra/utils": "~0.0.4"
+    "@raipiot-infra/utils": "~0.0.5"
   },
   "private": true
 }

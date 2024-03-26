@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@raipiot-2f/config": "workspace:^",
-    "@raipiot-infra/utils": "~0.0.4",
+    "@raipiot-infra/utils": "~0.0.5",
     "axios": "^1.6.8"
   },
   "private": true

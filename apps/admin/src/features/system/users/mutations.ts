@@ -22,7 +22,7 @@ export const useSubmitMutation = () => {
   const { t } = useTranslation()
   const { message } = AApp.useApp()
   return useMutation({
-    mutationFn: (data: UserSubmitDto) => usersAPI.submit(data),
+    mutationFn: (data: UserSubmitDto) => (data.id ? usersAPI.update(data) : usersAPI.submit(data)),
     onSuccess: (_, variables) => {
       message.success(t('OPERATION.SUCCESS'))
       if (variables.id) {

@@ -1,7 +1,8 @@
 import type HttpRequest from '@raipiot-2f/axios'
-import { FormatUtils } from '@raipiot-infra/utils'
+import { DateUtils } from '@raipiot-infra/utils'
 
 import { BaseAPI } from '../../base'
+import { arrayFieldToString, stringToArrayFieldByKeys } from '../../util'
 import type {
   UpdatePasswordDto,
   UserBriefListDto,
@@ -50,7 +51,15 @@ export class UsersAPI extends BaseAPI {
    * 详情
    */
   async detail(id: string, signal?: AbortSignal) {
-    return this.httpRequest.get<UserVo>(`${this.#API_PREFIX}/detail`, { id }, { signal })
+    const rawData = await this.httpRequest.get<UserVo>(
+      `${this.#API_PREFIX}/detail`,
+      { id },
+      { signal }
+    )
+    const result = stringToArrayFieldByKeys(rawData, ['roleId', 'deptId', 'postId'], {
+      filter: (v) => v !== ''
+    })
+    return result
   }
 
   /**
@@ -85,14 +94,16 @@ export class UsersAPI extends BaseAPI {
    * 修改
    */
   async update(data: UserSubmitDto) {
-    return this.httpRequest.post(`${this.#API_PREFIX}/update`, data)
+    const newObject = arrayFieldToString(data)
+    newObject.birthday = DateUtils.dayjs(data.birthday).format('YYYY-MM-DD HH:mm:ss')
+    return this.httpRequest.post(`${this.#API_PREFIX}/update`, newObject)
   }
 
   /**
    * 提交
    */
   async submit(data: UserSubmitDto) {
-    const newObject = FormatUtils.translateSimpleObjectWithArray(data)
+    const newObject = arrayFieldToString(data)
     return this.httpRequest.post(`${this.#API_PREFIX}/submit`, newObject)
   }
 

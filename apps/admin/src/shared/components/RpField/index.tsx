@@ -1,3 +1,6 @@
+import { isEmpty } from 'lodash-es'
+import type { ReactNode } from 'react'
+
 import type { RpDateProps } from '../RpWithDate'
 import rpWithDate from '../RpWithDate'
 import type { RpLinkProps } from '../RpWithLink'
@@ -21,6 +24,7 @@ export interface RpFieldProps
   valueProps?: React.HTMLAttributes<HTMLElement>
   copyable?: boolean
   booleanValue?: boolean
+  defaultValue?: ReactNode
 }
 const RpField = rpWithSkeleton<RpFieldProps>(
   rpWithDate(
@@ -34,6 +38,7 @@ const RpField = rpWithSkeleton<RpFieldProps>(
             valueProps = {},
             copyable = false,
             booleanValue,
+            defaultValue = '-',
             ..._
           }: RpFieldProps) => {
             const { t } = useTranslation()
@@ -61,7 +66,9 @@ const RpField = rpWithSkeleton<RpFieldProps>(
                       }
                     }
                   },
-                  isBooleanValue ? booleanString : formatter(value)
+                  isBooleanValue
+                    ? booleanString
+                    : formatter(typeof value === 'string' && isEmpty(value) ? defaultValue : value)
                 )}
               </>
             )

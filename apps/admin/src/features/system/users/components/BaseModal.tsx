@@ -1,3 +1,6 @@
+import { Sex } from '@raipiot-2f/api'
+import { isEmpty } from 'lodash-es'
+
 import { useBaseModalContext } from '../context'
 import { useSubmitMutation } from '../mutations'
 import type { UserSubmitFormModel } from '../types'
@@ -32,19 +35,25 @@ export function BaseModal() {
         // 表单配置项
         items={formItems}
         // 表单模式
-        mode={modal?.type}
+        mode={modal.type}
         // 表单初始值
-        // initialValues={{}}
+        initialValues={
+          {
+            sex: Sex.UNKNOWN
+          } as UserSubmitFormModel
+        }
         // 表单提交
         onFinish={async () => {
           const values = form.getFieldsValue(true)
-          await mutateAsync(
-            {
-              ...values,
-              isSealed: FormatUtils.toDbNum(values.isSealed)
-            },
-            { onSuccess: modal?.close }
-          )
+          const result = structuredClone({
+            ...values,
+            birthday: isEmpty(values.birthday)
+              ? undefined
+              : values.birthday?.format('YYYY-MM-DD HH:mm:ss')
+          })
+          await mutateAsync(result, {
+            onSuccess: modal.close
+          })
         }}
       />
     </RpModal>

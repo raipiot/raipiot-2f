@@ -1,18 +1,75 @@
 import type { UserVo } from '@raipiot-2f/api'
 import { isMobile } from 'react-device-detect'
 
+import { postSelectQueryOptions } from '../../posts'
 import { useBaseModalContext, usePlatformModalContext } from '../context'
 import { useRemoveMutation } from '../mutations'
 import { detailQueryOptions, platformDetailQueryOptions } from '../queries'
 
 export const useColumns = () => {
-  const baseModalContext = useBaseModalContext()
+  const { modal, form, setDynamicTreeData, setMode } = useBaseModalContext()
   const platformModalContext = usePlatformModalContext()
 
   const { t } = useTranslation('SYSTEM/USERS')
   const { createActions, createColumns } = useTableCreator<UserVo>()
 
   const { mutateAsync, isPending } = useRemoveMutation()
+
+  const prefetchQueryData = (id: string, tenantId: string) =>
+    Promise.all([
+      queryClient.prefetchQuery(detailQueryOptions(id)),
+      queryClient.prefetchQuery(Depts.treeQueryOptions(tenantId)),
+      queryClient.prefetchQuery(Roles.treeQueryOptions(tenantId)),
+      queryClient.prefetchQuery(postSelectQueryOptions(tenantId!))
+    ])
+
+  const onEdit = async (record: UserVo) => {
+    setMode('edit')
+    const newTreeData = await Promise.all([
+      queryClient.ensureQueryData(Depts.treeQueryOptions(record.tenantId)),
+      queryClient.ensureQueryData(postSelectQueryOptions(record.tenantId!)),
+      queryClient.ensureQueryData(Roles.treeQueryOptions(record.tenantId))
+    ])
+    setDynamicTreeData(...newTreeData)
+    modal.openEdit()
+    modal.setMeta(record.id)
+    const detail = await queryClient.ensureQueryData(detailQueryOptions(record.id!))
+    const newFormValue = {
+      ...detail,
+      birthday:
+        detail.birthday && DateUtils.dayjs(detail.birthday)?.isValid()
+          ? DateUtils.dayjs(detail.birthday)
+          : undefined,
+      password: undefined,
+      password2: undefined
+    }
+    form.setFieldsValue(newFormValue)
+  }
+
+  const onRead = async (record: UserVo) => {
+    const newTreeData = await Promise.all([
+      queryClient.ensureQueryData(Depts.treeQueryOptions(record.tenantId)),
+      queryClient.ensureQueryData(postSelectQueryOptions(record.tenantId!)),
+      queryClient.ensureQueryData(Roles.treeQueryOptions(record.tenantId))
+    ])
+    setDynamicTreeData(...newTreeData)
+    setMode('view')
+    modal.setType('read')
+    modal.setMeta(record.id)
+    const detail = await queryClient.ensureQueryData(detailQueryOptions(record.id!))
+    const newFormValue = {
+      ...detail,
+      birthday:
+        detail.birthday && DateUtils.dayjs(detail.birthday)?.isValid()
+          ? DateUtils.dayjs(detail.birthday)
+          : undefined,
+      password: undefined,
+      password2: undefined
+    }
+    modal.openRead()
+    console.log('new form value:', newFormValue)
+    form.setFieldsValue(newFormValue)
+  }
 
   return {
     columns: createColumns([
@@ -65,41 +122,29 @@ export const useColumns = () => {
             <RpButton
               variant="view"
               size="small"
-              onMouseEnter={() => queryClient.prefetchQuery(detailQueryOptions(record.id!))}
-              onClick={async () => {
-                const { modal, form } = baseModalContext
-                modal.openRead()
-                modal.setMeta(record.id)
-                form.setFieldsValue(
-                  await queryClient.ensureQueryData(detailQueryOptions(record.id!))
-                )
-              }}
+              onMouseEnter={() => prefetchQueryData(record.id!, record.tenantId!)}
+              onClick={() => onRead(record)}
             />
             <RpButton
               variant="edit"
               size="small"
-              onMouseEnter={() => queryClient.prefetchQuery(detailQueryOptions(record.id!))}
-              onClick={async () => {
-                const { modal, form } = baseModalContext
-                modal.openEdit()
-                modal.setMeta(record.id)
-                form.setFieldsValue(
-                  await queryClient.ensureQueryData(detailQueryOptions(record.id!))
-                )
-              }}
+              onMouseEnter={() => prefetchQueryData(record.id!, record.tenantId!)}
+              onClick={() => onEdit(record)}
             />
             <RpButton
               variant="config"
               size="small"
-              onMouseEnter={() => queryClient.prefetchQuery(platformDetailQueryOptions(record.id!))}
+              onMouseEnter={() => {
+                // 预加载数据
+                queryClient.prefetchQuery(platformDetailQueryOptions(record.id!))
+              }}
               onClick={async () => {
-                const { modal, form } = platformModalContext
-                modal.openEdit()
-                modal.setMeta(record.id)
+                platformModalContext.modal.openEdit()
+                platformModalContext.modal.setMeta(record.id)
                 const { userType, userExt } = await queryClient.ensureQueryData(
                   platformDetailQueryOptions(record.id!)
                 )
-                form.setFieldsValue({
+                platformModalContext.form.setFieldsValue({
                   userId: record.id!,
                   userType,
                   userExt

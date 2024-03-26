@@ -1,3 +1,4 @@
+import type { DeptTreeVo, PostVo, RoleVo } from '@raipiot-2f/api'
 import type { FormInstance } from 'antd'
 
 import type { RpBasicFormItemProps } from '@/shared/components/RpFormItem/types'
@@ -9,6 +10,12 @@ export interface BaseModalContextProps {
   modal: UseModal<string>
   form: FormInstance
   formItems: RpBasicFormItemProps<UserSubmitFormModel>[]
+  setDynamicTreeData: (
+    newDeptData: DeptTreeVo[],
+    newPositionData: PostVo[],
+    newRoleData: RoleVo[]
+  ) => void
+  setMode: (mode: 'create' | 'edit' | 'view') => void
 }
 
 export interface PlatformModalContextProps {

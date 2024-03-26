@@ -111,6 +111,7 @@ declare global {
   const MaterialSymbolsExitToAppSharp: typeof import('~icons/material-symbols/exit-to-app-sharp.jsx')['default']
   const MaterialSymbolsExpandContentRounded: typeof import('~icons/material-symbols/expand-content-rounded.jsx')['default']
   const MaterialSymbolsFiberNewSharp: typeof import('~icons/material-symbols/fiber-new-sharp.jsx')['default']
+  const MaterialSymbolsFormatIndentDecrease: typeof import('~icons/material-symbols/format-indent-decrease.jsx')['default']
   const MaterialSymbolsFramePersonMic: typeof import('~icons/material-symbols/frame-person-mic.jsx')['default']
   const MaterialSymbolsFullscreenExitRounded: typeof import('~icons/material-symbols/fullscreen-exit-rounded.jsx')['default']
   const MaterialSymbolsFullscreenRounded: typeof import('~icons/material-symbols/fullscreen-rounded.jsx')['default']

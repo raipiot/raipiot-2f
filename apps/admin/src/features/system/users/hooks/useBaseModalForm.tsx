@@ -1,11 +1,11 @@
-import type { DeptTreeVo, PostVo, RoleVo } from '@raipiot-2f/api'
+import { type DeptTreeVo, type PostVo, type RoleVo } from '@raipiot-2f/api'
 
 import { postSelectQueryOptions } from '../../posts'
 import { tenantsSelectQueryOptions } from '../../tenants'
 import type { UserSubmitFormModel } from '../types'
 
 export const useBaseModalForm = () => {
-  const { t } = useTranslation(['SYSTEM/USERS', 'COMMON', 'AUTH'])
+  const { t } = useTranslation(['SYSTEM/USERS', 'COMMON', 'AUTH', 'VALIDATION'])
   const { createModalForm } = useFormCreator<UserSubmitFormModel>()
   const [modalForm] = AForm.useForm<UserSubmitFormModel>()
   const { data: tenantData } = useSuspenseQuery(tenantsSelectQueryOptions())
@@ -15,8 +15,16 @@ export const useBaseModalForm = () => {
   const [positionData, setPositionData] = useState<PostVo[]>([])
   const [roleData, setRoleData] = useState<RoleVo[]>([])
   const [loading, setLoading] = useState(false)
+  const [mode, setMode] = useState<'create' | 'edit' | 'view'>('create')
 
-  // console.log('deptData data:', deptData)
+  const setDynamicTreeData = useCallback(
+    (newDeptData: DeptTreeVo[], newPositionData: PostVo[], newRoleData: RoleVo[]) => {
+      setDeptData(newDeptData)
+      setPositionData(newPositionData)
+      setRoleData(newRoleData)
+    },
+    []
+  )
 
   return {
     modalForm,
@@ -98,7 +106,8 @@ export const useBaseModalForm = () => {
                     name: 'password',
                     label: t('AUTH:LOGIN.PASSWORD'),
                     rules: [{ required: true }]
-                  }
+                  },
+                  hidden: mode !== 'create'
                 },
                 {
                   type: 'input',
@@ -109,8 +118,20 @@ export const useBaseModalForm = () => {
                   formItemProps: {
                     name: 'password2',
                     label: t('AUTH:CONFIRM.PASSWORD'),
-                    rules: [{ required: true }]
-                  }
+                    rules: [
+                      { required: true },
+                      {
+                        validator: async (_, value) => {
+                          if (value && value !== modalForm.getFieldValue('password')) {
+                            return Promise.reject(t('VALIDATION:CONFIRM.PASSWORD.NOT.MATCH'))
+                          }
+                          return Promise.resolve()
+                        }
+                      }
+                    ],
+                    dependencies: ['password']
+                  },
+                  hidden: mode !== 'create'
                 }
               ]
             },
@@ -150,17 +171,27 @@ export const useBaseModalForm = () => {
                   type: 'input',
                   formItemProps: {
                     name: 'phone',
-                    label: t('PHONE.NUMBER')
+                    label: t('PHONE.NUMBER'),
+                    rules: [
+                      {
+                        pattern: /^1[3456789]\d{9}$/,
+                        message: t('PHONE.NUMBER')
+                      }
+                    ]
                   },
-                  inputProps: {
-                    type: 'number'
-                  }
+                  inputProps: {}
                 },
                 {
                   type: 'input',
                   formItemProps: {
                     name: 'email',
-                    label: t('EMAIL.ADDRESS')
+                    label: t('EMAIL.ADDRESS'),
+                    rules: [
+                      {
+                        type: 'email',
+                        message: t('EMAIL.ADDRESS')
+                      }
+                    ]
                   },
                   inputProps: {
                     type: 'email'
@@ -210,7 +241,8 @@ export const useBaseModalForm = () => {
                   treeSelectProps: {
                     treeData: roleData,
                     multiple: true,
-                    loading
+                    loading,
+                    fieldNames: { value: 'id', label: 'title' }
                   }
                 },
                 {
@@ -223,7 +255,8 @@ export const useBaseModalForm = () => {
                   treeSelectProps: {
                     treeData: deptData,
                     multiple: true,
-                    loading
+                    loading,
+                    fieldNames: { value: 'id', label: 'title' }
                   }
                 },
                 {
@@ -242,10 +275,13 @@ export const useBaseModalForm = () => {
                 }
               ]
             }
-          ]
+          ],
+          mode: mode === 'view' ? 'read' : 'edit'
         },
         colProps: { span: 24 }
       }
-    ])
+    ]),
+    setDynamicTreeData,
+    setMode
   }
 }
