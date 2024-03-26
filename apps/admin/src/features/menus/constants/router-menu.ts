@@ -40,7 +40,8 @@ export const routerMenuMap = new Map<ModuleMenuCode, () => MenuItem[]>([
           getRouteMeta('/srm/resource-pool-plans')
         ]
       },
-      getRouteMeta('/srm/questionnaires')
+      getRouteMeta('/srm/questionnaires'),
+      getRouteMeta('/srm/sample-sheets')
     ]
   ],
   [ModuleMenuCode.SOURCE, () => []],

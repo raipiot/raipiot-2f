@@ -42,6 +42,8 @@ import { Route as BaseSystemPermsIdRouteImport } from './../../routes/_base/syst
 import { Route as BaseSystemDictsIdRouteImport } from './../../routes/_base/system/dicts/$id/route'
 import { Route as BaseSystemBizDictsIdRouteImport } from './../../routes/_base/system/biz-dicts/$id/route'
 import { Route as BaseSrmSupplierEntryCreateRouteImport } from './../../routes/_base/srm/supplier-entry/create/route'
+import { Route as BaseSrmSampleSheetsCreateRouteImport } from './../../routes/_base/srm/sample-sheets/create/route'
+import { Route as BaseSrmSampleSheetsIdRouteImport } from './../../routes/_base/srm/sample-sheets/$id/route'
 import { Route as BaseSrmResourcePoolScopesCreateRouteImport } from './../../routes/_base/srm/resource-pool-scopes/create/route'
 import { Route as BaseSrmResourcePoolScopesIdRouteImport } from './../../routes/_base/srm/resource-pool-scopes/$id/route'
 import { Route as BaseSrmQuestionnairesCreateRouteImport } from './../../routes/_base/srm/questionnaires/create/route'
@@ -54,6 +56,7 @@ import { Route as BaseSystemDictsIndexRouteImport } from './../../routes/_base/s
 import { Route as BaseSystemBizDictsIndexRouteImport } from './../../routes/_base/system/biz-dicts/index/route'
 import { Route as BaseSrmSuppliersIndexRouteImport } from './../../routes/_base/srm/suppliers/index/route'
 import { Route as BaseSrmSupplierEntryIndexRouteImport } from './../../routes/_base/srm/supplier-entry/index/route'
+import { Route as BaseSrmSampleSheetsIndexRouteImport } from './../../routes/_base/srm/sample-sheets/index/route'
 import { Route as BaseSrmResourcePoolScopesIndexRouteImport } from './../../routes/_base/srm/resource-pool-scopes/index/route'
 import { Route as BaseSrmResourcePoolPlansIndexRouteImport } from './../../routes/_base/srm/resource-pool-plans/index/route'
 import { Route as BaseSrmQuestionnairesIndexRouteImport } from './../../routes/_base/srm/questionnaires/index/route'
@@ -304,6 +307,27 @@ const BaseSrmSupplierEntryCreateRouteRoute =
     ),
   )
 
+const BaseSrmSampleSheetsCreateRouteRoute =
+  BaseSrmSampleSheetsCreateRouteImport.update({
+    path: '/srm/sample-sheets/create',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base/srm/sample-sheets/create/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const BaseSrmSampleSheetsIdRouteRoute = BaseSrmSampleSheetsIdRouteImport.update(
+  {
+    path: '/srm/sample-sheets/$id',
+    getParentRoute: () => BaseRouteRoute,
+  } as any,
+).lazy(() =>
+  import('./../../routes/_base/srm/sample-sheets/$id/route.lazy').then(
+    (d) => d.Route,
+  ),
+)
+
 const BaseSrmResourcePoolScopesCreateRouteRoute =
   BaseSrmResourcePoolScopesCreateRouteImport.update({
     path: '/srm/resource-pool-scopes/create',
@@ -419,6 +443,16 @@ const BaseSrmSupplierEntryIndexRouteRoute =
     getParentRoute: () => BaseRouteRoute,
   } as any).lazy(() =>
     import('./../../routes/_base/srm/supplier-entry/index/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const BaseSrmSampleSheetsIndexRouteRoute =
+  BaseSrmSampleSheetsIndexRouteImport.update({
+    path: '/srm/sample-sheets/',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base/srm/sample-sheets/index/route.lazy').then(
       (d) => d.Route,
     ),
   )
@@ -641,6 +675,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSrmResourcePoolScopesIndexRouteImport
       parentRoute: typeof BaseRouteImport
     }
+    '/_base/srm/sample-sheets/': {
+      preLoaderRoute: typeof BaseSrmSampleSheetsIndexRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
     '/_base/srm/supplier-entry/': {
       preLoaderRoute: typeof BaseSrmSupplierEntryIndexRouteImport
       parentRoute: typeof BaseRouteImport
@@ -687,6 +725,14 @@ declare module '@tanstack/react-router' {
     }
     '/_base/srm/resource-pool-scopes/create': {
       preLoaderRoute: typeof BaseSrmResourcePoolScopesCreateRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/srm/sample-sheets/$id': {
+      preLoaderRoute: typeof BaseSrmSampleSheetsIdRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
+    '/_base/srm/sample-sheets/create': {
+      preLoaderRoute: typeof BaseSrmSampleSheetsCreateRouteImport
       parentRoute: typeof BaseRouteImport
     }
     '/_base/srm/supplier-entry/create': {
@@ -759,6 +805,7 @@ export const routeTree = rootRoute.addChildren([
     BaseSrmQuestionnairesIndexRouteRoute,
     BaseSrmResourcePoolPlansIndexRouteRoute,
     BaseSrmResourcePoolScopesIndexRouteRoute,
+    BaseSrmSampleSheetsIndexRouteRoute,
     BaseSrmSupplierEntryIndexRouteRoute,
     BaseSrmSuppliersIndexRouteRoute,
     BaseSystemBizDictsIndexRouteRoute,
@@ -771,6 +818,8 @@ export const routeTree = rootRoute.addChildren([
       BaseSrmResourcePoolScopesIdEditRouteRoute,
     ]),
     BaseSrmResourcePoolScopesCreateRouteRoute,
+    BaseSrmSampleSheetsIdRouteRoute,
+    BaseSrmSampleSheetsCreateRouteRoute,
     BaseSrmSupplierEntryCreateRouteRoute,
     BaseSystemBizDictsIdRouteRoute,
     BaseSystemDictsIdRouteRoute,
