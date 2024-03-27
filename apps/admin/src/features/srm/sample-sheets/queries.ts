@@ -1,6 +1,8 @@
-import type { SampleSheetsPageDto } from '@raipiot-2f/api'
+import type { SampleSheetsByOriginPageDto, SampleSheetsPageDto } from '@raipiot-2f/api'
 
-import { sampleSheetQK, sampleSheetsQK } from './query-keys'
+import { sampleSheetsAPI } from '@/shared/api'
+
+import { sampleSheetQK, sampleSheetsOriginListQK, sampleSheetsQK } from './query-keys'
 
 export const queries = {
   listOP: (params: SampleSheetsPageDto) =>
@@ -13,5 +15,11 @@ export const queries = {
     queryOptions({
       queryKey: sampleSheetQK(id),
       queryFn: ({ signal }) => sampleSheetsAPI.detail(id, signal)
+    }),
+  originListOP: (params: SampleSheetsByOriginPageDto) =>
+    queryOptions({
+      queryKey: sampleSheetsOriginListQK(params),
+      queryFn: ({ signal }) => sampleSheetsAPI.listByOrigin(params, signal),
+      placeholderData: keepPreviousData
     })
 }

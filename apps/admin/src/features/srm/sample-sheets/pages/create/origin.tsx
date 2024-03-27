@@ -1,90 +1,60 @@
 import type {
   OmitCurrentAndSize,
-  SampleSheetsPageDto,
-  SampleSheetsVo,
-  SampleSheetVo
+  SampleSheetsByOriginPageDto,
+  SampleSheetsByOriginVo,
+  SampleSheetsPageDto
 } from '@raipiot-2f/api'
 
 import { usePublishMutation, useRemoveMutation } from '../../mutations'
 import { queries } from '../../queries'
 import Operate from './components/Operate'
 
-export function CreatePage() {
+export function CreateByOriginPage() {
   // Search Form
   const [searchForm] = AForm.useForm()
-  const { createSearchForm } = useFormCreator<OmitCurrentAndSize<SampleSheetsPageDto>>()
+  const { createSearchForm } = useFormCreator<OmitCurrentAndSize<SampleSheetsByOriginPageDto>>()
   const searchFormItems = createSearchForm([
     {
-      type: 'range-picker',
-      formItemProps: {
-        label: '日期范围',
-        name: 'dateRange'
-      },
-      rangePickerProps: {
-        allowClear: true
-      }
-    },
-    {
       type: 'input',
       formItemProps: {
-        label: '供货商',
-        name: 'supplier'
-      },
-      inputProps: {
-        placeholder: '供货商编码、名称',
-        allowClear: true
-      }
-    },
-    {
-      type: 'input',
-      formItemProps: {
-        label: '单号',
+        label: '寻源单号',
         name: 'orderNo'
       },
       inputProps: {
-        placeholder: '单号',
+        placeholder: '请输入寻源单号',
         allowClear: true
       }
     },
     {
       type: 'input',
       formItemProps: {
-        label: '客户',
-        name: 'customer'
+        label: '供应商名称',
+        name: 'supplierName'
       },
       inputProps: {
-        placeholder: '客户编码、名称',
+        placeholder: '请输入供应商名称',
+        allowClear: true
+      }
+    },
+    {
+      type: 'input',
+      formItemProps: {
+        label: '物料名称',
+        name: 'materialName'
+      },
+      inputProps: {
+        placeholder: '请输入物料名称',
         allowClear: true
       }
     }
   ])
 
   // Table Columns
-  const { createColumns } = useTableCreator<SampleSheetVo>()
+  const { createColumns } = useTableCreator<SampleSheetsByOriginVo>()
   const columns = createColumns([
     {
-      dataIndex: 'orderNo',
-      title: '申请单号',
-      width: 150,
-      custom: (value, record) => ({
-        value,
-        link: {
-          to: '/srm/sample-sheets/sheet/$id',
-          params: { id: record?.id }
-        }
-      })
-    },
-    {
-      dataIndex: 'status',
-      title: '状态'
-    },
-    {
-      title: '发起方',
-      dataIndex: 'initiator'
-    },
-    {
-      title: '库存组织名称',
-      dataIndex: 'inventoryOrganization'
+      title: '寻源单号',
+      dataIndex: 'orderNo'
     },
     {
       title: '供应商编码',
@@ -95,73 +65,69 @@ export function CreatePage() {
       dataIndex: 'supplierName'
     },
     {
-      title: '公司名称',
-      dataIndex: 'companyName'
+      title: '是否暂挂',
+      dataIndex: 'isHangUp',
+      custom: (value) => ({
+        booleanValue: value
+      })
     },
     {
-      title: '业务实体名称',
-      dataIndex: 'businessEntityName'
+      title: 'ERP供应商编码',
+      dataIndex: 'erpSupplierCode'
     },
     {
-      title: '供应商类型',
-      dataIndex: 'supplierType'
+      title: '物料描述',
+      dataIndex: 'materialDescription'
     },
     {
-      title: '原厂名称',
-      dataIndex: 'originalFactoryName'
+      title: '物料编码',
+      dataIndex: 'materialCode'
     },
     {
-      title: '送样类型',
-      dataIndex: 'sampleType'
+      title: '物料分类',
+      dataIndex: 'materialClassification'
     },
     {
-      title: '申请人',
-      dataIndex: 'applicant'
+      title: '币种',
+      dataIndex: 'currency'
     },
     {
-      title: '接样人',
-      dataIndex: 'sampleReceiver'
+      title: '数量',
+      dataIndex: 'quantity'
     },
     {
-      title: '接样人电话',
-      dataIndex: 'sampleReceiverPhone'
+      title: '税率',
+      dataIndex: 'taxRate'
     },
     {
-      title: '送样地址',
-      dataIndex: 'sampleAddress'
+      title: '单价',
+      dataIndex: 'unitPrice'
     },
     {
-      title: '送样人',
-      dataIndex: 'sampleSender'
+      title: '交货日期',
+      dataIndex: 'deliveryDate'
     },
     {
-      title: '送样人电话',
-      dataIndex: 'sampleSenderPhone'
+      title: '公司',
+      dataIndex: 'company'
     },
     {
-      title: '送样方式',
-      dataIndex: 'sampleMethod'
+      title: '业务实体',
+      dataIndex: 'businessEntity'
     },
     {
-      title: '快递单号',
-      dataIndex: 'expressNo'
+      title: '采购组织',
+      dataIndex: 'purchasingOrganization'
     },
     {
-      title: '预计送达时间',
-      dataIndex: 'estimatedArrivalTime'
-    },
-    {
-      title: '紧急程度',
-      dataIndex: 'urgency'
-    },
-    {
-      title: '创建时间',
-      dataIndex: 'createTime'
+      title: '库存组织',
+      dataIndex: 'inventoryOrganization'
     }
   ])
 
   // selection
-  const { rowSelection, clearSelectedRowKeys, selectedRowKeys } = useRowSelection<SampleSheetVo>()
+  const { rowSelection, clearSelectedRowKeys, selectedRowKeys } =
+    useRowSelection<SampleSheetsByOriginVo>()
 
   // Delete mutation
   const { mutateAsync, isPending: isRemovePending } = useRemoveMutation()
@@ -170,13 +136,13 @@ export function CreatePage() {
 
   // Table Pagination
   const { pageParams, pagination, setPageParams, isPending, startTransition } =
-    usePagination<SampleSheetsVo>()
+    usePagination<SampleSheetsPageDto>()
 
   // Table data
   const {
     data: { records, total },
     refetch
-  } = useSuspenseQuery(queries.listOP(PageUtils.mergeParams(pageParams)))
+  } = useSuspenseQuery(queries.originListOP(PageUtils.mergeParams(pageParams)))
 
   // Clear selected row keys
   useEffect(clearSelectedRowKeys, [isPending, clearSelectedRowKeys])
@@ -202,8 +168,8 @@ export function CreatePage() {
         }
       />
 
-      <RpBasicTable<SampleSheetVo>
-        rowKey={(record) => record.id}
+      <RpBasicTable<SampleSheetsByOriginVo>
+        rowKey={(record) => record.orderNo}
         rowSelection={rowSelection}
         selectedRowKeys={selectedRowKeys}
         onRefresh={() =>

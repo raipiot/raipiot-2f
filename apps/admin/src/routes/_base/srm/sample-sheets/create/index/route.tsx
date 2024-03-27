@@ -1,5 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 
+import { SampleSheets } from '@/features'
+
 export const Route = createFileRoute('/_base/srm/sample-sheets/create/')({
   staticData: {
     title: '创建送样表',

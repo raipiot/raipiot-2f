@@ -12,6 +12,15 @@ export interface SampleSheetsPageDto extends PageDto {
   customer?: string
 }
 
+export interface SampleSheetsByOriginPageDto {
+  // 单号
+  orderNo?: string
+  // 供应商名称
+  supplierName?: string
+  // 物料名称
+  materialName?: string
+}
+
 // 手动创建提交的 dto
 export interface SampleSheetsSubmitDto {
   /**

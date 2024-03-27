@@ -53,3 +53,44 @@ export interface SampleSheetVo extends SampleSheetsSubmitDto {
 
 // 分页数据 Vo
 export type SampleSheetsVo = Page<SampleSheetsVo>
+
+// 寻源数据 TODO: 暂时不做
+export interface SampleSheetsByOriginVo {
+  // 单号
+  orderNo: string
+  // 供应商名称
+  supplierName: string
+  // 供应商编码
+  supplierCode: string
+  // 是否暂时挂起
+  isHangUp: boolean
+  // ERP 供应商编码
+  erpSupplierCode: string
+  // 物料描述
+  materialDescription: string
+  // 物料编码
+  materialCode: string
+  // 物料分类
+  materialClassification: string
+  // 币种
+  currency: string
+  // 数量
+  quantity: number
+  // 税率
+  taxRate: number
+  // 单价
+  unitPrice: number
+  // 交货日期
+  deliveryDate: string
+  // 公司
+  company: string
+  // 业务实体
+  businessEntity: string
+  // 采购组织
+  purchasingOrganization: string
+  // 库存组织
+  inventoryOrganization: string
+}
+
+// 分页数据 Vo
+export type SampleSheetsByOriginPageVo = Page<SampleSheetsByOriginVo>

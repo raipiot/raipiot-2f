@@ -198,6 +198,7 @@ declare global {
   const RpWithTag: typeof import('../src/shared/components/RpWithTag/index')['default']
   const RpWithTooltip: typeof import('../src/shared/components/RpWithTooltip/index')['default']
   const SampleSheets: typeof import('../src/features/srm/index')['SampleSheets']
+  const SampleSheetsAPI: typeof import('@raipiot-2f/api')['SampleSheetsAPI']
   const StorageConfig: typeof import('@raipiot-infra/config')['StorageConfig']
   const SupplierBlackList: typeof import('../src/features/srm/index')['SupplierBlackList']
   const SupplierEntry: typeof import('../src/features/srm/index')['SupplierEntry']
