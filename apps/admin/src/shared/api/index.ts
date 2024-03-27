@@ -1,4 +1,4 @@
-import { ScopesAPI } from '@raipiot-2f/api'
+import { SampleSheetsAPI, ScopesAPI } from '@raipiot-2f/api'
 import HttpRequest from '@raipiot-2f/axios'
 
 // API 实例对象注册端点
@@ -27,3 +27,4 @@ export const scopesAPI = new ScopesAPI(httpRequest)
 
 export const portalAPI = new PortalAPI(httpRequest)
 export const dashboardAPI = new DashboardAPI(httpRequest)
+export const sampleSheetsAPI = new SampleSheetsAPI(httpRequest)

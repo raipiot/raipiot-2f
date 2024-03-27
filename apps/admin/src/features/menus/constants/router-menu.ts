@@ -40,7 +40,18 @@ export const routerMenuMap = new Map<ModuleMenuCode, () => MenuItem[]>([
           getRouteMeta('/srm/resource-pool-plans')
         ]
       },
-      getRouteMeta('/srm/questionnaires')
+      getRouteMeta('/srm/questionnaires'),
+      {
+        label: '送样表管理',
+        key: '/srm/sample-sheets',
+        children: [
+          getRouteMeta('/srm/sample-sheets/create'),
+          getRouteMeta('/srm/sample-sheets/feedback'),
+          getRouteMeta('/srm/sample-sheets/confirm'),
+          getRouteMeta('/srm/sample-sheets/query/supplier'),
+          getRouteMeta('/srm/sample-sheets/query/purchaser')
+        ]
+      }
     ]
   ],
   [ModuleMenuCode.SOURCE, () => []],

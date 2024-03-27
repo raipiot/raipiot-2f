@@ -16,5 +16,6 @@
   "PortalAPI",
   "DashboardAPI",
   "DeptsAPI",
-  "RolesAPI"
+  "RolesAPI",
+  "SampleSheetsAPI"
 ]

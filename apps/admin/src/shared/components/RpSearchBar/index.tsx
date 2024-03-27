@@ -66,12 +66,7 @@ const RpSearchBar: RpSearchBarComponent = rpWithCard(
         layout="horizontal"
         form={form}
         initialValues={initialValues}
-        onFinish={(values) => {
-          // 处理搜索事件
-          if (onSearch) {
-            onSearch(values)
-          }
-        }}
+        onFinish={onSearch}
         {...formProps}
       >
         <RpRow>

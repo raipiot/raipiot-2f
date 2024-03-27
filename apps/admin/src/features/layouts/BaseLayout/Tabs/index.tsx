@@ -124,6 +124,7 @@ export default function Tabs() {
               <Link
                 className="cursor-pointer !text-inherit"
                 to={path}
+                preload={false}
               >
                 <div className="flex items-center space-x-1 text-sm">
                   <div className="mb-0.5">{icon && icon}</div>

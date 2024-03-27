@@ -19,6 +19,10 @@ export type PermCode =
   | 'srm:questionnaires:create' // 调查表创建
   | 'srm:questionnaires:write' // 调查表填写
   | 'srm:questionnaires:review' // 调查表审核
+  | 'srm:sample-sheets:create' // 送样表创建
+  | 'srm:sample-sheets:view' // 送样表详情
+  | 'srm:sample-sheets:edit' // 送样表编辑
+  | 'srm:sample-sheets:query' // 送样表查询
 
 const selector: SelectProps['options'] = [
   { label: '资源池范围：页面', value: 'srm:resource-pool-scopes' },
@@ -35,7 +39,11 @@ const selector: SelectProps['options'] = [
   { label: '调查表：详情', value: 'srm:questionnaires:view' },
   { label: '调查表：创建', value: 'srm:questionnaires:create' },
   { label: '调查表：填写', value: 'srm:questionnaires:write' },
-  { label: '调查表：审核', value: 'srm:questionnaires:review' }
+  { label: '调查表：审核', value: 'srm:questionnaires:review' },
+  { label: '送样表：创建', value: 'srm:sample-sheets:create' },
+  { label: '送样表：详情', value: 'srm:sample-sheets:view' },
+  { label: '送样表：编辑', value: 'srm:sample-sheets:edit' },
+  { label: '送样表：查询', value: 'srm:sample-sheets:query' }
 ]
 
 interface State {
