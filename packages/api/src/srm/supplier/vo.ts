@@ -646,3 +646,122 @@ export interface SupplierAttachmentVo {
    */
   subAttachmentType?: string
 }
+
+export interface SupplierIntroVo {
+  /**
+   * 审核通过时间
+   */
+  approvePassTime?: string
+  /**
+   * 创建时间
+   */
+  createdTime?: string
+  /**
+   * 创建用户 ID
+   */
+  creatorId?: number
+  /**
+   * 创建用户名
+   */
+  creatorName?: string
+  /**
+   * 主键
+   */
+  id?: string
+  /**
+   * 组织 ID
+   */
+  organizationId?: number
+  /**
+   * 申请单号
+   */
+  requestNo?: string
+  /**
+   * 状态(0-新建 1-待审核 2-审批中 3-审核驳回 4-已驳回)
+   */
+  status?: string
+  /**
+   * 更新时间
+   */
+  updatedTime?: Date
+  /**
+   * 更新用户 ID
+   */
+  updaterId?: number
+  /**
+   * 更新用户名
+   */
+  updaterName?: string
+}
+
+export type SupplierIntrosVo = Page<SupplierIntroVo>
+
+export interface SupplierIntroDetailVo {
+  /**
+   * 创建时间
+   */
+  createdTime?: Date
+  /**
+   * 创建用户 ID
+   */
+  creatorId?: string
+  /**
+   * 创建用户名
+   */
+  creatorName?: string
+  /**
+   * 主键
+   */
+  id?: string
+  /**
+   * 组织 ID
+   */
+  organizationId?: string
+  /**
+   * 引入目标基地集合
+   */
+  organizationList?: OrganizationVo[]
+  /**
+   * 申请单号
+   */
+  requestNo?: string
+  /**
+   * 状态(0-新建 1-待审核 2-审批中 3-审核驳回 4-已驳回)
+   */
+  status?: string
+  /**
+   * 引入对象集合
+   */
+  supplierList?: SupplierInfoVo[]
+  /**
+   * 更新时间
+   */
+  updatedTime?: string
+  /**
+   * 更新用户 ID
+   */
+  updaterId?: string
+  /**
+   * 更新用户名
+   */
+  updaterName?: string
+}
+
+interface OrganizationVo {
+  /**
+   * 基地编码
+   */
+  code?: string
+  /**
+   * 主键 ID
+   */
+  id?: string
+  /**
+   * 基地名称
+   */
+  name?: string
+  /**
+   * 所属资源池
+   */
+  resourcePoolName?: string
+}

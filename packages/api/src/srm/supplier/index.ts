@@ -11,7 +11,11 @@ import type {
   SupplierEntryMainInfoSubmitDto,
   SupplierEntryPageDto,
   SupplierEntrySecondaryInfoSubmitDto,
-  SupplierPageDto
+  SupplierIntroPageDto,
+  SupplierIntroUpdateDto,
+  SupplierIntroUpdateStatusDto,
+  SupplierPageDto,
+  SupplierVerifyInfoDto
 } from './dto'
 import type {
   SupplierAddressVo,
@@ -23,6 +27,9 @@ import type {
   SupplierFinanceVo,
   SupplierInfosVo,
   SupplierInfoVo,
+  SupplierIntroDetailVo,
+  SupplierIntrosVo,
+  SupplierIntroVo,
   SupplierInvoiceVo,
   SuppliersVo,
   SupplierVo
@@ -219,28 +226,55 @@ export class SuppliersAPI extends BaseAPI {
     return this.httpRequest.post(`${this.#API_PREFIX}/update-supplier-entry-status`, data)
   }
 
-  async introduceList() {
-    return mockEntity({})
+  async introduceList(params: SupplierIntroPageDto, signal?: AbortSignal) {
+    console.log('list', params)
+    return mockList<SupplierIntroVo>({
+      id: '1',
+      requestNo: 'KZ202401010005',
+      status: '新建',
+      creatorName: 'admin',
+      createdTime: '2021-09-01 00:00:00',
+      approvePassTime: '2021-09-01 00:00:00'
+    })
+    return this.httpRequest.post<SupplierIntrosVo>(
+      `${this.#API_PREFIX}/list-supplier-introduce-by-page`,
+      params,
+      {
+        signal
+      }
+    )
   }
 
-  async introduceDetail() {
-    return mockEntity({})
+  async introduceDetail(id: string, signal?: AbortSignal) {
+    return mockEntity<SupplierIntroDetailVo>({})
+    return this.httpRequest.post<SupplierIntroDetailVo>(
+      `${this.#API_PREFIX}/query-supplier-introduction`,
+      { id },
+      { signal }
+    )
   }
 
-  async createIntroduce() {
-    return mockEntity({})
+  async createIntroduce(data: SupplierEntryCreateDto) {
+    return {}
+    return this.httpRequest.post(`${this.#API_PREFIX}/save-supplier-introduction-request`, data)
   }
 
-  async editIntroduce() {
-    return mockEntity({})
+  async editIntroduce(data: SupplierIntroUpdateDto) {
+    return {}
+    return this.httpRequest.post(`${this.#API_PREFIX}/update-supplier-introduction-request`, data)
   }
 
-  async editIntroduceStatus() {
-    return mockEntity({})
+  async editIntroduceStatus(data: SupplierIntroUpdateStatusDto) {
+    return {}
+    return this.httpRequest.post(
+      `${this.#API_PREFIX}/update-supplier-introduction-request-status`,
+      data
+    )
   }
 
-  async saveVerifyInfo() {
-    return mockEntity({})
+  async saveVerifyInfo(data: SupplierVerifyInfoDto) {
+    return {}
+    return this.httpRequest.post(`${this.#API_PREFIX}/save-supplier-verify-info`, data)
   }
 
   // 统一社会信用代码是否存在

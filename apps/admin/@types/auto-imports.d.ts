@@ -198,6 +198,7 @@ declare global {
   const StorageConfig: typeof import('@raipiot-infra/config')['StorageConfig']
   const SupplierBlackList: typeof import('../src/features/srm/index')['SupplierBlackList']
   const SupplierEntry: typeof import('../src/features/srm/index')['SupplierEntry']
+  const SupplierIntroduce: typeof import('../src/features/srm/index')['SupplierIntroduce']
   const Suppliers: typeof import('../src/features/srm/index')['Suppliers']
   const SuppliersAPI: typeof import('@raipiot-2f/api')['SuppliersAPI']
   const Suspense: typeof import('react')['Suspense']
