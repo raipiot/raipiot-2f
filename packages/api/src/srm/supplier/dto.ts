@@ -1,4 +1,4 @@
-import type { PageDto } from '../..'
+import type { PageDateDto, PageDto } from '../..'
 
 export interface SupplierPageDto extends PageDto {
   queryDimension?: string
@@ -456,4 +456,37 @@ export interface SupplierEntryCooperateInfoSubmitDto {
 export interface SupplierEntryCheckSocialCodeDto {
   name?: string
   unifiedSocialCode?: string
+}
+
+export interface SupplierIntroPageDto extends PageDateDto {
+  requestNo?: string
+  creatorName?: string
+}
+
+export interface SupplierIntroCreateDto {
+  supplierIds: string[]
+  targetBaseIds: string[]
+}
+
+export interface SupplierIntroUpdateDto {
+  addSupplierIds?: string[]
+  addTargetBaseIds?: string[]
+  deleteSupplierIds?: string[]
+  deleteTargetBaseIds?: string[]
+  id: string
+}
+
+export interface SupplierIntroUpdateStatusDto {
+  id: string
+  status: string
+}
+
+export interface SupplierVerifyInfoDto {
+  supplierId: string
+  supplierVerifyList?: SupplierVerifyListItem[]
+}
+
+export interface SupplierVerifyListItem {
+  configType?: string
+  configValue?: string
 }
