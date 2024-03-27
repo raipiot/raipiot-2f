@@ -70,7 +70,7 @@ declare global {
   const Dev: typeof import('../src/features/dev/index')['Dev']
   const DictConfigs: typeof import('../src/features/system/index')['DictConfigs']
   const Dicts: typeof import('../src/features/system/index')['Dicts']
-  const FormatUtils: typeof import('../src/shared/utils/format')['FormatUtils']
+  const FormatUtils: typeof import('@raipiot-infra/utils')['FormatUtils']
   const Fragment: typeof import('react')['Fragment']
   const GlobalEnvConfig: typeof import('@raipiot-2f/config')['GlobalEnvConfig']
   const I18nUtils: typeof import('@raipiot-infra/utils')['I18nUtils']
