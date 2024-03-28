@@ -1,6 +1,6 @@
 import { InfoTabs, TodoTask, useDashboardSuspenseQuery, Wrapper } from '@/features/dashboard'
 
-export const Route = createLazyFileRoute('/_base/dashboard')({
+export const Route = createLazyFileRoute('/_base/')({
   component: Dashboard
 })
 

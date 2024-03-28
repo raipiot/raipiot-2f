@@ -1,6 +1,5 @@
 import AUTH from './auth/zh-CN.json'
 import COMMON from './common/zh-CN.json'
-import PORTAL from './portal/zh-CN.json'
 import ROUTER from './router/zh-CN.json'
 import SYSTEM_DEPTS from './system/depts/zh-CN.json'
 import SYSTEM_DICTS from './system/dicts/zh-CN.json'
@@ -30,8 +29,7 @@ const resources = {
   'SYSTEM/TENANTS': SYSTEM_TENANTS,
   'SYSTEM/DEPTS': SYSTEM_DEPTS,
   'SYSTEM/ROLES': SYSTEM_ROLES,
-  'SYSTEM/PERMS': SYSTEM_PERMS,
-  PORTAL
+  'SYSTEM/PERMS': SYSTEM_PERMS
 }
 
 export default resources
