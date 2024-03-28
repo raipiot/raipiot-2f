@@ -28,14 +28,11 @@ export interface SampleSheetsByOriginPageDto {
 
 // 手动创建提交的 dto
 export interface SampleSheetsSubmitDto {
-  /**
-   * 主键
-   */
-  id?: string
+  handmade: Handmade
 }
 
 //  手动创建送样表
-export interface SampleSheetByHandmadeDto {
+export interface Handmade {
   /**
    * 申请人联系电话
    */
@@ -116,7 +113,6 @@ export interface SampleSheetByHandmadeDto {
    * 紧急程度
    */
   urgency?: number
-  [property: string]: any
 }
 
 /**

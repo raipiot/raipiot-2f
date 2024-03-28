@@ -1,15 +1,34 @@
 import type { OmitCurrentAndSize, SampleSheetsVo, SampleSheetVo } from '@raipiot-2f/api'
 
-import { usePublishMutation, useRemoveMutation } from '../../mutations'
-import { queries } from '../../queries'
-import type { SampleSheetsSearchFormProps } from '../../types'
-import Operate from './components/Operate'
+import { usePublishMutation, useRemoveMutation } from '../mutations'
+import { queries } from '../queries'
+import { SampleSheetsQueryDimension, type SampleSheetsSearchFormProps } from '../types'
+import { Operate } from './components'
 
-export function CreatePage() {
+export function Page() {
   // Search Form
   const [searchForm] = AForm.useForm()
   const { createSearchForm } = useFormCreator<OmitCurrentAndSize<SampleSheetsSearchFormProps>>()
   const searchFormItems = createSearchForm([
+    {
+      type: 'select',
+      formItemProps: {
+        label: '查询维度',
+        name: 'queryDimension'
+      },
+      selectProps: {
+        options: [
+          {
+            label: '按单号维度查询',
+            value: SampleSheetsQueryDimension.orderNo
+          },
+          {
+            label: '按明细查询',
+            value: SampleSheetsQueryDimension.detail
+          }
+        ]
+      }
+    },
     {
       type: 'range-picker',
       formItemProps: {
@@ -184,9 +203,45 @@ export function CreatePage() {
         operate: <Operate />
       }}
     >
+      <ATabs
+        items={[
+          {
+            key: '1',
+            label: '全部'
+          },
+          {
+            key: '2',
+            label: '待提交'
+          },
+          {
+            key: '3',
+            label: '待反馈'
+          },
+          {
+            key: '4',
+            label: '供应商回退'
+          },
+          {
+            key: '5',
+            label: '待确认'
+          },
+          {
+            key: '6',
+            label: '已回退'
+          },
+          {
+            key: '7',
+            label: '已确认'
+          }
+        ]}
+      />
+
       <RpSearchBar
         formProps={{
-          form: searchForm
+          form: searchForm,
+          initialValues: {
+            queryDimension: SampleSheetsQueryDimension.orderNo
+          }
         }}
         formItems={searchFormItems}
         onSearch={(values) =>

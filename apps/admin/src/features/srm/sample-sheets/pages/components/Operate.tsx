@@ -1,4 +1,4 @@
-export default function Operate() {
+export function Operate() {
   return (
     <APopover
       trigger="click"

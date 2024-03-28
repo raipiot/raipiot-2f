@@ -33,7 +33,7 @@ function RpFormItem<T>(props: RpBasicFormItemProps<T>): React.ReactNode {
   }
 
   if (type === 'custom') {
-    return props.render ? props.render() : null
+    return props.render && props.hidden !== true ? props.render() : null
   }
 
   const { colProps, formItemProps } = props

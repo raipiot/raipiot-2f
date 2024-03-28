@@ -2,7 +2,7 @@ import type { SampleInfo } from '@raipiot-2f/api'
 import { isMobile } from 'react-device-detect'
 
 interface SampleInfoTableProps {
-  id?: string
+  id?: string | number
 }
 export default function SampleInfoTable({ id }: SampleInfoTableProps) {
   const { createActions, createColumns } = useTableCreator<SampleInfo>()

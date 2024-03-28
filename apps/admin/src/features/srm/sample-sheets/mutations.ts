@@ -1,4 +1,4 @@
-import type { SampleSheetByHandmadeDto } from '@raipiot-2f/api'
+import type { Handmade } from '@raipiot-2f/api'
 
 import { sampleSheetsAPI } from '@/shared/api'
 
@@ -35,7 +35,7 @@ export const usePublishMutation = () => {
 export const useSaveNewSheetMutation = () => {
   const { operateSuccess } = useMessage()
   return useMutation({
-    mutationFn: (data: SampleSheetByHandmadeDto) => sampleSheetsAPI.saveSheetByHandmade(data),
+    mutationFn: (data: Handmade) => sampleSheetsAPI.saveSheetByHandmade(data),
     onSuccess: () => {
       operateSuccess()
       // 明确指定刷新列表

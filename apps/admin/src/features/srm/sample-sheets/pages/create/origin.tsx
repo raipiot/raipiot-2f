@@ -7,7 +7,7 @@ import type {
 
 import { usePublishMutation, useRemoveMutation } from '../../mutations'
 import { queries } from '../../queries'
-import Operate from './components/Operate'
+import { Operate } from '../components'
 
 export function CreateByOriginPage() {
   // Search Form

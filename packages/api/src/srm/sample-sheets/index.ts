@@ -2,12 +2,12 @@ import type HttpRequest from '@raipiot-2f/axios'
 
 import { BaseAPI } from '../../base'
 import type {
-  SampleSheetByHandmadeDto,
+  Handmade,
   SampleSheetsByOriginPageDto,
   SampleSheetsPageDto,
   SampleSheetsSubmitDto
 } from './dto'
-import type { SampleSheetsVo } from './vo'
+import type { SampleSheetsVo, SampleSheetVo } from './vo'
 
 export * from './dto'
 export * from './vo'
@@ -24,13 +24,38 @@ export class SampleSheetsAPI extends BaseAPI {
    * 详情
    */
   async detail(id: string, signal?: AbortSignal) {
-    return this.httpRequest.get<SampleSheetsVo>(
-      `${this.#API_PREFIX}/detail`,
-      { id },
-      {
-        signal
-      }
-    )
+    // return this.httpRequest.get<SampleSheetsVo>(
+    //   `${this.#API_PREFIX}/detail`,
+    //   { id },
+    //   {
+    //     signal
+    //   }
+    // )
+    return {
+      id: '123456789',
+      orderNo: 'ORD123456',
+      status: 'Pending',
+      initiator: 'John Doe',
+      inventoryOrganization: 'ABC Company',
+      supplierCode: 'SUP001',
+      supplierName: 'Supplier A',
+      companyName: 'XYZ Corporation',
+      businessEntityName: 'Business Entity 1',
+      supplierType: 'Type A',
+      originalFactoryName: 'Factory X',
+      sampleType: 'Type B',
+      applicant: 'Jane Smith',
+      sampleReceiver: 'Alice Johnson',
+      sampleReceiverPhone: '123-456-7890',
+      sampleAddress: '123 Sample Street, City',
+      sampleSender: 'Bob Thompson',
+      sampleSenderPhone: '987-654-3210',
+      sampleMethod: 'Courier',
+      expressNo: 'EXP123456789',
+      estimatedArrivalTime: '2024-03-29 10:00 AM',
+      urgency: 'High',
+      createTime: '2024-03-28 02:30 PM'
+    }
   }
 
   /**
@@ -48,7 +73,33 @@ export class SampleSheetsAPI extends BaseAPI {
     // )
     return {
       total: 0,
-      records: []
+      records: [
+        {
+          id: '123456789',
+          orderNo: 'ORD123456',
+          status: 'Pending',
+          initiator: 'John Doe',
+          inventoryOrganization: 'ABC Company',
+          supplierCode: 'SUP001',
+          supplierName: 'Supplier A',
+          companyName: 'XYZ Corporation',
+          businessEntityName: 'Business Entity 1',
+          supplierType: 'Type A',
+          originalFactoryName: 'Factory X',
+          sampleType: 'Type B',
+          applicant: 'Jane Smith',
+          sampleReceiver: 'Alice Johnson',
+          sampleReceiverPhone: '123-456-7890',
+          sampleAddress: '123 Sample Street, City',
+          sampleSender: 'Bob Thompson',
+          sampleSenderPhone: '987-654-3210',
+          sampleMethod: 'Courier',
+          expressNo: 'EXP123456789',
+          estimatedArrivalTime: '2024-03-29 10:00 AM',
+          urgency: 'High',
+          createTime: '2024-03-28 02:30 PM'
+        }
+      ] as SampleSheetVo[]
     }
   }
 
@@ -151,7 +202,7 @@ export class SampleSheetsAPI extends BaseAPI {
    * 保存手动创建的送样表
    * @param data SampleSheetsSubmitDto
    */
-  async saveSheetByHandmade(data: SampleSheetByHandmadeDto) {
+  async saveSheetByHandmade(data: Handmade) {
     return this.httpRequest.post<{ id: string }>(`${this.#API_PREFIX}/save-sample-delivery`, data)
   }
 

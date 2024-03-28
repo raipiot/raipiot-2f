@@ -56,6 +56,7 @@ import { Route as BaseSystemDictsIndexRouteImport } from './../../routes/_base/s
 import { Route as BaseSystemBizDictsIndexRouteImport } from './../../routes/_base/system/biz-dicts/index/route'
 import { Route as BaseSrmSuppliersIndexRouteImport } from './../../routes/_base/srm/suppliers/index/route'
 import { Route as BaseSrmSupplierEntryIndexRouteImport } from './../../routes/_base/srm/supplier-entry/index/route'
+import { Route as BaseSrmSampleSheetsIndexRouteImport } from './../../routes/_base/srm/sample-sheets/index/route'
 import { Route as BaseSrmResourcePoolScopesIndexRouteImport } from './../../routes/_base/srm/resource-pool-scopes/index/route'
 import { Route as BaseSrmResourcePoolPlansIndexRouteImport } from './../../routes/_base/srm/resource-pool-plans/index/route'
 import { Route as BaseSrmQuestionnairesIndexRouteImport } from './../../routes/_base/srm/questionnaires/index/route'
@@ -451,6 +452,16 @@ const BaseSrmSupplierEntryIndexRouteRoute =
     ),
   )
 
+const BaseSrmSampleSheetsIndexRouteRoute =
+  BaseSrmSampleSheetsIndexRouteImport.update({
+    path: '/srm/sample-sheets/',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base/srm/sample-sheets/index/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
 const BaseSrmResourcePoolScopesIndexRouteRoute =
   BaseSrmResourcePoolScopesIndexRouteImport.update({
     path: '/srm/resource-pool-scopes/',
@@ -729,6 +740,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSrmResourcePoolScopesIndexRouteImport
       parentRoute: typeof BaseRouteImport
     }
+    '/_base/srm/sample-sheets/': {
+      preLoaderRoute: typeof BaseSrmSampleSheetsIndexRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
     '/_base/srm/supplier-entry/': {
       preLoaderRoute: typeof BaseSrmSupplierEntryIndexRouteImport
       parentRoute: typeof BaseRouteImport
@@ -879,6 +894,7 @@ export const routeTree = rootRoute.addChildren([
     BaseSrmQuestionnairesIndexRouteRoute,
     BaseSrmResourcePoolPlansIndexRouteRoute,
     BaseSrmResourcePoolScopesIndexRouteRoute,
+    BaseSrmSampleSheetsIndexRouteRoute,
     BaseSrmSupplierEntryIndexRouteRoute,
     BaseSrmSuppliersIndexRouteRoute,
     BaseSystemBizDictsIndexRouteRoute,
