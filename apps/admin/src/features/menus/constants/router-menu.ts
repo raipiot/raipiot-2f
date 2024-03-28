@@ -15,7 +15,7 @@ const getRouteMeta = (key: string, children?: MenuItem[]) => {
 
 // 兼容 i18n 所以要使用函数
 export const routerMenuMap = new Map<ModuleMenuCode, () => MenuItem[]>([
-  [ModuleMenuCode.DASHBOARD, () => [getRouteMeta('/dashboard')]],
+  [ModuleMenuCode.DASHBOARD, () => [getRouteMeta('/')]],
   [
     ModuleMenuCode.SUPPLIER,
     () => [

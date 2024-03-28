@@ -20,12 +20,11 @@ import { Route as PortalLoginRouteImport } from './../../routes/_portal/login/ro
 import { Route as PortalForgotPasswordRouteImport } from './../../routes/_portal/forgot-password/route'
 import { Route as BaseUserInfoRouteImport } from './../../routes/_base/user-info/route'
 import { Route as BaseDevRouteImport } from './../../routes/_base/dev/route'
-import { Route as BaseDashboardRouteImport } from './../../routes/_base/dashboard/route'
 import { Route as BaseChangePasswordRouteImport } from './../../routes/_base/change-password/route'
 import { Route as Base500RouteImport } from './../../routes/_base/500/route'
 import { Route as Base404RouteImport } from './../../routes/_base/404/route'
 import { Route as Base403RouteImport } from './../../routes/_base/403/route'
-import { Route as PortalIndexRouteImport } from './../../routes/_portal/index/route'
+import { Route as BaseIndexRouteImport } from './../../routes/_base/index/route'
 import { Route as BaseSystemUsersRouteImport } from './../../routes/_base/system/users/route'
 import { Route as BaseSystemTenantsRouteImport } from './../../routes/_base/system/tenants/route'
 import { Route as BaseSystemRolesRouteImport } from './../../routes/_base/system/roles/route'
@@ -130,13 +129,6 @@ const BaseDevRouteRoute = BaseDevRouteImport.update({
   getParentRoute: () => BaseRouteRoute,
 } as any)
 
-const BaseDashboardRouteRoute = BaseDashboardRouteImport.update({
-  path: '/dashboard',
-  getParentRoute: () => BaseRouteRoute,
-} as any).lazy(() =>
-  import('./../../routes/_base/dashboard/route.lazy').then((d) => d.Route),
-)
-
 const BaseChangePasswordRouteRoute = BaseChangePasswordRouteImport.update({
   path: '/change-password',
   getParentRoute: () => BaseRouteRoute,
@@ -167,11 +159,11 @@ const Base403RouteRoute = Base403RouteImport.update({
   import('./../../routes/_base/403/route.lazy').then((d) => d.Route),
 )
 
-const PortalIndexRouteRoute = PortalIndexRouteImport.update({
+const BaseIndexRouteRoute = BaseIndexRouteImport.update({
   path: '/',
-  getParentRoute: () => PortalRouteRoute,
+  getParentRoute: () => BaseRouteRoute,
 } as any).lazy(() =>
-  import('./../../routes/_portal/index/route.lazy').then((d) => d.Route),
+  import('./../../routes/_base/index/route.lazy').then((d) => d.Route),
 )
 
 const BaseSystemUsersRouteRoute = BaseSystemUsersRouteImport.update({
@@ -562,9 +554,9 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalRouteImport
       parentRoute: typeof rootRoute
     }
-    '/_portal/': {
-      preLoaderRoute: typeof PortalIndexRouteImport
-      parentRoute: typeof PortalRouteImport
+    '/_base/': {
+      preLoaderRoute: typeof BaseIndexRouteImport
+      parentRoute: typeof BaseRouteImport
     }
     '/_base/403': {
       preLoaderRoute: typeof Base403RouteImport
@@ -580,10 +572,6 @@ declare module '@tanstack/react-router' {
     }
     '/_base/change-password': {
       preLoaderRoute: typeof BaseChangePasswordRouteImport
-      parentRoute: typeof BaseRouteImport
-    }
-    '/_base/dashboard': {
-      preLoaderRoute: typeof BaseDashboardRouteImport
       parentRoute: typeof BaseRouteImport
     }
     '/_base/dev': {
@@ -778,11 +766,11 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren([
   SplatRouteRoute,
   BaseRouteRoute.addChildren([
+    BaseIndexRouteRoute,
     Base403RouteRoute,
     Base404RouteRoute,
     Base500RouteRoute,
     BaseChangePasswordRouteRoute,
-    BaseDashboardRouteRoute,
     BaseDevRouteRoute.addChildren([
       BaseDevStorybookRouteRoute,
       BaseDevTemplatesAdvancedTableRouteRoute,
@@ -829,7 +817,6 @@ export const routeTree = rootRoute.addChildren([
     BaseSrmSuppliersIdRelatedRouteRoute,
   ]),
   PortalRouteRoute.addChildren([
-    PortalIndexRouteRoute,
     PortalForgotPasswordRouteRoute,
     PortalLoginRouteRoute,
     PortalSignupRouteRoute,

@@ -3,10 +3,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import { MongooseModule } from '@nestjs/mongoose'
 
 import { MongoConfig } from './configs'
-import { PortalController } from './portal/portal.controller'
 import { RegisterController } from './register/register.controller'
 import { QuestionnairesModule } from './supplier/questionnaires/questionnaires.module'
-import { VerificationCodeController } from './verification-code/verification-code.controller'
 
 @Module({
   imports: [
@@ -26,7 +24,7 @@ import { VerificationCodeController } from './verification-code/verification-cod
     }),
     QuestionnairesModule
   ],
-  controllers: [VerificationCodeController, RegisterController, PortalController],
+  controllers: [RegisterController],
   providers: []
 })
 export class AppModule {}

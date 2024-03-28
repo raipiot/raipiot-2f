@@ -116,13 +116,15 @@ export class HttpRequest {
       async (err: AxiosError<R>) => {
         const { response, config } = err
         const { data, status } = response ?? {}
-        const { msg } = data ?? {}
+        const { msg, error_description: errorDescription } = data ?? {}
         // 处理取消的请求
         if (axios.isCancel(err)) {
           throw err
         }
         // 当前接口是否是刷新令牌接口
-        const isRefreshTokenAPI = config?.url?.includes(this.#REFRESH_API_URL)
+        const isRefreshTokenAPI =
+          config?.url?.includes(this.#REFRESH_API_URL) &&
+          config.params.grant_type === 'refresh_token'
         /**
          * 处理刷新令牌接口的认证失败
          * @description
@@ -150,7 +152,8 @@ export class HttpRequest {
          * - 500 服务器错误，跳转到 500 页面
          * - 其他状态码，提示错误信息
          */
-        const errorMessage = msg ?? errorMessageMap.get(status as number) ?? t('UNKNOWN.ERROR')
+        const errorMessage =
+          (errorDescription || msg) ?? errorMessageMap.get(status as number) ?? t('UNKNOWN.ERROR')
         const currentRefreshToken = AuthUtils.getRefreshToken()
         switch (status) {
           case StatusCode.UNAUTHORIZED: {

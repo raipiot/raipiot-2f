@@ -3,9 +3,8 @@ import { NestFactory } from '@nestjs/core'
 import { bootstrapLog } from '@raipiot-infra/bootstrap-animation'
 
 import { AppModule } from './app.module'
-import { ValidationFailedException } from './validation-failed.exception'
 
-async function bootstrap() {
+async function main() {
   const app = await NestFactory.create(AppModule, {
     cors: false
   })
@@ -18,20 +17,13 @@ async function bootstrap() {
         enableImplicitConversion: true // 允许隐式转换
       },
       stopAtFirstError: true, // 遇到错误立即停止
-      disableErrorMessages: false, // 禁用错误消息
-      exceptionFactory: (errors) => {
-        const messages = errors.map(
-          (error) =>
-            `${error.property} has wrong value ${error.value}, ${Object.values(error.constraints).join(', ')}`
-        )
-        return new ValidationFailedException(messages)
-      }
+      disableErrorMessages: false // 禁用错误消息
     })
   )
 
   await app.listen(4080)
 }
-bootstrap().then(() =>
+main().then(() =>
   bootstrapLog({
     name: 'raipiot 2F Mock Server',
     description: 'raipiot SaaS 管理系统',

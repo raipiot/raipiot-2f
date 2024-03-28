@@ -66,5 +66,11 @@ export const getModuleMenuCodeByPath = (path: string): ModuleMenuCode | undefine
       .flatMap((item) => [item, ...(hasChildren(item) ? item.children : [])])
       .find((item) => item?.key === removeTrailingSlash(path))
   )
-  return moduleMenu ? moduleMenu[0] : undefined
+  if (moduleMenu) {
+    return moduleMenu[0]
+  }
+  if (path === '/') {
+    return ModuleMenuCode.DASHBOARD
+  }
+  return undefined
 }

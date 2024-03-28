@@ -9,7 +9,7 @@ export interface VerificationCodeProps extends FormItemProps {
 }
 
 export function VerificationCode({ inputProps, getPhoneName, ...props }: VerificationCodeProps) {
-  const { t } = useTranslation(['AUTH', 'PORTAL'])
+  const { t } = useTranslation(['AUTH'])
   const { message } = AApp.useApp()
   const verificationCodeMutation = useSMSVerificationMutation()
   const [countDown, setCountDown] = useState(60)
@@ -20,7 +20,7 @@ export function VerificationCode({ inputProps, getPhoneName, ...props }: Verific
     }
     const phoneName = getPhoneName()
     if (isEmpty(phoneName)) {
-      message.error(t('PORTAL:PLEASE.ENTER.YOUR.PHONE.NUMBER'))
+      message.error('请输入手机号码')
     } else {
       let timer: NodeJS.Timeout
       verificationCodeMutation.mutate(
