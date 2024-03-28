@@ -1,4 +1,5 @@
 import type {
+  AutoCompleteProps,
   ButtonProps,
   CascaderProps,
   CheckboxProps,
@@ -23,6 +24,7 @@ import type { ReactNode } from 'react'
 
 import type { ModalType } from '@/shared/hooks/useModal'
 
+import type { DebounceSelectProps } from '../RpDebounceSelect'
 import type { RpUploadProps } from '../RpUpload'
 import type { RpFormCollapseItemProps } from './RpFormCollapseItem'
 
@@ -43,6 +45,10 @@ interface RpBaseItem {
    * 类型
    */
   mode?: ModalType
+  /**
+   * read 模式时渲染的内容
+   */
+  readModeRender?: (value?: any, record?: any, index?: number) => ReactNode
 }
 
 interface RpSearchBaseItem {
@@ -77,6 +83,11 @@ type RpCheckbox = PropsWithType<'checkbox', { checkboxProps?: CheckboxProps }>
 type RpCheckboxGroup = PropsWithType<'checkbox-group', { checkboxGroupProps?: CheckboxGroupProps }>
 type RpSwitch = PropsWithType<'switch', { switchProps?: SwitchProps }>
 type RpSelect = PropsWithType<'select', { selectProps?: SelectProps }>
+type RpDebounceSelect = PropsWithType<
+  'debounce-select',
+  { debounceSelectProps: DebounceSelectProps }
+>
+type RpAutoComplete = PropsWithType<'autoComplete', { autoCompleteProps?: AutoCompleteProps }>
 type RpTreeSelect = PropsWithType<'tree-select', { treeSelectProps?: TreeSelectProps }>
 type RpCascader = PropsWithType<'cascader', { cascaderProps?: CascaderProps }>
 type RpDatePicker = PropsWithType<'date-picker', { datePickerProps?: DatePickerProps }>
@@ -113,6 +124,7 @@ export type RpBasicFormItemProps<T> =
         | RpCheckbox
         | RpCheckboxGroup
         | RpSelect
+        | RpDebounceSelect
         | RpTreeSelect
         | RpCascader
         | RpDatePicker
@@ -125,6 +137,7 @@ export type RpBasicFormItemProps<T> =
         | RpGroup<T>
         | RpRow<T>
         | RpCustomFormItem<T>
+        | RpAutoComplete
       ))
   | RpCustom<T>
 

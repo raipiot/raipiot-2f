@@ -1,18 +1,14 @@
-import type {
-  OmitCurrentAndSize,
-  SampleSheetsPageDto,
-  SampleSheetsVo,
-  SampleSheetVo
-} from '@raipiot-2f/api'
+import type { OmitCurrentAndSize, SampleSheetsVo, SampleSheetVo } from '@raipiot-2f/api'
 
 import { usePublishMutation, useRemoveMutation } from '../../mutations'
 import { queries } from '../../queries'
+import type { SampleSheetsSearchFormProps } from '../../types'
 import Operate from './components/Operate'
 
 export function CreatePage() {
   // Search Form
   const [searchForm] = AForm.useForm()
-  const { createSearchForm } = useFormCreator<OmitCurrentAndSize<SampleSheetsPageDto>>()
+  const { createSearchForm } = useFormCreator<OmitCurrentAndSize<SampleSheetsSearchFormProps>>()
   const searchFormItems = createSearchForm([
     {
       type: 'range-picker',

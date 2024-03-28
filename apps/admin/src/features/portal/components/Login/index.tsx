@@ -20,8 +20,9 @@ export function Login(props: LoginProps) {
   const initFormValue = {
     tenant_id: '000000',
     username: 'admin',
-    password: 'admin'
+    password: '123456'
   }
+  const { message } = useMessage()
 
   const loginMutation = useLoginMutation()
   const SMSLoginMutation = useSMSLoginMutation()
@@ -39,6 +40,9 @@ export function Login(props: LoginProps) {
       onSuccess: async () => {
         await queryClient.ensureQueryData(Users.infoQueryOptions())
         props.onLoginSuccess?.()
+      },
+      onError: (error: any) => {
+        message.error(error.error_description || error.message)
       }
     }
     if (isAccountLogin) {

@@ -42,7 +42,7 @@ export const routerMenuMap = new Map<ModuleMenuCode, () => MenuItem[]>([
       },
       getRouteMeta('/srm/questionnaires'),
       {
-        label: '送样表管理',
+        label: '送样管理',
         key: '/srm/sample-sheets',
         children: [
           getRouteMeta('/srm/sample-sheets/create'),

@@ -1,7 +1,12 @@
 import type HttpRequest from '@raipiot-2f/axios'
 
 import { BaseAPI } from '../../base'
-import type { SampleSheetsByOriginPageDto, SampleSheetsPageDto, SampleSheetsSubmitDto } from './dto'
+import type {
+  SampleSheetByHandmadeDto,
+  SampleSheetsByOriginPageDto,
+  SampleSheetsPageDto,
+  SampleSheetsSubmitDto
+} from './dto'
 import type { SampleSheetsVo } from './vo'
 
 export * from './dto'
@@ -12,7 +17,7 @@ export class SampleSheetsAPI extends BaseAPI {
 
   constructor(httpRequest: HttpRequest) {
     super(httpRequest)
-    this.#API_PREFIX = `${this.BASE_API_PREFIX}#{apiPrefix}/sampleSheets`
+    this.#API_PREFIX = `${this.BASE_API_PREFIX}/sample-delivery`
   }
 
   /**
@@ -32,65 +37,18 @@ export class SampleSheetsAPI extends BaseAPI {
    * 列表
    */
   async list(params?: SampleSheetsPageDto, signal?: AbortSignal) {
-    // return this.httpRequest.get<SampleSheetsVo>(`${this.#API_PREFIX}/list`, params, {
-    //   signal
-    // })
-
-    // 基于 SampleSheetsPageDto 类型，mock 返回值数据
+    console.log(params)
+    //
+    // return this.httpRequest.post<SampleSheetsVo>(
+    //   `${this.#API_PREFIX}/list-sample-delivery-by-purchaser-by-page`,
+    //   params,
+    //   {
+    //     signal
+    //   }
+    // )
     return {
-      records: [
-        {
-          id: '1',
-          orderNo: 'orderNo',
-          status: 'status',
-          initiator: 'initiator',
-          inventoryOrganization: 'inventoryOrganization',
-          supplierCode: 'supplierCode',
-          supplierName: 'supplierName',
-          companyName: 'companyName',
-          businessEntityName: 'businessEntityName',
-          supplierType: 'supplierType',
-          originalFactoryName: 'originalFactoryName',
-          sampleType: 'sampleType',
-          applicant: 'applicant',
-          sampleReceiver: 'sampleReceiver',
-          sampleReceiverPhone: 'sampleReceiverPhone',
-          sampleAddress: 'sampleAddress',
-          sampleSender: 'sampleSender',
-          sampleSenderPhone: 'sampleSenderPhone',
-          sampleMethod: 'sampleMethod',
-          expressNo: 'expressNo',
-          estimatedArrivalTime: 'estimatedArrivalTime',
-          urgency: 'urgency',
-          createTime: 'createTime'
-        },
-        {
-          id: '2',
-          orderNo: 'orderNo2',
-          status: 'status2',
-          initiator: 'initiator2',
-          inventoryOrganization: 'inventoryOrganization2',
-          supplierCode: 'supplierCode2',
-          supplierName: 'supplierName2',
-          companyName: 'companyName2',
-          businessEntityName: 'businessEntityName2',
-          supplierType: 'supplierType2',
-          originalFactoryName: 'originalFactoryName2',
-          sampleType: 'sampleType2',
-          applicant: 'applicant2',
-          sampleReceiver: 'sampleReceiver2',
-          sampleReceiverPhone: 'sampleReceiverPhone2',
-          sampleAddress: 'sampleAddress2',
-          sampleSender: 'sampleSender',
-          sampleSenderPhone: 'sampleSenderPhone',
-          sampleMethod: 'sampleMethod',
-          expressNo: 'expressNo',
-          estimatedArrivalTime: 'estimatedArrivalTime',
-          urgency: 'urgency',
-          createTime: 'createTime'
-        }
-      ],
-      total: 1
+      total: 0,
+      records: []
     }
   }
 
@@ -187,5 +145,22 @@ export class SampleSheetsAPI extends BaseAPI {
     //     signal
     //   }
     // )
+  }
+
+  /**
+   * 保存手动创建的送样表
+   * @param data SampleSheetsSubmitDto
+   */
+  async saveSheetByHandmade(data: SampleSheetByHandmadeDto) {
+    return this.httpRequest.post<{ id: string }>(`${this.#API_PREFIX}/save-sample-delivery`, data)
+  }
+
+  /**
+   * 删除送样表
+   * @param id string
+   * @returns
+   */
+  async deleteSheet(id: string) {
+    return this.httpRequest.post(`${this.#API_PREFIX}/delete-sample-delivery`, { id })
   }
 }
