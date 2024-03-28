@@ -3,6 +3,9 @@ export const Route = createFileRoute('/_base/srm/suppliers/')({
     title: '管理工作台'
   },
   beforeLoad: async () => {
-    await queryClient.ensureQueryData(Suppliers.listQO(PageUtils.initParams()))
+    await Promise.allSettled([
+      queryClient.ensureQueryData(Suppliers.listQO(PageUtils.initParams()))
+    ])
+    queryClient.ensureQueryData(Suppliers.localListQO(PageUtils.initParams()))
   }
 })
