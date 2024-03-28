@@ -1,6 +1,5 @@
 import type { OmitCurrentAndSize, SampleSheetsVo, SampleSheetVo } from '@raipiot-2f/api'
 
-import { usePublishMutation, useRemoveMutation } from '../../mutations'
 import { queries } from '../../queries'
 import type { SampleSheetsSearchFormProps } from '../../types'
 
@@ -155,14 +154,6 @@ export function FeedbackPage() {
     }
   ])
 
-  // selection
-  const { rowSelection, clearSelectedRowKeys, selectedRowKeys } = useRowSelection<SampleSheetVo>()
-
-  // Delete mutation
-  const { mutateAsync, isPending: isRemovePending } = useRemoveMutation()
-  // Publish mutation
-  const { mutateAsync: publishMutateAsync, isPending: isPublishPending } = usePublishMutation()
-
   // Table Pagination
   const { pageParams, pagination, setPageParams, isPending, startTransition } =
     usePagination<SampleSheetsVo>()
@@ -172,9 +163,6 @@ export function FeedbackPage() {
     data: { records, total },
     refetch
   } = useSuspenseQuery(queries.listOP(PageUtils.mergeParams(pageParams)))
-
-  // Clear selected row keys
-  useEffect(clearSelectedRowKeys, [isPending, clearSelectedRowKeys])
 
   return (
     <RpPageContainer>
@@ -194,8 +182,6 @@ export function FeedbackPage() {
 
       <RpBasicTable<SampleSheetVo>
         rowKey={(record) => record.id}
-        rowSelection={rowSelection}
-        selectedRowKeys={selectedRowKeys}
         onRefresh={() =>
           startTransition(() => {
             refetch()
@@ -207,31 +193,8 @@ export function FeedbackPage() {
         })}
         dataSource={records}
         columns={columns}
-        onBatchDelete={() => {
-          // 防止重复提交
-          if (isRemovePending) return
-          // 批量删除，成功后清空选中项
-          mutateAsync(selectedRowKeys.join(','), {
-            onSuccess: clearSelectedRowKeys
-          })
-        }}
-        batchDeleteLoading={isRemovePending}
         refreshLoading={isPending}
         scroll={{ x: 3200 }}
-        renderTableBatchOpeate={
-          <RpButton
-            disabled={isPublishPending}
-            onClick={() => {
-              // 批量发布
-              publishMutateAsync(selectedRowKeys.join(','), {
-                onSuccess: clearSelectedRowKeys
-              })
-            }}
-            rootClassName="!mt-0"
-          >
-            批量发布
-          </RpButton>
-        }
       />
     </RpPageContainer>
   )
