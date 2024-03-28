@@ -163,4 +163,13 @@ export class SampleSheetsAPI extends BaseAPI {
   async deleteSheet(id: string) {
     return this.httpRequest.post(`${this.#API_PREFIX}/delete-sample-delivery`, { id })
   }
+
+  /**
+   * 送样反馈列表
+   */
+  async feedbackList(params: SampleSheetsPageDto, signal?: AbortSignal) {
+    return this.httpRequest.get<SampleSheetsVo>(`${this.#API_PREFIX}/feedback-list`, params, {
+      signal
+    })
+  }
 }

@@ -22,5 +22,12 @@ export const queries = {
       queryKey: sampleSheetsOriginListQK(params),
       queryFn: ({ signal }) => sampleSheetsAPI.listByOrigin(params, signal),
       placeholderData: keepPreviousData
+    }),
+  // 送样反馈列表
+  feedbackListOP: (params: SampleSheetsSearchFormProps) =>
+    queryOptions({
+      queryKey: sampleSheetsQK(params),
+      queryFn: ({ signal }) => sampleSheetsAPI.feedbackList(params, signal),
+      placeholderData: keepPreviousData
     })
 }
