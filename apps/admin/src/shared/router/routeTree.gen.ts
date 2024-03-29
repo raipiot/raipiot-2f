@@ -36,6 +36,7 @@ import { Route as BaseSrmSupplierGreenChannelsRouteImport } from './../../routes
 import { Route as BaseSrmSupplierChangeRecordRouteImport } from './../../routes/_base/srm/supplier-change-record/route'
 import { Route as BaseSrmSupplierBlacklistRouteImport } from './../../routes/_base/srm/supplier-blacklist/route'
 import { Route as BaseDevStorybookRouteImport } from './../../routes/_base/dev/storybook/route'
+import { Route as BaseDevEditTableRouteImport } from './../../routes/_base/dev/edit-table/route'
 import { Route as BaseSystemPermsIdRouteImport } from './../../routes/_base/system/perms/$id/route'
 import { Route as BaseSystemDictsIdRouteImport } from './../../routes/_base/system/dicts/$id/route'
 import { Route as BaseSystemBizDictsIdRouteImport } from './../../routes/_base/system/biz-dicts/$id/route'
@@ -251,6 +252,11 @@ const BaseDevStorybookRouteRoute = BaseDevStorybookRouteImport.update({
 } as any).lazy(() =>
   import('./../../routes/_base/dev/storybook/route.lazy').then((d) => d.Route),
 )
+
+const BaseDevEditTableRouteRoute = BaseDevEditTableRouteImport.update({
+  path: '/edit-table',
+  getParentRoute: () => BaseDevRouteRoute,
+} as any)
 
 const BaseSystemPermsIdRouteRoute = BaseSystemPermsIdRouteImport.update({
   path: '/system/perms/$id',
@@ -598,6 +604,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalSsoRouteImport
       parentRoute: typeof PortalRouteImport
     }
+    '/_base/dev/edit-table': {
+      preLoaderRoute: typeof BaseDevEditTableRouteImport
+      parentRoute: typeof BaseDevRouteImport
+    }
     '/_base/dev/storybook': {
       preLoaderRoute: typeof BaseDevStorybookRouteImport
       parentRoute: typeof BaseDevRouteImport
@@ -772,6 +782,7 @@ export const routeTree = rootRoute.addChildren([
     Base500RouteRoute,
     BaseChangePasswordRouteRoute,
     BaseDevRouteRoute.addChildren([
+      BaseDevEditTableRouteRoute,
       BaseDevStorybookRouteRoute,
       BaseDevTemplatesAdvancedTableRouteRoute,
       BaseDevTemplatesBasicTableRouteRoute,
