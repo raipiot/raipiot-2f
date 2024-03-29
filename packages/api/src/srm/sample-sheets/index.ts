@@ -55,7 +55,7 @@ export class SampleSheetsAPI extends BaseAPI {
       estimatedArrivalTime: '2024-03-29 10:00 AM',
       urgency: 'High',
       createTime: '2024-03-28 02:30 PM'
-    }
+    } as unknown as Handmade
   }
 
   /**

@@ -1,15 +1,17 @@
 import type { Handmade } from '@raipiot-2f/api'
+import type { FormInstance } from 'antd'
 
 import SampleInfoTable from './SampleInfoTable'
 
 interface SampleFormProps {
   id?: string | number
+  form: FormInstance
+  initialValues?: Handmade
 }
 
-export default function SampleForm({ id }: SampleFormProps) {
+export default function SampleForm({ id, form, initialValues }: SampleFormProps) {
   // 获取数据，初始化表单
 
-  const [form] = AForm.useForm()
   const { createModalForm } = useFormCreator<Handmade>()
   const items = createModalForm([
     // {
@@ -25,13 +27,13 @@ export default function SampleForm({ id }: SampleFormProps) {
     {
       type: 'custom',
       hidden: !id,
-      render(record, index) {
+      render(_, index) {
         return (
           <AForm.Item
             key={index}
             label="申请单号"
           >
-            <RpField value={record} />
+            <RpField value={initialValues?.id} />
           </AForm.Item>
         )
       }
@@ -53,7 +55,7 @@ export default function SampleForm({ id }: SampleFormProps) {
             label="创建时间"
           >
             <RpField
-              value={record}
+              value="2023-11-12 00:33:12"
               date
             />
           </AForm.Item>
@@ -250,6 +252,7 @@ export default function SampleForm({ id }: SampleFormProps) {
         form.setFieldsValue(data)
       })
     }
+    // 修改点击保存按钮的回调
   }, [id])
 
   return (
@@ -258,6 +261,7 @@ export default function SampleForm({ id }: SampleFormProps) {
         form={form}
         items={items}
         mode={id ? 'edit' : 'create'}
+        initialValues={initialValues}
       />
       <SampleInfoTable id={id} />
     </>
