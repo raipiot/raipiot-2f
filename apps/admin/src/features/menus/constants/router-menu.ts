@@ -76,7 +76,8 @@ export const routerMenuMap = new Map<ModuleMenuCode, () => MenuItem[]>([
           getRouteMeta('/dev/templates/advanced-table')
         ]
       },
-      getRouteMeta('/dev/storybook')
+      getRouteMeta('/dev/storybook'),
+      getRouteMeta('/dev/edit-table')
     ]
   ]
 ])
