@@ -12,3 +12,13 @@ export interface SampleSheetsSearchFormProps
   dateRange?: [Dayjs, Dayjs]
   queryDimension?: SampleSheetsQueryDimension
 }
+
+export enum SampleSheetTabKey {
+  ALL = 'all',
+  SUBMIT = 'submit',
+  FEEDBACK = 'feedback',
+  SUPPLIER_REJECT = 'supplierReject',
+  CONFIRM = 'confirm',
+  ROLLBACK = 'rollback',
+  CONFIRMED = 'confirmed'
+}

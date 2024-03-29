@@ -2,7 +2,11 @@ import type { OmitCurrentAndSize, SampleSheetsVo, SampleSheetVo } from '@raipiot
 
 import { usePublishMutation, useRemoveMutation } from '../mutations'
 import { queries } from '../queries'
-import { SampleSheetsQueryDimension, type SampleSheetsSearchFormProps } from '../types'
+import {
+  SampleSheetsQueryDimension,
+  type SampleSheetsSearchFormProps,
+  SampleSheetTabKey
+} from '../types'
 import { Operate } from './components'
 
 export function Page() {
@@ -206,31 +210,31 @@ export function Page() {
       <ATabs
         items={[
           {
-            key: '1',
+            key: SampleSheetTabKey.ALL,
             label: '全部'
           },
           {
-            key: '2',
+            key: SampleSheetTabKey.SUBMIT,
             label: '待提交'
           },
           {
-            key: '3',
+            key: SampleSheetTabKey.FEEDBACK,
             label: '待反馈'
           },
           {
-            key: '4',
+            key: SampleSheetTabKey.SUPPLIER_REJECT,
             label: '供应商回退'
           },
           {
-            key: '5',
+            key: SampleSheetTabKey.CONFIRM,
             label: '待确认'
           },
           {
-            key: '6',
+            key: SampleSheetTabKey.ROLLBACK,
             label: '已回退'
           },
           {
-            key: '7',
+            key: SampleSheetTabKey.CONFIRMED,
             label: '已确认'
           }
         ]}

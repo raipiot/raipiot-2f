@@ -19,6 +19,20 @@ export default function Header() {
 
       <div className="flex items-center justify-start !space-x-4">
         <Dev.PermConfig />
+        <Link
+          to="/"
+          className="!text-inherit"
+        >
+          <span className="hidden md:inline">企业商城</span>
+          <MaterialSymbolsAddShoppingCart className="md:hidden" />
+        </Link>
+        <Link
+          to="/"
+          className="!text-inherit"
+        >
+          <span className="hidden md:inline">SRM 门户</span>
+          <MaterialSymbolsHouseOutlineRounded className="md:hidden" />
+        </Link>
         <FullScreenButton />
         <LanguageButton />
         <ThemeToggle />
