@@ -32,7 +32,7 @@ export interface RpSearchBarProps<T> {
   /**
    * 表单属性
    */
-  formProps?: Omit<FormProps, 'initialValues'> & { initialValues?: T }
+  formProps?: Omit<FormProps, 'initialValues'> & { initialValues?: Partial<T> }
   /**
    * Card 属性
    */

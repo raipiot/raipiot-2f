@@ -1,4 +1,4 @@
-import { ScopesAPI } from '@raipiot-2f/api'
+import { LifecycleAPI, ScopesAPI } from '@raipiot-2f/api'
 import HttpRequest from '@raipiot-2f/axios'
 
 // API 实例对象注册端点
@@ -26,3 +26,4 @@ export const rolesAPI = new RolesAPI(httpRequest)
 export const scopesAPI = new ScopesAPI(httpRequest)
 
 export const dashboardAPI = new DashboardAPI(httpRequest)
+export const lifecycleAPI = new LifecycleAPI(httpRequest)
