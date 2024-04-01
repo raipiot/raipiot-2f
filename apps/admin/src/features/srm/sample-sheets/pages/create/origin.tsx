@@ -185,8 +185,6 @@ export function CreateByOriginPage() {
         dataSource={records}
         columns={columns}
         onBatchDelete={() => {
-          // 防止重复提交
-          if (isRemovePending) return
           // 批量删除，成功后清空选中项
           mutateAsync(selectedRowKeys.join(','), {
             onSuccess: clearSelectedRowKeys
