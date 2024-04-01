@@ -44,7 +44,11 @@ export default function SampleForm({ id, form, initialValues }: SampleFormProps)
         label: '创建人',
         name: 'initiator'
       },
-      hidden: !id
+      hidden: !id,
+      inputProps: {
+        variant: 'borderless',
+        readOnly: true
+      }
     },
     {
       type: 'custom',

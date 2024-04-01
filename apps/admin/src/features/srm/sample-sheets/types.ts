@@ -13,12 +13,13 @@ export interface SampleSheetsSearchFormProps
   queryDimension?: SampleSheetsQueryDimension
 }
 
+// 后端定义的查询参数
 export enum SampleSheetTabKey {
-  ALL = 'all',
-  SUBMIT = 'submit',
-  FEEDBACK = 'feedback',
-  SUPPLIER_REJECT = 'supplierReject',
-  CONFIRM = 'confirm',
-  ROLLBACK = 'rollback',
-  CONFIRMED = 'confirmed'
+  ALL = '0',
+  NEW = '1',
+  FEEDBACK = '2', // 待反馈 、 已经确认
+  REJECTED = '3', // 已退回
+  CONFIRM = '4', // 待确认
+  CONFIRMED = '5', // 已确认
+  CLOSED = '70' // 已关闭
 }

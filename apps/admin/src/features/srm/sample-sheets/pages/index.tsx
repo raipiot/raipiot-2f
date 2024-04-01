@@ -10,6 +10,7 @@ import {
 import { Operate } from './components'
 
 export function Page() {
+  // 权限：供货商或服务商身份
   // Search Form
   const [searchForm] = AForm.useForm()
   const { createSearchForm } = useFormCreator<OmitCurrentAndSize<SampleSheetsSearchFormProps>>()
@@ -188,8 +189,11 @@ export function Page() {
   const { mutateAsync: publishMutateAsync, isPending: isPublishPending } = usePublishMutation()
 
   // Table Pagination
-  const { pageParams, pagination, setPageParams, isPending, startTransition } =
-    usePagination<SampleSheetsVo>()
+  const { pageParams, pagination, setPageParams, isPending, startTransition } = usePagination<
+    SampleSheetsVo & { tabKey: SampleSheetTabKey }
+  >({
+    tabKey: SampleSheetTabKey.ALL
+  })
 
   // Table data
   const {
@@ -204,38 +208,44 @@ export function Page() {
     <RpPageContainer
       pageHeaderProps={{
         // 操作区
-        operate: <Operate />
+        operate: <Operate tabKey={pageParams.tabKey} />
       }}
     >
       <ATabs
+        defaultActiveKey={pageParams.tabKey}
+        onChange={(tabKey) =>
+          startTransition(() =>
+            setPageParams((prev) => ({ ...prev, tabKey: tabKey as SampleSheetTabKey }))
+          )
+        }
         items={[
           {
             key: SampleSheetTabKey.ALL,
             label: '全部'
           },
           {
-            key: SampleSheetTabKey.SUBMIT,
-            label: '待提交'
+            key: SampleSheetTabKey.NEW,
+            label: '新建'
           },
           {
             key: SampleSheetTabKey.FEEDBACK,
-            label: '待反馈'
+            label: '待反馈/已确认'
           },
           {
-            key: SampleSheetTabKey.SUPPLIER_REJECT,
-            label: '供应商回退'
+            key: SampleSheetTabKey.REJECTED,
+            label: '已退回'
           },
           {
             key: SampleSheetTabKey.CONFIRM,
             label: '待确认'
           },
           {
-            key: SampleSheetTabKey.ROLLBACK,
-            label: '已回退'
-          },
-          {
             key: SampleSheetTabKey.CONFIRMED,
             label: '已确认'
+          },
+          {
+            key: SampleSheetTabKey.CLOSED,
+            label: '已关闭'
           }
         ]}
       />
@@ -284,18 +294,20 @@ export function Page() {
         refreshLoading={isPending}
         scroll={{ x: 3200 }}
         renderTableBatchOpeate={
-          <RpButton
-            disabled={isPublishPending}
-            onClick={() => {
-              // 批量发布
-              publishMutateAsync(selectedRowKeys.join(','), {
-                onSuccess: clearSelectedRowKeys
-              })
-            }}
-            rootClassName="!mt-0"
-          >
-            批量发布
-          </RpButton>
+          pageParams.tabKey === SampleSheetTabKey.NEW && (
+            <RpButton
+              disabled={isPublishPending}
+              onClick={() => {
+                // 批量发布
+                publishMutateAsync(selectedRowKeys.join(','), {
+                  onSuccess: clearSelectedRowKeys
+                })
+              }}
+              rootClassName="!mt-0"
+            >
+              批量发布
+            </RpButton>
+          )
         }
       />
     </RpPageContainer>

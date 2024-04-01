@@ -7,6 +7,7 @@ import type {
 
 import { usePublishMutation, useRemoveMutation } from '../../mutations'
 import { queries } from '../../queries'
+import { SampleSheetTabKey } from '../../types'
 import { Operate } from '../components'
 
 export function CreateByOriginPage() {
@@ -151,7 +152,7 @@ export function CreateByOriginPage() {
     <RpPageContainer
       pageHeaderProps={{
         // 操作区
-        operate: <Operate />
+        operate: <Operate tabKey={SampleSheetTabKey.NEW} />
       }}
     >
       <RpSearchBar
