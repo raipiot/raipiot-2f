@@ -68,6 +68,7 @@ import { Route as BaseSrmResourcePoolScopesIdEditRouteImport } from './../../rou
 import { Route as BaseSrmProcessLifecycleRecordRouteImport } from './../../routes/_base/srm/process/lifecycle/record/route'
 import { Route as BaseSrmInvitationsIdDetailRouteImport } from './../../routes/_base/srm/invitations/$id/detail/route'
 import { Route as BaseSrmProcessLifecycleIndexRouteImport } from './../../routes/_base/srm/process/lifecycle/index/route'
+import { Route as BaseSrmProcessLifecycleApplicationFormCreateRouteImport } from './../../routes/_base/srm/process/lifecycle/application-form/create/route'
 import { Route as BaseSrmProcessLifecycleApplicationFormIdRouteImport } from './../../routes/_base/srm/process/lifecycle/application-form/$id/route'
 
 // Create/Update Routes
@@ -567,6 +568,16 @@ const BaseSrmProcessLifecycleIndexRouteRoute =
     ),
   )
 
+const BaseSrmProcessLifecycleApplicationFormCreateRouteRoute =
+  BaseSrmProcessLifecycleApplicationFormCreateRouteImport.update({
+    path: '/srm/process/lifecycle/application-form/create',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import(
+      './../../routes/_base/srm/process/lifecycle/application-form/create/route.lazy'
+    ).then((d) => d.Route),
+  )
+
 const BaseSrmProcessLifecycleApplicationFormIdRouteRoute =
   BaseSrmProcessLifecycleApplicationFormIdRouteImport.update({
     path: '/srm/process/lifecycle/application-form/$id',
@@ -813,6 +824,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSrmProcessLifecycleApplicationFormIdRouteImport
       parentRoute: typeof BaseRouteImport
     }
+    '/_base/srm/process/lifecycle/application-form/create': {
+      preLoaderRoute: typeof BaseSrmProcessLifecycleApplicationFormCreateRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
   }
 }
 
@@ -874,6 +889,7 @@ export const routeTree = rootRoute.addChildren([
     BaseSrmSupplierIntroduceIdEditRouteRoute,
     BaseSrmSuppliersIdRelatedRouteRoute,
     BaseSrmProcessLifecycleApplicationFormIdRouteRoute,
+    BaseSrmProcessLifecycleApplicationFormCreateRouteRoute,
   ]),
   PortalRouteRoute.addChildren([
     PortalForgotPasswordRouteRoute,
