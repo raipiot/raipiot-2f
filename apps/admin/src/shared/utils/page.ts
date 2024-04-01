@@ -12,7 +12,7 @@ export class PageUtils {
    * 初始化分页参数
    * @param params 额外参数
    */
-  static initParams<T extends PageDto>(params?: Partial<T>) {
+  static initParams<T extends PageDto>(params?: object) {
     return { ...this.#defaultValues, ...params } as T
   }
 

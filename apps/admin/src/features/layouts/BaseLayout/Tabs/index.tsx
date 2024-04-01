@@ -91,7 +91,8 @@ export default function Tabs() {
       onEdit={onEdit}
       size="small"
       items={tabStore.records.map(({ path }) => {
-        const { title, icon } = getRouterStaticData(path)
+        // 需要将 query 参数去掉才能匹配到路由配置
+        const { title, icon } = getRouterStaticData(path.replace(/\?.*$/, ''))
         return {
           label: (
             <ADropdown

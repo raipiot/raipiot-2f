@@ -1,11 +1,11 @@
 import type { LifecycleSupplierVo } from '@raipiot-2f/api'
 
-import { useSearchForm, useStatuSelectOption } from '../hooks'
+import { lifecycleOptions } from '../const'
+import { useSearchForm } from '../hooks'
 import type { LifecycleSearchFormModel } from '../types'
 
 export function Page() {
   const { form, formItems } = useSearchForm()
-  const statusOption = useStatuSelectOption()
   const { createActions, createColumns } = useTableCreator<LifecycleSupplierVo>()
   const { pageParams, pagination } = usePagination<LifecycleSearchFormModel>()
   const {
@@ -32,7 +32,7 @@ export function Page() {
       dataIndex: 'relegationStatus',
       key: 'relegationStatus',
       render: (value) => {
-        const status = statusOption.find((i) => i.value === value)
+        const status = lifecycleOptions.find((i) => i.value === value)
         return status?.label ?? 'x'
       }
     },
@@ -42,9 +42,9 @@ export function Page() {
       key: 'supplierCode',
       render: (value) => (
         <Link
-          to="/srm/process/lifecycle/record/$id"
-          params={{
-            id: value
+          to="/srm/process/lifecycle/record"
+          search={{
+            keyword: `${value}`
           }}
         >
           查看
@@ -61,7 +61,7 @@ export function Page() {
       render: (_: unknown, record) => (
         <ADropdown
           menu={{
-            items: statusOption
+            items: lifecycleOptions
               .filter((i) => i.value !== record.relegationStatus)
               .map((i) => ({
                 ...i,

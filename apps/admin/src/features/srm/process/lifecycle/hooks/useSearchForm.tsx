@@ -1,11 +1,11 @@
-import type { LifecycleSearchFormModel } from '../types'
-import { useStatuSelectOption } from './useStatuSelectOption'
+import { lifecycleOptions } from '../const'
+import type { ApplicationFormSearchFormModel, LifecycleSearchFormModel } from '../types'
 
-export const useSearchForm = () => {
-  const { createSearchForm } = useFormCreator<LifecycleSearchFormModel>()
+export const useSearchForm = (isApplicationForm?: boolean) => {
+  const { createSearchForm } = useFormCreator<
+    LifecycleSearchFormModel & ApplicationFormSearchFormModel
+  >()
   const [form] = AForm.useForm()
-  const statusOptions = useStatuSelectOption()
-
   return {
     form,
     formItems: createSearchForm([
@@ -36,9 +36,10 @@ export const useSearchForm = () => {
           label: '当前状态'
         },
         selectProps: {
-          options: statusOptions,
+          options: lifecycleOptions,
           placeholder: '请选择'
-        }
+        },
+        hidden: isApplicationForm
       },
       {
         type: 'select',
@@ -54,7 +55,23 @@ export const useSearchForm = () => {
             { label: '待定', value: '4' }
           ],
           placeholder: '请选择'
-        }
+        },
+        hidden: isApplicationForm
+      },
+      {
+        type: 'select',
+        formItemProps: {
+          name: 'status',
+          label: '状态'
+        },
+        selectProps: {
+          options: [
+            { label: '未降级', value: '0' },
+            { label: '已降级', value: '1' }
+          ],
+          placeholder: '请选择'
+        },
+        hidden: !isApplicationForm
       }
     ])
   }

@@ -65,9 +65,9 @@ import { Route as BaseSrmSupplierIntroduceIdDetailRouteImport } from './../../ro
 import { Route as BaseSrmSupplierEntryIdEditRouteImport } from './../../routes/_base/srm/supplier-entry/$id/edit/route'
 import { Route as BaseSrmSupplierEntryIdDetailRouteImport } from './../../routes/_base/srm/supplier-entry/$id/detail/route'
 import { Route as BaseSrmResourcePoolScopesIdEditRouteImport } from './../../routes/_base/srm/resource-pool-scopes/$id/edit/route'
+import { Route as BaseSrmProcessLifecycleRecordRouteImport } from './../../routes/_base/srm/process/lifecycle/record/route'
 import { Route as BaseSrmInvitationsIdDetailRouteImport } from './../../routes/_base/srm/invitations/$id/detail/route'
 import { Route as BaseSrmProcessLifecycleIndexRouteImport } from './../../routes/_base/srm/process/lifecycle/index/route'
-import { Route as BaseSrmProcessLifecycleRecordIdRouteImport } from './../../routes/_base/srm/process/lifecycle/record/$id/route'
 import { Route as BaseSrmProcessLifecycleApplicationFormIdRouteImport } from './../../routes/_base/srm/process/lifecycle/application-form/$id/route'
 
 // Create/Update Routes
@@ -537,6 +537,16 @@ const BaseSrmResourcePoolScopesIdEditRouteRoute =
     ).then((d) => d.Route),
   )
 
+const BaseSrmProcessLifecycleRecordRouteRoute =
+  BaseSrmProcessLifecycleRecordRouteImport.update({
+    path: '/srm/process/lifecycle/record',
+    getParentRoute: () => BaseRouteRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base/srm/process/lifecycle/record/route.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
 const BaseSrmInvitationsIdDetailRouteRoute =
   BaseSrmInvitationsIdDetailRouteImport.update({
     path: '/srm/invitations/$id/detail',
@@ -555,16 +565,6 @@ const BaseSrmProcessLifecycleIndexRouteRoute =
     import('./../../routes/_base/srm/process/lifecycle/index/route.lazy').then(
       (d) => d.Route,
     ),
-  )
-
-const BaseSrmProcessLifecycleRecordIdRouteRoute =
-  BaseSrmProcessLifecycleRecordIdRouteImport.update({
-    path: '/srm/process/lifecycle/record/$id',
-    getParentRoute: () => BaseRouteRoute,
-  } as any).lazy(() =>
-    import(
-      './../../routes/_base/srm/process/lifecycle/record/$id/route.lazy'
-    ).then((d) => d.Route),
   )
 
 const BaseSrmProcessLifecycleApplicationFormIdRouteRoute =
@@ -781,6 +781,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSrmInvitationsIdDetailRouteImport
       parentRoute: typeof BaseRouteImport
     }
+    '/_base/srm/process/lifecycle/record': {
+      preLoaderRoute: typeof BaseSrmProcessLifecycleRecordRouteImport
+      parentRoute: typeof BaseRouteImport
+    }
     '/_base/srm/resource-pool-scopes/$id/edit': {
       preLoaderRoute: typeof BaseSrmResourcePoolScopesIdEditRouteImport
       parentRoute: typeof BaseSrmResourcePoolScopesIdRouteImport
@@ -807,10 +811,6 @@ declare module '@tanstack/react-router' {
     }
     '/_base/srm/process/lifecycle/application-form/$id': {
       preLoaderRoute: typeof BaseSrmProcessLifecycleApplicationFormIdRouteImport
-      parentRoute: typeof BaseRouteImport
-    }
-    '/_base/srm/process/lifecycle/record/$id': {
-      preLoaderRoute: typeof BaseSrmProcessLifecycleRecordIdRouteImport
       parentRoute: typeof BaseRouteImport
     }
   }
@@ -867,13 +867,13 @@ export const routeTree = rootRoute.addChildren([
     BaseSystemPermsIdRouteRoute,
     BaseSrmProcessLifecycleIndexRouteRoute,
     BaseSrmInvitationsIdDetailRouteRoute,
+    BaseSrmProcessLifecycleRecordRouteRoute,
     BaseSrmSupplierEntryIdDetailRouteRoute,
     BaseSrmSupplierEntryIdEditRouteRoute,
     BaseSrmSupplierIntroduceIdDetailRouteRoute,
     BaseSrmSupplierIntroduceIdEditRouteRoute,
     BaseSrmSuppliersIdRelatedRouteRoute,
     BaseSrmProcessLifecycleApplicationFormIdRouteRoute,
-    BaseSrmProcessLifecycleRecordIdRouteRoute,
   ]),
   PortalRouteRoute.addChildren([
     PortalForgotPasswordRouteRoute,
