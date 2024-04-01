@@ -1,6 +1,7 @@
 export * from './category'
 export * from './invitations'
 export * from './lifecycle'
+export * from './local-supplier'
 export * from './questionnaire'
 export * from './resource-pool-plan'
 export * from './resource-pool-scope'

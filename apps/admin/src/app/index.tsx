@@ -11,6 +11,7 @@ enableMapSet()
 
 BrowserUtils.loadFavicon() // 动态加载 favicon
 BrowserUtils.disableGestureScale() // 禁用移动端手势缩放
+
 // 静态方法的全局配置
 AMessage.config(messageConfig)
 

@@ -19,8 +19,7 @@ export function AxiosProvider({ children }: PropsWithChildren) {
     httpRequest.initInterceptors({
       router,
       i18n,
-      message,
-      logoutRedirectUrl: '/'
+      message
     })
     setInitialized(true)
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -47,6 +47,10 @@ export interface R<T = unknown> {
    * 数据
    */
   data: T
+  /**
+   * 错误信息
+   */
+  error_description?: string
 }
 
 // 刷新 Token 响应数据

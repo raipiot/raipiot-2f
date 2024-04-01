@@ -6,7 +6,7 @@ export const Route = createFileRoute('/_base')({
     // 身份校验
     if (!AuthUtils.isAuthenticated()) {
       throw redirect({
-        to: '/',
+        to: '/login',
         search: {
           redirect: location.href === '/' ? undefined : location.href
         }

@@ -1,5 +1,6 @@
 [
   "SuppliersAPI",
+  "LocalSuppliersAPI",
   "InvitationsAPI",
   "ResourcePoolScopesAPI",
   "ResourcePoolPlansAPI",
@@ -13,7 +14,6 @@
   "MenusAPI",
   "ParamsAPI",
   "TenantsAPI",
-  "PortalAPI",
   "DashboardAPI",
   "DeptsAPI",
   "RolesAPI",

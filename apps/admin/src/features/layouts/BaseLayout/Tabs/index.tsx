@@ -115,7 +115,7 @@ export default function Tabs() {
                           key: 'close-all',
                           onClick: () => {
                             tabStore.clearRecords()
-                            navigate({ to: '/dashboard' })
+                            navigate({ to: '/' })
                           }
                         }
                       ]
