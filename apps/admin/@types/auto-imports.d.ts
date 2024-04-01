@@ -105,6 +105,7 @@ declare global {
   const MaterialSymbolsContactPhoneOutlineSharp: typeof import('~icons/material-symbols/contact-phone-outline-sharp.jsx')['default']
   const MaterialSymbolsContactSupportOutlineRounded: typeof import('~icons/material-symbols/contact-support-outline-rounded.jsx')['default']
   const MaterialSymbolsContractOutlineRounded: typeof import('~icons/material-symbols/contract-outline-rounded.jsx')['default']
+  const MaterialSymbolsCycleRounded: typeof import('~icons/material-symbols/cycle-rounded.jsx')['default']
   const MaterialSymbolsDashboardRounded: typeof import('~icons/material-symbols/dashboard-rounded.jsx')['default']
   const MaterialSymbolsDashboardSharp: typeof import('~icons/material-symbols/dashboard-sharp.jsx')['default']
   const MaterialSymbolsDataInfoAlert: typeof import('~icons/material-symbols/data-info-alert.jsx')['default']
