@@ -36,11 +36,11 @@ export interface LocalSupplierVo {
   /**
    * 所属公司
    */
-  fromCompany?: number
+  fromCompany?: string
   /**
    * 主键
    */
-  id?: number
+  id?: string
   /**
    * 身份证号
    */
@@ -108,6 +108,178 @@ export interface LocalSupplierVo {
 }
 
 export type LocalSuppliersVo = Page<LocalSupplierVo>
+
+export interface LocalSupplierAddressVo {
+  /**
+   * 经营地址
+   */
+  businessAddress?: string
+  /**
+   * 市编码
+   */
+  cityCode?: string
+  /**
+   * 国家地区
+   */
+  country?: string
+  /**
+   * 地址备注
+   */
+  description?: string
+  /**
+   * 区编码
+   */
+  districtCode?: string
+  /**
+   * 是否启用
+   */
+  enabledFlag?: boolean
+  /**
+   * 主键 ID
+   */
+  id?: number
+  /**
+   * 邮政编码
+   */
+  postCode?: string
+  /**
+   * 省编码
+   */
+  provinceCode?: string
+}
+
+export interface LocalSupplierAttachmentVo {
+  /**
+   * 附件文件id
+   */
+  attachmentFileId?: string
+  /**
+   * 附件类型
+   */
+  attachmentType?: string
+  /**
+   * 附件描述
+   */
+  description?: string
+  /**
+   * 附件到期日期
+   */
+  endDate?: Date
+  /**
+   * 主键 ID
+   */
+  id?: number
+  /**
+   * 是否长期有效
+   */
+  longEffectiveFlag?: boolean
+  /**
+   * 备注
+   */
+  remark?: string
+  /**
+   * 子附件类型
+   */
+  subAttachmentType?: string
+}
+
+export interface LocalSupplierBankVo {
+  /**
+   * 账户名称
+   */
+  bankAccountName?: string
+  /**
+   * 银行账户
+   */
+  bankAccountNum?: string
+  /**
+   * 开户行名称
+   */
+  bankBranchName?: string
+  /**
+   * 银行(国际)代码
+   */
+  bankCode?: string
+  /**
+   * 联行行号
+   */
+  bankFirm?: string
+  /**
+   * 银行名称
+   */
+  bankName?: string
+  /**
+   * 国家地区
+   */
+  country?: string
+  /**
+   * 备注
+   */
+  description?: string
+  /**
+   * 是否启用
+   */
+  enabledFlag?: boolean
+  /**
+   * 主键 ID
+   */
+  id?: number
+  /**
+   * 主账号标识
+   */
+  masterFlag?: boolean
+}
+
+export interface LocalSupplierContactVo {
+  /**
+   * 是否默认
+   */
+  defaultFlag?: boolean
+  /**
+   * 部门
+   */
+  department?: string
+  /**
+   * 备注
+   */
+  description?: string
+  /**
+   * 电子邮箱
+   */
+  email?: string
+  /**
+   * 是否启用
+   */
+  enabledFlag?: boolean
+  /**
+   * 主键 ID
+   */
+  id?: number
+  /**
+   * 手机号国际区号
+   */
+  internationalTelCode?: string
+  /**
+   * 手机号
+   */
+  mobilePhone?: string
+  /**
+   * 姓名
+   */
+  name?: string
+  /**
+   * 职位
+   */
+  position?: string
+  /**
+   * 性别
+   */
+  sex?: string
+  /**
+   * 固定电话
+   */
+  telephone?: string
+}
 
 export interface LocalSupplierRecordVo {
   /**

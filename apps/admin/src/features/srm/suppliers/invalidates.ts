@@ -6,7 +6,9 @@ import {
   detailQK,
   financeDetailQK,
   invoiceDetailQK,
-  LIST_QK
+  LIST_QK,
+  LOCAL_LIST_QK,
+  localDetailQK
 } from './query-keys'
 
 export const invalidateListQuery = () =>
@@ -31,3 +33,14 @@ export const invalidateDetailQuery = (id: string) =>
       })
     )
   )
+
+export const invalidateLocalListQuery = () =>
+  queryClient.invalidateQueries({
+    queryKey: [LOCAL_LIST_QK]
+  })
+
+export const invalidateLocalDetailQuery = (id: string) =>
+  queryClient.invalidateQueries({
+    queryKey: localDetailQK(id),
+    refetchType: 'all'
+  })

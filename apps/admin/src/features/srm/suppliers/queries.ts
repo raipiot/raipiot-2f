@@ -1,6 +1,14 @@
-import type { SupplierPageDto } from '@raipiot-2f/api'
+import type { LocalSupplierPageDto, SupplierPageDto } from '@raipiot-2f/api'
 
-import { addressDetailQK, bankDetailQK, contactDetailQK, detailQK, listQK } from './query-keys'
+import {
+  addressDetailQK,
+  bankDetailQK,
+  contactDetailQK,
+  detailQK,
+  listQK,
+  localDetailQK,
+  localListQK
+} from './query-keys'
 
 export const listQO = (params: SupplierPageDto) =>
   queryOptions({
@@ -49,4 +57,17 @@ export const attachmentDetailQO = (id: string) =>
   queryOptions({
     queryKey: bankDetailQK(id),
     queryFn: ({ signal }) => suppliersAPI.bankDetail(id, signal)
+  })
+
+export const localListQO = (params: LocalSupplierPageDto) =>
+  queryOptions({
+    queryKey: localListQK(params),
+    queryFn: ({ signal }) => localSuppliersAPI.list(params, signal),
+    placeholderData: keepPreviousData
+  })
+
+export const localDetailQO = (id: string) =>
+  queryOptions({
+    queryKey: localDetailQK(id),
+    queryFn: ({ signal }) => localSuppliersAPI.detail(id, signal)
   })

@@ -3,11 +3,18 @@ import type HttpRequest from '@raipiot-2f/axios'
 import { BaseAPI } from '../../base'
 import { mockEntity, mockList } from '../../mock'
 import type {
+  LocalSupplierAddressVo,
+  LocalSupplierAttachmentVo,
+  LocalSupplierBankVo,
+  LocalSupplierContactVo,
   LocalSupplierPageDto,
   LocalSupplierRecordPageDto,
   LocalSupplierRecordsVo,
   LocalSupplierRecordVo,
+  LocalSupplierStatusUpdateDto,
+  LocalSupplierSubmitDto,
   LocalSuppliersVo,
+  LocalSupplierUpdateDto,
   LocalSupplierVo
 } from '..'
 
@@ -23,7 +30,13 @@ export class LocalSuppliersAPI extends BaseAPI {
   }
 
   async list(params: LocalSupplierPageDto, signal?: AbortSignal) {
-    return mockList<LocalSupplierVo>({})
+    return mockList<LocalSupplierVo>({
+      id: '1',
+      unifiedSocialCode: 'DDD123',
+      supplierCode: 'ABC123',
+      name: '供应商名称',
+      organizationCode: 'CCC123'
+    })
     return this.httpRequest.post<LocalSuppliersVo>(`${this.#API_PREFIX}/list`, params, { signal })
   }
 
@@ -36,6 +49,43 @@ export class LocalSuppliersAPI extends BaseAPI {
         signal
       }
     )
+  }
+
+  async addressDetail(id: string) {
+    return mockEntity<LocalSupplierAddressVo>({})
+    return this.httpRequest.post<LocalSupplierAddressVo>(`${this.#API_PREFIX}/address/detail`, {
+      id
+    })
+  }
+
+  async attachmentDetail(id: string) {
+    return mockEntity<LocalSupplierAttachmentVo>({})
+    return this.httpRequest.post<LocalSupplierAttachmentVo>(
+      `${this.#API_PREFIX}/attachment/detail`,
+      { id }
+    )
+  }
+
+  async bankDetail(id: string) {
+    return mockEntity<LocalSupplierBankVo>({})
+    return this.httpRequest.post<LocalSupplierBankVo>(`${this.#API_PREFIX}/bank/detail`, { id })
+  }
+
+  async contactDetail(id: string) {
+    return mockEntity<LocalSupplierContactVo>({})
+    return this.httpRequest.post<LocalSupplierContactVo>(`${this.#API_PREFIX}/contact/detail`, {
+      id
+    })
+  }
+
+  async submit(data: LocalSupplierSubmitDto) {
+    return {}
+    return this.httpRequest.post(`${this.#API_PREFIX}/submit`, data)
+  }
+
+  async update(data: LocalSupplierUpdateDto) {
+    return {}
+    return this.httpRequest.post(`${this.#API_PREFIX}/update`, data)
   }
 
   async greenChannelList(params: LocalSupplierRecordPageDto, signal?: AbortSignal) {
@@ -54,5 +104,10 @@ export class LocalSuppliersAPI extends BaseAPI {
       { id },
       { signal }
     )
+  }
+
+  async greenChannelStatusUpdate(data: LocalSupplierStatusUpdateDto) {
+    return {}
+    return this.httpRequest.post(`${this.#API_PREFIX}/green-channel/status-update`, data)
   }
 }
