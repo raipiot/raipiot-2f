@@ -42,9 +42,9 @@ export const routerMenuMap = new Map<ModuleMenuCode, () => MenuItem[]>([
       },
       getRouteMeta('/srm/questionnaires'),
       {
-        label: '过程管理',
-        key: '/srm/process',
-        children: [getRouteMeta('/srm/process/lifecycle')]
+        label: '生命周期管理',
+        key: '/srm/lifecycle',
+        children: [getRouteMeta('/srm/lifecycle/supplier'), getRouteMeta('/srm/lifecycle/category')]
       }
     ]
   ],

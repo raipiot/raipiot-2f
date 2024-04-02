@@ -1,5 +1,5 @@
 export { Invitations } from './invitations'
-export { Process } from './process'
+export { LifeCycle } from './lifecycle'
 export { Questionnaires } from './questionnaires'
 export { ResourcePoolPlans } from './resource-pool-plans'
 export { ResourcePoolScopes } from './resource-pool-scopes'

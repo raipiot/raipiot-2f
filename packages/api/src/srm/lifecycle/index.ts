@@ -1,7 +1,7 @@
 import type HttpRequest from '@raipiot-2f/axios'
 
 import { BaseAPI } from '../../base'
-import { mockList } from '../../mock'
+import { mockEntity, mockList } from '../../mock'
 import type { LifecycleSupplierApplyListDto, LifecycleSupplierListDto } from './dto'
 import type { LifecycleSupplierApplyVO, LifecycleSupplierVo } from './vo'
 
@@ -28,7 +28,7 @@ export class LifecycleAPI extends BaseAPI {
       lifeStage: '生命阶段',
       organizationId: 1,
       organizationName: '组织名称/基地名称',
-      relegationStatus: '1',
+      relegationStatus: '3',
       strategyManager: '策略负责人',
       supplierCode: 1,
       supplierId: 1,
@@ -69,5 +69,61 @@ export class LifecycleAPI extends BaseAPI {
       params,
       { signal }
     )
+  }
+
+  async supplierInfo(params: { supplierId: string }, signal?: AbortSignal) {
+    return mockEntity<LifecycleSupplierVo>({
+      lifeStage: '生命阶段',
+      organizationId: 1,
+      organizationName: '组织名称/基地名称',
+      relegationStatus: '1',
+      strategyManager: '策略负责人',
+      supplierCode: 1,
+      supplierId: 1,
+      supplierName: '供应商名称',
+      targetStage: '目标阶段',
+      currentStage: '当前阶段',
+      enableBlackList: true,
+      blackListReason: '黑名单原因',
+      // blackListInvalidTime: '2021-12-12 16:16:25',
+      foreverBlackList: true,
+      creatorName: '创建人',
+      createdTime: '2021-12-12 16:16:25',
+      base: '基地'
+    })
+    return this.httpRequest.get<any>(`${this.#API_PREFIX}/supplier/get-lifecycle-supplier-info`, {
+      params,
+      signal
+    })
+  }
+
+  async getApplyInfo(params: { applyCode: string }, signal?: AbortSignal) {
+    return mockEntity<LifecycleSupplierApplyVO>({
+      applyCode: '申请编号',
+      companyName: '公司名称',
+      createDepartment: '创建部门',
+      createTime: '创建时间',
+      creatorName: '创建人',
+      currentStage: '2',
+      description: '说明',
+      grade: '等级',
+      organizationId: 1,
+      score: 1,
+      scoreTemplate: '评分要素（评分模板）',
+      scoreTemplateId: 1,
+      status: '2',
+      supplierCode: '供应商编码',
+      supplierId: 1,
+      supplierName: '供应商名称',
+      targetStage: '3',
+      base: '基地'
+    })
+    // return this.httpRequest.get<any>(
+    //   `${this.#API_PREFIX}/supplier/get-lifecycle-supplier-apply-info`,
+    //   params,
+    //   {
+    //     signal
+    //   }
+    // )
   }
 }

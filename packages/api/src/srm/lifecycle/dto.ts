@@ -25,3 +25,63 @@ export interface LifecycleSupplierApplyListDto extends PageDateDto, PageDto {
   keyword?: string
   status?: LifecycleSupplierApplyListDtoStatus
 }
+
+/**
+ * 更新升降级申请
+ * LifecycleSupplierApplyCommand
+ */
+export interface LifecycleSupplierApplyCommand {
+  /**
+   * 附件id
+   */
+  annexIds?: string
+  /**
+   * 申请编号
+   */
+  applyCode?: string
+  /**
+   * 创建部门
+   */
+  creatorDept?: string
+  /**
+   * 当前阶段
+   */
+  currentStage?: string
+  /**
+   * 说明
+   */
+  description?: string
+  /**
+   * 等级
+   */
+  grade?: number
+  /**
+   * id
+   */
+  id?: number
+  /**
+   * 组织id
+   */
+  organizationId?: number
+  /**
+   * 得分
+   */
+  score?: number
+  /**
+   * 评分要素（评分模板）
+   */
+  scoreTemplateId?: number
+  /**
+   * 状态
+   */
+  status?: string
+  /**
+   * 供应商id
+   */
+  supplierId?: number
+  /**
+   * 目标阶段
+   */
+  targetStage?: string
+  [property: string]: any
+}
