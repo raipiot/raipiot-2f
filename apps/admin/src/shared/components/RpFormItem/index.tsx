@@ -1,6 +1,7 @@
 import type { FormItemProps, TreeSelectProps } from 'antd'
 import { isEmpty } from 'lodash-es'
 
+import RpDebounceSelect from '../RpDebounceSelect'
 import type { RpBasicFormItemProps } from './types'
 
 function findAllLabelInTreeData(
@@ -32,7 +33,7 @@ function RpFormItem<T>(props: RpBasicFormItemProps<T>): React.ReactNode {
   }
 
   if (type === 'custom') {
-    return props.render ? props.render() : null
+    return props.render && props.hidden !== true ? props.render() : null
   }
 
   const { colProps, formItemProps } = props
@@ -64,6 +65,8 @@ function RpFormItem<T>(props: RpBasicFormItemProps<T>): React.ReactNode {
                 {...props.selectProps}
               />
             )}
+            {/* 新增阅读模式显式的内容 */}
+            {type === 'debounce-select' && (props.readModeRender || '-')}
             {type === 'tree-select' && (
               // <ATreeSelect
               //   value={value}
@@ -83,12 +86,7 @@ function RpFormItem<T>(props: RpBasicFormItemProps<T>): React.ReactNode {
                     props.treeSelectProps?.fieldNames
                   )
                   return (
-                    <ATag
-                      key={item}
-                      onClick={() => {
-                        console.log(item, props.treeSelectProps?.treeData)
-                      }}
-                    >
+                    <ATag key={item}>
                       {
                         // item 可能存在相同结构的 children，如果存在 children，则需要递归查找
                         allItem.find((i) => item?.toString() === i.value?.toString())?.label ?? '-'
@@ -150,6 +148,8 @@ function RpFormItem<T>(props: RpBasicFormItemProps<T>): React.ReactNode {
             {type === 'checkbox' && <ACheckbox {...props.checkboxProps} />}
             {type === 'checkbox-group' && <ACheckbox.Group {...props.checkboxGroupProps} />}
             {type === 'select' && <ASelect {...props.selectProps} />}
+            {type === 'debounce-select' && <RpDebounceSelect {...props.debounceSelectProps} />}
+            {type === 'autoComplete' && <AAutoComplete {...props.autoCompleteProps} />}
             {type === 'tree-select' && <ATreeSelect {...props.treeSelectProps} />}
             {type === 'cascader' && <ACascader {...props.cascaderProps} />}
             {type === 'date-picker' && <ADatePicker {...props.datePickerProps} />}

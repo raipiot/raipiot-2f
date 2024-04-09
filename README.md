@@ -31,10 +31,10 @@ pnpm i
 
 ## 配置环境变量
 
-在根目录下新建 `.env.developemnt.local` 文件，配置环境变量，复制 .env.example 即可。
+在根目录下新建 `.env.development.local` 文件，配置环境变量，复制 .env.example 即可。
 
 ```bash
-cp .env.example .env.developemnt.local
+cp .env.example .env.development.local
 ```
 
 ## 启动

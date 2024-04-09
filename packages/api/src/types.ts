@@ -65,3 +65,5 @@ export const Sex = {
   FEMALE: 2,
   UNKNOWN: 3
 }
+
+export type OmitCurrentAndSize<T> = Omit<T, 'current' | 'size'>

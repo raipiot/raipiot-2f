@@ -1,3 +1,5 @@
+import 'dayjs/locale/zh-cn'
+
 import { px2remTransformer, StyleProvider } from '@ant-design/cssinjs'
 import { HappyProvider } from '@ant-design/happy-work-theme'
 import { messageConfig, themeBaseToken } from '@raipiot-infra/theme'

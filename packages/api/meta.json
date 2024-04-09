@@ -16,5 +16,6 @@
   "TenantsAPI",
   "DashboardAPI",
   "DeptsAPI",
-  "RolesAPI"
+  "RolesAPI",
+  "SampleSheetsAPI"
 ]
